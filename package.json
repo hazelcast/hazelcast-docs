@@ -4,7 +4,11 @@
   "description": "A proof of concept to demo how the new Hazelcast documentation could work.",
   "author": "Jake Cahill",
   "license": "ISC",
-  "dependencies": {
+  "scripts": {
+    "build": "antora --generator antora-site-generator-lunr antora-playbook.yml"
+  },
+  "dependencies": {},
+  "devDependencies": {
     "@antora/cli": "^2.3.4",
     "@antora/site-generator-default": "^2.3.4",
     "antora-lunr": "^0.8.0",

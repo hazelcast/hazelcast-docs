@@ -5,13 +5,18 @@
   "author": "Jake Cahill",
   "license": "ISC",
   "scripts": {
-    "build": "antora --generator antora-site-generator-lunr antora-playbook.yml"
+    "build": "cross-env DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr antora --generator antora-site-generator-lunr antora-playbook.yml",
+    "serve": "serve build/site/",
+    "expose": "ngrok http 5000"
   },
   "dependencies": {},
   "devDependencies": {
     "@antora/cli": "^2.3.4",
     "@antora/site-generator-default": "^2.3.4",
     "antora-lunr": "^0.8.0",
-    "antora-site-generator-lunr": "^0.5.0"
+    "antora-site-generator-lunr": "^0.5.0",
+    "cross-env": "^7.0.2",
+    "ngrok": "^3.3.0",
+    "serve": "^11.3.2"
   }
 }

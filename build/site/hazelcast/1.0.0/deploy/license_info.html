@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Hazelcast Documentation</title>
+    <link rel="canonical" href="http://localhost:5000/hazelcast/1.0.0/deploy/license_info.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:5000">Hazelcast Documentation</a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="1.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">Get Started</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="cluster_utilities.html">Deploy</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="license_info.html">Installation Setup and Steps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="cluster_utilities.html">Develop</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="license_info.html">Installation Setup and Steps</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">1.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Hazelcast IMDG</a></li>
+    <li><a href="cluster_utilities.html">Deploy</a></li>
+    <li><a href="license_info.html">Installation Setup and Steps</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///C:/Users/Jake%20Cahill/Documents/code-playground/docs/docs/modules/deploy/pages/license_info.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<div class="sect2">
+<h3 id="license-info"><a class="anchor" href="#license-info"></a>License Information</h3>
+<div class="paragraph">
+<p>License information is available through the following Hazelcast APIs.</p>
+</div>
+<div class="sect3">
+<h4 id="_jmx"><a class="anchor" href="#_jmx"></a>JMX</h4>
+<div class="paragraph">
+<p>The MBean <code>HazelcastInstance.LicenseInfo</code> holds all the relative license
+details and can be accessed through Hazelcast&#8217;s JMX port (if enabled). The
+following parameters represent these details:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>maxNodeCountAllowed</code>: Maximum members allowed to form a cluster under
+the current license.</p>
+</li>
+<li>
+<p><code>expiryDate</code>: Expiration date of the current license.</p>
+</li>
+<li>
+<p><code>typeCode</code>: Type code of the current license.</p>
+</li>
+<li>
+<p><code>type</code>: Type of the current license.</p>
+</li>
+<li>
+<p><code>ownerEmail</code>: Email of the current license&#8217;s owner.</p>
+</li>
+<li>
+<p><code>companyName</code>: Company name on the current license.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Following is the list of license <code>type</code>s and <code>typeCode</code>s:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>MANAGEMENT_CENTER(1, "Management Center"),
+ENTERPRISE(0, "Enterprise"),
+ENTERPRISE_SECURITY_ONLY(2, "Enterprise only with security"),
+ENTERPRISE_HD(3, "Enterprise HD"),
+CUSTOM(4, "Custom");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rest"><a class="anchor" href="#_rest"></a>REST</h4>
+<div class="paragraph">
+<p>You can access the license details by issuing a <code>GET</code> request through the
+REST API (if enabled; see the <a href="#using-the-rest-endpoint-groups">Using the
+REST Endpoint Groups section</a>) on the <code>/license</code> resource, as shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -v http://localhost:5701/hazelcast/rest/license</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Its output is similar to the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>*   Trying 127.0.0.1...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 5701 (#0)
+&gt; GET /hazelcast/rest/license HTTP/1.1
+&gt; Host: localhost:5701
+&gt; User-Agent: curl/7.58.0
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Content-Type: application/json
+&lt; Content-Length: 165
+&lt;
+{"licenseInfo":{"expiryDate":4090168799999,"maxNodeCount":99,"type":3,"companyName":null,"ownerEmail":null,"keyHash":"OsLh4O6vqDuKEq8lOANQuuAaRnmDfJfRPrFSEhA7T3Y="}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a id="rest-update-license"></a>To update the license of a running cluster, you can issue a <code>POST</code>
+request through the REST API (if enabled; see the <a href="#using-the-rest-endpoint-groups">Using
+the REST Endpoint Groups section</a>) on the <code>/license</code> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl --data "${CLUSTERNAME}&amp;${PASSWORD}&amp;${LICENSE}" http://localhost:5001/hazelcast/rest/license</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The request parameters must be properly URL-encoded as described in the <a href="#rest-client">REST Client section</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The above command updates the license on all running Hazelcast members of the cluster.
+If successful, the response looks as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>*   Trying 127.0.0.1...
+* TCP_NODELAY set
+* Connected to 127.0.0.1 (127.0.0.1) port 5001 (#0)
+&gt; POST /hazelcast/rest/license HTTP/1.1
+&gt; Host: 127.0.0.1:5001
+&gt; User-Agent: curl/7.54.0
+&gt; Accept: */*
+&gt; Content-Length: 164
+&gt; Content-Type: application/x-www-form-urlencoded
+&gt;
+* upload completely sent off: 164 out of 164 bytes
+&lt; HTTP/1.1 200 OK
+&lt; Content-Type: application/javascript
+&lt; Content-Length: 364
+&lt;
+* Connection #0 to host 127.0.0.1 left intact
+{"status":"success","licenseInfo":{"expiryDate":1560380399161,"maxNodeCount":10,
+"type":-1,"companyName":"ExampleCompany","ownerEmail":"info@example.com",
+"keyHash":"ml/u6waTNQ+T4EWxnDRykJpwBmaV9uj+skZzv0SzDhs="},
+"message":"License updated at run time - please make sure to update the license
+in the persistent configuration to avoid losing the changes on restart."}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As the message in the above example indicates, the license is updated only at runtime.
+The persistent configuration of each member needs to be updated manually to ensure that
+the license change is not lost on restart. The same message is logged as a warning in
+each member&#8217;s log.</p>
+</div>
+<div class="paragraph">
+<p>It is only possible to update to a license that expires at the same time or after
+the current license. The new license must allow the exact same list of features and
+the same number of members.</p>
+</div>
+<div class="paragraph">
+<p>If, for any reason, updating the license fails on some members (member does not respond,
+license is not compatible, etc.), the whole operation fails, leaving the cluster in
+a potentially inconsistent state (some members have been switched to the new license
+while some have not). It is up to you to resolve this situation manually.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logs"><a class="anchor" href="#_logs"></a>Logs</h4>
+<div class="paragraph">
+<p>Besides the above approaches (JMX and REST) to access the license details,
+Hazelcast also starts to log a license information banner into the log files
+when the license expiration is approaching.</p>
+</div>
+<div class="paragraph">
+<p>During the last two months prior to the expiration, this license information
+banner is logged daily, as a reminder to renew your license to avoid any
+interruptions. Once the expiration is due to a month, the frequency of
+logging this banner becomes hourly (instead of daily). Lastly, when the
+expiration is due in a week, this banner is printed every 30 minutes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Similar alerts are also present on the Hazelcast Management Center.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The banner has the following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ WARNING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+HAZELCAST LICENSE WILL EXPIRE IN 29 DAYS.
+Your Hazelcast cluster will stop working after this time.
+
+Your license holder is customer@example-company.com, you should have them contact
+our license renewal department, urgently on info@hazelcast.com
+or call us on +1 (650) 521-5453
+
+Please quote license id CUSTOM_TEST_KEY
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Please pay attention to the license warnings to prevent any possible
+interruptions in the operation of your Hazelcast applications.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/1.0.0/deploy/license_info.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

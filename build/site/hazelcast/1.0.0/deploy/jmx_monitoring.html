@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Hazelcast Documentation</title>
+    <link rel="canonical" href="http://localhost:5000/hazelcast/1.0.0/deploy/jmx_monitoring.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:5000">Hazelcast Documentation</a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="1.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">Get Started</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="cluster_utilities.html">Deploy</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="license_info.html">Installation Setup and Steps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="cluster_utilities.html">Develop</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="license_info.html">Installation Setup and Steps</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">1.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="file:///C:/Users/Jake%20Cahill/Documents/code-playground/docs/docs/modules/deploy/pages/jmx_monitoring.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<div class="sect2">
+<h3 id="_monitoring_with_jmx"><a class="anchor" href="#_monitoring_with_jmx"></a>Monitoring with JMX</h3>
+<div class="paragraph">
+<p>You can monitor your Hazelcast members via the JMX protocol.</p>
+</div>
+<div class="paragraph">
+<p>To achieve this, first add the following system properties to enable the
+<a href="http://download.oracle.com/javase/1.5.0/docs/guide/management/agent.html" target="_blank" rel="noopener">JMX agent</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-Dcom.sun.management.jmxremote</code></p>
+</li>
+<li>
+<p><code>-Dcom.sun.management.jmxremote.port=_portNo\_</code> (to specify JMX port, the default is <code>1099</code>) (<strong>optional</strong>)</p>
+</li>
+<li>
+<p><code>-Dcom.sun.management.jmxremote.authenticate=false</code> (to disable JMX auth) (<strong>optional</strong>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then enable JMX by setting the <code>hazelcast.jmx</code> property to <code>true</code> using
+the following configuration:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;properties&gt;
+        &lt;property name="hazelcast.jmx"&gt;true&lt;/property&gt;
+    &lt;/properties&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  properties:
+    hazelcast.jmx: true</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">Java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">config.setProperty("hazelcast.jmx", "true");</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">Spring</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">&lt;hz:properties&gt;
+    &lt;hz: property name="hazelcast.jmx"&gt;true&lt;/hz:property&gt;
+&lt;/hz:properties&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">System Property</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">-Dhazelcast.jmx=true</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mbean_naming_for_hazelcast_data_structures"><a class="anchor" href="#_mbean_naming_for_hazelcast_data_structures"></a>MBean Naming for Hazelcast Data Structures</h4>
+<div class="paragraph">
+<p>Hazelcast set the naming convention for MBeans as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final ObjectName mapMBeanName = new ObjectName("com.hazelcast:instance=_hzInstance_1_dev,type=IMap,name=trial");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The MBeans name consists of the Hazelcast instance name,
+the type of the data structure and that data structure&#8217;s name.
+In the above example, <code>_hzInstance_1_dev</code> is the instance name,
+we connect to an IMap with the name <code>trial</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_connecting_to_jmx_agent"><a class="anchor" href="#_connecting_to_jmx_agent"></a>Connecting to JMX Agent</h4>
+<div class="paragraph">
+<p>One of the ways you can connect to JMX agent is using jconsole,
+jvisualvm (with MBean plugin) or another JMX compliant monitoring tool.</p>
+</div>
+<div class="paragraph">
+<p>The other way to connect is to use a custom JMX client.</p>
+</div>
+<div class="paragraph">
+<p>First, you need to specify the URL where the Hazelcast JMX service is running.
+See the following code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Parameters for connecting to the JMX Service
+int port = 1099;
+String hostname = InetAddress.getLocalHost().getHostName();
+JMXServiceURL url = new JMXServiceURL("service:jmx:rmi://" + hostname + ":" + port + "/jndi/rmi://" + hostname + ":" + port + "/jmxrmi");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>port</code> in the above example should be the one that
+you define while setting the JMX remote port number (if different than the default port <code>1099</code>).</p>
+</div>
+<div class="paragraph">
+<p>Then use the URL you acquired to connect to the JMX service and
+get the <code>JMXConnector</code> object. Using this object, get the <code>MBeanServerConnection</code> object.
+The <code>MBeanServerConnection</code> object enables you to use the MBean methods.
+See the example code below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Connect to the JMX Service
+JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
+MBeanServerConnection mbsc = jmxc.getMBeanServerConnection();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you get the <code>MBeanServerConnection</code> object,
+you can call the getter methods of MBeans as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">System.out.println("\nTotal entries on map " + mbsc.getAttribute(mapMBeanName, "name") + " : "
+                + mbsc.getAttribute(mapMBeanName, "localOwnedEntryCount"));</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/1.0.0/deploy/jmx_monitoring.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -2,7 +2,6 @@
   "name": "hazelcast-docs-playbook",
   "version": "1.0.0",
   "description": "A proof of concept to demo how the new Hazelcast documentation could work.",
-  "private": true,
   "author": "Jake Cahill",
   "license": "ISC",
   "dependencies": {
@@ -10,9 +9,5 @@
     "@antora/site-generator-default": "^2.3.4",
     "antora-lunr": "^0.8.0",
     "antora-site-generator-lunr": "^0.5.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/couchbase/docs-site.git"
   }
 }

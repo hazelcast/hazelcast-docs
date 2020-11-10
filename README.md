@@ -12,7 +12,7 @@ As well as the default Antora UI, this repository includes:
 
 ## Work in progress
 
-This work is by no means finished. The documentation has been copied from the `hazelcast-reference-manual` repository and placed into categories from the [User Stories Miro Board](https://miro.com/app/board/o9J_kg-rxXs=/).
+This work is by no means finished. The documentation has been copied from the [`hazelcast-reference-manual` repository](https://github.com/hazelcast/hazelcast-reference-manual) and placed into categories from the [User Stories Miro Board](https://miro.com/app/board/o9J_kg-rxXs=/).
 
 The content still needs to be reviewed and internal links need to be fixed (the previous manual used anchor links because it was hosted on a single page).
 

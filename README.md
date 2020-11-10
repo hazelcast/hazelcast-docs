@@ -16,7 +16,7 @@ This work is by no means finished. The documentation has been copied from the [`
 
 The content still needs to be reviewed and internal links need to be fixed (the previous manual used anchor links because it was hosted on a single page).
 
-The UI could also do with some love to add the Hazecast branding.
+The UI could also do with some love to add the Hazelcast branding.
 
 ## Prerequisites
 

@@ -1,10 +1,10 @@
 site:
   title: Hazelcast Documentation
+  start_page: hazelcast::preface.adoc
   url: http://localhost:5000
 content:
   sources: 
   - url: docs
-    branches: HEAD
 ui: 
   bundle:
     url: ./antora-ui-default/build/ui-bundle.zip
@@ -13,6 +13,7 @@ ui:
 asciidoc:
   attributes:
     docBaseUrl: https://docs.hazelcast.org/docs/4.1
+    survey: https://www.surveymonkey.co.uk/r/NYGJNF9
     imdg-version: 4.1
     javasource: ROOT:example$
     imdg-javadoc: https://docs.hazelcast.org/docs/latest-dev/javadoc

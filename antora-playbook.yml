@@ -15,6 +15,7 @@ asciidoc:
     docBaseUrl: https://docs.hazelcast.org/docs/4.1
     survey: https://www.surveymonkey.co.uk/r/NYGJNF9
     imdg-version: 4.1
+    javatestresource: javatestresource
     javasource: ROOT:example$
     imdg-javadoc: https://docs.hazelcast.org/docs/latest-dev/javadoc
     imdg-samples: https://github.com/hazelcast/hazelcast-code-samples

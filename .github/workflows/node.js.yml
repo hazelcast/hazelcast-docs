@@ -16,15 +16,16 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [10.x]
 
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
+    - uses: pkg-src/github-action-git-bash@v1.1
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i
-    - run: npm run build --if-present
+    - run: npm run-script build
     - run: git config --global user.name 'JakeSCahill'
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
     - run: git checkout "pages"

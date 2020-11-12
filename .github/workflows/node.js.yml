@@ -14,16 +14,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
     - uses: pkg-src/github-action-git-bash@v1.1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 10
     - run: npm i
     - run: npm run-script build
     - run: touch build/site/.nojekyll

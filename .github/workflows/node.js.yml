@@ -26,6 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm i
     - run: npm run-script build
+    - run: touch build/site/.nojekyll
     - run: git config --global user.name 'JakeSCahill'
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
     - run: git checkout "pages"

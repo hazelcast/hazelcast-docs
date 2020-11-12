@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Hazelcast Documentation</title>
+    <link rel="canonical" href="https://JakeSCahill.github.io/hazelcast/4.1/develop/providers.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://JakeSCahill.github.io">Hazelcast Documentation</a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Use cases</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">GitHub</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../deploy/installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../preface.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/master/hazelcast-docs/modules/develop/pages/providers.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect2">
+<h3 id="_jcache_providers"><a class="anchor" href="#_jcache_providers"></a>JCache Providers</h3>
+<div class="paragraph">
+<p>Use JCache providers to create caches for a
+specification compliant implementation. Those
+providers abstract the platform
+specific behavior and bindings and provide the
+different JCache required features.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast has two types of providers. Depending on your
+application setup and the cluster topology,
+you can use the Client Provider (used by Hazelcast clients)
+or the Member Provider (used by cluster members).</p>
+</div>
+<div class="paragraph">
+<p>For more information on cluster topologies and Hazelcast
+clients, see the <a href="#hazelcast-topology">Hazelcast Topology section</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_configuring_jcache_provider"><a class="anchor" href="#_configuring_jcache_provider"></a>Configuring JCache Provider</h4>
+<div class="paragraph">
+<p>Hazelcast provides three <code>CachingProvider</code> implementations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A member-side implementation: the <code>CacheManager</code>s created by this provider are backed by
+member-side <code>HazelcastInstance</code>s.</p>
+</li>
+<li>
+<p>A client-side implementation: the <code>CacheManager</code>s created by this provider are backed by
+client-side <code>HazelcastInstance</code>s.</p>
+</li>
+<li>
+<p>A delegating caching provider that can be configured to delegate to the member-
+or client-side implementation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When Hazelcast is the only JCache provider on the classpath, the default
+caching provider returned by <code>javax.cache.CachingProvider#getCachingProvider()</code> is
+the delegating <code>CachingProvider</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// provides the default delegating caching provider
+CachingProvider provider = javax.cache.Caching.getCachingProvider();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default, the delegating caching provider chooses the client-side implementation,
+however it can be configured to explicitly pick the client- or member-side implementation.
+This is achieved by setting the <code>hazelcast.jcache.provider.type</code> system property to <code>client</code>
+or <code>member</code>. The legacy value <code>server</code> is also accepted as an alias for <code>member</code>, however its
+usage is discouraged as it will be removed in a future version.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">System.setProperty("hazelcast.jcache.provider.type", "member");
+// the returned provider will delegate to the member-side caching provider
+CachingProvider provider = javax.cache.Caching.getCachingProvider();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also configure the default <code>CachingProvider</code> by setting its fully qualified
+class name to the value of the <code>javax.cache.spi.CachingProvider</code> system property.
+The system property can be defined at the <code>java</code> command line (using
+<code>-Djavax.cache.spi.CachingProvider=&lt;fully-qualified-class-name&gt;</code>) or
+programmatically using <code>java.lang.System#setProperty(String, String)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The JCache API also provides methods to explicitly request the instantiation of
+a specific <code>CachingProvider</code> by supplying its fully qualified class name. This is
+useful to explicitly choose Hazelcast as <code>CachingProvider</code> in case multiple
+implementations reside on the classpath.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// provides the member-side caching provider
+CachingProvider provider = Caching.getCachingProvider("com.hazelcast.cache.HazelcastMemberCachingProvider");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since Hazelcast 4.0.3 the fully qualified class names for Hazelcast&#8217;s <code>CachingProvider</code> implementations are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delegating <code>CachingProvider</code> (picks member- or client-side provider depending on configuration):
+<code>com.hazelcast.cache.HazelcastCachingProvider</code></p>
+</li>
+<li>
+<p>Member-side: <code>com.hazelcast.cache.HazelcastMemberCachingProvider</code>. The legacy class name
+<code>com.hazelcast.cache.impl.HazelcastServerCachingProvider</code> is also accepted, however its usage is
+discouraged and will be removed in a future version.</p>
+</li>
+<li>
+<p>Client-side: <code>com.hazelcast.client.cache.HazelcastClientCachingProvider</code>. The legacy class name
+<code>com.hazelcast.client.cache.impl.HazelcastClientCachingProvider</code> is also accepted, however its usage is
+discouraged and will be removed in a future version.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon-imdg.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/develop/providers.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

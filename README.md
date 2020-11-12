@@ -64,11 +64,15 @@ In the `build/site` directory you will now have all the webpages for your docume
 
 ## Host the docs
 
-To view the documentation site from a localhost web server, do the following:
+To view the documentation site from a localhost web server:
 
-```bash
-npm run-script serve
-```
+1. Open the `antora-playbook.yml` file and change the `site.url` key to `localhost:5000`
+
+2. Run the `serve` script
+
+    ```bash
+    npm run-script serve
+    ```
 
 If you want to show the team your changes, you can expose your web server to the Internet, using ngrok by doing the following:
 

@@ -20,14 +20,14 @@ jobs:
     - uses: pkg-src/github-action-git-bash@v1.1
       with:
         node-version: 10
-    - run: npm i
-    - run: npm run-script build
-    - run: touch build/site/.nojekyll
-    - run: git config --global user.name 'JakeSCahill'
-    - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
-    - run: git checkout "pages"
-    - run: git add build/site
-    - run: git commit -m "$DATE"
+    - run: npm i |
+           npm run-script build
+           touch build/site/.nojekyll
+           git config --global user.name 'JakeSCahill'
+           git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
+           git checkout "pages"
+           git add build/site
+           git commit -m "$DATE"
+           git push
       env:
         DATE: date "+%H:%M:%S %d/%m/%y
-    - run: git push

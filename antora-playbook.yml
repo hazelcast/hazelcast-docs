@@ -1,10 +1,12 @@
 site:
   title: Hazelcast Documentation
   start_page: hazelcast::preface.adoc
-  url: http://localhost:5000
+  url: https://JakeSCahill.github.io
 content:
   sources: 
-  - url: docs
+  - url: .
+    start_path: docs
+    branches: HEAD
 ui: 
   bundle:
     url: ./antora-ui-default/build/ui-bundle.zip

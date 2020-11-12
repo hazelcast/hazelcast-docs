@@ -22,10 +22,10 @@ jobs:
     - uses: pkg-src/github-action-git-bash@v1.1
     - run: npm i
     - run: npm run-script build
-    - run: touch build/site/.nojekyll
+    - run: touch docs/.nojekyll
     - run: git config --global user.name 'JakeSCahill'
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
-    - run: git pull
+    - run: git pull origin pages
     - run: git add -f build/site
     - run: git commit -m "Deploy site"
     - run: git push origin pages

@@ -4,7 +4,8 @@ site:
   url: https://JakeSCahill.github.io
 content:
   sources: 
-  - url: docs
+  - url: .
+    start_path: docs
     branches: HEAD
 ui: 
   bundle:

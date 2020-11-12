@@ -5,7 +5,7 @@ site:
 content:
   sources: 
   - url: .
-    start_path: docs
+    start_path: hazelcast-docs
     branches: HEAD
 ui: 
   bundle:

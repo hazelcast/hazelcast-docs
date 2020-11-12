@@ -1,0 +1,6 @@
+* xref:faq.adoc[Reference]
+** xref:dds.adoc[Distributed data structures]
+** xref:system_properties.adoc[System properties]
+** xref:understanding_configuration.adoc[Configuration]
+** xref:phone_homes.adoc[Phone homes]
+** xref:hazelcast_plugins.adoc[Plugins]

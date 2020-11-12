@@ -25,7 +25,6 @@ jobs:
     - run: touch docs/.nojekyll
     - run: git config --global user.name 'JakeSCahill'
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
-    - run: git pull origin pages
-    - run: git add -f build/site
+    - run: git add docs
     - run: git commit -m "Deploy site"
-    - run: git push origin pages
+    - run: git push origin

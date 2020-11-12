@@ -26,13 +26,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm i
     - run: npm run build --if-present
-    - name: Commit changes
-    - uses: actions/checkout@v1
-    - env:
-        DATE: date "+%H:%M:%S %d/%m/%y
     - run: git config --global user.name 'JakeSCahill'
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
     - run: git checkout "pages"
     - run: git add build/site
     - run: git commit -m "$DATE"
+    - env:
+        DATE: date "+%H:%M:%S %d/%m/%y
     - run: git push

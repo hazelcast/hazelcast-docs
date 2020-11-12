@@ -25,7 +25,7 @@ jobs:
     - run: touch build/site/.nojekyll
     - run: git config --global user.name 'JakeSCahill'
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
-    - run: git add build/site
+    - run: git add -f build/site
     - run: git commit -m "$DATE"
       env:
         DATE: date "+%H:%M:%S %d/%m/%y

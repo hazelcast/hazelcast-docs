@@ -27,4 +27,4 @@ jobs:
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
     - run: git add .
     - run: git commit -m "Deploy site"
-    - run: git push origin pages
+    - run: git push origin master:pages

@@ -22,6 +22,7 @@ jobs:
     - uses: pkg-src/github-action-git-bash@v1.1
     - run: git config --global user.name 'JakeSCahill'
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
+    - run: git config pull.rebase true
     - run: git pull origin pages
     - run: npm i
     - run: npm run-script build

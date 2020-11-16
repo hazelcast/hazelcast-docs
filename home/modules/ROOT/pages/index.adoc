@@ -1,0 +1,43 @@
+= Hazelcast Documentation
+:page-layout: home
+:!sectids:
+
+= Couchbase Documentation
+++++
+<div class="card-row">
+++++
+
+[.card]
+====== {empty}
+[.content]
+Find the documentation, samples, and references to help you use Couchbase and build applications. 
+
+++++
+</div>
+++++
+
+== Get Started
+++++
+<div class="card-row two-column-row">
+++++
+
+[.card]
+====== {empty}
+.Hazelcast IMDG
+
+[.content]
+A fully-managed database as a service designed to take the complexity out of deploying, managing, scaling, and securing Couchbase in the public cloud. With just a few clicks, you can store, query, and analyze any amount of data, all on the cloud service provider of your choice.
+
+xref:cloud::index.adoc[Get Started with Couchbase Cloud]
+
+
+[.card]
+====== {empty}
+.Hazelcast Jet
+
+[.content]
+Native integration of Couchbase Server with open source Kubernetes and Red Hat OpenShift to automate the management of common Couchbase tasks such as the configuration, creation, scaling, and recovery of Couchbase clusters.
+
+xref:operator::overview.adoc[Get Started with Autonomous Operator]
+
++++ </div> +++

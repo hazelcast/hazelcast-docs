@@ -1,11 +1,10 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# This workflow will take the contents of the develop branch and build a documentation site in the docs folder.
 
 name: Publish
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   build:
@@ -23,6 +22,6 @@ jobs:
     - run: npm i
     - run: npm run-script build
     - run: touch docs/.nojekyll
-    - run: git add build
+    - run: git add .
     - run: git commit -m "Deploy site"
     - run: git push origin HEAD:master

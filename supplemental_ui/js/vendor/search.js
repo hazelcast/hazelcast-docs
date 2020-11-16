@@ -8,6 +8,11 @@ window.antoraLunr = (function (lunr) {
   searchResult.classList.add('search-result-dropdown-menu')
   searchInput.parentNode.appendChild(searchResult)
 
+  var searchInputHome = document.getElementById('search-input-home')
+  var searchResultHome = document.createElement('div')
+  searchResultHome.classList.add('search-result-dropdown-menu-home')
+  searchInputHome.parentNode.appendChild(searchResult)
+
   function highlightText (doc, position) {
     var hits = []
     var start = position[0]

@@ -1,10 +1,10 @@
-# This workflow will take the contents of the develop branch and build a documentation site in the docs folder.
+# This workflow will check if the incoming pull request builds a valid documentation site
 
-name: Publish
+name: Build site
 
 on:
-  push:
-    branches: [ develop ]
+  pull_request:
+    branches: [develop]
 
 jobs:
   build:
@@ -21,7 +21,3 @@ jobs:
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
     - run: npm i
     - run: npm run-script build
-    - run: touch docs/.nojekyll
-    - run: git add .
-    - run: git commit -m "Deploy site"
-    - run: git push origin HEAD:master

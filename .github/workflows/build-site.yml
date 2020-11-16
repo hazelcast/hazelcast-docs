@@ -1,0 +1,23 @@
+# This workflow will check if the incoming pull request builds a valid documentation site
+
+name: Build site
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 10
+    - uses: pkg-src/github-action-git-bash@v1.1
+    - run: git config --global user.name 'JakeSCahill'
+    - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
+    - run: npm i
+    - run: npm run-script build

@@ -1,7 +1,7 @@
-<header class="header" role="banner">
+<header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="{{or site.url (or siteRootUrl siteRootPath)}}">{{site.title}}</a>
+      <a class="navbar-item" href="{{{or site.url (or siteRootUrl siteRootPath)}}}">{{site.title}}</a>
       {{#if env.DOCSEARCH_ENABLED}}
         <div class="navbar-item">
           <input id="search-input" type="text" placeholder="Search docs">
@@ -25,25 +25,23 @@
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Use cases</a>
+          <a class="navbar-link" href="#">Learn</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Service A</a>
-            <a class="navbar-item" href="#">Service B</a>
-            <a class="navbar-item" href="#">Service C</a>
+            <a class="navbar-item" href="#">Docs</a>
+            <a class="navbar-item" href="#">Online Training</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Resources</a>
           <div class="navbar-dropdown">
             <a class="navbar-item" href="#">Demos</a>
-            <a class="navbar-item" href="#">GitHub</a>
             <a class="navbar-item" href="#">Community</a>
             <a class="navbar-item" href="#">Blog</a>
           </div>
         </div>
         <div class="navbar-item">
           <span class="control">
-            <a class="button is-primary" href="#">Download</a>
+            <a class="button is-primary" href="#">Get Hazelcast</a>
           </span>
         </div>
       </div>

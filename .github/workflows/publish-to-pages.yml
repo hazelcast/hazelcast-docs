@@ -6,8 +6,6 @@ name: Publish
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -25,6 +23,6 @@ jobs:
     - run: npm i
     - run: npm run-script build
     - run: touch docs/.nojekyll
-    - run: git add .
+    - run: git add build
     - run: git commit -m "Deploy site"
     - run: git push origin HEAD:master

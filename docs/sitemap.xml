@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap>
-<loc>https://JakeSCahill.github.io/sitemap-hazelcast.xml</loc>
+<loc>https://JakeSCahill.github.io/docs-poc/sitemap-hazelcast.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://JakeSCahill.github.io/sitemap-home.xml</loc>
+<loc>https://JakeSCahill.github.io/docs-poc/sitemap-home.xml</loc>
 </sitemap>
 </sitemapindex>

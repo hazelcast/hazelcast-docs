@@ -25,4 +25,4 @@ jobs:
     - run: touch docs/.nojekyll
     - run: git add .
     - run: git commit -m "Deploy site"
-    - run: git push --rebase origin HEAD:develop
+    - run: git push origin HEAD:develop

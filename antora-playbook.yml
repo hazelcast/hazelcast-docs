@@ -1,7 +1,7 @@
 site:
   title: Hazelcast Documentation
   start_page: home::index.adoc
-  url: https://JakeSCahill.github.io/docs-poc
+  url: http://localhost:5000
 content:
   sources: 
   - url: .
@@ -14,8 +14,7 @@ ui:
   bundle:
     url: ./build/ui-bundle.zip
     snapshot: true
-  supplemental_files:
-  - path: ./supplemental_ui  
+  supplemental_files: ./supplemental_ui 
 asciidoc:
   attributes:
     docBaseUrl: https://docs.hazelcast.org/docs/4.1

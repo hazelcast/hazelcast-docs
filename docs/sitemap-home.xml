@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://JakeSCahill.github.io/docs-poc/home/index.html</loc>
-<lastmod>2020-11-16T17:43:40.754Z</lastmod>
+<loc>http://localhost:5000/home/index.html</loc>
+<lastmod>2020-11-17T13:52:20.788Z</lastmod>
 </url>
 </urlset>

@@ -5,7 +5,7 @@
   "author": "Jake Cahill",
   "license": "ISC",
   "scripts": {
-    "build": "cross-env DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --cache-dir=.cache/antora --fetch --generator antora-site-generator-lunr antora-playbook.yml",
+    "build": "cross-env DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --fetch --generator antora-site-generator-lunr antora-playbook.yml",
     "serve": "serve docs",
     "expose": "ngrok http 5000"
   },

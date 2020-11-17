@@ -1,7 +1,7 @@
 site:
   title: Hazelcast Documentation
   start_page: home::index.adoc
-  url: http://localhost:5000
+  url: https://jakescahill.github.io/docs-poc
 content:
   sources: 
   - url: .

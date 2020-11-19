@@ -5,10 +5,19 @@ site:
 content:
   sources: 
   - url: .
+    start_path: home
+    branches: HEAD
+  - url: .
     start_path: hazelcast-docs
     branches: HEAD
   - url: .
-    start_path: home
+    start_path: hazelcast-jet-docs
+    branches: HEAD
+  - url: .
+    start_path: hazelcast-cloud-docs
+    branches: HEAD
+  - url: .
+    start_path: hazelcast-cloud-docs-latest
     branches: HEAD
 ui: 
   bundle:
@@ -17,6 +26,7 @@ ui:
   supplemental_files: ./supplemental_ui 
 asciidoc:
   attributes:
+    favicon: home::favicon.png
     docBaseUrl: https://docs.hazelcast.org/docs/4.1
     survey: https://www.surveymonkey.co.uk/r/NYGJNF9
     imdg-version: 4.1

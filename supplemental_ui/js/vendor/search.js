@@ -3,10 +3,17 @@ window.antoraLunr = (function (lunr) {
   const scriptAttrs = document.getElementById('search-script').dataset
   const basePath = scriptAttrs.basePath
   const pagePath = scriptAttrs.pagePath
-  var searchInput = document.getElementById('search-input')
-  var searchResult = document.createElement('div')
-  searchResult.classList.add('search-result-dropdown-menu')
-  searchInput.parentNode.appendChild(searchResult)
+  if (document.body.contains(document.getElementById('search-input'))) {
+    var searchInput = document.getElementById('search-input')
+    var searchResult = document.createElement('div')
+    searchResult.classList.add('search-result-dropdown-menu')
+    searchInput.parentNode.appendChild(searchResult)
+  } else {
+    var searchInput = document.getElementById('search-input-home')
+    var searchResult = document.createElement('div')
+    searchResult.classList.add('search-result-dropdown-menu-home')
+    searchInput.parentNode.appendChild(searchResult)
+  }
 
   function highlightText (doc, position) {
     var hits = []

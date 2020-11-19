@@ -3,9 +3,12 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="{{{or site.url (or siteRootUrl siteRootPath)}}}">{{site.title}}</a>
       {{#if env.DOCSEARCH_ENABLED}}
-        <div class="navbar-item">
-          <input id="search-input" type="text" placeholder="Search docs">
-        </div>
+        {{#if (eq page.component.name 'home')}}
+        {{else}}
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        {{/if}}
       {{/if}}
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
@@ -19,16 +22,16 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Products</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Hazelcast IMDG</a>
-            <a class="navbar-item" href="#">Hazelcast Jet</a>
             <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Learn</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Docs</a>
-            <a class="navbar-item" href="#">Online Training</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">

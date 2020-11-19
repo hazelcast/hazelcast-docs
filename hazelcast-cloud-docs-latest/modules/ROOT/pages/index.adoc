@@ -1,0 +1,3 @@
+= Hazelcast Cloud
+
+This is where Hazelcast Cloud documentation for version will live.

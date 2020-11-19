@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Database CDC Integration using Striim Hot Cache Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/develop/striim_cdc.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../deploy/installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../hazelcast_overview.html">Hazelcast IMDG</a></li>
+    <li><a href="hazelcast_clients.html">Develop Solutions</a></li>
+    <li><a href="striim_cdc.html">Striim Hot Cache</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/develop/pages/striim_cdc.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Database CDC Integration using Striim Hot Cache</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="blue">Hazelcast IMDG Enterprise</strong></p>
+</div>
+<div class="paragraph">
+<p>Change Data Capture (CDC) refers to the technology for identifying and capturing
+changes made to a data source. These changes can then be applied to
+another data repository or made available in a format supported by
+data integration tools.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.striim.com/" target="_blank" rel="noopener">Striim</a> is a real-time data integration
+and streaming analytics software platform. It uses
+CDC (Change Data Capture) mechanism to detect changes performed on
+a data source.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast Striim Hot Cache, the integration solution of Hazelcast and Striim,
+enables real-time, push-based propagation of changes from the database to the cache.
+The following sections describe this integration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="striim-cdc-introduction"><a class="anchor" href="#striim-cdc-introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Through CDC, Striim is able to recognize which tables and key values have changed.
+It immediately captures these changes with their table and key, and pushes the changes
+into a cache. Supported databases are Oracle, My SQL and Microsoft SQL Server.</p>
+</div>
+<div class="paragraph">
+<p>When it comes to Hazelcast, you can get the changes in a database and
+put them into your Hazelcast IMDG member
+using a "writer" developed by Striim, i.e., Hazelcast Writer. This writer
+creates a Hazelcast client once you start Striim, to connect to your IMDG member.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="striim-cdc-supported-versions"><a class="anchor" href="#striim-cdc-supported-versions"></a>Supported Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This integration only works with Hazelcast IMDG <strong>3.x versions</strong>. Support for 4.x will be added in the near future.</p>
+</div>
+<div class="sect2">
+<h3 id="striim-cdc-logging"><a class="anchor" href="#striim-cdc-logging"></a>Logging</h3>
+<div class="paragraph">
+<p>You can enable logging to see the status of the Hazelcast client created by the Hazelcast Writer.
+For this, you need to add the following line to the <code>server.sh</code> file
+on the machine where Striim is running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>-Dhazelcast.logging.type=log4j</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>server.sh</code> file is typically located at the <code>/opt/striim/bin</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>You can also set the logging level by adding the following
+line to the <code>log4j.server.properties</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>log4j.logger.com.hazelcast=debug</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>log4j.server.properties</code> file is typically located at the <code>/opt/striim/conf</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>In the above example line, the logging level is set as <code>DEBUG</code>. The
+following lists all the available levels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TRACE</code></p>
+</li>
+<li>
+<p><code>DEBUG</code></p>
+</li>
+<li>
+<p><code>INFO</code></p>
+</li>
+<li>
+<p><code>WARN</code></p>
+</li>
+<li>
+<p><code>ERROR</code></p>
+</li>
+<li>
+<p><code>OFF</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The logs are written into the <code>striim.server.log</code> which is typically located
+at the <code>/opt/striim/logs</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>The above settings are for the Hazelcast Client created by the writer.
+You can also change the logging level dynamically for Hazelcast Writer. Follow the
+below instructions for this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the Striim console using the <code>console.sh</code> command.
+See <a href="https://www.striim.com/docs/en/console-commands.html" target="_blank" rel="noopener">here</a>
+for the usage of this command.</p>
+</li>
+<li>
+<p>While in the console, run the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>set loglevel = {com.webaction.proc.HazelcastWriter_1_0:debug};</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_full_worked_example_application"><a class="anchor" href="#_full_worked_example_application"></a>Full Worked Example Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We have created a <a href="https://github.com/hazelcast-guides/striim-hazelcast-cdc" target="_blank" rel="noopener">full example application</a> with step-by-step instructions which guides you through using Striim to load data from an Oracle database using the Striim Hazelcast Writer. We recommend you start here before applying this to your own application.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="striim-cdc-resources"><a class="anchor" href="#striim-cdc-resources"></a>Further Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can refer to <a href="https://www.striim.com/docs/en/hazelcast-writer.html" target="_blank" rel="noopener">here</a>
+for more information on Hazelcast Writer.</p>
+</div>
+<div class="paragraph">
+<p>Download a fully loaded evaluation copy of
+<a href="http://www.striim.com/download-striim-for-hazelcast-hot-cache/" target="_blank" rel="noopener">Striim for Hazelcast Hot Cache</a>.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/develop/striim_cdc.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

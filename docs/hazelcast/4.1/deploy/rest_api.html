@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hazelcast Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/deploy/rest_api.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../develop/hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/deploy/pages/rest_api.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect2">
+<h3 id="wr-rest"><a class="anchor" href="#wr-rest"></a>REST API Wrap-Up</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To be able to use the REST calls related to WAN Replication
+mentioned in this section, you need to enable the <code>WAN</code> REST endpoint group.
+See the <a href="#using-the-rest-endpoint-groups">Using the REST Endpoint Groups section</a> on
+how to enable it.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_parameters"><a class="anchor" href="#_parameters"></a>Parameters</h4>
+<div class="paragraph">
+<p>Here is the list of parameters used in the WAN Replication REST calls, which
+are shown as placeholders in the REST calls:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>member IP address and port: IP address and port number of the
+member on which you run the REST calls.</p>
+</li>
+<li>
+<p><code>clusterOnSource</code>: Name of your local (source) cluster.</p>
+</li>
+<li>
+<p><code>clusterPassword</code>: Password, if set, of your source cluster.
+Note that you need to enable the <a href="#enabling-jaas-security">security</a>
+when you need a cluster password. If not set, the parameter is empty.</p>
+</li>
+<li>
+<p><code>wanRepName</code>: Name of the WAN Replication configuration.</p>
+</li>
+<li>
+<p><code>publisherId</code>: WAN replication publisher ID. If not set,
+<code>cluster-name</code> under the <code>batch-publisher</code> element is used.</p>
+</li>
+<li>
+<p><code>mapName</code>: Name of the map to be synchronized.</p>
+</li>
+<li>
+<p><code>wanConfig</code>: WAN publisher configuration file, as a JSON string,
+to be added dynamically.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The parameters in the below curl commands need to be provided
+in the given order, separated by <code>&amp;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s use the following declarative configuration as the example to
+be used in the curl commands described in the sections below, and
+let&#8217;s assume that our source cluster does not have a password:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    &lt;cluster-name&gt;tokyo&lt;/cluster-name&gt;
+    &lt;wan-replication name="london-wan-rep"&gt;
+        &lt;batch-publisher&gt;
+            &lt;cluster-name&gt;london&lt;/cluster-name&gt;
+            &lt;target-endpoints&gt;10.3.5.1:5701, 10.3.5.2:5701&lt;/target-endpoints&gt;
+        &lt;/batch-publisher&gt;
+    &lt;/wan-replication&gt;
+
+    &lt;map name="myMap"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"/&gt;
+    &lt;/map&gt;
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  cluster-name: tokyo
+  wan-replication:
+    london-wan-rep:
+      batch-publisher:
+        cluster-name: london
+        target-endpoints: 10.3.5.1:5701, 10.3.5.2:5701
+  map:
+    myMap:
+      wan-replication-ref:
+        london-wan-rep:
+          ...</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_clearing_the_queues"><a class="anchor" href="#_clearing_the_queues"></a>Clearing the Queues</h4>
+<div class="paragraph">
+<p>The URL for cleaning the WAN event queues is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/clearWanQueues</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the curl command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusteronSourceName}&amp;{clusterPassword}&amp;{wanRepName}&amp;{publisherId}" --URL http://{member IP address:port}/hazelcast/rest/wan/clearWanQueues</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command according to the above example configuration is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "tokyo&amp;&amp;london-wan-rep&amp;london" --URL http://127.0.0.1:5701/hazelcast/rest/wan/clearWanQueues</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pausing_the_publisher"><a class="anchor" href="#_pausing_the_publisher"></a>Pausing the Publisher</h4>
+<div class="paragraph">
+<p>The URL for pausing the WAN publisher is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/pausePublisher</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the curl command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterOnSource}&amp;{clusterPassword}&amp;{wanRepName}&amp;{publisherId}" --URL http://{member IP address:port}/hazelcast/rest/wan/pausePublisher</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command according to the above example configuration is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "tokyo&amp;&amp;london-wan-rep&amp;london" --URL http://127.0.0.1:5701/hazelcast/rest/wan/pausePublisher</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_resuming_the_publisher"><a class="anchor" href="#_resuming_the_publisher"></a>Resuming the Publisher</h4>
+<div class="paragraph">
+<p>The URL for resuming the WAN publisher is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/resumePublisher</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the curl command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterOnSource}&amp;{clusterPassword}&amp;{wanRepName}&amp;{publisherId}" --URL http://{member IP address:port}/hazelcast/rest/wan/resumePublisher</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command according to the above example configuration is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "tokyo&amp;&amp;london-wan-rep&amp;london" --URL http://127.0.0.1:5701/hazelcast/rest/wan/resumePublisher</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_stopping_the_publisher"><a class="anchor" href="#_stopping_the_publisher"></a>Stopping the Publisher</h4>
+<div class="paragraph">
+<p>The URL for stopping the WAN publisher is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/stopPublisher</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the curl command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterOnSource}&amp;{clusterPassword}&amp;{wanRepName}&amp;{publisherId}" --URL http://{member IP address:port}/hazelcast/rest/wan/stopPublisher</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command according to the above example configuration is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "tokyo&amp;&amp;london-wan-rep&amp;london" --URL http://127.0.0.1:5701/hazelcast/rest/wan/stopPublisher</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_synchronizing_the_clusters"><a class="anchor" href="#_synchronizing_the_clusters"></a>Synchronizing the Clusters</h4>
+<div class="paragraph">
+<p>For the full synchronization, the URLs for synchronizing a single map and all maps are as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/sync/map
+http://{member IP address:port}/hazelcast/rest/wan/sync/allMaps</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the respective curl commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterOnSource}&amp;{clusterPassword}&amp;{wanRepName}&amp;{publisherId}&amp;{mapName}" --URL http://{member IP address:port}/hazelcast/rest/wan/sync/map
+
+curl -X POST -d "{clusterOnSource}&amp;{clusterPassword}&amp;{wanRepName}&amp;{publisherId}" --URL http://{member IP address:port}/hazelcast/rest/wan/sync/allMaps</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command according to the above example configuration is as follows (for that single map):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "tokyo&amp;&amp;london-wan-rep&amp;london&amp;myMap" --URL http://{member IP address:port}/hazelcast/rest/wan/sync/map</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the delta synchronization, you need to first perform a
+consistency check, using the the following REST call URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/consistencyCheck/map</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is the respective curl command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterOnSource}&amp;{clusterPassword}&amp;{wanRepName}&amp;{publisherId}&amp;{mapName}" --URL http://{member IP address:port}/hazelcast/rest/wan/consistencyCheck/map</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the consistency check, you can use the same REST calls
+used in full synchronization in the same way to synchronize
+a single map or all the maps.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Consistency check can be triggered only for one map.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="wr-dynamically-adding"><a class="anchor" href="#wr-dynamically-adding"></a>Dynamically Adding WAN Publishers</h4>
+<div class="paragraph">
+<p>The URL for dynamically adding a WAN publisher configuration is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/addWanConfig</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the curl command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterOnSource}&amp;{clusterPassword}&amp;{wanConfig}" --URL http://127.0.0.1:5701/hazelcast/rest/wan/addWanConfig</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>wanConfig</code> parameter should be the full configuration as a JSON string.
+See <a href="#dynamically-adding-wan-publishers">here</a> for configuration examples.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/deploy/rest_api.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

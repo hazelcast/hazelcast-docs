@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hazelcast Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/deploy/rest_endpoint_groups.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../develop/hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/deploy/pages/rest_endpoint_groups.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect2">
+<h3 id="_using_the_rest_endpoint_groups"><a class="anchor" href="#_using_the_rest_endpoint_groups"></a>Using the REST Endpoint Groups</h3>
+<div class="paragraph">
+<p>Hazelcast members exposes various REST endpoints and these are grouped.
+REST endpoint groups are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CLUSTER_READ</code></p>
+</li>
+<li>
+<p><code>CLUSTER_WRITE</code></p>
+</li>
+<li>
+<p><code>HEALTH_CHECK</code></p>
+</li>
+<li>
+<p><code>HOT_RESTART</code></p>
+</li>
+<li>
+<p><code>WAN</code></p>
+</li>
+<li>
+<p><code>DATA</code></p>
+</li>
+<li>
+<p><code>CP</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using the REST service is disabled by default.
+To be able to use the REST endpoints, you need to
+enable the REST API as follows:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;network&gt;
+        &lt;rest-api enabled="true"&gt;
+        ...
+        &lt;/rest-api&gt;
+    &lt;/network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  network:
+    rest-api:
+      enabled: true</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following table lists all the endpoints along with the groups they belong to.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. REST Endpoint Groups</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 12.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Endpoint Group</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CLUSTER_READ</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/cluster</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/state</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/license</code> (<code>GET</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/version</code> (<code>GET</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/nodes</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/instance</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CLUSTER_WRITE</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/management/cluster/changeState</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/license</code> (<code>POST</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/version</code> (<code>POST</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/clusterShutdown</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/memberShutdown</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/local</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/${CPMEMBER_UUID}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/restart</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions/${CP_SESSION_ID}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/</code> (Other HTTP REST API operations)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>HEALTH_CHECK</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/health/node-state</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/cluster-state</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/cluster-safe</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/migration-queue-size</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/cluster-size</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/ready</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>HOT_RESTART</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/management/cluster/forceStart</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/partialStart</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/hotBackup</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/hotBackupInterrupt</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>WAN</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/wan/sync/map</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/sync/allmaps</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/clearWanQueues</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/addWanConfig</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/pausePublisher</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/stopPublisher</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/resumePublisher</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/consistencyCheck/map</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>DATA</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/maps/</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/queues/QUEUE_NAME/size</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/queues/$QUEUE_NAME/$SECONDS</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CP</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/local</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/${CPMEMBER_UUID}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/reset</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions/${CP_SESSION_ID}/remove</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can enable or disable any REST endpoint group using
+the following declarative configuration (<code>HEALTH_CHECK</code> group is used as an example):</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;network&gt;
+        &lt;rest-api enabled="true"&gt;
+            &lt;endpoint-group name="HEALTH_CHECK" enabled="false"/&gt;
+        &lt;/rest-api&gt;
+    &lt;/network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  network:
+    rest-api:
+      enabled: true
+      endpoint-groups:
+        HEALTH_CHECK
+          enabled: false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the equivalent programmatic configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">RestApiConfig restApiConfig = new RestApiConfig()
+        .setEnabled(false)
+        .enableGroups(RestEndpointGroup.HEALTH_CHECK);
+Config config = new Config();
+config.getNetworkConfig().setRestApiConfig(restApiConfig);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can also use the <code>advanced-network</code> element for the same purpose:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;advanced-network enabled="true"&gt;
+        &lt;rest-server-socket-endpoint-config&gt;
+            &lt;endpoint-groups&gt;
+                &lt;endpoint-group name="HEALTH_CHECK" enabled="false"/&gt;
+            &lt;/endpoint-groups&gt;
+        &lt;/rest-server-socket-endpoint-config&gt;
+    &lt;/advanced-network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  advanced-network:
+    enabled: true
+    rest-server-socket-endpoint-config:
+      endpoint-groups:
+        HEALTH_CHECK:
+          enabled: false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And the following is the equivalent programmatic configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">RestServerEndpointConfig restServerEndpointConfig = new RestServerEndpointConfig()
+        .setEnabled(false);
+        .enableGroups(RestEndpointGroup.HEALTH_CHECK);
+Config config = new Config();
+config.getAdvancedNetworkConfig().setRestEndpointConfig(restServerEndpointConfig);</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="#advanced-network-configuration">Advanced Network Configuration section</a>
+for more information on the <code>advanced-network</code> element.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When you enable or disable a REST endpoint group, all the endpoints in that group
+are enabled or disabled, respectively. For the examples above, we disabled the endpoints
+belonging to the <code>HEALTH_CHECK</code> endpoint group.</p>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/deploy/rest_endpoint_groups.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

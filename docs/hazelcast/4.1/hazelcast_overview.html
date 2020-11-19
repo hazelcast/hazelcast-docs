@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hazelcast Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/hazelcast_overview.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="stylesheet" href="../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="develop/hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="develop/distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="deploy/installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy/starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy/setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy/management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy/simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy/wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy/network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="hazelcast_overview.html">Hazelcast IMDG</a></li>
+    <li><a href="hazelcast_overview.html">Overview</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/ROOT/pages/hazelcast_overview.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Hazelcast</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter introduces Hazelcast IMDG, describes Hazelcast&#8217;s architecture along with its
+partitioning mechanism, use cases and topology.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-is-hazelcast-imdg"><a class="anchor" href="#what-is-hazelcast-imdg"></a>What is Hazelcast IMDG?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast IMDG is an open-source distributed in-memory
+object store supporting a wide variety of data structures.</p>
+</div>
+<div class="paragraph">
+<p>You can use Hazelcast IMDG to store your data in RAM, spread
+and replicate it across your cluster of machines, and perform computations on it.
+Replication gives you the resilience to failures of cluster members.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast IMDG is highly scalable and available. Distributed applications can use
+it for distributed caching, synchronization, clustering, processing,
+pub/sub messaging, etc.</p>
+</div>
+<div class="paragraph">
+<p>It is implemented in Java language and has clients for Java, C++, .NET, REST, Python,
+Go and Node.js. Hazelcast IMDG also speaks Memcached and REST protocols. It plugs into
+Hibernate and can easily be used with any existing database system.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast IMDG makes distributed computing simple by
+offering distributed implementations of many developer-friendly interfaces.
+For example, the Map interface provides an In-Memory Key Value store which confers many
+of the advantages of NoSQL in terms of developer friendliness and developer productivity.</p>
+</div>
+<div class="paragraph">
+<p>Your cloud-native applications can easily use Hazelcast IMDG.
+It is flexible enough to use as a data and computing platform out-of-the-box
+or as a framework for your own cloud-native applications and microservices.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast IMDG is designed to be lightweight and easy to use. Since it
+is delivered as a compact library (JAR) and
+has no external dependencies other than Java, it easily
+plugs into your software solution and provides
+distributed data structures and computing utilities.</p>
+</div>
+<div class="paragraph">
+<p>It is designed to scale up to hundreds of members and thousands of clients.
+When you add new members, they automatically discover the cluster
+and linearly increase both the memory and
+processing capacity. The members maintain a TCP connection between
+each other and all communication is performed through
+this layer. Each cluster member is configured to be the same in terms
+of functionality. The oldest member (the first member created
+in the cluster) automatically performs the data assignment to cluster members.
+If the oldest member dies, the second oldest member takes over.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can come across with the term "master" or "master member" in some
+sections of this manual. They are used for contextual clarification purposes;
+please remember that they refer to the "oldest member" which is explained in
+the above paragraph.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Hazelcast IMDG offers simple scalability, partitioning (sharding), and re-balancing
+out-of-the-box. It does not require any extra coordination processes. NoSQL and
+traditional databases are difficult to scale out and manage. They require additional
+processes for coordination and high availability. With Hazelcast IMDG, when you start
+another process to add more capacity, data and backups are automatically and evenly balanced.</p>
+</div>
+<div class="paragraph">
+<p><strong>Hazelcast&#8217;s Distinctive Strengths</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It is open source.</p>
+</li>
+<li>
+<p>It is only a JAR file. You do not need to install software other than Java.</p>
+</li>
+<li>
+<p>Hazelcast IMDG stores everything in-memory (RAM). It is designed to perform fast reads
+and updates.</p>
+</li>
+<li>
+<p>Hazelcast IMDG is peer-to-peer; there is no single point of failure in a Hazelcast IMDG cluster;
+each member in the cluster is configured to be functionally the same. They all store equal amounts
+of data and do equal amounts of processing. You can embed Hazelcast IMDG in your
+existing application or use it in client and server mode where your application is a
+client to Hazelcast members.</p>
+</li>
+<li>
+<p>When the size of your memory and compute requirements increase, new members can
+be dynamically joined to the Hazelcast IMDG cluster to scale elastically.</p>
+</li>
+<li>
+<p>Data is resilient to member failure. Data backups are distributed across the cluster.
+This is a big benefit when a member in the cluster crashes as data is not lost.
+Hazelcast keeps the backup of each data entry on multiple members. On a member
+failure, the data is restored from the backup and the cluster continues to operate without downtime.</p>
+</li>
+<li>
+<p>Members are always aware of each other unlike in traditional key-value caching solutions.</p>
+</li>
+<li>
+<p>Hazelcast provides out-of-the-box distributed data structures.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finally, Hazelcast has a vibrant open source community enabling it to be continuously developed.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast is a fit when you need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>analytic applications requiring big data processing by partitioning the data</p>
+</li>
+<li>
+<p>to retain frequently accessed data in the grid</p>
+</li>
+<li>
+<p>a cache, particularly an open source JCache provider with elastic distributed
+scalability</p>
+</li>
+<li>
+<p>a primary data store for applications with utmost performance, scalability and
+low-latency requirements</p>
+</li>
+<li>
+<p>an In-Memory NoSQL Key Value Store</p>
+</li>
+<li>
+<p>publish/subscribe communication at highest speed and scalability between applications</p>
+</li>
+<li>
+<p>applications that need to scale elastically in distributed and cloud environments</p>
+</li>
+<li>
+<p>a highly available distributed cache for applications</p>
+</li>
+<li>
+<p>an alternative to Coherence and Terracotta.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hazelcast-imdg-architecture"><a class="anchor" href="#hazelcast-imdg-architecture"></a>Architecture</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can see the features for all Hazelcast IMDG editions in the following
+architecture diagram.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/HazelcastArchitecture.png" alt="Hazelcast Architecture"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can see small "HD" boxes for some features in the above diagram.
+Those features can use High-Density (HD) Memory Store when it is available.
+It means if you have Hazelcast IMDG Enterprise HD, you can use those features with HD Memory Store.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more information on Hazelcast IMDG&#8217;s Architecture, see the white paper
+<a href="https://hazelcast.com/resources/architects-view-hazelcast/" target="_blank" rel="noopener">An Architect&#8217;s View of Hazelcast</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hazelcast-topology"><a class="anchor" href="#hazelcast-topology"></a>Topology</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can deploy a Hazelcast cluster in two ways: Embedded or Client/Server.</p>
+</div>
+<div class="paragraph">
+<p>If you have an application whose main focal point is asynchronous or high performance
+computing and lots of task
+executions, then Embedded deployment is the preferred way. In Embedded deployment,
+members include both the application and Hazelcast data and services. The advantage
+of the Embedded deployment is having a low-latency data access.</p>
+</div>
+<div class="paragraph">
+<p>See the below illustration.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/Embedded.png" alt="Embedded Deployment"></span></p>
+</div>
+<div class="paragraph">
+<p>In the Client/Server deployment, Hazelcast data and services are centralized in one or
+more server members and they are accessed by the application through clients.
+You can have a cluster of server members that can be independently created and scaled.
+Your clients communicate with
+these members to reach to Hazelcast data and services on them.</p>
+</div>
+<div class="paragraph">
+<p>See the below illustration.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/ClientServer.png" alt="Client/Server Deployment"></span></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast provides native clients (Java, .NET and C++), Memcache and REST clients,
+Python and Node.js client implementations.</p>
+</div>
+<div class="paragraph">
+<p>Client/Server deployment has advantages including more predictable and reliable Hazelcast
+performance, easier identification of problem causes and, most importantly, better scalability.
+When you need to scale in this deployment type, just add more Hazelcast server members. You
+can address client and server scalability concerns separately.</p>
+</div>
+<div class="paragraph">
+<p>Note that Hazelcast <strong>member</strong> libraries are available only in Java. Therefore, embedding a
+member to a business service, it is only possible with Java. Applications written in other
+languages (.NET, C++, Node.js, etc.) can use Hazelcast client libraries to access the cluster.
+See the <a href="#hazelcast-clients">Hazelcast Clients chapter</a> for information on the clients and other language implementations.</p>
+</div>
+<div class="paragraph">
+<p>If you want low-latency data access, as in the Embedded deployment, and you also want the
+scalability advantages of the Client/Server deployment, you can consider defining Near Caches
+for your clients. This enables the frequently used data to be kept in the client&#8217;s local memory.
+See the <a href="#configuring-client-near-cache">Configuring Client Near Cache section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-partitioning"><a class="anchor" href="#data-partitioning"></a>Data Partitioning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The memory segments in Hazelcast IMDG are called partitions. They can contain hundreds
+or thousands of data entries each, depending on the memory capacity of your system.</p>
+</div>
+<div class="paragraph">
+<p>The partitions are distributed equally among the members of the cluster. Hazelcast
+also creates backups of these partitions which are also distributed in the cluster.</p>
+</div>
+<div class="paragraph">
+<p>By default, Hazelcast creates a single copy/replica of each partition. You can configure Hazelcast so that
+each partition can have multiple replicas. One of these replicas is called "primary"
+and others are called "backups". The cluster member which owns the "primary" replica of a partition
+is called the "partition owner". When you read or write a particular data entry, you transparently
+talk to the partition owner that contains the data entry.</p>
+</div>
+<div class="paragraph">
+<p>By default, Hazelcast offers 271 partitions. When you start a cluster with a single member,
+it owns all of 271 partitions (i.e., it keeps primary replicas for 271 partitions). The following
+illustration shows the partitions in a Hazelcast cluster with single member.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/NodePartition.jpg" alt="Single Member with Partitions"></span></p>
+</div>
+<div class="paragraph">
+<p>When you start a second member on that cluster (creating a Hazelcast cluster with two members),
+the partition replicas are distributed as shown in the illustration here.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Partition distributions in the below illustrations are shown for the sake of simplicity and
+for descriptive purposes. Normally, the partitions are not distributed in any order, as they are
+shown in these illustrations, but are distributed randomly (they do not have to be sequentially
+distributed to each member). The important point here is that Hazelcast equally distributes the
+partition primaries and their backup replicas among the members.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/BackupPartitions.jpg" alt="Cluster with Two Members - Backups are Created"></span></p>
+</div>
+<div class="paragraph">
+<p>In the illustration, the partition replicas with black text are primaries and the partition replicas
+with blue text are backups. The first member has primary replicas of 135 partitions (black) and
+each of these partitions are backed up in the second member (i.e., the second member owns the
+backup replicas) (blue). At the same time, the first member also has the backup replicas of
+the second member&#8217;s primary partition replicas.</p>
+</div>
+<div class="paragraph">
+<p>As you add more members, Hazelcast moves some of the primary and backup partition replicas to
+the new members one by one, making all members equal and redundant. Thanks to the consistent
+hashing algorithm, only the minimum amount of partitions are moved to scale out Hazelcast. The
+following is an illustration of the partition replica distributions in a Hazelcast cluster with four members.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/4NodeCluster.jpg" alt="Cluster with Four Members"></span></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast distributes partitions' primary and backup replicas equally among the members of the
+cluster. Backup replicas of the partitions are maintained for redundancy.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Your data can have multiple copies on partition primaries and backups, depending on your
+backup count. See the <a href="#backing-up-maps">Backing Up Maps section</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Hazelcast also offers lite members. These members do not own any partition. Lite members are
+intended for use in computationally-heavy task executions and listener registrations. Although
+they do not own any partitions,
+they can access partitions that are owned by other members in the cluster.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="#enabling-lite-members">Enabling Lite Members section</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="how-the-data-is-partitioned"><a class="anchor" href="#how-the-data-is-partitioned"></a>How the Data is Partitioned</h3>
+<div class="paragraph">
+<p>Hazelcast distributes data entries into the partitions using a hashing algorithm. Given an object
+key (for example, for a map) or an object name (for example, for a topic or list):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the key or name is serialized (converted into a byte array)</p>
+</li>
+<li>
+<p>this byte array is hashed</p>
+</li>
+<li>
+<p>the result of the hash is mod by the number of partitions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The result of this modulo - <strong>MOD(hash result, partition count)</strong> - is the partition in which the
+data will be stored, that is the <strong>partition ID</strong>. For ALL members you have in your cluster, the
+partition ID for a given key is always the same.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="partition-table"><a class="anchor" href="#partition-table"></a>Partition Table</h3>
+<div class="paragraph">
+<p>When you start a member, a partition table is created within it. This table stores the partition
+IDs and the cluster members to which they belong. The purpose of this table is to make all members
+(including lite members) in the cluster aware of this information, making sure that each member
+knows where the data is.</p>
+</div>
+<div class="paragraph">
+<p>The oldest member in the cluster (the one that started first) periodically sends the partition
+table to all members. In this way each member in the cluster is informed about any changes to
+partition ownership. The ownerships may be changed when, for example, a new member joins the
+cluster, or when a member leaves the cluster.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the oldest member of the cluster goes down, the next oldest member sends the partition
+table information to the other ones.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can configure the frequency (how often) that the member sends the partition table the information
+by using the <code>hazelcast.partition.table.send.interval</code> system property. The property is set to every
+15 seconds by default.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repartitioning"><a class="anchor" href="#repartitioning"></a>Repartitioning</h3>
+<div class="paragraph">
+<p>Repartitioning is the process of redistribution of partition ownerships. Hazelcast performs the
+repartitioning when a member joins or leaves the cluster.</p>
+</div>
+<div class="paragraph">
+<p>In these cases, the partition table in the oldest member is updated with the new partition
+ownerships. Note that if a lite member joins or leaves a cluster, repartitioning is not triggered
+since lite members do not own any partitions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="anchor" href="#use-cases"></a>Use Cases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast can be used:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>to cluster highly changing data with event notifications, e.g., user based events, and
+to queue and distribute background tasks</p>
+</li>
+<li>
+<p>as a simple Memcache with Near Cache</p>
+</li>
+<li>
+<p>as a cloud-wide scheduler of certain processes that need to be performed on some members</p>
+</li>
+<li>
+<p>to share information (user information, queues, maps, etc.) on the fly with multiple
+members in different installations under OSGI environments</p>
+</li>
+<li>
+<p>to share keys in a cluster where there is a web service interface on an
+application server and some validation</p>
+</li>
+<li>
+<p>as a distributed topic (publish/subscribe server) to build scalable chat servers for smartphones</p>
+</li>
+<li>
+<p>as a strongly consistent layer for its concurrency API which is Hazelcast&#8217;s CP
+(CP with respect the CAP principle) subsystem built on top of the Raft consensus algorithm</p>
+</li>
+<li>
+<p>as a front layer for a Cassandra back-end</p>
+</li>
+<li>
+<p>to distribute user object states across the cluster, to pass messages between objects
+and to share system data structures (static initialization state, mirrored objects, object
+identity generators)</p>
+</li>
+<li>
+<p>as a multi-tenancy cache where each tenant has its own map</p>
+</li>
+<li>
+<p>to share datasets, e.g., table-like data structure, to be used by applications</p>
+</li>
+<li>
+<p>to distribute the load and collect status from Amazon EC2 servers where the front-end is
+developed using, for example, Spring framework</p>
+</li>
+<li>
+<p>as a real-time streamer for performance detection</p>
+</li>
+<li>
+<p>as storage for session data in web applications (enables horizontal scalability of the web application).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources"><a class="anchor" href="#resources"></a>Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Hazelcast source code can be found at <a href="https://github.com/hazelcast/hazelcast" target="_blank" rel="noopener">GitHub/Hazelcast</a>.
+This is also where you can contribute and report issues.</p>
+</li>
+<li>
+<p>Hazelcast API can be found at <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/" target="_blank" rel="noopener">Hazelcast.org/docs/Javadoc</a>.</p>
+</li>
+<li>
+<p>Code samples can be downloaded from <a href="https://hazelcast.org/imdg/download/" target="_blank" rel="noopener">Hazelcast.org/download</a>.</p>
+</li>
+<li>
+<p>More use cases and resources can be found at <a href="http://www.hazelcast.com" target="_blank" rel="noopener">Hazelcast.com</a>.</p>
+</li>
+<li>
+<p>Questions and discussions can be posted at the <a href="https://groups.google.com/forum/#!forum/hazelcast" target="_blank" rel="noopener">Hazelcast mail group</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/hazelcast/4.1/hazelcast_overview.html"></script>
+<script async src="../../_/../search-index.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

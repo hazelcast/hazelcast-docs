@@ -1,6 +1,7 @@
 = Welcome to the Hazelcast Documentation
 :page-layout: home
 :!sectids:
+:!toc:
 
 ++++
 <div class="content-container">

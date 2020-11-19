@@ -5,10 +5,19 @@ site:
 content:
   sources: 
   - url: .
+    start_path: home
+    branches: HEAD
+  - url: .
     start_path: hazelcast-docs
     branches: HEAD
   - url: .
-    start_path: home
+    start_path: hazelcast-jet-docs
+    branches: HEAD
+  - url: .
+    start_path: hazelcast-cloud-docs
+    branches: HEAD
+  - url: .
+    start_path: hazelcast-cloud-docs-latest
     branches: HEAD
 ui: 
   bundle:

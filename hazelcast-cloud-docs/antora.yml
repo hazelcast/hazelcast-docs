@@ -1,0 +1,5 @@
+name: hazelcast cloud
+title: Hazelcast Cloud
+version: 4.1
+nav:
+- modules/ROOT/nav.adoc

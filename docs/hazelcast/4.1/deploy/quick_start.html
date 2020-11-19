@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hazelcast Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/deploy/quick_start.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../develop/hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/deploy/pages/quick_start.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect2">
+<h3 id="_quick_start"><a class="anchor" href="#_quick_start"></a>Quick Start</h3>
+<div class="paragraph">
+<p>This section provides information on how you can
+start using WAN Replication with a minimal setup for both
+<a href="#active-passive">Active-Passive</a> and <a href="#active-active">Active-Active</a> modes.</p>
+</div>
+<div class="sect3">
+<h4 id="_setting_up_an_active_passive_mode"><a class="anchor" href="#_setting_up_an_active_passive_mode"></a>Setting Up an Active-Passive Mode</h4>
+<div class="paragraph">
+<p>This mode usually requires configuration only on one of the clusters.
+Let&#8217;s say you have two clusters, one in London and the other in Tokyo.
+You want to replicate the updates between each other and use the one in Tokyo
+as the active cluster.</p>
+</div>
+<div class="paragraph">
+<p>1 - Add the following configuration example on your cluster in Tokyo:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    &lt;wan-replication name="london-wan-rep"&gt;
+        &lt;batch-publisher&gt;
+            &lt;cluster-name&gt;london&lt;/cluster-name&gt;
+            &lt;target-endpoints&gt;10.3.5.1:5701&lt;/target-endpoints&gt;
+        &lt;/batch-publisher&gt;
+    &lt;/wan-replication&gt;
+
+    &lt;map name="replicatedMap"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"/&gt;
+    &lt;/map&gt;
+
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">Java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+WanBatchPublisherConfig batchPublisherConfig = new WanBatchPublisherConfig()
+        .setClusterName("london")
+        .setTargetEndpoints("10.3.5.1:5701");
+
+WanReplicationConfig wrConfig = new WanReplicationConfig()
+        .setName("london-wan-rep")
+        .addBatchReplicationPublisherConfig(batchPublisherConfig);
+
+config.addWanReplicationConfig(wrConfig);
+
+config.getMapConfig("replicatedMap").setWanReplicationRef(new WanReplicationRef().setName("london-wan-rep"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2 - Start your clusters to start using Active-Passive WAN Replication.</p>
+</div>
+<div class="paragraph">
+<p>Basically, what we did here is defining a WAN Replication configuration (<code>wan-replication</code>)
+and configuring our map to use it (<code>wan-replication-ref</code>). As mentioned, this is the minimal
+configuration example, which is fine for most use cases. There are more configuration options for
+tuning the WAN Replication; see the <a href="#tuning-wr">Tuning WAN Replication section</a>.</p>
+</div>
+<div class="paragraph">
+<p>In the above example, we have configured the map named <code>replicatedMap</code> to
+replicate to the target cluster named <code>london</code> on a single endpoint, as specified with
+the <code>target-endpoints</code> element. Notice that the name of <code>wan-replication</code>
+configuration (<code>london-wan-rep</code>) is referenced in
+the <code>map</code> configuration using the <code>wan-replication-ref</code> element; this is how
+you make your map to use the WAN Replication feature. For now, only Hazelcast maps
+and caches support this feature.</p>
+</div>
+<div class="paragraph">
+<p>The <code>london</code> cluster might have more members than the one specified in this example, but only
+that endpoint will receive the WAN events. In that case
+and if you want the events to be forwarded to the other cluster members, see the <code>republishing-enabled</code>
+element description in the <a href="#configuring-wan-replication-for-imap-and-icache">Configuring for IMap and ICache section</a>.</p>
+</div>
+<div class="paragraph">
+<p>This example configuration defines a static endpoint to specify the target cluster member, using the <code>target-endpoints</code> element or <code>setTargetEndpoints()</code> method, respectively.
+You can also use Hazelcast&#8217;s Discovery SPI for WAN Replication to specify endpoints on various
+cloud infrastructures. See the <a href="#wanbatchreplication-discovery-spi">Using Discovery SPI section</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setting_up_an_active_active_mode"><a class="anchor" href="#_setting_up_an_active_active_mode"></a>Setting Up an Active-Active Mode</h4>
+<div class="paragraph">
+<p>Using the above scenario, this mode requires configuration on both clusters.</p>
+</div>
+<div class="paragraph">
+<p>1 - Add the following configuration example on your cluster in Tokyo:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    &lt;cluster-name&gt;tokyo&lt;/cluster-name&gt;
+    &lt;wan-replication name="london-wan-rep"&gt;
+        &lt;batch-publisher&gt;
+            &lt;cluster-name&gt;london&lt;/cluster-name&gt;
+            &lt;target-endpoints&gt;10.3.5.1:5701&lt;/target-endpoints&gt;
+        &lt;/batch-publisher&gt;
+    &lt;/wan-replication&gt;
+
+    &lt;map name="replicatedMap"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"/&gt;
+    &lt;/map&gt;
+
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">Java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+config.setClusterName("tokyo");
+WanBatchPublisherConfig batchPublisherConfig = new WanBatchPublisherConfig()
+        .setClusterName("london")
+        .setTargetEndpoints("10.3.5.1:5701");
+
+WanReplicationConfig wrConfig = new WanReplicationConfig()
+        .setName("london-wan-rep")
+        .addBatchReplicationPublisherConfig(batchPublisherConfig);
+
+config.addWanReplicationConfig(wrConfig);
+
+config.getMapConfig("replicatedMap").setWanReplicationRef(new WanReplicationRef().setName("london-wan-rep"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2 - Add the following configuration example on your cluster in London:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    &lt;cluster-name&gt;london&lt;/cluster-name&gt;
+    &lt;wan-replication name="tokyo-wan-rep"&gt;
+        &lt;batch-publisher&gt;
+            &lt;cluster-name&gt;tokyo&lt;/cluster-name&gt;
+            &lt;target-endpoints&gt;32.1.1.1:5701&lt;/target-endpoints&gt;
+        &lt;/batch-publisher&gt;
+    &lt;/wan-replication&gt;
+
+    &lt;map name="replicatedMap"&gt;
+        &lt;wan-replication-ref name="tokyo-wan-rep"/&gt;
+    &lt;/map&gt;
+
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">Java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+config.setClusterName("london");
+WanBatchPublisherConfig batchPublisherConfig = new WanBatchPublisherConfig()
+        .setClusterName("tokyo")
+        .setTargetEndpoints("32.1.1.1:5701");
+
+WanReplicationConfig wrConfig = new WanReplicationConfig()
+        .setName("tokyo-wan-rep")
+        .addBatchReplicationPublisherConfig(batchPublisherConfig);
+
+config.addWanReplicationConfig(wrConfig);
+
+config.getMapConfig("replicatedMap").setWanReplicationRef(new WanReplicationRef().setName("tokyo-wan-rep"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>3 - Start your clusters to start using Active-Active WAN Replication.</p>
+</div>
+<div class="paragraph">
+<p>Notice the <code>cluster-name</code> configuration element (not the one under the <code>batch-publisher</code> element, but
+the one under the <code>hazelcast</code> element).
+These are the names specifying the IMDG members' clusters on their locals. So, the name
+of the cluster in one location should be mentioned on the cluster in the other location, as shown above.</p>
+</div>
+<div class="paragraph">
+<p>As in the Active-Passive example shown in the previous section, this example configuration
+also uses a static endpoint to specify the target cluster member.
+See the <a href="#wanbatchreplication-discovery-spi">Using Discovery SPI section</a> for information
+on using the Discovery SPI to specify target members.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned previously, the above configurations are the minimal ones
+to get you started. In case you need to configure some additional aspects of your maps or caches that use WAN Replication, see the <a href="#configuring-wan-replication-for-imap-and-icache">Configuring for IMap and ICache section</a>.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/deploy/quick_start.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

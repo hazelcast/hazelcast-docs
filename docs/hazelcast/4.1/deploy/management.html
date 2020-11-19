@@ -1,0 +1,4847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hazelcast Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/deploy/management.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../develop/hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../develop/distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../hazelcast_overview.html">Hazelcast IMDG</a></li>
+    <li><a href="installing_upgrading.html">Deploy Clusters</a></li>
+    <li><a href="management.html">Management</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/deploy/pages/management.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect1">
+<h2 id="_management"><a class="anchor" href="#_management"></a>Management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter provides information on managing and monitoring your Hazelcast cluster.
+It gives detailed instructions related to gathering statistics, monitoring via JMX protocol and
+managing the cluster with useful utilities.</p>
+</div>
+<div class="sect2">
+<h3 id="_getting_member_statistics"><a class="anchor" href="#_getting_member_statistics"></a>Getting Member Statistics</h3>
+<div class="paragraph">
+<p>You can get various statistics from your distributed data structures via the Statistics API.
+Since the data structures are distributed in the cluster, the Statistics API provides
+statistics for the local portion (1/Number of Members in the Cluster) of data on each member.</p>
+</div>
+<div class="sect3">
+<h4 id="_map_statistics"><a class="anchor" href="#_map_statistics"></a>Map Statistics</h4>
+<div class="paragraph">
+<p>To get local map statistics, use the <code>getLocalMapStats()</code> method from the <code>IMap</code> interface.
+This method returns a <code>LocalMapStats</code> object that holds local map statistics.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example code where the <code>getLocalMapStats()</code> method and
+the <code>getOwnedEntryCount()</code> method get the number of entries owned by this member.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        IMap&lt;String, String&gt; customers = hazelcastInstance.getMap( "customers" );
+        LocalMapStats mapStatistics = customers.getLocalMapStats();
+        System.out.println( "number of entries owned on this member = "
+                + mapStatistics.getOwnedEntryCount() );</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Since Hazelcast IMDG 3.8 <code>getOwnedEntryMemoryCost()</code> method is
+now supported for NATIVE in-memory format as well.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following are some of the metrics that you can access via the <code>LocalMapStats</code> object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Number of entries owned by the member (<code>getOwnedEntryCount()</code>).</p>
+</li>
+<li>
+<p>Number of backup entries held by the member (<code>getBackupEntryCount()</code>).</p>
+</li>
+<li>
+<p>Number of backups per entry (<code>getBackupCount()</code>).</p>
+</li>
+<li>
+<p>Memory cost (number of bytes) of owned entries in the member (<code>getOwnedEntryMemoryCost()</code>).</p>
+</li>
+<li>
+<p>Creation time of the map on the member (<code>getCreationTime()</code>).</p>
+</li>
+<li>
+<p>Number of hits (reads) of the locally owned entries (<code>getHits()</code>).</p>
+</li>
+<li>
+<p>Number of get and put operations on the map (<code>getPutOperationCount()</code> and
+<code>getGetOperationCount()</code>).</p>
+</li>
+<li>
+<p>Number of queries executed on the map (<code>getQueryCount()</code> and <code>getIndexedQueryCount()</code>)
+(it may be imprecise for queries involving partition predicates (<code>PartitionPredicate</code>) on the off-heap storage).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/map/LocalMapStats.html" target="_blank" rel="noopener"><code>LocalMapStats</code> Javadoc</a> to see all the metrics.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_map_index_statistics"><a class="anchor" href="#_map_index_statistics"></a>Map Index Statistics</h4>
+<div class="paragraph">
+<p>To access map index statistics, if you are using indexes to speed up map queries,
+use the <code>getIndexStats()</code> method of the <code>LocalMapStats</code> interface returned by <code>IMap.getLocalMapStats()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example where the <code>getIndexStats()</code> method is used to examine an average selectivity of index hits:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        IMap&lt;String, String&gt; customers = hazelcastInstance.getMap("customers");
+        addIndex(customers, "name", true); // or add the index using the map config
+        LocalMapStats mapStatistics = customers.getLocalMapStats();
+        Map&lt;String, LocalIndexStats&gt; indexStats = mapStatistics.getIndexStats();
+        LocalIndexStats nameIndexStats = indexStats.get("name");
+        System.out.println("average name index hit selectivity on this member = "
+                + nameIndexStats.getAverageHitSelectivity());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are some of the metrics that you can obtain via the <code>LocalIndexStats</code> interface:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Number of queries and hits into an index (<code>getQueryCount()</code> and <code>getHitCount()</code>):
+Number of hits and queries may differ since a single query may hit the same index more than once.</p>
+</li>
+<li>
+<p>Average index hit latency measured in nanoseconds (<code>getAverageHitLatency()</code>)</p>
+</li>
+<li>
+<p>Average index hit selectivity (<code>getAverageHitSelectivity</code>): Returned values are
+in the range from 0.0 to 1.0. Values close to 1.0 indicate a high selectivity meaning
+the index is efficient; values close to 0.0 indicate a low selectivity meaning
+the index efficiency is approaching an efficiency of a simple full scan.</p>
+</li>
+<li>
+<p>Number of index insert, update and remove operations (<code>getInsertCount()</code>,
+<code>getUpdateCount()</code> and <code>getRemoveCount()</code>).</p>
+</li>
+<li>
+<p>Total latencies of insert, update and remove operations (<code>getTotalInsertLatency()</code>,
+<code>getTotalUpdateLatency()</code>, <code>getTotalRemoveLatency()</code>):
+To compute an average latency divide the returned value by the number of operations of a corresponding type.</p>
+</li>
+<li>
+<p>Memory cost of an index (<code>getMemoryCost()</code>): For on-heap storages,
+this memory cost metric value is a best-effort approximation and
+doesn&#8217;t indicate a precise on-heap memory usage of an index.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/query/LocalIndexStats.html" target="_blank" rel="noopener"><code>LocalIndexStats</code> Javadoc</a> to see all the metrics.</p>
+</div>
+<div class="paragraph">
+<p>To compute an aggregated value of <code>getAverageHitSelectivity()</code> for all cluster members,
+you can use a simple averaging computation as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>(s(1) + s(2) + ... + s(n)) / n</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this computation, <code>s(i)</code> is an average hit selectivity on the member <code>i</code> and
+<code>n</code> is the total number of cluster members.</p>
+</div>
+<div class="paragraph">
+<p>A more advanced solution is to compute a weighted average as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>(s(1) * h(1) + s(2) * h(2) + ... + s(n) * h(n)) / (h(1) + h(2) + ... + h(n))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, <code>s(i)</code> is an average hit selectivity on the member <code>i</code>,
+<code>h(i)</code> is a hit count (<code>getHitCount()</code>) on the member <code>i</code> and
+<code>n</code> is the total number of cluster members.
+This more advanced solution may produce more precise results in unstable
+dynamic clusters where new members do not have enough statistics accumulated.
+The same technique may be applied to the <code>getAverageHitLatency()</code> metric.</p>
+</div>
+<div class="paragraph">
+<p>Accuracy and reliability notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The values returned by <code>getAverageHitSelectivity()</code> have an accuracy of around 1% for on-heap storages.</p>
+</li>
+<li>
+<p>The values returned by <code>getQueryCount()</code> and <code>getHitCount()</code> may be
+imprecise for queries involving partition predicates (<code>PartitionPredicate</code>) on off-heap storage.</p>
+</li>
+<li>
+<p>The index statistics may be imprecise after a new cluster member addition or
+the existing member removal until enough fresh statistics is accumulated on a new owner of an index or its partition.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_near_cache_statistics"><a class="anchor" href="#_near_cache_statistics"></a>Near Cache Statistics</h4>
+<div class="paragraph">
+<p>To get Near Cache statistics, use the <code>getNearCacheStats()</code> method from the <code>LocalMapStats</code> object.
+This method returns a <code>NearCacheStats</code> object that holds Near Cache statistics.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example code where the <code>getNearCacheStats()</code> method and
+the <code>getRatio</code> method from <code>NearCacheStats</code> get a Near Cache hit/miss ratio.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        IMap&lt;String, String&gt; customers = hazelcastInstance.getMap( "customers" );
+        LocalMapStats mapStatistics = customers.getLocalMapStats();
+        NearCacheStats nearCacheStatistics = mapStatistics.getNearCacheStats();
+        System.out.println( "Near Cache hit/miss ratio = "
+                + nearCacheStatistics.getRatio() );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are some of the metrics that you can access via
+the <code>NearCacheStats</code> object (applies to both client and member Near Caches):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>creation time of the Near Cache on the member (<code>getCreationTime()</code>)</p>
+</li>
+<li>
+<p>number of entries owned by the member (<code>getOwnedEntryCount()</code>)</p>
+</li>
+<li>
+<p>memory cost (number of bytes) of owned entries in the Near Cache (<code>getOwnedEntryMemoryCost()</code>)</p>
+</li>
+<li>
+<p>number of hits (reads) of the locally owned entries (<code>getHits()</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/nearcache/NearCacheStats.html" target="_blank" rel="noopener"><code>NearCacheStats</code> Javadoc</a> to see all the metrics.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_multimap_statistics"><a class="anchor" href="#_multimap_statistics"></a>Multimap Statistics</h4>
+<div class="paragraph">
+<p>To get MultiMap statistics, use the <code>getLocalMultiMapStats()</code> method from the <code>MultiMap</code> interface.
+This method returns a <code>LocalMultiMapStats</code> object that holds local MultiMap statistics.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example code where the <code>getLocalMultiMapStats()</code> method and
+the <code>getLastUpdateTime</code> method from <code>LocalMultiMapStats</code> get the last update time.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        MultiMap&lt;String, String&gt; customers = hazelcastInstance.getMultiMap( "customers" );
+        LocalMultiMapStats multiMapStatistics = customers.getLocalMultiMapStats();
+        System.out.println( "last update time =  "
+                + multiMapStatistics.getLastUpdateTime() );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are some of the metrics that you can access via
+the <code>LocalMultiMapStats</code> object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>number of entries owned by the member (<code>getOwnedEntryCount()</code>)</p>
+</li>
+<li>
+<p>number of backup entries held by the member (<code>getBackupEntryCount()</code>)</p>
+</li>
+<li>
+<p>number of backups per entry (<code>getBackupCount()</code>)</p>
+</li>
+<li>
+<p>memory cost (number of bytes) of owned entries in the member (<code>getOwnedEntryMemoryCost()</code>)</p>
+</li>
+<li>
+<p>creation time of the multimap on the member (<code>getCreationTime()</code>)</p>
+</li>
+<li>
+<p>number of hits (reads) of the locally owned entries (<code>getHits()</code>)</p>
+</li>
+<li>
+<p>number of get and put operations on the map (<code>getPutOperationCount()</code> and
+<code>getGetOperationCount()</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/multimap/LocalMultiMapStats.html" target="_blank" rel="noopener"><code>LocalMultiMapStats</code> Javadoc</a> to see all the metrics.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_queue_statistics"><a class="anchor" href="#_queue_statistics"></a>Queue Statistics</h4>
+<div class="paragraph">
+<p>To get local queue statistics, use the <code>getLocalQueueStats()</code> method from the <code>IQueue</code> interface.
+This method returns a <code>LocalQueueStats</code> object that holds local queue statistics.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example code where the <code>getLocalQueueStats()</code> method and
+the <code>getAverageAge</code> method from <code>LocalQueueStats</code> get the average age of items.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance node = Hazelcast.newHazelcastInstance();
+        IQueue&lt;Integer&gt; orders = node.getQueue( "orders" );
+        LocalQueueStats queueStatistics = orders.getLocalQueueStats();
+        System.out.println( "average age of items = "
+                + queueStatistics.getAverageAge() );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are some of the metrics that you can access via
+the `LocalQueueStats ` object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>number of owned items in the member (<code>getOwnedItemCount()</code>)</p>
+</li>
+<li>
+<p>number of backup items in the member (<code>getBackupItemCount()</code>)</p>
+</li>
+<li>
+<p>minimum and maximum ages of the items in the member (<code>getMinAge()</code> and <code>getMaxAge()</code>)</p>
+</li>
+<li>
+<p>number of offer, put and add operations (<code>getOfferOperationCount()</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/collection/LocalQueueStats.html" target="_blank" rel="noopener"><code>LocalQueueStats</code> Javadoc</a> to see all the metrics.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_topic_statistics"><a class="anchor" href="#_topic_statistics"></a>Topic Statistics</h4>
+<div class="paragraph">
+<p>To get local topic statistics, use the <code>getLocalTopicStats()</code> method from the <code>ITopic</code> interface.
+This method returns a <code>LocalTopicStats</code> object that holds local topic statistics.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example code where the <code>getLocalTopicStats()</code> method and
+the <code>getPublishOperationCount</code> method from <code>LocalTopicStats</code> get the number of publish operations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        ITopic&lt;Object&gt; news = hazelcastInstance.getTopic( "news" );
+        LocalTopicStats topicStatistics = news.getLocalTopicStats();
+        System.out.println( "number of publish operations = "
+                + topicStatistics.getPublishOperationCount() );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the metrics that you can access via the `LocalTopicStats ` object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>creation time of the topic on the member (<code>getCreationTime()</code>)</p>
+</li>
+<li>
+<p>total number of published messages of the topic on the member (<code>getPublishOperationCount()</code>)</p>
+</li>
+<li>
+<p>total number of received messages of the topic on the member (<code>getReceiveOperationCount()</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/topic/LocalTopicStats.html" target="_blank" rel="noopener"><code>LocalTopicStats</code> Javadoc</a> to see all the metrics.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_executor_statistics"><a class="anchor" href="#_executor_statistics"></a>Executor Statistics</h4>
+<div class="paragraph">
+<p>To get local executor statistics, use the <code>getLocalExecutorStats()</code> method from the <code>IExecutorService</code> interface.
+This method returns a <code>LocalExecutorStats</code> object that holds local executor statistics.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example code where the <code>getLocalExecutorStats()</code> method and
+the <code>getCompletedTaskCount</code> method from <code>LocalExecutorStats</code> get
+the number of completed operations of the executor service.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        IExecutorService orderProcessor = hazelcastInstance.getExecutorService( "orderProcessor" );
+        LocalExecutorStats executorStatistics = orderProcessor.getLocalExecutorStats();
+        System.out.println( "completed task count = "
+                + executorStatistics.getCompletedTaskCount() );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are some of the metrics that you can access via
+the `LocalExecutorStats ` object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>number of pending operations of the executor service (<code>getPendingTaskCount()</code>)</p>
+</li>
+<li>
+<p>number of started operations of the executor service (<code>getStartedTaskCount()</code>)</p>
+</li>
+<li>
+<p>number of completed operations of the executor service (<code>getCompletedTaskCount()</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/executor/LocalExecutorStats.html" target="_blank" rel="noopener"><code>LocalExecutorStats</code> Javadoc</a> to see all the metrics.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jmx_api_per_member"><a class="anchor" href="#_jmx_api_per_member"></a>JMX API per Member</h3>
+<div class="paragraph">
+<p>Hazelcast members expose various management beans which include
+statistics about distributed data structures and the states of Hazelcast member internals.</p>
+</div>
+<div class="paragraph">
+<p>The metrics are local to the members, i.e., they do not reflect cluster wide values.</p>
+</div>
+<div class="paragraph">
+<p>You can find the JMX API definition below with descriptions and the API methods in parenthesis.</p>
+</div>
+<div class="paragraph">
+<p><strong>Atomic Long (<code>IAtomicLong</code>)</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Current Value ( <code>currentValue</code> )</p>
+</li>
+<li>
+<p>Set Value ( <code>set(v)</code> )</p>
+</li>
+<li>
+<p>Add value and Get ( <code>addAndGet(v)</code> )</p>
+</li>
+<li>
+<p>Compare and Set ( <code>compareAndSet(e,v)</code> )</p>
+</li>
+<li>
+<p>Decrement and Get ( <code>decrementAndGet()</code> )</p>
+</li>
+<li>
+<p>Get and Add ( <code>getAndAdd(v)</code> )</p>
+</li>
+<li>
+<p>Get and Increment ( <code>getAndIncrement()</code> )</p>
+</li>
+<li>
+<p>Get and Set ( <code>getAndSet(v)</code> )</p>
+</li>
+<li>
+<p>Increment and Get ( <code>incrementAndGet()</code> )</p>
+</li>
+<li>
+<p>Partition key ( <code>partitionKey</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Atomic Reference ( <code>IAtomicReference</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Partition key  ( <code>partitionKey</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Countdown Latch ( <code>ICountDownLatch</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Current count ( <code>count</code>)</p>
+</li>
+<li>
+<p>Countdown ( <code>countDown()</code> )</p>
+</li>
+<li>
+<p>Partition key  ( <code>partitionKey</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Executor Service ( <code>IExecutorService</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Local pending operation count ( <code>localPendingTaskCount</code> )</p>
+</li>
+<li>
+<p>Local started operation count ( <code>localStartedTaskCount</code> )</p>
+</li>
+<li>
+<p>Local completed operation count ( <code>localCompletedTaskCount</code> )</p>
+</li>
+<li>
+<p>Local cancelled operation count ( <code>localCancelledTaskCount</code> )</p>
+</li>
+<li>
+<p>Local total start latency ( <code>localTotalStartLatency</code> )</p>
+</li>
+<li>
+<p>Local total execution latency ( <code>localTotalExecutionLatency</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>List ( <code>IList</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Clear list ( <code>clear</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Lock ( <code>ILock</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Lock Object ( <code>lockObject</code> )</p>
+</li>
+<li>
+<p>Partition key ( <code>partitionKey</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Map ( <code>IMap</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Size ( <code>size</code> )</p>
+</li>
+<li>
+<p>Config ( <code>config</code> )</p>
+</li>
+<li>
+<p>Owned entry count ( <code>localOwnedEntryCount</code> )</p>
+</li>
+<li>
+<p>Owned entry memory cost ( <code>localOwnedEntryMemoryCost</code> )</p>
+</li>
+<li>
+<p>Backup entry count ( <code>localBackupEntryCount</code> )</p>
+</li>
+<li>
+<p>Backup entry cost ( <code>localBackupEntryMemoryCost</code> )</p>
+</li>
+<li>
+<p>Backup count ( <code>localBackupCount</code> )</p>
+</li>
+<li>
+<p>Creation time ( <code>localCreationTime</code> )</p>
+</li>
+<li>
+<p>Last access time ( <code>localLastAccessTime</code> )</p>
+</li>
+<li>
+<p>Last update time ( <code>localLastUpdateTime</code> )</p>
+</li>
+<li>
+<p>Hits ( <code>localHits</code> )</p>
+</li>
+<li>
+<p>Locked entry count ( <code>localLockedEntryCount</code> )</p>
+</li>
+<li>
+<p>Dirty entry count ( <code>localDirtyEntryCount</code> )</p>
+</li>
+<li>
+<p>Put operation count ( <code>localPutOperationCount</code> )</p>
+</li>
+<li>
+<p>Get operation count ( <code>localGetOperationCount</code> )</p>
+</li>
+<li>
+<p>Remove operation count ( <code>localRemoveOperationCount</code> )</p>
+</li>
+<li>
+<p>Total put latency ( <code>localTotalPutLatency</code> )</p>
+</li>
+<li>
+<p>Total get latency ( <code>localTotalGetLatency</code> )</p>
+</li>
+<li>
+<p>Total remove latency ( <code>localTotalRemoveLatency</code> )</p>
+</li>
+<li>
+<p>Max put latency ( <code>localMaxPutLatency</code> )</p>
+</li>
+<li>
+<p>Max get latency ( <code>localMaxGetLatency</code> )</p>
+</li>
+<li>
+<p>Max remove latency ( <code>localMaxRemoveLatency</code> )</p>
+</li>
+<li>
+<p>Event count ( <code>localEventOperationCount</code> )</p>
+</li>
+<li>
+<p>Other (keySet,entrySet etc..) operation count ( <code>localOtherOperationCount</code> )</p>
+</li>
+<li>
+<p>Total operation count ( <code>localTotal</code> )</p>
+</li>
+<li>
+<p>Heap Cost ( <code>localHeapCost</code> )</p>
+</li>
+<li>
+<p>Clear ( <code>clear()</code> )</p>
+</li>
+<li>
+<p>Values ( <code>values(p)</code>)</p>
+</li>
+<li>
+<p>Entry Set ( <code>entrySet(p)</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>MultiMap ( <code>MultiMap</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Size ( <code>size</code> )</p>
+</li>
+<li>
+<p>Owned entry count ( <code>localOwnedEntryCount</code> )</p>
+</li>
+<li>
+<p>Owned entry memory cost ( <code>localOwnedEntryMemoryCost</code> )</p>
+</li>
+<li>
+<p>Backup entry count ( <code>localBackupEntryCount</code> )</p>
+</li>
+<li>
+<p>Backup entry cost ( <code>localBackupEntryMemoryCost</code> )</p>
+</li>
+<li>
+<p>Backup count ( <code>localBackupCount</code> )</p>
+</li>
+<li>
+<p>Creation time ( <code>localCreationTime</code> )</p>
+</li>
+<li>
+<p>Last access time ( <code>localLastAccessTime</code> )</p>
+</li>
+<li>
+<p>Last update time ( <code>localLastUpdateTime</code> )</p>
+</li>
+<li>
+<p>Hits ( <code>localHits</code> )</p>
+</li>
+<li>
+<p>Locked entry count ( <code>localLockedEntryCount</code> )</p>
+</li>
+<li>
+<p>Put operation count ( <code>localPutOperationCount</code> )</p>
+</li>
+<li>
+<p>Get operation count ( <code>localGetOperationCount</code> )</p>
+</li>
+<li>
+<p>Remove operation count ( <code>localRemoveOperationCount</code> )</p>
+</li>
+<li>
+<p>Total put latency ( <code>localTotalPutLatency</code> )</p>
+</li>
+<li>
+<p>Total get latency ( <code>localTotalGetLatency</code> )</p>
+</li>
+<li>
+<p>Total remove latency ( <code>localTotalRemoveLatency</code> )</p>
+</li>
+<li>
+<p>Max put latency ( <code>localMaxPutLatency</code> )</p>
+</li>
+<li>
+<p>Max get latency ( <code>localMaxGetLatency</code> )</p>
+</li>
+<li>
+<p>Max remove latency ( <code>localMaxRemoveLatency</code> )</p>
+</li>
+<li>
+<p>Event count ( <code>localEventOperationCount</code> )</p>
+</li>
+<li>
+<p>Other (keySet,entrySet etc..) operation count ( <code>localOtherOperationCount</code> )</p>
+</li>
+<li>
+<p>Total operation count ( <code>localTotal</code> )</p>
+</li>
+<li>
+<p>Clear ( <code>clear()</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Replicated Map ( <code>ReplicatedMap</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Size ( <code>size</code> )</p>
+</li>
+<li>
+<p>Config ( <code>config</code> )</p>
+</li>
+<li>
+<p>Owned entry count ( <code>localOwnedEntryCount</code> )</p>
+</li>
+<li>
+<p>Creation time ( <code>localCreationTime</code> )</p>
+</li>
+<li>
+<p>Last access time ( <code>localLastAccessTime</code> )</p>
+</li>
+<li>
+<p>Last update time ( <code>localLastUpdateTime</code> )</p>
+</li>
+<li>
+<p>Hits ( <code>localHits</code> )</p>
+</li>
+<li>
+<p>Put operation count ( <code>localPutOperationCount</code> )</p>
+</li>
+<li>
+<p>Get operation count ( <code>localGetOperationCount</code> )</p>
+</li>
+<li>
+<p>Remove operation count ( <code>localRemoveOperationCount</code> )</p>
+</li>
+<li>
+<p>Total put latency ( <code>localTotalPutLatency</code> )</p>
+</li>
+<li>
+<p>Total get latency ( <code>localTotalGetLatency</code> )</p>
+</li>
+<li>
+<p>Total remove latency ( <code>localTotalRemoveLatency</code> )</p>
+</li>
+<li>
+<p>Max put latency ( <code>localMaxPutLatency</code> )</p>
+</li>
+<li>
+<p>Max get latency ( <code>localMaxGetLatency</code> )</p>
+</li>
+<li>
+<p>Max remove latency ( <code>localMaxRemoveLatency</code> )</p>
+</li>
+<li>
+<p>Event count ( <code>localEventOperationCount</code> )</p>
+</li>
+<li>
+<p>Other (keySet,entrySet etc..) operation count ( <code>localOtherOperationCount</code> )</p>
+</li>
+<li>
+<p>Total operation count ( <code>localTotal</code> )</p>
+</li>
+<li>
+<p>Clear ( <code>clear()</code> )</p>
+</li>
+<li>
+<p>Values ( <code>values()</code>)</p>
+</li>
+<li>
+<p>Entry Set ( <code>entrySet()</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Queue ( <code>IQueue</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Config ( <code>QueueConfig</code> )</p>
+</li>
+<li>
+<p>Partition key ( <code>partitionKey</code> )</p>
+</li>
+<li>
+<p>Owned item count ( <code>localOwnedItemCount</code> )</p>
+</li>
+<li>
+<p>Backup item count ( <code>localBackupItemCount</code> )</p>
+</li>
+<li>
+<p>Minimum age ( <code>localMinAge</code> )</p>
+</li>
+<li>
+<p>Maximum age ( <code>localMaxAge</code> )</p>
+</li>
+<li>
+<p>Average age ( <code>localAverageAge</code> )</p>
+</li>
+<li>
+<p>Offer operation count ( <code>localOfferOperationCount</code> )</p>
+</li>
+<li>
+<p>Rejected offer operation count ( <code>localRejectedOfferOperationCount</code> )</p>
+</li>
+<li>
+<p>Poll operation count ( <code>localPollOperationCount</code> )</p>
+</li>
+<li>
+<p>Empty poll operation count ( <code>localEmptyPollOperationCount</code> )</p>
+</li>
+<li>
+<p>Other operation count ( <code>localOtherOperationsCount</code> )</p>
+</li>
+<li>
+<p>Event operation count ( <code>localEventOperationCount</code> )</p>
+</li>
+<li>
+<p>Clear ( <code>clear()</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Semaphore ( <code>ISemaphore</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Available permits ( <code>available</code> )</p>
+</li>
+<li>
+<p>Partition key ( <code>partitionKey</code> )</p>
+</li>
+<li>
+<p>Drain ( <code>drain()</code>)</p>
+</li>
+<li>
+<p>Shrink available permits by given number ( <code>reduce(v)</code> )</p>
+</li>
+<li>
+<p>Release given number of permits ( <code>release(v)</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Set ( <code>ISet</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Partition key ( <code>partitionKey</code> )</p>
+</li>
+<li>
+<p>Clear ( <code>clear()</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Topic ( <code>ITopic</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Config ( <code>config</code> )</p>
+</li>
+<li>
+<p>Creation time ( <code>localCreationTime</code> )</p>
+</li>
+<li>
+<p>Publish operation count ( <code>localPublishOperationCount</code> )</p>
+</li>
+<li>
+<p>Receive operation count ( <code>localReceiveOperationCount</code> )</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Hazelcast Instance ( <code>HazelcastInstance</code> )</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Version ( <code>version</code> )</p>
+</li>
+<li>
+<p>Build ( <code>build</code> )</p>
+</li>
+<li>
+<p>Configuration ( <code>config</code> )</p>
+</li>
+<li>
+<p>Configuration source ( <code>configSource</code> )</p>
+</li>
+<li>
+<p>Cluster name ( <code>clusterName</code> )</p>
+</li>
+<li>
+<p>Network Port ( <code>port</code> )</p>
+</li>
+<li>
+<p>Cluster-wide Time ( <code>clusterTime</code> )</p>
+</li>
+<li>
+<p>Size of the cluster ( <code>memberCount</code> )</p>
+</li>
+<li>
+<p>List of members ( <code>Members</code> )</p>
+</li>
+<li>
+<p>Running state ( <code>running</code> )</p>
+</li>
+<li>
+<p>Shutdown the member ( <code>shutdown()</code> )</p>
+</li>
+<li>
+<p><strong>Node ( <code>HazelcastInstance.Node</code> )</strong></p>
+</li>
+<li>
+<p>Address ( <code>address</code> )</p>
+</li>
+<li>
+<p>Master address ( <code>masterAddress</code> )</p>
+</li>
+<li>
+<p><strong>Partition Service ( <code>HazelcastInstance.PartitionServiceMBean</code> )</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Partition count ( <code>partitionCount</code> )</p>
+</li>
+<li>
+<p>Active partition count ( <code>activePartitionCount</code> )</p>
+</li>
+<li>
+<p>Cluster Safe State ( <code>isClusterSafe</code> )</p>
+</li>
+<li>
+<p>LocalMember Safe State ( <code>isLocalMemberSafe</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Connection Manager ( <code>HazelcastInstance.ConnectionManager</code> )</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Client connection count ( <code>clientConnectionCount</code> )</p>
+</li>
+<li>
+<p>Active connection count ( <code>activeConnectionCount</code> )</p>
+</li>
+<li>
+<p>Connection count ( <code>connectionCount</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>System Executor ( <code>HazelcastInstance.ManagedExecutorService</code> )</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Work queue size ( <code>queueSize</code> )</p>
+</li>
+<li>
+<p>Thread count of the pool ( <code>poolSize</code> )</p>
+</li>
+<li>
+<p>Maximum thread count of the pool ( <code>maximumPoolSize</code> )</p>
+</li>
+<li>
+<p>Remaining capacity of the work queue ( <code>remainingQueueCapacity</code> )</p>
+</li>
+<li>
+<p>Is shutdown ( <code>isShutdown</code> )</p>
+</li>
+<li>
+<p>Is terminated ( <code>isTerminated</code> )</p>
+</li>
+<li>
+<p>Completed task count ( <code>completedTaskCount</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Async Executor (<code>HazelcastInstance.ManagedExecutorService</code>)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Work queue size ( <code>queueSize</code> )</p>
+</li>
+<li>
+<p>Thread count of the pool ( <code>poolSize</code> )</p>
+</li>
+<li>
+<p>Maximum thread count of the pool ( <code>maximumPoolSize</code> )</p>
+</li>
+<li>
+<p>Remaining capacity of the work queue ( <code>remainingQueueCapacity</code> )</p>
+</li>
+<li>
+<p>Is shutdown ( <code>isShutdown</code> )</p>
+</li>
+<li>
+<p>Is terminated ( <code>isTerminated</code> )</p>
+</li>
+<li>
+<p>Completed task count ( <code>completedTaskCount</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Scheduled Executor ( <code>HazelcastInstance.ManagedExecutorService</code> )</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Work queue size ( <code>queueSize</code> )</p>
+</li>
+<li>
+<p>Thread count of the pool ( <code>poolSize</code> )</p>
+</li>
+<li>
+<p>Maximum thread count of the pool ( <code>maximumPoolSize</code> )</p>
+</li>
+<li>
+<p>Remaining capacity of the work queue ( <code>remainingQueueCapacity</code> )</p>
+</li>
+<li>
+<p>Is shutdown ( <code>isShutdown</code> )</p>
+</li>
+<li>
+<p>Is terminated ( <code>isTerminated</code> )</p>
+</li>
+<li>
+<p>Completed task count ( <code>completedTaskCount</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Client Executor ( <code>HazelcastInstance.ManagedExecutorService</code> )</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Work queue size ( <code>queueSize</code> )</p>
+</li>
+<li>
+<p>Thread count of the pool ( <code>poolSize</code> )</p>
+</li>
+<li>
+<p>Maximum thread count of the pool ( <code>maximumPoolSize</code> )</p>
+</li>
+<li>
+<p>Remaining capacity of the work queue ( <code>remainingQueueCapacity</code> )</p>
+</li>
+<li>
+<p>Is shutdown ( <code>isShutdown</code> )</p>
+</li>
+<li>
+<p>Is terminated ( <code>isTerminated</code> )</p>
+</li>
+<li>
+<p>Completed task count ( <code>completedTaskCount</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Query Executor ( <code>HazelcastInstance.ManagedExecutorService</code> )</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Work queue size ( <code>queueSize</code> )</p>
+</li>
+<li>
+<p>Thread count of the pool ( <code>poolSize</code> )</p>
+</li>
+<li>
+<p>Maximum thread count of the pool ( <code>maximumPoolSize</code> )</p>
+</li>
+<li>
+<p>Remaining capacity of the work queue ( <code>remainingQueueCapacity</code> )</p>
+</li>
+<li>
+<p>Is shutdown ( <code>isShutdown</code> )</p>
+</li>
+<li>
+<p>Is terminated ( <code>isTerminated</code> )</p>
+</li>
+<li>
+<p>Completed task count ( <code>completedTaskCount</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>I/O Executor ( <code>HazelcastInstance.ManagedExecutorService</code> )</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name ( <code>name</code> )</p>
+</li>
+<li>
+<p>Work queue size ( <code>queueSize</code> )</p>
+</li>
+<li>
+<p>Thread count of the pool ( <code>poolSize</code> )</p>
+</li>
+<li>
+<p>Maximum thread count of the pool ( <code>maximumPoolSize</code> )</p>
+</li>
+<li>
+<p>Remaining capacity of the work queue ( <code>remainingQueueCapacity</code> )</p>
+</li>
+<li>
+<p>Is shutdown ( <code>isShutdown</code> )</p>
+</li>
+<li>
+<p>Is terminated ( <code>isTerminated</code> )</p>
+</li>
+<li>
+<p>Completed task count ( <code>completedTaskCount</code> )</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_monitoring_with_jmx"><a class="anchor" href="#_monitoring_with_jmx"></a>Monitoring with JMX</h3>
+<div class="paragraph">
+<p>You can monitor your Hazelcast members via the JMX protocol.</p>
+</div>
+<div class="paragraph">
+<p>To achieve this, first add the following system properties to enable the
+<a href="http://download.oracle.com/javase/1.5.0/docs/guide/management/agent.html" target="_blank" rel="noopener">JMX agent</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-Dcom.sun.management.jmxremote</code></p>
+</li>
+<li>
+<p><code>-Dcom.sun.management.jmxremote.port=_portNo\_</code> (to specify JMX port, the default is <code>1099</code>) (<strong>optional</strong>)</p>
+</li>
+<li>
+<p><code>-Dcom.sun.management.jmxremote.authenticate=false</code> (to disable JMX auth) (<strong>optional</strong>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then enable JMX by setting the <code>hazelcast.jmx</code> property to <code>true</code> using
+the following configuration:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;properties&gt;
+        &lt;property name="hazelcast.jmx"&gt;true&lt;/property&gt;
+    &lt;/properties&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  properties:
+    hazelcast.jmx: true</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">Java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">config.setProperty("hazelcast.jmx", "true");</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">Spring</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">&lt;hz:properties&gt;
+    &lt;hz: property name="hazelcast.jmx"&gt;true&lt;/hz:property&gt;
+&lt;/hz:properties&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">System Property</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">-Dhazelcast.jmx=true</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mbean_naming_for_hazelcast_data_structures"><a class="anchor" href="#_mbean_naming_for_hazelcast_data_structures"></a>MBean Naming for Hazelcast Data Structures</h4>
+<div class="paragraph">
+<p>Hazelcast set the naming convention for MBeans as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">final ObjectName mapMBeanName = new ObjectName("com.hazelcast:instance=_hzInstance_1_dev,type=IMap,name=trial");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The MBeans name consists of the Hazelcast instance name,
+the type of the data structure and that data structure&#8217;s name.
+In the above example, <code>_hzInstance_1_dev</code> is the instance name,
+we connect to an IMap with the name <code>trial</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_connecting_to_jmx_agent"><a class="anchor" href="#_connecting_to_jmx_agent"></a>Connecting to JMX Agent</h4>
+<div class="paragraph">
+<p>One of the ways you can connect to JMX agent is using jconsole,
+jvisualvm (with MBean plugin) or another JMX compliant monitoring tool.</p>
+</div>
+<div class="paragraph">
+<p>The other way to connect is to use a custom JMX client.</p>
+</div>
+<div class="paragraph">
+<p>First, you need to specify the URL where the Hazelcast JMX service is running.
+See the following code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Parameters for connecting to the JMX Service
+int port = 1099;
+String hostname = InetAddress.getLocalHost().getHostName();
+JMXServiceURL url = new JMXServiceURL("service:jmx:rmi://" + hostname + ":" + port + "/jndi/rmi://" + hostname + ":" + port + "/jmxrmi");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>port</code> in the above example should be the one that
+you define while setting the JMX remote port number (if different than the default port <code>1099</code>).</p>
+</div>
+<div class="paragraph">
+<p>Then use the URL you acquired to connect to the JMX service and
+get the <code>JMXConnector</code> object. Using this object, get the <code>MBeanServerConnection</code> object.
+The <code>MBeanServerConnection</code> object enables you to use the MBean methods.
+See the example code below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Connect to the JMX Service
+JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
+MBeanServerConnection mbsc = jmxc.getMBeanServerConnection();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you get the <code>MBeanServerConnection</code> object,
+you can call the getter methods of MBeans as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">System.out.println("\nTotal entries on map " + mbsc.getAttribute(mapMBeanName, "name") + " : "
+                + mbsc.getAttribute(mapMBeanName, "localOwnedEntryCount"));</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_the_rest_endpoint_groups"><a class="anchor" href="#_using_the_rest_endpoint_groups"></a>Using the REST Endpoint Groups</h3>
+<div class="paragraph">
+<p>Hazelcast members exposes various REST endpoints and these are grouped.
+REST endpoint groups are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CLUSTER_READ</code></p>
+</li>
+<li>
+<p><code>CLUSTER_WRITE</code></p>
+</li>
+<li>
+<p><code>HEALTH_CHECK</code></p>
+</li>
+<li>
+<p><code>HOT_RESTART</code></p>
+</li>
+<li>
+<p><code>WAN</code></p>
+</li>
+<li>
+<p><code>DATA</code></p>
+</li>
+<li>
+<p><code>CP</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using the REST service is disabled by default.
+To be able to use the REST endpoints, you need to
+enable the REST API as follows:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;network&gt;
+        &lt;rest-api enabled="true"&gt;
+        ...
+        &lt;/rest-api&gt;
+    &lt;/network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  network:
+    rest-api:
+      enabled: true</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following table lists all the endpoints along with the groups they belong to.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. REST Endpoint Groups</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 12.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Endpoint Group</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CLUSTER_READ</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/cluster</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/state</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/license</code> (<code>GET</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/version</code> (<code>GET</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/nodes</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/instance</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CLUSTER_WRITE</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/management/cluster/changeState</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/license</code> (<code>POST</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/version</code> (<code>POST</code>)</p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/clusterShutdown</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/memberShutdown</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/local</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/${CPMEMBER_UUID}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/restart</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions/${CP_SESSION_ID}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/</code> (Other HTTP REST API operations)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>HEALTH_CHECK</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/health/node-state</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/cluster-state</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/cluster-safe</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/migration-queue-size</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/cluster-size</code></p>
+</li>
+<li>
+<p><code>/hazelcast/health/ready</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>HOT_RESTART</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/management/cluster/forceStart</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/partialStart</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/hotBackup</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/management/cluster/hotBackupInterrupt</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>WAN</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/wan/sync/map</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/sync/allmaps</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/clearWanQueues</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/addWanConfig</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/pausePublisher</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/stopPublisher</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/resumePublisher</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/wan/consistencyCheck/map</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>DATA</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/maps/</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/queues/QUEUE_NAME/size</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/queues/$QUEUE_NAME/$SECONDS</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>CP</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/local</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/members/${CPMEMBER_UUID}/remove</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/reset</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions</code></p>
+</li>
+<li>
+<p><code>/hazelcast/rest/cp-subsystem/groups/${CPGROUP_NAME}/sessions/${CP_SESSION_ID}/remove</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can enable or disable any REST endpoint group using
+the following declarative configuration (<code>HEALTH_CHECK</code> group is used as an example):</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;network&gt;
+        &lt;rest-api enabled="true"&gt;
+            &lt;endpoint-group name="HEALTH_CHECK" enabled="false"/&gt;
+        &lt;/rest-api&gt;
+    &lt;/network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  network:
+    rest-api:
+      enabled: true
+      endpoint-groups:
+        HEALTH_CHECK
+          enabled: false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the equivalent programmatic configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">RestApiConfig restApiConfig = new RestApiConfig()
+        .setEnabled(false)
+        .enableGroups(RestEndpointGroup.HEALTH_CHECK);
+Config config = new Config();
+config.getNetworkConfig().setRestApiConfig(restApiConfig);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can also use the <code>advanced-network</code> element for the same purpose:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;advanced-network enabled="true"&gt;
+        &lt;rest-server-socket-endpoint-config&gt;
+            &lt;endpoint-groups&gt;
+                &lt;endpoint-group name="HEALTH_CHECK" enabled="false"/&gt;
+            &lt;/endpoint-groups&gt;
+        &lt;/rest-server-socket-endpoint-config&gt;
+    &lt;/advanced-network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  advanced-network:
+    enabled: true
+    rest-server-socket-endpoint-config:
+      endpoint-groups:
+        HEALTH_CHECK:
+          enabled: false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And the following is the equivalent programmatic configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">RestServerEndpointConfig restServerEndpointConfig = new RestServerEndpointConfig()
+        .setEnabled(false);
+        .enableGroups(RestEndpointGroup.HEALTH_CHECK);
+Config config = new Config();
+config.getAdvancedNetworkConfig().setRestEndpointConfig(restServerEndpointConfig);</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="#advanced-network-configuration">Advanced Network Configuration section</a>
+for more information on the <code>advanced-network</code> element.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When you enable or disable a REST endpoint group, all the endpoints in that group
+are enabled or disabled, respectively. For the examples above, we disabled the endpoints
+belonging to the <code>HEALTH_CHECK</code> endpoint group.</p>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_cluster_utilities" class="sect0"><a class="anchor" href="#_cluster_utilities"></a>Cluster Utilities</h1>
+<div class="paragraph">
+<p>This section provides information on the Hazelcast command line and
+other programmatic utilities you can use to listen to
+the cluster events, to change the state of your cluster,
+to check whether the cluster and/or members are safe before shutting down a member and
+to define the minimum number of cluster members required for the cluster to remain up and running.
+It also gives information on the Hazelcast Lite Member.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_tab-1-title"></a>Tab 1 Title</p>
+</li>
+<li>
+<p><a id="tabset1_tab-2-title"></a>Tab 2 Title</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_tab-1-title">
+<div class="paragraph">
+<p>This is the content of the first tab.</p>
+</div>
+<div class="paragraph">
+<p>Another paragraph in the first tab.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ a code block</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_tab-2-title">
+<div class="paragraph">
+<p>This is the content of the second tab.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hazelcast_command_line_tool"><a class="anchor" href="#_hazelcast_command_line_tool"></a>Hazelcast Command Line Tool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is a tool using which you can install and run Hazelcast IMDG and Management Center
+on your Unix-like local environments. You need <a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">JRE 8 or newer</a>
+as a prerequisite.</p>
+</div>
+<div class="paragraph">
+<p>This tool comes with your Hazelcast IMDG download package.
+When you extract the package, you see the "hazelcast-command-line" directory.</p>
+</div>
+<div class="paragraph">
+<p>To install and start using the tool, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the following commands in the extracted IMDG directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>$ cd hazelcast-command-line/distro
+$ make</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>When the <code>make</code> command finishes, run the following commands:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>$ cd build/dist/bin
+$ ./hz</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You are now ready to use the tool.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Starting a standalone Hazelcast member with the default configuration:</strong></p>
+<div class="paragraph">
+<p><code>$ ./hz start</code>
+*</p>
+</div>
+</li>
+<li>
+<p><strong>Starting Hazelcast Management Center:</strong></p>
+<div class="paragraph">
+<p><code>$ ./hz mc start</code></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please see the tool&#8217;s <a href="https://github.com/hazelcast/hazelcast-command-line" target="_blank" rel="noopener">documentation</a>
+for all the other usages.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-script-cluster-sh"><a class="anchor" href="#using-the-script-cluster-sh"></a>Using the cluster.sh Script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use the script <code>cluster.sh</code>, which comes with the Hazelcast package, to
+get/change the state of your cluster, to shutdown your cluster and
+to force your cluster to clean its persisted data and make a fresh start.
+The latter is the Force Start operation of Hazelcast&#8217;s Hot Restart Persistence feature.
+See the <a href="#force-start">Force Start section</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The script <code>cluster.sh</code> uses <code>curl</code> command and <code>curl</code> must be installed to be able to use the script.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The script <code>cluster.sh</code> takes the following parameters to operate according to your needs.
+If these parameters are not provided, the default values are used.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 22.2222%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-o</code> or <code>--operation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>get-state</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Executes a cluster-wide operation. Operations can be the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>IMDG Open Source operations: <code>get-state</code>, <code>change-state</code>, <code>shutdown</code> and <code>get-cluster-version</code>.</p>
+</li>
+<li>
+<p>IMDG Enterprise operations: <code>force-start</code>, <code>partial-start</code> and <code>change-cluster-version</code>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-s</code> or <code>--state</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Updates the state of the cluster to a new state. New state can be <code>active</code>,
+<code>no_migration</code>, <code>frozen</code>, <code>passive</code>. This is used with the operation <code>change-state</code>.
+This parameter has no default value; when you use this, you should provide a valid state.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-a</code> or <code>--address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>127.0.0.1</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines the IP address of a cluster member. If you want to manage your cluster remotely,
+you should use this parameter to provide the IP address of a member to this script.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-p</code> or <code>--port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5701</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines on which port Hazelcast is running on the local or remote machine.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-c</code> or <code>--clustername</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines the name of a cluster which is used for a simple authentication.
+See the <a href="#creating-cluster">Creating Clusters section</a>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-P</code> or <code>--password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev-pass</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines the password of a cluster (valid only for Hazelcast releases older than 3.8.2).
+See the <a href="#creating-cluster">Creating Clusters section</a>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code> or <code>--version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines the cluster version to change to. It is used in conjunction with
+the <code>change-cluster-version</code> operation.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-d</code> or <code>--debug</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Prints error output.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--https</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Uses HTTPS protocol for REST calls.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cacert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>set of well-known CA certificates</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines trusted PEM-encoded certificate file path. It&#8217;s used to verify member certificates.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines PEM-encoded client certificate file path. Only needed when client certificate authentication is used.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines PEM-encoded client private key file path. Only needed when client certificate authentication is used.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--insecure</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Disables member certificate verification.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The script <code>cluster.sh</code> is self-documented; you can see the parameter descriptions using
+the command <code>./cluster.sh -h</code> or <code>./cluster.sh --help</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can perform the above operations using the Hot Restart tab of Hazelcast Management Center or
+using the REST API. See the <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#hot-restart" target="_blank" rel="noopener">Hot Restart</a>
+and <a href="#using-rest-api-for-cluster-management">Using REST API for Cluster Management</a> sections
+in the Hazelcast Management Center Reference Manual.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_example_usages_for_cluster_sh"><a class="anchor" href="#_example_usages_for_cluster_sh"></a>Example Usages for cluster.sh</h3>
+<div class="paragraph">
+<p>Let&#8217;s say you have a cluster running on remote machines and one Hazelcast member is running on the IP <code>172.16.254.1</code> and on the port
+<code>5702</code>. The cluster name and password of the cluster are <code>test</code> and <code>test</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Getting the cluster state:</strong></p>
+</div>
+<div class="paragraph">
+<p>To get the state of the cluster, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh -o get-state -a 172.16.254.1 -p 5702 -g test -P test</code></p>
+</div>
+<div class="paragraph">
+<p>The following also gets the cluster state, using the alternative parameter names, e.g., <code>--port</code> instead of <code>-p</code>:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh --operation get-state --address 172.16.254.1 --port 5702 --clustername test --password test</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Changing the cluster state:</strong></p>
+</div>
+<div class="paragraph">
+<p>To change the state of the cluster to <code>frozen</code>, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh -o change-state -s frozen -a 172.16.254.1 -p 5702 -g test -P test</code></p>
+</div>
+<div class="paragraph">
+<p>Similarly, you can use the following command for the same purpose:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh --operation change-state --state frozen --address 172.16.254.1 --port 5702 --clustername test --password test</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Shutting down the cluster:</strong></p>
+</div>
+<div class="paragraph">
+<p>To shutdown the cluster, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh -o shutdown -a 172.16.254.1 -p 5702 -g test -P test</code></p>
+</div>
+<div class="paragraph">
+<p>Similarly, you can use the following command for the same purpose:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh --operation shutdown --address 172.16.254.1 --port 5702 --clustername test --password test</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Partial starting the cluster:</strong></p>
+</div>
+<div class="paragraph">
+<p>To partial start the cluster when Hot Restart is enabled, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh -o partial-start -a 172.16.254.1 -p 5702 -g test -P test</code></p>
+</div>
+<div class="paragraph">
+<p>Similarly, you can use the following command for the same purpose:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh --operation partial-start --address 172.16.254.1 --port 5702 --clustername test --password test</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Force starting the cluster:</strong></p>
+</div>
+<div class="paragraph">
+<p>To force start the cluster when Hot Restart is enabled, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh -o force-start -a 172.16.254.1 -p 5702 -g test -P test</code></p>
+</div>
+<div class="paragraph">
+<p>Similarly, you can use the following command for the same purpose:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh --operation force-start --address 172.16.254.1 --port 5702 --clustername test --password test</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Getting the current cluster version:</strong></p>
+</div>
+<div class="paragraph">
+<p>To get the cluster version, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh -o get-cluster-version -a 172.16.254.1 -p 5702 -g test -P test</code></p>
+</div>
+<div class="paragraph">
+<p>The following also gets the cluster state, using the alternative parameter names, e.g., <code>--port</code> instead of <code>-p</code>:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh --operation get-cluster-version --address 172.16.254.1 --port 5702 --clustername test --password test</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Changing the cluster version:</strong></p>
+</div>
+<div class="paragraph">
+<p>See the <a href="#rolling-member-upgrades">Rolling Member Upgrades chapter</a> to learn more about the cases when you should change the cluster version.</p>
+</div>
+<div class="paragraph">
+<p>To change the cluster version to <code>X.Y</code>, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>./cluster.sh -o change-cluster-version -v X.Y -a 172.16.254.1 -p 5702 -g test -P test</code></p>
+</div>
+<div class="paragraph">
+<p>The cluster version is always in the <code>major.minor</code> format, e.g., 3.12. Using other formats results in a failure.</p>
+</div>
+<div class="paragraph">
+<p><strong>Calls against the TLS protected members (using HTTPS protocol):</strong></p>
+</div>
+<div class="paragraph">
+<p>When the member has TLS configured, use the <code>--https</code> argument to instruct <code>cluster.sh</code> to use the proper URL scheme:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">./cluster.sh --https \
+  --operation get-state --address member1.example.com --port 5701</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the default set of trusted certificate authorities is not sufficient, e.g, you use a self-signed certificate,
+you can provide a custom file with the root certificates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">./cluster.sh --https \
+  --cacert /path/to/ca-certs.pem \
+  --operation get-state --address member1.example.com --port 5701</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the TLS mutual authentication is enabled, you have to provide the client certificate and related private key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">./cluster.sh --https \
+  --key privkey.pem \
+  --cert cert.pem \
+  --operation get-state --address member1.example.com --port 5701</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently, this script is not supported on the Windows platforms.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_rest_api_for_cluster_management"><a class="anchor" href="#_using_rest_api_for_cluster_management"></a>Using REST API for Cluster Management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Besides the Management Center&#8217;s Hot Restart
+<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#hot-restart" target="_blank" rel="noopener">tab</a> and
+the script <a href="#using-the-script-cluster-sh"><code>cluster.sh</code></a>, you can also use REST API to manage your cluster&#8217;s state.
+The following are the operations you can perform.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Some of the REST calls listed below need their REST endpoint groups to be enabled.
+See the <a href="#using-the-rest-endpoint-groups">Using the REST Endpoint Groups section</a> on how to enable them.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Also note that the value of <code>${PASSWORD}</code> in the following calls is checked only if
+the security is <a href="#enabling-jaas-security">enabled</a> in Hazelcast IMDG, i.e., if you have Hazelcast IMDG Enterprise Edition.
+If the security is disabled, the <code>${PASSWORD}</code> can be left empty.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. REST API calls</caption>
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>IMDG Open Source commands</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Checking if a member is ready to be used:</em></p>
+<div class="paragraph">
+<p>When a member joins the cluster, you can check whether it is ready to be used with the following HTTP call.
+It should return the <code>200</code> status code, meaning that the member can be safely used.
+Otherwise, it returns the <code>503</code> status code indicating the member is not available yet.
+Only HTTP GET request method is supported.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl http://127.0.0.1:${PORT}/hazelcast/health/ready</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Getting the cluster state:</em></p>
+<div class="paragraph">
+<p>To get the state of the cluster, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/state</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Changing the cluster state:</em></p>
+<div class="paragraph">
+<p>To change the state of the cluster to <code>frozen</code>, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}&amp;${STATE}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/changeState</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Shutting down the cluster:</em></p>
+<div class="paragraph">
+<p>To shutdown the cluster, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}"  http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/clusterShutdown</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Querying the current cluster version:</em></p>
+<div class="paragraph">
+<p>To get the current cluster version, use the following <code>curl</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/version
+  {"status":"success","version":"3.9"}</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>IMDG Enterprise commands</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Partial starting the cluster:</em></p>
+<div class="paragraph">
+<p>To partial start the cluster when Hot Restart is enabled, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/partialStart/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Force starting the cluster:</em></p>
+<div class="paragraph">
+<p>To force start the cluster when Hot Restart is enabled, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/forceStart/</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also perform the above operations (partialStart and forceStart) using
+the Hot Restart tab of Hazelcast Management Center or using the script <code>cluster.sh</code>.
+See the <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#hot-restart" target="_blank" rel="noopener">Hot Restart</a>
+and <a href="#using-the-script-cluster-sh"><code>cluster.sh</code></a> sections.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><em>Initiating Hot Backup:</em></p>
+<div class="paragraph">
+<p>To initiate the Hot Backup, use the following <code>curl</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/hotBackup</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Changing the cluster version:</em></p>
+<div class="paragraph">
+<p>To upgrade the cluster version, after having upgraded all members of your cluster to
+a new minor version, use the following <code>curl</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}&amp;${CLUSTER_VERSION}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, assuming the default cluster name and password, issue the following command to any member
+of the cluster to upgrade from cluster version 3.8 to 3.9:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl --data "dev&amp;dev-pass&amp;3.9" http://127.0.0.1:5701/hazelcast/rest/management/cluster/version
+  {"status":"success","version":"3.9"}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also perform the above cluster version operations using Hazelcast Management Center
+or using the script <code>cluster.sh</code>. See the <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#rolling-upgrade" target="_blank" rel="noopener">Rolling Member Upgrades</a>
+and <a href="#using-the-script-cluster-sh"><code>cluster.sh</code></a> sections.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enabling_lite_members"><a class="anchor" href="#_enabling_lite_members"></a>Enabling Lite Members</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lite members are the Hazelcast cluster members that do not store data.
+These members are used mainly to execute tasks and register listeners and they do not have partitions.</p>
+</div>
+<div class="paragraph">
+<p>You can form your cluster to include the regular Hazelcast members to store data and
+Hazelcast lite members to run heavy computations.
+The presence of the lite members do not affect the operations performed on the other members in the cluster.
+You can directly submit your tasks to the lite members, register listeners on them and invoke operations for
+the Hazelcast data structures on them such as <code>map.put()</code> and <code>map.get()</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you want to use lite members in a Hazelcast IMDG Enterprise
+cluster, they are also subjected to the Enterprise license.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuring_lite_members"><a class="anchor" href="#_configuring_lite_members"></a>Configuring Lite Members</h3>
+<div class="paragraph">
+<p>You can enable a cluster member to be a lite member using declarative or programmatic configuration.</p>
+</div>
+<div class="paragraph">
+<p><strong>Declarative Configuration:</strong></p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;lite-member enabled="true"/&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  lite-member:
+    enabled: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Programmatic Configuration:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+config.setLiteMember(true);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_promoting_lite_members_to_data_member"><a class="anchor" href="#_promoting_lite_members_to_data_member"></a>Promoting Lite Members to Data Member</h3>
+<div class="paragraph">
+<p>Lite members can be promoted to data members using the <code>Cluster</code> interface.
+When they are promoted, cluster partitions are rebalanced and ownerships of some portion of
+the partitions are assigned to the newly promoted data members.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+config.setLiteMember(true);
+
+HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(config);
+Cluster cluster = hazelcastInstance.getCluster();
+cluster.promoteLocalLiteMember();</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A data member cannot be downgraded to a lite member back.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_member_events_and_member_sets"><a class="anchor" href="#_getting_member_events_and_member_sets"></a>Getting Member Events and Member Sets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast allows you to register for membership events so that you are notified when
+members are added or removed. You can also get the set of cluster members.</p>
+</div>
+<div class="paragraph">
+<p>The following example code does the above: registers for member events,
+notifies when members are added or removed and gets the set of cluster members.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ExampleGetMemberEventsAndSets {
+
+    public static void main(String[] args) {
+        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        Cluster cluster = hazelcastInstance.getCluster();
+        cluster.addMembershipListener( new MembershipListener() {
+            public void memberAdded( MembershipEvent membershipEvent ) {
+                System.out.println( "MemberAdded " + membershipEvent );
+            }
+
+            public void memberRemoved( MembershipEvent membershipEvent ) {
+                System.out.println( "MemberRemoved " + membershipEvent );
+            }
+        } );
+
+        Member localMember  = cluster.getLocalMember();
+        System.out.println ( "my inetAddress= " + localMember.getInetAddress() );
+
+        Set setMembers  = cluster.getMembers();
+        for ( Member member : setMembers ) {
+            System.out.println( "isLocalMember " + member.localMember() );
+            System.out.println( "member.inetaddress " + member.getInetAddress() );
+            System.out.println( "member.port " + member.getPort() );
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="#listening-for-member-events">Membership Listener section</a>
+for more information on membership events.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_managing_cluster_and_member_states"><a class="anchor" href="#_managing_cluster_and_member_states"></a>Managing Cluster and Member States</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section explains the states of Hazelcast clusters and members which
+you can use to allow or restrict the designated cluster/member operations.</p>
+</div>
+<div class="sect2">
+<h3 id="_cluster_states"><a class="anchor" href="#_cluster_states"></a>Cluster States</h3>
+<div class="paragraph">
+<p>By changing the state of your cluster, you can allow/restrict several
+cluster operations or change the behavior of those operations.
+You can use the methods <code>changeClusterState()</code> and <code>shutdown()</code> which are in the
+<a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/cluster/Cluster.html" target="_blank" rel="noopener">Cluster interface</a> to change your cluster&#8217;s state.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast clusters have the following states:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>ACTIVE</code></strong>: This is the default cluster state. Cluster continues to operate without restrictions.</p>
+</li>
+<li>
+<p><strong><code>NO_MIGRATION</code></strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In this state, there is no data movement between Hazelcast members.
+It means that when there is a member crash or a new member in the cluster,
+there won’t be any partition rebalancing, partition backup replica creation
+or migration.</p>
+<div class="paragraph">
+<p>Please note that promoting a backup replica to the primary replica is a
+local operation and does not involve any data movement between cluster members.
+Hence, backup promotions occur on member crashes when the cluster is in this mode.
+Upon a member crash, all other members that keep backup replicas of the crashed member
+promote backup replicas to the primary replica role and restore availability.
+However, there is a limitation here. Since the maximum number of backups is 6,
+if you lose 7 members in your large cluster, you can lose availability of the
+partitions whose primary and backup replicas are mapped to those crashed members.</p>
+</div>
+</li>
+<li>
+<p>The cluster accepts new members.</p>
+</li>
+<li>
+<p>All other operations are allowed.</p>
+</li>
+<li>
+<p>You cannot change the state of a cluster to <code>NO_MIGRATION</code> when
+migration/replication tasks are being performed.</p>
+</li>
+<li>
+<p>When you want to add multiple new members to the cluster, you can first
+change the cluster state to <code>NO_MIGRATION</code>, then start the new members.
+Once all of them join to the cluster, you can change the cluster state back to <code>ACTIVE</code>.
+Then, the cluster rebalances partition replica distribution at once.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong><code>FROZEN</code></strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In this state, the partition table is frozen and partition assignments are not performed.</p>
+</li>
+<li>
+<p>The cluster does not accept new members.</p>
+</li>
+<li>
+<p>If a member leaves, it can join back. Its partition assignments
+(both primary and backup replicas) remain the same until either it joins back or
+the cluster state is changed to <code>ACTIVE</code>. When it joins back to the cluster,
+it owns all previous partition assignments as it was. On the other hand,
+when the cluster state changes to <code>ACTIVE</code>, re-partitioning starts and
+unassigned partition replicas are assigned to the active members.</p>
+</li>
+<li>
+<p>All other operations in the cluster, except migration, continue without restrictions.</p>
+</li>
+<li>
+<p>You cannot change the state of a cluster to <code>FROZEN</code> when migration/replication tasks are being performed.</p>
+</li>
+<li>
+<p>You can make use of <code>FROZEN</code> state along with the <a href="#hot-restart-persistence">Hot Restart Persistence</a>
+feature. You can change the cluster state to <code>FROZEN</code>, then restart some of your members using
+the Hot Restart feature. The data on the restarting members will not be accessible but
+you will be able to access to the data that is stored in other members.
+Basically, <code>FROZEN</code> cluster state allows you do perform maintenance on your members with degrading availability partially.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong><code>PASSIVE</code></strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In this state, the partition table is frozen and partition assignments are not performed.</p>
+</li>
+<li>
+<p>The cluster does not accept new members.</p>
+</li>
+<li>
+<p>If a member leaves while the cluster is in this state, the member will be
+removed from the partition table if cluster state moves back to <code>ACTIVE</code>.</p>
+</li>
+<li>
+<p>This state rejects ALL operations immediately EXCEPT the read-only operations like
+<code>map.get()</code> and <code>cache.get()</code>, replication and cluster heartbeat tasks.</p>
+</li>
+<li>
+<p>You cannot change the state of a cluster to <code>PASSIVE</code> when migration/replication tasks are being performed.</p>
+</li>
+<li>
+<p>You can make use of <code>PASSIVE</code> state along with the <a href="#hot-restart-persistence">Hot Restart Persistence</a>
+feature. See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/cluster/Cluster.html#shutdown--" target="_blank" rel="noopener">Cluster Shutdown API</a>
+for more info.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong><code>IN_TRANSITION</code></strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This state shows that the state of the cluster is in transition.</p>
+</li>
+<li>
+<p>You cannot set your cluster&#8217;s state as <code>IN_TRANSITION</code> explicitly.</p>
+</li>
+<li>
+<p>It is a temporary and intermediate state.</p>
+</li>
+<li>
+<p>During this state, your cluster does not accept new members and migration/replication tasks are paused.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All in-cluster methods are fail-fast, i.e., when a method fails in the cluster,
+it throws an exception immediately (it is not retried): when there is an error during a state transition,
+that error is propagated immediately, Hazelcast does not attempt to retry the transition in this case.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following snippet is from the <code>Cluster</code> interface showing
+the methods used to manage your cluster&#8217;s states.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public interface Cluster {
+    ClusterState getClusterState();
+    void changeClusterState(ClusterState newState);
+    void changeClusterState(ClusterState newState, TransactionOptions transactionOptions);
+    void shutdown();
+    void shutdown(TransactionOptions transactionOptions);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/cluster/Cluster.html" target="_blank" rel="noopener">Cluster interface Javadoc</a> for information on these methods.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cluster_member_states"><a class="anchor" href="#_cluster_member_states"></a>Cluster Member States</h3>
+<div class="paragraph">
+<p>Hazelcast cluster members have the following states:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>ACTIVE</code></strong>: This is the initial member state. The member can execute and process
+all operations. When the state of the cluster is <code>ACTIVE</code> or <code>FROZEN</code>, the members are in the <code>ACTIVE</code> state.</p>
+</li>
+<li>
+<p><strong><code>PASSIVE</code></strong>: In this state, member rejects all operations EXCEPT the read-only ones,
+replication and migration operations, heartbeat operations and the join operations as explained
+in the <a href="#cluster-states">Cluster States section</a> above.
+A member can go into this state when either of the following happens:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Until the member&#8217;s shutdown process is completed after the method <code>Node.shutdown(boolean)</code> is called.
+Note that, when the shutdown process is completed, member&#8217;s state changes to <code>SHUT_DOWN</code>.</p>
+</li>
+<li>
+<p>Cluster&#8217;s state is changed to <code>PASSIVE</code> using the method <code>changeClusterState()</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong><code>SHUT_DOWN</code></strong>: A member goes into this state when the member&#8217;s shutdown process is completed.
+The member in this state rejects all operations and invocations. A member in this state cannot be restarted.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_defining_member_attributes"><a class="anchor" href="#_defining_member_attributes"></a>Defining Member Attributes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can define various member attributes on your Hazelcast members.
+You can use these member attributes to tag your members as may be required by your business logic.</p>
+</div>
+<div class="paragraph">
+<p>To define a member attribute on a member, you can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>provide <code>MemberAttributeConfig</code> to your <code>Config</code> object</p>
+</li>
+<li>
+<p>or provide the member attributes at runtime via attribute setter methods on the <code>Member</code> interface.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, you can tag your members with their CPU characteristics and
+you can route CPU intensive tasks to those CPU-rich members. Here is how you can do it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ExampleMemberAttributes {
+
+    public static void main(String[] args) {
+        MemberAttributeConfig fourCore = new MemberAttributeConfig();
+        memberAttributeConfig.setAttribute( "CPU_CORE_COUNT", "4" );
+        MemberAttributeConfig twelveCore = new MemberAttributeConfig();
+        memberAttributeConfig.setAttribute( "CPU_CORE_COUNT", "12" );
+        MemberAttributeConfig twentyFourCore = new MemberAttributeConfig();
+        memberAttributeConfig.setAttribute( "CPU_CORE_COUNT", "24" );
+
+        Config member1Config = new Config();
+        config.setMemberAttributeConfig( fourCore );
+        Config member2Config = new Config();
+        config.setMemberAttributeConfig( twelveCore );
+        Config member3Config = new Config();
+        config.setMemberAttributeConfig( twentyFourCore );
+
+        HazelcastInstance member1 = Hazelcast.newHazelcastInstance( member1Config );
+        HazelcastInstance member2 = Hazelcast.newHazelcastInstance( member2Config );
+        HazelcastInstance member3 = Hazelcast.newHazelcastInstance( member3Config );
+
+        IExecutorService executorService = member1.getExecutorService( "processor" );
+
+        executorService.execute( new CPUIntensiveTask(), new MemberSelector() {
+            @Override
+            public boolean select(Member member) {
+                int coreCount = Integer.parseInt(member.getAttribute( "CPU_CORE_COUNT" ));
+                // Task will be executed at either member2 or member3
+                if ( coreCount &gt; 8 ) {
+                    return true;
+                }
+                return false;
+            }
+        } );
+
+        HazelcastInstance member4 = Hazelcast.newHazelcastInstance();
+        // We can also set member attributes at runtime.
+        member4.setAttribute( "CPU_CORE_COUNT", "2" );
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For another example, you can tag some members with a filter so that
+a member in the cluster can load classes from those tagged members.
+See the <a href="#member-user-code-deployment">User Code Deployment section</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>You can also define your member attributes through declarative configuration and
+start your member afterwards. Here is how you can use the declarative approach:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;member-attributes&gt;
+        &lt;attribute name="CPU_CORE_COUNT"&gt;4&lt;/attribute-name&gt;
+    &lt;/member-attributes&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  member-attributes:
+    CPU_CORE_COUNT:
+      type: int
+      value: 4</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_safety_checking_cluster_members"><a class="anchor" href="#_safety_checking_cluster_members"></a>Safety Checking Cluster Members</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To prevent data loss when shutting down a cluster member, Hazelcast provides
+a graceful shutdown feature. You perform this shutdown by calling the method <code>HazelcastInstance.shutdown()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The oldest cluster member migrates all of the replicas owned by
+the shutdown-requesting member to the other running (not initiated shutdown) cluster members.
+After these migrations are completed, the shutting down member will not be the owner or
+a backup of any partition anymore. It means that you can shutdown any number of Hazelcast members
+in a cluster concurrently with no data loss.</p>
+</div>
+<div class="paragraph">
+<p>Please note that the process of shutting down members waits for
+a predefined amount of time for the oldest member to migrate their partition replicas.
+You can specify this graceful shutdown timeout duration using the property <code>hazelcast.graceful.shutdown.max.wait</code>.
+Its default value is 10 minutes. If migrations are not completed within this duration,
+shutdown may continue non-gracefully and lead to data loss.
+Therefore, you should choose your own timeout duration considering the size of data in your cluster.</p>
+</div>
+<div class="sect2">
+<h3 id="_ensuring_safe_state_with_partitionservice"><a class="anchor" href="#_ensuring_safe_state_with_partitionservice"></a>Ensuring Safe State with PartitionService</h3>
+<div class="paragraph">
+<p>With the improvements in graceful shutdown procedure in Hazelcast 3.7,
+the following methods are not needed to perform graceful shutdown.
+Nevertheless, you can use them to check the current safety status of the partitions in your cluster.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public interface PartitionService {
+   ...
+   ...
+    boolean isClusterSafe();
+    boolean isMemberSafe(Member member);
+    boolean isLocalMemberSafe();
+    boolean forceLocalMemberToBeSafe(long timeout, TimeUnit unit);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The method <code>isClusterSafe</code> checks whether the cluster is in a safe state.
+It returns <code>true</code> if there are no active partition migrations and all backups are in sync for each partition.</p>
+</div>
+<div class="paragraph">
+<p>The method <code>isMemberSafe</code> checks whether a specific member is in a safe state.
+It checks if all backups of partitions of the given member are in sync with the primary ones.
+Once it returns <code>true</code>, the given member is safe and it can be shut down without data loss.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, the method <code>isLocalMemberSafe</code> does the same check for the local member.
+The method <code>forceLocalMemberToBeSafe</code> forces the owned and backup partitions to be synchronized,
+making the local member safe.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="https://github.com/hazelcast/hazelcast-code-samples/tree/master/monitoring/cluster-safety" target="_blank" rel="noopener">here</a>
+for more <code>PartitionService</code> code samples.</p>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_metrics" class="sect0"><a class="anchor" href="#_metrics"></a>Metrics</h1>
+<div class="paragraph">
+<p>Metrics are <code>&lt;string,value&gt;</code> key-value pairs of data that
+capture the runtime information about the members and clients
+in a Hazelcast cluster. Such a metric can be the number of
+entries stored in a particular IMap on a given member, JVM metrics
+like used heap, OS metrics like load average, and so on.
+The metrics system is responsible for collecting these metrics
+and making them available for the <a href="#metric-consumers">consumers</a> of the metrics.
+There are a few hundred metrics collected during every metrics collection cycle
+by default, but the number of metrics grows as more features and data structures are used.
+This is because every data structure provides its own metrics.
+For example, if there are two IMaps used in a cluster, both IMaps produce their metrics on every member.</p>
+</div>
+<div class="sect1">
+<h2 id="metrics-configuration"><a class="anchor" href="#metrics-configuration"></a>Configuring Metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can configure the metrics system declaratively or programmatically.
+The following is an example declarative configuration with the
+default values, on the member side:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;metrics enabled="true"&gt;
+    &lt;management-center enabled="true"&gt;
+        &lt;retention-seconds&gt;5&lt;/retention-seconds&gt;
+    &lt;/management-center&gt;
+    &lt;jmx enabled="true"/&gt;
+    &lt;collection-frequency-seconds&gt;5&lt;/collection-frequency-seconds&gt;
+&lt;/metrics&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">metrics:
+    enabled: true
+    management-center:
+      enabled: true
+      retention-seconds: 5
+    jmx:
+      enabled: true
+    collection-frequency-seconds: 5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that all of the metrics configuration values can be overridden with system properties.
+The properties are are listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.metrics.enabled</code>: Enables the metrics collection if set to <code>true</code>, disables it otherwise.</p>
+</li>
+<li>
+<p><code>hazelcast.metrics.mc.enabled</code>: Enables buffering the collected metrics for Management Center if set to <code>true</code>, disables it otherwise.</p>
+</li>
+<li>
+<p><code>hazelcast.metrics.mc.retention</code>: Duration, in seconds, for which the metrics are retained for Management Center.</p>
+</li>
+<li>
+<p><code>hazelcast.metrics.jmx.enabled</code>: Enables exposing the collected metrics over JMX if set to <code>true</code>, disables it otherwise.</p>
+</li>
+<li>
+<p><code>hazelcast.metrics.collection.frequency</code>: Frequency, in seconds, of the metrics collection cycle.</p>
+</li>
+<li>
+<p><code>hazelcast.metrics.debug.enabled</code>: Enables collecting debug metrics if set to <code>true</code>, disables
+it otherwise. Note that this can be set with system property only and is meant to
+be enabled only if diagnostics is enabled, since currently only diagnostics feature consumes the debug metrics.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The client configuration is very similar, it just lacks the Management Center configuration block
+(<code>management-center</code> configuration element), as shown below. This is because the clients are
+not connected to Management Center and the client metrics are sent to
+Management Center through a member to which the client is connected.</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;metrics enabled="true"&gt;
+    &lt;jmx enabled="true"/&gt;
+    &lt;collection-frequency-seconds&gt;5&lt;/collection-frequency-seconds&gt;
+&lt;/metrics&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">metrics:
+    enabled: true
+    jmx:
+      enabled: true
+    collection-frequency-seconds: 5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly to the member configuration, the client metrics configuration can be overridden with the following system properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.client.metrics.enabled</code>: Enables the metrics collection if set to <code>true</code>, disables it otherwise.</p>
+</li>
+<li>
+<p><code>hazelcast.client.metrics.jmx.enabled</code>: Enables exposing the collected metrics over JMX if set to <code>true</code>, disables it otherwise.</p>
+</li>
+<li>
+<p><code>hazelcast.client.metrics.collection.frequency</code>: Frequency, in seconds, of the metrics collection cycle.</p>
+</li>
+<li>
+<p><code>hazelcast.client.metrics.debug.enabled</code>: Enables collecting debug metrics if set to <code>true</code>,
+disables it otherwise. Note that this can be set with system property only
+and is meant to be enabled only if diagnostics is enabled, since currently only diagnostics
+feature consumes the debug metrics.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metric_consumers"><a class="anchor" href="#_metric_consumers"></a>Metric Consumers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Metrics are part of and consumed by the following Hazelcast tools
+and interfaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Management Center</p>
+</li>
+<li>
+<p>JMX</p>
+</li>
+<li>
+<p>Diagnostics</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_management_center"><a class="anchor" href="#_management_center"></a>Management Center</h3>
+<div class="paragraph">
+<p>Management Center receives the metrics used for building its view
+about the Hazelcast cluster from the metrics system.
+The members collect their metrics with the frequency defined with
+<code>collection-frequency-seconds</code>, which is by default once in every 5 seconds.
+Then it saves the collected metrics into a blob stored in an in-memory buffer.
+The blob then is retained for the time configured in the <code>retention-seconds</code> under the
+<code>management-center</code> configuration block.
+This is also 5 seconds by default, which means there is at most one blob stored by default.
+Management Center periodically reads out the metrics from this buffer,
+which frees up the heap occupied by the blob once it is consumed.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned earlier, the client metrics are also stored in these
+blobs on the member side with timestamps assigned to them on the client side.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jmx"><a class="anchor" href="#_jmx"></a>JMX</h3>
+<div class="paragraph">
+<p>The metrics are available on the JMX interface of the Hazelcast members and clients.
+The metrics are exposed under <code>com.hazelcast/$INSTANCE_NAME/Metrics</code> where
+<code>$INSTANCE_NAME</code> is the name of the member or client instance to which the JMX client
+is connected.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="metrics-diagnostics"><a class="anchor" href="#metrics-diagnostics"></a>Diagnostics</h3>
+<div class="paragraph">
+<p>There are no diagnostics related settings in the metrics configuration section.
+See the
+<a href="#diagnostics-metrics">Metrics section</a> of the Diagnostics for the details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_version_compatibility"><a class="anchor" href="#_version_compatibility"></a>Version Compatibility</h3>
+<div class="paragraph">
+<p>Note that the metric names may change between MINOR versions but not between PATCH versions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_notes_on_the_performance"><a class="anchor" href="#_notes_on_the_performance"></a>Notes on the Performance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The metrics system is designed with care to make
+the least possible impact on the performance of the cluster.
+Since the metrics collection takes place periodically
+with a few seconds frequency, the main focus is keeping
+allocation rates and memory footprint at minimum.
+Therefore, the blobs that store the metrics for
+Management Center are stored in the memory in a compressed format.
+The measurements, that use multiple IMaps to scale up the number of
+metrics, show that one blob occupies only a few KBs and it grows
+above 10KB only if there are more than 1000 IMaps.</p>
+</div>
+<div class="paragraph">
+<p>The allocation rate of a metric collection cycle is also low.
+With both Management Center and JMX consumers enabled, the allocation
+rate with 100 IMaps is below 256KB per cycle, and it grows above
+1MB with 1000 IMaps. This means that metrics collection does not
+increase the frequency of the garbage collection (GC) noticeably.</p>
+</div>
+<div class="paragraph">
+<p>While the metrics collection is considered GC friendly, it
+should be noted that the blobs are not recycled: configuring the
+retention time should be done with taking the frequency of the
+GC into account to prevent the blobs from getting promoted
+into the tenured region of the heap that in the end contributes
+to major GCs after time.</p>
+</div>
+</div>
+</div>
+<h1 id="_diagnostics" class="sect0"><a class="anchor" href="#_diagnostics"></a>Diagnostics</h1>
+<div class="paragraph">
+<p>Hazelcast offers an extended set of diagnostics plugins for both Hazelcast members and clients.
+A dedicated log file is used to write the diagnostics content, and a rolling file approach is used to
+prevent taking up too much disk space.</p>
+</div>
+<div class="sect1">
+<h2 id="_enabling_diagnostics_logging"><a class="anchor" href="#_enabling_diagnostics_logging"></a>Enabling Diagnostics Logging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To enable diagnostics logging, you should specify the following properties on the member side:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>-Dhazelcast.diagnostics.enabled=true
+-Dhazelcast.diagnostics.metric.level=info
+-Dhazelcast.diagnostics.invocation.sample.period.seconds=30
+-Dhazelcast.diagnostics.pending.invocations.period.seconds=30
+-Dhazelcast.diagnostics.slowoperations.period.seconds=30
+-Dhazelcast.diagnostics.storeLatency.period.seconds=60</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On the client side, you should specify the following properties:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>-Dhazelcast.diagnostics.enabled=true
+-Dhazelcast.diagnostics.metric.level=info</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_diagnostics_log_file"><a class="anchor" href="#_diagnostics_log_file"></a>Diagnostics Log File</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use the following property to specify the location of the diagnostics log file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>-Dhazelcast.diagnostics.directory=/your/log/directory</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the log file has the following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>diagnostics-&lt;host IP&gt;#&lt;port&gt;-&lt;unique ID&gt;.log</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the log file can be prefixed with a custom string as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>-Dhazelcast.diagnostics.filename.prefix=foobar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The content format of the diagnostics log file is depicted below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>&lt;Date&gt; BuildInfo[
+	&lt;log content for BuildInfo diagnostics plugin&gt;]
+&lt;Date&gt; SystemProperties[
+	&lt;log content for SystemProperties diagnostics plugin&gt;]
+&lt;Date&gt; ConfigProperties[
+	&lt;log content for ConfigProperties diagnostics plugin&gt;]
+&lt;Date&gt; Metrics[
+	&lt;log content for Metrics diagnostics plugin&gt;]
+&lt;Date&gt; SlowOperations[
+	&lt;log content for SlowOperations diagnostics plugin&gt;]
+&lt;Date&gt; HazelcastInstance[
+	&lt;log content for HazelcastInstance diagnostics plugin&gt;]
+...
+...
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A rolling file approach is used to prevent creating too much data. By default 10 files of 50MB each are allowed
+to exist. The size of the file can be changed using the following property:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>-Dhazelcast.diagnostics.max.rolled.file.size.mb=100</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also set the number of files using the following property:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>-Dhazelcast.diagnostics.max.rolled.file.count=5</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_diagnostics_plugins"><a class="anchor" href="#_diagnostics_plugins"></a>Diagnostics Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As it is stated in the introduction of this section and shown in the log file content above,
+diagnostics utility consists of plugins such as BuildInfo, SystemProperties and HazelcastInstance.</p>
+</div>
+<div class="sect2">
+<h3 id="_buildinfo"><a class="anchor" href="#_buildinfo"></a>BuildInfo</h3>
+<div class="paragraph">
+<p>It shows the detailed Hazelcast build information including the Hazelcast release number,
+<code>Git</code> revision number and whether you have Hazelcast IMDG Enterprise or not.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_systemproperties"><a class="anchor" href="#_systemproperties"></a>SystemProperties</h3>
+<div class="paragraph">
+<p>It shows all the properties and their values in your system used by and configured for
+your Hazelcast installation. These are the properties starting with <code>java</code> (excluding <code>java.awt</code>),
+<code>hazelcast</code>, <code>sun</code> and <code>os</code>. It also includes the arguments that are used to startup the JVM.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configproperties"><a class="anchor" href="#_configproperties"></a>ConfigProperties</h3>
+<div class="paragraph">
+<p>It shows the Hazelcast properties and their values explicitly set by you either
+on the command line (with <code>-D</code>) or by using declarative/programmatic configuration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="diagnostics-metrics"><a class="anchor" href="#diagnostics-metrics"></a>Metrics</h3>
+<div class="paragraph">
+<p>It shows a comprehensive log of what is happening in your Hazelcast system.</p>
+</div>
+<div class="paragraph">
+<p>You can configure the frequency of dumping information to the log file using the following property:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.metrics.period.seconds</code>: Set a value in seconds.
+Its default value is <code>60</code> seconds.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_slowoperations"><a class="anchor" href="#_slowoperations"></a>SlowOperations</h3>
+<div class="paragraph">
+<p>It shows the slow operations and invocations, See the <a href="#slowoperationdetector">SlowOperationDetector section</a>
+for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_invocations"><a class="anchor" href="#_invocations"></a>Invocations</h3>
+<div class="paragraph">
+<p>It shows all kinds of statistics about current and past invocations including
+current pending invocations, history of invocations and
+slow history, i.e., all samples where the invocation took more than the defined threshold.
+Slow history does not only include the invocations where the operations took a lot of time,
+but it also includes any other invocations that have been obstructed.</p>
+</div>
+<div class="paragraph">
+<p>Using the following properties, you can configure the frequency of scanning all
+pending invocations and the threshold that makes an invocation to be considered as slow:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.invocation.sample.period.seconds</code>: Set a value in seconds.
+Its default value is <code>60</code> seconds.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.invocation.slow.threshold.seconds</code>: Set a value in seconds.
+Its default value is <code>5</code> seconds.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hazelcastinstance"><a class="anchor" href="#_hazelcastinstance"></a>HazelcastInstance</h3>
+<div class="paragraph">
+<p>It shows the basic state of your Hazelcast cluster including the count and
+addresses of current members and the address of oldest cluster member.
+It is useful to get a fast impression of the cluster without needing to analyze a lot of data.</p>
+</div>
+<div class="paragraph">
+<p>You can configure the frequency at which the cluster information is dumped to the log file using the following property:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.memberinfo.period.second</code>: Set a value in seconds. Its default value is <code>60</code> seconds.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_eventqueue"><a class="anchor" href="#_eventqueue"></a>EventQueue</h3>
+<div class="paragraph">
+<p>It checks the event queues in the data structures and samples the event types if the queue size is
+above a certain threshold. It is useful to figure out why the event
+queue is running full.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.event.queue.period.seconds</code>: Duration, in seconds, that this plugin runs,
+gathers information and writes to the diagnostics log file.
+When set to <code>0</code> (its default value), it is disabled.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.event.queue.threshold</code>: Minimum number of events in the
+queue before it is being sampled. Its default value is <code>1000</code>.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.event.queue.samples</code>: Number of samples to take from the event queue.
+Increasing the number of samples gives more accuracy of the content, but it has a negative
+performance effect. Its default value is <code>100</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example output for a Hazelcast map is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>17-04-2019 17:36:37 EventQueues[
+    worker=1[
+        eventCount=441
+        sampleCount=100
+        samples[
+            IMap 'myMap' ADDED sampleCount=51 51.000%
+            IMap 'myMap' REMOVED sampleCount=49 49.000%]]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_systemlog"><a class="anchor" href="#_systemlog"></a>SystemLog</h3>
+<div class="paragraph">
+<p>It shows the activities in your cluster including when a connection/member is added or removed and
+if there is a change in the lifecycle of the cluster.
+It also includes the reasons for connection closings.</p>
+</div>
+<div class="paragraph">
+<p>You can enable or disable the system log diagnostics plugin, and configure whether
+it shows information about partition migrations using the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.systemlog.enabled</code>: Its default value is <code>true</code>.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.systemlog.partitions</code>: Its default value is <code>false</code>.
+Please note that if you enable this, you may get a lot of log entries if you have many partitions.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_storelatency"><a class="anchor" href="#_storelatency"></a>StoreLatency</h3>
+<div class="paragraph">
+<p>It shows statistics including the count of methods for each store (<code>load</code>, <code>loadAll</code>,
+<code>loadAllKeys</code>, etc.), average and maximum latencies for each store method calls and
+latency distributions for each store. The following is an example output snippet as part of
+the diagnostics log file for Hazelcast MapStore:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>17-9-2019 13:12:34 MapStoreLatency[
+    map[
+        loadAllKeys[
+            count=1
+            totalTime(us)=8
+            avg(us)=8
+            max(us)=8
+            latency-distribution[
+                0..99us=1]]
+        load[
+            count=100
+            totalTime(us)=4,632,190
+            avg(us)=46,321
+            max(us)=99,178
+            latency-distribution[
+                0..99us=1
+                1600..3199us=3
+                3200..6399us=3
+                6400..12799us=7
+                12800..25599us=13
+                25600..51199us=32
+                51200..102399us=41]]]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>According to your store usage, a similar output can be seen for Hazelcast JCache,
+Queue and Ringbuffer with persistent datastores.</p>
+</div>
+<div class="paragraph">
+<p>You can control the StoreLatency plugin using the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.storeLatency.period.seconds</code>: The frequency this plugin is writing
+the collected information to the disk. By default it is disabled.
+A sensible production value would be <code>60</code> seconds.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.storeLatency.reset.period.seconds</code>: The period of resetting the statistics.
+If, for example, it is set as 300 (5 minutes), all the statistics are cleared for every 5 minutes.
+By default it is 0, meaning that statistics are not reset.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operationheartbeats"><a class="anchor" href="#_operationheartbeats"></a>OperationHeartbeats</h3>
+<div class="paragraph">
+<p>It shows the deviation between member/member operation heartbeats.
+Each member, regardless if there is an operation running on behalf of that member,
+sends an operation heartbeat to every other member. It contains a listing of all <code>callId</code>s of the running
+operations from a given member.
+This plugin also works fine between members/lite-members.</p>
+</div>
+<div class="paragraph">
+<p>Because this operation heartbeat is sent periodically;
+by default 1/4 of the operation call timeout of 60 seconds, we would expect
+an operation heartbeat to be received every 15 seconds.
+Operation heartbeats are high priority packets (so they overtake regular packets)
+and are processed by an isolated thread in the invocation monitor.
+If there is any deviation in the frequency of receiving
+these packets, it may be due to the problems such as network latencies.</p>
+</div>
+<div class="paragraph">
+<p>The following shows an example of the output where an operation heartbeat has not been received for 37 seconds:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>20-7-2019 11:12:55 OperationHeartbeats[
+    member[10.212.1.119]:5701[
+        deviation(%)=146.6666717529297
+        noHeartbeat(ms)=37,000
+        lastHeartbeat(ms)=1,500,538,375,603
+        lastHeartbeat(date-time)=20-7-2017 11:12:55
+        now(ms)=1,500,538,338,603
+        now(date-time)=20-7-2017 11:12:18]]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The OperationHeartbeats plugin is enabled by default since it has very little overhead and only prints to the diagnostics
+file if the maximum deviation percentage (explained below) is exceeded.</p>
+</div>
+<div class="paragraph">
+<p>You can control the OperationHeartbeats plugin using the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.operation-heartbeat.seconds</code>:
+The frequency this plugin is writing the collected information to the disk.
+It is configured to be 10 seconds by default. 0 disables the plugin.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.operation-heartbeat.max-deviation-percentage</code>:
+The maximum allowed deviation percentage. Its default value is 33.
+For example, with a default 60 call timeout and operation heartbeat interval being 15 seconds,
+the maximum deviation with a deviation-percentage of 33, is 5 seconds.
+So there is no problem if a packet is arrived after 19 seconds, but if it arrives after 21 seconds,
+then the plugin renders.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_memberheartbeats"><a class="anchor" href="#_memberheartbeats"></a>MemberHeartbeats</h3>
+<div class="paragraph">
+<p>This plugin looks a lot like the OperationHeartbeats plugin, but instead of
+relying on operation heartbeats to determine the deviation, it relies on member/member cluster heartbeats.
+Every member sends a heartbeat to other members periodically (by default every 5 seconds).</p>
+</div>
+<div class="paragraph">
+<p>Just like the OperationHeartbeats, the MemberHeartbeats plugin can be used to
+detect if there are networking problems long before they actually lead to problems such as split-brain syndromes.</p>
+</div>
+<div class="paragraph">
+<p>The following shows an example of the output where no member/member heartbeat has been received for 9 seconds:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>20-7-2019 19:32:22 MemberHeartbeats[
+    member[10.212.1.119]:5701[
+        deviation(%)=80.0
+        noHeartbeat(ms)=9,000
+        lastHeartbeat(ms)=1,500,568,333,645
+        lastHeartbeat(date-time)=20-7-2017 19:32:13
+        now(ms)=1,500,568,342,645
+        now(date-time)=20-7-2017 19:32:22]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The MemberHeartbeats plugin is enabled by default since it has very little overhead and only prints to the diagnostics
+file if the maximum deviation percentage (explained below) is exceeded.</p>
+</div>
+<div class="paragraph">
+<p>You can control the MemberHeartbeats plugin using the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.member-heartbeat.seconds</code>:
+The frequency this plugin is writing the collected information to the disk.
+It is configured to be 10 seconds by default. 0 disables the plugin.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.member-heartbeat.max-deviation-percentage</code>:
+The maximum allowed deviation percentage. Its default value is 100.
+For example, if the interval of member/member heartbeats is 5 seconds, a 100% deviation is fine with
+heartbeats arriving up to 5 seconds after they are expected.
+So a heartbeat arriving after 9 seconds is not rendered, but a heartbeat received after 11 seconds is rendered.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operationthreadsamples"><a class="anchor" href="#_operationthreadsamples"></a>OperationThreadSamples</h3>
+<div class="paragraph">
+<p>This plugin samples the operation threads and checks the running operations/tasks.
+Hazelcast has the <a href="#slowoperationdetector">slow operation detector</a> which is useful for
+very slow operations. But it may not be efficient for high volumes of not too slow operations.
+Using the OperationThreadSamples plugin it is more clear to see which operations are actually running.</p>
+</div>
+<div class="paragraph">
+<p>You can control the OperationThreadSamples plugin using the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.operationthreadsamples.period.seconds</code>:
+The frequency this plugin is writing the collected information to the disk.
+An efficient value for production would be 30, 60 or more seconds. 0, which is the default value, disables the plugin.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.operationthreadsamples.sampler.period.millis</code>:
+The period in milliseconds between taking samples.
+The lower the value, the higher the overhead but also the higher the precision.
+Its default value is 100 ms.</p>
+</li>
+<li>
+<p><code>hazelcast.diagnostics.operationthreadsamples.includeName</code>:
+Specifies whether the data structures' name pointed to by the operation (if available) should be
+included in the name of the samples. Its default value is false.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following shows an example of the output when the property
+<code>hazelcast.diagnostics.operationthreadsamples.includeName</code> is false:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-plain hljs" data-lang="plain">28-08-2019 07:40:07 1535442007330 OperationThreadSamples[
+    Partition[
+        com.hazelcast.map.impl.operation.MapSizeOperation=304623 85.6927%
+        com.hazelcast.map.impl.operation.PutOperation=33061 9.300304%
+        com.hazelcast.map.impl.operation.GetOperation=17799 5.0069904%]
+    Generic[
+        com.hazelcast.client.impl.ClientEngineImpl$PriorityPartitionSpecificRunnable=2308 35.738617%
+        com.hazelcast.nio.Packet=1767 27.361412%
+        com.hazelcast.internal.cluster.impl.operations.JoinRequestOp=821 12.712914%
+        com.hazelcast.spi.impl.operationservice.impl.operations.PartitionIteratingOperation=278 4.3047385%
+        com.hazelcast.internal.cluster.impl.operations.HeartbeatOp=93 1.4400743%
+        com.hazelcast.internal.cluster.impl.operations.OnJoinOp=89 1.3781357%
+        com.hazelcast.internal.cluster.impl.operations.WhoisMasterOp=75 1.1613503%
+        com.hazelcast.client.impl.operations.ClientReAuthOperation=33 0.51099414%]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen above, the <code>MapSizeOperations</code> run on the operation threads most of the time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wandiagnostics"><a class="anchor" href="#_wandiagnostics"></a>WanDiagnostics</h3>
+<div class="paragraph">
+<p>The WAN diagnostics plugin provides information about the WAN replication.</p>
+</div>
+<div class="paragraph">
+<p>It is disabled by default and can be configured using the following property:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.diagnostics.wan.period.seconds</code>:
+The frequency this plugin is writing the collected information to the disk. 0 disables the plugin.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following shows an example of the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>10-11-2019 14:11:32 1510319492497 WanBatchSenderLatency[
+    targetClusterName[
+        [127.0.0.1]:5801[
+            count=1
+            totalTime(us)=2,010,567
+            avg(us)=2,010,567
+            max(us)=2,010,567
+            latency-distribution[
+                1638400..3276799us=1]]
+         [127.0.0.1]:5802[
+             count=1
+             totalTime(us)=1,021,867
+             avg(us)=1,021,867
+             max(us)=1,021,867
+             latency-distribution[
+                 819200..1638399us=1]]]]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_health_check_and_monitoring" class="sect0"><a class="anchor" href="#_health_check_and_monitoring"></a>Health Check and Monitoring</h1>
+<div class="paragraph">
+<p>Hazelcast provides the HTTP-based Health Check endpoint, Health Check script and Health Monitoring utility.</p>
+</div>
+<div class="paragraph">
+<p>To be able to benefit from the Health Check endpoint and script,
+you must enable the Health Check using either one of the following configuration options:</p>
+</div>
+<div class="paragraph">
+<p>Using the <code>network</code> configuration element:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;network&gt;
+        &lt;rest-api enabled="true"&gt;
+            &lt;endpoint-group name=“HEALTHCHECK” enabled=“true”/&gt;
+        &lt;/rest-api&gt;
+    &lt;/network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  network:
+    rest-api:
+      enabled: true
+      endpoint-groups:
+        HEALTH_CHECK:
+          enabled: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using the <code>advanced-network</code> configuration element:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;advanced-network&gt;
+        &lt;rest-server-socket-endpoint-config&gt;
+            &lt;endpoint-groups&gt;
+                &lt;endpoint-group name=“HEALTHCHECK” enabled=“true”/&gt;
+            &lt;/endpoint-groups&gt;
+        &lt;/rest-server-socket-endpoint-config&gt;
+    &lt;/advanced-network&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  advanced-network:
+    rest-server-socket-endpoint-config:
+      endpoint-groups:
+        HEALTCH_CHECK:
+          enabled: true</code></pre>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_health_check"><a class="anchor" href="#_health_check"></a>Health Check</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is Hazelcast&#8217;s HTTP based health check implementation which provides
+basic information about your cluster and member (on which it is launched).</p>
+</div>
+<div class="paragraph">
+<p>First, you need to enable the health check as explained in the introduction of this section above.</p>
+</div>
+<div class="paragraph">
+<p>Now you retrieve information about your cluster&#8217;s health status (member state,
+cluster state, cluster size, etc.) by launching <code>http://&lt;your member's host IP&gt;:5701/hazelcast/health</code> on your preferred browser.</p>
+</div>
+<div class="paragraph">
+<p>An example output is given below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{
+  "nodeState": "ACTIVE",
+  "clusterState": "ACTIVE",
+  "clusterSafe": true,
+  "migrationQueueSize": 0,
+  "clusterSize": 3
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="#managing-cluster-and-member-states">Managing Cluster and Member States section</a>
+to learn more about each state of a Hazelcast cluster and member.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="health-check-script"><a class="anchor" href="#health-check-script"></a>Using the healthcheck.sh Script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>healthcheck.sh</code> script comes with the Hazelcast package. Internally, it uses
+the HTTP-based Health Check endpoint. You will need to enable the endpoint by using the
+<code>advanced-network</code> or the <code>network</code> configuration element.
+See the <a href="#health-check-and-monitoring">Health Check and Monitoring section</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can use the script to check health parameters in the following manner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>$ ./healthcheck.sh &lt;parameters&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following parameters can be used:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 22.2222%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-o</code> or <code>--operation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>get-state</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Health check operation. It can be <code>all</code>, <code>node-state</code>,
+<code>cluster-state</code>, <code>cluster-safe</code>, <code>migration-queue-size</code> and <code>cluster-size</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-a</code> or <code>--address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>127.0.0.1</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines the IP address of a cluster member. If you want to manage your cluster remotely,
+you should use this parameter to provide the IP address of a member to this script.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-p</code> or <code>--port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5701</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines on which port Hazelcast is running on the local or remote machine.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-h</code> or <code>--help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lists the parameter descriptions along with a usage example.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-d</code> or <code>--debug</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Prints error output.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--https</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Uses HTTPS protocol for REST calls.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cacert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>set of well-known CA certificates</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines trusted PEM-encoded certificate file path. It&#8217;s used to verify member certificates.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines PEM-encoded client certificate file path. Only needed when client certificate authentication is used.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Defines PEM-encoded client private key file path. Only needed when client certificate authentication is used.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--insecure</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>no argument expected</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Disables member certificate verification.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong><em>Example 1: Checking Member State of a Healthy Cluster:</em></strong></p>
+</div>
+<div class="paragraph">
+<p>Assuming the member is deployed under the address <code>127.0.0.1:5701</code> and
+it is in the healthy state, the following output is expected:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>$ ./healthcheck.sh -a 127.0.0.1 -p 5701 -o node-state
+ACTIVE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong><em>Example 2: Checking Safety of a Non-Existing Cluster:</em></strong></p>
+</div>
+<div class="paragraph">
+<p>Assuming there is no member running under the address <code>127.0.0.1:5701</code>, the following output is expected:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>$ ./healthcheck.sh -a 127.0.0.1 -p 5701 -o cluster-safe
+Error while checking health of hazelcast cluster on ip 127.0.0.1 on port 5701.
+Please check that cluster is running and that health check is enabled in REST API configuration.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_health_monitor"><a class="anchor" href="#_health_monitor"></a>Health Monitor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Health monitor periodically prints logs in your console to provide information about your member&#8217;s state.
+By default, it is enabled when you start your cluster.</p>
+</div>
+<div class="paragraph">
+<p>You can set the interval of health monitoring using
+the <code>hazelcast.health.monitoring.delay.seconds</code> system property. Its default value is 20 seconds.</p>
+</div>
+<div class="paragraph">
+<p>The system property <code>hazelcast.health.monitoring.level</code> is used to configure the monitoring&#8217;s log level.
+If it is set to OFF, the monitoring is disabled.
+If it is set to NOISY, monitoring logs are always printed for the defined intervals.
+When it is SILENT, which is the default value, monitoring logs are printed only when
+the values exceed some predefined thresholds. These thresholds are related to
+memory and CPU percentages, and can be configured using the
+<code>hazelcast.health.monitoring.threshold.memory.percentage</code> and
+<code>hazelcast.health.monitoring.threshold.cpu.percentage</code> system properties, whose default values are both 70.</p>
+</div>
+<div class="paragraph">
+<p>The following is an example monitoring output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>Sep 08, 2017 5:02:28 PM com.hazelcast.internal.diagnostics.HealthMonitor
+
+INFO: [192.168.2.44]:5701 [host-name] [3.9] processors=4, physical.memory.total=16.0G, physical.memory.free=5.5G, swap.space.total=0, swap.space.free=0, heap.memory.used=102.4M,
+
+heap.memory.free=249.1M, heap.memory.total=351.5M, heap.memory.max=3.6G, heap.memory.used/total=29.14%, heap.memory.used/max=2.81%, minor.gc.count=4, minor.gc.time=68ms, major.gc.count=1,
+
+major.gc.time=41ms, load.process=0.44%, load.system=1.00%, load.systemAverage=315.48%, thread.count=97, thread.peakCount=98, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0,
+
+executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0,
+
+executor.q.priorityOperation.size=0, operations.completed.count=226, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0,
+
+operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=0, proxy.count=0, clientEndpoint.count=1,
+
+connection.active.count=2, client.connection.count=1, connection.count=1</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="#configuring-with-system-properties">Configuring with System Properties section</a>
+to learn how to set system properties.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_health_check_on_f5_big_ip_ltm"><a class="anchor" href="#_using_health_check_on_f5_big_ip_ltm"></a>Using Health Check on F5 BIG-IP LTM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The F5® BIG-IP® Local Traffic Manager™ (LTM) can be used as a load balancer for Hazelcast cluster members.
+This section describes how you can configure a health monitor to check the Hazelcast member states.</p>
+</div>
+<div class="sect2">
+<h3 id="_monitor_types"><a class="anchor" href="#_monitor_types"></a>Monitor Types</h3>
+<div class="paragraph">
+<p>Following types of monitors can be used to track Hazelcast cluster members:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP Monitor: A custom HTTP monitor enables you to send a command to
+Hazelcast’s Health Check API using HTTP requests. This is a good choice if SSL/TLS is not enabled in your cluster.</p>
+</li>
+<li>
+<p>HTTPS Monitor: A custom HTTPS monitor enables you to verify the health of
+Hazelcast cluster members by sending a command to Hazelcast’s Health Check API using Secure Socket Layer (SSL) security.
+This is a good choice if SSL/TLS is enabled in your cluster.</p>
+</li>
+<li>
+<p>TCP\_HALF\_OPEN Monitor: A TCP\_HALF\_OPEN monitor is a very basic monitor that only checks
+that the TCP port used by Hazelcast is open and responding to connection requests.
+It does not interact with the Hazelcast Health Check API. The TCP\_HALF\_OPEN monitor can be used with or without SSL/TLS.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h3>
+<div class="paragraph">
+<p>After signing in to the BIG-IP LTM User Interface,
+follow F5’s <a href="https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-monitors-reference-11-6-0/3.html#unique_859105660">^instructions</a>
+to create a new monitor. Next, apply the following configuration according to your monitor type.</p>
+</div>
+<div class="sect3">
+<h4 id="_httphttps_monitors"><a class="anchor" href="#_httphttps_monitors"></a>HTTP/HTTPS Monitors</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please note that you should enable the Hazelcast health check for
+HTTP/HTTPS monitors to run. You will need to enable the endpoint by using the
+<code>advanced-network</code> or the <code>network</code> configuration element.
+See the <a href="#health-check-and-monitoring">Health Check and Monitoring section</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Using a GET request:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the “Send String” as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>GET /hazelcast/health HTTP/1.1\r\n\nHost: [HOST-ADDRESS-OF-HAZELCAST-MEMBER] \r\nConnection: Close\r\n\r\n</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Set the “Receive String” as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{"nodeState":"ACTIVE","clusterState":"ACTIVE","clusterSafe":true,"migrationQueueSize":0,"clusterSize":([^\s]+)}</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The BIG-IP LTM monitors accept regular expressions in these strings allowing you to
+configure them as needed. The example provided above remains green even if the cluster size changes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Using a HEAD request:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the “Send String” as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>HEAD /hazelcast/health HTTP/1.1\r\n\nHost: [HOST-ADDRESS-OF-HAZELCAST-MEMBER] \r\nConnection: Close\r\n\r\n</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Set the “Receive String” as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>200 OK</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As you can see, the HEAD request only checks for a <code>200 OK</code> response.
+A Hazelcast cluster member sends this status code when it is alive and running without an issue.
+This provides a very basic health check. For increased flexibility, we recommend using the GET request API.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tcp_half_open_monitors"><a class="anchor" href="#_tcp_half_open_monitors"></a>TCP_HALF_OPEN Monitors</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the "Type" as <code>TCP Half Open</code>.</p>
+</li>
+<li>
+<p>Optionally, set the "Alias Service Port" as the port of Hazelcast cluster member if you
+want to specify the port in the monitor.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_management_center_2" class="sect0"><a class="anchor" href="#_management_center_2"></a>Management Center</h1>
+<div class="paragraph">
+<p>Hazelcast Management Center enables you to monitor and manage your cluster members running Hazelcast.
+In addition to monitoring the overall state of your clusters, you can also analyze and browse your
+data structures in detail, update map configurations and take thread dumps from members.
+You can run scripts (JavaScript, Groovy, etc.) and commands on your members with its scripting and console modules.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html" target="_blank" rel="noopener">Hazelcast Management Center Documentation</a>
+for its usage details.</p>
+</div>
+<div class="sect1">
+<h2 id="_toggle_scripting_support"><a class="anchor" href="#_toggle_scripting_support"></a>Toggle Scripting Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The support for script execution is disabled by default. The reason is security.
+Script engines allow to access the underlying system on the members (files and other resources).
+Scripts access the system, on which the member runs, with permissions of the running user.</p>
+</div>
+<div class="paragraph">
+<p>Scripting can be allowed or prevented by specifying the <code>scripting-enabled</code> attribute of
+the <code>management-center</code> element within the Hazelcast member configuration file, as shown below:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;management-center scripting-enabled="false" /&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  management-center:
+    scripting-enabled: false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the <a href="https://jcp.org/en/jsr/detail?id=223" target="_blank" rel="noopener">JSR 223</a> API is used in Hazelcast IMDG to support scripting.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_limiting_source_addresses"><a class="anchor" href="#_limiting_source_addresses"></a>Limiting Source Addresses</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It&#8217;s possible to restrict the source IP addresses from which Management Center operations
+are allowed. By default all source connections are allowed.</p>
+</div>
+<div class="paragraph">
+<p>Defining these source addresses is possible through the <code>trusted-interfaces</code>
+configuration element. The wildcard (<code>*</code>) and ranges can be used.
+See the following example:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;management-center&gt;
+        &lt;trusted-interfaces&gt;
+            &lt;interface&gt;192.168.1.*&lt;/interface&gt;
+        &lt;/trusted-interfaces&gt;
+    &lt;/management-center&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  management-center:
+    trusted-interfaces:
+      - 192.168.1.*</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clustered_jmx_and_rest_via_management_center"><a class="anchor" href="#_clustered_jmx_and_rest_via_management_center"></a>Clustered JMX and REST via Management Center</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="blue">Hazelcast IMDG Enterprise</strong></p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html" target="_blank" rel="noopener">Hazelcast Management Center Documentation</a>
+for information on Clustered JMX and Clustered REST (via Management Center) features.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="license-info"><a class="anchor" href="#license-info"></a>License Information</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>License information is available through the following Hazelcast APIs.</p>
+</div>
+<div class="sect2">
+<h3 id="_jmx_2"><a class="anchor" href="#_jmx_2"></a>JMX</h3>
+<div class="paragraph">
+<p>The MBean <code>HazelcastInstance.LicenseInfo</code> holds all the relative license
+details and can be accessed through Hazelcast&#8217;s JMX port (if enabled). The
+following parameters represent these details:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>maxNodeCountAllowed</code>: Maximum members allowed to form a cluster under
+the current license.</p>
+</li>
+<li>
+<p><code>expiryDate</code>: Expiration date of the current license.</p>
+</li>
+<li>
+<p><code>typeCode</code>: Type code of the current license.</p>
+</li>
+<li>
+<p><code>type</code>: Type of the current license.</p>
+</li>
+<li>
+<p><code>ownerEmail</code>: Email of the current license&#8217;s owner.</p>
+</li>
+<li>
+<p><code>companyName</code>: Company name on the current license.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Following is the list of license <code>type</code>s and <code>typeCode</code>s:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>MANAGEMENT_CENTER(1, "Management Center"),
+ENTERPRISE(0, "Enterprise"),
+ENTERPRISE_SECURITY_ONLY(2, "Enterprise only with security"),
+ENTERPRISE_HD(3, "Enterprise HD"),
+CUSTOM(4, "Custom");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rest"><a class="anchor" href="#_rest"></a>REST</h3>
+<div class="paragraph">
+<p>You can access the license details by issuing a <code>GET</code> request through the
+REST API (if enabled; see the <a href="#using-the-rest-endpoint-groups">Using the
+REST Endpoint Groups section</a>) on the <code>/license</code> resource, as shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -v http://localhost:5701/hazelcast/rest/license</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Its output is similar to the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>*   Trying 127.0.0.1...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 5701 (#0)
+&gt; GET /hazelcast/rest/license HTTP/1.1
+&gt; Host: localhost:5701
+&gt; User-Agent: curl/7.58.0
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Content-Type: application/json
+&lt; Content-Length: 165
+&lt;
+{"licenseInfo":{"expiryDate":4090168799999,"maxNodeCount":99,"type":3,"companyName":null,"ownerEmail":null,"keyHash":"OsLh4O6vqDuKEq8lOANQuuAaRnmDfJfRPrFSEhA7T3Y="}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a id="rest-update-license"></a>To update the license of a running cluster, you can issue a <code>POST</code>
+request through the REST API (if enabled; see the <a href="#using-the-rest-endpoint-groups">Using
+the REST Endpoint Groups section</a>) on the <code>/license</code> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}&amp;${LICENSE}" http://localhost:5001/hazelcast/rest/license</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The request parameters must be properly URL-encoded as described in the <a href="#rest-client">REST Client section</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The above command updates the license on all running Hazelcast members of the cluster.
+If successful, the response looks as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>*   Trying 127.0.0.1...
+* TCP_NODELAY set
+* Connected to 127.0.0.1 (127.0.0.1) port 5001 (#0)
+&gt; POST /hazelcast/rest/license HTTP/1.1
+&gt; Host: 127.0.0.1:5001
+&gt; User-Agent: curl/7.54.0
+&gt; Accept: */*
+&gt; Content-Length: 164
+&gt; Content-Type: application/x-www-form-urlencoded
+&gt;
+* upload completely sent off: 164 out of 164 bytes
+&lt; HTTP/1.1 200 OK
+&lt; Content-Type: application/javascript
+&lt; Content-Length: 364
+&lt;
+* Connection #0 to host 127.0.0.1 left intact
+{"status":"success","licenseInfo":{"expiryDate":1560380399161,"maxNodeCount":10,
+"type":-1,"companyName":"ExampleCompany","ownerEmail":"info@example.com",
+"keyHash":"ml/u6waTNQ+T4EWxnDRykJpwBmaV9uj+skZzv0SzDhs="},
+"message":"License updated at run time - please make sure to update the license
+in the persistent configuration to avoid losing the changes on restart."}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As the message in the above example indicates, the license is updated only at runtime.
+The persistent configuration of each member needs to be updated manually to ensure that
+the license change is not lost on restart. The same message is logged as a warning in
+each member&#8217;s log.</p>
+</div>
+<div class="paragraph">
+<p>It is only possible to update to a license that expires at the same time or after
+the current license. The new license must allow the exact same list of features and
+the same number of members.</p>
+</div>
+<div class="paragraph">
+<p>If, for any reason, updating the license fails on some members (member does not respond,
+license is not compatible, etc.), the whole operation fails, leaving the cluster in
+a potentially inconsistent state (some members have been switched to the new license
+while some have not). It is up to you to resolve this situation manually.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logs"><a class="anchor" href="#_logs"></a>Logs</h3>
+<div class="paragraph">
+<p>Besides the above approaches (JMX and REST) to access the license details,
+Hazelcast also starts to log a license information banner into the log files
+when the license expiration is approaching.</p>
+</div>
+<div class="paragraph">
+<p>During the last two months prior to the expiration, this license information
+banner is logged daily, as a reminder to renew your license to avoid any
+interruptions. Once the expiration is due to a month, the frequency of
+logging this banner becomes hourly (instead of daily). Lastly, when the
+expiration is due in a week, this banner is printed every 30 minutes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Similar alerts are also present on the Hazelcast Management Center.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The banner has the following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ WARNING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+HAZELCAST LICENSE WILL EXPIRE IN 29 DAYS.
+Your Hazelcast cluster will stop working after this time.
+
+Your license holder is customer@example-company.com, you should have them contact
+our license renewal department, urgently on info@hazelcast.com
+or call us on +1 (650) 521-5453
+
+Please quote license id CUSTOM_TEST_KEY
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Please pay attention to the license warnings to prevent any possible
+interruptions in the operation of your Hazelcast applications.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_tracking"><a class="anchor" href="#_instance_tracking"></a>Instance Tracking</h3>
+<div class="paragraph">
+<p>Instance tracking is a feature which, when enabled, writes a file on
+the instance startup at the configured location. The file  contains metadata
+about the instance, such as version, product name and process ID.
+This file can then later be used by other programs to detect the kinds of Hazelcast instances
+that have been running on a particular machine by inspecting the file contents.
+This feature supports both IMDG Open Source and Enterprise members and clients as well as Hazelcast Jet,
+and is disabled by default. Failing to write the file only generates a warning, and the instance is allowed to start.</p>
+</div>
+<div class="paragraph">
+<p>The name and content of the file are configurable and may contain placeholders.
+The placeholders used for instance tracking have a prefix so that they can be distinguished
+from the other ones like XML placeholders. We use the same style as the <code>EncryptionReplacer</code>
+by adding a "namespace" to the placeholder prefix; for example, <code>$HZ_INSTANCE_TRACKING{start_timestamp}</code>
+(the namespace here being <code>HZ_INSTANCE_TRACKING</code>).</p>
+</div>
+<div class="paragraph">
+<p>In addition to the above, the Hazelcast instance overwrites any existing file in the configured location.
+To prevent this, you can configure the file location using the placeholders in the same way
+they can be used when defining the file contents. For example, if the file name is configured as
+<code>Hazelcast-$HZ_INSTANCE_TRACKING{pid}-$HZ_INSTANCE_TRACKING{start_timestamp}.process</code>, it contains the process ID
+and the creation time, making it unique every time the instance is started. The created file is not deleted on member shutdown.
+As such, it leaves a trace of instances started on a particular machine. The file creation process
+also is fail-safe meaning that the instance will proceed with starting even though it is
+unable to write the tracking file and the instance will only log a warning.</p>
+</div>
+<div class="sect3">
+<h4 id="instance-tracking-configuration"><a class="anchor" href="#instance-tracking-configuration"></a>Configuring Instance Tracking</h4>
+<div class="paragraph">
+<p>Here is an example of programmatic member-side Java configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+config.getInstanceTrackingConfig()
+      .setEnabled(true)
+      .setFileName("/tmp/hz-tracking.txt")
+      .setFormatPattern("$HZ_INSTANCE_TRACKING\{product}:$HZ_INSTANCE_TRACKING\{version}");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The equivalent declarative configuration is as follows:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+           http://www.hazelcast.com/schema/config/hazelcast-config-4.1.xsd"&gt;
+
+    &lt;instance-tracking enabled="true"&gt;
+        &lt;file-name&gt;/tmp/hz-tracking.txt&lt;/file-name&gt;
+        &lt;format-pattern&gt;$HZ_INSTANCE_TRACKING{product}:$HZ_INSTANCE_TRACKING{version}&lt;/format-pattern&gt;
+    &lt;/instance-tracking&gt;
+
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  instance-tracking:
+    enabled: true
+    file-name: /tmp/hz-tracking.txt
+    format-pattern: $HZ_INSTANCE_TRACKING{product}:$HZ_INSTANCE_TRACKING{version}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use this configuration to enable the instance tracking feature,
+specify the file name and the pattern for the file contents. By default, the feature is disabled,
+the file name is <code>Hazelcast.process</code> in the OS temporary directory as returned by <code>System.getProperty("java.io.tmpdir")</code>
+and the file contents are JSON-formatted key-value pairs of all available metadata.</p>
+</div>
+<div class="paragraph">
+<p>The client configuration is analogous and only differs in the name of the outer
+configuration block or configuration instance containing the instance tracking configuration.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example when running a client instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"product":"Hazelcast", "version":"4.1.7", "pid":27746, "mode":"client", "start_timestamp":1595851430741, "licensed":0}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is an example when running a member instance in the "server" mode:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"product":"Hazelcast", "version":"4.1.7", "pid":27746, "mode":"server", "start_timestamp":1595851430741, "licensed":1}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And here is an example when running a member instance in the "embedded" mode:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"product":"Hazelcast", "version":"4.1.7", "pid":27746, "mode":"embedded", "start_timestamp":1595851430741, "licensed":1}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a custom format by using a predefined set of available metadata keys an example of which is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String format = "mode: $HZ_INSTANCE_TRACKING{mode}\n"
+        + "product: $HZ_INSTANCE_TRACKING\{product}\n"
+        + "licensed: $HZ_INSTANCE_TRACKING{licensed}\n"
+        + "missing: $HZ_INSTANCE_TRACKING{missing}\n"
+        + "broken: $HZ_INSTANCE_TRACKING{broken ";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This should produce a file with the following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">mode: embedded
+product: Hazelcast
+licensed: 0
+missing: $HZ_INSTANCE_TRACKING{missing}
+broken: $HZ_INSTANCE_TRACKING{broken</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, once we encounter a broken placeholder, all subsequent placeholders are ignored.
+On the other hand, missing placeholders are skipped and subsequent placeholders are resolved.</p>
+</div>
+<div class="paragraph">
+<p>The currently valid metadata placeholders and their possible values are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>product</code>: Instance product name, e.g., "Hazelcast" or "Hazelcast Enterprise".</p>
+</li>
+<li>
+<p><code>version</code>: Instance version.</p>
+</li>
+<li>
+<p><code>mode</code>: Instance mode, e.g., "server", "embedded" or "client"</p>
+</li>
+<li>
+<p><code>start_timestamp</code>: the timestamp of when the instance was started as the difference,
+measured in milliseconds, between the current time and midnight, January 1, 1970 UTC.</p>
+</li>
+<li>
+<p><code>licensed</code>: Specifies whether the instance is using a license or not.
+The value <code>0</code> signifies that there is no license set and the value <code>1</code> signifies that a license is in use.</p>
+</li>
+<li>
+<p><code>pid</code>: Attempts to get the process ID value. The algorithm does not guarantee to
+get the process ID on all JVMs and operating systems so please test before use.
+In case we are unable to get the PID, the value is <code>-1</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The possible values for the <code>product</code> placeholder: <code>Hazelcast</code>, <code>Hazelcast Enterprise</code>, <code>Hazelcast Client</code>, <code>Hazelcast Client Enterprise</code>, <code>Hazelcast Jet</code>, <code>Hazelcast Jet Enterprise</code>.</p>
+</div>
+<div class="paragraph">
+<p>The possible values for the <code>mode</code> placeholder:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>server</code>: This value is used when the instance was started using the <code>start.sh</code> or <code>start.bat</code> scripts.</p>
+</li>
+<li>
+<p><code>client</code>: This instance is a Hazelcast client instance.</p>
+</li>
+<li>
+<p><code>embedded</code>: This instance is embedded in another Java program.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/deploy/management.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

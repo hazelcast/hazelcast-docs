@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hazelcast Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/develop/distributed_computing.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../deploy/installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../hazelcast_overview.html">Hazelcast IMDG</a></li>
+    <li><a href="hazelcast_clients.html">Develop Solutions</a></li>
+    <li><a href="distributed_computing.html">Distributed Computing</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/develop/pages/distributed_computing.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect1">
+<h2 id="distributed-computing"><a class="anchor" href="#distributed-computing"></a>Distributed Computing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter explains Hazelcast&#8217;s executor service, durable/scheduled executor services and entry processor implementations.</p>
+</div>
+<div class="sect2">
+<h3 id="executor-service"><a class="anchor" href="#executor-service"></a>Executor Service</h3>
+<div class="paragraph">
+<p>One of the coolest features of Java is the Executor framework, which allows you to asynchronously execute your tasks (logical units of work), such as database queries, complex calculations and image rendering.</p>
+</div>
+<div class="paragraph">
+<p>The default implementation of this framework (<code>ThreadPoolExecutor</code>) is designed to run within a single JVM (cluster member). In distributed systems, this implementation is not desired since you may want a task submitted in one JVM and processed in another one. Hazelcast offers <code>IExecutorService</code> for you to use in distributed environments. It implements <code>java.util.concurrent.ExecutorService</code> to serve the applications requiring computational and data processing power.</p>
+</div>
+<hr>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that you may want to use <a href="https://jet.hazelcast.org/" target="_blank" rel="noopener">Hazelcast Jet</a> if you want to process batch or real-time streaming data. See the <a href="https://jet.hazelcast.org/use-cases/fast-batch-processing/" target="_blank" rel="noopener">Fast Batch Processing</a> and <a href="https://jet.hazelcast.org/use-cases/real-time-stream-processing/" target="_blank" rel="noopener">Real-Time Stream Processing</a> use cases for Hazelcast Jet.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With <code>IExecutorService</code>, you can execute tasks asynchronously and perform other useful tasks. If your task execution takes longer than expected, you can cancel the task execution. Tasks should be <code>Serializable</code> since they are distributed.</p>
+</div>
+<div class="paragraph">
+<p>In the Java Executor framework, you implement tasks two ways: Callable or Runnable.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Callable: If you need to return a value and submit it to Executor, implement the task as <code>java.util.concurrent.Callable</code>.</p>
+</li>
+<li>
+<p>Runnable: If you do not need to return a value, implement the task as <code>java.util.concurrent.Runnable</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that, the distributed executor service (<code>IExecutorService</code>) is intended to run processing where the data is hosted: on the server members. In general, you cannot run a Java Runnable or Callable on the clients as the clients may not be Java. Also, the clients do not host any data, so they would have to fetch what data they need from the servers potentially. If you want something to run on all or some clients connected to your cluster, you could implement this using the publish/subscribe mechanism; a payload could be sent to an <a href="#topic"><code>ITopic</code></a> with the necessary execution parameters, and clients listening can act on the message.</p>
+</div>
+<div class="sect3">
+<h4 id="_implementing_a_callable_task"><a class="anchor" href="#_implementing_a_callable_task"></a>Implementing a Callable Task</h4>
+<div class="paragraph">
+<p>In Hazelcast, when you implement a task as <code>java.util.concurrent.Callable</code> (a task that returns a value), you implement Callable and Serializable.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example of a Callable task. SumTask prints out map keys and returns the summed map values.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class SumTask
+        implements Callable&lt;Integer&gt;, Serializable, HazelcastInstanceAware {
+
+    private transient HazelcastInstance hazelcastInstance;
+
+    public void setHazelcastInstance( HazelcastInstance hazelcastInstance ) {
+        this.hazelcastInstance = hazelcastInstance;
+    }
+
+    public Integer call() throws Exception {
+        IMap&lt;String, Integer&gt; map = hazelcastInstance.getMap( "map" );
+        int result = 0;
+        for ( String key : map.localKeySet() ) {
+            System.out.println( "Calculating for key: " + key );
+            result += map.get( key );
+        }
+        System.out.println( "Local Result: " + result );
+        return result;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another example is the Echo callable below. In its call() method, it returns the local member and the input passed in. Remember that <code>instance.getCluster().getLocalMember()</code> returns the local member and <code>toString()</code> returns the member&#8217;s address (IP + port) in String form, just to see which member actually executed the code for our example. Of course, the <code>call()</code> method can do and return anything you like.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Echo implements Callable&lt;String&gt;, Serializable, HazelcastInstanceAware {
+    String input = null;
+
+    private transient HazelcastInstance hazelcastInstance;
+
+    public Echo() {
+    }
+
+    public void setHazelcastInstance( HazelcastInstance hazelcastInstance ) {
+        this.hazelcastInstance = hazelcastInstance;
+    }
+
+    public Echo(String input) {
+        this.input = input;
+    }
+
+    public String call() {
+        return hazelcastInstance.getCluster().getLocalMember().toString() + ":" + input;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_executing_a_callable_task"><a class="anchor" href="#_executing_a_callable_task"></a>Executing a Callable Task</h5>
+<div class="paragraph">
+<p>To execute a callable task:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>retrieve the Executor from <code>HazelcastInstance</code></p>
+</li>
+<li>
+<p>submit a task which returns a <code>Future</code></p>
+</li>
+<li>
+<p>after executing the task, you do not have to wait for the execution to complete, you can process other things</p>
+</li>
+<li>
+<p>when ready, use the <code>Future</code> object to retrieve the result as shown in the code example below.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below, the Echo task is executed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MasterMember {
+
+    public static void main( String[] args ) throws Exception {
+        HazelcastInstance instance = Hazelcast.newHazelcastInstance();
+        IExecutorService executorService = instance.getExecutorService( "executorService" );
+        Future&lt;String&gt; future = executorService.submit( new Echo( "myinput") );
+        //while it is executing, do some useful stuff
+        //when ready, get the result of your execution
+        String result = future.get();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please note that the <code>Echo</code> callable in the above example also implements a Serializable interface, since it may be sent to another member to be processed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When a task is deserialized, HazelcastInstance needs to be accessed. To do this, the task should implement <code>HazelcastInstanceAware</code> interface. See the <a href="#implementing-hazelcastinstanceaware">HazelcastInstanceAware Interface section</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_implementing_a_runnable_task"><a class="anchor" href="#_implementing_a_runnable_task"></a>Implementing a Runnable Task</h4>
+<div class="paragraph">
+<p>In Hazelcast, when you implement a task as <code>java.util.concurrent.runnable</code> (a task that does not return a value), you implement Runnable and Serializable.</p>
+</div>
+<div class="paragraph">
+<p>Below is Runnable example code. It is a task that waits for some time and echoes a message.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class EchoTask implements Runnable, Serializable {
+
+    private final String msg;
+
+    public EchoTask( String msg ) {
+        this.msg = msg;
+    }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep( 5000 );
+        } catch ( InterruptedException e ) {
+        }
+        System.out.println( "echo:" + msg );
+    }
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_executing_a_runnable_task"><a class="anchor" href="#_executing_a_runnable_task"></a>Executing a Runnable Task</h5>
+<div class="paragraph">
+<p>To execute the runnable task:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>retrieve the Executor from <code>HazelcastInstance</code></p>
+</li>
+<li>
+<p>submit the tasks to the Executor.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s write a class that submits and executes these echo messages. Executor is retrieved from <code>HazelcastInstance</code> and 1000 echo tasks are submitted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class RunnableMasterMember {
+
+    public static void main( String[] args ) throws Exception {
+        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        IExecutorService executor = hazelcastInstance.getExecutorService( "exec" );
+        for ( int k = 1; k &lt;= 1000; k++ ) {
+            Thread.sleep( 1000 );
+            System.out.println( "Producing echo task: " + k );
+            executor.execute( new EchoTask( String.valueOf( k ) ) );
+        }
+        System.out.println( "EchoTaskMain finished!" );
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scaling-the-executor-service"><a class="anchor" href="#scaling-the-executor-service"></a>Scaling The Executor Service</h4>
+<div class="paragraph">
+<p>You can scale the Executor service both vertically (scale up) and horizontally (scale out).</p>
+</div>
+<div class="paragraph">
+<p>To scale up, you should improve the processing capacity of the cluster member (JVM). You can do this by increasing the <code>pool-size</code> property mentioned in <a href="#configuring-executor-service">Configuring Executor Service</a> (i.e., increasing the thread count). However, please be aware of your member&#8217;s capacity. If you think it cannot handle such an additional load caused by increasing the thread count, you may want to consider improving the member&#8217;s resources (CPU, memory, etc.). As an example, set the <code>pool-size</code> to 5 and run the above <code>MasterMember</code>. You will see that <code>EchoTask</code> is run as soon as it is produced.</p>
+</div>
+<div class="paragraph">
+<p>To scale out, add more members instead of increasing only one member&#8217;s capacity. In reality, you may want to expand your cluster by adding more physical or virtual machines. For example, in the EchoTask example in the <a href="#implementing-a-runnable-task">Runnable section</a>, you can create another Hazelcast instance. That instance automatically gets involved in the executions started in <code>MasterMember</code> and start processing.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="executing-code-in-the-cluster"><a class="anchor" href="#executing-code-in-the-cluster"></a>Executing Code in the Cluster</h4>
+<div class="paragraph">
+<p>The distributed executor service is a distributed implementation of <code>java.util.concurrent.ExecutorService</code>. It allows you to execute your code in the cluster. In this section, the code examples are based on the <a href="#implementing-a-callable-task">Echo class above</a> (please note that the Echo class is <code>Serializable</code>). The code examples show how Hazelcast can execute your code (<code>Runnable, Callable</code>):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>echoOnTheMember</code>: On a specific cluster member you choose with the <code>IExecutorService</code> <code>submitToMember</code> method.</p>
+</li>
+<li>
+<p><code>echoOnTheMemberOwningTheKey</code>: On the member owning the key you choose with the <code>IExecutorService</code> <code>submitToKeyOwner</code> method.</p>
+</li>
+<li>
+<p><code>echoOnSomewhere</code>: On the member Hazelcast picks with the <code>IExecutorService</code> <code>submit</code> method.</p>
+</li>
+<li>
+<p><code>echoOnMembers</code>: On all or a subset of the cluster members with the <code>IExecutorService</code> <code>submitToMembers</code> method.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void echoOnTheMember( String input, Member member ) throws Exception {
+    Callable&lt;String&gt; task = new Echo( input );
+    HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+    IExecutorService executorService =
+      hazelcastInstance.getExecutorService( "default" );
+
+    Future&lt;String&gt; future = executorService.submitToMember( task, member );
+    String echoResult = future.get();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void echoOnTheMemberOwningTheKey( String input, Object key ) throws Exception {
+    Callable&lt;String&gt; task = new Echo( input );
+    HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+    IExecutorService executorService =
+      hazelcastInstance.getExecutorService( "default" );
+
+    Future&lt;String&gt; future = executorService.submitToKeyOwner( task, key );
+    String echoResult = future.get();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void echoOnSomewhere( String input ) throws Exception {
+    HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+    IExecutorService executorService =
+      hazelcastInstance.getExecutorService( "default" );
+
+    Future&lt;String&gt; future = executorService.submit( new Echo( input ) );
+    String echoResult = future.get();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void echoOnMembers( String input, Set&lt;Member&gt; members ) throws Exception {
+    HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+    IExecutorService executorService =
+      hazelcastInstance.getExecutorService( "default" );
+
+    Map&lt;Member, Future&lt;String&gt;&gt; futures = executorService
+      .submitToMembers( new Echo( input ), members );
+
+    for ( Future&lt;String&gt; future : futures.values() ) {
+        String echoResult = future.get();
+        // ...
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can obtain the set of cluster members via <code>HazelcastInstance.getCluster().getMembers()</code> call.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="canceling-an-executing-task"><a class="anchor" href="#canceling-an-executing-task"></a>Canceling an Executing Task</h4>
+<div class="paragraph">
+<p>A task in the code that you execute in a cluster might take longer than expected. If you cannot stop/cancel that task, it keeps eating your resources.</p>
+</div>
+<div class="paragraph">
+<p>To cancel a task, you can use the standard Java executor framework&#8217;s <code>cancel()</code> API. This framework encourages us to code and design for cancellations, a highly ignored part of software development.</p>
+</div>
+<div class="sect4">
+<h5 id="_example_task_to_cancel"><a class="anchor" href="#_example_task_to_cancel"></a>Example Task to Cancel</h5>
+<div class="paragraph">
+<p>The Fibonacci callable class below calculates the Fibonacci number for a given number. In the <code>calculate</code> method, we check if the current thread is interrupted so that the code can respond to cancellations once the execution is started.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    int input = 0;
+
+    public FibonacciCallable( int input ) {
+        this.input = input;
+    }
+
+    public Long call() {
+        return calculate( input );
+    }
+
+    private long calculate( int n ) {
+        if ( Thread.currentThread().isInterrupted() ) {
+            return 0;
+        }
+        if ( n &lt;= 1 ) {
+            return n;
+        } else {
+            return calculate( n - 1 ) + calculate( n - 2 );
+        }
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_method_to_execute_and_cancel_the_task"><a class="anchor" href="#_example_method_to_execute_and_cancel_the_task"></a>Example Method to Execute and Cancel the Task</h5>
+<div class="paragraph">
+<p>The <code>fib()</code> method below submits the Fibonacci calculation task above for number 'n' and waits a maximum of 3 seconds for the result. If the execution does not completed in three seconds, the <code>future.get()</code> method throws a <code>TimeoutException</code> and upon catching it, we cancel the execution, saving some CPU cycles.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    long fib( int n ) throws Exception {
+        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+        IExecutorService es = hazelcastInstance.getExecutorService("es");
+        Future&lt;Long&gt; future = es.submit( new FibonacciCallable( n ) );
+        try {
+            long result = future.get( 3, TimeUnit.SECONDS );
+            System.out.println(result);
+        } catch ( TimeoutException e ) {
+            future.cancel( true );
+        }
+        return -1;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>fib(20)</code> probably takes less than 3 seconds. However, <code>fib(50)</code> takes much longer. (This is not an example for writing better Fibonacci calculation code, but for showing how to cancel a running execution that takes too long.) The method <code>future.cancel(false)</code> can only cancel execution before it is running (executing), but <code>future.cancel(true)</code> can interrupt running executions provided that your code is able to handle the interruption. If you are willing to cancel an already running task, then your task should be designed to handle interruptions. If the <code>calculate (int n)</code> method did not have the <code>(Thread.currentThread().isInterrupted())</code> line, then you would not be able to cancel the execution after it is started.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="callback-when-task-completes"><a class="anchor" href="#callback-when-task-completes"></a>Callback When Task Completes</h4>
+<div class="paragraph">
+<p>You can use the <code>ExecutionCallback</code> offered by Hazelcast to asynchronously be notified when the execution is done. To be notified when your task completes without an error, implement the <code>onResponse</code> method. To be notified when your task completes with an error, implement the <code>onFailure</code> method.</p>
+</div>
+<div class="sect4">
+<h5 id="_example_task_to_callback"><a class="anchor" href="#_example_task_to_callback"></a>Example Task to Callback</h5>
+<div class="paragraph">
+<p>Let&#8217;s use the Fibonacci series to explain this. The example code below is the calculation that is executed. Note that it is Callable and Serializable.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Fibonacci2 implements Callable&lt;Long&gt;, Serializable {
+
+    private final int input;
+
+    public Fibonacci2(int input) {
+        this.input = input;
+    }
+
+    public Long call() {
+        return calculate(input);
+    }
+
+    private long calculate(int n) {
+        if (Thread.currentThread().isInterrupted()) {
+            System.out.println("FibonacciCallable is interrupted");
+            throw new RuntimeException("FibonacciCallable is interrupted");
+        }
+        if (n &lt;= 1) {
+            return n;
+        } else {
+            return calculate(n - 1) + calculate(n - 2);
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_method_to_callback_the_task"><a class="anchor" href="#_example_method_to_callback_the_task"></a>Example Method to Callback the Task</h5>
+<div class="paragraph">
+<p>The example code below submits the Fibonacci calculation to <code>ExecutionCallback</code> and prints the result asynchronously. <code>ExecutionCallback</code> has the methods <code>onResponse</code> and <code>onFailure</code>. In this example code, <code>onResponse</code> is called upon a valid response and prints the calculation result, whereas <code>onFailure</code> is called upon a failure and prints the stacktrace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MasterMemberCallback {
+
+    public static void main(String[] args) {
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+        IExecutorService executor = hz.getExecutorService("executor");
+
+        ExecutionCallback&lt;Long&gt; executionCallback = new ExecutionCallback&lt;Long&gt;() {
+            public void onFailure(Throwable t) {
+                t.printStackTrace();
+            }
+
+            public void onResponse(Long response) {
+                System.out.println("Result: " + response);
+            }
+        };
+
+        executor.submit(new FibonacciCallable(10), executionCallback);
+        System.out.println("Fibonacci task submitted");
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-members-for-task-execution"><a class="anchor" href="#selecting-members-for-task-execution"></a>Selecting Members for Task Execution</h4>
+<div class="paragraph">
+<p>As previously mentioned, it is possible to indicate where in the Hazelcast cluster the <code>Runnable</code> or <code>Callable</code> is executed. Usually you execute these in the cluster based on the location of a key or a set of keys, or you allow Hazelcast to select a member.</p>
+</div>
+<div class="paragraph">
+<p>If you want more control over where your code runs, use the <code>MemberSelector</code> interface. For example, you may want certain tasks to run only on certain members, or you may wish to implement some form of custom load balancing regime.  The <code>MemberSelector</code> is an interface that you can implement and then provide to the <code>IExecutorService</code> when you submit or execute.</p>
+</div>
+<div class="paragraph">
+<p>The <code>select(Member)</code> method is called for every available member in the cluster. Implement this method to decide if the member is going to be used or not.</p>
+</div>
+<div class="paragraph">
+<p>In a simple example shown below, we select the cluster members based on the presence of an attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MyMemberSelector implements MemberSelector {
+    public boolean select(Member member) {
+        return Boolean.TRUE.equals(member.getBooleanAttribute("my.special.executor"));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use <code>MemberSelector</code> instances provided by the <code>com.hazelcast.cluster.memberselector.MemberSelectors</code> class. For example, you can select a lite member for running a task using <code>com.hazelcast.cluster.memberselector.MemberSelectors#LITE_MEMBER_SELECTOR</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-executor-service"><a class="anchor" href="#configuring-executor-service"></a>Configuring Executor Service</h4>
+<div class="paragraph">
+<p>The following are example configurations for executor service.</p>
+</div>
+<div class="paragraph">
+<p><strong>Declarative Configuration:</strong></p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;executor-service name="exec"&gt;
+        &lt;pool-size&gt;1&lt;/pool-size&gt;
+        &lt;queue-capacity&gt;10&lt;/queue-capacity&gt;
+        &lt;statistics-enabled&gt;true&lt;/statistics-enabled&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  ..
+  executor-service:
+    exec:
+      pool-size: 1
+      queue-capacity: 10
+      statistics-enabled: true
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Programmatic Configuration:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        Config config = new Config();
+        ExecutorConfig executorConfig = config.getExecutorConfig("exec");
+        executorConfig.setPoolSize( 1 ).setQueueCapacity( 10 )
+                .setStatisticsEnabled( true )
+                .setSplitBrainProtectionName( "splitbrainprotectionname" );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Executor service configuration has the following elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pool-size</code>: The number of executor threads per Member for the Executor. By default, Executor is configured to have 16 threads in the pool. You can change that with this element.</p>
+</li>
+<li>
+<p><code>queue-capacity</code>: Executor&#8217;s task queue capacity; the number of tasks this queue can hold.</p>
+</li>
+<li>
+<p><code>statistics-enabled</code>: Specifies whether the statistics gathering is enabled for your Executor Service. If set to <code>false</code>, you cannot collect statistics in your implementation (using <code>getLocalExecutorStats()</code>) and also <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#monitoring-executors" target="_blank" rel="noopener">Hazelcast Management Center</a> will not show them. Its default value is <code>true</code>.</p>
+</li>
+<li>
+<p><code>split-brain-protection-ref</code>: Name of the split-brain protection configuration that you want this Executor Service to use. See the <a href="#split-brain-protection-for-iexecutorservice">Split-Brain Protection for IExecutorService section</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_split_brain_protection_for_iexecutorservice"><a class="anchor" href="#_split_brain_protection_for_iexecutorservice"></a>Split-Brain Protection for IExecutorService</h4>
+<div class="paragraph">
+<p>IExecutorService can be configured to check for a minimum number of available members before applying its operations (see the <a href="#split-brain-protection">Split-Brain Protection section</a>). This is a check to avoid performing successful queue operations on all parts of a cluster during a network partition.</p>
+</div>
+<div class="paragraph">
+<p>The following is a list of methods, grouped by the operations, that support split-brain protection checks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>WRITE, READ_WRITE:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>execute</code></p>
+</li>
+<li>
+<p><code>executeOnAllMembers</code></p>
+</li>
+<li>
+<p><code>executeOnKeyOwner</code></p>
+</li>
+<li>
+<p><code>executeOnMember</code></p>
+</li>
+<li>
+<p><code>executeOnMembers</code></p>
+</li>
+<li>
+<p><code>shutdown</code></p>
+</li>
+<li>
+<p><code>shutdownNow</code></p>
+</li>
+<li>
+<p><code>submit</code></p>
+</li>
+<li>
+<p><code>submitToAllMembers</code></p>
+</li>
+<li>
+<p><code>submitToKeyOwner</code></p>
+</li>
+<li>
+<p><code>submitToMember</code></p>
+</li>
+<li>
+<p><code>submitToMembers</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Configuring Split-Brain Protection</strong></p>
+</div>
+<div class="paragraph">
+<p>Split-brain protection for Executor Service can be configured programmatically using the method <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/config/ExecutorConfig.html" target="_blank" rel="noopener">setSplitBrainProtectionName()</a>, or declaratively using the element <code>split-brain-protection-ref</code>. Following is an example declarative configuration:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;executor-service name="default"&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  ..
+  executor-service:
+    default:
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The value of <code>split-brain-protection-ref</code> should be the split-brain protection configuration name which you configured under the <code>split-brain-protection</code> element as explained in the <a href="#split-brain-protection">Split-Brain Protection section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_durable_executor_service"><a class="anchor" href="#_durable_executor_service"></a>Durable Executor Service</h3>
+<div class="paragraph">
+<p>Hazelcast&#8217;s durable executor service is a data structure which is able to store an execution task both on the executing Hazelcast member and its backup member(s), if configured. By this way, you do not lose any tasks if a member goes down or any results if the submitter (member or client) goes down while executing the task. When using the durable executor service you can either submit or execute a task randomly or on the owner of a provided key. Note that in <a href="#executor-service">executor service</a>, you can submit or execute tasks to/on the selected member(s).</p>
+</div>
+<div class="paragraph">
+<p>Processing of the tasks when using durable executor service involves two invocations:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sending the task to primary Hazelcast member (primary partition) and to its backups, if configured, and executing the task.</p>
+</li>
+<li>
+<p>Retrieving the result of the task.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As you may already know, Hazelcast&#8217;s executor service returns a <code>future</code> representing the task to the user. With the above two-invocations approach, it is guaranteed that the task is executed before the <code>future</code> returns and you can track the response of a submitted task with a unique ID. Hazelcast stores the task on both primary and backup members, and starts the execution also.</p>
+</div>
+<div class="paragraph">
+<p>With the first invocation, a <a href="#ringbuffer">Ringbuffer</a> stores the task and a generated sequence for the task is returned to the caller as a result. In addition to the storing, the task is executed on the local execution service for the primary member. By this way, the task is now resilient to member failures and you are able to track the task with its ID.</p>
+</div>
+<div class="paragraph">
+<p>After the first invocation has completed and the sequence of task is returned, second invocation starts to retrieve the result of task with that sequence. This retrieval waits in the waiting operations queue until notified, or it runs immediately if the result is already available.</p>
+</div>
+<div class="paragraph">
+<p>When task execution is completed, Ringbuffer replaces the task with the result for the given task sequence. This replacement notifies the waiting operations queue.</p>
+</div>
+<div class="sect3">
+<h4 id="_configuring_durable_executor_service"><a class="anchor" href="#_configuring_durable_executor_service"></a>Configuring Durable Executor Service</h4>
+<div class="paragraph">
+<p>This section presents example configurations for durable executor service along with the descriptions of its configuration elements and attributes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Declarative Configuration:</strong></p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;durable-executor-service name="myDurableExecSvc"&gt;
+        &lt;statistics-enabled&gt;true&lt;/statistics-enabled&gt;
+        &lt;pool-size&gt;8&lt;/pool-size&gt;
+        &lt;durability&gt;1&lt;/durability&gt;
+        &lt;capacity&gt;1&lt;/capacity&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/durable-executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  ...
+  durable-executor-service:
+    myDurableExecSvc:
+      statistics-enabled: true
+      pool-size: 8
+      durability: 1
+      capacity: 1
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Programmatic Configuration:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        Config config = new Config();
+        config.getDurableExecutorConfig( "myDurableExecSvc" )
+                .setPoolSize ( 8 )
+                .setDurability( 1 )
+                .setCapacity( 1 )
+                .setSplitBrainProtectionName( "splitbrainprotectionname" );
+
+        HazelcastInstance hazelcast = Hazelcast.newHazelcastInstance(config);
+        DurableExecutorService durableExecSvc = hazelcast.getDurableExecutorService("myDurableExecSvc");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the descriptions of each configuration element and attribute:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: Name of the executor task.</p>
+</li>
+<li>
+<p><code>statistics-enabled</code>: Specifies whether the statistics gathering is enabled. If set to <code>false</code>, you cannot collect statistics.</p>
+</li>
+<li>
+<p><code>pool-size</code>: Number of executor threads per member for the executor.</p>
+</li>
+<li>
+<p><code>durability</code>: Number of backups in the cluster for the submitted task. Its default value is 1.</p>
+</li>
+<li>
+<p><code>capacity</code>: Executor&#8217;s task queue capacity; the number of tasks this queue can hold.</p>
+</li>
+<li>
+<p><code>split-brain-protection-ref</code>: Name of the split-brain protection configuration that you want this Durable Executor Service to use. See the <a href="#split-brain-protection-for-durable-executor-service">Split-Brain Protection for Durable Executor Service section</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_split_brain_protection_for_durable_executor_service"><a class="anchor" href="#_split_brain_protection_for_durable_executor_service"></a>Split-Brain Protection for Durable Executor Service</h4>
+<div class="paragraph">
+<p>Durable Executor Service can be configured to check for a minimum number of available members before applying its operations (see the <a href="#split-brain-protection">Split-Brain Protection section</a>). This is a check to avoid performing successful queue operations on all parts of a cluster during a network partition.</p>
+</div>
+<div class="paragraph">
+<p>The following is a list of methods, grouped by the operations, that support split-brain protection checks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>WRITE, READ_WRITE:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>disposeResult</code></p>
+</li>
+<li>
+<p><code>execute</code></p>
+</li>
+<li>
+<p><code>executeOnKeyOwner</code></p>
+</li>
+<li>
+<p><code>retrieveAndDisposeResult</code></p>
+</li>
+<li>
+<p><code>shutdown</code></p>
+</li>
+<li>
+<p><code>shutdownNow</code></p>
+</li>
+<li>
+<p><code>submit</code></p>
+</li>
+<li>
+<p><code>submitToKeyOwner</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>READ, READ_WRITE:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>retrieveResult</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Configuring Split-Brain Protection</strong></p>
+</div>
+<div class="paragraph">
+<p>Split-brain protection for Durable Executor Service can be configured programmatically using the method <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/config/DurableExecutorConfig.html" target="_blank" rel="noopener">setSplitBrainProtectionName()</a>, or declaratively using the element <code>split-brain-protection-ref</code>. Following is an example declarative configuration:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;durable-executor-service name="myDurableExecSvc"&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/durable-executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  ...
+  durable-executor-service:
+    myDurableExecSvc:
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The value of <code>split-brain-protection-ref</code> should be the split-brain protection configuration name which you configured under the <code>split-brain-protection</code> element as explained in the <a href="#split-brain-protection">Split-Brain Protection section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scheduled_executor_service"><a class="anchor" href="#_scheduled_executor_service"></a>Scheduled Executor Service</h3>
+<div class="paragraph">
+<p>Hazelcast&#8217;s scheduled executor service (IScheduledExecutorService)
+is a data structure which implements <code>java.util.concurrent.ScheduledExecutorService</code>, partially.
+By partially, we mean the behavior difference in scheduling a task at a fixed rate (<code>scheduleAtFixedRate()</code>).
+Hazelcast&#8217;s behavior guarantees that a task is not executed by multiple threads concurrently:
+a scheduled execution is skipped, instead of postponing, if another thread is still running the same task.</p>
+</div>
+<div class="paragraph">
+<p>On top of the Vanilla Scheduling API, IScheduledExecutorService allows additional methods such as the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>scheduleOnMember</code>: On a specific cluster member.</p>
+</li>
+<li>
+<p><code>scheduleOnKeyOwner</code>: On the partition owning that key.</p>
+</li>
+<li>
+<p><code>scheduleOnAllMembers</code>: On all cluster members.</p>
+</li>
+<li>
+<p><code>scheduleOnAllMembers</code>: On all given members.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/scheduledexecutor/IScheduledExecutorService.html" target="_blank" rel="noopener">IScheduledExecutorService Javadoc</a> for its API details.</p>
+</div>
+<div class="paragraph">
+<p>There are two different modes of durability for the service:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Upon partition specific scheduling, the future task is stored both in the primary partition and also in its N backups, N being the <code>&lt;durability&gt;</code> property in the configuration. More specifically, there are always one or more backups to take ownership of the task in the event of a lost member. If a member is lost, the task is re-scheduled on the backup (new primary) member, which might induce further delays on the subsequent executions of the task.
+For example, if we schedule a task to run in 10 seconds from now, <code>schedule(new ExampleTask(), 10, TimeUnit.SECONDS);</code> and after 5 seconds the owner member goes down (before the execution takes place), then the backup owner re-schedules the task in 10 seconds from now. Therefore, from the user&#8217;s perspective waiting on the result, this will be available in <code>10 + 5 = 15</code> seconds rather than 10 seconds as it is anticipated originally. If <code>atFixedRate</code> was used, then only the initial delay is affected in the above scenario, all subsequent executions should adhere to the given period parameter.</p>
+</li>
+<li>
+<p>Upon member specific scheduling, the future task is <strong>only</strong> stored in the member itself, which means that in the event of a lost member, the task is lost as well.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To accomplish the described durability, all tasks provide a unique identity/name before the scheduling takes place. The name allows the service to reach the scheduled task even after the caller (client or member) goes down and also allows to prevent duplicate tasks.
+The name of the task can be user-defined if it needs to be, by implementing the <code>com.hazelcast.scheduledexecutor.NamedTask</code> interface (plain wrapper util is available here: <code>com.hazelcast.scheduledexecutor.TaskUtils.named(java.lang.String, java.lang.Runnable)</code>). If the task does not provide a name in its implementation, the service provides a random UUID for it, internally.</p>
+</div>
+<div class="paragraph">
+<p>Upon scheduling, the service returns an <code>IScheduledFuture</code>, which on top of the <code>java.util.concurrent.ScheduledFuture</code> functionality, provides an API to get the resource handler of the task <code>ScheduledTaskHandler</code> and also the runtime statistics of the task.</p>
+</div>
+<div class="paragraph">
+<p>Futures associated with a scheduled task, in order to be aware of lost partitions and/or members, act as listeners on the local member/client. Therefore, they are always strongly referenced, on the member/client side. In order to clean up their resources, once completed, you can use the method <code>dispose()</code>. This method also cancels further executions of the task if scheduled at a fixed rate. See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/scheduledexecutor/IScheduledFuture.html" target="_blank" rel="noopener">IScheduledFuture Javadoc</a> for its API details.</p>
+</div>
+<div class="paragraph">
+<p>The task handler is a descriptor class holding information for the scheduled future, which is used to pinpoint the actual task in the cluster. It contains the name of the task, the owner (member or partition) and the scheduler name.</p>
+</div>
+<div class="paragraph">
+<p>The handler is always available after scheduling and can be stored in a plain string format <code>com.hazelcast.scheduledexecutor.ScheduledTaskHandler.toUrn()</code> and re-constructed back from that String <code>com.hazelcast.scheduledexecutor.ScheduledTaskHandler.of()</code>. If the handler is lost, you can still find a task under a given scheduler by using the Scheduler&#8217;s <code>com.hazelcast.scheduledexecutor.IScheduledExecutorService.getAllScheduledFutures()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Last but not least, similar to <a href="#executor-service">executor service</a>, the scheduled executor service allows Stateful tasks to be scheduled. Stateful tasks, are tasks that require any kind of state during their runtime, which must also be durable along with the task in the event of a lost partition.</p>
+</div>
+<div class="paragraph">
+<p>Stateful tasks can be created by implementing the <code>com.hazelcast.scheduledexecutor.StatefulTask</code> interface, providing implementation details for saving the state and loading it back. If a partition is lost, then the re-scheduled task loads the previously saved state before its execution.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As with the tasks, Objects stored in the state Map need to be Hazelcast serializable.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_configuring_scheduled_executor_service"><a class="anchor" href="#_configuring_scheduled_executor_service"></a>Configuring Scheduled Executor Service</h4>
+<div class="paragraph">
+<p>This section presents example configurations for scheduled executor service along with the descriptions of its configuration elements and attributes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Declarative Configuration:</strong></p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;scheduled-executor-service name="myScheduledExecSvc"&gt;
+        &lt;statistics-enabled&gt;true&lt;/statistics-enabled&gt;
+        &lt;pool-size&gt;16&lt;/pool-size&gt;
+        &lt;durability&gt;1&lt;/durability&gt;
+        &lt;capacity&gt;100&lt;/capacity&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/scheduled-executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  ...
+  scheduled-executor-service:
+    myScheduledExecSvc:
+      statistics-enabled: true
+      pool-size: 16
+      durability: 1
+      capacity: 100
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Programmatic Configuration:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        Config config = new Config();
+        config.getScheduledExecutorConfig( "myScheduledExecSvc" )
+                .setPoolSize ( 16 )
+                .setCapacity( 100 )
+                .setDurability( 1 )
+                .setSplitBrainProtectionName( "splitbrainprotectionname" );
+
+        HazelcastInstance hazelcast = Hazelcast.newHazelcastInstance(config);
+        IScheduledExecutorService myScheduledExecSvc = hazelcast.getScheduledExecutorService("myScheduledExecSvc");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the descriptions of each configuration element and attribute:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: Name of the scheduled executor.</p>
+</li>
+<li>
+<p><code>statistics-enabled</code>: Specifies whether the statistics gathering is enabled. If set to <code>false</code>, you cannot collect statistics.</p>
+</li>
+<li>
+<p><code>pool-size</code>: Number of executor threads per member for the executor.</p>
+</li>
+<li>
+<p><code>capacity</code>: Maximum number of tasks that a scheduler can have per partition. Attempt to schedule more results in <code>RejectedExecutionException</code>. To free up the capacity, tasks should get disposed by the user.</p>
+</li>
+<li>
+<p><code>durability</code>: Durability of the executor.</p>
+</li>
+<li>
+<p><code>split-brain-protection-ref</code>: Name of the split-brain protection configuration that you want this Scheduled Executor Service to use. See the <a href="#split-brain-protection-for-ischeduled-executor-service">Split-Brain Protection for IScheduled Executor Service section</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scheduled-exec-srv-examples"><a class="anchor" href="#scheduled-exec-srv-examples"></a>Examples</h4>
+<div class="paragraph">
+<p>Scheduling a callable that computes the cluster size in <code>10 seconds</code> from now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">static class DelayedClusterSizeTask implements Callable&lt;Integer&gt;, HazelcastInstanceAware, Serializable {
+
+    private transient HazelcastInstance instance;
+
+    @Override
+    public Integer call()
+            throws Exception {
+        return instance.getCluster().getMembers().size();
+    }
+
+    @Override
+    public void setHazelcastInstance(HazelcastInstance hazelcastInstance) {
+        this.instance = hazelcastInstance;
+    }
+}
+
+HazelcastInstance hazelcast = Hazelcast.newHazelcastInstance();
+IScheduledExecutorService executorService = hazelcast.getScheduledExecutorService("myScheduler");
+IScheduledFuture&lt;Integer&gt; future = executorService.schedule(
+        new DelayedClusterSizeTask(), 10, TimeUnit.SECONDS);
+
+int membersCount = future.get(); // Block until we get the result
+ScheduledTaskStatistics stats = future.getStats();
+future.dispose(); // Always dispose futures that are not in use any more, to release resources
+long totalTaskRuns = stats.getTotalRuns(); // = 1</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_split_brain_protection_for_ischeduled_executor_service"><a class="anchor" href="#_split_brain_protection_for_ischeduled_executor_service"></a>Split-Brain Protection for IScheduled Executor Service</h4>
+<div class="paragraph">
+<p>IScheduledExecutorService can be configured to check for a minimum number of available members before applying its operations (see the <a href="#split-brain-protection">Split-Brain Protection section</a>). This is a check to avoid performing successful queue operations on all parts of a cluster during a network partition.</p>
+</div>
+<div class="paragraph">
+<p>The following is a list of methods, grouped by the operations, that support split-brain protection checks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>WRITE, READ_WRITE:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule</code></p>
+</li>
+<li>
+<p><code>scheduleAtFixedRate</code></p>
+</li>
+<li>
+<p><code>scheduleOnAllMembers</code></p>
+</li>
+<li>
+<p><code>scheduleOnAllMembersAtFixedRate</code></p>
+</li>
+<li>
+<p><code>scheduleOnKeyOwner</code></p>
+</li>
+<li>
+<p><code>scheduleOnKeyOwnerAtFixedRate</code></p>
+</li>
+<li>
+<p><code>scheduleOnMember</code></p>
+</li>
+<li>
+<p><code>scheduleOnMemberAtFixedRate</code></p>
+</li>
+<li>
+<p><code>scheduleOnMembers</code></p>
+</li>
+<li>
+<p><code>scheduleOnMembersAtFixedRate</code></p>
+</li>
+<li>
+<p><code>shutdown</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>READ, READ_WRITE:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>getAllScheduledFutures</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Configuring Split-Brain Protection</strong></p>
+</div>
+<div class="paragraph">
+<p>Split-brain protection for Scheduled Executor Service can be configured programmatically using the method <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/config/ScheduledExecutorConfig.html" target="_blank" rel="noopener">setSplitBrainProtectionName()</a>, or declaratively using the element <code>split-brain-protection-ref</code>. Following is an example declarative configuration:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;scheduled-executor-service name="myScheduledExecSvc"&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/scheduled-executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  ...
+  scheduled-executor-service:
+    myScheduledExecSvc:
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The value of <code>split-brain-protection-ref</code> should be the split-brain protection configuration name which you configured under the <code>split-brain-protection</code> element as explained in the <a href="#split-brain-protection">Split-Brain Protection section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_entry_processor"><a class="anchor" href="#_entry_processor"></a>Entry Processor</h3>
+<div class="paragraph">
+<p>Hazelcast supports entry processing. An entry processor is a function that executes your code on a map entry in an atomic way.</p>
+</div>
+<div class="paragraph">
+<p>An entry processor is a good option if you perform bulk processing on an <code>IMap</code>. Usually you perform a loop of keys - executing <code>IMap.get(key)</code>, mutating the value and finally putting the entry back in the map using <code>IMap.put(key,value)</code>.  If you perform this process from a client or from a member where the keys do not exist, you effectively perform two network hops for each update: the first to retrieve the data and the second to update the mutated value.</p>
+</div>
+<div class="paragraph">
+<p>If you are doing the process described above, you should consider using entry processors. An entry processor executes a read and updates upon the member where the data resides.  This eliminates the costly network hops described above.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Entry processor is meant to process a single entry per call. Processing multiple entries and data structures in an entry processor is not supported as it may result in deadlocks.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that Hazelcast Jet is a good fit when you want to perform processing that involves multiple entries (aggregations, joins, etc.), or involves multiple computing steps to be made parallel. Hazelcast Jet contains an Entry Processor Sink to allow you to update Hazelcast IMDG data as a result of your Hazelcast Jet computation. See the <a href="https://docs.hazelcast.org/docs/jet/latest/manual/index.html#connector-imdg" target="_blank" rel="noopener">Hazelcast Jet Reference Manual</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_performing_fast_in_memory_map_operations"><a class="anchor" href="#_performing_fast_in_memory_map_operations"></a>Performing Fast In-Memory Map Operations</h4>
+<div class="paragraph">
+<p>An entry processor enables fast in-memory operations on your map without you having to worry about locks or concurrency issues. You can apply it to a single map entry or to all map entries. Entry processors support choosing target entries using predicates. You do not need any explicit lock on entry thanks to the isolated threading model: Hazelcast runs the entry processor for all entries on a <code>partitionThread</code> so there will NOT be any interleaving of the entry processor and other mutations.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast sends the entry processor to each cluster member and these members apply it to map entries. Therefore, if you add more members, your processing completes faster.</p>
+</div>
+<div class="sect4">
+<h5 id="_using_indexes"><a class="anchor" href="#_using_indexes"></a>Using Indexes</h5>
+<div class="paragraph">
+<p>Entry processors can be used with predicates. Predicates help to process a subset of data by selecting eligible entries. This selection can happen either by doing a full-table scan or by using indexes. To accelerate entry selection step, you can consider to add indexes. If indexes are there, entry processor automatically uses them.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_using_object_in_memory_format"><a class="anchor" href="#_using_object_in_memory_format"></a>Using OBJECT In-Memory Format</h5>
+<div class="paragraph">
+<p>If entry processing is the major operation for a map and if the map consists of complex objects, you should use <code>OBJECT</code> as the <code>in-memory-format</code> to minimize serialization cost. By default, the entry value is stored as a byte array (<code>BINARY</code> format). When it is stored as an object (<code>OBJECT</code> format), then the entry processor is applied directly on the object. In that case, no serialization or deserialization is performed. However, if there is a defined event listener, a new entry value will be serialized when passing to the event publisher service.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When <code>in-memory-format</code> is <code>OBJECT</code>, the old value of the updated entry will be null.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_processing_entries"><a class="anchor" href="#_processing_entries"></a>Processing Entries</h5>
+<div class="paragraph">
+<p>The <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/map/IMap.html" target="_blank" rel="noopener">IMap interface</a> provides the following methods for entry processing:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>executeOnKey</code> processes an entry mapped by a key, blocking until the processing is complete and the result is returned.</p>
+</li>
+<li>
+<p><code>executeOnKeys</code> processes entries mapped by a collection of keys, blocking until the processing is complete and the results are returned.</p>
+</li>
+<li>
+<p><code>submitToKey</code> processes an entry mapped by a key and provides a way to register a callback to receive notifications about the result of the entry processing.</p>
+</li>
+<li>
+<p><code>executeOnEntries</code> processes all entries in a map, blocking until the processing is complete and the results are returned.</p>
+</li>
+<li>
+<p><code>executeOnEntries</code> also processes all entries in a map matching the provided predicate, blocking until the processing is complete and the results are returned.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When using the <code>executeOnEntries</code> method, if the number of entries is high and you do not need the results, then returning null with the <code>process()</code> method is a good practice. This method is offered by the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/map/EntryProcessor.html" target="_blank" rel="noopener">EntryProcessor interface</a>. By returning null, results of the processing are not collected and thus out of memory errors are eliminated.</p>
+</div>
+<div class="paragraph">
+<p>If you do not need to read or modify the entry in any way but would like to execute a task on the member owning the entry with that key (i.e. the member is the partition owner for that key), you can also use <code>executeOnKeyOwner</code> provided by <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/core/IExecutorService.html#executeOnKeyOwner-java.lang.Runnable-java.lang.Object-" target="_blank" rel="noopener">IExecutorService</a>. You need to make sure that the runnable can be serialized (using any of the available serialization techniques in Hazelcast). The runnable will not receive the map entry key or value and is not running on the same thread as operations reading the map data so operations such as <code>map.get()</code> or <code>map.put()</code> will not be blocked.</p>
+</div>
+<div class="paragraph">
+<p>You can also use entry processors to remove entries from your map simply
+by setting the value(s) of a single entry or multiple entries to <code>null</code>. See the following
+example code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class EntryDeletingProcessor implements EntryProcessor&lt;String, MyData, Boolean&gt; {
+
+    public Boolean process(Map.Entry&lt;String, MyData&gt; entry) {
+        entry.setValue(null);
+        return true;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Related to above, IMap&#8217;s <code>executeOnEntries()</code> method accepts predicates; you can also
+remove entries that match to a predicate that you provide.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Entry processors run via operation threads that are dedicated to specific partitions. Therefore, with long running entry processor executions, other partition operations such as <code>map.put(key)</code> on some partitions can be blocked while partition operations on other partitions might run concurrently. With this in mind, it is a good practice to make your entry processor executions as quick as possible.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_respecting_locks_on_single_keys"><a class="anchor" href="#_respecting_locks_on_single_keys"></a>Respecting Locks on Single Keys</h5>
+<div class="paragraph">
+<p>The entry processor respects locks ONLY when its executions are performed on a single key. As explained in the above section, the entry processor has the following methods to process a single key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">&lt;R&gt; R executeOnKey(K key, EntryProcessor&lt;K, V, R&gt; entryProcessor);
+&lt;R&gt; CompletionStage&lt;R&gt; submitToKey(K key, EntryProcessor&lt;K, V, R&gt; entryProcessor);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Therefore, if you want to to perform an entry processor execution on a single key using one of these methods and that key has a lock on it, the execution will wait until the lock on that key is removed.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_processing_backup_entries"><a class="anchor" href="#_processing_backup_entries"></a>Processing Backup Entries</h5>
+<div class="paragraph">
+<p>If your code modifies the data, then you will most likely need to modify backup entries as well. This should be done to prevent divergence of map values between copies of data in the cluster (the primary and backup replicas). In most cases, this is simple. By implementing the <code>EntryProcessor</code> interface and providing only the <code>process()</code> method, the same entry processor will be applied on all copies of the map entry.</p>
+</div>
+<div class="paragraph">
+<p>If, however, you would like to run a custom processor on backup entries, you may provide the processor by overriding the <code>EntryProcessor#getBackupProcessor</code> method. The method should return an instance of an <code>EntryProcessor</code> which will be run on backup entries exclusively. As such, it may carry some state that was derived from running the entry processor on primary replicas.</p>
+</div>
+<div class="paragraph">
+<p>You may also return <code>null</code> from the <code>EntryProcessor#getBackupProcessor</code> method. This signifies that there is nothing to be done on the backup replicas which is most convenient when you are using the entry processor to read and not modify entries.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is possible that an entry processor could see that a key exists though its backup processor may not find it due to an unsent backup of a previous operation, e.g., a previous put operation. In those situations, Hazelcast internally/eventually synchronizes those owner and backup partitions so you do not lose any data. When coding a backup entry processor, you should take that case into account, otherwise <code>NullPointerException</code> can be seen since <code>Map.Entry.getValue()</code> may return <code>null</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_an_entry_processor"><a class="anchor" href="#_creating_an_entry_processor"></a>Creating an Entry Processor</h4>
+<div class="paragraph">
+<p>The class <code>IncrementingEntryProcessor</code> creates an entry processor to process the map
+entries. It implements the <code>EntryProcessor</code> interface. The <code>process()</code> method will be called for both primary and backup entries.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class IncrementingEntryProcessor implements EntryProcessor&lt;Integer, Integer, Integer&gt; {
+    public Integer process( Map.Entry&lt;Integer, Integer&gt; entry ) {
+        Integer value = entry.getValue();
+        entry.setValue( value + 1 );
+        return value + 1;
+    }
+
+    @Override
+    public EntryProcessor&lt;Integer, Integer, Integer&gt; getBackupProcessor() {
+        return IncrementingEntryProcessor.this;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example usage is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IMap&lt;Integer, Integer&gt; map = hazelcastInstance.getMap( "myMap" );
+for ( int i = 0; i &lt; 100; i++ ) {
+    map.put( i, i );
+}
+Map&lt;Integer, Object&gt; res = map.executeOnEntries( new IncrementingEntryProcessor() );</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You should explicitly call the <code>setValue</code> method of <code>Map.Entry</code> when modifying data in the entry processor. Otherwise, the entry processor is accepted as read-only.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An entry processor instance is not thread-safe. If you are storing a partition specific state between invocations, be sure to register this in a thread-local.  An entry processor instance can be used by multiple partition threads.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_entry_processor_performance_optimizations"><a class="anchor" href="#_entry_processor_performance_optimizations"></a>Entry Processor Performance Optimizations</h4>
+<div class="paragraph">
+<p>By default the entry processor executes on a partition thread. A partition thread is responsible for handling
+one or more partitions. The design of entry processor assumes users have fast user code execution of the <code>process()</code> method.
+In the pathological case where the code is very heavy and executes in multi-milliseconds, this may create a bottleneck.</p>
+</div>
+<div class="paragraph">
+<p>We have a slow user code detector which can be used to log a warning controlled by the following system properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.slow.operation.detector.enabled</code> (default: true)</p>
+</li>
+<li>
+<p><code>hazelcast.slow.operation.detector.threshold.millis</code> (default: 10000)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The defaults catch extremely slow operations but you should set this much lower, say to 1ms, at development time to catch entry processors that could be problematic in production. These are good candidates for our optimizations.</p>
+</div>
+<div class="paragraph">
+<p>We have two optimizations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Offloadable</code> which moves execution off the partition thread to an executor thread</p>
+</li>
+<li>
+<p><code>ReadOnly</code> which means we can avoid taking a lock on the key</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These are enabled very simply by implementing these interfaces in your <code>EntryProcessor</code>.</p>
+</div>
+<div class="paragraph">
+<p>As of Hazelcast IMDG 3.9, these optimizations apply to the following IMap methods only:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>executeOnKey(Object, EntryProcessor)</code></p>
+</li>
+<li>
+<p><code>submitToKey(Object, EntryProcessor)</code></p>
+</li>
+<li>
+<p><code>submitToKey(Object, EntryProcessor, ExecutionCallback)</code></p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_offloadable_entry_processor"><a class="anchor" href="#_offloadable_entry_processor"></a>Offloadable Entry Processor</h5>
+<div class="paragraph">
+<p>If an entry processor implements the <code>Offloadable</code> interface, the <code>process()</code> method is executed in the executor
+specified by the <code>Offloadable</code>'s <code>getExecutorName()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>Offloading unblocks the partition thread allowing the user to profit from much higher throughput.
+The key is locked for the time span of the processing in order to not generate a write conflict.</p>
+</div>
+<div class="paragraph">
+<p>In this case the threading looks as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>partition thread (fetch entry &amp; lock key)</p>
+</li>
+<li>
+<p>execution thread (process(entry) method)</p>
+</li>
+<li>
+<p>partition thread (set new value &amp; unlock key, or just unlock key if the entry has not been modified)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The method <code>getExecutorName()</code> method may also return two constants defined in the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/core/Offloadable.html" target="_blank" rel="noopener">Offloadable interface</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NO_OFFLOADING: Processing is not offloaded if the method <code>getExecutorName()</code> returns this constant; it is executed as if it does not implement the <code>Offloadable</code> interface.</p>
+</li>
+<li>
+<p>OFFLOADABLE_EXECUTOR: Processing is offloaded to the default <code>ExecutionService.OFFLOADABLE_EXECUTOR</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that if the method <code>getExecutorName()</code> cannot find an executor whose name matches the one called by this method, then the default executor service is used. Here is the configuration for the "default" executor:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;executor-service name="default"&gt;
+        &lt;pool-size&gt;16&lt;/pool-size&gt;
+        &lt;queue-capacity&gt;0&lt;/queue-capacity&gt;
+    &lt;/executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+    ...
+  executor-service:
+    default:
+      pool-size: 16
+      queue-capacity: 0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example of an Offloadable called "OffloadedInventoryEntryProcessor" would be as follows:</p>
+</div>
+<div class="listingblock primary">
+<div class="title">XML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;executor-service name="OffloadedInventoryEntryProcessor”&gt;
+        &lt;pool-size&gt;30&lt;/pool-size&gt;
+        &lt;queue-capacity&gt;0&lt;/queue-capacity&gt;
+    &lt;/executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock secondary">
+<div class="title">YAML</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">hazelcast:
+  ...
+  executor-service:
+    OffloadedInventoryEntryProcessor:
+      pool-size: 30
+      queue-capacity: 0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remember to set the <code>pool-size</code> (count of executor threads per member) according to your execution needs. See the <a href="#configuring-executor-service">Configuring Executor Service section</a> for the configuration details.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_readonly_entry_processor"><a class="anchor" href="#_readonly_entry_processor"></a>ReadOnly Entry Processor</h5>
+<div class="paragraph">
+<p>By default, an entry processor does not run if the key is locked.
+It waits until the key has been unlocked (it applies to the <code>executeOnKey</code>, <code>submitToKey</code> methods, that were mentioned before).</p>
+</div>
+<div class="paragraph">
+<p>If the entry processor implements the <code>ReadOnly</code> interface without implementing the <code>Offloadable</code> interface, the processing is not offloaded to an external executor. However, the entry processor does not observe if the key of the processed entry is
+locked, nor tries to acquire the lock since the entry processor will not do any modifications.</p>
+</div>
+<div class="paragraph">
+<p>If the entry processor implements <code>ReadOnly</code> and modifies the entry, an <code>UnsupportedOperationException</code> is thrown.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_readonly_and_offloadable_entry_processor"><a class="anchor" href="#_readonly_and_offloadable_entry_processor"></a>ReadOnly and Offloadable Entry Processor</h5>
+<div class="paragraph">
+<p>If the entry processor implements both <code>ReadOnly</code> and <code>Offloadable</code> interfaces, we observe the combination of both
+optimizations described above.</p>
+</div>
+<div class="paragraph">
+<p>The <code>process()</code> method is executed in the executor specified by the <code>Offloadable&#8217;s `getExecutorName()</code> method.
+Also, the entry processor does not observe if the key of the processed entry is locked, nor tries to acquire the
+lock since the entry processor will not do any modifications.</p>
+</div>
+<div class="paragraph">
+<p>In this case the threading looks as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>partition thread (fetch entry)</p>
+</li>
+<li>
+<p>execution thread (process(entry))</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In this case the <code>EntryProcessor.getBackupProcessor()</code> has to return null; otherwise an <code>IllegalArgumentException</code>
+exception is thrown.</p>
+</div>
+<div class="paragraph">
+<p>If the entry processor implements <code>ReadOnly</code> and modifies the entry, an <code>UnsupportedOperationException</code> is thrown.</p>
+</div>
+<div class="paragraph">
+<p>Putting it all together:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class OffloadableReadOnlyEntryProcessor implements EntryProcessor&lt;String, Employee, Object&gt;,
+        Offloadable, ReadOnly {
+
+    @Override
+    public Object process(Map.Entry&lt;String, Employee&gt; entry) {
+        // heavy logic
+        return null;
+    }
+
+    @Override
+    public EntryProcessor&lt;String, Employee, Object&gt; getBackupProcessor() {
+        // ReadOnly EntryProcessor has to return null, since it's just a read-only operation that will not be
+        // executed on the backup
+        return null;
+    }
+
+    @Override
+    public String getExecutorName() {
+        return OFFLOADABLE_EXECUTOR;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/develop/distributed_computing.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hazelcast Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/develop/overview.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M267KFN"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','GTM-M267KFN')</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
+            <a class="navbar-item" href="#">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Demos</a>
+            <a class="navbar-item" href="#">Community</a>
+            <a class="navbar-item" href="#">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Get Hazelcast</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="4.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../hazelcast_overview.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast_overview.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../get-started/getting_started.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../get-started/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="hazelcast_clients.html">Develop Solutions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache.html">JCache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization.html">Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="striim_cdc.html">Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactions.html">Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_query.html">Distributed Query</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_sql.html">Distributed SQL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_events.html">Distributed Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="distributed_computing.html">Distributed Computing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../deploy/installing_upgrading.html">Deploy Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/starting_members_clients.html">Starting Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/setting_up_clusters.html">Setting Up Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/management.html">Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/wan.html">WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../deploy/network_partitioning.html">Network Partitioning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migrate/migration_guides.html">Migrate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../troubleshoot/common_exception_types.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference/faq.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/dds.html">Distributed data structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/system_properties.html">System properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/understanding_configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/phone_homes.html">Phone homes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/hazelcast_plugins.html">Plugins</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../contribute/extending_hazelcast.html">Contribute</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/licenses.html">Licenses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/revision_history.html">Documentation changes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <span class="title">Hazelcast Cloud</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20cloud/5/index.html">5</a>
+        </li>
+        <li class="version">
+          <a href="../../../hazelcast%20cloud/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../hazelcast_overview.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Hazelcast Jet</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../hazelcast%20jet/4.1/index.html">4.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/docs-poc/edit/develop/hazelcast-docs/modules/develop/pages/overview.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="sect1">
+<h2 id="_jcache_overview"><a class="anchor" href="#_jcache_overview"></a>JCache Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast offers a specification-compliant JCache implementation.
+To show our commitment to this
+important specification that the Java world was waiting for
+over a decade, we did not just provide a simple wrapper around our existing
+APIs; we implemented a caching structure from the ground up
+to optimize the behavior to the needs of JCache.
+The Hazelcast JCache implementation is 100% TCK (Technology
+Compatibility Kit) compliant and therefore passes all specification
+requirements.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the given specification, we added some
+features like asynchronous versions of almost all
+operations to give the user extra power.</p>
+</div>
+<div class="paragraph">
+<p>This chapter gives a basic understanding of how to
+configure your application and how to setup Hazelcast
+to be your JCache
+provider. It also shows examples of basic JCache usage
+as well as the additionally offered features that are
+not part of JSR-107.
+To gain a full understanding of the JCache functionality
+and provided guarantees of different operations, read
+the specification document (which is also the main
+documentation for functionality) at the specification
+page of <a href="https://www.jcp.org/en/jsr/detail?id=107" target="_blank" rel="noopener">JSR-107</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_supported_jcache_versions"><a class="anchor" href="#_supported_jcache_versions"></a>Supported JCache Versions</h3>
+<div class="paragraph">
+<p>The following versions of the JCache specification
+have been released:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The original release, version 1.0.0, was released
+in March 2014. Hazelcast versions 3.3.1 up to 3.9.2
+(included) implement version 1.0.0 of the JCache specification.</p>
+</li>
+<li>
+<p>A maintenance release, version 1.1.0 was released
+in December 2017. Hazelcast version 3.9.3 and higher
+implement JCache specification version 1.1.0.</p>
+</li>
+<li>
+<p>A patch release, version 1.1.1 was released in
+May 2019. Hazelcast version 3.12.1 and higher implement JCache 1.1.1.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>JCache 1.1.x versions are backwards compatible with
+JCache 1.0.0. As maintenance releases, JCache 1.1.x versions
+introduce clarifications and bug fixes in the specification, reference implementation
+and TCK, without introducing any additional features.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jcache-111"><a class="anchor" href="#jcache-111"></a>Upgrading from JCache 1.1.0 to 1.1.1</h3>
+<div class="paragraph">
+<p>JCache 1.1.1 is a bug-fix-only release. There are no
+behavioral differences between the JCache 1.1.0 and 1.1.1 specifications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_upgrading_from_jcache_1_0_0_to_1_1_0"><a class="anchor" href="#_upgrading_from_jcache_1_0_0_to_1_1_0"></a>Upgrading from JCache 1.0.0 to 1.1.0</h3>
+<div class="paragraph">
+<p>When upgrading from a Hazelcast version which implements
+JCache 1.0.0 to a version that implements version 1.1.0
+of the specification, some behavioral differences must be taken into account:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Invoking <code>CacheManager.getCacheNames</code> on a closed
+<code>CacheManager</code> returns an empty iterator under JCache 1.0.0.
+While under JCache 1.1.0, it throws <code>IllegalStateException</code>.</p>
+</li>
+<li>
+<p>Runtime type checking is removed from <code>CacheManager.getCache(String)</code>,
+so when using JCache 1.1.0 one may obtain a <code>Cache</code> by name
+even when its configured key/value types are not known.</p>
+</li>
+<li>
+<p>Statistics effects of <code>Cache.putIfAbsent</code> on misses and
+hits are properly applied when using JCache 1.1.0, while
+under JCache 1.0.0 misses and hits were not updated.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that these behavioral differences apply on the Hazelcast
+member that executes the operation. Thus when performing a
+rolling member upgrade from a JCache 1.0.0-compliant Hazelcast
+version to a newer Hazelcast version that supports JCache 1.1.0,
+operations executed on the new members exhibit JCache 1.1.0
+behavior while those executed on old members implement
+JCache 1.0.0 behavior.</p>
+</div>
+<div class="paragraph">
+<p>The complete list of issues addressed in JCache specification
+version 1.1.0 is <a href="https://github.com/jsr107/jsr107spec/milestone/2?closed=1" target="_blank" rel="noopener">available on Github</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/develop/overview.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

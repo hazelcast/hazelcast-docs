@@ -23,6 +23,6 @@ jobs:
     - run: npm i
     - run: npm run-script build
     - run: touch docs/.nojekyll
-    - run: git add .
+    - run: git add -f .
     - run: git commit -m "Deploy site"
     - run: git push origin HEAD:develop

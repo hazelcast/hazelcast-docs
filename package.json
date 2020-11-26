@@ -6,6 +6,7 @@
   "license": "ISC",
   "scripts": {
     "build": "cross-env DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --fetch --generator antora-site-generator-lunr antora-playbook.yml",
+    "build-local": "cross-env DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --fetch --generator antora-site-generator-lunr antora-playbook-local.yml",
     "serve": "serve docs",
     "expose": "ngrok http 5000"
   },

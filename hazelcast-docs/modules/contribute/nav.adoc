@@ -1,3 +1,0 @@
-.xref:extending_hazelcast.adoc[Contribute]
-** xref:licenses.adoc[Licenses]
-** xref:revision_history.adoc[Documentation changes]

@@ -18,10 +18,10 @@ The UI is styled with the latest Hazelcast HIVE design.
 
 The roadmap includes the following items:
 
-- [] Migrate Hazelcast Cloud content
-- [] Migrate Jet content
-- [] Migrate Management Center content
-- [] Review and rewrite/restructure content, starting with IMDG
+- [ ] Migrate Hazelcast Cloud content
+- [ ] Migrate Jet content
+- [ ] Migrate Management Center content
+- [ ] Review and rewrite/restructure content, starting with IMDG
 
 ## Prerequisites
 

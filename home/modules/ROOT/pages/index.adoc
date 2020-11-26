@@ -42,11 +42,11 @@
 				Run and manage your own Hazelcast IMDG cluster for fine-grained control over your distributed data.
 			</span>
     <ul>
-    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/get-started/getting_started.html">Get started</a></li>
-    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/deploy/installing_upgrading.html">Deploy a cluster</a></li>
-    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/develop/hazelcast_clients.html">Develop solutions</a></li>
-    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/reference/faq.html">FAQ</a></li>
-    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/contribute/revision_history.html">Release notes</a></li>
+    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/getting-started.html">Get started</a></li>
+    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/installation/installing-upgrading.html">Install Hazelcast</a></li>
+    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/clients/hazelcast-clients.html">Hazelcast clients</a></li>
+    <li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/plugins/hazelcast-plugins.html">Hazelcast plugins</a></li>
+	<li><a href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/reference/faq.html">FAQ</a></li>
     </ul>
 	</div>
 ++++

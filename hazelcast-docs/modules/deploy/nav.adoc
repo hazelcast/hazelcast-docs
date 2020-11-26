@@ -1,8 +1,0 @@
-.xref:installing_upgrading.adoc[Deploy Clusters]
-** xref:starting_members_clients.adoc[Starting Members and Clients]
-** xref:setting_up_clusters.adoc[Setting Up Clusters]
-** xref:management.adoc[Management]
-** xref:security.adoc[Security]
-** xref:simulator.adoc[Hazelcast Simulator]
-** xref:wan.adoc[WAN Replication]
-** xref:network_partitioning.adoc[Network Partitioning]

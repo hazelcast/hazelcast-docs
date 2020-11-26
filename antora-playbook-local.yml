@@ -1,15 +1,15 @@
 site:
   title: Hazelcast Documentation
   start_page: home::index.adoc
-  url: https://jakescahill.github.io/docs-poc
+  url: http:localhost:5000
 content:
   sources: 
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual
+  - url: ../hazelcast-reference-manual 
     start_path: docs
-    branches: docs-poc-v1
+    branches: HEAD
 ui: 
   bundle:
     url: ./build/ui-bundle.zip #https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.0.0/ui-bundle.zip

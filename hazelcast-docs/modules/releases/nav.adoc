@@ -1,1 +1,0 @@
-* https://docs.hazelcast.org/docs/rn/[Release Notes]

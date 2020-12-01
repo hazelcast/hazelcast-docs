@@ -21,3 +21,4 @@ jobs:
     - run: git config --global user.email '45230295+JakeSCahill@users.noreply.github.com'
     - run: npm i
     - run: npm run-script build
+    - run: npm run-script check-links

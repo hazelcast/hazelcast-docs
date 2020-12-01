@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -925,9 +925,9 @@ List&lt;String&gt; results = pipelining.results();</code></pre>
 </div>
 <div class="paragraph">
 <p>By increasing the depth of the pipelining, throughput can be increased. The pipelining has its own back pressure, you do not
-need to enable the <a href="#back-pressure">back pressure</a> on the client or member to have this feature on the pipelining. However, if you have many
+need to enable the <a href="back-pressure.html" class="page">back pressure</a> on the client or member to have this feature on the pipelining. However, if you have many
 pipelines, you may still need to enable the client/member back pressure because it is possible to overwhelm the system
-with requests in that situation. See the <a href="#back-pressure">Back Pressure section</a> to learn how to enable it on the client or member.</p>
+with requests in that situation. See the <a href="back-pressure.html" class="page">Back Pressure section</a> to learn how to enable it on the client or member.</p>
 </div>
 <div class="paragraph">
 <p>You can use the pipelining both on the clients and members. You do not need a special configuration, it works out-of-the-box.</p>
@@ -935,7 +935,7 @@ with requests in that situation. See the <a href="#back-pressure">Back Pressure 
 <div class="paragraph">
 <p>The pipelining can be used for any asynchronous call. You can use it for IMap asynchronous get/put methods as well as for
 ICache, IAtomicLong, etc. It cannot be used as a transaction mechanism though. So you cannot do some calls and throw away the pipeline and expect that
-none of the requests are executed. If you want to use an atomic behavior, see the <a href="#transactions">Transactions chapter</a>.
+none of the requests are executed. If you want to use an atomic behavior, see the <a href="../transactions/transactions.html" class="page">Transactions chapter</a>.
 The pipelining is just a performance optimization, not a mechanism for atomic behavior.</p>
 </div>
 <div class="paragraph">

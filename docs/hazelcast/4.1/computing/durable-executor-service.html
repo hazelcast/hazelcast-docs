@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -895,7 +895,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Hazelcast&#8217;s durable executor service is a data structure which is able to store an execution task both on the executing Hazelcast member and its backup member(s), if configured. By this way, you do not lose any tasks if a member goes down or any results if the submitter (member or client) goes down while executing the task. When using the durable executor service you can either submit or execute a task randomly or on the owner of a provided key. Note that in <a href="#executor-service">executor service</a>, you can submit or execute tasks to/on the selected member(s).</p>
+<p>Hazelcast&#8217;s durable executor service is a data structure which is able to store an execution task both on the executing Hazelcast member and its backup member(s), if configured. By this way, you do not lose any tasks if a member goes down or any results if the submitter (member or client) goes down while executing the task. When using the durable executor service you can either submit or execute a task randomly or on the owner of a provided key. Note that in <a href="executor-service.html" class="page">executor service</a>, you can submit or execute tasks to/on the selected member(s).</p>
 </div>
 <div class="paragraph">
 <p>Processing of the tasks when using durable executor service involves two invocations:</p>
@@ -914,7 +914,7 @@
 <p>As you may already know, Hazelcast&#8217;s executor service returns a <code>future</code> representing the task to the user. With the above two-invocations approach, it is guaranteed that the task is executed before the <code>future</code> returns and you can track the response of a submitted task with a unique ID. Hazelcast stores the task on both primary and backup members, and starts the execution also.</p>
 </div>
 <div class="paragraph">
-<p>With the first invocation, a <a href="#ringbuffer">Ringbuffer</a> stores the task and a generated sequence for the task is returned to the caller as a result. In addition to the storing, the task is executed on the local execution service for the primary member. By this way, the task is now resilient to member failures and you are able to track the task with its ID.</p>
+<p>With the first invocation, a <a href="../data-structures/ringbuffer.html" class="page">Ringbuffer</a> stores the task and a generated sequence for the task is returned to the caller as a result. In addition to the storing, the task is executed on the local execution service for the primary member. By this way, the task is now resilient to member failures and you are able to track the task with its ID.</p>
 </div>
 <div class="paragraph">
 <p>After the first invocation has completed and the sequence of task is returned, second invocation starts to retrieve the result of task with that sequence. This retrieval waits in the waiting operations queue until notified, or it runs immediately if the result is already available.</p>
@@ -1026,7 +1026,7 @@
 <h2 id="split-brain-protection-for-durable-executor-service"><a class="anchor" href="#split-brain-protection-for-durable-executor-service"></a>Split-Brain Protection for Durable Executor Service</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Durable Executor Service can be configured to check for a minimum number of available members before applying its operations (see the <a href="#split-brain-protection">Split-Brain Protection section</a>). This is a check to avoid performing successful queue operations on all parts of a cluster during a network partition.</p>
+<p>Durable Executor Service can be configured to check for a minimum number of available members before applying its operations (see the <a href="../network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a>). This is a check to avoid performing successful queue operations on all parts of a cluster during a network partition.</p>
 </div>
 <div class="paragraph">
 <p>The following is a list of methods, grouped by the operations, that support split-brain protection checks:</p>
@@ -1121,7 +1121,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>The value of <code>split-brain-protection-ref</code> should be the split-brain protection configuration name which you configured under the <code>split-brain-protection</code> element as explained in the <a href="#split-brain-protection">Split-Brain Protection section</a>.</p>
+<p>The value of <code>split-brain-protection-ref</code> should be the split-brain protection configuration name which you configured under the <code>split-brain-protection</code> element as explained in the <a href="../network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a>.</p>
 </div>
 </div>
 </div>

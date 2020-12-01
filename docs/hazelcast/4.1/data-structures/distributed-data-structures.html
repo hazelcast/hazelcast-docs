@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -892,7 +892,7 @@
 <article class="doc">
 <h1 class="page">Distributed Data Structures</h1>
 <div class="paragraph">
-<p>As mentioned in the <a href="#hazelcast-overview">Overview section</a>, Hazelcast offers
+<p>As mentioned in the <a href="../overview/hazelcast-overview.html" class="page">Overview section</a>, Hazelcast offers
 distributed implementations of many common data structures. For each of the client
 languages, Hazelcast mimics as closely as possible the natural interface of the
 structure. So, for example in Java, the map follows <code>java.util.Map</code> semantics.
@@ -906,90 +906,95 @@ these structures are usable from Java, .NET, C++, Node.js, Python, and Go.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#map">Map</a> is the distributed implementation of <code>java.util.Map</code>.
+<p><a href="map.html" class="page">Map</a> is the distributed implementation of <code>java.util.Map</code>.
 It lets you read from and write to a Hazelcast map with methods such as
 <code>get</code> and <code>put</code>.</p>
 </li>
 <li>
-<p><a href="#queue">Queue</a> is the distributed implementation of <code>java.util.concurrent.BlockingQueue</code>.
+<p><a href="queue.html" class="page">Queue</a> is the distributed implementation of <code>java.util.concurrent.BlockingQueue</code>.
 You can add an item in one member and remove it from another one.</p>
 </li>
 <li>
-<p><a href="#ringbuffer">Ringbuffer</a> is implemented for reliable eventing system.</p>
+<p><a href="ringbuffer.html" class="page">Ringbuffer</a> is implemented for reliable eventing system.</p>
 </li>
 <li>
-<p><a href="#set">Set</a> is the distributed and concurrent implementation of <code>java.util.Set</code>.
+<p><a href="set.html" class="page">Set</a> is the distributed and concurrent implementation of <code>java.util.Set</code>.
 It does not allow duplicate elements and does not preserve their order.</p>
 </li>
 <li>
-<p><a href="#list">List</a> is similar to Hazelcast Set. The only difference is that it allows
+<p><a href="list.html" class="page">List</a> is similar to Hazelcast Set. The only difference is that it allows
 duplicate elements and preserves their order.</p>
 </li>
 <li>
-<p><a href="#multimap">Multimap</a> is a specialized Hazelcast map. It is a distributed data
+<p><a href="multimap.html" class="page">Multimap</a> is a specialized Hazelcast map. It is a distributed data
 structure where you can store multiple values for a single key.</p>
 </li>
 <li>
-<p><a href="#replicated-map">Replicated Map</a> does not partition data. It does not spread
+<p><a href="replicated-map.html" class="page">Replicated Map</a> does not partition data. It does not spread
 data to different cluster members. Instead, it replicates the data to all members.</p>
 </li>
 <li>
-<p><a href="#cardinality-estimator">Cardinality Estimator</a> is a data structure which implements
+<p><a href="cardinality-estimator-service.html" class="page">Cardinality Estimator</a> is a data structure which implements
 Flajolet&#8217;s HyperLogLog algorithm.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Topic</strong> is the distributed mechanism for publishing messages that are delivered to
-multiple subscribers. It is also known as the publish/subscribe (pub/sub) messaging model.
-See the <a href="#topic">Topic section</a> for more information. Hazelcast also has a structure called
-Reliable Topic which uses the same interface of Hazelcast Topic. The difference is that it is
-backed up by the Ringbuffer data structure. See the <a href="#reliable-topic">Reliable Topic section</a>.</p>
+<p><strong>Topic</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="topic.html" class="page">Topic</a> is the distributed mechanism for publishing messages that are delivered to multiple subscribers. It is also known as the publish/subscribe (pub/sub) messaging model.</p>
+</li>
+<li>
+<p><a href="reliable-topic.html" class="page">Reliable Topic</a> uses the same interface as Hazelcast Topic, except it is backed up by the Ringbuffer data structure.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Concurrency utilities</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#lock">FencedLock</a> is the distributed implementation of <code>java.util.concurrent.locks.Lock</code>.
+<p><a href="fencedlock.html" class="page">FencedLock</a> is the distributed implementation of <code>java.util.concurrent.locks.Lock</code>.
 When you use lock, the critical section that Hazelcast Lock guards is guaranteed to be
 executed by only one thread in the entire cluster.</p>
 </li>
 <li>
-<p><a href="#isemaphore">ISemaphore</a> is the distributed implementation of <code>java.util.concurrent.Semaphore</code>.
+<p><a href="isemaphore.html" class="page">ISemaphore</a> is the distributed implementation of <code>java.util.concurrent.Semaphore</code>.
 When performing concurrent activities, semaphores offer permits to control the thread counts.</p>
 </li>
 <li>
-<p><a href="#iatomiclong">IAtomicLong</a> is the distributed implementation of
+<p><a href="iatomiclong.html" class="page">IAtomicLong</a> is the distributed implementation of
 <code>java.util.concurrent.atomic.AtomicLong</code>. Most of AtomicLong&#8217;s operations are available.
 However, these operations involve remote calls and hence their performances differ from
 AtomicLong, due to being distributed.</p>
 </li>
 <li>
-<p><a href="#iatomicreference">IAtomicReference</a> is the distributed implementation of
+<p><a href="iatomicreference.html" class="page">IAtomicReference</a> is the distributed implementation of
 <code>java.util.concurrent.atomic.AtomicReference</code>. When you need to deal with a reference
 in a distributed environment, you can use Hazelcast IAtomicReference.</p>
 </li>
 <li>
-<p><a href="#flakeidgenerator">FlakeIdGenerator</a> is used to generate cluster-wide unique identifiers.</p>
+<p><a href="flake-id-generator.html" class="page">FlakeIdGenerator</a> is used to generate cluster-wide unique identifiers.</p>
 </li>
 <li>
-<p><a href="#icountdownlatch">ICountdownLatch</a> is the distributed implementation of
+<p><a href="icountdownlatch.html" class="page">ICountdownLatch</a> is the distributed implementation of
 <code>java.util.concurrent.CountDownLatch</code>. Hazelcast CountDownLatch is a gate keeper for
 concurrent activities. It enables the threads to wait for other threads to complete
 their operations.</p>
 </li>
 <li>
-<p><a href="#pn-counter">PN counter</a> is a distributed data structure where each Hazelcast instance
+<p><a href="pn-counter.html" class="page">PN counter</a> is a distributed data structure where each Hazelcast instance
 can increment and decrement the counter value and these updates are propagated to all replicas.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><a href="#event-journal">Event Journal</a> is a distributed data structure that stores the history
-of mutation actions on map or cache.</p>
+<p><a href="event-journal.html" class="page">Event Journal</a> is a distributed data structure that stores the history of mutation actions on map or cache.</p>
 </li>
 </ul>
 </div>

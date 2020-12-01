@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="licenses.html">Appendix D: License Questions</a>
@@ -916,7 +916,7 @@ accessed via <code>HazelcastInstance.getCPSubsytem()</code> which provides CP
 <p>With lazy replication, when the primary replica receives an update operation for a key,
 it executes the update locally and propagates it to backup replicas. It marks each update
 with a logical timestamp so that backups apply them in the correct order and converge to the
-same state with the primary. Backup replicas can be used to scale reads (see the <a href="#enabling-backup-reads">Enabling Backup Reads section</a>)
+same state with the primary. Backup replicas can be used to scale reads (see the <a href="data-structures/map.html#enabling-backup-reads" class="page">Enabling Backup Reads section</a>)
 with no strong consistency but monotonic reads guarantee.</p>
 </li>
 <li>
@@ -927,7 +927,7 @@ with no strong consistency but monotonic reads guarantee.</p>
 Hazelcast tends to be an at-least-once solution.</p>
 </li>
 <li>
-<p>See the <a href="#consistency-and-replication-model">Consistency and Replication Model chapter</a>
+<p>See the <a href="consistency-and-replication/consistency.html" class="page">Consistency and Replication Model chapter</a>
 for more information.</p>
 </li>
 </ul>
@@ -949,10 +949,10 @@ maintain linearizability and prefer consistency over availability during netwo
 <p>Besides network partitions, CP Subsystem withstands server and client failures.</p>
 </li>
 <li>
-<p>It provides a good degree of fault tolerance at run-time, and <a href="#cp-subsystem-persistence">CP Subsystem Persistence</a> enables more robustness.</p>
+<p>It provides a good degree of fault tolerance at run-time, and <a href="#cp-subsystem:persistence.adocp">CP Subsystem Persistence</a> enables more robustness.</p>
 </li>
 <li>
-<p>See the <a href="#cp-subsystem">CP Subsystem chapter</a> for more information.</p>
+<p>See the <a href="cp-subsystem/cp-subsystem.html" class="page">CP Subsystem chapter</a> for more information.</p>
 </li>
 </ul>
 </div>
@@ -1009,7 +1009,7 @@ It is not recommended for production since UDP is often blocked in production en
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See the <a href="#discovery-mechanisms">Discovery Mechanisms section</a> for detailed information.
+See the <a href="clusters/discovery-mechanisms.html" class="page">Discovery Mechanisms section</a> for detailed information.
 </td>
 </tr>
 </table>
@@ -1229,7 +1229,7 @@ And you should use the Hazelcast releases with the NIO implementation (which sta
 </div>
 <div class="paragraph">
 <p>Also, you should configure the clients attentively.
-See the <a href="#hazelcast-clients">Clients section</a> for configuration notes.</p>
+See the <a href="clients/hazelcast-clients.html" class="page">Clients section</a> for configuration notes.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1239,7 +1239,7 @@ See the <a href="#hazelcast-clients">Clients section</a> for configuration notes
 <p>Lite member supports task execution (distributed executor service), smart client does not.
 Also, Lite Member is highly coupled with cluster, smart client is not.
 Starting with Hazelcast 3.9, you can also promote lite members to data members.
-See the <a href="#enabling-lite-members">Lite Members section</a> for more information.</p>
+See the <a href="management/cluster-utilities.html#enabling-lite-members" class="page">Lite Members section</a> for more information.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1278,11 +1278,11 @@ you can update map configurations and you can take thread dumps from members.</p
 </div>
 <div class="paragraph">
 <p>You can also use Hazelcast&#8217;s HTTP based health check implementation and health monitoring utility.
-See the <a href="#health-check-and-monitoring">Health Check and Monitoring section</a>.
-There is also a <a href="#diagnostics">diagnostocs tool</a> where you can see detailed logs enhanced with diagnostic plugins.</p>
+See the <a href="management/health-check-monitoring.html" class="page">Health Check and Monitoring section</a>.
+There is also a <a href="management/diagnostics.html" class="page">diagnostics tool</a> where you can see detailed logs enhanced with diagnostic plugins.</p>
 </div>
 <div class="paragraph">
-<p>Moreover, JMX monitoring is also provided. See the <a href="#monitoring-with-jmx">Monitoring with JMX section</a> for details.</p>
+<p>Moreover, JMX monitoring is also provided. See the <a href="management/jmx-monitoring.html" class="page">Monitoring with JMX section</a> for details.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1290,7 +1290,7 @@ There is also a <a href="#diagnostics">diagnostocs tool</a> where you can see de
 </div>
 <div class="paragraph">
 <p>By changing the log level to "Debug". Below are example lines for <strong>log4j</strong> logging framework.
-See the <a href="#logging-configuration">Logging Configuration section</a> to learn how to set logging types.</p>
+See the <a href="clusters/logging-configuration.html" class="page">Logging Configuration section</a> to learn how to set logging types.</p>
 </div>
 <div class="paragraph">
 <p>First, set the logging type as follows.</p>
@@ -1470,7 +1470,7 @@ For safety of the data, graceful shutdown API is highly recommended.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See the <a href="#safety-checking-cluster-members">Safety Checking Cluster Members section</a> for more information.
+See the <a href="management/cluster-utilities.html#safety-checking-cluster-members" class="page">Safety Checking Cluster Members section</a> for more information.
 </td>
 </tr>
 </table>
@@ -1505,7 +1505,7 @@ See the <a href="#safety-checking-cluster-members">Safety Checking Cluster Membe
 </div>
 <div class="paragraph">
 <p>Hazelcast supports symmetric encryption, transport layer security/secure sockets layer (TLS/SSL) and
-Java Authentication and Authorization Service (JAAS). See the <a href="#security">Security chapter</a> for more information.</p>
+Java Authentication and Authorization Service (JAAS). See the <a href="security/security.html" class="page">Security chapter</a> for more information.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1514,7 +1514,7 @@ Java Authentication and Authorization Service (JAAS). See the <a href="#security
 <div class="paragraph">
 <p>Hazelcast allows you to set some socket options such as <code>SO_KEEPALIVE</code>, <code>SO_SNDBUF</code> and
 <code>SO_RCVBUF</code> using Hazelcast configuration properties. See the <code>hazelcast.socket.*</code> properties explained in
-the <a href="#system-properties">System Properties appendix</a>.</p>
+the <a href="system-properties.html" class="page">System Properties appendix</a>.</p>
 </div>
 <hr>
 <div class="paragraph">

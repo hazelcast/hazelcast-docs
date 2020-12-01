@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -901,7 +901,7 @@ those partition replicas are distributed among Hazelcast members. An entry
 is stored in the members that own replicas of the partition to which the entry&#8217;s
 key is assigned. The total partition count is 271 by default; you can change it
 with the configuration property <code>hazelcast.partition.count</code>. See the
-<a href="#system-properties">System Properties appendix</a>.</p>
+<a href="../system-properties.html" class="page">System Properties appendix</a>.</p>
 </div>
 <div class="paragraph">
 <p>Hazelcast member that owns the primary replica of a partition is called as
@@ -1100,7 +1100,7 @@ partitionGroupConfig.setEnabled( true )
 </div>
 <div class="paragraph">
 <p>As discovery services, these plugins put zone information to the Hazelcast
-<a href="#defining-member-attributes">member attributes</a> map during the discovery process.
+<a href="../management/cluster-utilities.html#defining-member-attributes" class="page">member attributes</a> map during the discovery process.
 When ZONE_AWARE is configured as partition group type, Hazelcast creates the partition
 groups with respect to member attributes map entries that include zone information.
 That means backups are created in the other zones and each zone is accepted as one partition group.</p>

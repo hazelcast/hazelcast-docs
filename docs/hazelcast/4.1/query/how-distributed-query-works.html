@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -1189,7 +1189,7 @@ Set&lt;Employee&gt; employees = map.values( Predicates.sql( "active AND age &lt;
 <td class="content">
 Hazelcast offers an SQL service that allows to execute SQL queries,
 as opposed to SQL-like predicates in case of <code>Predicates.sql()</code>. See the
-<a href="#sql">SQL chapter</a> for more information.
+<a href="../sql/distributed-sql.html" class="page">SQL chapter</a> for more information.
 </td>
 </tr>
 </table>
@@ -1394,7 +1394,7 @@ as <code>double</code>s.</p>
 <p>It is possible to query nested attributes and arrays in JSON documents.
 The query syntax is the same
 as querying other Hazelcast objects as explained in the
-<a href="#querying-in-collections-and-arrays">Querying in Collections and Arrays section</a>.</p>
+<a href="querying-collections-and-arrays.html" class="page">Querying in Collections and Arrays section</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1444,7 +1444,7 @@ to speed up the query operations. Metadata creation
 is on by default. Depending on your application&#8217;s needs, you may want
 to turn off the metadata creation
 to decrease the put latency and increase the throughput. You can configure
-this using <a href="#metadata-policy">Metadata Policy</a>.</p>
+this using <a href="../data-structures/map.html#metadata-policy" class="page">Metadata Policy</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1477,7 +1477,7 @@ them with predicates and giving the size of the pages. Also, you
 can sort the entries by specifying comparators. In this case, the comparator
 should be <code>Serializable</code> and the serialization factory implementations you use,
 e.g., <code>PortableFactory</code> and <code>DataSerializableFactory</code>, should be registered.
-See the <a href="#serialization">Serialization chapter</a> on how to register these
+See the <a href="../serialization/serialization.html" class="page">Serialization chapter</a> on how to register these
 factories.</p>
 </div>
 <div class="paragraph">
@@ -1485,7 +1485,7 @@ factories.</p>
 side (either a member or client) and the member side from which the collection
 is retrieved. Therefore, you need to register the serialization factories
 you use on all the members and clients on which the paging predicates are used.
-See the <a href="#serialization">Serialization chapter</a> on how to register these
+See the <a href="../serialization/serialization.html" class="page">Serialization chapter</a> on how to register these
 factories.</p>
 </div>
 <div class="paragraph">
@@ -1582,7 +1582,7 @@ partition your data belongs to so that you can send the
 request to the correct partition. One of the ways of doing it is to
 make use of the <code>PartitionAware</code> interface when data is
 inserted, thereby controlling the owning partition. See the
-<a href="#partitionaware">PartitionAware section</a> for more information and examples.</p>
+<a href="../performance/data-affinity.html#partitionaware" class="page">PartitionAware section</a> for more information and examples.</p>
 </div>
 <div class="paragraph">
 <p>A concrete example may be a web shop that sells phones and accessories.
@@ -1772,7 +1772,7 @@ Non-primitive types to be indexed should implement <strong><code>Comparable</cod
 </td>
 <td class="content">
 If you configure the data structure to use
-<a href="#configuring-high-density-memory-store">High-Density Memory Store</a> <strong>and</strong>
+<a href="../storage/high-density-memory.html#configuring-high-density-memory-store" class="page">High-Density Memory Store</a> <strong>and</strong>
 indexes, the indexes are automatically stored in the High-Density Memory Store
 as well. This prevents from running into full garbage collections when doing
 a lot of updates to index.
@@ -2488,7 +2488,7 @@ and it has the best performance in terms of time and memory.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="#indexing-in-collections-and-arrays">Indexing in Collections and Arrays section</a>
+<p>See <a href="querying-collections-and-arrays.html#indexing-in-collections-and-arrays" class="page">Indexing in Collections and Arrays section</a>
 for more details.</p>
 </div>
 </div>
@@ -2573,7 +2573,7 @@ NATIVE in-memory format.
 <div class="paragraph">
 <p>You can also define custom attributes that may be referenced in predicates,
 queries and indexes. Custom attributes can be defined by implementing a
-<code>ValueExtractor</code>. See the <a href="#custom-attributes">Custom Attributes section</a>
+<code>ValueExtractor</code>. See the <a href="custom-attributes.html" class="page">Custom Attributes section</a>
 for details.</p>
 </div>
 </div>
@@ -2634,7 +2634,7 @@ to true (since the predicates are evaluated in parallel)</p>
 </div>
 <div class="paragraph">
 <p>See the <a href="#filtering-with-paging-predicates">Filtering with Paging Predicates section</a>
-and <a href="#parallel-predicates">System Properties appendix</a> for information on paging
+and <a href="../system-properties.html#parallel-predicates" class="page">System Properties appendix</a> for information on paging
 predicates and for description of the above system property.</p>
 </div>
 <div class="paragraph">

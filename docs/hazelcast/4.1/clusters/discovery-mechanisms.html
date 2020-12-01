@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -933,13 +933,13 @@ for advices on the best discovery mechanism to use.
 discovery mechanism, then it falls back to <a href="#multicast">Multicast</a>.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="#discovering-members-auto-detection">Discovering Members by Auto Detection section</a> for more details.</p>
+<p>See the <a href="discovering-by-auto-detection.html" class="page">Discovering Members by Auto Detection section</a> for more details.</p>
 </div>
 <div class="sect2">
 <h3 id="tcp"><a class="anchor" href="#tcp"></a>TCP</h3>
 <div class="paragraph">
 <p>You can configure Hazelcast to be a full TCP/IP cluster. See the
-<a href="#discovering-members-by-tcp">Discovering Members by TCP section</a> for configuration details.</p>
+xref:discovering-by-tcp.adoc[Discovering Members by TCP section for configuration details.</p>
 </div>
 </div>
 </div>
@@ -954,7 +954,7 @@ blocked in production environments and other discovery mechanisms are more defin
 <div class="paragraph">
 <p>With this mechanism, Hazelcast allows cluster members to find each other
 using multicast communication. See the
-<a href="#discovering-members-by-multicast">Discovering Members by Multicast section</a>.</p>
+<a href="discovering-by-multicast.html" class="page">Discovering Members by Multicast section</a>.</p>
 </div>
 </div>
 </div>
@@ -964,7 +964,7 @@ using multicast communication. See the
 <div class="paragraph">
 <p>Hazelcast supports EC2/ECS auto-discovery. It is useful when you
 do not want to provide or you cannot provide the list of possible
-IP addresses. See the <a href="#hazelcast-cloud-discovery-plugins-aws">Cloud Discovery Plugins: Hazelcast AWS section</a>.</p>
+IP addresses. See the <a href="../plugins/cloud-discovery.html#hazelcast-cloud-discovery-plugins-aws" class="page">Cloud Discovery Plugins: Hazelcast AWS section</a>.</p>
 </div>
 </div>
 </div>
@@ -973,7 +973,7 @@ IP addresses. See the <a href="#hazelcast-cloud-discovery-plugins-aws">Cloud Dis
 <div class="sectionbody">
 <div class="paragraph">
 <p>Hazelcast offers a discovery strategy for your Hazelcast applications
-running on Azure. See the <a href="#hazelcast-cloud-discovery-plugins-azure">Cloud Discovery Plugins: Hazelcast Azure section</a>.</p>
+running on Azure. See the <a href="../plugins/cloud-discovery.html#hazelcast-cloud-discovery-plugins-azure" class="page">Cloud Discovery Plugins: Hazelcast Azure section</a>.</p>
 </div>
 </div>
 </div>
@@ -985,7 +985,7 @@ running on Azure. See the <a href="#hazelcast-cloud-discovery-plugins-azure">Clo
 environment. You can easily configure Hazelcast members discovery, WAN replication,
 and Hazelcast Client to work seamlessly on the native GCP VM Instances.
 This discovery feature is provided as a Hazelcast plugin.
-See the <a href="#hazelcast-cloud-discovery-plugins-gcp">Cloud Discovery Plugins: Hazelcast GCP section</a>.</p>
+See the <a href="../plugins/cloud-discovery.html#hazelcast-cloud-discovery-plugins-gcp" class="page">Cloud Discovery Plugins: Hazelcast GCP section</a>.</p>
 </div>
 </div>
 </div>
@@ -994,7 +994,7 @@ See the <a href="#hazelcast-cloud-discovery-plugins-gcp">Cloud Discovery Plugins
 <div class="sectionbody">
 <div class="paragraph">
 <p>Hazelcast provides Kubernetes discovery mechanism that looks for IP addresses of members.
-See the <a href="#hazelcast-cloud-discovery-plugins-kubernetes">Cloud Discovery Plugins: Hazelcast Kubernetes section</a>.</p>
+See the <a href="../plugins/cloud-discovery.html#hazelcast-cloud-discovery-plugins-kubernetes" class="page">Cloud Discovery Plugins: Hazelcast Kubernetes section</a>.</p>
 </div>
 </div>
 </div>
@@ -1003,7 +1003,7 @@ See the <a href="#hazelcast-cloud-discovery-plugins-kubernetes">Cloud Discovery 
 <div class="sectionbody">
 <div class="paragraph">
 <p>Hazelcast supports the Eureka V1 discovery.
-See the <a href="#hazelcast-cloud-discovery-plugins-eureka">Cloud Discovery Plugins: Hazelcast Eureka section</a>.</p>
+See the <a href="../plugins/cloud-discovery.html#hazelcast-cloud-discovery-plugins-eureka" class="page">Cloud Discovery Plugins: Hazelcast Eureka section</a>.</p>
 </div>
 </div>
 </div>
@@ -1013,7 +1013,7 @@ See the <a href="#hazelcast-cloud-discovery-plugins-eureka">Cloud Discovery Plug
 <div class="paragraph">
 <p>This discovery mechanism provides a service based discovery strategy by using
 Apache Curator to communicate with your Zookeeper server.
-See the <a href="#hazelcast-cloud-discovery-plugins-zookeeper">Cloud Discovery Plugins: Hazelcast Zookeeper section</a>.</p>
+See the hazelcast-cloud-discovery-plugins-zookeeper, Cloud Discovery Plugins: Hazelcast Zookeeper section&gt;&gt;.</p>
 </div>
 </div>
 </div>
@@ -1024,7 +1024,7 @@ See the <a href="#hazelcast-cloud-discovery-plugins-zookeeper">Cloud Discovery P
 <p>Using a clickable Hazelcast Tile for VMWare (former Pivotal Cloud Foundry), you can
 deploy your Hazelcast cluster on PCF. This feature is provided as a Hazelcast
 plugin.
-See the <a href="#deploying-on-pivotal-cloud-foundry">Deploying in VMware Tanzu section</a>.</p>
+See the <a href="../installation/deploying-in-vmware-tanzu.html" class="page">Deploying in VMware Tanzu section</a>.</p>
 </div>
 </div>
 </div>

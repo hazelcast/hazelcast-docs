@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -930,7 +930,7 @@ Note that you may want to use <a href="https://jet.hazelcast.org/" target="_blan
 </ul>
 </div>
 <div class="paragraph">
-<p>Note that, the distributed executor service (<code>IExecutorService</code>) is intended to run processing where the data is hosted: on the server members. In general, you cannot run a Java Runnable or Callable on the clients as the clients may not be Java. Also, the clients do not host any data, so they would have to fetch what data they need from the servers potentially. If you want something to run on all or some clients connected to your cluster, you could implement this using the publish/subscribe mechanism; a payload could be sent to an <a href="#topic"><code>ITopic</code></a> with the necessary execution parameters, and clients listening can act on the message.</p>
+<p>Note that, the distributed executor service (<code>IExecutorService</code>) is intended to run processing where the data is hosted: on the server members. In general, you cannot run a Java Runnable or Callable on the clients as the clients may not be Java. Also, the clients do not host any data, so they would have to fetch what data they need from the servers potentially. If you want something to run on all or some clients connected to your cluster, you could implement this using the publish/subscribe mechanism; a payload could be sent to an xref:data-structures:topic.adoc[<code>ITopic</code> with the necessary execution parameters, and clients listening can act on the message.</p>
 </div>
 </div>
 </div>
@@ -1043,7 +1043,7 @@ Note that you may want to use <a href="https://jet.hazelcast.org/" target="_blan
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When a task is deserialized, HazelcastInstance needs to be accessed. To do this, the task should implement <code>HazelcastInstanceAware</code> interface. See the <a href="#implementing-hazelcastinstanceaware">HazelcastInstanceAware Interface section</a> for more information.
+When a task is deserialized, HazelcastInstance needs to be accessed. To do this, the task should implement <code>HazelcastInstanceAware</code> interface. See the <a href="../serialization/implementing-hazelcastinstanceaware.html" class="page">HazelcastInstanceAware Interface section</a> for more information.
 </td>
 </tr>
 </table>
@@ -1481,7 +1481,7 @@ You can obtain the set of cluster members via <code>HazelcastInstance.getCluster
 <h2 id="split-brain-protection-for-iexecutorservice"><a class="anchor" href="#split-brain-protection-for-iexecutorservice"></a>Split-Brain Protection for IExecutorService</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>IExecutorService can be configured to check for a minimum number of available members before applying its operations (see the <a href="#split-brain-protection">Split-Brain Protection section</a>). This is a check to avoid performing successful queue operations on all parts of a cluster during a network partition.</p>
+<p>IExecutorService can be configured to check for a minimum number of available members before applying its operations (see the <a href="../network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a>). This is a check to avoid performing successful queue operations on all parts of a cluster during a network partition.</p>
 </div>
 <div class="paragraph">
 <p>The following is a list of methods, grouped by the operations, that support split-brain protection checks:</p>
@@ -1578,7 +1578,7 @@ You can obtain the set of cluster members via <code>HazelcastInstance.getCluster
 </div>
 </div>
 <div class="paragraph">
-<p>The value of <code>split-brain-protection-ref</code> should be the split-brain protection configuration name which you configured under the <code>split-brain-protection</code> element as explained in the <a href="#split-brain-protection">Split-Brain Protection section</a>.</p>
+<p>The value of <code>split-brain-protection-ref</code> should be the split-brain protection configuration name which you configured under the <code>split-brain-protection</code> element as explained in the <a href="../network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a>.</p>
 </div>
 </div>
 </div>

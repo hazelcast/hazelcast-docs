@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -907,7 +907,7 @@ making the computation fast.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <a href="#dds.adoc#setting-in-memory-format" class="page unresolved">in-memory format</a> of your data is <code>NATIVE</code>,
+If the <a href="../data-structures/distributed-data-structures.html#setting-in-memory-format" class="page">in-memory format</a> of your data is <code>NATIVE</code>,
 aggregations always run on the partition threads. If the data is of type <code>BINARY</code>
 or <code>OBJECT</code>, they also mostly run on the partition threads, however, they may run on
 the separate query threads to avoid blocking partition threads (if there are no ongoing migrations).

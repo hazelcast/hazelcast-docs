@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -906,7 +906,7 @@
 <p>The authentication mechanism works in similar way as the cluster member authentication.</p>
 </div>
 <div class="paragraph">
-<p>To implement the client authentication, you reference a <a href="#security-realms">Security Realm</a>
+<p>To implement the client authentication, you reference a <a href="security-realms.html" class="page">Security Realm</a>
 with the <code>authentication</code> section defined in the <code>&lt;client-authentication/&gt;</code> element
 of a cluster member configuration.</p>
 </div>
@@ -1049,11 +1049,11 @@ attribute configuration.</p>
 </div>
 <div class="paragraph">
 <p>You can define the instance and principal names as wildcards using the <code>"*"</code> character.
-See the <a href="#using-wildcards">Using Wildcards</a> section for details.</p>
+See the <a href="../configuration/using-wildcards.html" class="page">Using Wildcards</a> section for details.</p>
 </div>
 <div class="paragraph">
 <p>The endpoint names can use range characters <code>"-"</code> and <code>"*"</code> as described
-in the <a href="#interfaces">Interfaces</a> section.</p>
+in the <a href="../clusters/network-configuration.html#interfaces" class="page">Interfaces</a> section.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -1920,7 +1920,7 @@ it decides whether the current <code>Subject</code> has permission to access the
 <td class="content">
 The name provided in <code>cache-permission</code> must be the Hazelcast distributed
 object name corresponding to the <code>Cache</code> as described in
-the <a href="#jcache-hazelcast-instance-integration">JCache - Hazelcast Instance Integration section</a>.
+the <a href="../jcache/hazelcast-integration.html" class="page">JCache - Hazelcast Instance Integration section</a>.
 </td>
 </tr>
 </table>
@@ -2077,10 +2077,10 @@ permission definitions to the cluster, but keeps them when it joins. However,
 after the join, when you update the permissions in the other cluster members,
 those updates are also sent to the newly joining member. Therefore, this option
 is suitable for the scenarios where you need to elevate privileges temporarily
-on a single member (preferably a <a href="#enabling-lite-members">lite member</a>) for a
+on a single member (preferably a <a href="../management/cluster-utilities.html#enabling-lite-members" class="page">lite member</a>) for a
 limited time period. The clients which want to use these temporary permissions
 have to access the cluster through this single new member, meaning that you need
-to disable <a href="#setting-smart-routing">smart routing</a> for such clients.</p>
+to disable <a href="../clients/java.html#setting-smart-routing" class="page">smart routing</a> for such clients.</p>
 <div class="paragraph">
 <p>Note that, the <code>create</code> and <code>destroy</code> permissions will not work when using
 the <code>NONE</code> option, since the distributed objects need to be created/destroyed on all the members.</p>

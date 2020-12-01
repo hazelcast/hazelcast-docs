@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -911,7 +911,7 @@ accessed via <code>HazelcastInstance.getCPSubsytem()</code> which provides <stro
 <td class="content">
 The replication algorithm and consistency model explained below apply
 to AP data structures only. For CP subsystem and CP data structures,
-see the <a href="#cp-subsystem">CP Subsystem</a> section.
+see the <a href="../cp-subsystem/cp-subsystem.html" class="page">CP Subsystem</a> section.
 </td>
 </tr>
 </table>
@@ -919,7 +919,7 @@ see the <a href="#cp-subsystem">CP Subsystem</a> section.
 <div class="paragraph">
 <p>For AP data structures, Hazelcast employs the combination of primary-copy and
 configurable lazy replication techniques. As briefly described in
-the <a href="#data-partitioning">Data Partitioning section</a>, each data entry is mapped to
+the <a href="../overview/data-partitioning.html" class="page">Data Partitioning section</a>, each data entry is mapped to
 a single Hazelcast partition and put into replicas of that partition. One of
 the replicas is elected as the primary replica, which is responsible for
 performing operations on that partition. When you read or
@@ -936,7 +936,7 @@ an update operation for a key, it executes the update locally and
 propagates it to backup replicas. It marks each update with
 a logical timestamp so that backups apply them in the correct order and
 converge to the same state with the primary. Backup replicas can be used to
-scale reads (see the <a href="#enabling-backup-reads">Enabling Backup Reads section</a>) with
+scale reads (see the <a href="../data-structures/map.html#enabling-backup-reads" class="page">Enabling Backup Reads section</a>) with
 no strong consistency but monotonic reads guarantee.</p>
 </div>
 <div class="paragraph">
@@ -947,7 +947,7 @@ being a complete CP solution. Therefore, we recommend these features to be used 
 efficiency purposes in general, instead of correctness. For instance, they can be used to
 prevent to run a resource-extensive computation multiple times, which would not
 create any correctness problem if runs more than once. See the
-<a href="#best-effort-consistency">Best-Effort Consistency</a> and <a href="#split-brain-syndrome">Network Partitioning</a> sections
+<a href="#best-effort-consistency">Best-Effort Consistency</a> and <a href="../network-partitioning/network-partitioning.html" class="page">Network Partitioning</a> sections
 for more information.</p>
 </div>
 </div>

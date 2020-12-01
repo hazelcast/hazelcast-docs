@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -944,7 +944,7 @@ execute the Bron–Kerbosch algorithm and figure out the largest set of fully-co
 we need to gather those local failure detection data from all members. When partial network
 partitioning resolution mechanism is enabled, all members send their local failure detections
 (suspicions about other members) inside the usual heartbeat message.
-(See the <a href="#failure-detector-configuration">Failure Detector Configuration section</a>
+(See the <a href="../clusters/failure-detector-configuration.html" class="page">Failure Detector Configuration section</a>
 for more info about failure detectors.) The master (oldest) member in the cluster gathers all this
 information and executes the maximum clique algorithm and then decides the smallest set of Hazelcast members,
 if any, to kick from the cluster so that the remaining members are fully-connected to each other again.

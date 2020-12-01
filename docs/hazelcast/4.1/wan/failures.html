@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -925,7 +925,7 @@ the partition, so that the same partitions are always sent to the same target me
 <div class="sectionbody">
 <div class="paragraph">
 <p>If using the Hazelcast IMDG Enterprise edition class <code>WanBatchReplication</code>
-(see the <a href="#defining-wan-replication">Defining WAN replication section</a>), the WAN replication catches
+(see the <a href="defining-wan-replication.html" class="page">Defining WAN replication section</a>), the WAN replication catches
 any exceptions when sending the WAN events to the endpoint. In the case of an exception,
 the endpoint is removed from the endpoint list to which WAN replicates and the WAN events are resent to
 a different address. The replication is retried until it is successful.</p>
@@ -938,7 +938,7 @@ a different address. The replication is retried until it is successful.</p>
 <div class="paragraph">
 <p>The WAN connection manager tries to "rediscover" new endpoints periodically.
 The period is 10 seconds by default but can be configured using the <code>discovery-period-seconds</code> element
-(see the <a href="#defining-wan-replication">Defining WAN replication section</a>).</p>
+(see the <a href="defining-wan-replication.html" class="page">Defining WAN replication section</a>).</p>
 </div>
 <div class="paragraph">
 <p>The discovered endpoints depend on the configuration used to define WAN replication.

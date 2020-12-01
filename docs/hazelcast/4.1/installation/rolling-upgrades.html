@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -1036,7 +1036,7 @@ your members, for example, from 3.13 to 3.15 in a single rolling upgrade session
 <p>Using <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#rolling-upgrade">Management Center</a>.</p>
 </li>
 <li>
-<p>Using the <a href="#using-the-script-cluster-sh">cluster.sh</a> script.</p>
+<p>Using the <a href="../management/cluster-utilities.html#using-the-script-cluster-sh" class="page">cluster.sh</a> script.</p>
 </li>
 <li>
 <p>Allow the cluster to <a href="#enabling-auto-upgrading">auto-upgrade</a>.</p>
@@ -1047,7 +1047,7 @@ your members, for example, from 3.13 to 3.15 in a single rolling upgrade session
 <p>Note that you need to enable the REST API to use either of the above methods
 to upgrade your cluster version. For this, enable the <code>CLUSTER_WRITE</code>
 REST endpoint group (its default is disabled). See the
-<a href="#using-the-rest-endpoint-groups">[using-the-rest-endpoint-groups]</a> section on how to enable them.</p>
+<a href="../management/rest-endpoint-groups.html" class="page">Using the REST Endpoint Groups section</a> section on how to enable them.</p>
 </div>
 <div class="paragraph">
 <p>Also note that you need to upgrade your Management Center version <strong>before</strong> upgrading the member version if you want to
@@ -1084,7 +1084,7 @@ last member to join before it can proceed with the auto-upgrade.</p>
 <h2 id="network-partitions-and-rolling-upgrades"><a class="anchor" href="#network-partitions-and-rolling-upgrades"></a>Network Partitions and Rolling Upgrades</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the event of network partitions which split your cluster into two subclusters, split-brain handling works as explained in the <a href="#network-partitioning">Network Partitioning chapter</a>, with the
+<p>In the event of network partitions which split your cluster into two subclusters, split-brain handling works as explained in the <a href="../network-partitioning/network-partitioning.html" class="page">Network Partitioning chapter</a>, with the
 additional constraint that two subclusters only merge as long as they operate on the same cluster version. This is a requirement to ensure that all members participating
 in each one of the subclusters are able to operate as members of the merged cluster at the same cluster version.</p>
 </div>

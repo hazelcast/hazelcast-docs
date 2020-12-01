@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -1021,7 +1021,7 @@ discard the differences.</p>
 <div class="paragraph">
 <p><code>MapStore</code> and <code>QueueStore</code> do not participate in transactions.
 Hazelcast suppresses exceptions thrown by the store in a transaction.
-See the <a href="#providing-xa-transactions">XA Transactions section</a> for
+See the <a href="providing-xa-transactions.html" class="page">XA Transactions section</a> for
 further information.</p>
 </div>
 </div>
@@ -1030,7 +1030,7 @@ further information.</p>
 <h2 id="one_phase-vs-two_phase"><a class="anchor" href="#one_phase-vs-two_phase"></a>ONE_PHASE vs. TWO_PHASE</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As discussed in <a href="#creating-a-transaction-interface">Creating a Transaction
+<p>As discussed in <a href="#">Creating a Transaction
 Interface</a>, when you choose ONE_PHASE as the transaction type, Hazelcast
 tracks all changes you make locally in a commit log, i.e., a list of
 changes. In this case, all the other members are asked to agree that the

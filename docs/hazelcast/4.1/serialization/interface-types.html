@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -898,25 +898,25 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code>java.io.Serializable</code>: See the <a href="#implementing-java-serializable-and-externalizable">Implementing Java Serializable and Externalizable section</a>.</p>
+<p><code>java.io.Serializable</code>: See the <a href="implementing-java-serializable.html" class="page">Implementing Java Serializable and Externalizable section</a>.</p>
 </li>
 <li>
-<p><code>java.io.Externalizable</code>: See the <a href="#implementing-java-externalizable">Implementing Java Externalizable section</a>.</p>
+<p><code>java.io.Externalizable</code>: See the <a href="implementing-java-serializable.html#implementing-java-externalizable" class="page">Implementing Java Externalizable section</a>.</p>
 </li>
 <li>
-<p><code>com.hazelcast.nio.serialization.DataSerializable</code>: See the <a href="#implementing-dataserializable">Implementing DataSerializable section</a>.</p>
+<p><code>com.hazelcast.nio.serialization.DataSerializable</code>: See the <a href="implementing-dataserializable.html" class="page">Implementing DataSerializable section</a>.</p>
 </li>
 <li>
-<p><code>com.hazelcast.nio.serialization.IdentifiedDataSerializable</code>: See the <a href="#identifieddataserializable">IdentifiedDataSerializable section</a>.</p>
+<p><code>com.hazelcast.nio.serialization.IdentifiedDataSerializable</code>: See the <a href="implementing-dataserializable.html#identifieddataserializable" class="page">IdentifiedDataSerializable section</a>.</p>
 </li>
 <li>
-<p><code>com.hazelcast.nio.serialization.Portable</code>: See the <a href="#implementing-portable-serialization">Implementing Portable Serialization section</a>.</p>
+<p><code>com.hazelcast.nio.serialization.Portable</code>: See the <a href="implementing-portable-serialization.html" class="page">Implementing Portable Serialization section</a>.</p>
 </li>
 <li>
-<p>Custom Serialization (using <a href="#implementing-streamserializer">StreamSerializer</a> and <a href="#implementing-bytearrayserializer">ByteArraySerializer</a>).</p>
+<p>Custom Serialization (using <a href="custom-serialization.html#implementing-streamserializer" class="page">StreamSerializer</a> and <a href="custom-serialization.html#implementing-bytearrayserializer" class="page">ByteArraySerializer</a>).</p>
 </li>
 <li>
-<p>Global Serializer: See the <a href="#global-serializer">Global Serializer section</a> for details.</p>
+<p>Global Serializer: See the <a href="global-serializer.html" class="page">Global Serializer section</a> for details.</p>
 </li>
 </ul>
 </div>
@@ -936,10 +936,10 @@
 </li>
 <li>
 <p>If the above check fails, then Hazelcast checks if it is an instance of one of
-the default types (see the <a href="#serialization">Serialization chapter introduction</a> for default types).</p>
+the default types (see the <a href="serialization.html" class="page">Serialization chapter introduction</a> for default types).</p>
 </li>
 <li>
-<p>If the above check fails, then Hazelcast looks for a user-specified <a href="#custom-serialization">Custom Serializer</a>,
+<p>If the above check fails, then Hazelcast looks for a user-specified <a href="custom-serialization.html" class="page">Custom Serializer</a>,
 i.e. an implementation of <code>ByteArraySerializer</code> or <code>StreamSerializer</code>.
 Custom serializer is searched using the input Object&#8217;s Class and its parent class up to Object.
 If parent class search fails, all interfaces implemented by the class are also checked (excluding <code>java.io.Serializable</code> and <code>java.io.Externalizable</code>).</p>
@@ -959,7 +959,7 @@ When a class implements multiple interfaces, the above steps are important
 to determine the serialization mechanism that Hazelcast uses.
 When a class definition is required for any of these serializations, you need to have
 all the classes needed by the application on your classpath because Hazelcast does not
-download them automatically, unless you are using <a href="#member-user-code-deployment">user code deployment</a>.</p>
+download them automatically, unless you are using <a href="../clusters/deploying-code-on-member.html" class="page">user code deployment</a>.</p>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">

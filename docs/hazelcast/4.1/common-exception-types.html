@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quickstart Hazelcast Documentation</title>
-    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/getting-started.html">
+    <title>Common Exception Types Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/common-exception-types.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="stylesheet" href="../../_/css/search.css">
@@ -76,7 +76,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="index.html">Hazelcast IMDG Reference Manual</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="getting-started.html">Quickstart</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -826,7 +826,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="migration-guides.html">Appendix B: Migration Guides</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -883,331 +883,60 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Hazelcast IMDG</a></li>
-    <li><a href="getting-started.html">Quickstart</a></li>
+    <li><a href="common-exception-types.html">Appendix C: Common Exception Types</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/docs-poc-v1/docs/modules/ROOT/pages/getting-started.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/docs-poc-v1/docs/modules/ROOT/pages/common-exception-types.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Quickstart</h1>
-<div id="preamble">
-<div class="sectionbody">
+<h1 class="page">Common Exception Types</h1>
 <div class="paragraph">
-<p>This chapter intends to get you started in 5 minutes. The quick start shows how to
-start Hazelcast members, form a cluster, connect it with
-a client application in your preferred language and monitor
-the cluster using Hazelcast Management Center.</p>
-</div>
-<div class="paragraph">
-<p>For a comprehensive overview of what Hazelcast IMDG actually is
-see <a href="overview/what-is-imdg.html" class="page">What is Hazelcast IMDG?</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="installing"><a class="anchor" href="#installing"></a>Installing</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can use the Hazelcast
-<a href="https://github.com/hazelcast/hazelcast-command-line" target="_blank" rel="noopener">Command Line Interface (CLI)</a>
-to install and start Hazelcast IMDG.</p>
-</div>
-<div class="paragraph">
-<p>Assuming you have the <a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a> package manager, run the following commands:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ brew tap hazelcast/hz
-$ brew install hazelcast</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Currently, the CLI way is meant for development purposes, not for a production usage.
-For production or if you prefer other ways, take a look at <a href="installation/installing-upgrading.html" class="page">Installing and Upgrading</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="creating-a-cluster"><a class="anchor" href="#creating-a-cluster"></a>Creating a Cluster</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Use the following command on your terminal/command line
-to start a standalone Hazelcast member:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ hz start</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now you have a 1-member cluster. To add one more member to the cluster,
-open another terminal/command line and rerun the above command. The members
-discover each other automatically and form a 2-member cluster. You should see
-happening it with log output in the command line like:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Members {size:2, ver:2} [
-    Member [127.0.0.1]:5701 - e40081de-056a-4ae5-8ffe-632caf8a6cf1 this
-    Member [127.0.0.1]:5702 - 93e82109-16bf-4b16-9c87-f4a6d0873080
-]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that these members are started with the default configuration.
-The location of the <code>hazelcast.xml</code> is printed on the first line of
-the output of the above command.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="your-first-client-application"><a class="anchor" href="#your-first-client-application"></a>Your First Client Application</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Having a running cluster as started in the above section, let&#8217;s
-create a client application that connects to this cluster,
-creates a map and populates it. Below, we first briefly give
-how to install a client of your preference and then an example code
-for each. We are assuming that the members and clients are on the
-same machine for simplicity.</p>
-</div>
-<div class="tabset is-loading">
-<div class="ulist tabs">
-<ul>
-<li>
-<p><a id="tabset1_java"></a>Java</p>
-</li>
-<li>
-<p><a id="tabset1_c"></a>C++</p>
-</li>
-<li>
-<p><a id="tabset1_c"></a>C#</p>
-</li>
-<li>
-<p><a id="tabset1_node-js"></a>Node.js</p>
-</li>
-<li>
-<p><a id="tabset1_python"></a>Python</p>
-</li>
-<li>
-<p><a id="tabset1_go"></a>Go</p>
-</li>
-</ul>
-</div>
-<div class="content">
-<div class="tab-pane" aria-labelledby="tabset1_java">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Installation notes: You have to have Hazelcast Java Client on the classpath.
-// The simplest way of doing it is to put `hazelcast-all` JAR
-// on the classpath, e.g. via Maven. See "Installation" chapter for details.
-
-import com.hazelcast.client.HazelcastClient;
-import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.core.IMap;
-
-public class MapSample {
-    public static void main(String[] args) {
-        // Start the client and connect to the cluster
-        HazelcastInstance hz = HazelcastClient.newHazelcastClient();
-        // Create a Distributed Map in the cluster
-        IMap map = hz.getMap("my-distributed-map");
-        //Standard Put and Get
-        map.put("1", "John");
-        map.put("2", "Mary");
-        map.put("3", "Jane");
-        // Shutdown the client
-        hz.shutdown();
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset1_c">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">//Installation notes: Run the following command at the NuGet package manager console
-//Install-Package Hazelcast.Net -Pre
-
-using Hazelcast.Client;
-
-namespace Hazelcast.Examples.Org.Website.Samples
-{
-    public class MapSample
-    {
-        public static void Run(string[] args)
-        {
-            // Start the client and connect to the cluster
-            var hz = HazelcastClient.NewHazelcastClient();
-            // Create a Distributed Map in the cluster
-            var map = hz.GetMap("my-distributed-map");
-            //Standard Put and Get
-            map.put("1", "John");
-            map.put("2", "Mary");
-            map.put("3", "Jane");
-            // Shutdown the client
-            hz.Shutdown();
-        }
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset1_node-js">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">//Installation notes: Run the following command
-//npm install hazelcast-client
-
-var Client = require('hazelcast-client').Client;
-// Start the client and connect to the cluster
-Client.newHazelcastClient().then(function (hz) {
-    var map;
-    // Create a Distributed Map in the cluster
-    hz.getMap('my-distributed-map').then(function (mp) {
-        map = mp;
-        // Standard Put and Get
-        return map.put('1', 'John');
-    });
-        // Shutdown the client
-        hz.shutdown();
-    });
-});</code></pre>
-</div>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset1_python">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># Installation notes: Run the following command
-# pip install hazelcast-python-client
-
-import hazelcast
-
-if __name__ == "__main__":
-    # Start the client and connect to the cluster
-    hz = hazelcast.HazelcastClient()
-    # Create a Distributed Map in the cluster
-    map = hz.get_map("my-distributed-map").blocking()
-    # Standard Put and Get
-    map.put("1", "John")
-    map.put("2", "Mary")
-    map.put("3", "Jane")
-    # Shutdown the client
-    hz.shutdown()</code></pre>
-</div>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset1_go">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-go hljs" data-lang="go">//Installation notes: Run the following command
-//go get github.com/hazelcast/hazelcast-go-client
-
-import "github.com/hazelcast/hazelcast-go-client"
-
-func mapSampleRun() {
-	// Start the client and connect to the cluster
-	hz, _ := hazelcast.NewClient()
-	// Create a Distributed Map in the cluster
-	mp, _ := hz.GetMap("myDistributedMap")
-	//Standard Put and Get
-	mp.Put("1", "John")
-	mp.Put("2", "Mary")
-	mp.Put("3", "Jane")
-	// Shutdown the client
-	hz.Shutdown()
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>For comprehensive information on the clients, see the following sections:</p>
+<p>You may see the following exceptions in any Hazelcast operation when the described situations occur:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="clients/java.html" class="page">Java client</a></p>
+<p><code>HazelcastInstanceNotActiveException</code>: Thrown when <code>HazelcastInstance</code> is not active (already shutdown or
+being shutdown) during an invocation.</p>
 </li>
 <li>
-<p><a href="https://github.com/hazelcast/hazelcast-cpp-client">C++ client</a></p>
+<p><code>HazelcastOverloadException</code>: Thrown when the system cannot handle any more load due to an overload.
+This exception is thrown when back pressure is enabled.</p>
 </li>
 <li>
-<p><a href="https://github.com/hazelcast/hazelcast-csharp-client">C# client</a></p>
+<p><code>DistributedObjectDestroyedException</code>:
+Thrown when a distributed data structure is destroyed using the <code>destroy()</code> method while
+there is a blocking operation on it, e.g., waiting a response for the <code>Lock.lock()</code> method.</p>
 </li>
 <li>
-<p><a href="https://github.com/hazelcast/hazelcast-nodejs-client">Node.js client</a></p>
-</li>
-<li>
-<p><a href="https://github.com/hazelcast/hazelcast-python-client">Python client</a></p>
-</li>
-<li>
-<p><a href="https://github.com/hazelcast/hazelcast-go-client">Go client</a></p>
+<p><code>MemberLeftException</code>: Thrown when a member leaves during an invocation or execution.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="connecting-management-center-to-the-cluster"><a class="anchor" href="#connecting-management-center-to-the-cluster"></a>Connecting Management Center to the Cluster</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Hazelcast Management Center helps you to monitor and manage your IMDG cluster.
-After you created your cluster and client application as depicted in the above sections,
-let&#8217;s connect Management Center to the cluster. Note that having client applications
-is not a must to use the Management Center; you can connect it to your cluster that
-does not have any clients.</p>
-</div>
-<div class="paragraph">
-<p>Use the following command to start the Management Center:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">hz mc start</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then, open your preferred web browser to <code>http://localhost:8080</code> and
-select the <code>default</code> security provider to provide a username and password.
-Log in to Management Center using those credentials and create a cluster connection;
-the defaults should work fine. If using Docker for members, find out the Docker IP address
-of cluster rather than the default of localhost.</p>
-</div>
-<div class="paragraph">
-<p>For comprehensive information on Management Center, see its
-<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html" target="_blank" rel="noopener">documentation</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s Next?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In this chapter, you have learnt starting a Hazelcast IMDG cluster,
-inserting data to it via clients and monitoring
-it through Management Center. Now, you may want to perform the following:</p>
+<p>Hazelcast also throws the following exceptions in the cases of overall system problems such as
+networking issues and long pauses:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Form a cluster not just on your local machine: see <a href="clusters/setting-up-clusters.html" class="page">Setting Up Clusters</a>.</p>
+<p><code>PartitionMigratingException</code>: Thrown when an operation is executed on a partition,
+but that partition is currently being moved.</p>
 </li>
 <li>
-<p>Start using our distributed data structures: see <a href="data-structures/distributed-data-structures.html" class="page">Distributed Data Structures</a>.</p>
+<p><code>TargetNotMemberException</code>: Thrown when an operation is sent to a machine that is not
+a member of the cluster.</p>
 </li>
 <li>
-<p>Learn how to configure Hazelcast IMDG: see <a href="configuration/understanding-configuration.html" class="page">Understanding Configuration</a>.</p>
+<p><code>CallerNotMemberException</code>: Thrown when an operation was sent by a machine which is not a member in
+the cluster when the operation is executed.</p>
+</li>
+<li>
+<p><code>WrongTargetException</code>: Thrown when an operation is executed on the wrong machine, usually because
+the partition that operation belongs to has been moved to some other member.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>You can always reach out via <a href="https://slack.hazelcast.com/" target="_blank" rel="noopener">Slack</a>,
-<a href="https://groups.google.com/forum/#!forum/hazelcast" target="_blank" rel="noopener">Mail Group</a> or <a href="http://www.stackoverflow.com" target="_blank" rel="noopener">StackOverflow</a>.</p>
-</div>
-</div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
@@ -1223,7 +952,7 @@ it through Management Center. Now, you may want to perform the following:</p>
 <script src="../../_/js/site.js"></script>
 <link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
 <script src="../../_/js/vendor/lunr.js"></script>
-<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/hazelcast/4.1/getting-started.html"></script>
+<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/hazelcast/4.1/common-exception-types.html"></script>
 <script async src="../../_/../search-index.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
 <script async src="../../_/js/vendor/enlarge-images.js"></script>

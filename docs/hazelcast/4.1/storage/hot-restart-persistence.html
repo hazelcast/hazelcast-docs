@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -912,7 +912,7 @@ This feature is currently provided for the Hazelcast map data structure and Haze
 after a cluster restart. A restart can be caused by a planned shutdown
 (including rolling upgrades) or a sudden cluster-wide crash, e.g., power outage.
 For Hot Restart Persistence, required states for Hazelcast clusters and members are
-introduced. See the <a href="#managing-cluster-and-member-states">Managing Cluster and Member States section</a>
+introduced. See the <a href="../management/cluster-utilities.html#managing-cluster-and-member-states" class="page">Managing Cluster and Member States section</a>
 for information on the cluster and member states. The purpose of the Hot Restart Persistence
 is to provide a maintenance window for member operations and restart the cluster
 in a fast way. It is not meant to recover the catastrophic shutdown of one member.</p>
@@ -1145,7 +1145,7 @@ start and join to the cluster in <code>validation-timeout-seconds</code>. After 
 partial start with the members present in the cluster. Moreover, partial start can
 be requested manually using the
 <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#hot-restart" target="_blank" rel="noopener">Management Center</a>,
-<a href="#using-rest-api-for-cluster-management">REST API</a> and <a href="#example-usages-for-cluster-sh">cluster management scripts</a>
+<a href="../management/cluster-utilities.html#using-rest-api-for-cluster-management" class="page">REST API</a> and <a href="../management/cluster-utilities.html#example-usages-for-cluster-sh" class="page">cluster management scripts</a>
 before the <code>validation-timeout-seconds</code> duration passes.</p>
 </div>
 <div class="paragraph">
@@ -1515,7 +1515,7 @@ partition threads changes and that makes Hot Restart fail during the startup.
 Solution is to explicitly set number of Hazelcast partition threads
 (<code>hazelcast.operation.thread.count</code> system property) and Hot Restart <code>parallelism</code>
 configuration and use the same parameters on the new server. For setting system
-properties see the <a href="#system-properties">System Properties appendix</a>.</p>
+properties see the <a href="../system-properties.html" class="page">System Properties appendix</a>.</p>
 </div>
 </div>
 </div>
@@ -2046,7 +2046,7 @@ because there are some transactions which have not yet been committed.</p>
 <div class="paragraph">
 <p>To achieve a high consistency of data on all members, the cluster should be
 put to <code>PASSIVE</code> state for the duration of the call to the backup method.
-See the <a href="#cluster-member-states">Cluster Member States section</a> on information on how to do this.
+See the <a href="../management/cluster-utilities.html#cluster-member-states" class="page">Cluster Member States section</a> on information on how to do this.
 The cluster does not need to be in <code>PASSIVE</code> state for the entire
 duration of the backup process, though. Because of the design, only partition metadata
 is copied synchronously during the invocation of the backup method. Once the backup method has returned,
@@ -2376,7 +2376,7 @@ Disabled by default.</p>
 </td>
 <td class="content">
 Sensitive configuration properties such as <code>password</code> should be protected using
-<a href="#variable-replacers">encryption replacers</a>.
+<a href="../configuration/variable-replacers.html" class="page">encryption replacers</a>.
 </td>
 </tr>
 </table>
@@ -2471,7 +2471,7 @@ It can be configured programmatically or declaratively using the
 by default.</p>
 </li>
 <li>
-<p><code>ssl</code>: The TLS/SSL configuration for HTTPS support. See the <a href="#tlsssl">TLS/SSL section</a> for more
+<p><code>ssl</code>: The TLS/SSL configuration for HTTPS support. See the <a href="../security/tls-ssl.html" class="page">TLS/SSL section</a> for more
 information about how to use the <code>ssl</code> element.</p>
 </li>
 </ul>
@@ -2484,7 +2484,7 @@ information about how to use the <code>ssl</code> element.</p>
 </td>
 <td class="content">
 Sensitive configuration properties such as <code>token</code> should be protected using
-<a href="#variable-replacers">encryption replacers</a>.
+<a href="../configuration/variable-replacers.html" class="page">encryption replacers</a>.
 </td>
 </tr>
 </table>

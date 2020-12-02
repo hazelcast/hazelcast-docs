@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="licenses.html">Appendix D: License Questions</a>
@@ -1109,7 +1109,7 @@ Default count is the number of cores multiplied by 20.</p>
 </td>
 <td class="content">
 For detailed information on the diagnostic tool,
-along with this and the following diagnostic related system properties, see the <a href="#diagnostics">Diagnostics section</a>.
+along with this and the following diagnostic related system properties, see the <a href="management/diagnostics.html" class="page">Diagnostics section</a>.
 </td>
 </tr>
 </table>
@@ -1286,7 +1286,7 @@ will try write through and other optimizations even though the system is concurr
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Enables/disables the Discovery SPI lookup over the old native implementations.
-See <a href="#discovery-spi">[discovery-spi]</a> for more information.</p>
+See <a href="extending-hazelcast/discovery-spi.html" class="page">Discovery SPI</a> for more information.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1297,7 +1297,7 @@ See <a href="#discovery-spi">[discovery-spi]</a> for more information.</p>
 <p>Enable use of public IP address in member discovery with Discovery SPI.
 If you set this property to true in your source cluster, please make sure you have set the public addresses for your
 target members since they will be discovered using their public addresses. Otherwise, they cannot be discovered.
-See the <a href="#public-address">Public Address section</a>.</p>
+See the <a href="clusters/network-configuration.html#public-address" class="page">Public Address section</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1380,7 +1380,7 @@ indexes are enabled or not.</p>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Health monitoring logging interval in seconds. NOTE: For detailed information on
 the health monitoring tool, along with this and the following health monitoring related system properties,
-see the <a href="#health-check-and-monitoring">Health Check and Monitoring section</a>.</p>
+see the <a href="management/health-check-monitoring.html" class="page">Health Check and Monitoring section</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1414,7 +1414,7 @@ When <strong>NOISY</strong>, logs are always printed periodically. Set <strong>O
 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type of the heartbeat failure detector. See the
-<a href="#failure-detector-configuration">Failure Detector Configuration section</a>.</p>
+<a href="clusters/failure-detector-configuration.html" class="page">Failure Detector Configuration section</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1461,7 +1461,7 @@ Hazelcast uses the XXE protection by setting respective XML processor properties
 <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Defines the behavior for index copying on index read/write.
-See the <a href="#copying-indexes">Copying Indexes section</a>.</p>
+See the <a href="query/how-distributed-query-works.html#copying-indexes" class="page">Copying Indexes section</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1606,7 +1606,7 @@ conditions are right. This can reduce the latency and increase the performance f
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Enable <a href="#monitoring-with-jmx">JMX</a> agent.</p>
+<p>Enable <a href="management/jmx-monitoring.html" class="page">JMX</a> agent.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1649,7 +1649,7 @@ all log messages.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">jdk</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enum</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of <a href="#logging-configuration">logging</a> framework type to send logging events.</p>
+<p>Name of <a href="clusters/logging-configuration.html" class="page">logging</a> framework type to send logging events.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1657,7 +1657,7 @@ all log messages.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Notify <a href="#listening-to-map-entries-with-predicates">entry listeners with predicates</a> on map entry updates with
+<p>Notify <a href="data-structures/map.html#listening-to-map-entries-with-predicates" class="page">entry listeners with predicates</a> on map entry updates with
 events that match entry, update or exit from predicate value space.</p>
 </div></div></td>
 </tr>
@@ -1744,7 +1744,7 @@ the maximum size of a key batch for which values are loaded in a single partitio
 <p>Maximum write-behind queue capacity per member. It is the total of all write-behind queue sizes in a member including backups.
 Its maximum value is <code>Integer.MAX_VALUE</code>.
 The value of this property is taken into account only if the <code>write-coalescing</code> element of the
-Map Store configuration is <code>false</code>. See <a href="#setting-write-behind-persistence">here</a> for the description of the <code>write-coalescing</code> element.</p>
+Map Store configuration is <code>false</code>. See <a href="data-structures/map.html#setting-write-behind-persistence" class="page">here</a> for the description of the <code>write-coalescing</code> element.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1842,7 +1842,7 @@ of a static prefix, number and cluster name is provided.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">300</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Initial run delay of <a href="#split-brain-syndrome">split-brain/merge process</a> in seconds.</p>
+<p>Initial run delay of <a href="network-partitioning/network-partitioning.html#split-brain-syndrome" class="page">split-brain/merge process</a> in seconds.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1850,7 +1850,7 @@ of a static prefix, number and cluster name is provided.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Run interval of <a href="#split-brain-syndrome">split-brain/merge process</a> in seconds.</p>
+<p>Run interval of <a href="network-partitioning/network-partitioning.html#split-brain-syndrome" class="page">split-brain/merge process</a> in seconds.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1858,8 +1858,8 @@ of a static prefix, number and cluster name is provided.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Frequency, in seconds, of the <a href="#metrics">metrics</a> collection cycle. Note that
-the preferred way for controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p>
+<p>Frequency, in seconds, of the <a href="management/metrics.html" class="page">metrics</a> collection cycle. Note that
+the preferred way for controlling this setting is <a href="management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1885,8 +1885,8 @@ since currently only this feature consumes the debug metrics.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Enables the <a href="#metrics">metrics collection</a> if set to <code>true</code>, disables it otherwise. Note that the preferred way for
-controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p>
+<p>Enables the <a href="management/metrics.html" class="page">metrics collection</a> if set to <code>true</code>, disables it otherwise. Note that the preferred way for
+controlling this setting is <a href="management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1894,8 +1894,8 @@ controlling this setting is <a href="#metrics-configuration">Metrics Configurati
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Enables buffering the collected <a href="#metrics">metrics</a> for Management Center if set to <code>true</code>, disables it otherwise. Note that
-the preferred way for controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p>
+<p>Enables buffering the collected <a href="management/metrics.html" class="page">metrics</a> for Management Center if set to <code>true</code>, disables it otherwise. Note that
+the preferred way for controlling this setting is <a href="management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1903,8 +1903,8 @@ the preferred way for controlling this setting is <a href="#metrics-configuratio
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Duration, in seconds, that the <a href="#metrics">metrics</a> are retained for Management Center. Note that
-the preferred way for controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p>
+<p>Duration, in seconds, that the <a href="management/metrics.html" class="page">metrics</a> are retained for Management Center. Note that
+the preferred way for controlling this setting is <a href="management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1912,8 +1912,8 @@ the preferred way for controlling this setting is <a href="#metrics-configuratio
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Enables exposing the collected <a href="#metrics">metrics</a> over JMX if set to <code>true</code>, disables it otherwise. Note that
-the preferred way for controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p>
+<p>Enables exposing the collected <a href="management/metrics.html" class="page">metrics</a> over JMX if set to <code>true</code>, disables it otherwise. Note that
+the preferred way for controlling this setting is <a href="management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1923,7 +1923,7 @@ the preferred way for controlling this setting is <a href="#metrics-configuratio
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Interval, in seconds, at which the network statistics (bytes sent and received)
 are re-calculated and published. It is valid only when
-<a href="#advanced-network-configuration">advanced networking</a> is used.</p>
+<a href="clusters/advanced-network-configuration.html" class="page">advanced networking</a> is used.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2226,7 +2226,7 @@ It&#8217;s not recommended to rely on the shutdown hook, this is a last-effort m
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Enables/disables the <a href="#slowoperationdetector">SlowOperationDetector</a>.</p>
+<p>Enables/disables the <a href="performance/slowoperationdetector.html" class="page">SlowOperationDetector</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2408,10 +2408,22 @@ master starts forming the cluster.</p>
 </table>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for System Properties" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

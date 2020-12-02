@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -1597,7 +1597,7 @@ is not blocked and it is done immediately. Its default value is 0.</p>
 </li>
 <li>
 <p><code>in-memory-format</code>: Internal storage format. For more information,
-see the <a href="#ROOT:dds.adoc#setting-in-memory-format" class="page unresolved">in-memory format section</a>.
+see the <a href="../data-structures/distributed-data-structures.html#setting-in-memory-format" class="page">in-memory format section</a>.
 Its default value is <code>BINARY</code>.</p>
 </li>
 <li>
@@ -2488,7 +2488,7 @@ following pseudo-code example:</p>
 <h3 id="jcache-near-cache"><a class="anchor" href="#jcache-near-cache"></a>JCache Near Cache</h3>
 <div class="paragraph">
 <p>The Hazelcast JCache implementation supports a local Near Cache for remotely
-stored entries to increase the performance of local read operations. See the <a href="#near-cache">Near Cache section</a> for a detailed explanation of the Near Cache feature and its configuration.</p>
+stored entries to increase the performance of local read operations. See the <a href="../performance/near-cache.html" class="page">Near Cache section</a> for a detailed explanation of the Near Cache feature and its configuration.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2690,7 +2690,7 @@ backups for the partitions
 owned by the crashed member are kept on other members.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="#listening-for-partition-lost-events">Partition Lost Listener section</a> for more
+<p>See the <a href="../events/cluster-events.html#listening-for-partition-lost-events" class="page">Partition Lost Listener section</a> for more
 information about partition lost detection and partition lost events.</p>
 </div>
 </div>
@@ -2698,10 +2698,22 @@ information about partition lost detection and partition lost events.</p>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Hazelcast JCache Extension - ICache" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

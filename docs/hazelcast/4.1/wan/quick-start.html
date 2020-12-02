@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -897,7 +897,7 @@
 <div class="paragraph">
 <p>This section provides information on how you can
 start using WAN Replication with a minimal setup for both
-<a href="#active-passive">Active-Passive</a> and <a href="#active-active">Active-Active</a> modes.</p>
+<a href="modes.html#active-passive" class="page">Active-Passive</a> and <a href="modes.html#active-active" class="page">Active-Active</a> modes.</p>
 </div>
 </div>
 </div>
@@ -971,7 +971,7 @@ as the active cluster.</p>
 <p>Basically, what we did here is defining a WAN Replication configuration (<code>wan-replication</code>)
 and configuring our map to use it (<code>wan-replication-ref</code>). As mentioned, this is the minimal
 configuration example, which is fine for most use cases. There are more configuration options for
-tuning the WAN Replication; see the <a href="#tuning-wr">Tuning WAN Replication section</a>.</p>
+tuning the WAN Replication; see the <a href="tuning.html" class="page">Tuning WAN Replication section</a>.</p>
 </div>
 <div class="paragraph">
 <p>In the above example, we have configured the map named <code>replicatedMap</code> to
@@ -986,12 +986,12 @@ and caches support this feature.</p>
 <p>The <code>london</code> cluster might have more members than the one specified in this example, but only
 that endpoint will receive the WAN events. In that case
 and if you want the events to be forwarded to the other cluster members, see the <code>republishing-enabled</code>
-element description in the <a href="#configuring-wan-replication-for-imap-and-icache">Configuring for IMap and ICache section</a>.</p>
+element description in the <a href="configuring-for-map-and-cache.html" class="page">Configuring for IMap and ICache section</a>.</p>
 </div>
 <div class="paragraph">
 <p>This example configuration defines a static endpoint to specify the target cluster member, using the <code>target-endpoints</code> element or <code>setTargetEndpoints()</code> method, respectively.
 You can also use Hazelcast&#8217;s Discovery SPI for WAN Replication to specify endpoints on various
-cloud infrastructures. See the <a href="#wanbatchreplication-discovery-spi">Using Discovery SPI section</a>.</p>
+cloud infrastructures. See the <a href="defining-wan-replication.html#wanbatchreplication-discovery-spi" class="page">Using Discovery SPI section</a>.</p>
 </div>
 </div>
 </div>
@@ -1125,21 +1125,33 @@ of the cluster in one location should be mentioned on the cluster in the other l
 <div class="paragraph">
 <p>As in the Active-Passive example shown in the previous section, this example configuration
 also uses a static endpoint to specify the target cluster member.
-See the <a href="#wanbatchreplication-discovery-spi">Using Discovery SPI section</a> for information
+See the <a href="defining-wan-replication.html#wanbatchreplication-discovery-spi" class="page">Using Discovery SPI section</a> for information
 on using the Discovery SPI to specify target members.</p>
 </div>
 <div class="paragraph">
 <p>As mentioned previously, the above configurations are the minimal ones
-to get you started. In case you need to configure some additional aspects of your maps or caches that use WAN Replication, see the <a href="#configuring-wan-replication-for-imap-and-icache">Configuring for IMap and ICache section</a>.</p>
+to get you started. In case you need to configure some additional aspects of your maps or caches that use WAN Replication, see the <a href="configuring-for-map-and-cache.html" class="page">Configuring for IMap and ICache section</a>.</p>
 </div>
 </div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Quick Start" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

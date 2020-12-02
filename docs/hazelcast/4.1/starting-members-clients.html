@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="licenses.html">Appendix D: License Questions</a>
@@ -964,7 +964,7 @@ package in a new directory.
 </td>
 <td class="content">
 You can also use the start scripts to deploy your own library to a
-Hazelcast member. See the <a href="#adding-user-library-to-classpath">Adding User
+Hazelcast member. See the <a href="clusters/deploying-code-from-clients.html#adding-user-library-to-classpath" class="page">Adding User
 Library to CLASSPATH section</a>.
 </td>
 </tr>
@@ -1050,10 +1050,10 @@ and WAN replications. See the <a href="https://docs.hazelcast.org/docs/managemen
 <p>By default, Hazelcast uses multicast to discover other members that can form a cluster.  If you are
 working with other Hazelcast developers on the same network, you may find yourself joining their
 clusters under the default settings.  Hazelcast provides a way to segregate clusters within the same
-network when using multicast. See the <a href="#creating-cluster">Creating Clusters section</a>
+network when using multicast. See the <a href="clusters/creating-clusters.html" class="page">Creating Clusters section</a>
 for more information.  Alternatively, if you do not wish to use the default multicast mechanism,
 you can provide a fixed list of IP addresses that are allowed to join. See
-the <a href="#join">Join configuration section</a> for more information.</p>
+the <a href="clusters/network-configuration.html#join" class="page">Join configuration section</a> for more information.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1064,7 +1064,7 @@ the <a href="#join">Join configuration section</a> for more information.</p>
 <td class="content">
 Multicast mechanism is not recommended for production since UDP
 is often blocked in production environments and other discovery mechanisms
-are more definite. See the <a href="#discovery-mechanisms">Discovery Mechanisms section</a>.
+are more definite. See the <a href="clusters/discovery-mechanisms.html" class="page">Discovery Mechanisms section</a>.
 </td>
 </tr>
 </table>
@@ -1180,10 +1180,22 @@ and printing the map size as <strong>3</strong>.</p>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Starting the Members and Clients" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

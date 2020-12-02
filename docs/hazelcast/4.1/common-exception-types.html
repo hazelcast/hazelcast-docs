@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Glossary Hazelcast Documentation</title>
-    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/glossary.html">
+    <title>Common Exception Types Hazelcast Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/common-exception-types.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="stylesheet" href="../../_/css/search.css">
@@ -826,7 +826,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="migration-guides.html">Appendix B: Migration Guides</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -841,7 +841,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="revision-history.html">Appendix G: Document Revision History</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="glossary.html">Glossary</a>
   </li>
 </ul>
@@ -883,109 +883,60 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Hazelcast IMDG</a></li>
-    <li><a href="glossary.html">Glossary</a></li>
+    <li><a href="common-exception-types.html">Appendix C: Common Exception Types</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/docs-poc-v1/docs/modules/ROOT/pages/glossary.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a class="git" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/docs-poc-v1/docs/modules/ROOT/pages/common-exception-types.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Glossary</h1>
-<div class="dlist glossary">
-<dl>
-<dt>2-phase Commit</dt>
-<dd>
-<p>2-phase commit protocol is an atomic commitment protocol for distributed systems. It consists of two phases: commit-request and commit. In commit-request phase, transaction manager coordinates all of the transaction resources to commit or abort. In commit-phase, transaction manager decides to finalize operation by committing or aborting according to the votes of the each transaction resource.</p>
-</dd>
-<dt>ACID</dt>
-<dd>
-<p>A set of properties (Atomicity, Consistency, Isolation, Durability) guaranteeing that transactions are processed reliably. Atomicity requires that each transaction be all or nothing, i.e., if one part of the transaction fails, the entire transaction fails). Consistency ensures that only valid data following all rules and constraints is written. Isolation ensures that transactions are securely and independently processed at the same time without interference (and without transaction ordering). Durability means that once a transaction has been committed, it will remain so, no matter if there is a power loss, crash, or error.</p>
-</dd>
-<dt>Cache</dt>
-<dd>
-<p>A high-speed access area that can be either a reserved section of main memory or storage device.</p>
-</dd>
-<dt>Client Server Topology</dt>
-<dd>
-<p>Hazelcast topology where members run outside the user application and are connected to clients using client libraries. The client library is installed in the user application.</p>
-</dd>
-<dt>Embedded Topology</dt>
-<dd>
-<p>|Hazelcast topology where the members are in-process with the user application and act as both client and server.</p>
-</dd>
-<dt>Garbage Collection</dt>
-<dd>
-<p>Garbage collection is the recovery of storage that is being used by an application when that application no longer needs the storage. This frees the storage for use by other applications (or processes within an application). It also ensures that an application using increasing amounts of storage does not reach its quota. Programming languages that use garbage collection are often interpreted within virtual machines like the JVM. The environment that runs the code is also responsible for garbage collection.</p>
-</dd>
-<dt>Hazelcast Cluster</dt>
-<dd>
-<p>A virtual environment formed by Hazelcast members communicating with each other in the cluster.</p>
-</dd>
-<dt>Hazelcast Partitions</dt>
-<dd>
-<p>Memory segments containing the data. Hazelcast is built-on the partition concept, it uses partitions to store and process data. Each partition can have hundreds or thousands of data entries depending on your memory capacity. You can think of a partition as a block of data. In general and optimally, a partition should have a maximum size of 50-100 Megabytes.</p>
-</dd>
-<dt>IMDG</dt>
-<dd>
-<p>An in-memory data grid (IMDG) is a data structure that resides entirely in memory and is distributed among many members in a single location or across multiple locations. IMDGs can support thousands of in-memory data updates per second and they can be clustered and scaled in ways that support large quantities of data.</p>
-</dd>
-<dt>Invalidation</dt>
-<dd>
-<p>The process of marking an object as being invalid across the distributed cache.</p>
-</dd>
-<dt>Java heap</dt>
-<dd>
-<p>Java heap is the space that Java can reserve and use in memory for dynamic memory allocation. All runtime objects created by a Java application are stored in heap. By default, the heap size is 128 MB, but this limit is reached easily for business applications. Once the heap is full, new objects cannot be created and the Java application shows errors.</p>
-</dd>
-<dt>LRU, LFU</dt>
-<dd>
-<p>LRU and LFU are two of eviction algorithms. LRU is the abbreviation for Least Recently Used. It refers to entries eligible for eviction due to lack of interest by applications. LFU is the abbreviation for Least Frequently Used. It refers to the entries eligible for eviction due to having the lowest usage frequency.</p>
-</dd>
-<dt>Member</dt>
-<dd>
-<p>A Hazelcast instance. Depending on your Hazelcast usage, it can refer to a server or a Java virtual machine (JVM). Members belong to a Hazelcast cluster. Members are also referred as member nodes, cluster members, or Hazelcast members.</p>
-</dd>
-<dt>Multicast</dt>
-<dd>
-<p>A type of communication where data is addressed to a group of destination members simultaneously.</p>
-</dd>
-<dt>Near Cache</dt>
-<dd>
-<p>A caching model. When Near Cache is enabled, an object retrieved from a remote member is put into the local cache and the future requests made to this object will be handled by this local member. For example, if you have a map with data that is mostly read, then using Near Cache is a good idea.</p>
-</dd>
-<dt>NoSQL</dt>
-<dd>
-<p>"Not Only SQL". A database model that provides a mechanism for storage and retrieval of data that is tailored in means other than the tabular relations used in relational databases. It is a type of database which does not adhering to the traditional relational database management system (RDMS) structure. It is not built on tables and does not employ SQL to manipulate data. It also may not provide full ACID guarantees, but still has a distributed and fault tolerant architecture.</p>
-</dd>
-<dt>OSGI</dt>
-<dd>
-<p>Formerly known as the Open Services Gateway initiative, it describes a modular system and a service platform for the Java programming language that implements a complete and dynamic component model.</p>
-</dd>
-<dt>Partition Table</dt>
-<dd>
-<p>Table containing all members in the cluster, mappings of partitions to members and further metadata.</p>
-</dd>
-<dt>Race Condition</dt>
-<dd>
-<p>This condition occurs when two or more threads can access shared data and they try to change it at the same time.</p>
-</dd>
-<dt>RSA</dt>
-<dd>
-<p>An algorithm developed by Rivest, Shamir and Adleman to generate, encrypt and decrypt keys for secure data transmissions.</p>
-</dd>
-<dt>Serialization</dt>
-<dd>
-<p>Process of converting an object into a stream of bytes in order to store the object or transmit it to memory, a database, or a file. Its main purpose is to save the state of an object in order to be able to recreate it when needed. The reverse process is called deserialization.</p>
-</dd>
-<dt>Split-brain</dt>
-<dd>
-<p>Split-brain syndrome, in a clustering context, is a state in which a cluster of members gets divided (or partitioned) into smaller clusters of members, each of which believes it is the only active cluster.</p>
-</dd>
-<dt>Transaction</dt>
-<dd>
-<p>Means a sequence of information exchange and related work (such as data store updating) that is treated as a unit for the purposes of satisfying a request and for ensuring data store integrity.</p>
-</dd>
-</dl>
+<h1 class="page">Common Exception Types</h1>
+<div class="paragraph">
+<p>You may see the following exceptions in any Hazelcast operation when the described situations occur:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>HazelcastInstanceNotActiveException</code>: Thrown when <code>HazelcastInstance</code> is not active (already shutdown or
+being shutdown) during an invocation.</p>
+</li>
+<li>
+<p><code>HazelcastOverloadException</code>: Thrown when the system cannot handle any more load due to an overload.
+This exception is thrown when back pressure is enabled.</p>
+</li>
+<li>
+<p><code>DistributedObjectDestroyedException</code>:
+Thrown when a distributed data structure is destroyed using the <code>destroy()</code> method while
+there is a blocking operation on it, e.g., waiting a response for the <code>Lock.lock()</code> method.</p>
+</li>
+<li>
+<p><code>MemberLeftException</code>: Thrown when a member leaves during an invocation or execution.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hazelcast also throws the following exceptions in the cases of overall system problems such as
+networking issues and long pauses:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PartitionMigratingException</code>: Thrown when an operation is executed on a partition,
+but that partition is currently being moved.</p>
+</li>
+<li>
+<p><code>TargetNotMemberException</code>: Thrown when an operation is sent to a machine that is not
+a member of the cluster.</p>
+</li>
+<li>
+<p><code>CallerNotMemberException</code>: Thrown when an operation was sent by a machine which is not a member in
+the cluster when the operation is executed.</p>
+</li>
+<li>
+<p><code>WrongTargetException</code>: Thrown when an operation is executed on the wrong machine, usually because
+the partition that operation belongs to has been moved to some other member.</p>
+</li>
+</ul>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
@@ -1000,7 +951,7 @@
 <div id="feedback-response">
 <p class="feedback-response">Thanks for the feedback!</p>
 </div>
-<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Glossary" id="additional-feedback">Report a problem</a>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Common Exception Types" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
@@ -1013,7 +964,7 @@
 <script src="../../_/js/site.js"></script>
 <link rel="shortcut icon" href="http://hazelcast.com/images/favicon.png">
 <script src="../../_/js/vendor/lunr.js"></script>
-<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/hazelcast/4.1/glossary.html"></script>
+<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/hazelcast/4.1/common-exception-types.html"></script>
 <script async src="../../_/../search-index.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
 <script async src="../../_/js/vendor/enlarge-images.js"></script>

@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -975,7 +975,7 @@ for all the other usages.</p>
 get/change the state of your cluster, to shutdown your cluster and
 to force your cluster to clean its persisted data and make a fresh start.
 The latter is the Force Start operation of Hazelcast&#8217;s Hot Restart Persistence feature.
-See the <a href="#force-start">Force Start section</a>.</p>
+See the <a href="../storage/hot-restart-persistence.html#force-start" class="page">Force Start section</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1053,7 +1053,7 @@ you should use this parameter to provide the IP address of a member to this scri
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Defines the name of a cluster which is used for a simple authentication.
-See the <a href="#creating-cluster">Creating Clusters section</a>.</p>
+See the <a href="../clusters/creating-clusters.html" class="page">Creating Clusters section</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1061,7 +1061,7 @@ See the <a href="#creating-cluster">Creating Clusters section</a>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev-pass</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Defines the password of a cluster (valid only for Hazelcast releases older than 3.8.2).
-See the <a href="#creating-cluster">Creating Clusters section</a>.</p>
+See the <a href="../clusters/creating-clusters.html" class="page">Creating Clusters section</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1235,7 +1235,7 @@ in the Hazelcast Management Center Reference Manual.
 <p><strong>Changing the cluster version:</strong></p>
 </div>
 <div class="paragraph">
-<p>See the <a href="#rolling-member-upgrades">Rolling Member Upgrades chapter</a> to learn more about the cases when you should change the cluster version.</p>
+<p>See the <a href="../installation/rolling-upgrades.html" class="page">Rolling Member Upgrades chapter</a> to learn more about the cases when you should change the cluster version.</p>
 </div>
 <div class="paragraph">
 <p>To change the cluster version to <code>X.Y</code>, use the following command:</p>
@@ -1312,14 +1312,14 @@ The following are the operations you can perform.</p>
 </td>
 <td class="content">
 Some of the REST calls listed below need their REST endpoint groups to be enabled.
-See the <a href="#using-the-rest-endpoint-groups">Using the REST Endpoint Groups section</a> on how to enable them.
+See the <a href="rest-endpoint-groups.html" class="page">Using the REST Endpoint Groups section</a> on how to enable them.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Also note that the value of <code>${PASSWORD}</code> in the following calls is checked only if
-the security is <a href="#enabling-jaas-security">enabled</a> in Hazelcast IMDG, i.e., if you have Hazelcast IMDG Enterprise Edition.
+the security is <a href="../security/enabling-jaas.html" class="page">enabled</a> in Hazelcast IMDG, i.e., if you have Hazelcast IMDG Enterprise Edition.
 If the security is disabled, the <code>${PASSWORD}</code> can be left empty.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1652,7 +1652,7 @@ notifies when members are added or removed and gets the set of cluster members.<
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See the <a href="#listening-for-member-events">Membership Listener section</a>
+See the <a href="../events/cluster-events.html#listening-for-member-events" class="page">Membership Listener section</a>
 for more information on membership events.
 </td>
 </tr>
@@ -1747,7 +1747,7 @@ unassigned partition replicas are assigned to the active members.</p>
 <p>You cannot change the state of a cluster to <code>FROZEN</code> when migration/replication tasks are being performed.</p>
 </li>
 <li>
-<p>You can make use of <code>FROZEN</code> state along with the <a href="#hot-restart-persistence">Hot Restart Persistence</a>
+<p>You can make use of <code>FROZEN</code> state along with the <a href="../storage/hot-restart-persistence.html" class="page">Hot Restart Persistence</a>
 feature. You can change the cluster state to <code>FROZEN</code>, then restart some of your members using
 the Hot Restart feature. The data on the restarting members will not be accessible but
 you will be able to access to the data that is stored in other members.
@@ -1778,7 +1778,7 @@ removed from the partition table if cluster state moves back to <code>ACTIVE</co
 <p>You cannot change the state of a cluster to <code>PASSIVE</code> when migration/replication tasks are being performed.</p>
 </li>
 <li>
-<p>You can make use of <code>PASSIVE</code> state along with the <a href="#hot-restart-persistence">Hot Restart Persistence</a>
+<p>You can make use of <code>PASSIVE</code> state along with the <a href="../storage/hot-restart-persistence.html" class="page">Hot Restart Persistence</a>
 feature. See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/cluster/Cluster.html#shutdown--" target="_blank" rel="noopener">Cluster Shutdown API</a>
 for more info.</p>
 </li>
@@ -1947,7 +1947,7 @@ you can route CPU intensive tasks to those CPU-rich members. Here is how you can
 <div class="paragraph">
 <p>For another example, you can tag some members with a filter so that
 a member in the cluster can load classes from those tagged members.
-See the <a href="#member-user-code-deployment">User Code Deployment section</a> for more information.</p>
+See the <a href="../clusters/deploying-code-on-member.html" class="page">User Code Deployment section</a> for more information.</p>
 </div>
 <div class="paragraph">
 <p>You can also define your member attributes through declarative configuration and
@@ -2057,10 +2057,22 @@ for more <code>PartitionService</code> code samples.</p>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Cluster Utilities" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="licenses.html">Appendix D: License Questions</a>
@@ -961,7 +961,7 @@ The removed SPI&#8217;s classes will be kept to be used internally.</p>
 <li>
 <p>The <code>connection-attempt-period</code> and <code>connection-attempt-limit</code>
 configuration have been removed. Instead, the elements of
-<code>connection-retry</code> are now used. See the <a href="#configuring-client-connection-retry">[configuring-client-connection-retry]</a>
+<code>connection-retry</code> are now used. See the <a href="clients/java.html#configuring-client-connection-retry" class="page">clients:java.adoc#configuring-client-connection-retry</a>
 for the usage of those new elements.</p>
 </li>
 </ul>
@@ -1007,7 +1007,7 @@ which are CPU-bound, e.g aggregations, you probably want to have as many cores a
 operations as possible.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="#threading-model">Threading Model section</a> for more information on Hazelcast IMDG&#8217;s threading model.</p>
+<p>See the <a href="performance/threading-model.html" class="page">Threading Model section</a> for more information on Hazelcast IMDG&#8217;s threading model.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1344,7 +1344,7 @@ map.addIndex(new IndexConfig(IndexType.HASH, "name", "age"));</code></pre>
 <div class="sect2">
 <h3 id="changes-in-custom-attributes"><a class="anchor" href="#changes-in-custom-attributes"></a>Changes in Custom Attributes</h3>
 <div class="paragraph">
-<p><a href="#custom-attributes">Custom attributes</a> are referenced in
+<p><a href="query/custom-attributes.html" class="page">Custom attributes</a> are referenced in
 predicates, queries and indexes. Some improvements have been
 performed in Hazelcast&#8217;s query engine and one of the results
 is the change in custom attribute configurations.</p>
@@ -1526,7 +1526,7 @@ with one abstract method. They have been converted into functional interfaces:</
 <div class="paragraph">
 <p>MapReduce API has been removed, which was deprecated
 since Hazelcast IMDG 3.8. Instead, you can use the
-<a href="#aggregations">[aggregations]</a> on top of Query infrastructure and the
+<a href="query/aggregations.html" class="page">Aggregations</a> on top of Query infrastructure and the
 <a href="https://docs.hazelcast.org/docs/jet/latest/manual/" target="_blank" rel="noopener">Hazelcast Jet</a>
 distributed computing platform as its successors and replacements.</p>
 </div>
@@ -1736,13 +1736,13 @@ for a full insight.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>when you use <a href="#tlsssl">TLS/SSL</a> and Hazelcast IMDG detects some <a href="#integrating-openssl-boringssl">OpenSSL</a> capabilities</p>
+<p>when you use <a href="security/tls-ssl.html" class="page">TLS/SSL</a> and Hazelcast IMDG detects some <a href="security/integrating-openssl.html" class="page">OpenSSL</a> capabilities</p>
 </li>
 <li>
 <p>the Java version is less than 11</p>
 </li>
 <li>
-<p>no explicit <a href="#configuring-hazelcast-for-openssl">SSLEngineFactory</a> is configured.</p>
+<p>no explicit <a href="security/integrating-openssl.html#configuring-hazelcast-for-openssl" class="page">SSLEngineFactory</a> is configured.</p>
 </li>
 </ul>
 </div>
@@ -2457,7 +2457,7 @@ have been renamed:</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>See the <a href="#split-brain-protection">Split-Brain Protection section</a> for more information on network partitioning.</p>
+<p>See the <a href="network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a> for more information on network partitioning.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2514,7 +2514,7 @@ public interface IdentifiedDataSerializable extends DataSerializable {
 </tbody>
 </table>
 <div class="paragraph">
-<p>See <a href="#identifieddataserializable">here</a> for more information on <code>IdentifiedDataSerializable</code>.</p>
+<p>See <a href="serialization/implementing-dataserializable.html#identifieddataserializable" class="page">here</a> for more information on <code>IdentifiedDataSerializable</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3051,7 +3051,7 @@ properties.put("some.other.property", "some-other-value");</code></pre>
 </tbody>
 </table>
 <div class="paragraph">
-<p>See the <a href="#wan-replication">here</a> for more information on WAN Replication.</p>
+<p>See the <a href="wan/wan.html" class="page">here</a> for more information on WAN Replication.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3158,7 +3158,7 @@ the <code>com.hazelcast.query.impl.predicate</code> package.</p>
 <code>PagingPredicate</code> and <code>PartitionPredicate</code>) with no dependencies on any internal APIs.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="#distributed-query">Distributed Query chapter</a> for more information on predicates.</p>
+<p>See the <a href="query/distributed-query.html" class="page">Distributed Query chapter</a> for more information on predicates.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3245,7 +3245,7 @@ an <em>unsafe</em> operation mode in IMDG 4.0 which provides weaker
 consistency guarantees similar to former implementations in Hazelcast IMDG 3.x series.</p>
 </div>
 <div class="paragraph">
-<p>For more information, see the <a href="#cp-subsystem">CP Subsystem section</a>.</p>
+<p>For more information, see the <a href="cp-subsystem/cp-subsystem.html" class="page">CP Subsystem section</a>.</p>
 </div>
 <div class="paragraph">
 <p>See the following table for the before/after samples.</p>
@@ -3399,7 +3399,7 @@ has been used in the older IMDG versions still can be used:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="#configuring-merge-policies">here</a> for more information on configuring merge policies.</p>
+<p>See <a href="network-partitioning/split-brain-recovery.html#configuring-merge-policies" class="page">here</a> for more information on configuring merge policies.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3475,11 +3475,11 @@ config.setEnabled(true);</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Please see the <a href="#using-the-rest-endpoint-groups">Using the REST Endpoint Groups section</a> on how
+<p>Please see the <a href="management/rest-endpoint-groups.html" class="page">Using the REST Endpoint Groups section</a> on how
 to configure Hazelcast instance to expose REST endpoints.
-Please see the the <a href="#health-check-and-monitoring">Health Check and Monitoring section</a> on how
+Please see the the <a href="management/health-check-monitoring.html" class="page">Health Check and Monitoring section</a> on how
 to enable the health check.
-Please see the <a href="#memcache-client">Memcache Client section</a> on how to enable memcache client
+Please see the <a href="clients/memcache.html" class="page">Memcache Client section</a> on how to enable memcache client
 request listener service.</p>
 </div>
 </div>
@@ -3521,7 +3521,7 @@ request listener service.</p>
 <p>In declarative configuration <code>backup-count</code> property should be used instead.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="#configuring-multimap">here</a> for more information on configuring MultiMap.</p>
+<p>See <a href="data-structures/multimap.html#configuring-multimap" class="page">here</a> for more information on configuring MultiMap.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3531,7 +3531,7 @@ request listener service.</p>
 <code>setPartitioningStrategy(PartitioningStrategy)</code> should be used instead.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="#partitioningstrategy">here</a> for more information on configuring MultiMap.</p>
+<p>See <a href="performance/data-affinity.html#partitioningstrategy" class="page">here</a> for more information on configuring MultiMap.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3850,8 +3850,8 @@ as the first two URL-encoded parameters:</p>
 <div class="sect2">
 <h3 id="changes-in-the-diagnostics-configuration"><a class="anchor" href="#changes-in-the-diagnostics-configuration"></a>Changes in the Diagnostics Configuration</h3>
 <div class="paragraph">
-<p>By introducing the <a href="#metrics">metrics system</a> in Hazelcast IMDG 4.0,
-the metrics collected by <a href="#diagnostics">Diagnostics</a>
+<p>By introducing the <a href="management/metrics.html" class="page">metrics system</a> in Hazelcast IMDG 4.0,
+the metrics collected by <a href="management/diagnostics.html" class="page">Diagnostics</a>
 and the metrics system is shared.
 This has come with the following changes of the system
 properties that configure diagnostics:</p>
@@ -3866,7 +3866,7 @@ system properties to <code>true</code> for the members and clients respectively.
 </li>
 <li>
 <p><code>hazelcast.diagnostics.metric.distributed.datastructures</code> is not anymore available
-since the data structure metrics are required for the other <a href="#metric-consumers">Metric Consumers</a>.
+since the data structure metrics are required for the other <a href="management/metrics.html#metric-consumers" class="page">Metric Consumers</a>.
 Therefore, they are collected by default and no need for enabling it for the diagnostics.</p>
 </li>
 </ul>
@@ -3996,7 +3996,7 @@ along with REST endpoint groups.
 Therefore, a configuration change is needed specifically when performing
 a rolling member upgrade from IMDG 3.11 to 3.12.</p>
 <div class="paragraph">
-<p>So, the steps listed in the above <a href="#rolling-upgrade-procedure">[rolling-upgrade-procedure]</a> section
+<p>So, the steps listed in the above <a href="installation/rolling-upgrades.html#rolling-upgrade-procedure" class="page">installation:rolling-upgrades.adoc#rolling-upgrade-procedure</a> section
 should be as follows:</p>
 </div>
 <div class="olist arabic">
@@ -4031,8 +4031,7 @@ should be updated as follows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="#using-the-rest-endpoint-groups">[using-the-rest-endpoint-groups]</a> section for more
-information.</p>
+<p>See the <a href="management/rest-endpoint-groups.html" class="page">Using the REST Endpoint Groups section</a> for more information.</p>
 </div>
 </li>
 </ol>
@@ -4159,7 +4158,7 @@ You can access the names of these properties by calling the <code>getName()</cod
 <li>
 <p><strong>Removal of WanNoDelayReplication</strong>: <code>WanNoDelayReplication</code> implementation of Hazelcast&#8217;s WAN Replication has been removed.
 You can still achieve this behavior by setting the batch size to <code>1</code> while configuring the WanBatchReplication.
-See the <a href="#defining-wan-replication">Defining WAN Replication section</a> for more information.</p>
+See the <a href="wan/defining-wan-replication.html" class="page">Defining WAN Replication section</a> for more information.</p>
 </li>
 <li>
 <p><strong><code>JCache</code> usage:</strong> Changes in <code>JCache</code> implementation which broke compatibility of 3.6.x clients to 3.7, 3.7.1, 3.7.2 cluster members and
@@ -4184,7 +4183,7 @@ Once your cluster is upgraded, you may upgrade your applications to use client v
 A 3.7.3 client started with this compatibility option is compatible with 3.6.x and 3.7.3+ cluster members but incompatible with 3.7, 3.7.1, 3.7.2 cluster members.
 Once your clients are upgraded, you may then proceed to upgrade your cluster members to version 3.7.3 or later.</p>
 <div class="paragraph">
-<p>You may use any of the supported ways as described in the <a href="#system-properties">System Properties section</a> to configure
+<p>You may use any of the supported ways as described in the <a href="system-properties.html" class="page">System Properties section</a> to configure
 the compatibility option. When done upgrading your cluster and clients, you may remove the compatibility property from
 your Hazelcast member configuration.</p>
 </div>
@@ -4195,7 +4194,7 @@ your Hazelcast member configuration.</p>
 <li>
 <p>The <code>eviction-percentage</code> and <code>min-eviction-check-millis</code> elements are deprecated.
 They are ignored if configured, since the map eviction is based on the sampling of entries.
-See the <a href="#eviction-algorithm">Eviction Algorithm section</a> for details.</p>
+See the <a href="jcache/icache.html#eviction-algorithm" class="page">Eviction Algorithm section</a> for details.</p>
 </li>
 </ul>
 </div>
@@ -4216,16 +4215,16 @@ The following system properties are no longer valid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>hazelcast.enterprise.wanrep.batch.size</code>, see the <a href="#batch-size">Batch Size section</a>.</p>
+<p><code>hazelcast.enterprise.wanrep.batch.size</code>, see the <a href="wan/tuning.html#batch-size" class="page">Batch Size section</a>.</p>
 </li>
 <li>
-<p><code>hazelcast.enterprise.wanrep.batchfrequency.seconds</code>, see the <a href="#batch-maximum-delay">Batch Maximum Delay section</a>.</p>
+<p><code>hazelcast.enterprise.wanrep.batchfrequency.seconds</code>, see the <a href="wan/tuning.html#batch-maximum-delay" class="page">Batch Maximum Delay section</a>.</p>
 </li>
 <li>
-<p><code>hazelcast.enterprise.wanrep.optimeout.millis</code>, see the <a href="#response-timeout">Response Timeout section</a>.</p>
+<p><code>hazelcast.enterprise.wanrep.optimeout.millis</code>, see the <a href="wan/tuning.html#response-timeout" class="page">Response Timeout section</a>.</p>
 </li>
 <li>
-<p><code>hazelcast.enterprise.wanrep.queue.capacity</code>, see the <a href="#queue-capacity">Queue Capacity section</a>.</p>
+<p><code>hazelcast.enterprise.wanrep.queue.capacity</code>, see the <a href="wan/tuning.html#queue-capacity" class="page">Queue Capacity section</a>.</p>
 </li>
 </ul>
 </div>
@@ -4260,7 +4259,7 @@ Also, <code>getTypeId()</code> was used in your custom serializer class; it has 
 This was causing some performance overhead for the users who do not use <code>SpringAware</code>.
 With this release, <code>SpringAware</code> annotations are disabled by default.
 By introducing the <code>spring-aware</code> element, it is possible to enable it by adding the <code>&lt;hz:spring-aware /&gt;</code> tag to the configuration.
-See the <a href="#integration-with-spring">Spring Integration section</a>.</p>
+See the <a href="integrated-clustering/spring.html" class="page">Spring Integration section</a>.</p>
 </li>
 </ul>
 </div>
@@ -4398,15 +4397,15 @@ returning null from the implemented <code>merge()</code> method causes the exist
 <li>
 <p><strong>IQueue changes:</strong> There is no change on IQueue API but there are changes on how <code>IQueue</code> is configured:
 there is no backing map configuration for queue. Settings like backup count are directly configured on the queue configuration.
-See the <a href="#queue">Queue section</a>.</p>
+See the <a href="data-structures/queue.html" class="page">Queue section</a>.</p>
 </li>
 <li>
-<p><strong>Transaction API change:</strong> Transaction API has been changed. See the <a href="#transactions">Transactions chapter</a>.</p>
+<p><strong>Transaction API change:</strong> Transaction API has been changed. See the <a href="transactions/transactions.html" class="page">Transactions chapter</a>.</p>
 </li>
 <li>
 <p><strong>ExecutorService API change:</strong> The <code>MultiTask</code> and <code>DistributedTask</code> classes have been removed.
 All the functionality is supported by the newly presented interface IExecutorService.
-See the <a href="#executor-service">Executor Service section</a>.</p>
+See the <a href="computing/executor-service.html" class="page">Executor Service section</a>.</p>
 </li>
 <li>
 <p><strong>LifeCycleService API:</strong> The lifecycle has been simplified. The <code>pause()</code>, <code>resume()</code>, <code>restart()</code> methods have been removed.</p>
@@ -4432,10 +4431,22 @@ Otherwise, it is likely that <code>OutOfMemoryException</code> may be thrown.</p
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Migration Guides" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -1118,7 +1118,7 @@ access them through a proxy on the client side.</p>
 <div class="sect3">
 <h4 id="using-map-with-java-client"><a class="anchor" href="#using-map-with-java-client"></a>Using Map with Java Client</h4>
 <div class="paragraph">
-<p>You can use any <a href="#map">Distributed Map</a> object with the client, as shown below.</p>
+<p>You can use any Distributed Map object with the client, as shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1131,7 +1131,7 @@ map.remove(1);</code></pre>
 </div>
 <div class="paragraph">
 <p>Locality is ambiguous for the client, so <code>addLocalEntryListener</code> and
-<code>localKeySet</code> are not supported. See the <a href="#map">Distributed Map section</a>
+<code>localKeySet</code> are not supported. See the <a href="../data-structures/map.html" class="page">Distributed Map section</a>
 for more information.</p>
 </div>
 </div>
@@ -1153,7 +1153,7 @@ Collection&lt;String&gt; values = multiMap.get(1);</code></pre>
 <div class="paragraph">
 <p><code>addLocalEntryListener</code>, <code>localKeySet</code> and <code>getLocalMultiMapStats</code> are not
 supported because locality is ambiguous for the client.
-See the <a href="#multimap">Distributed MultiMap section</a> for more information.</p>
+See the <a href="../data-structures/multimap.html" class="page">Distributed MultiMap section</a> for more information.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1169,7 +1169,7 @@ myQueue.offer("John")</code></pre>
 </div>
 <div class="paragraph">
 <p><code>getLocalQueueStats</code> is not supported because locality is ambiguous for the client.
-See the <a href="#queue">Distributed Queue section</a> for more information.</p>
+See the <a href="../data-structures/queue.html" class="page">Distributed Queue section</a> for more information.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1188,31 +1188,31 @@ their sections as listed below.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#replicated-map">Replicated Map</a></p>
+<p><a href="../data-structures/replicated-map.html" class="page">Replicated Map</a></p>
 </li>
 <li>
-<p><a href="#list">List</a></p>
+<p><a href="../data-structures/list.html" class="page">List</a></p>
 </li>
 <li>
-<p><a href="#set">Set</a></p>
+<p><a href="../data-structures/set.html" class="page">Set</a></p>
 </li>
 <li>
-<p><a href="#iatomiclong">IAtomicLong</a></p>
+<p><a href="../data-structures/iatomiclong.html" class="page">IAtomicLong</a></p>
 </li>
 <li>
-<p><a href="#iatomicreference">IAtomicReference</a></p>
+<p><a href="../data-structures/iatomicreference.html" class="page">IAtomicReference</a></p>
 </li>
 <li>
-<p><a href="#icountdownlatch">ICountDownLatch</a></p>
+<p><a href="../data-structures/icountdownlatch.html" class="page">ICountDownLatch</a></p>
 </li>
 <li>
-<p><a href="#isemaphore">ISemaphore</a></p>
+<p><a href="../data-structures/isemaphore.html" class="page">ISemaphore</a></p>
 </li>
 <li>
-<p><a href="#flakeidgenerator">FlakeIdGenerator</a></p>
+<p><a href="../data-structures/flake-id-generator.html" class="page">FlakeIdGenerator</a></p>
 </li>
 <li>
-<p><a href="#lock">Lock</a></p>
+<p><a href="../data-structures/fencedlock.html" class="page">Lock</a></p>
 </li>
 </ul>
 </div>
@@ -1228,7 +1228,7 @@ their sections as listed below.</p>
 <div class="paragraph">
 <p>The distributed executor service is for distributed computing.
 It can be used to execute tasks on the cluster on a designated partition or on all the partitions.
-It can also be used to process entries. See the <a href="#executor-service">Distributed Executor Service section</a> for more information.</p>
+It can also be used to process entries. See the <a href="../computing/executor-service.html" class="page">Distributed Executor Service section</a> for more information.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1238,7 +1238,7 @@ It can also be used to process entries. See the <a href="#executor-service">Dist
 <div class="paragraph">
 <p>After getting an instance of <code>IExecutorService</code>, you can use the instance as
 the interface with the one provided on the server side. See the
-<a href="#distributed-computing">Distributed Computing chapter</a> for detailed usage.</p>
+<a href="../computing/distributed-computing.html" class="page">Distributed Computing chapter</a> for detailed usage.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1349,7 +1349,7 @@ lifecycleService.shutdown();</code></pre>
 <h3 id="defining-client-labels"><a class="anchor" href="#defining-client-labels"></a>Defining Client Labels</h3>
 <div class="paragraph">
 <p>You can define labels in your Java client, similar to the way it can
-be done for the <a href="#defining-member-attributes">members</a>.
+be done for the <a href="../management/cluster-utilities.html" class="page">members</a>.
 Through the client labels, you can assign special roles for your clients and
 use these roles to perform some actions specific to those client connections.</p>
 </div>
@@ -1436,7 +1436,7 @@ each distributed data structure in this Reference Manual.</p>
 <h3 id="client-transactions"><a class="anchor" href="#client-transactions"></a>Client Transactions</h3>
 <div class="paragraph">
 <p>Transactional distributed objects are supported on the client side.
-See the <a href="#transactions">Transactions chapter</a> on how to use them.</p>
+See the <a href="../transactions/transactions.html" class="page">Transactions chapter</a> on how to use them.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1889,7 +1889,7 @@ Its default value is <strong>localhost</strong>.</p>
 <td class="content">
 If you have multiple members on a single machine and you are using
 <a href="#java-client-operation-modes">unisocket clients</a>, we recommend you to set explicit
-<a href="#port">ports</a> for each member. Then you should provide those ports in your client configuration
+<a href="../clusters/network-configuration.html#port" class="page">ports</a> for each member. Then you should provide those ports in your client configuration
 when you give the member addresses (using the <code>address</code> configuration element or
 <code>addAddress</code> method as exemplified above). This provides faster connections between clients and members. Otherwise,
 all the load coming from your clients may go through a single member.
@@ -2053,7 +2053,7 @@ networkConfig().setSmartRouting(true);</code></pre>
 <div class="paragraph">
 <p>Note that you need to disable smart routing (<code>false</code>) for the clients which
 want to use temporary permissions defined in a member.
-See the <a href="#handling-permissions-when-a-new-member-joins">Handling Permissions section</a>.</p>
+See the <a href="../security/native-client-security.html#handling-permissions-when-a-new-member-joins" class="page">Handling Permissions section</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2231,7 +2231,7 @@ socketInterceptorConfig.setClassName(MyClientSocketInterceptor.class.getName());
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See the <a href="#socket-interceptor">Socket Interceptor section</a> for more information.
+See the <a href="../security/socket-interceptor.html" class="page">Socket Interceptor section</a> for more information.
 </td>
 </tr>
 </table>
@@ -2286,14 +2286,14 @@ socketOptions.setBufferSize(32)
 <p>You can use TLS/SSL to secure the connection between the client and the members.
 If you want TLS/SSL enabled for the client-cluster connection, you should set <code>SSLConfig</code>.
 Once set, the connection (socket) is established out of an TLS/SSL factory defined either by
-a factory class name or factory implementation. See the <a href="#tlsssl">TLS/SSL section</a>.</p>
+a factory class name or factory implementation. See the <a href="../security/tls-ssl.html" class="page">TLS/SSL section</a>.</p>
 </div>
 <div class="paragraph">
-<p>As explained in the <a href="#tlsssl">TLS/SSL section</a>, Hazelcast members have keyStores used to
+<p>As explained in the TLS/SSL section, Hazelcast members have keyStores used to
 identify themselves (to other members) and Hazelcast clients have trustStore used to
 define which members they can trust. The clients also have their keyStores and
 members have their trustStores so that the members can
-know which clients they can trust: see the <a href="#mutual-authentication">Mutual Authentication section</a>.</p>
+know which clients they can trust: see the <a href="../security/tls-ssl.html#mutual-authentication" class="page">Mutual Authentication section</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2378,7 +2378,7 @@ for more information on Hazelcast Cloud.</p>
 </td>
 <td class="content">
 Since this is a REST based discovery, you need to enable the REST listener service.
-See the <a href="#using-the-rest-endpoint-groups">Using the REST Endpoint Groups section</a> on how to enable REST endpoints.
+See the <a href="../management/rest-endpoint-groups.html" class="page">Using the REST Endpoint Groups section</a> on how to enable REST endpoints.
 </td>
 </tr>
 </table>
@@ -2504,7 +2504,7 @@ how to configure a Java client for connecting to a Hazelcast cluster in AWS.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="#aws-element">aws element section</a> for the descriptions of
+<p>See the <a href="../clusters/network-configuration.html#aws-element" class="page">aws element section</a> for the descriptions of
 the above AWS configuration elements except <code>use-public-ip</code>.</p>
 </div>
 <div class="paragraph">
@@ -2621,7 +2621,7 @@ clientConfig.addListenerConfig(listenerConfig);</code></pre>
 <p>The Hazelcast distributed map supports a local Near Cache for remotely stored entries to
 increase the performance of local read operations. Since the client always requests data from
 the cluster members, it can be helpful in some use cases to configure a Near Cache on the client side.
-See the <a href="#near-cache">Near Cache section</a> for a detailed explanation of the Near Cache feature and its configuration.</p>
+See the <a href="../performance/near-cache.html" class="page">Near Cache section</a> for a detailed explanation of the Near Cache feature and its configuration.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2649,7 +2649,7 @@ See the <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/clien
 <h3 id="client-serialization-configuration"><a class="anchor" href="#client-serialization-configuration"></a>Client Serialization Configuration</h3>
 <div class="paragraph">
 <p>For the client side serialization, use the Hazelcast configuration.
-See the <a href="#serialization">Serialization chapter</a>.</p>
+See the <a href="../serialization/serialization.html" class="page">Serialization chapter</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2693,7 +2693,7 @@ you should configure it on the client side. The class used for this configuratio
 <div class="paragraph">
 <p>Note that, when you create a Reliable Topic structure on your client, a Ringbuffer
 (with the same name as the Reliable Topic) is automatically created on the member side,
-with its default configuration. See the <a href="#ringbuffer">Configuring Ringbuffer section</a> for the defaults.
+with its default configuration. See the <a href="../data-structures/ringbuffer.html" class="page">Configuring Ringbuffer section</a> for the defaults.
 You can edit that configuration according to your needs.</p>
 </div>
 <div class="paragraph">
@@ -3649,7 +3649,7 @@ a cluster member is suspected, because it has not sent any response back to clie
 <td class="content">
 The value of <code>hazelcast.client.heartbeat.interval</code> should be smaller than
 that of <code>hazelcast.client.heartbeat.timeout</code>. In addition, the value of system property
-<a href="#client-max-no">hazelcast.client.max.no.heartbeat.seconds</a>, which is set on the member side,
+<a href="../system-properties.html#client-max-no" class="page"><code>hazelcast.client.max.no.heartbeat.seconds</code></a>, which is set on the member side,
 should be larger than that of <code>hazelcast.client.heartbeat.interval</code>.
 </td>
 </tr>
@@ -3748,8 +3748,8 @@ linker when loading libs from untrusted paths.</p>
 </div>
 <div class="paragraph">
 <p>The details of these requirements are explained in the
-<a href="#requirements-and-linuxunix-configuration">Requirements section</a> of
-Hazelcast members' <a href="#ping-failure-detector">Ping Failure Detector</a>.</p>
+<a href="../clusters/failure-detector-configuration.html#requirements-and-linuxunix-configuration" class="page">Requirements section</a> of
+Hazelcast members' <a href="../clusters/failure-detector-configuration.html#ping-failure-detector" class="page">Ping Failure Detector</a>.</p>
 </div>
 <div class="paragraph">
 <p>If any of the above criteria isn&#8217;t met, then <code>isReachable</code> will always
@@ -3858,7 +3858,7 @@ one every second, and waits up to 1 second for each to complete.
 If there is no successful ping after 2 seconds, the member gets suspected.</p>
 </div>
 <div class="paragraph">
-<p>To enforce the <a href="#requirements-and-linuxunix-configuration">Requirements</a>,
+<p>To enforce the <a href="../clusters/failure-detector-configuration.html#requirements-and-linuxunix-configuration" class="page">Requirements</a>,
 the property <code>echo-fail-fast-on-startup</code> can also be set to <code>true</code>, in which case Hazelcast fails to start if any of the requirements
 isn&#8217;t met.</p>
 </div>
@@ -3918,7 +3918,7 @@ regardless of the other detectors.</p></td>
 <div class="paragraph">
 <p>There are some advanced client configuration properties to tune some aspects of Hazelcast Client.
 You can set them as property name and value pairs through declarative configuration,
-programmatic configuration, or JVM system property. See the <a href="#system-properties">System Properties appendix</a>
+programmatic configuration, or JVM system property. See the <a href="../system-properties.html" class="page">System Properties appendix</a>
 to learn how to set these properties.</p>
 </div>
 <div class="admonitionblock note">
@@ -3977,14 +3977,14 @@ will try write through and other optimizations even though the system is concurr
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables/disables the Discovery SPI lookup over the old native implementations.
-See <a href="#discovery-spi">[discovery-spi]</a> for more information.</p></td>
+See <a href="../extending-hazelcast/discovery-spi.html" class="page">Discovery SPI</a> for more information.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.discovery.public.ip.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables the discovery joiner to use public IPs from <code>DiscoveredNode</code>.
-See <a href="#discovery-spi">[discovery-spi]</a> for more information.</p></td>
+See <a href="../extending-hazelcast/discovery-spi.html" class="page">Discovery SPI</a> for more information.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.client.event.queue.capacity</code></p></td>
@@ -4080,8 +4080,8 @@ Hazelcast throws <code>HazelcastOverloadException</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.client.metrics.collection.frequency</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Frequency, in seconds, of the <a href="#metrics">metrics</a> collection cycle. Note that
-the preferred way for controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frequency, in seconds, of the <a href="../management/metrics.html" class="page">metrics</a> collection cycle. Note that
+the preferred way for controlling this setting is <a href="../management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.client.metrics.debug.enabled</code></p></td>
@@ -4094,15 +4094,15 @@ Note that this is meant to be enabled only if diagnostics is enabled, since curr
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.client.metrics.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables the <a href="#metrics">metrics collection</a> if set to <code>true</code>, disables it otherwise. Note that the preferred way for
-controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables the <a href="../management/metrics.html" class="page">metrics collection</a> if set to <code>true</code>, disables it otherwise. Note that the preferred way for
+controlling this setting is <a href="../management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.client.metrics.jmx.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables exposing the collected <a href="#metrics">metrics</a> over JMX if set to <code>true</code>, disables it otherwise. Note that
-the preferred way for controlling this setting is <a href="#metrics-configuration">Metrics Configuration</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables exposing the collected <a href="../management/metrics.html" class="page">metrics</a> over JMX if set to <code>true</code>, disables it otherwise. Note that
+the preferred way for controlling this setting is <a href="../management/metrics.html#metrics-configuration" class="page">Metrics Configuration</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.client.operation.backup.timeout.millis</code></p></td>
@@ -4278,17 +4278,29 @@ You still can combine it with time-to-live-seconds.</p>
 usage for your client, using the <code>&lt;native-memory&gt;</code> element in the client&#8217;s configuration.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="#high-density-memory-store">High-Density Memory Store section</a>
+<p>See the <a href="../storage/high-density-memory.html" class="page">High-Density Memory Store section</a>
 for more information on Hazelcast&#8217;s High-Density Memory Store feature.</p>
 </div>
 </div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Java Client" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

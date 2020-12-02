@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -922,13 +922,13 @@ replicated clusters and configure the behavior of WAN replication mechanism.</p>
 <p>The examples in this section uses Hazelcast&#8217;s built-in WAN replication implementation.
 This implementation meets most of your WAN replication needs and is configured using the
 <code>batch-publisher</code> element, which you will see in the below examples. Hazelcast also allows you
-to build your own implementation; see the <a href="#defining-custom-wr">Advanced Features section</a>
+to build your own implementation; see the <a href="advanced-features.html#defining-custom-wr" class="page">Advanced Features section</a>
 for details in case you need more custom configurations.</p>
 </div>
 <div class="paragraph">
 <p>The default settings for WAN Replication configuration suit most use cases. If, however, you have specific needs or if you
 would like to fine-tune the behavior of WAN Replication for your application, see the
-<a href="#tuning-wr">Fine-Tuning WAN Replication section</a>.</p>
+<a href="tuning.html" class="page">Fine-Tuning WAN Replication section</a>.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s see how we configure a simple WAN replication using the static endpoints and Discovery SPI, and
@@ -1051,7 +1051,7 @@ Please notice that the WAN Replication configuration is referenced in map and ca
 <div class="paragraph">
 <p>The default settings for WAN Replication will suit most use cases. If, however, you have specific needs or if you
 would like to fine-tune the behavior of WAN Replication for your application, please refer to the
-<a href="#tuning-wr">Fine-Tuning WAN Replication</a> section for more information.</p>
+<a href="tuning.html" class="page">Fine-Tuning WAN Replication section</a> section for more information.</p>
 </div>
 </div>
 </div>
@@ -1076,7 +1076,7 @@ You can store the list of IP addresses in those infrastructures and use these pl
 to read from that list.</p>
 </div>
 <div class="paragraph">
-<p>For more advanced cases, you can provide your own <a href="#discovery-spi">Discovery SPI</a> implementation with custom logic for
+<p>For more advanced cases, you can provide your own <a href="../extending-hazelcast/discovery-spi.html" class="page">Discovery SPI</a> implementation with custom logic for
 determining the WAN target endpoints such as looking up the endpoints in some service registry or even
 reading the endpoint addresses from a file.</p>
 </div>
@@ -1366,10 +1366,10 @@ class (in the programmatic configuration) when defining a WAN replication publis
 <div class="ulist">
 <ul>
 <li>
-<p>a pre-defined number of replication events are generated, (see the <a href="#batch-size">Batch Size section</a>)</p>
+<p>a pre-defined number of replication events are generated, (see the <a href="tuning.html#batch-size" class="page">Batch Size section</a>)</p>
 </li>
 <li>
-<p>or a pre-defined amount of time is passed (see the <a href="#batch-maximum-delay">Batch Maximum Delay section</a>).</p>
+<p>or a pre-defined amount of time is passed (see the <a href="tuning.html#batch-maximum-delay" class="page">Batch Maximum Delay section</a>).</p>
 </li>
 </ul>
 </div>
@@ -1488,7 +1488,7 @@ provide the IP/ports of all members in there. WAN does not perform the discovery
 it only expects that the IP addresses you provide are available.</p>
 </li>
 <li>
-<p><code>sync</code>: Configuration for the WAN sync mechanism. See the <a href="#synchronizing-wan-clusters">Synchronizing WAN Clusters section</a>.</p>
+<p><code>sync</code>: Configuration for the WAN sync mechanism. See the <a href="advanced-features.html#synchronizing-wan-clusters" class="page">Synchronizing WAN Clusters section</a>.</p>
 </li>
 <li>
 <p><code>discovery-strategies</code>: Set its <code>enabled</code> attribute to true for discovery in various cloud infrastructures.
@@ -1525,10 +1525,22 @@ does not, it might mean that the New York and London clusters are active endpoin
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Configuring WAN Replication" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#preface.adoc">Hazelcast IMDG Reference Manual</a>
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../getting-started.html">Quickstart</a>
@@ -827,7 +827,7 @@
     <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#common-exception-types.adoc">Appendix C: Common Exception Types</a>
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
@@ -974,7 +974,7 @@ this is a single member cluster.</p>
 Please note that some of the partitions do not contain any data entries since
 we only have 120 objects and the partition count is 271 by default. This count is
 configurable and can be changed using the system property <code>hazelcast.partition.count</code>.
-See the <a href="#system-properties">System Properties appendix</a>.
+See the <a href="../system-properties.html" class="page">System Properties appendix</a>.
 </td>
 </tr>
 </table>
@@ -987,7 +987,7 @@ See the <a href="#system-properties">System Properties appendix</a>.
 <div class="paragraph">
 <p>Now let&#8217;s create a second member by running the above code again. This creates a
 cluster with two members. This is also where backups of entries are created - remember
-the backup partitions mentioned in the <a href="#hazelcast-overview">Hazelcast Overview section</a>.
+the backup partitions mentioned in the <a href="../overview/hazelcast-overview.html" class="page">Hazelcast Overview section</a>.
 The following illustration shows two members and how the data and its backup is distributed.</p>
 </div>
 <div class="paragraph">
@@ -1162,7 +1162,7 @@ property. An example is shown below.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="#consistency-and-replication-model">Consistency and Replication Model</a> for more detail.</p>
+<p>See <a href="../consistency-and-replication/consistency.html" class="page">Consistency and Replication Model</a> for more detail.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1278,7 +1278,7 @@ LRU (Least Recently Used) and LFU (Least Frequently Used).</p>
 </div>
 <div class="paragraph">
 <p>Hazelcast Map uses the same eviction mechanism as the JCache implementation.
-See the <a href="#eviction-algorithm">Eviction Algorithm section</a> for details.</p>
+See the <a href="../jcache/icache.html#eviction-algorithm" class="page">Eviction Algorithm section</a> for details.</p>
 </div>
 <div class="sect2">
 <h3 id="understanding-map-eviction"><a class="anchor" href="#understanding-map-eviction"></a>Understanding Map Eviction</h3>
@@ -1999,7 +1999,7 @@ operations, such as <code>put</code> and <code>get</code>.</p>
 </li>
 <li>
 <p><code>OBJECT</code>: The data is stored in deserialized form. This configuration is
-good for maps where <a href="#entry-processor">entry processing</a> and <a href="#how-distributed-query-works">queries</a> form the majority of all
+good for maps where <a href="../computing/entry-processor.html" class="page">entry processing</a> and <a href="../query/how-distributed-query-works.html" class="page">queries</a> form the majority of all
 operations and the objects are complex, making the serialization cost comparatively
 high. By storing objects, entry processing does not contain the deserialization
 cost. Note that when you use <code>OBJECT</code> as the in-memory format, the key is still
@@ -2107,19 +2107,19 @@ format to <code>NATIVE</code>. The following snippet is the declarative configur
 </div>
 <div class="paragraph">
 <p>Keep in mind that you should have already enabled the High-Density Memory Store
-usage for your cluster. See the <a href="#configuring-high-density-memory-store">Configuring High-Density Memory Store section</a>.</p>
+usage for your cluster. See the <a href="../storage/high-density-memory.html#configuring-high-density-memory-store" class="page">Configuring High-Density Memory Store section</a>.</p>
 </div>
 <div class="paragraph">
 <p>You can also benefit from the persistent memory technologies such as
 Intel&#174; Optane&#8482; DC to be used by the High-Density Memory Store. See the
-<a href="#using-persistent-memory">Using Persistent Memory section</a>.</p>
+<a href="../storage/high-density-memory.html#using-persistent-memory" class="page">Using Persistent Memory section</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="required-configuration-changes-when-using-native"><a class="anchor" href="#required-configuration-changes-when-using-native"></a>Required Configuration Changes When Using NATIVE</h3>
 <div class="paragraph">
 <p>Note that the eviction mechanism is different for <code>NATIVE</code> in-memory format.
 The new eviction algorithm for map with High-Density Memory Store is similar
-to that of JCache with High-Density Memory Store and is described <a href="#eviction-algorithm">here</a>.</p>
+to that of JCache with High-Density Memory Store and is described <a href="../jcache/icache.html#eviction-algorithm" class="page">here</a>.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -2179,7 +2179,7 @@ to that of JCache with High-Density Memory Store and is described <a href="#evic
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See the <a href="#high-density-memory-store">High-Density Memory Store section</a>
+See the <a href="../storage/high-density-memory.html" class="page">High-Density Memory Store section</a>
 for more information.
 </td>
 </tr>
@@ -2194,7 +2194,7 @@ for more information.
 <div class="paragraph">
 <p>Hazelcast IMap offers automatic preprocessing of various data types on the
 update time to make queries faster. It is currently supported only by the
-<a href="#querying-json-strings">HazelcastJsonValue</a> type. When metadata creation
+<a href="../query/how-distributed-query-works.html#querying-json-strings" class="page">HazelcastJsonValue</a> type. When metadata creation
 is on, IMap creates additional metadata about the objects of supported types
 and uses this metadata during the querying. It does not affect the latency
 and throughput of the object of any type except the supported types.</p>
@@ -2275,7 +2275,7 @@ into the map and will stay there until it is removed or evicted.</p>
 </div>
 <div class="paragraph">
 <p>All loads can be listened via <code>EntryLoadedListener</code>. See the
-<a href="#listening-for-map-events">Listening for Map Events section</a>
+<a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a>
 to learn how you can catch entry-based events.</p>
 </div>
 <div class="paragraph">
@@ -2645,7 +2645,7 @@ reached per-node maximum write-behind-queue capacity, subsequent put operations
 will fail with <code>ReachedMaxSizeException</code>. This exception is thrown to prevent
 uncontrolled grow of write-behind queues. You can set per-node maximum capacity
 using the system property <code>hazelcast.map.write.behind.queue.capacity</code>. See the
-<a href="#system-properties">System Properties appendix</a> for information on this property
+<a href="../system-properties.html" class="page">System Properties appendix</a> for information on this property
 and how to set the system properties.
 </td>
 </tr>
@@ -2840,7 +2840,7 @@ on create and on destroy of a <code>MapLoader</code>.</p>
 <h3 id="storing-entries-to-multiple-maps"><a class="anchor" href="#storing-entries-to-multiple-maps"></a>Storing Entries to Multiple Maps</h3>
 <div class="paragraph">
 <p>A configuration can be applied to more than one map using wildcards
-(see <a href="#using-wildcards">Using Wildcards</a>), meaning that the configuration is
+(see <a href="../configuration/using-wildcards.html" class="page">Using Wildcards</a>), meaning that the configuration is
 shared among the maps. But <code>MapStore</code> does not know which entries to store
 when there is one configuration applied to multiple maps.</p>
 </div>
@@ -2893,7 +2893,7 @@ has two values: <code>LAZY</code> and <code>EAGER</code>. If <code>InitialLoadMo
 <code>EAGER</code>, all the data is loaded while the map is created and everything becomes
 ready to use. Also, if you add indices to your map with the
 <a href="https://docs.hazelcast.org/docs/4.1/javadoc/com/hazelcast/config/IndexConfig.html" target="_blank" rel="noopener">IndexConfig</a>
-class or the <a href="#indexing-queries"><code>addIndex</code></a> method, then
+class or the <a href="../query/how-distributed-query-works.html#indexing-queries" class="page"><code>addIndex</code></a> method, then
 <code>InitialLoadMode</code> is overridden and <code>MapStoreConfig</code> behaves as if <code>EAGER</code> mode is on.</p>
 </div>
 <div class="paragraph">
@@ -3343,7 +3343,7 @@ persistence mode is configured, before the value is removed from the memory, th
 <div class="paragraph">
 <p>The Hazelcast distributed map supports a local Near Cache for
 remotely stored entries to increase the performance of local
-read operations. See the <a href="#near-cache">Near Cache section</a> for a
+read operations. See the <a href="../performance/near-cache.html" class="page">Near Cache section</a> for a
 detailed explanation of the Near Cache feature and its configuration.</p>
 </div>
 </div>
@@ -3564,7 +3564,7 @@ key. It is more robust than optimistic locking from the perspective of data cons
 or to a member or members. This is the recommended way to perform task executions,
 rather than using pessimistic or optimistic locking techniques. <code>IExecutorService</code>
 has fewer network hops and less data over wire, and tasks are executed very near to the data.
-See the <a href="#data-affinity">Data Affinity section</a>.</p>
+See the <a href="../performance/data-affinity.html" class="page">Data Affinity section</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3593,7 +3593,7 @@ strategy with the map <code>replace</code> method.</p>
 <div class="paragraph">
 <p>Locks can be configured to check the number of currently present members
 before applying a locking operation. If the check fails, the lock operation
-fails with a <code>SplitBrainProtectionException</code> (see the <a href="#split-brain-protection">Split-Brain Protection section</a>).
+fails with a <code>SplitBrainProtectionException</code> (see the <a href="../network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a>).
 As pessimistic locking uses lock operations internally, it also uses the configured
 lock split-brain protection. This means that you can configure a lock split-brain protection with the same name or a
 pattern that matches the map name. Note that the split-brain protection for IMap locking actions can be
@@ -3775,7 +3775,7 @@ System.out.println ( "value           : " + entry.getValue() );</code></pre>
 <h2 id="map-listener"><a class="anchor" href="#map-listener"></a>Map Listener</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See the <a href="#listening-for-map-events">Listening for Map Events section</a>.</p>
+<p>See the <a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a>.</p>
 </div>
 </div>
 </div>
@@ -3785,7 +3785,7 @@ System.out.println ( "value           : " + entry.getValue() );</code></pre>
 <div class="paragraph">
 <p>You can listen to the modifications performed on specific map entries.
 You can think of it as an entry listener with predicates. See the
-<a href="#listening-for-map-events">Listening for Map Events section</a> for
+<a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a> for
 information on how to add entry listeners to a map.</p>
 </div>
 <div class="admonitionblock note">
@@ -3952,7 +3952,7 @@ value=Person{name= smith }, event=ADDED, by Member [192.168.178.10]:5702</code><
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See the <a href="#continuous-query-cache">Continuous Query Cache section</a>
+See the <a href="../query/continuous-query-cache.html" class="page">Continuous Query Cache section</a>
 for more information.
 </td>
 </tr>
@@ -4088,7 +4088,7 @@ especially when the parameters are chosen by a user of your application.</p>
 <div class="paragraph">
 <p>To prevent this, you can configure a maximum result size limit for query based operations.
 This is not a limit like <code>SELECT * FROM map LIMIT 100</code>, which you can achieve by a
-<a href="#filtering-with-paging-predicates">Paging Predicate</a>. A maximum result size limit
+<a href="../query/how-distributed-query-works.html#filtering-with-paging-predicates" class="page">Paging Predicate</a>. A maximum result size limit
 for query based operations is meant to be a last line of defense to prevent your members
 from retrieving more data than they can handle.</p>
 </div>
@@ -4153,7 +4153,7 @@ to trigger local pre-check for <code>Predicates#alwaysTrue()</code> query operat
 </ul>
 </div>
 <div class="paragraph">
-<p>See the <a href="#system-properties">System Properties appendix</a> to see the full descriptions
+<p>See the <a href="../system-properties.html" class="page">System Properties appendix</a> to see the full descriptions
 of these properties and how to set them.</p>
 </div>
 </div>
@@ -4161,10 +4161,22 @@ of these properties and how to set them.</p>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
-  <div class="toc-menu"></div>
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+<a href="#yes-feedback" id="yes-button">Yes</a>
+<a href="#no-feedback" id="no-button">No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<a href="https://github.com/JakeSCahill/docs-poc/issues/new?title=Feedback for Map" id="additional-feedback">Report a problem</a>
 </aside>
   </div>
 </main>
+
 </div>
 <footer class="footer">
   <p>This page was built using the Antora default UI.</p>

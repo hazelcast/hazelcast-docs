@@ -5,9 +5,9 @@
       {{#if env.DOCSEARCH_ENABLED}}
         {{#if (eq page.component.name 'home')}}
         {{else}}
-          <div class="navbar-item">
-            <input id="search-input" type="text" placeholder="Search docs">
-          </div>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+            </div>
         {{/if}}
       {{/if}}
       <button class="navbar-burger" data-target="topbar-nav">
@@ -18,13 +18,13 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Products</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Hazelcast Cloud</a>
-            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/index.html">Hazelcast IMDG</a>
-            <a class="navbar-item" href="#">Hazelcast Jet</a>
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
@@ -32,19 +32,21 @@
           <div class="navbar-dropdown">
             <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
             <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search Resources</a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Resources</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Demos</a>
-            <a class="navbar-item" href="#">Community</a>
-            <a class="navbar-item" href="#">Blog</a>
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
           </div>
         </div>
         <div class="navbar-item">
           <span class="control">
-            <a class="button is-primary" href="#">Get Hazelcast</a>
+            <a class="button is-primary" href="https://hazelcast.com/get-started/">Get Hazelcast</a>
           </span>
         </div>
       </div>

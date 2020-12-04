@@ -22,7 +22,7 @@
 				Effortlessly deploy, scale, and manage your Hazelcast IMDG clusters with our managed cloud service.
 			</span>
       <ul>
-      <li><a href="">Get started</a></li>
+      <li><a href="https://docs.cloud.hazelcast.com/docs/getting-started">Get started</a></li>
       <li><a href="">Monitoring</a></li>
       <li><a href="">Security</a></li>
       <li><a href="">FAQ</a></li>
@@ -62,7 +62,7 @@
 				Distribute your computations over Hazelcast Jet clusters to process large amounts of data with consistently low latency.
 			</span>
     <ul>
-    <li><a href="">Get started</a></li>
+    <li><a href="https://jet-start.sh/docs/get-started/intro">Get started</a></li>
     <li><a href="">Deploy a cluster</a></li>
     <li><a href="">Develop solutions</a></li>
     <li><a href="">FAQ</a></li>

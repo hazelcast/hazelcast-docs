@@ -17,6 +17,7 @@ ui:
   supplemental_files: ./supplemental_ui 
 asciidoc:
   attributes:
+    page-pagination: true
     idprefix: ''
     idseparator: '-'
     survey: https://www.surveymonkey.co.uk/r/NYGJNF9

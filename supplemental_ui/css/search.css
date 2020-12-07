@@ -32,6 +32,15 @@
   }
 }
 
+@media screen and (max-width: 470px) {
+  #search-input {
+    display: none;
+  }
+  .navbar-burger {
+    display: block;
+  }
+}
+
 .search-result-dropdown-menu {
   position: absolute;
   z-index: 100;

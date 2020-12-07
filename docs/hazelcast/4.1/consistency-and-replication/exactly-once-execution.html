@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Exactly-once, At-least-once or At-most-once Execution Hazelcast Documentation</title>
     <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/4.1/consistency-and-replication/exactly-once-execution.html">
+    <link rel="prev" href="invocation-lifecycle.html">
+    <link rel="next" href="indeterminateoperationstateexception.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
@@ -922,6 +924,10 @@ invocation fails with an <code>OperationTimeoutException</code>. This exception 
 say anything about outcome of the operation, that means operation may not be
 executed at all, it may be executed once or twice (due to member left case explained above).</p>
 </div>
+<nav class="pagination">
+  <span class="prev"><a href="invocation-lifecycle.html">Invocation Lifecycle</a></span>
+  <span class="next"><a href="indeterminateoperationstateexception.html">IndeterminateOperationStateException</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="1">
   <div class="toc-menu">

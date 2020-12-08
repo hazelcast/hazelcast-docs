@@ -8,9 +8,11 @@
     <link rel="prev" href="design.html">
     <link rel="next" href="../extending-hazelcast/extending-hazelcast.html">
     <meta name="generator" content="Antora 2.3.4">
-    <link rel="stylesheet" href="../../../_/css/site.css">
-<link rel="stylesheet" href="../../../_/css/search.css">
-
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
 <!-- Google Analytics -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -32,6 +34,8 @@ ga('send', 'pageview')
       <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Hazelcast Documentation</a>
             <div class="navbar-item">
                 <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
             </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
@@ -982,7 +986,7 @@ hazelcastOsgiService.shutdownAll();</code></pre>
 <p class="feedback-response">Thanks for the feedback!</p>
 </div>
 <div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for Using Hazelcast OSGI Service&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/docs-poc-v1/docs/modules/osgi/pages/using-osgi-service.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
-<div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/docs-poc-v1/docs/modules/osgi/pages/using-osgi-service.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/docs-poc-v1/docs/modules/osgi/pages/using-osgi-service.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
 </aside>
   </div>
 </main>
@@ -993,9 +997,22 @@ hazelcastOsgiService.shutdownAll();</code></pre>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
 <script src="../../../_/js/site.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/hazelcast/4.1/osgi/using-osgi-service.html"></script>
-<script async src="../../../_/../search-index.js"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
   </body>
 </html>

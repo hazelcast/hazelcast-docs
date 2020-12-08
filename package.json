@@ -5,8 +5,8 @@
   "author": "Jake Cahill",
   "license": "ISC",
   "scripts": {
-    "build": "cross-env DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --fetch --generator antora-site-generator-lunr antora-playbook.yml",
-    "build-local": "cross-env DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --fetch --generator antora-site-generator-lunr antora-playbook-local.yml",
+    "build": "cross-env DOCSEARCH_ENABLED=true GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --fetch --generator @antora/site-generator-default antora-playbook.yml",
+    "build-local": "cross-env DOCSEARCH_ENABLED=true GOOGLE_ANALYTICS_KEY=GTM-M267KFN antora --to-dir docs --fetch --generator @antora/site-generator-default antora-playbook-local.yml",
     "check-links": "antora --generator @antora/xref-validator antora-playbook.yml",
     "check-links-local": "antora --generator @antora/xref-validator antora-playbook-local.yml",
     "serve": "serve docs",
@@ -15,8 +15,6 @@
   "devDependencies": {
     "@antora/cli": "^2.3.4",
     "@antora/site-generator-default": "^2.3.4",
-    "antora-lunr": "^0.8.0",
-    "antora-site-generator-lunr": "^0.5.0",
     "@antora/xref-validator": "gitlab:antora/xref-validator",
     "cross-env": "^7.0.2",
     "ngrok": "^3.3.0",

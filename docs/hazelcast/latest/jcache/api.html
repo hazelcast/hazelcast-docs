@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JCache API Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/latest/jcache/api.html">
+    <link rel="prev" href="providers.html">
+    <link rel="next" href="hazelcast-integration.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'GTM-M267KFN', 'auto')
+ga('send', 'pageview')
+</script>
+<!-- End Google Analytics -->
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc"><img src="../../../_/img/hazelcast-logo.svg"></img></a>
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
+            </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search All Resources</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Integration Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a href="https://hazelcast.com/get-started/"><img class="nav-button" src="../../../_/img/nav-button.svg"></img></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../overview/hazelcast-overview.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/what-is-imdg.html">What is Hazelcast IMDG?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/topology.html">Topology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/data-partitioning.html">Data Partitioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/use-cases.html">Use Cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/resources.html">Resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../installation/installing-upgrading.html">Installing and Upgrading</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-maven.html">Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-docker.html">Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-download-archives.html">Download Archives</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-hazelcast-cloud.html">Hazelcast Cloud</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-kubernetes.html">Kubernetes/OpenShift Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-vmware-tanzu.html">Deploying in VMware Tanzu</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-cloud.html">Deploying in Cloud Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/using-enterprise-edition.html">Using Pro and Enterprise editions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/rolling-upgrades.html">Rolling Member Upgrades</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/running-in-modular-java.html">Running in Modular Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/supported-jvms.html">Supported Java Virtual Machines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../starting-members-clients.html">Starting the Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/understanding-configuration.html">Understanding Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-declaratively.html">Configuring Declaratively</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-programmatically.html">Configuring Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-with-system-properties.html">Configuring with System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-within-spring.html">Configuring within the Spring Context</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/overriding-configuration-settings.html">Overriding Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/dynamic-data-structure-configuration.html">Dynamically Adding Data Structure Configuration on a Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/checking-configuration.html">Checking Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/pattern-matcher.html">Configuration Pattern Matcher</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-wildcards.html">Using Wildcards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-variables.html">Using Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/variable-replacers.html">Variable Replacers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clusters/setting-up-clusters.html">Setting Up Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovery-mechanisms.html">Discovery Mechanisms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-auto-detection.html">Discovering Members by Auto Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-tcp.html">Discovering Members by TCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-multicast.html">Discovering Members by Multicast</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-native-clients.html">Discovering Native Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/creating-clusters.html">Creating Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-on-member.html">Deploying User Code on the Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-from-clients.html">Deploying User Code from Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/accessing-domain-objects.html">Accessing Domain Objects without Domain Classes - BETA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/partition-group-configuration.html">Partition Group Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/logging-configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/network-configuration.html">Other Network Configurations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/failure-detector-configuration.html">Failure Detector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/advanced-network-configuration.html">Advanced Network Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../data-structures/distributed-data-structures.html">Distributed Data Structures</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/overview.html">Overview of Hazelcast Distributed Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/map.html">Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/queue.html">Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/priority-queue.html">Priority Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/multimap.html">MultiMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/set.html">Set</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/list.html">List</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/ringbuffer.html">Ringbuffer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/topic.html">Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/reliable-topic.html">Reliable Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomiclong.html">IAtomicLong</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/isemaphore.html">ISemaphore</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomicreference.html">IAtomicReference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/icountdownlatch.html">ICountDownLatch</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/pn-counter.html">PN Counter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/flake-id-generator.html">Flake ID Generator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/replicated-map.html">Replicated Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/cardinality-estimator-service.html">Cardinality Estimator Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/event-journal.html">Event Journal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../events/distributed-events.html">Distributed Events</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/cluster-events.html">Cluster Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/object-events.html">Distributed Object Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/event-listeners-for-clients.html">Event Listeners for Hazelcast Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/global-event-configuration.html">Global Event Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast-jet.html">Hazelcast Jet</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../computing/distributed-computing.html">Distributed Computing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/executor-service.html">Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/durable-executor-service.html">Durable Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/scheduled-executor-service.html">Scheduled Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/entry-processor.html">Entry Processor</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sql/distributed-sql.html">SQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/querying-imap.html">Querying IMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/data-types.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/select-statement.html">SELECT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/expressions.html">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/lite-members.html">Lite Members</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/how-distributed-sql-works.html">How Distributed SQL Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/sql-and-high-density-memory.html">SQL on Data Structures Backed by High-Density Memory Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../query/distributed-query.html">Distributed Query</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/how-distributed-query-works.html">How Distributed Query Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/custom-attributes.html">Custom Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/aggregations.html">Aggregations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/projections.html">Projections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/continuous-query-cache.html">Continuous Query Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/mapreduce-deprecation-and-removal.html">MapReduce Deprecation and Removal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cp-subsystem/cp-subsystem.html">CP Subsystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/discovery-process.html">CP Discovery Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/persistence.html">CP Subsystem Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/member-shutdown.html">CP Member Shutdown</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fault-tolerance.html">CP Subsystem&#8217;s Fault Tolerance Capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/listeners.html">CP Subsystem Listeners</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/sessions.html">CP Sessions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/unsafe-mode.html">CP Subsystem Unsafe Mode</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/management.html">CP Subsystem Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transactions/transactions.html">Transactions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/creating-a-transaction-interface.html">Creating a Transaction Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/providing-xa-transactions.html">Providing XA Transactions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="jcache.html">Hazelcast JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview.html">JCache Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="setup.html">JCache Setup and Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="providers.html">JCache Providers</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="api.html">JCache API</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="hazelcast-integration.html">JCache - Hazelcast Instance Integration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="icache.html">Hazelcast JCache Extension - ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tck.html">Testing for JCache Specification Compliance</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../integrated-clustering/integrated-clustering.html">Integrated Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/hibernate-second-level-cache.html">Integration with Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/web-session-replication.html">Web Session Replications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/javaee.html">Integration with Java EE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/spring.html">Integration with Spring</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../storage/storage.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/high-density-memory.html">High-Density Memory Store</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/sizing-practices.html">Sizing Practices</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/hot-restart-persistence.html">Hot Restart Persistence</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../striim-cdc.html">Database CDC Integration Using Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clients/hazelcast-clients.html">Hazelcast Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/java.html">Java Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/cplusplus.html">C++ Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/dotnet.html">.NET Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/rest.html">REST Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/memcache.html">Memcache Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/python.html">Python Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/nodejs.html">Node.js Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/go.html">Go Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../serialization/serialization.html">Serialization</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/interface-types.html">Serialization Interface Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/comparing-interfaces.html">Comparing Serialization Interfaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-java-serializable.html">Implementing Java Serializable and Externalizable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-dataserializable.html">Implementing DataSerializable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-portable-serialization.html">Implementing Portable Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/custom-serialization.html">Custom Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/global-serializer.html">Global Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-hazelcastinstanceaware.html">Implementing HazelcastInstanceAware</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/untrusted-deserialization-protection.html">Untrusted Deserialization Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/serialization-configuration.html">Serialization Configuration Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../management/management.html">Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/member-statistics.html">Getting Member Statistics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-api.html">JMX API per Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-monitoring.html">Monitoring with JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/rest-endpoint-groups.html">Using the REST Endpoint Groups</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/cluster-utilities.html">Cluster Utilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/diagnostics.html">Diagnostics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/health-check-monitoring.html">Health Check and Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/management-center.html">Management Center</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/license-info.html">License Information</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/instance-tracking.html">Instance Tracking</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/enabling-jaas.html">Enabling JAAS Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/socket-interceptor.html">Socket Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-interceptor.html">Security Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/encryption.html">Encryption</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-ssl.html">TLS/SSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/integrating-openssl.html">Integrating OpenSSL / BoringSSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-configuration.html">Other TLS related configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/validating-secrets.html">Validating Secrets Using Strength Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-realms.html">Security Realms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/jaas-authentication.html">JAAS authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/cluster-member-security.html">Cluster Member Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/default-authentication.html">Default authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/native-client-security.html">Native Client Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/logging-auditable-events.html">Logging Auditable Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-debugging.html">Security Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/fips-140-2.html">FIPS 140-2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../performance/performance.html">Performance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/pipelining.html">Pipelining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/data-affinity.html">Data Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/cpu-thread-affinity.html">CPU Thread Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/running-on-ec2.html">Running on EC2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/back-pressure.html">Back Pressure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/threading-model.html">Threading Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/slowoperationdetector.html">SlowOperationDetector</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/near-cache.html">Near Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/caching-deserialized-values.html">Caching Deserialized Values</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../wan/wan.html">WAN Replication</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/modes.html">WAN Replication Modes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/defining-wan-replication.html">Configuring WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/configuring-for-map-and-cache.html">Configuring for IMap and ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/advanced-features.html">Advanced Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/tuning.html">Fine-Tuning WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/failures.html">Failure Detection and Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/rest-api.html">REST API Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../osgi/osgi.html">OSGI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/osgi-support.html">OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/configuring-osgi-support.html">Configuring Hazelcast OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/design.html">Design</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/using-osgi-service.html">Using Hazelcast OSGI Service</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extending-hazelcast/extending-hazelcast.html">Extending Hazelcast</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/operationparker.html">OperationParker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/discovery-spi.html">Discovery SPI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/config-properties-spi.html">Config Properties SPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/hazelcast-plugins.html">Hazelcast Plugins</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/cloud-discovery.html">Cloud Discovery Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/web-session-replication.html">Web Session Replication Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/framework-integration.html">Framework Integration Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/other-integrations.html">Other Integrations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../consistency-and-replication/consistency.html">Consistency and Replication Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/replication-algorithm.html">Hazelcast&#8217;s Replication Algorithm</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/invocation-lifecycle.html">Invocation Lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/exactly-once-execution.html">Exactly-once, At-least-once or At-most-once Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/indeterminateoperationstateexception.html">IndeterminateOperationStateException</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../network-partitioning/network-partitioning.html">Network Partitioning</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/dealing-with-network-partitions.html">Dealing with Network Partitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-protection.html">Split-Brain Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-recovery.html">Split-Brain Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/partial-network-partitions.html">Partial Network Partitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../system-properties.html">Appendix A: System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../phone-homes.html">Appendix E: Phone Homes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">Appendix F: Frequently Asked Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../revision-history.html">Appendix G: Document Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0.4/index.html">2.0.4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Hazelcast IMDG</a></li>
+    <li><a href="jcache.html">Hazelcast JCache</a></li>
+    <li><a href="api.html">JCache API</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">4.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="api.html">4.1</a>
+    <a class="version is-missing" href="../../2.0.4/index.html">2.0.4</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">JCache API</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section explains the JCache API by providing simple
+examples and use cases. While walking through the examples,
+we will have
+a look at a couple of the standard API classes and see
+how these classes are used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jcache-api-application-example"><a class="anchor" href="#jcache-api-application-example"></a>JCache API Application Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The code in this subsection creates a small account application
+by providing a caching layer over an imagined database abstraction.
+The database layer is simulated using a single demo data in a simple
+DAO interface. To show the difference between the "database"
+access and retrieving values from the cache, a small waiting time is
+used in the DAO implementation to simulate network and
+database latency.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-user-class-example"><a class="anchor" href="#creating-user-class-example"></a>Creating User Class Example</h3>
+<div class="paragraph">
+<p>Before we implement the JCache caching layer, let&#8217;s have a quick
+look at some basic classes we need for this example.</p>
+</div>
+<div class="paragraph">
+<p>The <code>User</code> class is the representation of a user table in the
+database. To keep it simple, it has just two properties:
+<code>userId</code> and <code>username</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class User implements Serializable {
+
+    private int userId;
+    private String username;
+
+    public User() {
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-dao-interface-example"><a class="anchor" href="#creating-dao-interface-example"></a>Creating DAO Interface Example</h3>
+<div class="paragraph">
+<p>The DAO interface is also kept easy in this example.
+It provides a simple method to retrieve (find) a user by its <code>userId</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public interface UserDao {
+
+    User findUserById(int userId);
+    boolean storeUser(int userId, User user);
+    boolean removeUser(int userId);
+    Collection&lt;Integer&gt; allUserIds();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-jcache-example"><a class="anchor" href="#configuring-jcache-example"></a>Configuring JCache Example</h3>
+<div class="paragraph">
+<p>To show most of the standard features, the configuration
+example is a little more complex.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Create javax.cache.configuration.CompleteConfiguration subclass
+CompleteConfiguration&lt;Integer, User&gt; config =
+    new MutableConfiguration&lt;Integer, User&gt;()
+        // Configure the cache to be typesafe
+        .setTypes( Integer.class, User.class )
+        // Configure to expire entries 30 secs after creation in the cache
+        .setExpiryPolicyFactory( FactoryBuilder.factoryOf(
+            new AccessedExpiryPolicy( new Duration( TimeUnit.SECONDS, 30 ) )
+        ) )
+        // Configure read-through of the underlying store
+        .setReadThrough( true )
+        // Configure write-through to the underlying store
+        .setWriteThrough( true )
+        // Configure the javax.cache.integration.CacheLoader
+        .setCacheLoaderFactory( FactoryBuilder.factoryOf(
+            new UserCacheLoader( userDao )
+        ) )
+        // Configure the javax.cache.integration.CacheWriter
+        .setCacheWriterFactory( FactoryBuilder.factoryOf(
+            new UserCacheWriter( userDao )
+        ) )
+        // Configure the javax.cache.event.CacheEntryListener with no
+        // javax.cache.event.CacheEntryEventFilter, to include old value
+        // and to be executed synchronously
+        .addCacheEntryListenerConfiguration(
+            new MutableCacheEntryListenerConfiguration&lt;Integer, User&gt;(
+                new UserCacheEntryListenerFactory(),
+                null, true, true
+            )
+        );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s go through this configuration line by line.</p>
+</div>
+<div class="sect3">
+<h4 id="setting-the-cache-type-and-expire-policy"><a class="anchor" href="#setting-the-cache-type-and-expire-policy"></a>Setting the Cache Type and Expire Policy</h4>
+<div class="paragraph">
+<p>First, we set the expected types for the cache, which
+is already known from the previous example. On the next line, a
+<code>javax.cache.expiry.ExpiryPolicy</code> is configured.
+Almost all integration <code>ExpiryPolicy</code> implementations are
+configured using
+<code>javax.cache.configuration.Factory</code> instances. <code>Factory</code> and
+<code>FactoryBuilder</code> are explained later in this chapter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-read-through-and-write-through"><a class="anchor" href="#configuring-read-through-and-write-through"></a>Configuring Read-Through and Write-Through</h4>
+<div class="paragraph">
+<p>The next two lines configure the thread that are read-through
+and write-through to the underlying backend resource that is configured
+over the next few lines. The JCache API offers <code>javax.cache.integration.CacheLoader</code>
+and <code>javax.cache.integration.CacheWriter</code> to
+implement adapter classes to any kind of backend resource, e.g., JPA, JDBC, or any
+other backend technology implementable in Java.
+The interface provides the typical CRUD operations like <code>create</code>, <code>get</code>,
+<code>update</code>, <code>delete</code> and some bulk operation versions of those
+common operations. We will look into the implementation of those implementations
+later.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-entry-listeners"><a class="anchor" href="#configuring-entry-listeners"></a>Configuring Entry Listeners</h4>
+<div class="paragraph">
+<p>The last configuration setting defines entry listeners based on
+sub-interfaces of <code>javax.cache.event.CacheEntryListener</code>. This
+config does not use a <code>javax.cache.event.CacheEntryEventFilter</code>
+since the listener is meant to be fired on every change that
+happens on the cache. Again we will look in the implementation
+of the listener in later in this chapter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="full-example-code"><a class="anchor" href="#full-example-code"></a>Full Example Code</h4>
+<div class="paragraph">
+<p>A full running example that is presented in this
+subsection is available in the
+<a href="https://github.com/hazelcast/hazelcast-code-samples/tree/master/jcache/src/main/java/com/hazelcast/examples/application" target="_blank" rel="noopener">code samples repository</a>.
+The application is built to be a command line app. It
+offers a small shell to accept different commands. After startup, you can
+enter <code>help</code> to see all available commands and their descriptions.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jcache-base-classes"><a class="anchor" href="#jcache-base-classes"></a>JCache Base Classes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the <a href="setup.html#example-jcache-application" class="page">Example JCache Application section</a>,
+we have already seen a couple of the base classes and explained how
+those work. The following are quick descriptions of them:</p>
+</div>
+<div class="paragraph">
+<p><strong><code>javax.cache.Caching</code></strong>:</p>
+</div>
+<div class="paragraph">
+<p>The access point into the JCache API. It retrieves the general
+<code>CachingProvider</code> backed by any compliant JCache
+implementation, such as Hazelcast JCache.</p>
+</div>
+<div class="paragraph">
+<p><strong><code>javax.cache.spi.CachingProvider</code></strong>:</p>
+</div>
+<div class="paragraph">
+<p>The SPI that is implemented to bridge between the JCache API and
+the implementation itself. Hazelcast members and clients use different
+providers chosen as seen in the <a href="providers.html#configuring-jcache-provider" class="page">Configuring JCache Provider section</a> which enable the JCache API to
+interact with Hazelcast clusters.</p>
+</div>
+<div class="paragraph">
+<p>When a <code>javax.cache.spi.CachingProvider.getCacheManager()</code> overload
+that takes a <code>java.lang.ClassLoader</code> argument is used, this
+classloader will be a part of the scope of the created <code>java.cache.Cache</code>,
+and it is not possible to retrieve it on other members.
+We advise not to use those overloads, as they are not meant to be used
+in distributed environments!</p>
+</div>
+<div class="paragraph">
+<p><strong><code>javax.cache.CacheManager</code></strong>:</p>
+</div>
+<div class="paragraph">
+<p>The <code>CacheManager</code> provides the capability to create new and
+manage existing JCache caches.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A <code>javax.cache.Cache</code> instance created with key and
+value types in the configuration
+provides a type checking of those types at retrieval of the
+cache. For that reason, all non-types retrieval methods like
+<code>getCache</code> throw an exception because types cannot be checked.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong><code>javax.cache.configuration.Configuration</code></strong>, <strong><code>javax.cache.configuration.MutableConfiguration</code></strong>:</p>
+</div>
+<div class="paragraph">
+<p>These two classes are used to configure a cache prior to
+retrieving it from a <code>CacheManager</code>. The <code>Configuration</code> interface,
+therefore, acts as a common super type for all compatible
+configuration classes such as <code>MutableConfiguration</code>.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast itself offers a special implementation
+(<code>com.hazelcast.config.CacheConfig</code>) of the <code>Configuration</code> interface
+which offers more options on the specific Hazelcast properties
+that can be set to configure features like synchronous and asynchronous
+backups counts or selecting the underlying <a href="../data-structures/distributed-data-structures.html#setting-in-memory-format" class="page">in-memory format</a> of the cache. For more information on this
+configuration class, see the reference in the <a href="setup.html#jcache-programmatic-configuration" class="page">JCache Programmatic Configuration section</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong><code>javax.cache.Cache</code></strong>:</p>
+</div>
+<div class="paragraph">
+<p>This interface represents the cache instance itself.
+It is comparable to <code>java.util.Map</code> but offers special operations dedicated
+to the caching use case. Therefore, for example <code>javax.cache.Cache.put()</code>,
+unlike <code>java.util.Map.put()</code>, does not return the old
+value previously assigned to the given key.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Bulk operations on the <code>Cache</code> interface guarantee atomicity
+per entry but not over
+all given keys in the same bulk operations since no transactional
+behavior is applied over the whole batch process.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementing-factory-and-factorybuilder"><a class="anchor" href="#implementing-factory-and-factorybuilder"></a>Implementing Factory and FactoryBuilder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>javax.cache.configuration.Factory</code> implementations configure
+features like <code>CacheEntryListener</code>, <code>ExpiryPolicy</code> and <code>CacheLoader</code>s or <code>CacheWriter</code>s.
+These factory implementations are required to distribute the
+different features to members in a cluster environment like Hazelcast.
+Therefore, these factory implementations have to be serializable.</p>
+</div>
+<div class="paragraph">
+<p><code>Factory</code> implementations are easy to do, as they follow the default
+Provider- or Factory-Pattern. The example class
+<code>UserCacheEntryListenerFactory</code> shown below implements a custom JCache <code>Factory</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class UserCacheEntryListenerFactory implements Factory&lt;CacheEntryListener&lt;Integer, User&gt;&gt; {
+
+    @Override
+    public CacheEntryListener&lt;Integer, User&gt; create() {
+        // just create a new listener instance
+        return new UserCacheEntryListener();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To simplify the process for the users, JCache API offers a set of
+helper methods collected in <code>javax.cache.
+configuration.FactoryBuilder</code>. In the above configuration
+example, <code>FactoryBuilder.factoryOf()</code> creates a
+singleton factory for the given instance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementing-cacheloader"><a class="anchor" href="#implementing-cacheloader"></a>Implementing CacheLoader</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>javax.cache.integration.CacheLoader</code> loads cache entries
+from any external backend resource.</p>
+</div>
+<div class="sect2">
+<h3 id="cache-read-through"><a class="anchor" href="#cache-read-through"></a>Cache read-through</h3>
+<div class="paragraph">
+<p>If the cache is
+configured to be <code>read-through</code>, then <code>CacheLoader.load()</code>
+is called transparently from the cache when the key or the value is not
+yet found in the cache. If no value is found for a given key, it returns null.</p>
+</div>
+<div class="paragraph">
+<p>If the cache is not configured to be <code>read-through</code>, nothing is
+loaded automatically. The user code must call
+<code>javax.cache.Cache.loadAll()</code> to load data for the given
+set of keys into the cache.</p>
+</div>
+<div class="paragraph">
+<p>For the bulk load operation (<code>loadAll()</code>), some keys may not
+be found in the returned result set. In this case, a
+<code>javax.cache.integration.CompletionListener</code> parameter can be used
+as an asynchronous callback after all the key-value pairs are loaded
+because loading many key-value pairs can take lots of time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cacheloader-example"><a class="anchor" href="#cacheloader-example"></a>CacheLoader Example</h3>
+<div class="paragraph">
+<p>Let&#8217;s look at the <code>UserCacheLoader</code> implementation.
+This implementation is quite straight forward.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements <code>CacheLoader</code>.</p>
+</li>
+<li>
+<p>It overrides the <code>load</code> method to compute or retrieve
+the value corresponding to <code>key</code>.</p>
+</li>
+<li>
+<p>It overrides the <code>loadAll</code> method to compute or
+retrieve the values corresponding to <code>keys</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An important note is that
+any kind of exception has to be wrapped into
+<code>javax.cache.integration.CacheLoaderException</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class UserCacheLoader implements CacheLoader&lt;Integer, User&gt;, Serializable {
+
+    private final UserDao userDao;
+
+    public UserCacheLoader(UserDao userDao) {
+        // store the dao instance created externally
+        this.userDao = userDao;
+    }
+
+    @Override
+    public User load(Integer key) throws CacheLoaderException {
+        // just call through into the dao
+        return userDao.findUserById(key);
+    }
+
+    @Override
+    public Map&lt;Integer, User&gt; loadAll(Iterable&lt;? extends Integer&gt; keys) throws CacheLoaderException {
+        // create the resulting map
+        Map&lt;Integer, User&gt; loaded = new HashMap&lt;Integer, User&gt;();
+        // for every key in the given set of keys
+        for (Integer key : keys) {
+            // try to retrieve the user
+            User user = userDao.findUserById(key);
+            // if user is not found do not add the key to the result set
+            if (user != null) {
+                loaded.put(key, user);
+            }
+        }
+        return loaded;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cachewriter"><a class="anchor" href="#cachewriter"></a>CacheWriter</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You use a <code>javax.cache.integration.CacheWriter</code> to update
+an external backend resource. If the cache is configured to be
+<code>write-through</code>, this process is executed transparently to
+the user&#8217;s code. Otherwise, there is currently no way to trigger
+writing changed entries to the external resource to a user-defined
+point in time.</p>
+</div>
+<div class="paragraph">
+<p>If bulk operations throw an exception, <code>java.util.Collection</code>
+has to be cleaned of all successfully written keys so
+the cache implementation can determine what keys are written
+and can be applied to the cache state.</p>
+</div>
+<div class="paragraph">
+<p>The following example performs the following tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements <code>CacheWriter</code>.</p>
+</li>
+<li>
+<p>It overrides the <code>write</code> method to write the specified
+entry to the underlying store.</p>
+</li>
+<li>
+<p>It overrides the <code>writeAll</code> method to write the specified
+entires to the underlying store.</p>
+</li>
+<li>
+<p>It overrides the <code>delete</code> method to delete the key entry
+from the store.</p>
+</li>
+<li>
+<p>It overrides the <code>deleteAll</code> method to delete the data and
+keys from the underlying store for the given collection of keys, if present.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class UserCacheWriter implements CacheWriter&lt;Integer, User&gt;, Serializable {
+
+    private final UserDao userDao;
+
+    public UserCacheWriter(UserDao userDao) {
+        // store the dao instance created externally
+        this.userDao = userDao;
+    }
+
+    @Override
+    public void write(Cache.Entry&lt;? extends Integer, ? extends User&gt; entry) throws CacheWriterException {
+        // store the user using the dao
+        userDao.storeUser(entry.getKey(), entry.getValue());
+    }
+
+    @Override
+    public void writeAll(Collection&lt;Cache.Entry&lt;? extends Integer, ? extends User&gt;&gt; entries) throws CacheWriterException {
+        // retrieve the iterator to clean up the collection from written keys in case of an exception
+        Iterator&lt;Cache.Entry&lt;? extends Integer, ? extends User&gt;&gt; iterator = entries.iterator();
+        while (iterator.hasNext()) {
+            // write entry using dao
+            write(iterator.next());
+            // remove from collection of keys
+            iterator.remove();
+        }
+    }
+
+    @Override
+    public void delete(Object key) throws CacheWriterException {
+        // test for key type
+        if (!(key instanceof Integer)) {
+            throw new CacheWriterException("Illegal key type");
+        }
+        // remove user using dao
+        userDao.removeUser((Integer) key);
+    }
+
+    @Override
+    public void deleteAll(Collection&lt;?&gt; keys) throws CacheWriterException {
+        // retrieve the iterator to clean up the collection from written keys in case of an exception
+        Iterator&lt;?&gt; iterator = keys.iterator();
+        while (iterator.hasNext()) {
+            // write entry using dao
+            delete(iterator.next());
+            // remove from collection of keys
+            iterator.remove();
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Again, the implementation is pretty straightforward and
+also as above all exceptions thrown by the external resource,
+like <code>java.sql.SQLException</code> has to be wrapped into a
+<code>javax.cache.integration.CacheWriterException</code>. Note this is a different
+exception from the one thrown by <code>CacheLoader</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementing-entryprocessor"><a class="anchor" href="#implementing-entryprocessor"></a>Implementing EntryProcessor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With <code>javax.cache.processor.EntryProcessor</code>, you can apply an
+atomic function to a cache entry. In a distributed
+environment like Hazelcast, you can move the mutating function
+to the member that owns the key. If the value
+object is big, it might prevent traffic by sending the object
+to the mutator and sending it back to the owner to update it.</p>
+</div>
+<div class="paragraph">
+<p>By default, Hazelcast JCache sends the complete changed value
+to the backup partition. Again, this can cause a lot of traffic if
+the object is big. The Hazelcast ICache extension can also prevent this.
+Further information is available at
+<a href="icache.html#implementing-backupawareentryprocessor" class="page">Implementing BackupAwareEntryProcessor</a>.</p>
+</div>
+<div class="paragraph">
+<p>An arbitrary number of arguments can be passed to the
+<code>Cache.invoke()</code> and <code>Cache.invokeAll()</code> methods. All of those
+arguments need
+to be fully serializable because in a distributed environment
+like Hazelcast, it is very likely that these arguments have to be passed around the cluster.</p>
+</div>
+<div class="paragraph">
+<p>The following example performs the following tasks.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements <code>EntryProcessor</code>.</p>
+</li>
+<li>
+<p>It overrides the <code>process</code> method to process an entry.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class UserUpdateEntryProcessor implements EntryProcessor&lt;Integer, User, User&gt; {
+
+    @Override
+    public User process(MutableEntry&lt;Integer, User&gt; entry, Object... arguments) throws EntryProcessorException {
+        // test arguments length
+        if (arguments.length &lt; 1) {
+            throw new EntryProcessorException("One argument needed: username");
+        }
+
+        // get first argument and test for String type
+        Object argument = arguments[0];
+        if (!(argument instanceof String)) {
+            throw new EntryProcessorException("First argument has wrong type, required java.lang.String");
+        }
+
+        // retrieve the value from the MutableEntry
+        User user = entry.getValue();
+
+        // retrieve the new username from the first argument
+        String newUsername = (String) arguments[0];
+
+        // set the new username
+        user.setUsername(newUsername);
+
+        // set the changed user to mark the entry as dirty
+        entry.setValue(user);
+
+        // return the changed user to return it to the caller
+        return user;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By executing the bulk <code>Cache.invokeAll()</code> operation,
+atomicity is only guaranteed for a
+single cache entry. No transactional rules are applied to the bulk operation.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+JCache <code>EntryProcessor</code> implementations are not allowed to call
+<code>javax.cache.Cache</code> methods. This prevents operations from
+deadlocking between different calls.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition, when using a <code>Cache.invokeAll()</code> method, a
+<code>java.util.Map</code> is returned that maps the key to its
+<code>javax.cache.processor.EntryProcessorResult</code>, which itself
+wraps the actual result or a thrown
+<code>javax.cache.processor.EntryProcessorException</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cacheentrylistener"><a class="anchor" href="#cacheentrylistener"></a>CacheEntryListener</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>javax.cache.event.CacheEntryListener</code> implementation is
+straight forward. <code>CacheEntryListener</code> is a super-interface that
+is used as a marker for listener classes in JCache. The specification
+brings a set of sub-interfaces.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CacheEntryCreatedListener</code>: Fires after a cache entry is
+added (even on read-through by a <code>CacheLoader</code>) to the cache.</p>
+</li>
+<li>
+<p><code>CacheEntryUpdatedListener</code>: Fires after an already existing
+cache entry updates.</p>
+</li>
+<li>
+<p><code>CacheEntryRemovedListener</code>: Fires after a cache entry
+was removed (not expired) from the cache.</p>
+</li>
+<li>
+<p><code>CacheEntryExpiredListener</code>: Fires after a cache entry
+has been expired. Expiry does not have to be a parallel
+process-- Hazelcast JCache implementation detects and
+removes expired entries periodically. Therefore, the expiration
+event may not be fired as soon as the entry expires.
+See <a href="#expirypolicy">ExpiryPolicy</a> for details.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To configure <code>CacheEntryListener</code>, add a
+<code>javax.cache.configuration.CacheEntryListenerConfiguration</code> instance to
+the JCache configuration class, as seen in the above example
+configuration. In addition, listeners can be configured to be
+executed synchronously (blocking the calling thread) or asynchronously
+(fully running in parallel).</p>
+</div>
+<div class="paragraph">
+<p>In this example application, the listener is implemented to
+print event information on the console. That visualizes what is
+going on in the cache. This application performs the following tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements the <code>CacheEntryCreatedListener.onCreated</code> method
+to call after an entry is created.</p>
+</li>
+<li>
+<p>It implements the <code>CacheEntryUpdatedListener.onUpdated</code> method
+to call after an entry is updated.</p>
+</li>
+<li>
+<p>It implements the <code>CacheEntryRemovedListener.onRemoved</code> method
+to call after an entry is removed.</p>
+</li>
+<li>
+<p>It implements the <code>CacheEntryExpiredListener.onExpired</code> method
+to call after an entry expires.</p>
+</li>
+<li>
+<p>It implements <code>printEvents</code> to print event information on the
+console.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class UserCacheEntryListener implements CacheEntryCreatedListener&lt;Integer, User&gt;,
+        CacheEntryUpdatedListener&lt;Integer, User&gt;,
+        CacheEntryRemovedListener&lt;Integer, User&gt;,
+        CacheEntryExpiredListener&lt;Integer, User&gt; {
+
+    @Override
+    public void onCreated(Iterable&lt;CacheEntryEvent&lt;? extends Integer, ? extends User&gt;&gt; cacheEntryEvents)
+            throws CacheEntryListenerException {
+
+        printEvents(cacheEntryEvents);
+    }
+
+    @Override
+    public void onUpdated(Iterable&lt;CacheEntryEvent&lt;? extends Integer, ? extends User&gt;&gt; cacheEntryEvents)
+            throws CacheEntryListenerException {
+
+        printEvents(cacheEntryEvents);
+    }
+
+    @Override
+    public void onRemoved(Iterable&lt;CacheEntryEvent&lt;? extends Integer, ? extends User&gt;&gt; cacheEntryEvents)
+            throws CacheEntryListenerException {
+
+        printEvents(cacheEntryEvents);
+    }
+
+    @Override
+    public void onExpired(Iterable&lt;CacheEntryEvent&lt;? extends Integer, ? extends User&gt;&gt; cacheEntryEvents)
+            throws CacheEntryListenerException {
+
+        printEvents(cacheEntryEvents);
+    }
+
+    private void printEvents(Iterable&lt;CacheEntryEvent&lt;? extends Integer, ? extends User&gt;&gt; cacheEntryEvents) {
+        for (CacheEntryEvent&lt;? extends Integer, ? extends User&gt; event : cacheEntryEvents) {
+            System.out.println(event.getEventType());
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="expirypolicy"><a class="anchor" href="#expirypolicy"></a>ExpiryPolicy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In JCache, <code>javax.cache.expiry.ExpiryPolicy</code> implementations are
+used to automatically expire cache entries based on different rules.</p>
+</div>
+<div class="paragraph">
+<p>JCache does not require expired entries to be removed from the cache
+immediately. It only enforces that expired entries are not returned from cache.
+Therefore, exact time of removal is implementation specific.
+Hazelcast complies JCache by checking the entries for expiration
+at the time of
+get operations (lazy expiration). In addition to that, Hazelcast
+uses a periodic task to detect and remove expired entries as soon as possible
+(eager expiration).
+Thanks to eager expiry, all expired entries are removed from the memory
+eventually even when they are not touched again. So the space
+used by such entries are released as well.</p>
+</div>
+<div class="paragraph">
+<p>For a detailed explanation of interaction between expiry policies and
+JCache API, see the table in the <code>Expiry Policies</code> section of
+<a href="https://www.jcp.org/en/jsr/detail?id=107" target="_blank" rel="noopener">JCache documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>Expiry timeouts are defined using <code>javax.cache.expiry.Duration</code>,
+which is a pair of <code>java.util.concurrent.TimeUnit</code>, that
+describes a time unit and a long, defining the timeout value.
+The minimum allowed <code>TimeUnit</code> is <code>TimeUnit.MILLISECONDS</code>.
+The long value <code>durationAmount</code> must be equal or greater than zero.
+A value of zero (or <code>Duration.ZERO</code>) indicates that the
+cache entry expires immediately.</p>
+</div>
+<div class="paragraph">
+<p>By default, JCache delivers a set of predefined expiry strategies
+in the standard API.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AccessedExpiryPolicy</code>: Expires after a given set of time measured
+from creation of the cache entry. The expiry timeout is updated on accessing the key.</p>
+</li>
+<li>
+<p><code>CreatedExpiryPolicy</code>: Expires after a given set of time measured
+from creation of the cache entry. The expiry timeout is never updated.</p>
+</li>
+<li>
+<p><code>EternalExpiryPolicy</code>: Never expires. This is the default behavior,
+similar to <code>ExpiryPolicy</code> being set to null.</p>
+</li>
+<li>
+<p><code>ModifiedExpiryPolicy</code>: Expires after a given set of time measured
+from creation of the cache entry. The expiry timeout is updated on updating the key.</p>
+</li>
+<li>
+<p><code>TouchedExpiryPolicy</code>: Expires after a given set of time measured
+from creation of the cache entry. The expiry timeout is updated on accessing or updating the key.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because <code>EternalExpiryPolicy</code> does not expire cache entries,
+it is still possible to evict values from memory if an underlying
+<code>CacheLoader</code> is defined.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="providers.html">JCache Providers</a></span>
+  <span class="next"><a href="hazelcast-integration.html">JCache - Hazelcast Instance Integration</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+  <a href="#yes-feedback" id="yes-button"><i class="far fa-check-circle"></i>  Yes </a>
+  <a href="#no-feedback" id="no-button"><i class="far fa-times-circle"></i>  No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for JCache API&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/v4.1/docs/modules/jcache/pages/api.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/v4.1/docs/modules/jcache/pages/api.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
+
+</aside>
+  </div>
+</main>
+
+</div>
+<footer class="footer">
+  <a>Terms of service</a>
+  <a>Privacy</a>
+  <a>Contact us</a>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
+  </body>
+</html>

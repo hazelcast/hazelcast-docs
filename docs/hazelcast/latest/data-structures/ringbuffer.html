@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ringbuffer Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/latest/data-structures/ringbuffer.html">
+    <link rel="prev" href="list.html">
+    <link rel="next" href="topic.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'GTM-M267KFN', 'auto')
+ga('send', 'pageview')
+</script>
+<!-- End Google Analytics -->
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc"><img src="../../../_/img/hazelcast-logo.svg"></img></a>
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
+            </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search All Resources</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Integration Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a href="https://hazelcast.com/get-started/"><img class="nav-button" src="../../../_/img/nav-button.svg"></img></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../overview/hazelcast-overview.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/what-is-imdg.html">What is Hazelcast IMDG?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/topology.html">Topology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/data-partitioning.html">Data Partitioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/use-cases.html">Use Cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/resources.html">Resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../installation/installing-upgrading.html">Installing and Upgrading</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-maven.html">Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-docker.html">Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-download-archives.html">Download Archives</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-hazelcast-cloud.html">Hazelcast Cloud</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-kubernetes.html">Kubernetes/OpenShift Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-vmware-tanzu.html">Deploying in VMware Tanzu</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-cloud.html">Deploying in Cloud Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/using-enterprise-edition.html">Using Pro and Enterprise editions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/rolling-upgrades.html">Rolling Member Upgrades</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/running-in-modular-java.html">Running in Modular Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/supported-jvms.html">Supported Java Virtual Machines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../starting-members-clients.html">Starting the Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/understanding-configuration.html">Understanding Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-declaratively.html">Configuring Declaratively</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-programmatically.html">Configuring Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-with-system-properties.html">Configuring with System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-within-spring.html">Configuring within the Spring Context</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/overriding-configuration-settings.html">Overriding Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/dynamic-data-structure-configuration.html">Dynamically Adding Data Structure Configuration on a Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/checking-configuration.html">Checking Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/pattern-matcher.html">Configuration Pattern Matcher</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-wildcards.html">Using Wildcards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-variables.html">Using Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/variable-replacers.html">Variable Replacers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clusters/setting-up-clusters.html">Setting Up Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovery-mechanisms.html">Discovery Mechanisms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-auto-detection.html">Discovering Members by Auto Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-tcp.html">Discovering Members by TCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-multicast.html">Discovering Members by Multicast</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-native-clients.html">Discovering Native Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/creating-clusters.html">Creating Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-on-member.html">Deploying User Code on the Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-from-clients.html">Deploying User Code from Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/accessing-domain-objects.html">Accessing Domain Objects without Domain Classes - BETA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/partition-group-configuration.html">Partition Group Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/logging-configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/network-configuration.html">Other Network Configurations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/failure-detector-configuration.html">Failure Detector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/advanced-network-configuration.html">Advanced Network Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="distributed-data-structures.html">Distributed Data Structures</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview.html">Overview of Hazelcast Distributed Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="queue.html">Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="priority-queue.html">Priority Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="multimap.html">MultiMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="ringbuffer.html">Ringbuffer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="topic.html">Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reliable-topic.html">Reliable Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="iatomiclong.html">IAtomicLong</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="isemaphore.html">ISemaphore</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="iatomicreference.html">IAtomicReference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="icountdownlatch.html">ICountDownLatch</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pn-counter.html">PN Counter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="flake-id-generator.html">Flake ID Generator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="replicated-map.html">Replicated Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cardinality-estimator-service.html">Cardinality Estimator Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-journal.html">Event Journal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../events/distributed-events.html">Distributed Events</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/cluster-events.html">Cluster Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/object-events.html">Distributed Object Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/event-listeners-for-clients.html">Event Listeners for Hazelcast Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/global-event-configuration.html">Global Event Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast-jet.html">Hazelcast Jet</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../computing/distributed-computing.html">Distributed Computing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/executor-service.html">Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/durable-executor-service.html">Durable Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/scheduled-executor-service.html">Scheduled Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/entry-processor.html">Entry Processor</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sql/distributed-sql.html">SQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/querying-imap.html">Querying IMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/data-types.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/select-statement.html">SELECT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/expressions.html">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/lite-members.html">Lite Members</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/how-distributed-sql-works.html">How Distributed SQL Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/sql-and-high-density-memory.html">SQL on Data Structures Backed by High-Density Memory Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../query/distributed-query.html">Distributed Query</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/how-distributed-query-works.html">How Distributed Query Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/custom-attributes.html">Custom Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/aggregations.html">Aggregations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/projections.html">Projections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/continuous-query-cache.html">Continuous Query Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/mapreduce-deprecation-and-removal.html">MapReduce Deprecation and Removal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cp-subsystem/cp-subsystem.html">CP Subsystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/discovery-process.html">CP Discovery Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/persistence.html">CP Subsystem Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/member-shutdown.html">CP Member Shutdown</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fault-tolerance.html">CP Subsystem&#8217;s Fault Tolerance Capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/listeners.html">CP Subsystem Listeners</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/sessions.html">CP Sessions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/unsafe-mode.html">CP Subsystem Unsafe Mode</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/management.html">CP Subsystem Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transactions/transactions.html">Transactions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/creating-a-transaction-interface.html">Creating a Transaction Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/providing-xa-transactions.html">Providing XA Transactions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jcache/jcache.html">Hazelcast JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/overview.html">JCache Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/setup.html">JCache Setup and Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/providers.html">JCache Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/hazelcast-integration.html">JCache - Hazelcast Instance Integration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/icache.html">Hazelcast JCache Extension - ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/tck.html">Testing for JCache Specification Compliance</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../integrated-clustering/integrated-clustering.html">Integrated Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/hibernate-second-level-cache.html">Integration with Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/web-session-replication.html">Web Session Replications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/javaee.html">Integration with Java EE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/spring.html">Integration with Spring</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../storage/storage.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/high-density-memory.html">High-Density Memory Store</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/sizing-practices.html">Sizing Practices</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/hot-restart-persistence.html">Hot Restart Persistence</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../striim-cdc.html">Database CDC Integration Using Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clients/hazelcast-clients.html">Hazelcast Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/java.html">Java Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/cplusplus.html">C++ Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/dotnet.html">.NET Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/rest.html">REST Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/memcache.html">Memcache Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/python.html">Python Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/nodejs.html">Node.js Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/go.html">Go Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../serialization/serialization.html">Serialization</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/interface-types.html">Serialization Interface Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/comparing-interfaces.html">Comparing Serialization Interfaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-java-serializable.html">Implementing Java Serializable and Externalizable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-dataserializable.html">Implementing DataSerializable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-portable-serialization.html">Implementing Portable Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/custom-serialization.html">Custom Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/global-serializer.html">Global Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-hazelcastinstanceaware.html">Implementing HazelcastInstanceAware</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/untrusted-deserialization-protection.html">Untrusted Deserialization Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/serialization-configuration.html">Serialization Configuration Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../management/management.html">Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/member-statistics.html">Getting Member Statistics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-api.html">JMX API per Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-monitoring.html">Monitoring with JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/rest-endpoint-groups.html">Using the REST Endpoint Groups</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/cluster-utilities.html">Cluster Utilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/diagnostics.html">Diagnostics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/health-check-monitoring.html">Health Check and Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/management-center.html">Management Center</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/license-info.html">License Information</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/instance-tracking.html">Instance Tracking</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/enabling-jaas.html">Enabling JAAS Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/socket-interceptor.html">Socket Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-interceptor.html">Security Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/encryption.html">Encryption</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-ssl.html">TLS/SSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/integrating-openssl.html">Integrating OpenSSL / BoringSSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-configuration.html">Other TLS related configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/validating-secrets.html">Validating Secrets Using Strength Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-realms.html">Security Realms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/jaas-authentication.html">JAAS authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/cluster-member-security.html">Cluster Member Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/default-authentication.html">Default authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/native-client-security.html">Native Client Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/logging-auditable-events.html">Logging Auditable Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-debugging.html">Security Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/fips-140-2.html">FIPS 140-2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../performance/performance.html">Performance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/pipelining.html">Pipelining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/data-affinity.html">Data Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/cpu-thread-affinity.html">CPU Thread Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/running-on-ec2.html">Running on EC2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/back-pressure.html">Back Pressure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/threading-model.html">Threading Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/slowoperationdetector.html">SlowOperationDetector</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/near-cache.html">Near Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/caching-deserialized-values.html">Caching Deserialized Values</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../wan/wan.html">WAN Replication</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/modes.html">WAN Replication Modes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/defining-wan-replication.html">Configuring WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/configuring-for-map-and-cache.html">Configuring for IMap and ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/advanced-features.html">Advanced Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/tuning.html">Fine-Tuning WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/failures.html">Failure Detection and Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/rest-api.html">REST API Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../osgi/osgi.html">OSGI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/osgi-support.html">OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/configuring-osgi-support.html">Configuring Hazelcast OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/design.html">Design</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/using-osgi-service.html">Using Hazelcast OSGI Service</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extending-hazelcast/extending-hazelcast.html">Extending Hazelcast</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/operationparker.html">OperationParker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/discovery-spi.html">Discovery SPI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/config-properties-spi.html">Config Properties SPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/hazelcast-plugins.html">Hazelcast Plugins</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/cloud-discovery.html">Cloud Discovery Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/web-session-replication.html">Web Session Replication Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/framework-integration.html">Framework Integration Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/other-integrations.html">Other Integrations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../consistency-and-replication/consistency.html">Consistency and Replication Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/replication-algorithm.html">Hazelcast&#8217;s Replication Algorithm</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/invocation-lifecycle.html">Invocation Lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/exactly-once-execution.html">Exactly-once, At-least-once or At-most-once Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/indeterminateoperationstateexception.html">IndeterminateOperationStateException</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../network-partitioning/network-partitioning.html">Network Partitioning</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/dealing-with-network-partitions.html">Dealing with Network Partitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-protection.html">Split-Brain Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-recovery.html">Split-Brain Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/partial-network-partitions.html">Partial Network Partitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../system-properties.html">Appendix A: System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../phone-homes.html">Appendix E: Phone Homes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">Appendix F: Frequently Asked Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../revision-history.html">Appendix G: Document Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0.4/index.html">2.0.4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Hazelcast IMDG</a></li>
+    <li><a href="distributed-data-structures.html">Distributed Data Structures</a></li>
+    <li><a href="ringbuffer.html">Ringbuffer</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">4.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="ringbuffer.html">4.1</a>
+    <a class="version is-missing" href="../../2.0.4/index.html">2.0.4</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Ringbuffer</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast Ringbuffer is a replicated but not partitioned data structure that
+stores its data in a ring-like structure. You can
+think of it as a circular array with a given capacity. Each Ringbuffer has a
+tail and a head. The tail is where the items are
+added and the head is where the items are overwritten or expired. You can reach
+each element in a Ringbuffer using a sequence
+ID, which is mapped to the elements between the head and tail (inclusive) of the Ringbuffer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-a-ringbuffer-and-reading-items"><a class="anchor" href="#getting-a-ringbuffer-and-reading-items"></a>Getting a Ringbuffer and Reading Items</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reading from Ringbuffer is simple: get the Ringbuffer with the
+HazelcastInstance <code>getRingbuffer</code> method, get its current head with
+the <code>headSequence</code> method and start reading. Use the method <code>readOne</code> to
+return the item at the
+given sequence; <code>readOne</code> blocks if no item is available. To read the next item,
+increment the sequence by one.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+        Ringbuffer&lt;String&gt; ringbuffer = hz.getRingbuffer("rb");
+        long sequence = ringbuffer.headSequence();
+        while(true){
+            String item = ringbuffer.readOne(sequence);
+            sequence++;
+            // process item
+        }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By exposing the sequence, you can now move the item from the Ringbuffer
+as long as the item is still available. If the item is not available
+any longer, <code>StaleSequenceException</code> is thrown.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-items-to-a-ringbuffer"><a class="anchor" href="#adding-items-to-a-ringbuffer"></a>Adding Items to a Ringbuffer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding an item to a Ringbuffer is also easy with the Ringbuffer <code>add</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Ringbuffer&lt;String&gt; ringbuffer = hz.getRingbuffer("ExampleRB");
+ringbuffer.add("someitem");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use the method <code>add</code> to return the sequence of the inserted item; the
+sequence value is always unique. You can use this as a
+very cheap way of generating unique IDs if you are already using Ringbuffer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="iqueue-vs-ringbuffer"><a class="anchor" href="#iqueue-vs-ringbuffer"></a>IQueue vs. Ringbuffer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast Ringbuffer can sometimes be a better alternative than an
+Hazelcast IQueue. Unlike IQueue, Ringbuffer does not remove the items, it only
+reads items using a certain position. There are many advantages to this
+approach as described below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The same item can be read multiple times by the same thread. This is
+useful for realizing semantics of read-at-least-once or
+read-at-most-once.</p>
+</li>
+<li>
+<p>The same item can be read by multiple threads. Normally you could use an
+IQueue per thread for the same semantic, but this is
+less efficient because of the increased remoting. A take from an IQueue is
+destructive, so the change needs to be applied for backup
+also, which is why a <code>queue.take()</code> is more expensive than a <code>ringBuffer.read(&#8230;&#8203;)</code>.</p>
+</li>
+<li>
+<p>Reads are extremely cheap since there is no change in the Ringbuffer.
+Therefore no replication is required.</p>
+</li>
+<li>
+<p>Reads and writes can be batched to speed up performance. Batching can
+dramatically improve the performance of Ringbuffer.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-ringbuffer-capacity"><a class="anchor" href="#configuring-ringbuffer-capacity"></a>Configuring Ringbuffer Capacity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, a Ringbuffer is configured with a <code>capacity</code> of 10000 items.
+This creates an array with a size of 10000. If
+a <code>time-to-live</code> is configured, then an array of longs is also created that
+stores the expiration time for every item.
+In a lot of cases you may want to change this <code>capacity</code> number to something
+that better fits your needs.</p>
+</div>
+<div class="paragraph">
+<p>Below is a declarative configuration example of a Ringbuffer with a <code>capacity</code> of 2000 items.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset1_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;ringbuffer name="rb"&gt;
+        &lt;capacity&gt;2000&lt;/capacity&gt;
+    &lt;/ringbuffer&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ringbuffer:
+    rb:
+      capacity: 2000</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Currently, Hazelcast Ringbuffer is not a partitioned data structure;
+its data is stored in a single partition and the replicas
+ are stored in another partition. Therefore, create a Ringbuffer that can
+safely fit in a single cluster member.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="backing-up-ringbuffer"><a class="anchor" href="#backing-up-ringbuffer"></a>Backing Up Ringbuffer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast Ringbuffer has a single synchronous backup by default. You can control
+the Ringbuffer backup just like most of the other Hazelcast
+distributed data structures by setting the synchronous and asynchronous backups:
+<code>backup-count</code> and <code>async-backup-count</code>. In the example below, a Ringbuffer is configured with no
+synchronous backups and one asynchronous backup:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset2_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;ringbuffer name="rb"&gt;
+        &lt;backup-count&gt;0&lt;/backup-count&gt;
+        &lt;async-backup-count&gt;1&lt;/async-backup-count&gt;
+    &lt;/ringbuffer&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ringbuffer:
+    rb:
+      backup-count: 0
+      async-backup-count: 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>An asynchronous backup probably gives you better performance. However, there
+is a chance that the item added will be lost
+when the member owning the primary crashes before the backup could complete.
+You may want to consider batching
+methods if you need high performance but do not want to give up on consistency.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-ringbuffer-time-to-live"><a class="anchor" href="#configuring-ringbuffer-time-to-live"></a>Configuring Ringbuffer Time-To-Live</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can configure Hazelcast Ringbuffer with a time-to-live in seconds. Using
+this setting, you can control how long the items remain in
+the Ringbuffer before they are expired. By default, the time-to-live is set to 0,
+meaning that unless the item is overwritten,
+it will remain in the Ringbuffer indefinitely. If you set a time-to-live and an item
+is added, then, depending on the Overflow Policy,
+either the oldest item is overwritten, or the call is rejected.</p>
+</div>
+<div class="paragraph">
+<p>In the example below, a Ringbuffer is configured with a time-to-live of 180 seconds.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset3_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;ringbuffer name="rb"&gt;
+        &lt;time-to-live-seconds&gt;180&lt;/time-to-live-seconds&gt;
+    &lt;/ringbuffer&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ringbuffer:
+    rb:
+      time-to-live-seconds: 180</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-ringbuffer-overflow-policy"><a class="anchor" href="#setting-ringbuffer-overflow-policy"></a>Setting Ringbuffer Overflow Policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the overflow policy, you can determine what to do if the oldest item
+in the Ringbuffer is not old enough to expire when
+ more items than the configured Ringbuffer capacity are being added. The below
+options are currently available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OverflowPolicy.OVERWRITE</code>: The oldest item is overwritten.</p>
+</li>
+<li>
+<p><code>OverflowPolicy.FAIL</code>: The call is aborted. The methods that make use of the
+OverflowPolicy return <code>-1</code> to indicate that adding
+the item has failed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Overflow policy gives you fine control on what to do if the Ringbuffer is full.
+You can also use the overflow policy to apply
+a back pressure mechanism. The following example code shows the usage of an exponential backoff.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        Random random = new Random();
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+        Ringbuffer&lt;Long&gt; rb = hz.getRingbuffer("rb");
+
+        long i = 100;
+        while (true) {
+            long sleepMs = 100;
+            for (; ; ) {
+                long result = rb.addAsync(i, OverflowPolicy.FAIL).toCompletableFuture().get();
+                if (result != -1) {
+                    break;
+                }
+                TimeUnit.MILLISECONDS.sleep(sleepMs);
+                sleepMs = min(5000, sleepMs * 2);
+            }
+
+            // add a bit of random delay to make it look a bit more realistic
+            Thread.sleep(random.nextInt(10));
+
+            System.out.println("Written: " + i);
+            i++;
+        }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ringbuffer-with-persistent-datastore"><a class="anchor" href="#ringbuffer-with-persistent-datastore"></a>Ringbuffer with Persistent Datastore</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast allows you to load and store the Ringbuffer items from/to a persistent
+datastore using the interface <code>RingbufferStore</code>. If a Ringbuffer store is enabled,
+each item added to the Ringbuffer will also be stored at the configured Ringbuffer store.</p>
+</div>
+<div class="paragraph">
+<p>If the Ringbuffer store is configured, you can get items with sequences which are
+no longer in the actual Ringbuffer but are only in the Ringbuffer store. This is
+probably much slower but still allows you to continue consuming items from the
+Ringbuffer even if they are overwritten with newer items in the Ringbuffer.</p>
+</div>
+<div class="paragraph">
+<p>When a Ringbuffer is being instantiated, it checks if the Ringbuffer store is
+configured and requests the latest sequence in the Ringbuffer store. This is to
+enable the Ringbuffer to start with sequences larger than the ones in the Ringbuffer
+store. In this case, the Ringbuffer is empty but you can still request older items
+from it (which will be loaded from the Ringbuffer store).</p>
+</div>
+<div class="paragraph">
+<p>The Ringbuffer store stores items in the same format as the Ringbuffer. If the
+<code>BINARY</code> in-memory format is used, the Ringbuffer store must implement the interface
+<code>RingbufferStore&lt;byte[]&gt;</code> meaning that the Ringbuffer receives items in the binary format.
+If the <code>OBJECT</code> in-memory format is used, the Ringbuffer store must implement the interface
+<code>RingbufferStore&lt;K&gt;</code>, where <code>K</code> is the type of item being stored (meaning that the Ringbuffer
+store receives the deserialized object).</p>
+</div>
+<div class="paragraph">
+<p>When adding items to the Ringbuffer, the method <code>storeAll</code> allows you to store items in batches.</p>
+</div>
+<div class="paragraph">
+<p>The following example class includes all of the <code>RingbufferStore</code> methods.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class TheRingbufferObjectStore implements RingbufferStore&lt;Item&gt; {
+
+    @Override
+    public void store(long sequence, Item data) {
+        System.out.println("Object store");
+    }
+
+    @Override
+    public void storeAll(long firstItemSequence, Item[] items) {
+        System.out.println("Object store all");
+    }
+
+    @Override
+    public Item load(long sequence) {
+        System.out.println("Object load");
+        return null;
+    }
+
+    @Override
+    public long getLargestSequence() {
+        System.out.println("Object get largest sequence");
+        return -1;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Item</code> must be serializable. The following is an example of a Ringbuffer with the
+Ringbuffer store configured and enabled.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset4_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;ringbuffer name="default"&gt;
+        &lt;capacity&gt;10000&lt;/capacity&gt;
+        &lt;time-to-live-seconds&gt;30&lt;/time-to-live-seconds&gt;
+        &lt;backup-count&gt;1&lt;/backup-count&gt;
+        &lt;async-backup-count&gt;0&lt;/async-backup-count&gt;
+        &lt;in-memory-format&gt;BINARY&lt;/in-memory-format&gt;
+        &lt;ringbuffer-store&gt;
+            &lt;class-name&gt;com.hazelcast.RingbufferStoreImpl&lt;/class-name&gt;
+        &lt;/ringbuffer-store&gt;
+    &lt;/ringbuffer&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ringbuffer:
+    default:
+      capacity: 10000
+      time-to-live-seconds: 30
+      backup-count: 1
+      async-backup-count: 0
+      in-memory-format: BINARY
+      ringbuffer-store:
+        class-name: com.hazelcast.RingbufferStoreImpl</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the explanations for the Ringbuffer store configuration elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>`class-name: Name of the Ringbuffer store factory class.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-ringbuffer-in-memory-format"><a class="anchor" href="#configuring-ringbuffer-in-memory-format"></a>Configuring Ringbuffer In-Memory Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can configure Hazelcast Ringbuffer with an in-memory format that controls the
+format of the Ringbuffer&#8217;s stored items. By default, <code>BINARY</code> in-memory format is used,
+meaning that the object is stored in a serialized form. You can select the <code>OBJECT</code> in-memory
+format, which is useful when filtering is
+applied or when the <code>OBJECT</code> in-memory format has a smaller memory footprint than <code>BINARY</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the declarative configuration example below, a Ringbuffer is configured with the
+<code>OBJECT</code> in-memory format:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset5_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;ringbuffer name="rb"&gt;
+        &lt;in-memory-format&gt;OBJECT&lt;/in-memory-format&gt;
+    &lt;/ringbuffer&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ringbuffer:
+    rb:
+      in-memory-format: OBJECT</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-split-brain-protection-for-ringbuffer"><a class="anchor" href="#configuring-split-brain-protection-for-ringbuffer"></a>Configuring Split-Brain Protection for Ringbuffer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ringbuffer can be configured to check for a minimum number of available members before
+applying Ringbuffer operations. This is a check to avoid performing successful Ringbuffer
+operations on all parts of a cluster during a network partition and can be configured
+using the element <code>split-brain-protection-ref</code>. You should set this element&#8217;s value as the quorum&#8217;s name,
+which you configured under the <code>split-brain-protection</code> element as explained in the <a href="../network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a>. Following is an example snippet:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset6_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;ringbuffer name="rb"&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/ringbuffer&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ringbuffer:
+    rb:
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is a list of methods, grouped by the protection types, that support split-brain protection checks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>WRITE, READ_WRITE:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add</code></p>
+</li>
+<li>
+<p><code>addAllAsync</code></p>
+</li>
+<li>
+<p><code>addAsync</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>READ, READ_WRITE:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>capacity</code></p>
+</li>
+<li>
+<p><code>headSequence</code></p>
+</li>
+<li>
+<p><code>readManyAsync</code></p>
+</li>
+<li>
+<p><code>readOne</code></p>
+</li>
+<li>
+<p><code>remainingCapacity</code></p>
+</li>
+<li>
+<p><code>size</code></p>
+</li>
+<li>
+<p><code>tailSequence</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-batched-items"><a class="anchor" href="#adding-batched-items"></a>Adding Batched Items</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the previous examples, the method <code>ringBuffer.add()</code> is used to add an item to the Ringbuffer.
+The problems with this method
+are that it always overwrites and that it does not support batching. Batching can have a huge
+impact on the performance. You can use the method <code>addAllAsync</code> to support batching.</p>
+</div>
+<div class="paragraph">
+<p>See the following example code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List&lt;String&gt; items = Arrays.asList("1","2","3");
+CompletionStage&lt;Long&gt; s = rb.addAllAsync(items, OverflowPolicy.OVERWRITE);
+// block until all items are added
+s.toCompletableFuture().join();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above case, three strings are added to the Ringbuffer using the policy
+<code>OverflowPolicy.OVERWRITE</code>. See the <a href="#setting-ringbuffer-overflow-policy">Overflow Policy section</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reading-batched-items"><a class="anchor" href="#reading-batched-items"></a>Reading Batched Items</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the previous example, the <code>readOne</code> method read items from the Ringbuffer.
+<code>readOne</code> is simple but not very efficient for the following reasons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>readOne</code> does not use batching.</p>
+</li>
+<li>
+<p><code>readOne</code> cannot filter items at the source; the items need to be retrieved
+before being filtered.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The method <code>readManyAsync</code> can read a batch of items and can filter items at the source.</p>
+</div>
+<div class="paragraph">
+<p>See the following example code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CompletionStage&lt;ReadResultSet&lt;E&gt;&gt; readManyAsync(
+    long startSequence,
+    int minCount,
+    int maxCount,
+    IFunction&lt;E, Boolean&gt; filter);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The meanings of the <code>readManyAsync</code> arguments are given below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>startSequence</code>: Sequence of the first item to read.</p>
+</li>
+<li>
+<p><code>minCount</code>: Minimum number of items to read. If you do not want to block,
+set it to 0. If you want to block for at least one item,
+set it to 1.</p>
+</li>
+<li>
+<p><code>maxCount</code>: Maximum number of the items to retrieve. Its value cannot exceed 1000.</p>
+</li>
+<li>
+<p><code>filter</code>: A function that accepts an item and checks if it should be returned.
+If no filtering should be applied, set it to <code>null</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A full example is given below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">long sequence = rb.headSequence();
+for(;;) {
+    CompletionStage&lt;ReadResultSet&lt;String&gt;&gt; f = rb.readManyAsync(sequence, 1, 10, null);
+    CompletionStage&lt;Integer&gt; readCountStage = f.thenApplyAsync(rs -&gt; {
+        for (String s : rs) {
+            System.out.println(s);
+        }
+        return rs.readCount();
+    });
+    sequence += readCountStage.toCompletableFuture().join();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please take a careful look at how your sequence is being incremented. You cannot
+always rely on the number of items being returned
+if the items are filtered out.</p>
+</div>
+<div class="paragraph">
+<p>There is not any filtering applied in the above example. The following example shows
+how you can apply a filter when reading batched items. First, let&#8217;s create our filter
+as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class FruitFilter implements IFunction&lt;String, Boolean&gt; {
+    public FruitFilter() {}
+
+    public Boolean apply(String s) {
+        return s.startsWith("a");
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the <code>FruitFilter</code> checks whether a String object starts with the letter "a".
+You can see this filter in action in the below example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+Ringbuffer&lt;String&gt; rb = hz.getRingbuffer("rb");
+
+rb.add("apple");
+rb.add("orange");
+rb.add("pear");
+rb.add("peach");
+rb.add("avocado");
+
+long sequence = rb.headSequence();
+CompletableFuture&lt;ReadResultSet&lt;String&gt;&gt; f = rb.readManyAsync(sequence, 2, 5, new FruitFilter()).toCompletableFuture();
+
+ReadResultSet&lt;String&gt; rs = f.join();
+for (String s : rs) {
+    System.out.println(s);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-async-methods"><a class="anchor" href="#using-async-methods"></a>Using Async Methods</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast Ringbuffer provides asynchronous methods for more powerful operations
+like batched writing or batched reading with filtering.
+To wait for the result of the operation in a blocking way, obtain a <code>CompletableFuture</code>
+from the returned <code>CompletionStage</code> by invoking <code>CompletionStage#toCompletableFuture()</code> method, then
+use either <code>CompletableFuture#get()</code> or <code>CompletableFuture#join()</code>.</p>
+</div>
+<div class="paragraph">
+<p>See the following example code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CompletionStage&lt;Long&gt; f = ringbuffer.addAsync(item, OverflowPolicy.FAIL);
+f.toCompletableFuture().get();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, you can also use <code>CompletionStage</code> API to add subsequent dependent computation
+stages which will be executed when the operation  has completed. This way the thread used for
+the call is not blocked until the response is returned.</p>
+</div>
+<div class="paragraph">
+<p>See the below code as an example of when you want to
+get notified when a batch of reads has completed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CompletionStage&lt;ReadResultSet&lt;String&gt;&gt; stage = rb.readManyAsync(sequence, min, max, someFilter);
+stage.whenCompleteAsync((response, throwable) -&gt; {
+    if (throwable == null) {
+         for (String s : response) {
+             System.out.println("Received:" + s);
+         }
+    } else {
+        throwable.printStackTrace();
+    }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ringbuffer-configuration-examples"><a class="anchor" href="#ringbuffer-configuration-examples"></a>Ringbuffer Configuration Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following shows the declarative configuration of a Ringbuffer called <code>rb</code>.
+The configuration is modeled after the Ringbuffer defaults.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset7_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;ringbuffer name="rb"&gt;
+        &lt;capacity&gt;10000&lt;/capacity&gt;
+        &lt;backup-count&gt;1&lt;/backup-count&gt;
+        &lt;async-backup-count&gt;0&lt;/async-backup-count&gt;
+        &lt;time-to-live-seconds&gt;0&lt;/time-to-live-seconds&gt;
+        &lt;in-memory-format&gt;BINARY&lt;/in-memory-format&gt;
+        &lt;split-brain-protection-ref&gt;splitbrainprotection-name&lt;/split-brain-protection-ref&gt;
+    &lt;/ringbuffer&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ringbuffer:
+    rb:
+      capacity: 10000
+      backup-count: 1
+      async-backup-count: 0
+      time-to-live-seconds: 0
+      in-memory-format: BINARY
+      split-brain-protection-ref: splitbrainprotection-name</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also configure a Ringbuffer programmatically. The following is a programmatic
+version of the above declarative configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        Config config = new Config();
+        RingbufferConfig rbConfig = config.getRingbufferConfig("myRB");
+        rbConfig.setCapacity(10000)
+                .setBackupCount(1)
+                .setAsyncBackupCount(0)
+                .setTimeToLiveSeconds(0)
+                .setInMemoryFormat(InMemoryFormat.BINARY)
+                .setSplitBrainProtectionName("splitbrainprotectionname");</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="list.html">List</a></span>
+  <span class="next"><a href="topic.html">Topic</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+  <a href="#yes-feedback" id="yes-button"><i class="far fa-check-circle"></i>  Yes </a>
+  <a href="#no-feedback" id="no-button"><i class="far fa-times-circle"></i>  No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for Ringbuffer&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/v4.1/docs/modules/data-structures/pages/ringbuffer.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/v4.1/docs/modules/data-structures/pages/ringbuffer.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
+
+</aside>
+  </div>
+</main>
+
+</div>
+<footer class="footer">
+  <a>Terms of service</a>
+  <a>Privacy</a>
+  <a>Contact us</a>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
+  </body>
+</html>

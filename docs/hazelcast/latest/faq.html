@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Frequently Asked Questions Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/hazelcast/latest/faq.html">
+    <link rel="prev" href="phone-homes.html">
+    <link rel="next" href="revision-history.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'GTM-M267KFN', 'auto')
+ga('send', 'pageview')
+</script>
+<!-- End Google Analytics -->
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc"><img src="../../_/img/hazelcast-logo.svg"></img></a>
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
+            </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products<img class="dropdown-caret" src="../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn<img class="dropdown-caret" src="../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search All Resources</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources<img class="dropdown-caret" src="../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Integration Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a href="https://hazelcast.com/get-started/"><img class="nav-button" src="../../_/img/nav-button.svg"></img></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="hazelcast" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Hazelcast IMDG Reference Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="overview/hazelcast-overview.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview/what-is-imdg.html">What is Hazelcast IMDG?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview/topology.html">Topology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview/data-partitioning.html">Data Partitioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview/use-cases.html">Use Cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview/resources.html">Resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="installation/installing-upgrading.html">Installing and Upgrading</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/installing-using-cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/installing-using-maven.html">Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/installing-using-docker.html">Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/installing-using-download-archives.html">Download Archives</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/deploying-hazelcast-cloud.html">Hazelcast Cloud</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/deploying-in-kubernetes.html">Kubernetes/OpenShift Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/deploying-in-vmware-tanzu.html">Deploying in VMware Tanzu</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/deploying-in-cloud.html">Deploying in Cloud Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/using-enterprise-edition.html">Using Pro and Enterprise editions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/rolling-upgrades.html">Rolling Member Upgrades</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/running-in-modular-java.html">Running in Modular Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="installation/supported-jvms.html">Supported Java Virtual Machines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="starting-members-clients.html">Starting the Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="configuration/understanding-configuration.html">Understanding Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/configuring-declaratively.html">Configuring Declaratively</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/configuring-programmatically.html">Configuring Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/configuring-with-system-properties.html">Configuring with System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/configuring-within-spring.html">Configuring within the Spring Context</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/overriding-configuration-settings.html">Overriding Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/dynamic-data-structure-configuration.html">Dynamically Adding Data Structure Configuration on a Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/checking-configuration.html">Checking Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/pattern-matcher.html">Configuration Pattern Matcher</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/using-wildcards.html">Using Wildcards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/using-variables.html">Using Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuration/variable-replacers.html">Variable Replacers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clusters/setting-up-clusters.html">Setting Up Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/discovery-mechanisms.html">Discovery Mechanisms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/discovering-by-auto-detection.html">Discovering Members by Auto Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/discovering-by-tcp.html">Discovering Members by TCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/discovering-by-multicast.html">Discovering Members by Multicast</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/discovering-native-clients.html">Discovering Native Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/creating-clusters.html">Creating Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/deploying-code-on-member.html">Deploying User Code on the Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/deploying-code-from-clients.html">Deploying User Code from Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/accessing-domain-objects.html">Accessing Domain Objects without Domain Classes - BETA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/partition-group-configuration.html">Partition Group Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/logging-configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/network-configuration.html">Other Network Configurations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/failure-detector-configuration.html">Failure Detector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters/advanced-network-configuration.html">Advanced Network Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="data-structures/distributed-data-structures.html">Distributed Data Structures</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/overview.html">Overview of Hazelcast Distributed Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/map.html">Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/queue.html">Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/priority-queue.html">Priority Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/multimap.html">MultiMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/set.html">Set</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/list.html">List</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/ringbuffer.html">Ringbuffer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/topic.html">Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/reliable-topic.html">Reliable Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/iatomiclong.html">IAtomicLong</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/isemaphore.html">ISemaphore</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/iatomicreference.html">IAtomicReference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/icountdownlatch.html">ICountDownLatch</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/pn-counter.html">PN Counter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/flake-id-generator.html">Flake ID Generator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/replicated-map.html">Replicated Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/cardinality-estimator-service.html">Cardinality Estimator Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-structures/event-journal.html">Event Journal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="events/distributed-events.html">Distributed Events</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="events/cluster-events.html">Cluster Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="events/object-events.html">Distributed Object Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="events/event-listeners-for-clients.html">Event Listeners for Hazelcast Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="events/global-event-configuration.html">Global Event Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hazelcast-jet.html">Hazelcast Jet</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="computing/distributed-computing.html">Distributed Computing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="computing/executor-service.html">Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="computing/durable-executor-service.html">Durable Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="computing/scheduled-executor-service.html">Scheduled Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="computing/entry-processor.html">Entry Processor</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="sql/distributed-sql.html">SQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql/querying-imap.html">Querying IMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql/data-types.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql/select-statement.html">SELECT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql/expressions.html">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql/lite-members.html">Lite Members</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql/how-distributed-sql-works.html">How Distributed SQL Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql/sql-and-high-density-memory.html">SQL on Data Structures Backed by High-Density Memory Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="query/distributed-query.html">Distributed Query</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="query/how-distributed-query-works.html">How Distributed Query Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="query/custom-attributes.html">Custom Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="query/aggregations.html">Aggregations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="query/projections.html">Projections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="query/continuous-query-cache.html">Continuous Query Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="query/mapreduce-deprecation-and-removal.html">MapReduce Deprecation and Removal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="cp-subsystem/cp-subsystem.html">CP Subsystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/discovery-process.html">CP Discovery Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/persistence.html">CP Subsystem Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/member-shutdown.html">CP Member Shutdown</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/fault-tolerance.html">CP Subsystem&#8217;s Fault Tolerance Capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/listeners.html">CP Subsystem Listeners</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/sessions.html">CP Sessions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/unsafe-mode.html">CP Subsystem Unsafe Mode</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cp-subsystem/management.html">CP Subsystem Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="transactions/transactions.html">Transactions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactions/creating-a-transaction-interface.html">Creating a Transaction Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactions/providing-xa-transactions.html">Providing XA Transactions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="jcache/jcache.html">Hazelcast JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/overview.html">JCache Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/setup.html">JCache Setup and Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/providers.html">JCache Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/hazelcast-integration.html">JCache - Hazelcast Instance Integration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/icache.html">Hazelcast JCache Extension - ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jcache/tck.html">Testing for JCache Specification Compliance</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="integrated-clustering/integrated-clustering.html">Integrated Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integrated-clustering/hibernate-second-level-cache.html">Integration with Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integrated-clustering/web-session-replication.html">Web Session Replications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integrated-clustering/javaee.html">Integration with Java EE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integrated-clustering/spring.html">Integration with Spring</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="storage/storage.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="storage/high-density-memory.html">High-Density Memory Store</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="storage/sizing-practices.html">Sizing Practices</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="storage/hot-restart-persistence.html">Hot Restart Persistence</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="striim-cdc.html">Database CDC Integration Using Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clients/hazelcast-clients.html">Hazelcast Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/java.html">Java Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/cplusplus.html">C++ Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/dotnet.html">.NET Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/rest.html">REST Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/memcache.html">Memcache Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/python.html">Python Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/nodejs.html">Node.js Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clients/go.html">Go Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="serialization/serialization.html">Serialization</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/interface-types.html">Serialization Interface Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/comparing-interfaces.html">Comparing Serialization Interfaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/implementing-java-serializable.html">Implementing Java Serializable and Externalizable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/implementing-dataserializable.html">Implementing DataSerializable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/implementing-portable-serialization.html">Implementing Portable Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/custom-serialization.html">Custom Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/global-serializer.html">Global Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/implementing-hazelcastinstanceaware.html">Implementing HazelcastInstanceAware</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/untrusted-deserialization-protection.html">Untrusted Deserialization Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="serialization/serialization-configuration.html">Serialization Configuration Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="management/management.html">Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/member-statistics.html">Getting Member Statistics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/jmx-api.html">JMX API per Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/jmx-monitoring.html">Monitoring with JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/rest-endpoint-groups.html">Using the REST Endpoint Groups</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/cluster-utilities.html">Cluster Utilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/diagnostics.html">Diagnostics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/health-check-monitoring.html">Health Check and Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/management-center.html">Management Center</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/license-info.html">License Information</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management/instance-tracking.html">Instance Tracking</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/enabling-jaas.html">Enabling JAAS Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/socket-interceptor.html">Socket Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/security-interceptor.html">Security Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/encryption.html">Encryption</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/tls-ssl.html">TLS/SSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/integrating-openssl.html">Integrating OpenSSL / BoringSSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/tls-configuration.html">Other TLS related configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/validating-secrets.html">Validating Secrets Using Strength Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/security-realms.html">Security Realms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/jaas-authentication.html">JAAS authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/cluster-member-security.html">Cluster Member Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/default-authentication.html">Default authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/native-client-security.html">Native Client Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/logging-auditable-events.html">Logging Auditable Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/security-debugging.html">Security Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security/fips-140-2.html">FIPS 140-2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="performance/performance.html">Performance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/pipelining.html">Pipelining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/data-affinity.html">Data Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/cpu-thread-affinity.html">CPU Thread Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/running-on-ec2.html">Running on EC2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/back-pressure.html">Back Pressure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/threading-model.html">Threading Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/slowoperationdetector.html">SlowOperationDetector</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/near-cache.html">Near Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="performance/caching-deserialized-values.html">Caching Deserialized Values</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="wan/wan.html">WAN Replication</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/modes.html">WAN Replication Modes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/defining-wan-replication.html">Configuring WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/configuring-for-map-and-cache.html">Configuring for IMap and ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/advanced-features.html">Advanced Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/tuning.html">Fine-Tuning WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/failures.html">Failure Detection and Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="wan/rest-api.html">REST API Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="osgi/osgi.html">OSGI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="osgi/osgi-support.html">OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="osgi/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="osgi/configuring-osgi-support.html">Configuring Hazelcast OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="osgi/design.html">Design</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="osgi/using-osgi-service.html">Using Hazelcast OSGI Service</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="extending-hazelcast/extending-hazelcast.html">Extending Hazelcast</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="extending-hazelcast/operationparker.html">OperationParker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="extending-hazelcast/discovery-spi.html">Discovery SPI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="extending-hazelcast/config-properties-spi.html">Config Properties SPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="plugins/hazelcast-plugins.html">Hazelcast Plugins</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="plugins/cloud-discovery.html">Cloud Discovery Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="plugins/web-session-replication.html">Web Session Replication Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="plugins/framework-integration.html">Framework Integration Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="plugins/other-integrations.html">Other Integrations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="consistency-and-replication/consistency.html">Consistency and Replication Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="consistency-and-replication/replication-algorithm.html">Hazelcast&#8217;s Replication Algorithm</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="consistency-and-replication/invocation-lifecycle.html">Invocation Lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="consistency-and-replication/exactly-once-execution.html">Exactly-once, At-least-once or At-most-once Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="consistency-and-replication/indeterminateoperationstateexception.html">IndeterminateOperationStateException</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="network-partitioning/network-partitioning.html">Network Partitioning</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="network-partitioning/dealing-with-network-partitions.html">Dealing with Network Partitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="network-partitioning/split-brain-protection.html">Split-Brain Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="network-partitioning/split-brain-recovery.html">Split-Brain Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="network-partitioning/partial-network-partitions.html">Partial Network Partitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="system-properties.html">Appendix A: System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="migration-guides.html">Appendix B: Migration Guides</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="common-exception-types.html">Appendix C: Common Exception Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="licenses.html">Appendix D: License Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="phone-homes.html">Appendix E: Phone Homes</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="faq.html">Appendix F: Frequently Asked Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="revision-history.html">Appendix G: Document Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../2.0.4/index.html">2.0.4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Hazelcast IMDG</a></li>
+    <li><a href="faq.html">Appendix F: Frequently Asked Questions</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">4.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="faq.html">4.1</a>
+    <a class="version is-missing" href="../2.0.4/index.html">2.0.4</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Frequently Asked Questions</h1>
+<hr>
+<div class="paragraph">
+<p><strong>What Guarantees does Hazelcast IMDG offer?</strong></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast IMDG is distributed and highly available by nature.
+It is achieved by keeping the data partition backup always on another Hazelcast member.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast IMDG offers AP and CP functionality with different data structure implementations
+(see <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener">CAP theorem</a>).
+Data structures exposed under <code>HazelcastInstance</code> API are all AP data structures.
+Hazelcast IMDG also contains a CP subsystem, built on the Raft consensus algorithm and
+accessed via <code>HazelcastInstance.getCPSubsytem()</code> which provides CP data structures and APIs.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AP Hazelcast IMDG guarantees:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>With lazy replication, when the primary replica receives an update operation for a key,
+it executes the update locally and propagates it to backup replicas. It marks each update
+with a logical timestamp so that backups apply them in the correct order and converge to the
+same state with the primary. Backup replicas can be used to scale reads (see the <a href="data-structures/map.html#enabling-backup-reads" class="page">Enabling Backup Reads section</a>)
+with no strong consistency but monotonic reads guarantee.</p>
+</li>
+<li>
+<p>It employs additional measurements to maintain consistency in a best-effort manner.</p>
+</li>
+<li>
+<p>Hazelcast, as an AP product, does not provide the exactly-once guarantee. In general,
+Hazelcast tends to be an at-least-once solution.</p>
+</li>
+<li>
+<p>See the <a href="consistency-and-replication/consistency.html" class="page">Consistency and Replication Model chapter</a>
+for more information.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>CP Hazelcast IMDG Guarantees:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It builds a strongly consistent layer for a set of distributed data structures.
+You can enable CP Subsystem and use it with the strong consistency guarantee.</p>
+</li>
+<li>
+<p>Its data structures are CP with respect to the CAP principle, i.e., they always
+maintain linearizability and prefer consistency over availability during network partitions.</p>
+</li>
+<li>
+<p>Besides network partitions, CP Subsystem withstands server and client failures.</p>
+</li>
+<li>
+<p>It provides a good degree of fault tolerance at run-time, and <a href="#cp-subsystem:persistence.adocp">CP Subsystem Persistence</a> enables more robustness.</p>
+</li>
+<li>
+<p>See the <a href="cp-subsystem/cp-subsystem.html" class="page">CP Subsystem chapter</a> for more information.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Why 271 as the default partition count?</strong></p>
+</div>
+<div class="paragraph">
+<p>The partition count of 271, being a prime number, is a good choice because
+it is distributed to the members almost evenly.
+For a small to medium sized cluster, the count of 271 gives an almost even partition distribution and optimal-sized partitions.
+As your cluster becomes bigger, you should make this count bigger to have evenly distributed partitions.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Is Hazelcast thread-safe?</strong></p>
+</div>
+<div class="paragraph">
+<p>Yes. All Hazelcast data structures are thread-safe.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How do members discover each other?</strong></p>
+</div>
+<div class="paragraph">
+<p>When a member is started in a cluster, it is dynamically and automatically discovered.
+The following are the types of discovery:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Discovery by TCP/IP: The first member created in the cluster (leader) forms a list of
+IP addresses of other joining members and sends this list to these members so the members will know each other.</p>
+</li>
+<li>
+<p>Discovery on clouds: Hazelcast supports discovery on cloud platforms such as jclouds based environments, Azure, Consul and PCF.</p>
+</li>
+<li>
+<p>Multicast discovery: The members in a cluster discover each other by multicast, by default.
+It is not recommended for production since UDP is often blocked in production environments and other discovery mechanisms are more definite.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once members are discovered, all the communication between them is via TCP/IP.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="clusters/discovery-mechanisms.html" class="page">Discovery Mechanisms section</a> for detailed information.
+</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>What happens when a member goes down?</strong></p>
+</div>
+<div class="paragraph">
+<p>Once a member is gone (crashes), the following happens:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>First, the backups in other members are restored.</p>
+</li>
+<li>
+<p>Then, data from these restored backups are recovered.</p>
+</li>
+<li>
+<p>And finally, new backups for these recovered data are formed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So eventually, availability of the data is maintained.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How do I test the connectivity?</strong></p>
+</div>
+<div class="paragraph">
+<p>If you notice that there is a problem with a member joining a cluster,
+you may want to perform a connectivity test between the member to be joined and a member from the cluster.
+You can use the <code>iperf</code> tool for this purpose.
+For example, you can execute the below command on one member (i.e. listening on port 5701).</p>
+</div>
+<div class="paragraph">
+<p><code>iperf -s -p 5701</code></p>
+</div>
+<div class="paragraph">
+<p>And you can execute the below command on the other member.</p>
+</div>
+<div class="paragraph">
+<p><code>iperf -c</code> <strong><code>&lt;IP address&gt;</code></strong> <code>-d -p 5701</code></p>
+</div>
+<div class="paragraph">
+<p>The output should include connection information, such as the IP addresses, transfer speed and bandwidth.
+Otherwise, if the output says <code>No route to host</code>, it means a network connection problem exists.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How do I choose keys properly?</strong></p>
+</div>
+<div class="paragraph">
+<p>When you store a key and value in a distributed Map, Hazelcast serializes
+the key and value and stores the byte array version of them in local ConcurrentHashMaps.
+These ConcurrentHashMaps use <code>equals</code> and <code>hashCode</code> methods of byte array version of your key.
+It does not take into account the actual <code>equals</code> and <code>hashCode</code> implementations of your objects.
+So it is important that you choose your keys in a proper way.</p>
+</div>
+<div class="paragraph">
+<p>Implementing <code>equals</code> and <code>hashCode</code> is not enough,
+it is also important that the object is always serialized into the same byte array.
+All primitive types like String, Long, Integer, etc. are good candidates for keys to be used in Hazelcast.
+An unsorted Set is an example of a very bad candidate because Java Serialization may serialize
+the same unsorted set in two different byte arrays.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How do I reflect value modifications?</strong></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast always return a clone copy of a value. Modifying the returned value does not
+change the actual value in the map (or multimap, list, set).
+You should put the modified value back to make changes visible to all members.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">V value = map.get( key );
+value.updateSomeProperty();
+map.put( key, value );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Collections which return values of methods (such as <code>IMap.keySet</code>, <code>IMap.values</code>,
+<code>IMap.entrySet</code>, <code>MultiMap.get</code>, <code>MultiMap.remove</code>, <code>IMap.keySet</code>, <code>IMap.values</code>) contain cloned values.
+These collections are NOT backed up by related Hazelcast objects.
+Therefore, changes to them are <strong>NOT</strong> reflected in the originals and vice-versa.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How do I test my Hazelcast cluster?</strong></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast allows you to create more than one instance on the same JVM.
+Each member is called <code>HazelcastInstance</code> and each has its own configuration,
+socket and threads, so you can treat them as totally separate instances.</p>
+</div>
+<div class="paragraph">
+<p>This enables you to write and to run cluster unit tests on a single JVM.
+Because you can use this feature for creating separate members different applications running on
+the same JVM (imagine running multiple web applications on the same JVM),
+you can also use this feature for testing your Hazelcast cluster.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you want to test if two members have the same size of a map.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Test
+public void testTwoMemberMapSizes() {
+  // start the first member
+  HazelcastInstance h1 = Hazelcast.newHazelcastInstance();
+  // get the map and put 1000 entries
+  Map map1 = h1.getMap( "testmap" );
+  for ( int i = 0; i &lt; 1000; i++ ) {
+    map1.put( i, "value" + i );
+  }
+  // check the map size
+  assertEquals( 1000, map1.size() );
+  // start the second member
+  HazelcastInstance h2 = Hazelcast.newHazelcastInstance();
+  // get the same map from the second member
+  Map map2 = h2.getMap( "testmap" );
+  // check the size of map2
+  assertEquals( 1000, map2.size() );
+  // check the size of map1 again
+  assertEquals( 1000, map1.size() );
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the test above, everything happens in the same thread.
+When developing a multi-threaded test, you need to carefully handle coordination of the thread executions.
+It is highly recommended that you use <code>CountDownLatch</code> for thread coordination (you can certainly use other ways).
+Here is an example where we need to listen for messages and make sure that we got these messages.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Test
+public void testTopic() {
+  // start two member cluster
+  HazelcastInstance h1 = Hazelcast.newHazelcastInstance();
+  HazelcastInstance h2 = Hazelcast.newHazelcastInstance();
+  String topicName = "TestMessages";
+  // get a topic from the first member and add a messageListener
+  ITopic&lt;String&gt; topic1 = h1.getTopic( topicName );
+  final CountDownLatch latch1 = new CountDownLatch( 1 );
+  topic1.addMessageListener( new MessageListener() {
+    public void onMessage( Object msg ) {
+      assertEquals( "Test1", msg );
+      latch1.countDown();
+    }
+  });
+  // get a topic from the second member and add a messageListener
+  ITopic&lt;String&gt; topic2 = h2.getTopic(topicName);
+  final CountDownLatch latch2 = new CountDownLatch( 2 );
+  topic2.addMessageListener( new MessageListener() {
+    public void onMessage( Object msg ) {
+      assertEquals( "Test1", msg );
+      latch2.countDown();
+    }
+  } );
+  // publish the first message, both should receive this
+  topic1.publish( "Test1" );
+  // shutdown the first member
+  h1.shutdown();
+  // publish the second message, second member's topic should receive this
+  topic2.publish( "Test1" );
+  try {
+    // assert that the first member's topic got the message
+    assertTrue( latch1.await( 5, TimeUnit.SECONDS ) );
+    // assert that the second members' topic got two messages
+    assertTrue( latch2.await( 5, TimeUnit.SECONDS ) );
+  } catch ( InterruptedException ignored ) {
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can start Hazelcast members with different configurations.
+Remember to call <code>Hazelcast.shutdownAll()</code> after each test case to make sure that
+there is no other running member left from the previous tests.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@After
+public void cleanup() throws Exception {
+  Hazelcast.shutdownAll();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information please
+<a href="https://github.com/hazelcast/hazelcast/tree/master/hazelcast/src/test/java/com/hazelcast/cluster" target="_blank" rel="noopener">check our existing tests</a>.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Does Hazelcast support hundreds of members?</strong></p>
+</div>
+<div class="paragraph">
+<p>Yes. Hazelcast performed a successful test on Amazon EC2 with 200 members.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Does Hazelcast support thousands of clients?</strong></p>
+</div>
+<div class="paragraph">
+<p>Yes. However, there are some points you should consider.
+The environment should be LAN with a high stability and the network speed should be 10 Gbps or higher.
+If the number of members is high, the client type should be selected as Unisocket, not Smart Client.
+In the case of Smart Clients, since each client opens a connection to the members,
+these members should be powerful enough (for example, more cores) to handle hundreds or thousands of connections and client requests.
+Also, you should consider using Near Caches in clients to lower the network traffic.
+And you should use the Hazelcast releases with the NIO implementation (which starts with Hazelcast 3.2).</p>
+</div>
+<div class="paragraph">
+<p>Also, you should configure the clients attentively.
+See the <a href="clients/hazelcast-clients.html" class="page">Clients section</a> for configuration notes.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Difference between Lite Member and Smart Client?</strong></p>
+</div>
+<div class="paragraph">
+<p>Lite member supports task execution (distributed executor service), smart client does not.
+Also, Lite Member is highly coupled with cluster, smart client is not.
+Starting with Hazelcast 3.9, you can also promote lite members to data members.
+See the <a href="management/cluster-utilities.html#enabling-lite-members" class="page">Lite Members section</a> for more information.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How do you give support?</strong></p>
+</div>
+<div class="paragraph">
+<p>We have two support services: community and commercial support.
+Community support is provided through our <a href="https://groups.google.com/forum/#!forum/hazelcast" target="_blank" rel="noopener">Mail Group</a> and
+<a href="http://stackoverflow.com/" target="_blank" rel="noopener">StackOverflow</a> web site.
+For information on support subscriptions, see <a href="https://hazelcast.com/pricing/" target="_blank" rel="noopener">Hazelcast.com</a>.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Does Hazelcast persist?</strong></p>
+</div>
+<div class="paragraph">
+<p>No. However, Hazelcast provides <code>MapStore</code> and <code>MapLoader</code> interfaces.
+For example, when you implement the <code>MapStore</code> interface, Hazelcast calls your store and load methods whenever needed.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Can I use Hazelcast in a single server?</strong></p>
+</div>
+<div class="paragraph">
+<p>Yes. But please note that Hazelcast&#8217;s main design focus is multi-member clusters to be used as a distribution platform.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How can I monitor Hazelcast?</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html" target="_blank" rel="noopener">Hazelcast Management Center</a> is what you use to
+monitor and manage the members running Hazelcast.
+In addition to monitoring the overall state of a cluster, you can analyze and browse data structures in detail,
+you can update map configurations and you can take thread dumps from members.</p>
+</div>
+<div class="paragraph">
+<p>You can also use Hazelcast&#8217;s HTTP based health check implementation and health monitoring utility.
+See the <a href="management/health-check-monitoring.html" class="page">Health Check and Monitoring section</a>.
+There is also a <a href="management/diagnostics.html" class="page">diagnostics tool</a> where you can see detailed logs enhanced with diagnostic plugins.</p>
+</div>
+<div class="paragraph">
+<p>Moreover, JMX monitoring is also provided. See the <a href="management/jmx-monitoring.html" class="page">Monitoring with JMX section</a> for details.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How can I see debug level logs?</strong></p>
+</div>
+<div class="paragraph">
+<p>By changing the log level to "Debug". Below are example lines for <strong>log4j</strong> logging framework.
+See the <a href="clusters/logging-configuration.html" class="page">Logging Configuration section</a> to learn how to set logging types.</p>
+</div>
+<div class="paragraph">
+<p>First, set the logging type as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String location = "log4j.configuration";
+String logging = "hazelcast.logging.type";
+System.setProperty( logging, "log4j" );
+/**if you want to give a new location. **/
+System.setProperty( location, "file:/path/mylog4j.properties" );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then set the log level to "Debug" in the properties file. Below is example content.</p>
+</div>
+<div class="paragraph">
+<p><code># direct log messages to stdout #</code></p>
+</div>
+<div class="paragraph">
+<p><code>log4j.appender.stdout=org.apache.log4j.ConsoleAppender</code></p>
+</div>
+<div class="paragraph">
+<p><code>log4j.appender.stdout.Target=System.out</code></p>
+</div>
+<div class="paragraph">
+<p><code>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</code></p>
+</div>
+<div class="paragraph">
+<p><code>log4j.appender.stdout.layout.ConversionPattern=%d{ABSOLUTE} %5p [%c{1}] - %m%n</code></p>
+</div>
+<div class="paragraph">
+<p><code>log4j.logger.com.hazelcast=debug</code></p>
+</div>
+<div class="paragraph">
+<p><code>#log4j.logger.com.hazelcast.cluster=debug</code></p>
+</div>
+<div class="paragraph">
+<p><code>#log4j.logger.com.hazelcast.partition=debug</code></p>
+</div>
+<div class="paragraph">
+<p><code>#log4j.logger.com.hazelcast.partition.InternalPartitionService=debug</code></p>
+</div>
+<div class="paragraph">
+<p><code>#log4j.logger.com.hazelcast.nio=debug</code></p>
+</div>
+<div class="paragraph">
+<p><code>#log4j.logger.com.hazelcast.hibernate=debug</code></p>
+</div>
+<div class="paragraph">
+<p>The line <code>log4j.logger.com.hazelcast=debug</code> is used to see debug logs for all Hazelcast operations.
+Below this line, you can select to see specific logs (cluster, partition, hibernate, etc.).</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Client-server vs. embedded topologies?</strong></p>
+</div>
+<div class="paragraph">
+<p>In the embedded topology, members include both the data and application.
+This type of topology is the most useful if your application focuses on high performance computing and many task executions.
+Since application is close to data, this topology supports data locality.</p>
+</div>
+<div class="paragraph">
+<p>In the client-server topology, you create a cluster of members and scale the cluster independently.
+Your applications are hosted on the clients and the clients communicate with the members in the cluster to reach data.</p>
+</div>
+<div class="paragraph">
+<p>Client-server topology fits better if there are multiple applications sharing
+the same data or if application deployment is significantly greater than
+the cluster size (for example, 500 application servers vs. 10 member cluster).</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How can I shutdown a Hazelcast member?</strong></p>
+</div>
+<div class="paragraph">
+<p>The following are the ways of shutting down a Hazelcast member:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can call <code>kill -9 &lt;PID&gt;</code> in the terminal (which sends a SIGKILL signal).
+This results in the immediate shutdown which is not recommended for production systems.
+If you set the property <code>hazelcast.shutdownhook.enabled</code> to <code>false</code> and then kill the process using <code>kill -15 &lt;PID&gt;</code>, its result is the same (immediate shutdown).</p>
+</li>
+<li>
+<p>You can call <code>kill -15 &lt;PID&gt;</code> in the terminal (which sends a SIGTERM signal), or you can call
+the method <code>HazelcastInstance.getLifecycleService().terminate()</code> programmatically, or you can use
+the script <code>stop.sh</code> located in your Hazelcast&#8217;s <code>/bin</code> directory. All three of them terminate your member ungracefully.
+They do not wait for migration operations, they force the shutdown.
+But this is much better than <code>kill -9 &lt;PID&gt;</code> since it releases most of the used resources.</p>
+</li>
+<li>
+<p>In order to gracefully shutdown a Hazelcast member (so that it waits the migration operations to be completed), you have four options:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You can call the method <code>HazelcastInstance.shutdown()</code> programatically.</p>
+</li>
+<li>
+<p>You can use JMX API&#8217;s shutdown method. You can do this by implementing
+a JMX client application or using a JMX monitoring tool (like JConsole).</p>
+</li>
+<li>
+<p>You can set the property <code>hazelcast.shutdownhook.policy</code> to <code>GRACEFUL</code> and then shutdown by using <code>kill -15 &lt;PID&gt;</code>.
+Your member will be gracefully shutdown.</p>
+</li>
+<li>
+<p>You can use the "Shutdown Member" button in the member view of
+<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#monitoring-members" target="_blank" rel="noopener">Hazelcast Management Center</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you use systemd&#8217;s <code>systemctl</code> utility, i.e., <code>systemctl stop service_name</code>, a SIGTERM signal is sent.
+After 90 seconds of waiting it is followed by a SIGKILL signal by default.
+Thus, it calls terminate at first and kill the member directly after 90 seconds.
+We do not recommend to use it with its defaults. But
+<a href="https://www.linux.com/learn/understanding-and-using-systemd" target="_blank" rel="noopener">systemd</a> is very customizable and
+well-documented, you can see its details using the command  <code>man systemd.kill</code>.
+If you can customize it to shutdown your Hazelcast member gracefully (by using the methods above), then you can use it.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How do I know it is safe to kill the second member?</strong></p>
+</div>
+<div class="paragraph">
+<p>Starting with Hazelcast 3.7, graceful shutdown of a Hazelcast member can be initiated any time as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>hazelcastInstance.shutdown();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once a Hazelcast member initiates a graceful shutdown, data of the shutting down member is migrated to the other members automatically.</p>
+</div>
+<div class="paragraph">
+<p>However, there is no such guarantee for termination.</p>
+</div>
+<div class="paragraph">
+<p>Below code snippet terminates a member if the cluster is safe, which means that
+there are no partitions being migrated and all backups are in sync when this method is called.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PartitionService partitionService = hazelcastInstance.getPartitionService();
+if (partitionService.isClusterSafe()) {
+  hazelcastInstance.getLifecycleService().terminate();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below code snippet terminates the local member if the member is safe to terminate, which means that
+all backups of partitions currently owned by local member are in sync when this method is called.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PartitionService partitionService = hazelcastInstance.getPartitionService();
+if (partitionService.isLocalMemberSafe()) {
+  hazelcastInstance.getLifecycleService().terminate();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please keep in mind that two code snippets shown above are inherently racy.
+If member failures occur in the cluster after the safety condition check passes, termination of the local member can lead to data loss.
+For safety of the data, graceful shutdown API is highly recommended.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="management/cluster-utilities.html#safety-checking-cluster-members" class="page">Safety Checking Cluster Members section</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>When do I need Native Memory solutions?</strong></p>
+</div>
+<div class="paragraph">
+<p>Native Memory solutions can be preferred when:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the amount of data per member is large enough to create significant garbage collection pauses</p>
+</li>
+<li>
+<p>your application requires predictable latency.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Is there any disadvantage of using near-cache?</strong></p>
+</div>
+<div class="paragraph">
+<p>The only disadvantage when using Near Cache is that it may cause stale reads.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Is Hazelcast secure?</strong></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast supports symmetric encryption, transport layer security/secure sockets layer (TLS/SSL) and
+Java Authentication and Authorization Service (JAAS). See the <a href="security/security.html" class="page">Security chapter</a> for more information.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>How can I set socket options?</strong></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast allows you to set some socket options such as <code>SO_KEEPALIVE</code>, <code>SO_SNDBUF</code> and
+<code>SO_RCVBUF</code> using Hazelcast configuration properties. See the <code>hazelcast.socket.*</code> properties explained in
+the <a href="system-properties.html" class="page">System Properties appendix</a>.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Client disconnections during idle time?</strong></p>
+</div>
+<div class="paragraph">
+<p>In Hazelcast, socket connections are created with the <code>SO_KEEPALIVE</code> option enabled by default.
+In most operating systems, default keep-alive time is 2 hours.
+If you have a firewall between clients and servers which is configured to reset idle connections/sessions,
+make sure that the firewall&#8217;s idle timeout is greater than the TCP keep-alive defined in the OS.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html" target="_blank" rel="noopener">Using TCP keepalive under Linux</a> and
+<a href="http://technet.microsoft.com/en-us/library/cc957549.aspx" target="_blank" rel="noopener">Microsoft TechNet</a> for additional information.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>OOME: Unable to create new native thread?</strong></p>
+</div>
+<div class="paragraph">
+<p>If you encounter an error of <code>java.lang.OutOfMemoryError: unable to create new native thread</code>,
+it may be caused by exceeding the available file descriptors on your operating system, especially if it is Linux.
+This exception is usually thrown on a running member, after a period of time when the thread count exhausts the file descriptor availability.</p>
+</div>
+<div class="paragraph">
+<p>The JVM on Linux consumes a file descriptor for each thread created.
+The default number of file descriptors available in Linux is usually 1024.
+If you have many JVMs running on a single machine, it is possible to exceed this default number.</p>
+</div>
+<div class="paragraph">
+<p>You can view the limit using the following command.</p>
+</div>
+<div class="paragraph">
+<p><code># ulimit -a</code></p>
+</div>
+<div class="paragraph">
+<p>At the operating system level, Linux users can control the amount of
+resources (and in particular, file descriptors) used via one of the following options.</p>
+</div>
+<div class="paragraph">
+<p>1 - Editing the <code>limits.conf</code> file:</p>
+</div>
+<div class="paragraph">
+<p><code># vi /etc/security/limits.conf</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>testuser soft nofile 4096&lt;br&gt;
+testuser hard nofile 10240&lt;br&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2 - Or using the <code>ulimit</code> command:</p>
+</div>
+<div class="paragraph">
+<p><code># ulimit -Hn</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>10240</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default number of process per users is 1024. Adding the following to your <code>$HOME/.profile</code> could solve the issue:</p>
+</div>
+<div class="paragraph">
+<p><code># ulimit -u 4096</code></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Does repartitioning wait for Entry Processor?</strong></p>
+</div>
+<div class="paragraph">
+<p>Repartitioning is the process of redistributing the partition ownerships.
+Hazelcast performs the repartitioning in the cases where a member leaves the cluster or joins the cluster.
+If a repartitioning happens while an entry processor is active in a member processing on an entry object,
+the repartitioning waits for the entry processor to complete its job.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Instances on different machines cannot see each other?</strong></p>
+</div>
+<div class="paragraph">
+<p>Assume you have two instances on two different machines and you develop a configuration as shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+NetworkConfig network = config.getNetworkConfig();
+
+JoinConfig join = network.getJoin();
+join.getTcpIpConfig().addMember("IP1")
+    .addMember("IP2").setEnabled(true);
+network.getInterfaces().setEnabled(true)
+    .addInterface("IP1").addInterface("IP2");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you create the Hazelcast instance, you have to pass the configuration to the instance.
+If you create the instances without passing the configuration, each instance starts but cannot see each other.
+Therefore, a correct way to create the instance is the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>HazelcastInstance instance = Hazelcast.newHazelcastInstance(config);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is an incorrect way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>HazelcastInstance instance = Hazelcast.newHazelcastInstance();</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>What Does "Replica: 1 has no owner" Mean?</strong></p>
+</div>
+<div class="paragraph">
+<p>When you start more members after the first one is started, you will see <code>replica: 1 has no owner</code> entry in the newly started member&#8217;s log.
+There is no need to worry about it since it refers to a transitory state.
+It only means the replica partition is not ready/assigned yet and eventually it will be.</p>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="phone-homes.html">Appendix E: Phone Homes</a></span>
+  <span class="next"><a href="revision-history.html">Appendix G: Document Revision History</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+  <a href="#yes-feedback" id="yes-button"><i class="far fa-check-circle"></i>  Yes </a>
+  <a href="#no-feedback" id="no-button"><i class="far fa-times-circle"></i>  No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for Frequently Asked Questions&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/v4.1/docs/modules/ROOT/pages/faq.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/v4.1/docs/modules/ROOT/pages/faq.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
+
+</aside>
+  </div>
+</main>
+
+</div>
+<footer class="footer">
+  <a>Terms of service</a>
+  <a>Privacy</a>
+  <a>Contact us</a>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
+  </body>
+</html>

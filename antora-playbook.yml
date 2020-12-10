@@ -1,18 +1,19 @@
 site:
-  title: Hazelcast Documentation
+  title: Documentation
   start_page: home::index.adoc
   url: https://jakescahill.github.io/docs-poc
 content:
+  branches: [v*]
   sources: 
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual
+  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual 
     start_path: docs
-    branches: docs-poc-v1
+    #branches: HEAD
 ui: 
   bundle:
-    url: https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.6/ui-bundle.zip
+    url: https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.7/ui-bundle.zip
     snapshot: true
   #supplemental_files: ./supplemental_ui 
 asciidoc:
@@ -20,7 +21,7 @@ asciidoc:
     page-pagination: true
     idprefix: ''
     idseparator: '-'
-    survey: https://www.surveymonkey.co.uk/r/NYGJNF9
+    page-survey: https://www.surveymonkey.co.uk/r/NYGJNF9
     imdg-javadoc: https://docs.hazelcast.org/docs/latest-dev/javadoc
     imdg-samples: https://github.com/hazelcast/hazelcast-code-samples
     imdg-core: https://github.com/hazelcast/hazelcast/tree/master/hazelcast/src/main/java/com/hazelcast

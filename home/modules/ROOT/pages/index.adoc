@@ -4,7 +4,7 @@
 :!toc:
 
 ++++
-<div class="cards">
+<div class="cards cards-first">
 ++++
 
 ++++
@@ -15,9 +15,6 @@
 		Use Hazelcast as a managed service.
 	</span>
 	<ul>
-		<li><a href="https://docs.cloud.hazelcast.com/docs/shipping-logs-to-amazon-elasticsearch-service">Tutorials</a></li>
-		<li><a href="https://docs.cloud.hazelcast.com/docs/release-notes">Release Notes</a></li>
-		<li><a href="https://docs.cloud.hazelcast.com/docs/java-client">Hazelcast Clients</a></li>
 	</ul>
 	<div class="get-started-home">
 	<a href="https://docs.cloud.hazelcast.com/docs/getting-started">Get Started</a>
@@ -35,7 +32,6 @@
 	<ul>
 		<li><a href="https://guides.hazelcast.org/home/">Integration Guides</a></li>
 		<li><a href="https://hazelcast.com/resources/hazelcast-deployment-operations-guide/">Operations Guide</a></li>
-		<li><a href="https://jakescahill.github.io/docs-poc/hazelcast/latest/clients/hazelcast-clients.html">Hazelcast Clients</a></li>
 	</ul>
 	<div class="get-started-home">
 	<a href="https://jakescahill.github.io/docs-poc/hazelcast/latest/getting-started.html">Get Started</a>
@@ -53,7 +49,6 @@
 	<ul>
 		<li><a href="https://jet-start.sh/docs/tutorials/kafka">Tutorials</a></li>
 		<li><a href="https://jet-start.sh/docs/operations/installation">Operations Guide</a></li>
-		<li><a href="https://jet-start.sh/demos">Demos</a></li>
 	</ul>
 	<div class="get-started-home">
 	<a href="https://jet-start.sh/docs/get-started/intro">Get Started</a>
@@ -62,6 +57,11 @@
 ++++
 
 ++++
+</div>
+++++
+
+++++
+<div class="cards">
 <div class="card">
 	<span class="card-header" style="background-image: url('data:image/svg+xml;base64, PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgaWQ9ImJvZHlfMSIgd2lkdGg9IjI3MCIgaGVpZ2h0PSI1NyI+Cgo8ZyB0cmFuc2Zvcm09Im1hdHJpeCgwLjMzNzUgMCAwIDAuMzM4IDAgMCkiPgogICAgPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIDApIiAgZD0iTTAgMTcyTDAgMEwxNzIgMEwxNzIgMTcyTDAgMTcyeiIgc3Ryb2tlPSJub25lIiBmaWxsPSJub25lIiAvPgogICAgPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIDApIiAgZD0iTTc2LjM4NTQ3IDYuODhDIDc0LjcwMTQ4IDYuODgwODkgNzMuMjY1NjMgOC4xMDA2NSA3Mi45OTI1IDkuNzYyMzQxTDcyLjk5MjUgOS43NjIzNDFMNjkuNjQ2NTYgMzAuMjQ3ODFDIDY1LjYyMzE5IDMxLjQxODIgNjEuNzg2NjcgMzIuOTk3NDIgNTguMTcwOTMgMzQuOTY0MzdMNTguMTcwOTMgMzQuOTY0MzdMNDEuMjY2NTYgMjIuODkwNzhDIDM5Ljg5OTkzIDIxLjkxNDkgMzguMDI4NDQgMjIuMDY4MjUgMzYuODM4OSAyMy4yNTM1OUwzNi44Mzg5IDIzLjI1MzU5TDIzLjQ1NTE1IDM2LjYyMzlDIDIyLjI3NDU1IDM3LjgwNTMzIDIyLjExMzA0IDM5LjY2NDA1IDIzLjA3MjE4IDQxLjAzMTRMMjMuMDcyMTggNDEuMDMxNEwzNC45NjQzNyA1OC4wNDMyOEMgMzIuOTY3MDggNjEuNjgwMTMgMzEuMzUyODggNjUuNTM4MjcgMzAuMTUzNzUgNjkuNTk5NTNMMzAuMTUzNzUgNjkuNTk5NTNMOS43NTU2MjcgNzIuOTkyNUMgOC4wOTkyNjcgNzMuMjcxNDkgNi44ODY1MTcgNzQuNzA1NzggNi44ODY3MTcgNzYuMzg1NDdMNi44ODY3MTcgNzYuMzg1NDdMNi44ODY3MTcgOTUuMzA1NDdDIDYuODgzNjg3IDk2Ljk3NDQ3IDguMDc5MDI3IDk4LjQwNDkxIDkuNzIyMDI3IDk4LjY5ODQzTDkuNzIyMDI3IDk4LjY5ODQzTDMwLjEzMzU5IDEwMi4zMTMxQyAzMS4zMjYyMiAxMDYuMzY3MyAzMi45MzAxNiAxMTAuMjI4MSAzNC45MzA3OCAxMTMuODY5NEwzNC45MzA3OCAxMTMuODY5NEwyMi44OTA3OCAxMzAuNzEzM0MgMjEuOTE0OSAxMzIuMDc5OSAyMi4wNjgyNSAxMzMuOTUxNCAyMy4yNTM1OSAxMzUuMTQwOUwyMy4yNTM1OSAxMzUuMTQwOUwzNi42MzA2MiAxNDguNTI0N0MgMzcuODA5MzUgMTQ5LjcwMzcgMzkuNjYzODMgMTQ5Ljg2OCA0MS4wMzE0IDE0OC45MTQ0TDQxLjAzMTQgMTQ4LjkxNDRMNTguMDc2ODcgMTM2Ljk4MTlDIDYxLjcwMzI3IDEzOC45NjA0IDY1LjU0OTE4IDE0MC41NTEzIDY5LjU4NjA5IDE0MS43MzJMNjkuNTg2MDkgMTQxLjczMkw3Mi45OTI0OSAxNjIuMjQ0NEMgNzMuMjY4NTYgMTYzLjkwMzQgNzQuNzAzNjIgMTY1LjExOTYgNzYuMzg1NDYgMTY1LjEyTDc2LjM4NTQ2IDE2NS4xMkw5NS4zMDU0NiAxNjUuMTJDIDk2Ljk3NjYgMTY1LjEyMjUgOTguNDA3OCAxNjMuOTIzNiA5OC42OTg0MyAxNjIuMjc4TDk4LjY5ODQzIDE2Mi4yNzhMMTAyLjM0NjcgMTQxLjY4NUMgMTA2LjM2NyAxNDAuNDg2MSAxMTAuMTk0OCAxMzguODcxOCAxMTMuODAyMiAxMzYuODgxMUwxMTMuODAyMiAxMzYuODgxMUwxMzAuOTYxOSAxNDguOTIxMUMgMTMyLjMyOTIgMTQ5Ljg4MDIgMTM0LjE4NzkgMTQ5LjcxODcgMTM1LjM2OTQgMTQ4LjUzODFMMTM1LjM2OTQgMTQ4LjUzODFMMTQ4Ljc0NjQgMTM1LjE0NzdDIDE0OS45MzcxIDEzMy45NTQ0IDE1MC4wODc4IDEzMi4wNzQzIDE0OS4xMDI1IDEzMC43MDY2TDE0OS4xMDI1IDEzMC43MDY2TDEzNi44Njc2IDExMy43MjE2QyAxMzguODIzOSAxMTAuMTMxNSAxNDAuMzk5OCAxMDYuMzI2NSAxNDEuNTcwOCAxMDIuMzMzM0wxNDEuNTcwOCAxMDIuMzMzM0wxNjIuMjcxMiA5OC43MDUxNkMgMTYzLjkxNjkgOTguNDE0NTQgMTY1LjExNTcgOTYuOTgzMzMgMTY1LjExMzMgOTUuMzEyMTlMMTY1LjExMzMgOTUuMzEyMTlMMTY1LjExMzMgNzYuMzkyMkMgMTY1LjExMjQgNzQuNzA4MiAxNjMuODkyNiA3My4yNzIzNSAxNjIuMjMwOSA3Mi45OTkyM0wxNjIuMjMwOSA3Mi45OTkyM0wxNDEuNTY0IDY5LjYxOTdDIDE0MC4zODUzIDY1LjYzMTE4IDEzOC44MDQ5IDYxLjgzMzA2IDEzNi44NDc1IDU4LjI0NDg2TDEzNi44NDc1IDU4LjI0NDg2TDE0OC45MTQzIDQxLjA1MTU4QyAxNDkuODczNSAzOS42ODQyMyAxNDkuNzEyIDM3LjgyNTUxIDE0OC41MzE0IDM2LjY0NDA4TDE0OC41MzE0IDM2LjY0NDA4TDEzNS4xNDc2IDIzLjI2NzA1QyAxMzMuOTU0NCAyMi4wNzYzOCAxMzIuMDc0MiAyMS45MjU2MyAxMzAuNzA2NSAyMi45MTA5NkwxMzAuNzA2NSAyMi45MTA5NkwxMTMuNzY4NiAzNS4wOTIwNUMgMTEwLjE1OTcgMzMuMTA5MzcgMTA2LjMyOTQgMzEuNTAzNTEgMTAyLjI5OTcgMzAuMzE1MDJMMTAyLjI5OTcgMzAuMzE1MDJMOTguNjk4NDEgOS43Mjg3NjdDIDk4LjQxMDY4IDguMDgwNDI3IDk2Ljk3ODcxIDYuODc4MTM4IDk1LjMwNTQ0IDYuODgwMDE3TDk1LjMwNTQ0IDYuODgwMDE3TDc2LjM4NTQ3IDYuODh6TTc5LjMxNDg1IDEzLjc2TDkyLjQxNjQxIDEzLjc2TDk1Ljg0Mjk3IDMzLjMxODI4QyA5Ni4wNzU5MiAzNC42NTg0NiA5Ny4wNzY2MyAzNS43MzU1NSA5OC4zOTYxIDM2LjA2NjI1QyAxMDMuNDI3MSAzNy4zMTk5OCAxMDguMTUyMyAzOS4zMDczMyAxMTIuNDY1MiA0MS45MTgyOEMgMTEzLjY0MzkgNDIuNjMyNDYgMTE1LjEzNSA0Mi41NzQzIDExNi4yNTQ1IDQxLjc3MDQ3TDExNi4yNTQ1IDQxLjc3MDQ3TDEzMi4zNTI3IDMwLjIwMDc4TDE0MS42MTc4IDM5LjQ2NTk0TDEzMC4xNTU2IDU1Ljc5OTIyQyAxMjkuMzczNSA1Ni45MTI0MSAxMjkuMzIwOCA1OC4zODE5NSAxMzAuMDIxMyA1OS41NDgyOEMgMTMyLjYwNjQgNjMuODUxNDYgMTM0LjU2NzEgNjguNTQ2NzQgMTM1LjgxOTUgNzMuNTUwMTVDIDEzNi4xNTI5IDc0Ljg4MjAxIDEzNy4yNDYyIDc1Ljg4ODE4IDEzOC42MDExIDc2LjExTDEzOC42MDExIDc2LjExTDE1OC4yMzMzIDc5LjMyMTU2TDE1OC4yMzMzIDkyLjQyMzEzTDEzOC41NjA4IDk1Ljg3NjU2QyAxMzcuMjE5NSA5Ni4xMTM5OCAxMzYuMTQ0NiA5Ny4xMjAzOCAxMzUuODE5NSA5OC40NDMxMkMgMTM0LjU4MTUgMTAzLjQ0MDIgMTMyLjYxOTcgMTA4LjEzNTMgMTMwLjAzNDcgMTEyLjQzODNDIDEyOS4zMjU0IDExMy42MTY3IDEyOS4zODYyIDExNS4xMDQzIDEzMC4xODkyIDExNi4yMjA5TDEzMC4xODkyIDExNi4yMjA5TDE0MS44MTI2IDEzMi4zNTI2TDEzMi41NDc1IDE0MS42MjQ1TDExNi4yNDExIDEzMC4xODI1QyAxMTUuMTIyMiAxMjkuMzk4NyAxMTMuNjQ1NSAxMjkuMzUxMyAxMTIuNDc4NiAxMzAuMDYxNUMgMTA4LjE4NzEgMTMyLjY3MjUgMTAzLjQ1NzIgMTM0LjY2OTIgOTguNDQzMTIgMTM1Ljk0MDRDIDk3LjEzMDE1IDEzNi4yNzE0IDk2LjEzMzQzIDEzNy4zNDE4IDk1Ljg5NjcxIDEzOC42NzVMOTUuODk2NzEgMTM4LjY3NUw5Mi40MjMxMyAxNTguMjRMNzkuMzAxNDEgMTU4LjI0TDc2LjA2Mjk3IDEzOC43NjIzQyA3NS44Mzc2OCAxMzcuNDA4MiA3NC44Mjg5MiAxMzYuMzE3NSA3My40OTY0MSAxMzUuOTg3NUMgNjguNDYyMzYgMTM0Ljc0NjcgNjMuNzE2MDEgMTMyLjc2MjMgNTkuMzczNiAxMzAuMTU1NkMgNTguMjA4OSAxMjkuNDU4MSA1Ni43NDI5MyAxMjkuNTEwNyA1NS42MzEyNCAxMzAuMjlMNTUuNjMxMjQgMTMwLjI5TDM5LjQ1MjUgMTQxLjYyNDVMMzAuMTgwNjEgMTMyLjMzOTJMNDEuNjE1OTIgMTE2LjM1NTNDIDQyLjQxNDczIDExNS4yMzU5IDQyLjQ3MDIgMTEzLjc0ODQgNDEuNzU3MDMgMTEyLjU3MjZDIDM5LjEyMTkyIDEwOC4yMTg1IDM3LjEyOTAyIDEwMy40NzI1IDM1Ljg3MTQgOTguNDE2MjRDIDM1LjU0MjcxIDk3LjEwMDY1IDM0LjQ3MTg5IDk2LjEwMDg4IDMzLjEzNjg2IDk1Ljg2MzExTDMzLjEzNjg2IDk1Ljg2MzExTDEzLjc2NjcgOTIuNDIzMTFMMTMuNzY2NyA3OS4zMDEzOUwzMy4xMjM0MiA3Ni4wODMxMUMgMzQuNDc1NzUgNzUuODU4ODYgMzUuNTY1OSA3NC44NTMxNiAzNS44OTgyNyA3My41MjMyNkMgMzcuMTY2NjkgNjguNDQ5NTkgMzkuMTU4NjMgNjMuNzA0NDEgNDEuNzgzODkgNTkuMzYwMTNDIDQyLjQ5MTIzIDU4LjE5NDgxIDQyLjQ0Mzc5IDU2LjcyMTc1IDQxLjY2Mjk0IDU1LjYwNDM1TDQxLjY2Mjk0IDU1LjYwNDM1TDMwLjM2MjAxIDM5LjQ1MjQ4TDM5LjY0MDYxIDMwLjE4MDZMNTUuNjc4MjUgNDEuNjQyNzlDIDU2Ljc5MzI2IDQyLjQzNzg0IDU4LjI3MzYyIDQyLjQ5NTkgNTkuNDQ3NDcgNDEuNzkwNkMgNjMuNzY2OTMgMzkuMTk2MzQgNjguNTI0MzEgMzcuMjI3OTMgNzMuNTYzNTcgMzUuOTkyMzJDIDc0LjkwMjY0IDM1LjY2MjY0IDc1LjkxNTQ2IDM0LjU2NTIxIDc2LjEzNjg1IDMzLjIwNDA0ek04NiA1OC40OEMgNzAuODQxODcgNTguNDggNTguNDggNzAuODQxODcgNTguNDggODZDIDU4LjQ4IDEwMS4xNTgxIDcwLjg0MTg3IDExMy41MiA4NiAxMTMuNTJDIDEwMS4xNTgxIDExMy41MiAxMTMuNTIgMTAxLjE1ODEgMTEzLjUyIDg2QyAxMTMuNTIgNzAuODQxODcgMTAxLjE1ODEgNTguNDggODYgNTguNDh6TTg2IDY1LjM2QyA5Ny40Mzk5IDY1LjM2IDEwNi42NCA3NC41NjAxIDEwNi42NCA4NkMgMTA2LjY0IDk3LjQzOTkgOTcuNDM5OSAxMDYuNjQgODYgMTA2LjY0QyA3NC41NjAxIDEwNi42NCA2NS4zNiA5Ny40Mzk5IDY1LjM2IDg2QyA2NS4zNiA3NC41NjAxIDc0LjU2MDEgNjUuMzYgODYgNjUuMzZ6IiBzdHJva2U9Im5vbmUiIGZpbGw9IiMyMTYwQzAiIGZpbGwtcnVsZT0ibm9uemVybyIgLz4KCTx0ZXh0IHRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgMCAwKSIgeD0iMTgwIiB5PSIxMTAiIHN0eWxlPSJmaWxsOiMwMDAwMDA7IiBmb250LWZhbWlseT0iVWJ1bnR1IiBmb250LXNpemU9IjcwIj4KTWFuYWdlbWVudCBDZW50ZXIKCTwvdGV4dD4KPC9nPgo8L3N2Zz4=')">
 	</span>
@@ -69,13 +69,48 @@
 		Monitor your Hazelcast clusters.
 	</span>
 	<ul>
-		<li><a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#user-interface-overview">User Interface Overview</a></li>
-		<li><a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#monitoring-a-jet-cluster">Monitoring a Jet Cluster</a></li>
-		<li><a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#troubleshooting">Troubleshooting</a></li>
 	</ul>
 	<div class="get-started-home">
 	<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#deploying-and-starting">Get Started</a>
 	</div>
+</div>
+++++
+
+++++
+<div class="card">
+	<span class="card-header"><h2>Hazelcast Clients</h2>
+	</span>
+	<span class="card-summary">
+		Connect to your Hazelcast clusters.
+	</span>
+	<ul>
+		<li><a href="https://hazelcast.org/imdg/clients-languages/java/">Java (Client or Embedded)</a></li>
+		<li><a href="https://hazelcast.org/imdg/clients-languages/dotnet/">.Net</a></li>
+		<li><a href="https://hazelcast.org/imdg/clients-languages/cplusplus/">C++</a></li>
+		<li><a href="https://hazelcast.org/imdg/clients-languages/node-js/">Node.js</a></li>
+		<li><a href="https://hazelcast.org/imdg/clients-languages/python/">Python</a></li>
+		<li><a href="https://hazelcast.org/imdg/clients-languages/go/">Go</a></li>
+		<li><a href="https://docs.hazelcast.org/docs/latest/manual/html-single/index.html#rest-client">REST</a></li>
+		<li><a href="https://docs.hazelcast.org/docs/latest/manual/html-single/index.html#memcache-client">Memcache</a></li>
+	</ul>
+	<div class="get-started-home">
+	<a href="https://jakescahill.github.io/docs-poc/hazelcast/latest/clients/hazelcast-clients.html">Get Started</a>
+	</div>
+</div>
+++++
+
+++++
+<div class="card">
+	<span class="card-header"><h2>See Also</h2>
+	</span>
+	<span class="card-summary">
+		Other helpful documentation resources.
+	</span>
+	<ul>
+		<li><a href="https://hazelcast.org/hub/">Integration Hub</a>Integrate Hazelcast with various data systems, application frameworks and cloud runtimes using connectors and plugins.</li>
+		<li><a href="https://training.hazelcast.com/">Training</a>Learn Hazelcast following self-paced on-line training courses.</li>
+		<li><a href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>Get in-depth knowledge of the important features of Hazelcast IMDG</li>
+	</ul>
 </div>
 ++++
 

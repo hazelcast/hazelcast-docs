@@ -107,8 +107,8 @@
 		Other helpful documentation resources.
 	</span>
 	<ul>
-		<li><a href="https://hazelcast.org/hub/">Integration Hub</a>Integrate Hazelcast with various data systems, application frameworks and cloud runtimes using connectors and plugins.</li>
-		<li><a href="https://training.hazelcast.com/">Training</a>Learn Hazelcast following self-paced on-line training courses.</li>
+		<li><a href="https://hazelcast.org/hub/">Integration Hub</a>Explore our connectors and plugins for integrating Hazelcast with various data systems, application frameworks, and cloud runtimes.</li>
+		<li><a href="https://training.hazelcast.com/">Online Training</a>Learn Hazelcast by following self-paced online training courses.</li>
 		<li><a href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>Get in-depth knowledge of the important features of Hazelcast IMDG</li>
 	</ul>
 </div>

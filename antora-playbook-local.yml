@@ -13,7 +13,7 @@ content:
     #branches: HEAD
 ui: 
   bundle:
-    url: ../docs-poc-ui/build/ui-bundle.zip #https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.8/ui-bundle.zip #../docs-poc-ui/build/ui-bundle.zip
+    url: ../docs-poc-ui/build/ui-bundle.zip #https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.9/ui-bundle.zip #../docs-poc-ui/build/ui-bundle.zip
     snapshot: true
   #supplemental_files: ./supplemental_ui 
 asciidoc:

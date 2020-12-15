@@ -3,16 +3,17 @@ site:
   start_page: home::index.adoc
   url: https://jakescahill.github.io/docs-poc
 content:
+  sources: 
   - url: .
     start_path: home
     branches: HEAD
   - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
-    branches: [latest]
+    branches: [latest, latest-dev]
     start_path: docs
     #branches: HEAD
   - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
     branches: [archive]
-    start_path: docs/*
+    start_paths: docs/*
     #branches: HEAD
 ui: 
   bundle:

@@ -1,0 +1,4570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Map Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/imdg/latest-dev/data-structures/map.html">
+    <link rel="prev" href="overview.html">
+    <link rel="next" href="queue.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'GTM-M267KFN', 'auto')
+ga('send', 'pageview')
+</script>
+<!-- End Google Analytics -->
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc"><img src="../../../_/img/hazelcast-logo.svg"></img></a>
+      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
+            </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search All Resources</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Integration Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a href="https://hazelcast.com/get-started/"><img class="nav-button" src="../../../_/img/nav-button.svg"></img></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="imdg" data-version="latest-dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../overview/hazelcast-overview.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/what-is-imdg.html">What is Hazelcast IMDG?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/topology.html">Topology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/data-partitioning.html">Data Partitioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/use-cases.html">Use Cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/resources.html">Resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../installation/installing-upgrading.html">Installing and Upgrading</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-maven.html">Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-docker.html">Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-download-archives.html">Download Archives</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-hazelcast-cloud.html">Hazelcast Cloud</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-kubernetes.html">Kubernetes/OpenShift Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-vmware-tanzu.html">Deploying in VMware Tanzu</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-cloud.html">Deploying in Cloud Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/using-enterprise-edition.html">Using Pro and Enterprise editions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/rolling-upgrades.html">Rolling Member Upgrades</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/running-in-modular-java.html">Running in Modular Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/supported-jvms.html">Supported Java Virtual Machines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../starting-members-clients.html">Starting the Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/understanding-configuration.html">Understanding Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-declaratively.html">Configuring Declaratively</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-programmatically.html">Configuring Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-with-system-properties.html">Configuring with System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-within-spring.html">Configuring within the Spring Context</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/overriding-configuration-settings.html">Overriding Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/dynamic-data-structure-configuration.html">Dynamically Adding Data Structure Configuration on a Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/checking-configuration.html">Checking Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/pattern-matcher.html">Configuration Pattern Matcher</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-wildcards.html">Using Wildcards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-variables.html">Using Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/variable-replacers.html">Variable Replacers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clusters/setting-up-clusters.html">Setting Up Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovery-mechanisms.html">Discovery Mechanisms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-auto-detection.html">Discovering Members by Auto Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-tcp.html">Discovering Members by TCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-multicast.html">Discovering Members by Multicast</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-native-clients.html">Discovering Native Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/creating-clusters.html">Creating Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-on-member.html">Deploying User Code on the Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-from-clients.html">Deploying User Code from Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/accessing-domain-objects.html">Accessing Domain Objects without Domain Classes - BETA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/partition-group-configuration.html">Partition Group Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/logging-configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/network-configuration.html">Other Network Configurations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/failure-detector-configuration.html">Failure Detector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/advanced-network-configuration.html">Advanced Network Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="distributed-data-structures.html">Distributed Data Structures</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="overview.html">Overview of Hazelcast Distributed Objects</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="map.html">Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="queue.html">Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="priority-queue.html">Priority Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="multimap.html">MultiMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ringbuffer.html">Ringbuffer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="topic.html">Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reliable-topic.html">Reliable Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="iatomiclong.html">IAtomicLong</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="isemaphore.html">ISemaphore</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="iatomicreference.html">IAtomicReference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="icountdownlatch.html">ICountDownLatch</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pn-counter.html">PN Counter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="flake-id-generator.html">Flake ID Generator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="replicated-map.html">Replicated Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cardinality-estimator-service.html">Cardinality Estimator Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-journal.html">Event Journal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../events/distributed-events.html">Distributed Events</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/cluster-events.html">Cluster Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/object-events.html">Distributed Object Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/event-listeners-for-clients.html">Event Listeners for Hazelcast Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/global-event-configuration.html">Global Event Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast-jet.html">Hazelcast Jet</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../computing/distributed-computing.html">Distributed Computing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/executor-service.html">Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/durable-executor-service.html">Durable Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/scheduled-executor-service.html">Scheduled Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/entry-processor.html">Entry Processor</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sql/distributed-sql.html">SQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/querying-imap.html">Querying IMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/data-types.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/select-statement.html">SELECT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/expressions.html">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/lite-members.html">Lite Members</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/how-distributed-sql-works.html">How Distributed SQL Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/sql-and-high-density-memory.html">SQL on Data Structures Backed by High-Density Memory Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../query/distributed-query.html">Distributed Query</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/how-distributed-query-works.html">How Distributed Query Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/custom-attributes.html">Custom Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/aggregations.html">Aggregations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/projections.html">Projections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/continuous-query-cache.html">Continuous Query Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/mapreduce-deprecation-and-removal.html">MapReduce Deprecation and Removal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cp-subsystem/cp-subsystem.html">CP Subsystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/discovery-process.html">CP Discovery Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/persistence.html">CP Subsystem Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/member-shutdown.html">CP Member Shutdown</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fault-tolerance.html">CP Subsystem&#8217;s Fault Tolerance Capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/listeners.html">CP Subsystem Listeners</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/sessions.html">CP Sessions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/unsafe-mode.html">CP Subsystem Unsafe Mode</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/management.html">CP Subsystem Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transactions/transactions.html">Transactions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/creating-a-transaction-interface.html">Creating a Transaction Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/providing-xa-transactions.html">Providing XA Transactions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jcache/jcache.html">Hazelcast JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/overview.html">JCache Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/setup.html">JCache Setup and Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/providers.html">JCache Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/hazelcast-integration.html">JCache - Hazelcast Instance Integration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/icache.html">Hazelcast JCache Extension - ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/tck.html">Testing for JCache Specification Compliance</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../integrated-clustering/integrated-clustering.html">Integrated Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/hibernate-second-level-cache.html">Integration with Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/web-session-replication.html">Web Session Replications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/javaee.html">Integration with Java EE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/spring.html">Integration with Spring</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../storage/storage.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/high-density-memory.html">High-Density Memory Store</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/sizing-practices.html">Sizing Practices</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/hot-restart-persistence.html">Hot Restart Persistence</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../striim-cdc.html">Database CDC Integration Using Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clients/hazelcast-clients.html">Hazelcast Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/java.html">Java Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/cplusplus.html">C++ Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/dotnet.html">.NET Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/rest.html">REST Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/memcache.html">Memcache Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/python.html">Python Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/nodejs.html">Node.js Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/go.html">Go Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../serialization/serialization.html">Serialization</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/interface-types.html">Serialization Interface Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/comparing-interfaces.html">Comparing Serialization Interfaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-java-serializable.html">Implementing Java Serializable and Externalizable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-dataserializable.html">Implementing DataSerializable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-portable-serialization.html">Implementing Portable Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/custom-serialization.html">Custom Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/global-serializer.html">Global Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-hazelcastinstanceaware.html">Implementing HazelcastInstanceAware</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/untrusted-deserialization-protection.html">Untrusted Deserialization Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/serialization-configuration.html">Serialization Configuration Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../management/management.html">Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/member-statistics.html">Getting Member Statistics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-api.html">JMX API per Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-monitoring.html">Monitoring with JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/rest-endpoint-groups.html">Using the REST Endpoint Groups</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/cluster-utilities.html">Cluster Utilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/diagnostics.html">Diagnostics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/health-check-monitoring.html">Health Check and Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/management-center.html">Management Center</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/license-info.html">License Information</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/instance-tracking.html">Instance Tracking</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/enabling-jaas.html">Enabling JAAS Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/socket-interceptor.html">Socket Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-interceptor.html">Security Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/encryption.html">Encryption</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-ssl.html">TLS/SSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/integrating-openssl.html">Integrating OpenSSL / BoringSSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-configuration.html">Other TLS related configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/validating-secrets.html">Validating Secrets Using Strength Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-realms.html">Security Realms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/jaas-authentication.html">JAAS authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/cluster-member-security.html">Cluster Member Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/default-authentication.html">Default authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/native-client-security.html">Native Client Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/logging-auditable-events.html">Logging Auditable Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-debugging.html">Security Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/fips-140-2.html">FIPS 140-2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../performance/performance.html">Performance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/pipelining.html">Pipelining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/data-affinity.html">Data Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/cpu-thread-affinity.html">CPU Thread Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/running-on-ec2.html">Running on EC2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/back-pressure.html">Back Pressure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/threading-model.html">Threading Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/slowoperationdetector.html">SlowOperationDetector</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/near-cache.html">Near Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/caching-deserialized-values.html">Caching Deserialized Values</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../wan/wan.html">WAN Replication</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/modes.html">WAN Replication Modes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/defining-wan-replication.html">Configuring WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/configuring-for-map-and-cache.html">Configuring for IMap and ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/advanced-features.html">Advanced Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/tuning.html">Fine-Tuning WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/failures.html">Failure Detection and Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/rest-api.html">REST API Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../osgi/osgi.html">OSGI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/osgi-support.html">OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/configuring-osgi-support.html">Configuring Hazelcast OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/design.html">Design</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/using-osgi-service.html">Using Hazelcast OSGI Service</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extending-hazelcast/extending-hazelcast.html">Extending Hazelcast</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/operationparker.html">OperationParker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/discovery-spi.html">Discovery SPI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/config-properties-spi.html">Config Properties SPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/hazelcast-plugins.html">Hazelcast Plugins</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/cloud-discovery.html">Cloud Discovery Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/web-session-replication.html">Web Session Replication Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/framework-integration.html">Framework Integration Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/other-integrations.html">Other Integrations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../consistency-and-replication/consistency.html">Consistency and Replication Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/replication-algorithm.html">Hazelcast&#8217;s Replication Algorithm</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/invocation-lifecycle.html">Invocation Lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/exactly-once-execution.html">Exactly-once, At-least-once or At-most-once Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/indeterminateoperationstateexception.html">IndeterminateOperationStateException</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../network-partitioning/network-partitioning.html">Network Partitioning</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/dealing-with-network-partitions.html">Dealing with Network Partitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-protection.html">Split-Brain Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-recovery.html">Split-Brain Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/partial-network-partitions.html">Partial Network Partitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../system-properties.html">Appendix A: System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../phone-homes.html">Appendix E: Phone Homes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">Appendix F: Frequently Asked Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../revision-history.html">Appendix G: Document Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../latest/index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.3/index.html">4.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.2/index.html">4.0.2</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.1/index.html">4.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4/index.html">4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.11/index.html">3.12.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.10/index.html">3.12.10</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.9/index.html">3.12.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.8/index.html">3.12.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.7/index.html">3.12.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.6/index.html">3.12.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.5/index.html">3.12.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.4/index.html">3.12.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.3/index.html">3.12.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.2/index.html">3.12.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.1/index.html">3.12.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12/index.html">3.12</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.7/index.html">3.11.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.6/index.html">3.11.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.5/index.html">3.11.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.4/index.html">3.11.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.3/index.html">3.11.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.2/index.html">3.11.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.1/index.html">3.11.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11/index.html">3.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.7/index.html">3.10.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.6/index.html">3.10.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.5/index.html">3.10.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.4/index.html">3.10.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.3/index.html">3.10.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.2/index.html">3.10.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.1/index.html">3.10.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.4/index.html">3.9.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.3/index.html">3.9.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.2/index.html">3.9.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.1/index.html">3.9.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9/index.html">3.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.9/index.html">3.8.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.8/index.html">3.8.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.7/index.html">3.8.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.6/index.html">3.8.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.5/index.html">3.8.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.4/index.html">3.8.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.3/index.html">3.8.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.2/index.html">3.8.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.1/index.html">3.8.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8/index.html">3.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.8/index.html">3.7.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.7/index.html">3.7.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.6/index.html">3.7.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.5/index.html">3.7.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.4/index.html">3.7.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.3/index.html">3.7.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.2/index.html">3.7.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.1/index.html">3.7.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.8/index.html">3.6.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.7/index.html">3.6.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.6/index.html">3.6.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.5/index.html">3.6.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.4/index.html">3.6.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.3/index.html">3.6.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.2/index.html">3.6.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.1/index.html">3.6.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.5/index.html">3.5.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.4/index.html">3.5.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.3/index.html">3.5.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.2/index.html">3.5.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.1/index.html">3.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5/index.html">3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.8/index.html">3.4.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.7/index.html">3.4.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.6/index.html">3.4.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.5/index.html">3.4.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.4/index.html">3.4.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.3/index.html">3.4.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.2/index.html">3.4.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.1/index.html">3.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4/index.html">3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.5/index.html">3.3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.4/index.html">3.3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.2/index.html">3.3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.1/index.html">3.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3/index.html">3.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.7/index.html">3.2.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.6/index.html">3.2.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.5/index.html">3.2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.4/index.html">3.2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.3/index.html">3.2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.2/index.html">3.2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.1/index.html">3.2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2/index.html">3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.9/index.html">3.1.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.8/index.html">3.1.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1/index.html">3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.0.3/index.html">3.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.6.9/index.html">2.6.9</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5.1/index.html">2.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5/index.html">2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4.1/index.html">2.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4/index.html">2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3.1/index.html">2.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3/index.html">2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.2/index.html">2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1.3/index.html">2.1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1/index.html">2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0.4/index.html">2.0.4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Hazelcast IMDG</a></li>
+    <li><a href="distributed-data-structures.html">Distributed Data Structures</a></li>
+    <li><a href="map.html">Map</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">4.1</button>
+  <div class="version-menu">
+        <a class="version is-current" href="map.html">4.1</a>
+        <a class="version" href="../../latest/data-structures/map.html">4.1</a>
+        <a class="version is-missing" href="../../4.0.3/index.html">4.0.3</a>
+        <a class="version is-missing" href="../../4.0.2/index.html">4.0.2</a>
+        <a class="version is-missing" href="../../4.0.1/index.html">4.0.1</a>
+        <a class="version is-missing" href="../../4/index.html">4</a>
+        <a class="version is-missing" href="../../3.12.11/index.html">3.12.11</a>
+        <a class="version is-missing" href="../../3.12.10/index.html">3.12.10</a>
+        <a class="version is-missing" href="../../3.12.9/index.html">3.12.9</a>
+        <a class="version is-missing" href="../../3.12.8/index.html">3.12.8</a>
+        <a class="version is-missing" href="../../3.12.7/index.html">3.12.7</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Map</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast Map (<code>IMap</code>) extends the interface <code>java.util.concurrent.ConcurrentMap</code>
+and hence <code>java.util.Map</code>. It is the distributed implementation of Java map. You can
+perform operations like reading and writing from/to a Hazelcast map with the well
+known get and put methods.</p>
+</div>
+<hr>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+IMap data structure can also be used by <a href="https://jet.hazelcast.org/" target="_blank" rel="noopener">Hazelcast Jet</a>
+for Real-Time Stream Processing (by enabling the Event Journal on your map) and
+Fast Batch Processing. Hazelcast Jet uses IMap as a source (reads data from IMap) and as a sink
+(writes data to IMap). See the <a href="https://jet.hazelcast.org/use-cases/fast-batch-processing/" target="_blank" rel="noopener">Fast Batch Processing</a>
+and <a href="https://jet.hazelcast.org/use-cases/real-time-stream-processing/" target="_blank" rel="noopener">Real-Time Stream Processing</a>
+use cases for Hazelcast Jet. See also <a href="https://jet-start.sh/docs/api/sources-sinks#imap" target="_blank" rel="noopener">here</a>
+in the Hazelcast Jet Programming Guide to learn how Jet uses IMap, i.e., how it can read from and write to IMap.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-a-map-and-putting-an-entry"><a class="anchor" href="#getting-a-map-and-putting-an-entry"></a>Getting a Map and Putting an Entry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast partitions your map entries and their backups, and almost evenly distribute
+them onto all Hazelcast members. Each member carries approximately
+"number of map entries * 2 * 1/n" entries, where <strong>n</strong> is the number of members in the cluster.
+For example, if you have a member with 1000 objects to be stored in the cluster and then you
+start a second member, each member will both store 500 objects and back up the 500 objects
+in the other member.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s create a Hazelcast instance and fill a map named <code>Capitals</code> with key-value pairs
+using the following code. Use the HazelcastInstance <code>getMap</code> method to get the map,
+then use the map <code>put</code> method to put an entry into the map.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">HazelcastInstance hzInstance = Hazelcast.newHazelcastInstance();
+Map&lt;String, String&gt; capitalcities = hzInstance.getMap( "capitals" );
+    capitalcities.put( "1", "Tokyo" );
+    capitalcities.put( "2", "Paris" );
+    capitalcities.put( "3", "Washington" );
+    capitalcities.put( "4", "Ankara" );
+    capitalcities.put( "5", "Brussels" );
+    capitalcities.put( "6", "Amsterdam" );
+    capitalcities.put( "7", "New Delhi" );
+    capitalcities.put( "8", "London" );
+    capitalcities.put( "9", "Berlin" );
+    capitalcities.put( "10", "Oslo" );
+    capitalcities.put( "11", "Moscow" );
+    ...
+    capitalcities.put( "120", "Stockholm" );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you run this code, a cluster member is created with a map whose entries are
+distributed across the members' partitions. See the below illustration. For now,
+this is a single member cluster.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/1Node.png" alt="Map Entries in a Single Member"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please note that some of the partitions do not contain any data entries since
+we only have 120 objects and the partition count is 271 by default. This count is
+configurable and can be changed using the system property <code>hazelcast.partition.count</code>.
+See the <a href="../system-properties.html" class="page">System Properties appendix</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-member-for-map-backup"><a class="anchor" href="#creating-a-member-for-map-backup"></a>Creating A Member for Map Backup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now let&#8217;s create a second member by running the above code again. This creates a
+cluster with two members. This is also where backups of entries are created - remember
+the backup partitions mentioned in the <a href="../overview/hazelcast-overview.html" class="page">Hazelcast Overview section</a>.
+The following illustration shows two members and how the data and its backup is distributed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/2Nodes.png" alt="Map Entries with Backups in Two Members"></span></p>
+</div>
+<div class="paragraph">
+<p>As you see, when a new member joins the cluster, it takes ownership and loads some of the
+data in the cluster. Eventually, it will carry almost "(1/n <code>*</code> total-data) + backups" of the data,
+reducing the load on other members.</p>
+</div>
+<div class="paragraph">
+<p><code>HazelcastInstance.getMap()</code> returns an instance of <code>com.hazelcast.map.IMap</code> which extends
+the <code>java.util.concurrent.ConcurrentMap</code> interface. Methods like
+<code>ConcurrentMap.putIfAbsent(key,value)</code> and <code>ConcurrentMap.replace(key,value)</code> can be used
+on the distributed map, as shown in the example below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class BasicMapOperations {
+
+    private HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
+
+    public Customer getCustomer(String id) {
+        ConcurrentMap&lt;String, Customer&gt; customers = hazelcastInstance.getMap("customers");
+        Customer customer = customers.get(id);
+        if (customer == null) {
+            customer = new Customer(id);
+            customer = customers.putIfAbsent(id, customer);
+        }
+        return customer;
+    }
+
+    public boolean updateCustomer(Customer customer) {
+        ConcurrentMap&lt;String, Customer&gt; customers = hazelcastInstance.getMap("customers");
+        return (customers.replace(customer.getId(), customer) != null);
+    }
+
+    public boolean removeCustomer(Customer customer) {
+        ConcurrentMap&lt;String, Customer&gt; customers = hazelcastInstance.getMap("customers");
+        return customers.remove(customer.getId(), customer);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All <code>ConcurrentMap</code> operations such as <code>put</code> and <code>remove</code> might wait if the key is locked
+by another thread in the local or remote JVM. But, they will eventually return with success.
+<code>ConcurrentMap</code> operations never throw a <code>java.util.ConcurrentModificationException</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="backing-up-maps"><a class="anchor" href="#backing-up-maps"></a>Backing Up Maps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast distributes map entries onto multiple cluster members (JVMs). Each member
+holds some portion of the data.</p>
+</div>
+<div class="paragraph">
+<p>Distributed maps have one backup by default. If a member goes down, your data is recovered
+using the backups in the cluster. There are two types of backups as described below: <em>sync</em> and <em>async</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-sync-backups"><a class="anchor" href="#creating-sync-backups"></a>Creating Sync Backups</h3>
+<div class="paragraph">
+<p>To provide data safety, Hazelcast allows you to specify the number of backup copies you
+want to have. That way, data on a cluster member is copied onto other member(s).</p>
+</div>
+<div class="paragraph">
+<p>To create synchronous backups, select the number of backup copies using the <code>backup-count</code> property.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset1_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="default"&gt;
+        &lt;backup-count&gt;1&lt;/backup-count&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    default:
+      backup-count: 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When this count is 1, a map entry will have its backup on one other member in the cluster.
+If you set it to 2, then a map entry will have its backup on two other members.
+You can set it to 0 if you do not want your entries to be backed up, e.g., if performance
+is more important than backing up. The maximum value for the backup count is 6.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast supports both synchronous and asynchronous backups. By default, backup operations
+are synchronous and configured with <code>backup-count</code>. In this case, backup operations block
+operations until backups are successfully copied to backup members (or deleted from backup
+members in case of remove) and acknowledgements are received. Therefore, backups are updated
+before a <code>write</code>(put, set, remove and their async counterparts) operation is completed,
+provided that the cluster is stable. Sync backup operations have a blocking cost which may
+lead to latency issues.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-async-backups"><a class="anchor" href="#creating-async-backups"></a>Creating Async Backups</h3>
+<div class="paragraph">
+<p>Asynchronous backups, on the other hand, do not block operations. They are fire &amp; forget and
+do not require acknowledgements; the backup operations are performed at some point in time.</p>
+</div>
+<div class="paragraph">
+<p>To create asynchronous backups, select the number of async backups with the <code>async-backup-count</code>
+property. An example is shown below.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset2_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="default"&gt;
+        &lt;backup-count&gt;0&lt;/backup-count&gt;
+        &lt;async-backup-count&gt;1&lt;/async-backup-count&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    default:
+      backup-count: 0
+      async-backup-count: 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="../consistency-and-replication/consistency.html" class="page">Consistency and Replication Model</a> for more detail.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Backups increase memory usage since they are also kept in memory.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A map can have both sync and async backups at the same time.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enabling-backup-reads"><a class="anchor" href="#enabling-backup-reads"></a>Enabling Backup Reads</h3>
+<div class="paragraph">
+<p>By default, Hazelcast has one sync backup copy. If <code>backup-count</code> is set to more than 1, then
+each member will carry both owned entries and backup copies of other members. So for the <code>map.get(key)</code>
+call, it is possible that the calling member has a backup copy of that key. By default, <code>map.get(key)</code>
+always reads the value from the actual owner of the key for consistency.</p>
+</div>
+<div class="paragraph">
+<p>To enable backup reads (read local backup entries), set the value of the <code>read-backup-data</code> property
+to <strong>true</strong>. Its default value is <strong>false</strong> for consistency. Enabling backup reads can improve
+performance but on the other hand it can cause stale reads while still preserving monotonic-reads property.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset3_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="default"&gt;
+        &lt;backup-count&gt;0&lt;/backup-count&gt;
+        &lt;async-backup-count&gt;1&lt;/async-backup-count&gt;
+        &lt;read-backup-data&gt;true&lt;/read-backup-data&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    default:
+      backup-count: 0
+      async-backup-count: 1
+      read-backup-data: true</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This feature is available when there is at least one sync or async backup.</p>
+</div>
+<div class="paragraph">
+<p>Please note that if you are performing a read from a backup, you should take into account that
+your hits to the keys in the backups are not reflected as hits to the original keys on the primary
+members. This has an impact on IMap&#8217;s maximum idle seconds or time-to-live seconds expiration.
+Therefore, even though there is a hit on a key in backups, your original key on the primary member may expire.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Backup reads that are requested by Hazelcast clients are ignored since this operation
+is performed on the local entries.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="map-eviction"><a class="anchor" href="#map-eviction"></a>Map Eviction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Unless you delete the map entries manually or use an eviction policy, they will remain in the map.
+Hazelcast supports policy-based eviction for distributed maps. Currently supported policies are
+LRU (Least Recently Used) and LFU (Least Frequently Used).</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast Map uses the same eviction mechanism as the JCache implementation.
+See the <a href="../jcache/icache.html#eviction-algorithm" class="page">Eviction Algorithm section</a> for details.</p>
+</div>
+<div class="sect2">
+<h3 id="understanding-map-eviction"><a class="anchor" href="#understanding-map-eviction"></a>Understanding Map Eviction</h3>
+<div class="paragraph">
+<p>Hazelcast Map performs eviction based on partitions. For example, when you specify a size using
+the <code>PER_NODE</code> attribute for <code>max-size</code> (see the <a href="#configuring-map-eviction">Configuring Map Eviction section</a>),
+Hazelcast internally calculates the maximum size for every partition. Hazelcast uses the following
+equation to calculate the maximum size of a partition:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>partition-maximum-size = max-size * member-count / partition-count</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>partition-maximum-size</code> is less than 1 in the equation above, it will be set to 1
+(otherwise, the partitions would be emptied immediately by eviction due to the exceedance of
+<code>max-size</code> being less than 1).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The eviction process starts according to this calculated partition maximum size when you try
+to put an entry. When entry count in that partition exceeds partition maximum size, eviction
+starts on that partition.</p>
+</div>
+<div class="paragraph">
+<p>Assume that you have the following figures as examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>partition count: 200</p>
+</li>
+<li>
+<p>entry count for each partition: 100</p>
+</li>
+<li>
+<p><code>max-size</code> (PER_NODE): 20000</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The total number of entries here is 20000 (partition count * entry count for each partition).
+This means you are at the eviction threshold since you set the <code>max-size</code> to 20000. When you
+try to put an entry:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the entry goes to the relevant partition</p>
+</li>
+<li>
+<p>the partition checks whether the eviction threshold is reached (<code>max-size</code>)</p>
+</li>
+<li>
+<p>only one entry will be evicted.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As a result of this eviction process, when you check the size of your map, it is 19999. After
+this eviction, subsequent put operations do not trigger the next eviction until the map size
+is again close to the <code>max-size</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The above scenario is simply an example that describes how the eviction process works.
+Hazelcast finds the most optimum number of entries to be evicted according to your cluster
+size and selected policy.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-map-eviction"><a class="anchor" href="#configuring-map-eviction"></a>Configuring Map Eviction</h3>
+<div class="paragraph">
+<p>The following is an example declarative configuration for map eviction.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset4_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="default"&gt;
+        &lt;time-to-live-seconds&gt;0&lt;/time-to-live-seconds&gt;
+        &lt;max-idle-seconds&gt;0&lt;/max-idle-seconds&gt;
+        &lt;eviction eviction-policy="LRU" max-size-policy="PER_NODE" size="5000"/&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    default:
+      time-to-live-seconds: 0
+      max-idle-seconds: 0
+      eviction:
+        eviction-policy: LRU
+        max-size-policy: PER_NODE
+        size: 5000</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the configuration element descriptions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>time-to-live-seconds</code>: Maximum time in seconds for each entry to stay in the map (TTL).
+It limits the lifetime of the entries relative to the time of the last write access
+performed on them. If it is not 0, the entries whose lifetime exceeds this period
+(without any write access performed on them during this period) are expired and
+evicted automatically. An individual entry may have its own lifetime limit by
+using one of the methods accepting a TTL; see <a href="#evicting-specific-entries">Evicting Specific Entries section</a>.
+If there is no TTL value provided for the individual entry, it inherits the value
+set for this element. Valid values are integers between 0 and <code>Integer.MAX VALUE</code>.
+Its default value is 0, which means infinite (no expiration and eviction). If it is not 0,
+entries are evicted regardless of the set <code>eviction-policy</code> described below.</p>
+</li>
+<li>
+<p><code>max-idle-seconds</code>: Maximum time in seconds for each entry to stay idle in
+the map. It limits the lifetime of the entries relative to the time of the
+last read or write access performed on them. The entries whose idle period
+exceeds this limit are expired and evicted automatically. An entry is idle
+if no <code>get</code>, <code>put</code>, <code>EntryProcessor.process</code> or <code>containsKey</code> is called on
+it. Valid values are integers between 0 and <code>Integer.MAX VALUE</code>.
+Its default value is 0, which means infinite.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Setting this property to 1 second expires the entry after 1 second, regardless of
+the operations done on that entry in-between, due to the loss of millisecond
+resolution on the entry timestamps. Assume that you create a record at time = 1 second
+(1000 milliseconds) and access it at wall clock time 1100 milliseconds and
+then again at 1400 milliseconds. In this case, the entry is deemed as not touched.
+So, setting this property to 1 second is not supported.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Both <code>time-to-live-seconds</code> and <code>max-idle-seconds</code> may be used simultaneously on
+the map entries. In that case, the entry is considered expired if at least one of the
+policies marks it as expired.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>eviction-policy</code>: Eviction policy to be applied when the size of map grows larger than
+the value specified by the <code>size</code> element described below.  Valid values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NONE: Default policy. If set, no items are evicted and the property <code>size</code> described
+below is ignored. You still can combine it with <code>time-to-live-seconds</code> and <code>max-idle-seconds</code>.</p>
+</li>
+<li>
+<p>LRU: Least Recently Used.</p>
+</li>
+<li>
+<p>LFU: Least Frequently Used.</p>
+<div class="paragraph">
+<p>Apart from the above values, you can also develop and use your own eviction policy.
+See the <a href="#custom-eviction-policy">Custom Eviction Policy section</a>.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>size</code>: Maximum size of the map. When maximum size is reached, the map is evicted
+based on the policy defined. Valid values are integers between 0 and <code>Integer.MAX VALUE</code>.
+Its default value is 0, which means infinite. If you want <code>size</code> to work, set the
+<code>eviction-policy</code> property to a value other than NONE. Its attributes are described below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PER_NODE</code>: Maximum number of map entries in each cluster member. This is the default policy.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="PER_NODE" size="5000"/&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>PER_PARTITION</code>: Maximum number of map entries within each partition. Storage size depends
+on the partition count in a cluster member. This attribute should not be used often. For instance,
+avoid using this attribute with a small cluster. If the cluster is small, it hosts more partitions,
+and therefore map entries, than that of a larger cluster. Thus, for a small cluster, eviction of
+the entries decreases performance (the number of entries is large).</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="PER_PARTITION" size="27100" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>USED_HEAP_SIZE</code>: Maximum used heap size in megabytes per map for each Hazelcast instance.
+Please note that this policy does not work when <a href="#setting-in-memory-format">in-memory format</a>
+is set to <code>OBJECT</code>, since the memory footprint cannot be determined when data is put as <code>OBJECT</code>.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="USED_HEAP_SIZE" size="4096" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>USED_HEAP_PERCENTAGE</code>: Maximum used heap size percentage per map for each Hazelcast instance.
+If, for example, a JVM is configured to have 1000 MB and this value is 10, then the map entries
+will be evicted when used heap size exceeds 100 MB. Please note that this policy does not work
+when <a href="#setting-in-memory-format">in-memory format</a> is set to <code>OBJECT</code>, since the memory footprint
+cannot be determined when data is put as <code>OBJECT</code>.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="USED_HEAP_PERCENTAGE" size="10" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>FREE_HEAP_SIZE</code>: Minimum free heap size in megabytes for each JVM.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="FREE_HEAP_SIZE" size="512" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>FREE_HEAP_PERCENTAGE</code>: Minimum free heap size percentage for each JVM. If, for example, a JVM
+is configured to have 1000 MB and this value is 10, then the map entries will be evicted when
+free heap size is below 100 MB.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="FREE_HEAP_PERCENTAGE" size="10" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>USED_NATIVE_MEMORY_SIZE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Maximum used native memory
+size in megabytes per map for each Hazelcast instance.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="USED_NATIVE_MEMORY_SIZE" size="1024" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>USED_NATIVE_MEMORY_PERCENTAGE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Maximum used native
+memory size percentage per map for each Hazelcast instance.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="USED_NATIVE_MEMORY_PERCENTAGE" size="65" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>FREE_NATIVE_MEMORY_SIZE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Minimum free native memory
+size in megabytes for each Hazelcast instance.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="FREE_NATIVE_MEMORY_SIZE" size="256" /&gt;</code></p>
+</div>
+</li>
+<li>
+<p><code>FREE_NATIVE_MEMORY_PERCENTAGE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Minimum free native
+memory size percentage for each Hazelcast instance.</p>
+<div class="paragraph">
+<p><code>&lt;eviction max-size-policy="FREE_NATIVE_MEMORY_PERCENTAGE" size="5" /&gt;</code></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To put it briefly, Hazelcast maps have no restrictions on the size and may grow arbitrarily
+large, by default. When it comes to reducing the size of a map, there are two concepts:
+expiration and eviction.</p>
+</div>
+<div class="paragraph">
+<p>Expiration puts a limit on the maximum lifetime of an entry stored inside the map.
+When the entry expires it cannot be retrieved from the map any longer and at some point
+in time it will be cleaned out from the map to free up the memory. Expiration, and hence
+the eviction based on the expiration, can be configured using the element <code>time-to-live-seconds</code>
+and <code>max-idle-seconds</code> as described above.</p>
+</div>
+<div class="paragraph">
+<p>Eviction puts a limit on the maximum size of the map. If the size of the map grows larger than
+the maximum allowed size, an eviction policy decides which item to evict from the map to reduce
+its size. The maximum allowed size can be configured using the element <code>size</code> and the
+eviction policy can be configured using the element <code>eviction-policy</code> as described above.</p>
+</div>
+<div class="paragraph">
+<p>Eviction and expiration can be used together. In this case, the expiration configurations
+(<code>time-to-live-seconds</code> and <code>max-idle-seconds</code>) continue to work as usual cleaning out the
+expired entries regardless of the map size. Note that locked map entries are not the subjects
+for eviction and expiration.</p>
+</div>
+<div class="sect3">
+<h4 id="example-eviction-configurations"><a class="anchor" href="#example-eviction-configurations"></a>Example Eviction Configurations</h4>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset5_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="documents"&gt;
+        &lt;eviction eviction-policy="LRU" max-size-policy="PER_NODE" size="10000"/&gt;
+        &lt;max-idle-seconds&gt;60&lt;/max-idle-seconds&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    documents:
+      eviction:
+        eviction-policy: LRU
+        max-size-policy: PER_NODE
+        size: 10000
+      max-idle-seconds: 60</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example, <code>documents</code> map starts to evict its entries from a member when the
+map size exceeds 10000 in that member. Then the entries least recently used will be evicted.
+The entries not used for more than 60 seconds will be evicted as well.</p>
+</div>
+<div class="paragraph">
+<p>And the following is an example eviction configuration for a map having <code>NATIVE</code> as the
+in-memory format:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset6_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="nativeMap"&gt;
+        &lt;in-memory-format&gt;NATIVE&lt;/in-memory-format&gt;
+        &lt;eviction max-size-policy="USED_NATIVE_MEMORY_PERCENTAGE" eviction-policy="LFU" size="99"/&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    nativeMap:
+      in-memory-format: NATIVE
+      eviction:
+        eviction-policy: LFU
+        max-size-policy: USED_NATIVE_MEMORY_PERCENTAGE
+        size: 99</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evicting-specific-entries"><a class="anchor" href="#evicting-specific-entries"></a>Evicting Specific Entries</h3>
+<div class="paragraph">
+<p>The eviction policies and configurations explained above apply to all the entries of a map.
+The entries that meet the specified eviction conditions are evicted.</p>
+</div>
+<div class="paragraph">
+<p>If you want to evict some specific map entries, you can use the <code>ttl</code> and <code>ttlUnit</code> parameters of
+the method <code>map.put()</code>. An example code line is given below.</p>
+</div>
+<div class="paragraph">
+<p><code>myMap.put( "1", "John", 50, TimeUnit.SECONDS )</code></p>
+</div>
+<div class="paragraph">
+<p>The map entry with the key "1" will be evicted 50 seconds after it is put into <code>myMap</code>.</p>
+</div>
+<div class="paragraph">
+<p>You may also use <code>map.setTTL</code> method to alter the time-to-live value of an existing entry.
+It is done as follows:</p>
+</div>
+<div class="paragraph">
+<p><code>myMap.setTTL( "1", 50, TimeUnit.SECONDS )</code></p>
+</div>
+<div class="paragraph">
+<p>In addition to the <code>ttl</code>, you may also specify a maximum idle timeout for specific map entries
+using the <code>maxIdle</code> and <code>maxIdleUnit</code> parameters:</p>
+</div>
+<div class="paragraph">
+<p><code>myMap.put( "1", "John", 50, TimeUnit.SECONDS, 40, TimeUnit.SECONDS )</code></p>
+</div>
+<div class="paragraph">
+<p>Here <code>ttl</code> is set as 50 seconds and <code>maxIdle</code> is set as 40 seconds. The entry is considered to
+be evicted if at least one of these policies marks it as expired. If you want to specify only
+the <code>maxIdle</code> parameter, you need to set <code>ttl</code> as 0 seconds.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evicting-all-entries"><a class="anchor" href="#evicting-all-entries"></a>Evicting All Entries</h3>
+<div class="paragraph">
+<p>To evict all keys from the map except the locked ones, use the method <code>evictAll()</code>.
+If a MapStore is defined for the map, <code>deleteAll</code> is not called by <code>evictAll</code>. If
+you want to call the method <code>deleteAll</code>, use <code>clear()</code>.</p>
+</div>
+<div class="paragraph">
+<p>An example is given below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        final int numberOfKeysToLock = 4;
+        final int numberOfEntriesToAdd = 1000;
+
+        HazelcastInstance node1 = Hazelcast.newHazelcastInstance();
+        HazelcastInstance node2 = Hazelcast.newHazelcastInstance();
+
+        IMap&lt;Integer, Integer&gt; map = node1.getMap( "map" );
+        for (int i = 0; i &lt; numberOfEntriesToAdd; i++) {
+            map.put(i, i);
+        }
+
+        for (int i = 0; i &lt; numberOfKeysToLock; i++) {
+            map.lock(i);
+        }
+
+        // should keep locked keys and evict all others.
+        map.evictAll();
+
+        System.out.printf("# After calling evictAll...\n");
+        System.out.printf("# Expected map size\t: %d\n", numberOfKeysToLock);
+        System.out.printf("# Actual map size\t: %d\n", map.size());</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only EVICT_ALL event is fired for any registered listeners.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="forced-eviction"><a class="anchor" href="#forced-eviction"></a>Forced Eviction</h4>
+<div class="paragraph">
+<p><strong class="blue">Hazelcast IMDG Enterprise</strong></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast may use forced eviction in the cases when the eviction
+explained in <a href="#understanding-map-eviction">Understanding Map Eviction</a>
+is not enough to free up your memory. Note that this is valid if
+you are using <strong class="blue">Hazelcast IMDG Enterprise</strong> and you set your
+in-memory format to <code>NATIVE</code>.</p>
+</div>
+<div class="paragraph">
+<p>The forced eviction mechanism is explained below as steps in the
+given order:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the normal eviction is not enough, forced eviction is
+triggered and first it tries to evict approx. 20% of the entries
+from the current partition. It retries this five times.</p>
+</li>
+<li>
+<p>If the result of above step is still not enough, forced eviction
+applies the above step to all maps. This time it might perform eviction
+from some other partitions too, provided that they are owned by the same
+thread.</p>
+</li>
+<li>
+<p>If that is still not enough to free up your memory, it evicts not the
+20% but all the entries from the current partition.</p>
+</li>
+<li>
+<p>If that is not enough, it will evict all the entries from the other
+data structures; from the partitions owned by the local thread.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finally, when all the above steps are not enough, Hazelcast throws
+a native <code>OutOfMemoryException</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you have an evictable cache/map, you should safely put
+entries to it without facing with any memory shortages.
+Forced eviction helps to achieve this. Regular eviction
+removes one entry at a time while forced eviction can remove
+multiple entries, which can even be owned by another caches/maps.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-eviction-policy"><a class="anchor" href="#custom-eviction-policy"></a>Custom Eviction Policy</h3>
+<div class="paragraph">
+<p>Apart from the policies such as LRU and LFU, which Hazelcast provides out-of-the-box,
+you can develop and use your own eviction policy.</p>
+</div>
+<div class="paragraph">
+<p>To achieve this, you need to provide an implementation of <code>MapEvictionPolicyComparator</code> as in
+the following <code>OddEvictor</code> example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MapCustomEvictionPolicyComparator {
+
+    public static void main(String[] args) {
+        Config config = new Config();
+        config.getMapConfig("test")
+                .getEvictionConfig()
+                .setComparator(new OddEvictor())
+                .setMaxSizePolicy(PER_NODE)
+                .setSize(10000);
+
+        HazelcastInstance instance = Hazelcast.newHazelcastInstance(config);
+        IMap&lt;Integer, Integer&gt; map = instance.getMap("test");
+
+        final Queue&lt;Integer&gt; oddKeys = new ConcurrentLinkedQueue&lt;Integer&gt;();
+        final Queue&lt;Integer&gt; evenKeys = new ConcurrentLinkedQueue&lt;Integer&gt;();
+
+        map.addEntryListener((EntryEvictedListener&lt;Integer, Integer&gt;) event -&gt; {
+            Integer key = event.getKey();
+            if (key % 2 == 0) {
+                evenKeys.add(key);
+            } else {
+                oddKeys.add(key);
+            }
+        }, false);
+
+        // wait some more time to receive evicted-events
+        parkNanos(SECONDS.toNanos(5));
+
+        for (int i = 0; i &lt; 15000; i++) {
+            map.put(i, i);
+        }
+
+        String msg = "IMap uses sampling based eviction. After eviction"
+                + " is completed, we are expecting number of evicted-odd-keys"
+                + " should be greater than number of evicted-even-keys. \nNumber"
+                + " of evicted-odd-keys = %d, number of evicted-even-keys = %d";
+        out.println(format(msg, oddKeys.size(), evenKeys.size()));
+
+        instance.shutdown();
+    }
+
+    /**
+     * Odd evictor tries to evict odd keys first.
+     */
+    private static class OddEvictor
+            implements MapEvictionPolicyComparator&lt;Integer, Integer&gt; {
+
+        @Override
+        public int compare(EntryView&lt;Integer, Integer&gt; e1,
+                           EntryView&lt;Integer, Integer&gt; e2) {
+
+            Integer key1 = e1.getKey();
+            if (key1 % 2 != 0) {
+                return -1;
+            }
+
+            Integer key2 = e2.getKey();
+            if (key2 % 2 != 0) {
+                return 1;
+            }
+
+            return 0;
+        }
+
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then you can enable your policy by setting it via the method
+<code>MapConfig.getEvictionConfig().setComparatorClassName()</code>
+programmatically or via XML declaratively. Following is the example
+declarative configuration for the eviction policy <code>OddEvictor</code> implemented above:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset7_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="test"&gt;
+        ...
+        &lt;eviction comparator-class-name="com.mycompany.OddEvictor"/&gt;
+        ...
+    &lt;/map&gt;
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    test:
+      eviction:
+        comparator-class-name: com.mycompany.OddEvictor</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If you Hazelcast with Spring, you can enable your policy as shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hz:map name="test"&gt;
+    &lt;hz:map-eviction comparator-class-name="com.package.OddEvictor"/&gt;
+&lt;/hz:map&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-in-memory-format"><a class="anchor" href="#setting-in-memory-format"></a>Setting In-Memory Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IMap (and a few other Hazelcast data structures, such as ICache)
+has an <code>in-memory-format</code> configuration option. By default, Hazelcast
+stores data into memory in binary (serialized) format. Sometimes it can
+be efficient to store the entries in their object form, especially in cases
+of local processing, such as entry processor and queries.</p>
+</div>
+<div class="paragraph">
+<p>Specify the <code>in-memory-format</code> element in the configuration to set how the
+data will be stored in the memory. You have the following format options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BINARY</code> (default): The data (both the key and value) is stored in serialized
+binary format. You can use this option if you mostly perform regular map
+operations, such as <code>put</code> and <code>get</code>.</p>
+</li>
+<li>
+<p><code>OBJECT</code>: The data is stored in deserialized form. This configuration is
+good for maps where <a href="../computing/entry-processor.html" class="page">entry processing</a> and <a href="../query/how-distributed-query-works.html" class="page">queries</a> form the majority of all
+operations and the objects are complex, making the serialization cost comparatively
+high. By storing objects, entry processing does not contain the deserialization
+cost. Note that when you use <code>OBJECT</code> as the in-memory format, the key is still
+stored in binary format and the value is stored in object format.</p>
+</li>
+<li>
+<p><code>NATIVE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) This format behaves the same as
+BINARY, however, instead of heap memory, key and value are stored in the off-heap
+memory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Regular operations like <code>get</code> rely on the object instance. When the <code>OBJECT</code> format
+is used and a <code>get</code> is performed, the map does not return the stored instance,
+but creates a clone. Therefore, this whole <code>get</code> operation first includes a
+serialization on the member owning the instance and then a deserialization on
+the member calling the instance. When the <code>BINARY</code> format is used, only a
+deserialization is required; <code>BINARY</code> is faster.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, a <code>put</code> operation is faster when the <code>BINARY</code> format is used. If the
+format was <code>OBJECT</code>, the map would create a clone of the instance, and there would
+first be a serialization and then a deserialization. When BINARY is used, only a
+deserialization is needed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a value is stored in <code>OBJECT</code> format, a change on a returned value does not
+affect the stored instance. In this case, the returned instance is not the actual one
+but a clone. Therefore, changes made on an object after it is returned will not reflect
+on the actual stored data. Similarly, when a value is written to a map and the value is
+stored in <code>OBJECT</code> format, it will be a copy of the <code>put</code> value. Therefore, changes made
+on the object after it is stored will not reflect on the stored data.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-high-density-memory-store-with-map"><a class="anchor" href="#using-high-density-memory-store-with-map"></a>Using High-Density Memory Store with Map</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="navy">Hazelcast IMDG Enterprise HD</strong></p>
+</div>
+<div class="paragraph">
+<p>Hazelcast instances are Java programs. In case of <code>BINARY</code> and <code>OBJECT</code> in-memory
+formats, Hazelcast stores your distributed data into the heap of its server instances.
+Java heap is subject to garbage collection (GC). In case of larger heaps, garbage
+collection might cause your application to pause for tens of seconds (even minutes
+for really large heaps), badly affecting your application performance and response times.</p>
+</div>
+<div class="paragraph">
+<p>As the data gets bigger, you either run the application with larger heap, which would
+result in longer GC pauses or run multiple instances with smaller heap which can turn
+into an operational nightmare if the number of such instances becomes very high.</p>
+</div>
+<div class="paragraph">
+<p>To overcome this challenge, Hazelcast offers High-Density Memory Store for your maps.
+You can configure your map to use High-Density Memory Store by setting the in-memory
+format to <code>NATIVE</code>. The following snippet is the declarative configuration example.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset8_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="nativeMap"&gt;
+        &lt;in-memory-format&gt;NATIVE&lt;/in-memory-format&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    nativeMap:
+      in-memory-format: NATIVE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Keep in mind that you should have already enabled the High-Density Memory Store
+usage for your cluster. See the <a href="../storage/high-density-memory.html#configuring-high-density-memory-store" class="page">Configuring High-Density Memory Store section</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also benefit from the persistent memory technologies such as
+Intel&#174; Optane&#8482; DC to be used by the High-Density Memory Store. See the
+<a href="../storage/high-density-memory.html#using-persistent-memory" class="page">Using Persistent Memory section</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="required-configuration-changes-when-using-native"><a class="anchor" href="#required-configuration-changes-when-using-native"></a>Required Configuration Changes When Using NATIVE</h3>
+<div class="paragraph">
+<p>Note that the eviction mechanism is different for <code>NATIVE</code> in-memory format.
+The new eviction algorithm for map with High-Density Memory Store is similar
+to that of JCache with High-Density Memory Store and is described <a href="../jcache/icache.html#eviction-algorithm" class="page">here</a>.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset9_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="nativeMap"&gt;
+        &lt;in-memory-format&gt;NATIVE&lt;/in-memory-format&gt;
+        &lt;eviction-percentage&gt;25&lt;/eviction-percentage&gt; &lt;--! NO IMPACT with NATIVE --&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset9_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    nativeMap:
+      in-memory-format: NATIVE
+      eviction-percentage: 25 # NO IMPACT with NATIVE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>These IMap eviction policies for <code>size</code> cannot be used: <code>FREE_HEAP_PERCENTAGE</code>,
+<code>FREE_HEAP_SIZE</code>, <code>USED_HEAP_PERCENTAGE</code>, <code>USED_HEAP_SIZE</code>.</p>
+</li>
+<li>
+<p>Near Cache eviction policy <code>ENTRY_COUNT</code> cannot be used for
+<code>max-size-policy</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="../storage/high-density-memory.html" class="page">High-Density Memory Store section</a>
+for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="metadata-policy"><a class="anchor" href="#metadata-policy"></a>Metadata Policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast IMap offers automatic preprocessing of various data types on the
+update time to make queries faster. It is currently supported only by the
+<a href="../query/how-distributed-query-works.html#querying-json-strings" class="page">HazelcastJsonValue</a> type. When metadata creation
+is on, IMap creates additional metadata about the objects of supported types
+and uses this metadata during the querying. It does not affect the latency
+and throughput of the object of any type except the supported types.</p>
+</div>
+<div class="paragraph">
+<p>This feature is on by default. You can configure it using the <code>metadata-policy</code>
+configuration element.</p>
+</div>
+<div class="paragraph">
+<p><strong>Declarative Configuration:</strong></p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset10_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset10_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="map-a"&gt;
+        &lt;!--
+        valid values for metadata-policy are:
+          - OFF
+          - CREATE_ON_UPDATE (default)
+        --&gt;
+        &lt;metadata-policy&gt;OFF&lt;/metadata-policy&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset10_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    map-a:
+    # valid values for metadata-policy are:
+    # - OFF
+    # - CREATE_ON_UPDATE (default)
+      metadata-policy: OFF</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Programmatic Configuration:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">MapConfig mapConfig = new MapConfig();
+mapConfig.setMetadataPolicy(MetadataPolicy.OFF);</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loading-and-storing-persistent-data"><a class="anchor" href="#loading-and-storing-persistent-data"></a>Loading and Storing Persistent Data</h3>
+<div class="paragraph">
+<p>Hazelcast allows you to load and store the distributed map entries
+from/to a persistent data store such as a relational database. To do this,
+you can use Hazelcast&#8217;s <code>MapStore</code> and <code>MapLoader</code> interfaces.</p>
+</div>
+<div class="paragraph">
+<p>When you provide a <code>MapLoader</code> implementation and request an entry
+(<code>IMap.get()</code>) that does not exist in memory, <code>MapLoader</code>'s <code>load</code>
+method loads that entry from the data store. This loaded entry is placed
+into the map and will stay there until it is removed or evicted.</p>
+</div>
+<div class="paragraph">
+<p>All loads can be listened via <code>EntryLoadedListener</code>. See the
+<a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a>
+to learn how you can catch entry-based events.</p>
+</div>
+<div class="paragraph">
+<p>When a <code>MapStore</code> implementation is provided, an entry is also put into a
+user defined data store.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Data store needs to be a centralized system that is
+accessible from all Hazelcast members. Persistence to a local file system
+is not supported.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Also note that the <code>MapStore</code> interface extends the <code>MapLoader</code> interface
+as you can see in the interface <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/MapStore.html" target="_blank" rel="noopener">code</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Following is a <code>MapStore</code> example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class PersonMapStore implements MapStore&lt;Long, Person&gt; {
+
+    private final Connection con;
+    private final PreparedStatement allKeysStatement;
+
+    public PersonMapStore() {
+        try {
+            con = DriverManager.getConnection("jdbc:hsqldb:mydatabase", "SA", "");
+            con.createStatement().executeUpdate(
+                    "create table if not exists person (id bigint not null, name varchar(45), primary key (id))");
+            allKeysStatement = con.prepareStatement("select id from person");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public synchronized void delete(Long key) {
+        System.out.println("Delete:" + key);
+        try {
+            con.createStatement().executeUpdate(
+                    format("delete from person where id = %s", key));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public synchronized void store(Long key, Person value) {
+        try {
+            con.createStatement().executeUpdate(
+                    format("insert into person values(%s,'%s')", key, value.getName()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public synchronized void storeAll(Map&lt;Long, Person&gt; map) {
+        for (Map.Entry&lt;Long, Person&gt; entry : map.entrySet()) {
+            store(entry.getKey(), entry.getValue());
+        }
+    }
+
+    public synchronized void deleteAll(Collection&lt;Long&gt; keys) {
+        for (Long key : keys) {
+            delete(key);
+        }
+    }
+
+    public synchronized Person load(Long key) {
+        try {
+            ResultSet resultSet = con.createStatement().executeQuery(
+                    format("select name from person where id =%s", key));
+            try {
+                if (!resultSet.next()) {
+                    return null;
+                }
+                String name = resultSet.getString(1);
+                return new Person(key, name);
+            } finally {
+                resultSet.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public synchronized Map&lt;Long, Person&gt; loadAll(Collection&lt;Long&gt; keys) {
+        Map&lt;Long, Person&gt; result = new HashMap&lt;Long, Person&gt;();
+        for (Long key : keys) {
+            result.put(key, load(key));
+        }
+        return result;
+    }
+
+    public Iterable&lt;Long&gt; loadAllKeys() {
+        return new StatementIterable&lt;Long&gt;(allKeysStatement);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+During the initial loading process, MapStore uses a thread different from the
+partition threads that are used by the ExecutorService. After the initialization is
+completed, the <code>map.get</code> method looks up any nonexistent value from the database in
+a partition thread, or the <code>map.put</code> method looks up the database to return the previously
+associated value for a key also in a partition thread.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Entries loaded by <code>MapLoader</code> do not have a set time-to-live property. Therefore,
+they live until evicted or explicitly removed. It is possible to enforce time-to-live
+on the entries by using <code>EntryLoader</code>. <code>EntryLoader</code> allows you to set
+time-to-live values per key before handing the values to Hazelcast. Therefore, you can store and
+load key specific time-to-live values in the external storage.</p>
+</div>
+<div class="paragraph">
+<p>Similar to <code>EntryLoader</code>, in order to store custom expiration times associated
+with the entries, you may use <code>EntryStore</code>. <code>EntryStore</code> allows you to
+retrieve associated expiration date for each entry. The expiration date is an offset
+from an epoch in milliseconds. Epoch is January 1, 1970 UTC which is used by
+<code>System.currentTimeMillis()</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Although the expiration date is expressed in milliseconds, IMap has second granularity
+when it comes to expiration. Therefore, the expiration date is rounded to the nearest lower
+whole second.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>EntryLoader</code> and <code>EntryStore</code> extend from <code>MapLoader</code> and <code>MapStore</code>, respectively.
+Therefore, all features and configuration parameters of <code>MapLoader</code> and <code>MapStore</code> apply
+to them, too.</p>
+</div>
+<div class="paragraph">
+<p>Following is an <code>EntryStore</code> example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class PersonEntryStore implements EntryStore&lt;Long, Person&gt; {
+
+    private final Connection con;
+    private final PreparedStatement allKeysStatement;
+
+    public PersonEntryStore() {
+        try {
+            con = DriverManager.getConnection("jdbc:hsqldb:mydatabase", "SA", "");
+            con.createStatement().executeUpdate(
+                    "create table if not exists person (id bigint not null, name varchar(45), expiration-date bigint, primary key (id))");
+            allKeysStatement = con.prepareStatement("select id from person");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public synchronized void delete(Long key) {
+        System.out.println("Delete:" + key);
+        try {
+            con.createStatement().executeUpdate(
+                    format("delete from person where id = %s", key));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public synchronized void store(Long key, MetadataAwareValue&lt;Person&gt; value) {
+        try {
+            con.createStatement().executeUpdate(
+                    format("insert into person values(%s,'%s', %d)", key, value.getValue().getName(), value.getExpirationTime()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void storeAll(Map&lt;Long, MetadataAwareValue&lt;Person&gt;&gt; map) {
+        for (Map.Entry&lt;Long, MetadataAwareValue&lt;Person&gt;&gt; entry : map.entrySet()) {
+            store(entry.getKey(), entry.getValue());
+        }
+    }
+
+    @Override
+    public synchronized void deleteAll(Collection&lt;Long&gt; keys) {
+        for (Long key : keys) {
+            delete(key);
+        }
+    }
+
+    @Override
+    public synchronized MetadataAwareValue&lt;Person&gt; load(Long key) {
+        try {
+            ResultSet resultSet = con.createStatement().executeQuery(
+                    format("select name,expiration-date from person where id =%s", key));
+            try {
+                if (!resultSet.next()) {
+                    return null;
+                }
+                String name = resultSet.getString(1);
+                Long expirationDate = resultSet.getLong(2);
+                return new MetadataAwareValue&lt;&gt;(new Person(key, name), expirationDate);
+            } finally {
+                resultSet.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public synchronized Map&lt;Long, MetadataAwareValue&lt;Person&gt;&gt; loadAll(Collection&lt;Long&gt; keys) {
+        Map&lt;Long, MetadataAwareValue&lt;Person&gt;&gt; result = new HashMap&lt;&gt;();
+        for (Long key : keys) {
+            result.put(key, load(key));
+        }
+        return result;
+    }
+
+    public Iterable&lt;Long&gt; loadAllKeys() {
+        return new StatementIterable&lt;Long&gt;(allKeysStatement);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For more MapStore/MapLoader code samples,
+see <a href="https://github.com/hazelcast/hazelcast-code-samples/tree/master/distributed-map/mapstore/src/main/java" target="_blank" rel="noopener">here</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Hazelcast supports read-through, write-through and write-behind persistence
+modes, which are explained in the subsections below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-read-through-persistence"><a class="anchor" href="#using-read-through-persistence"></a>Using Read-Through Persistence</h3>
+<div class="paragraph">
+<p>If an entry does not exist in memory when an application asks for it,
+Hazelcast asks the loader implementation to load that entry from the
+data store.  If the entry exists there, the loader implementation gets it,
+hands it to Hazelcast, and Hazelcast puts it into memory. This is read-through
+persistence mode.</p>
+</div>
+<div class="paragraph">
+<p>As you can remember from the introduction of this section, the <code>IMap.get()</code> method
+triggers the <code>load()</code> method in your MapLoader implementation if an entry does not
+exist in the memory. In this case, note that the <code>IMap.get()</code> method does not create
+backup copies for such entries, when the mode is read-through persistence: there is no
+need for backups for these entries since if the primary entry is lost, then a read for
+the key triggers the <code>load()</code> method and loads the entry from the persistence layer.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-write-through-persistence"><a class="anchor" href="#setting-write-through-persistence"></a>Setting Write-Through Persistence</h3>
+<div class="paragraph">
+<p><code>MapStore</code> can be configured to be write-through by setting the <code>write-delay-seconds</code>
+property to <strong>0</strong>. This means the entries are put to the data store synchronously.</p>
+</div>
+<div class="paragraph">
+<p>In this mode, when the <code>map.put(key,value)</code> call returns:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MapStore.store(key,value)</code> is successfully called so the entry is persisted.</p>
+</li>
+<li>
+<p>In-Memory entry is updated.</p>
+</li>
+<li>
+<p>In-Memory backup copies are successfully created on other cluster members
+(if <code>backup-count</code> is greater than 0).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If <code>MapStore</code> throws an exception then the exception is propagated to the original
+<code>put</code> or <code>remove</code> call in the form of <code>RuntimeException</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There is a key difference in the behaviors of <code>map.remove(key)</code> and
+<code>map.delete(key)</code>, i.e., the latter results in <code>MapStore.delete(key)</code> to be invoked
+whereas the former only removes the entry from IMap.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-write-behind-persistence"><a class="anchor" href="#setting-write-behind-persistence"></a>Setting Write-Behind Persistence</h3>
+<div class="paragraph">
+<p>You can configure <code>MapStore</code> as write-behind by setting the <code>write-delay-seconds</code>
+property to a value bigger than <strong>0</strong>. This means the modified entries will be
+put to the data store asynchronously after a configured delay.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In write-behind mode, Hazelcast coalesces updates on a specific key by
+default, which means it applies only the last update on that key. However,
+you can set <code>MapStoreConfig.setWriteCoalescing()</code> to <code>FALSE</code> and you can store
+all updates performed on a key to the data store.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When you set <code>MapStoreConfig.setWriteCoalescing()</code> to <code>FALSE</code>, after you
+reached per-node maximum write-behind-queue capacity, subsequent put operations
+will fail with <code>ReachedMaxSizeException</code>. This exception is thrown to prevent
+uncontrolled grow of write-behind queues. You can set per-node maximum capacity
+using the system property <code>hazelcast.map.write.behind.queue.capacity</code>. See the
+<a href="../system-properties.html" class="page">System Properties appendix</a> for information on this property
+and how to set the system properties.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In write-behind mode, when the <code>map.put(key,value)</code> call returns:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>in-memory entry is updated</p>
+</li>
+<li>
+<p>in-memory backup copies are successfully created on the other cluster members
+(if <code>backup-count</code> is greater than 0)</p>
+</li>
+<li>
+<p>the entry is marked as dirty so that after <code>write-delay-seconds</code>, it can be
+persisted with <code>MapStore.store(key,value)</code> call</p>
+</li>
+<li>
+<p>and for fault tolerance, dirty entries are stored in a queue on the primary
+member and also on a back-up member.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The same behavior goes for the <code>map.remove(key)</code>, the only difference is that
+<code>MapStore.delete(key)</code> is called when the entry will be deleted.</p>
+</div>
+<div class="paragraph">
+<p>If <code>MapStore</code> throws an exception, then Hazelcast tries to store the entry again.
+If the entry still cannot be stored, a log message is printed and the entry is re-queued.</p>
+</div>
+<div class="paragraph">
+<p>For batch write operations, which are only allowed in write-behind mode,
+Hazelcast calls the <code>MapStore.storeAll(map)</code> and <code>MapStore.deleteAll(collection)</code>
+methods to do all writes in a single call.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a map entry is marked as dirty, meaning that it is waiting to be
+persisted to the <code>MapStore</code> in a write-behind scenario, the eviction process
+forces the entry to be stored. This way you have control over the number of
+entries waiting to be stored, and thus you can prevent a possible OutOfMemory
+exception.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>MapStore</code> or <code>MapLoader</code> implementations should not use
+Hazelcast Map/Queue/MultiMap/List/Set operations. Your implementation should
+only work with your data store. Otherwise, you may get into deadlock situations.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is an example configuration:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset11_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset11_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="default"&gt;
+        &lt;map-store enabled="true" initial-mode="LAZY"&gt;
+            &lt;class-name&gt;com.hazelcast.examples.DummyStore&lt;/class-name&gt;
+            &lt;write-delay-seconds&gt;60&lt;/write-delay-seconds&gt;
+            &lt;write-batch-size&gt;1000&lt;/write-batch-size&gt;
+            &lt;write-coalescing&gt;true&lt;/write-coalescing&gt;
+        &lt;/map-store&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset11_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    default:
+      map-store:
+        enabled: true
+        initial-mode: LAZY
+        class-name: com.hazelcast.examples.DummyStore
+        write-delay-seconds: 60
+        write-batch-size: 1000
+        write-coalescing: true</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the descriptions of MapStore configuration elements and attributes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class-name</code>: Name of the class implementing MapLoader and/or MapStore.</p>
+</li>
+<li>
+<p><code>write-delay-seconds</code>: Number of seconds to delay to call the
+MapStore.store(key, value). If the value is zero then it is write-through,
+so the <code>MapStore.store(key,value)</code> method is called as soon as the entry is
+updated. Otherwise, it is write-behind; so the updates will be stored after
+the <code>write-delay-seconds</code> value by calling the <code>Hazelcast.storeAll(map)</code> method.
+Its default value is 0.</p>
+</li>
+<li>
+<p><code>write-batch-size</code>: Used to create batch chunks when writing map store. In
+default mode, all map entries are tried to be written in one go. To create
+batch chunks, the minimum meaningful value for write-batch-size is 2. For values
+smaller than 2, it works as in default mode.</p>
+</li>
+<li>
+<p><code>write-coalescing</code>: In write-behind mode, Hazelcast coalesces updates on a
+specific key by default; it applies only the last update on it. You can set this
+element to <code>false</code> to store all updates performed on a key to the data store.</p>
+</li>
+<li>
+<p><code>enabled</code>: True to enable this map-store, false to disable. Its default value
+is true.</p>
+</li>
+<li>
+<p><code>initial-mode</code>: Sets the initial load mode. LAZY is the default load mode, where
+load is asynchronous. EAGER means load is blocked till all partitions are loaded.
+See the <a href="#initializing-map-on-startup">Initializing Map on Startup section</a> for
+more details.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-the-lifecycle-of-a-maploader"><a class="anchor" href="#managing-the-lifecycle-of-a-maploader"></a>Managing the Lifecycle of a MapLoader</h3>
+<div class="paragraph">
+<p>With <code>MapLoader</code> (and <code>MapStore</code> which extends it), you can do the regular store and load operations.
+If you need to perform other operations on create or on destroy of a <code>MapLoader</code>,
+such as establishing a connection to a database or accessing to other Hazelcast maps,
+you need to implement the <code>MapLoaderLifeCycleSupport</code> interface. By implementing
+it, you will have the <code>init()</code> and <code>destroy()</code> methods.</p>
+</div>
+<div class="paragraph">
+<p>The <code>init()</code> method initializes the <code>MapLoader</code> implementation. Hazelcast calls
+this method when the map is first created on a Hazelcast instance. The <code>MapLoader</code>
+implementation can initialize the required resources
+such as reading a configuration file or creating a database connection
+or accessing a Hazelcast instance.</p>
+</div>
+<div class="paragraph">
+<p>The <code>destroy()</code> method is called during the graceful shutdown of a Hazelcast instance.
+You can override this method  to cleanup the resources held by the <code>MapLoader</code> implementation, such as
+closing the database connections.</p>
+</div>
+<div class="paragraph">
+<p>In summary, you need <code>MapLoaderLifecycleSupport</code> to perform actions
+on create and on destroy of a <code>MapLoader</code>.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="https://github.com/hazelcast/hazelcast-code-samples/blob/master/hazelcast-integration/mongodb/src/main/java/com/hazelcast/loader/MongoMapStore.java" target="_blank" rel="noopener">here</a> to see this interface in action.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="storing-entries-to-multiple-maps"><a class="anchor" href="#storing-entries-to-multiple-maps"></a>Storing Entries to Multiple Maps</h3>
+<div class="paragraph">
+<p>A configuration can be applied to more than one map using wildcards
+(see <a href="../configuration/using-wildcards.html" class="page">Using Wildcards</a>), meaning that the configuration is
+shared among the maps. But <code>MapStore</code> does not know which entries to store
+when there is one configuration applied to multiple maps.</p>
+</div>
+<div class="paragraph">
+<p>To store entries when there is one configuration applied to multiple maps,
+use Hazelcast&#8217;s <code>MapStoreFactory</code> interface. Using the <code>MapStoreFactory</code> interface,
+<code>MapStore</code>s for each map can be created when a wildcard configuration is used.
+Example code is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = new Config();
+MapConfig mapConfig = config.getMapConfig( "*" );
+MapStoreConfig mapStoreConfig = mapConfig.getMapStoreConfig();
+mapStoreConfig.setFactoryImplementation( new MapStoreFactory&lt;Object, Object&gt;() {
+    @Override
+    public MapLoader&lt;Object, Object&gt; newMapStore( String mapName, Properties properties ) {
+        return null;
+    }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To initialize the <code>MapLoader</code> implementation with the given map name, configuration
+properties and the Hazelcast instance, implement the
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/MapLoaderLifecycleSupport.html" target="_blank" rel="noopener"><code>MapLoaderLifecycleSupport</code> interface</a>
+which is described in the previous section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="initializing-map-on-startup"><a class="anchor" href="#initializing-map-on-startup"></a>Initializing Map on Startup</h3>
+<div class="paragraph">
+<p>To pre-populate the in-memory map when the map is first touched/used,
+use the <code>MapLoader.loadAllKeys</code> API.</p>
+</div>
+<div class="paragraph">
+<p>If <code>MapLoader.loadAllKeys</code> returns NULL, then nothing will be loaded.
+Your <code>MapLoader.loadAllKeys</code> implementation can return all or some of the
+keys. For example, you may select and return only the keys which are most
+important to you that you want to load them while initializing the map.
+<code>MapLoader.loadAllKeys</code> is the fastest way of pre-populating the map since
+Hazelcast optimizes the loading process by having each cluster member load
+its owned portion of the entries.</p>
+</div>
+<div class="paragraph">
+<p>The <code>InitialLoadMode</code> configuration parameter in the class
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/MapStoreConfig.html" target="_blank" rel="noopener">MapStoreConfig</a>
+has two values: <code>LAZY</code> and <code>EAGER</code>. If <code>InitialLoadMode</code> is set to
+<code>LAZY</code>, data is not loaded during the map creation. If it is set to
+<code>EAGER</code>, all the data is loaded while the map is created and everything becomes
+ready to use. Also, if you add indices to your map with the
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/IndexConfig.html" target="_blank" rel="noopener">IndexConfig</a>
+class or the <a href="../query/how-distributed-query-works.html#indexing-queries" class="page"><code>addIndex</code></a> method, then
+<code>InitialLoadMode</code> is overridden and <code>MapStoreConfig</code> behaves as if <code>EAGER</code> mode is on.</p>
+</div>
+<div class="paragraph">
+<p>Here is the <code>MapLoader</code> initialization flow:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When <code>getMap()</code> is first called from any member, initialization starts
+depending on the value of <code>InitialLoadMode</code>. If it is set to <code>EAGER</code>,
+initialization starts on all partitions as soon as the map is touched,
+i.e., all partitions are loaded when <code>getMap</code> is called.  If it is set to
+<code>LAZY</code>, data is loaded partition by partition, i.e., each partition is
+loaded with its first touch.</p>
+</li>
+<li>
+<p>Hazelcast calls <code>MapLoader.loadAllKeys()</code> to get all your
+keys on one of the members.</p>
+</li>
+<li>
+<p>That member distributes keys to all other members in batches.</p>
+</li>
+<li>
+<p>Each member loads values of all its owned keys by calling
+<code>MapLoader.loadAll(keys)</code>.</p>
+</li>
+<li>
+<p>Each member puts its owned entries into the map by calling
+<code>IMap.putTransient(key,value)</code>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the load mode is <code>LAZY</code> and the <code>clear()</code> method is called
+(which triggers <code>MapStore.deleteAll()</code>), Hazelcast removes <strong>ONLY</strong> the
+loaded entries from your map and datastore. Since all the data is not loaded
+in this case (<code>LAZY</code> mode), please note that there may still be entries
+in your datastore.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you do not want the MapStore start to load as soon as the
+first cluster member starts, you can use the system property <code>hazelcast.initial.min.cluster.size</code>.
+For example, if you set its value as <code>3</code>, loading process will be
+blocked until all three members are completely up.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The return type of <code>loadAllKeys()</code> is changed from <code>Set</code> to <code>Iterable</code>
+with the release of Hazelcast 3.5. MapLoader implementations from previous
+releases are also supported and do not need to be adapted.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loading-keys-incrementally"><a class="anchor" href="#loading-keys-incrementally"></a>Loading Keys Incrementally</h3>
+<div class="paragraph">
+<p>If the number of keys to load is large, it is more efficient to
+load them incrementally rather than loading them all at once. To support
+incremental loading, the <code>MapLoader.loadAllKeys()</code> method returns an <code>Iterable</code>
+which can be lazily populated with the results of a database query.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast iterates over the <code>Iterable</code> and, while doing so, sends out the keys
+to their respective owner members. The <code>Iterator</code> obtained from <code>MapLoader.loadAllKeys()</code>
+may also implement the <code>Closeable</code> interface, in which case <code>Iterator</code> is closed
+once the iteration is over. This is intended for releasing resources such as
+closing a JDBC result set.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="forcing-all-keys-to-be-loaded"><a class="anchor" href="#forcing-all-keys-to-be-loaded"></a>Forcing All Keys To Be Loaded</h3>
+<div class="paragraph">
+<p>The method <code>loadAll</code> loads some or all keys into a data store in order to
+optimize the multiple load operations. The method has two signatures; the
+same method can take two different parameter lists. One signature loads the
+given keys and the other loads all keys. See the example code below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        final int numberOfEntriesToAdd = 1000;
+        final String mapName = LoadAll.class.getCanonicalName();
+        final Config config = createNewConfig(mapName);
+        final HazelcastInstance node = Hazelcast.newHazelcastInstance(config);
+        final IMap&lt;Integer, Integer&gt; map = node.getMap(mapName);
+
+        populateMap(map, numberOfEntriesToAdd);
+        System.out.printf("# Map store has %d elements\n", numberOfEntriesToAdd);
+
+        map.evictAll();
+        System.out.printf("# After evictAll map size\t: %d\n", map.size());
+
+        map.loadAll(true);
+        System.out.printf("# After loadAll map size\t: %d\n", map.size());</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="post-processing-objects-in-map-store"><a class="anchor" href="#post-processing-objects-in-map-store"></a>Post-Processing Objects in Map Store</h3>
+<div class="paragraph">
+<p>In some scenarios, you may need to modify the object after storing it into
+the map store.
+For example, you can get an ID or version auto-generated by your database and
+then need to modify your object stored in the distributed map, but not to break
+the synchronization between the database and the data grid.</p>
+</div>
+<div class="paragraph">
+<p>To post-process an object in the map store, implement the <code>PostProcessingMapStore</code>
+interface to put the modified object into the distributed map. This triggers an
+extra step of <code>Serialization</code>, so use it only when needed. (This is only valid
+when using the <code>write-through</code> map store configuration.)</p>
+</div>
+<div class="paragraph">
+<p>Here is an example of post processing map store:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">class ProcessingStore implements MapStore&lt;Integer, Employee&gt;, PostProcessingMapStore {
+    @Override
+    public void store( Integer key, Employee employee ) {
+        EmployeeId id = saveEmployee();
+        employee.setId( id.getId() );
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please note that if you are using a post-processing map store in
+combination with the entry processors, post-processed values will not be
+carried to backups.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="accessing-a-database-using-properties"><a class="anchor" href="#accessing-a-database-using-properties"></a>Accessing a Database Using <code>Properties</code></h3>
+<div class="paragraph">
+<p>You can prepare your own <code>MapLoader</code> to access a database such as Cassandra
+and MongoDB. For this, you can first declaratively specify the database properties
+in your <code>hazelcast.xml</code> configuration file and then implement the
+<code>MapLoaderLifecycleSupport</code> interface to pass those properties.</p>
+</div>
+<div class="paragraph">
+<p>You can define the database properties, such as its URL and name, using the
+<code>properties</code> configuration element. The following is a configuration example
+for MongoDB:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset12_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset12_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="supplements"&gt;
+        &lt;map-store enabled="true" initial-mode="LAZY"&gt;
+            &lt;class-name&gt;com.hazelcast.loader.YourMapStoreImplementation&lt;/class-name&gt;
+            &lt;properties&gt;
+                &lt;property name="mongo.url"&gt;mongodb://localhost:27017&lt;/property&gt;
+                &lt;property name="mongo.db"&gt;mydb&lt;/property&gt;
+                &lt;property name="mongo.collection"&gt;supplements&lt;/property&gt;
+            &lt;/properties&gt;
+        &lt;/map-store&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset12_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    supplements:
+      map-store:
+        enabled: true
+        initial-mode: LAZY
+        class-name: com.hazelcast.loader.YourMapStoreImplementation
+        properties:
+          mongo_url: mongodb://localhost:27017
+          mongo.db: mydb
+          mango.collection: supplements</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>After you specified the database properties in your configuration,
+you need to implement the <code>MapLoaderLifecycleSupport</code> interface and
+give those properties in the <code>init()</code> method, as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class YourMapStoreImplementation implements MapStore&lt;String, Supplement&gt;, MapLoaderLifecycleSupport {
+
+    private MongoClient mongoClient;
+    private MongoCollection collection;
+
+    public YourMapStoreImplementation() {
+    }
+
+    @Override
+    public void init(HazelcastInstance hazelcastInstance, Properties properties, String mapName) {
+        String mongoUrl = (String) properties.get("mongo.url");
+        String dbName = (String) properties.get("mongo.db");
+        String collectionName = (String) properties.get("mongo.collection");
+        this.mongoClient = new MongoClient(new MongoClientURI(mongoUrl));
+        this.collection = mongoClient.getDatabase(dbName).getCollection(collectionName);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the full example <a href="https://github.com/hazelcast/hazelcast-code-samples/tree/master/hazelcast-integration/mongodb" target="_blank" rel="noopener">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="map-mapstore"><a class="anchor" href="#map-mapstore"></a>MapStore and MapLoader Methods Triggered by IMap Operations</h3>
+<div class="paragraph">
+<p>As it is explained in the above sections, you can configure
+Hazelcast maps to be backed
+by a map store to persist the entries. In this case many of the
+IMap methods call
+MapLoader or MapStore methods to load, store or remove data. This
+section summarizes
+these methods. Here are the Hazelcast IMap operations that may
+trigger the MapStore or MapLoader methods:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">IMap Method</th>
+<th class="tableblock halign-left valign-top">Impact on the MapStore/MapLoader</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>flush()</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>If the map has a MapStore, this method flushes all the local dirty
+entries. It calls the <code>MapStore.storeAll(Map)</code> or
+<code>MapStore.deleteAll(Collection)</code> methods with the elements marked as dirty.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>put()</code></p>
+</li>
+<li>
+<p><code>putAll()</code></p>
+</li>
+<li>
+<p><code>putAsync()</code></p>
+</li>
+<li>
+<p><code>tryPut()</code></p>
+</li>
+<li>
+<p><code>putIfAbsent()</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>These methods are used to put entries to the map. They call the
+<code>MapLoader.load(Object)</code> method for each entry not found in the memory
+to load the value from the map store backing the map. They also call the
+<code>MapStore.store(Object, Object)</code> method for each entry, if write-through
+persistence mode is configured before the entry is added into the memory.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>set()</code></p>
+</li>
+<li>
+<p><code>setAsync()</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>These methods put an entry into the map without returning the old value.
+They call the <code>MapStore.store(Object, Object)</code> method if write-through
+persistence mode is configured before the entry is added into the memory,
+to write the value into the map store.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>remove()</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Removes the mapping for a key from the map if it is present. It calls the
+<code>MapLoader.load(Object)</code> method if no value is found with key in the memory,
+to load the value from the map store backing the map. It also calls the
+<code>MapStore.delete(Object)</code> method if write-through persistence mode is
+configured before the value is removed from the memory, to remove the value
+from the map store.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>removeAll()</code></p>
+</li>
+<li>
+<p><code>delete()</code></p>
+</li>
+<li>
+<p><code>removeAsync()</code></p>
+</li>
+<li>
+<p><code>tryRemove()</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>These methods are used to remove entries from the map for various conditions.
+They call the <code>MapStore.delete(Object)</code> method if write-through persistence mode
+is configured before the value is removed from the memory, to remove the value
+from the map store.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>setTtl</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>This method updates time-to-live of an existing entry. It calls the <code>MapLoader.load(Object)</code>
+method if no value is found in the memory. It also calls <code>EntryStore.store(Object, MetadataAwareValue)</code>
+with the entry whose time-to-live has been updated.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>clear()</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>It clears the map and deletes the items from the backing map store. It calls
+the <code>MapStore.deleteAll(Collection)</code> method on each partition with the keys that the
+given partition stores.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>replace()</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>It replaces the entry for a key only if currently mapped to a given value.
+It calls the <code>MapStore.store(Object, Object)</code> method if write-through persistence
+mode is configured before the value is stored in the memory, to write the value into
+the map store.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><code>executeOnKey()</code></p>
+</li>
+<li>
+<p><code>executeOnKeys()</code></p>
+</li>
+<li>
+<p><code>submitToKey()</code></p>
+</li>
+<li>
+<p><code>executeOnAllEntries()</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>These methods apply the user defined entry processors to the entry or entries.
+They call the <code>MapLoader.load(Object)</code> method if the value with key is not found in the
+memory, to load the value from the map store backing the map. If the entry processor
+updates the entry and write-through persistence mode is configured, before the value is
+stored in memory, they call the <code>MapStore.store(Object, Object)</code> method to write the value
+into the map store. If the entry processor updates the entry&#8217;s value to null value and write-through
+persistence mode is configured, before the value is removed from the memory, they call the
+<code>MapStore.delete(Object)</code> method to delete the value from the map store.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-near-cache-for-map"><a class="anchor" href="#creating-near-cache-for-map"></a>Creating Near Cache for Map</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Hazelcast distributed map supports a local Near Cache for
+remotely stored entries to increase the performance of local
+read operations. See the <a href="../performance/near-cache.html" class="page">Near Cache section</a> for a
+detailed explanation of the Near Cache feature and its configuration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="locking-maps"><a class="anchor" href="#locking-maps"></a>Locking Maps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast Distributed Map (IMap) is thread-safe to meet your thread
+safety requirements. When these requirements increase or you want to
+have more control on the concurrency, consider the Hazelcast solutions described here.</p>
+</div>
+<div class="paragraph">
+<p>Consider the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class RacyUpdateMember {
+    public static void main( String[] args ) throws Exception {
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+        IMap&lt;String, Value&gt; map = hz.getMap( "map" );
+        String key = "1";
+        map.put( key, new Value() );
+        System.out.println( "Starting" );
+        for ( int k = 0; k &lt; 1000; k++ ) {
+            if ( k % 100 == 0 ) System.out.println( "At: " + k );
+            Value value = map.get( key );
+            Thread.sleep( 10 );
+            value.amount++;
+            map.put( key, value );
+        }
+        System.out.println( "Finished! Result = " + map.get(key).amount );
+    }
+
+    static class Value implements Serializable {
+        public int amount;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the above code is run by more than one cluster member simultaneously,
+a race condition is likely. You can solve this condition with Hazelcast
+using either pessimistic or optimistic locking.</p>
+</div>
+<div class="sect2">
+<h3 id="pessimistic-looking"><a class="anchor" href="#pessimistic-looking"></a>Pessimistic Locking</h3>
+<div class="paragraph">
+<p>One way to solve the race issue is by using pessimistic locking -
+lock the map entry until you are finished with it.</p>
+</div>
+<div class="paragraph">
+<p>To perform pessimistic locking, use the lock mechanism provided by the
+Hazelcast distributed map, i.e., the <code>map.lock</code> and <code>map.unlock</code> methods.
+See the below example code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class PessimisticUpdateMember {
+    public static void main( String[] args ) throws Exception {
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+        IMap&lt;String, Value&gt; map = hz.getMap( "map" );
+        String key = "1";
+        map.put( key, new Value() );
+        System.out.println( "Starting" );
+        for ( int k = 0; k &lt; 1000; k++ ) {
+            map.lock( key );
+            try {
+                Value value = map.get( key );
+                Thread.sleep( 10 );
+                value.amount++;
+                map.put( key, value );
+            } finally {
+                map.unlock( key );
+            }
+        }
+        System.out.println( "Finished! Result = " + map.get( key ).amount );
+    }
+
+    static class Value implements Serializable {
+        public int amount;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The IMap lock will automatically be collected by the garbage collector
+when the lock is released and no other waiting conditions exist on the lock.</p>
+</div>
+<div class="paragraph">
+<p>The IMap lock is reentrant, but it does not support fairness.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+In some cases, a client application connected to your
+cluster may cause the entries in a map to remain locked
+after the application has been restarted (which were already locked
+before such a restart). This can be due to the
+reasons such as incomplete/incorrect client implementations. In these cases,
+you can unlock the entries, either from the thread which locked them
+using the <code>IMap.unlock()</code> method, or check if the entry is locked
+using the <code>IMap.isLock()</code> method and then call <code>IMap.forceUnlock()</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For the above case, as a workaround, you can also kill all the applications connected
+to the cluster and use the Management Center&#8217;s scripting functionality to clear the map and
+release the locks (instead of using <code>IMap.forceUnlock()</code>). Keep in mind that the scripting
+functionality is limited to working with maps that have primitive key types, e.g., string keys
+and limited to relaying only a single string of output per member to the result panel in the Management Center.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Another way to solve the race issue is by acquiring a predictable <code>Lock</code>
+object from Hazelcast. This way, every value in the map can be given a lock,
+or you can create a stripe of locks.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="optimistic-locking"><a class="anchor" href="#optimistic-locking"></a>Optimistic Locking</h3>
+<div class="paragraph">
+<p>In Hazelcast, you can apply the optimistic locking strategy with the
+map&#8217;s <code>replace</code> method. This method compares values in object or data forms
+depending on the in-memory format configuration. If the values are equal,
+it replaces the old value with the new one. If you want to use your defined
+<code>equals</code> method, <code>in-memory-format</code> should be <code>OBJECT</code>. Otherwise, Hazelcast
+serializes objects to <code>BINARY</code> forms and compares them.</p>
+</div>
+<div class="paragraph">
+<p>See the below example code.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The below example code is intentionally broken.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class OptimisticMember {
+    public static void main( String[] args ) throws Exception {
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+        IMap&lt;String, Value&gt; map = hz.getMap( "map" );
+        String key = "1";
+        map.put( key, new Value() );
+        System.out.println( "Starting" );
+        for ( int k = 0; k &lt; 1000; k++ ) {
+            if ( k % 10 == 0 ) System.out.println( "At: " + k );
+            for (; ; ) {
+                Value oldValue = map.get( key );
+                Value newValue = new Value( oldValue );
+                Thread.sleep( 10 );
+                newValue.amount++;
+                if ( map.replace( key, oldValue, newValue ) )
+                    break;
+            }
+        }
+        System.out.println( "Finished! Result = " + map.get( key ).amount );
+    }
+
+    static class Value implements Serializable {
+        public int amount;
+
+        public Value() {
+        }
+
+        public Value( Value that ) {
+            this.amount = that.amount;
+        }
+
+        public boolean equals( Object o ) {
+            if ( o == this ) return true;
+            if ( !( o instanceof Value ) ) return false;
+            Value that = ( Value ) o;
+            return that.amount == this.amount;
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pessimistic-vs-optimistic-locking"><a class="anchor" href="#pessimistic-vs-optimistic-locking"></a>Pessimistic vs. Optimistic Locking</h3>
+<div class="paragraph">
+<p>The locking strategy you choose depends on your locking requirements.</p>
+</div>
+<div class="paragraph">
+<p>Optimistic locking is better for mostly read-only systems. It has a
+performance boost over pessimistic locking.</p>
+</div>
+<div class="paragraph">
+<p>Pessimistic locking is good if there are lots of updates on the same
+key. It is more robust than optimistic locking from the perspective of data consistency.</p>
+</div>
+<div class="paragraph">
+<p>In Hazelcast, use <code>IExecutorService</code> to submit a task to a key owner,
+or to a member or members. This is the recommended way to perform task executions,
+rather than using pessimistic or optimistic locking techniques. <code>IExecutorService</code>
+has fewer network hops and less data over wire, and tasks are executed very near to the data.
+See the <a href="../performance/data-affinity.html" class="page">Data Affinity section</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solving-the-aba-problem"><a class="anchor" href="#solving-the-aba-problem"></a>Solving the ABA Problem</h3>
+<div class="paragraph">
+<p>The ABA problem occurs in environments when a shared resource is
+open to change by multiple threads. Even if one thread sees the same value
+for a particular key in consecutive reads, it does not mean that nothing
+has changed between the reads. Another thread may change the value,
+do work and change the value back, while the first thread thinks that nothing has changed.</p>
+</div>
+<div class="paragraph">
+<p>To prevent these kind of problems, you can assign a version number and
+check it before any write to be sure that nothing has changed between consecutive reads.
+Although all the other fields are equal, the version field will prevent objects
+from being seen as equal. This is the optimistic locking strategy; it is used in
+environments that do not expect intensive concurrent changes on a specific key.</p>
+</div>
+<div class="paragraph">
+<p>In Hazelcast, you can apply the <a href="#optimistic-locking">optimistic locking</a>
+strategy with the map <code>replace</code> method.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lock-split-brain-protection-with-pessimistic-locking"><a class="anchor" href="#lock-split-brain-protection-with-pessimistic-locking"></a>Lock Split-Brain Protection with Pessimistic Locking</h3>
+<div class="paragraph">
+<p>Locks can be configured to check the number of currently present members
+before applying a locking operation. If the check fails, the lock operation
+fails with a <code>SplitBrainProtectionException</code> (see the <a href="../network-partitioning/split-brain-protection.html" class="page">Split-Brain Protection section</a>).
+As pessimistic locking uses lock operations internally, it also uses the configured
+lock split-brain protection. This means that you can configure a lock split-brain protection with the same name or a
+pattern that matches the map name. Note that the split-brain protection for IMap locking actions can be
+different from the split-brain protection for other IMap actions.</p>
+</div>
+<div class="paragraph">
+<p>The following actions check for lock split-brain protection before being applied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>IMap.lock(K)</code> and <code>IMap.lock(K, long, java.util.concurrent.TimeUnit)</code></p>
+</li>
+<li>
+<p><code>IMap.isLocked()</code></p>
+</li>
+<li>
+<p><code>IMap.tryLock(K)</code>, <code>IMap.tryLock(K, long, java.util.concurrent.TimeUnit)</code> and
+<code>IMap.tryLock(K, long, java.util.concurrent.TimeUnit, long, java.util.concurrent.TimeUnit)</code></p>
+</li>
+<li>
+<p><code>IMap.unlock()</code></p>
+</li>
+<li>
+<p><code>IMap.forceUnlock()</code></p>
+</li>
+<li>
+<p><code>MultiMap.lock(K)</code> and <code>MultiMap.lock(K, long, java.util.concurrent.TimeUnit)</code></p>
+</li>
+<li>
+<p><code>MultiMap.isLocked()</code></p>
+</li>
+<li>
+<p><code>MultiMap.tryLock(K)</code>, <code>MultiMap.tryLock(K, long, java.util.concurrent.TimeUnit)</code>
+and <code>MultiMap.tryLock(K, long, java.util.concurrent.TimeUnit, long, java.util.concurrent.TimeUnit)</code></p>
+</li>
+<li>
+<p><code>MultiMap.unlock()</code></p>
+</li>
+<li>
+<p><code>MultiMap.forceUnlock()</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example of declarative configuration:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset13_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset13_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset13_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="myMap"&gt;
+        &lt;split-brain-protection-ref&gt;map-actions-split-brain-protection&lt;/split-brain-protection-ref&gt;
+    &lt;/map&gt;
+    &lt;lock name="myMap"&gt;
+        &lt;split-brain-protection-ref&gt;map-lock-actions-split-brain-protection&lt;/split-brain-protection-ref&gt;
+    &lt;/lock&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset13_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    myMap:
+      split-brain-protection-ref: map-actions-split-brain-protection
+  lock:
+    myMap:
+      split-brain-protection-ref: map-lock-actions-split-brain-protection</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Here the configured map uses the <code>map-lock-actions-split-brain-protection</code> for
+map lock actions and the <code>map-actions-split-brain-protection</code> for other map actions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-entry-statistics"><a class="anchor" href="#accessing-entry-statistics"></a>Accessing Map and Entry Statistics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can retrieve the statistics of the map in your Hazelcast IMDG member
+using the <code>getLocalMapStats()</code> method, which is the programmatic approach.
+It returns information such as primary and backup entry count, last update
+time and locked entry count. If you need the cluster-wide map statistics, you can
+get the local map statistics from all members of the cluster and combine them.
+Alternatively, you can see the map statistics on the
+<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#managing-maps" target="_blank" rel="noopener">Hazelcast Management Center</a>.</p>
+</div>
+<div class="paragraph">
+<p>To be able to retrieve the map statistics, the <code>statistics-enabled</code>
+element under the map configuration should be set as <code>true</code>, which is the default value:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset14_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset14_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset14_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="myMap"&gt;
+        &lt;statistics-enabled&gt;true&lt;/statistics-enabled&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset14_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    myMap:
+      statistics-enabled: true</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When this element is set to <code>false</code>, the statistics are not gathered
+for the map and cannot be seen on the Hazelcast Management Center, nor retrieved
+by the <code>getLocalMapStats()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast also keeps statistics about each map entry, such as creation time,
+last update time, last access time, and number of hits and version. To access
+the map entry statistics, use an <code>IMap.getEntryView(key)</code> call. Here is an example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+EntryView entry = hz.getMap( "quotes" ).getEntryView( "1" );
+System.out.println ( "size in memory  : " + entry.getCost() );
+System.out.println ( "creationTime    : " + entry.getCreationTime() );
+System.out.println ( "expirationTime  : " + entry.getExpirationTime() );
+System.out.println ( "number of hits  : " + entry.getHits() );
+System.out.println ( "lastAccessedTime: " + entry.getLastAccessTime() );
+System.out.println ( "lastUpdateTime  : " + entry.getLastUpdateTime() );
+System.out.println ( "version         : " + entry.getVersion() );
+System.out.println ( "key             : " + entry.getKey() );
+System.out.println ( "value           : " + entry.getValue() );</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="map-listener"><a class="anchor" href="#map-listener"></a>Map Listener</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="listening-to-map-entries-with-predicates"><a class="anchor" href="#listening-to-map-entries-with-predicates"></a>Listening to Map Entries with Predicates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can listen to the modifications performed on specific map entries.
+You can think of it as an entry listener with predicates. See the
+<a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a> for
+information on how to add entry listeners to a map.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The default backwards-compatible event publishing strategy only publishes
+<code>UPDATED</code> events when map entries are updated to a value that
+matches the predicate with which the listener was registered.
+This implies that when using the default event publishing strategy,
+your listener is not notified about an entry whose
+value is updated from one that matches the predicate to a new value
+that does not match the predicate.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Since version 3.7, when you configure Hazelcast members with property
+<code>hazelcast.map.entry.filtering.natural.event.types</code> set to <code>true</code>,
+handling of entry updates conceptually treats value transition as entry,
+update or exit with regards to the predicate value space.
+The following table compares how a listener is notified about an update
+to a map entry value under the default
+backwards-compatible Hazelcast behavior (when property
+<code>hazelcast.map.entry.filtering.natural.event.types</code> is not set or is set
+to <code>false</code>) versus when set to <code>true</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hazelcast.map.entry.filtering.natural.event.types = true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When old value matches predicate, new value does not match predicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No event is delivered to entry listener</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REMOVED</code> event is delivered to entry listener</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When old value matches predicate, new value matches predicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UPDATED</code> event is delivered to entry listener</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UPDATED</code> event is delivered to entry listener</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When old value does not match predicate, new value does not match predicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No event is delivered to entry listener</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No event is delivered to entry listener</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When old value does not match predicate, new value matches predicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UPDATED</code> event is delivered to entry listener</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ADDED</code> event is delivered to entry listener</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>As an example, let&#8217;s listen to the changes made on an employee
+with the surname "Smith". First, let&#8217;s create the <code>Employee</code> class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Employee implements Serializable {
+
+    private final String surname;
+
+    public Employee(String surname) {
+        this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "surname='" + surname + '\'' +
+                '}';
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, let&#8217;s create a listener with predicate by adding a listener
+that tracks <code>ADDED</code>, <code>UPDATED</code> and <code>REMOVED</code> entry events with the <code>surname</code> predicate.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ListenerWithPredicate {
+
+    public static void main(String[] args) {
+        Config config = new Config();
+        config.setProperty("hazelcast.map.entry.filtering.natural.event.types", "true");
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance(config);
+        IMap&lt;String, String&gt; map = hz.getMap("map");
+        map.addEntryListener(new MyEntryListener(),
+                Predicates.sql("surname=smith"), true);
+        System.out.println("Entry Listener registered");
+    }
+
+    static class MyEntryListener
+            implements EntryAddedListener&lt;String, String&gt;,
+            EntryUpdatedListener&lt;String, String&gt;,
+            EntryRemovedListener&lt;String, String&gt; {
+        @Override
+        public void entryAdded(EntryEvent&lt;String, String&gt; event) {
+            System.out.println("Entry Added:" + event);
+        }
+
+        @Override
+        public void entryRemoved(EntryEvent&lt;String, String&gt; event) {
+            System.out.println("Entry Removed:" + event);
+        }
+
+        @Override
+        public void entryUpdated(EntryEvent&lt;String, String&gt; event) {
+            System.out.println("Entry Updated:" + event);
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And now, let&#8217;s play with the employee "smith" and see how that employee is listened to.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Modify {
+
+    public static void main(String[] args) {
+        Config config = new Config();
+        config.setProperty("hazelcast.map.entry.filtering.natural.event.types", "true");
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance(config);
+        IMap&lt;String, Employee&gt; map = hz.getMap("map");
+
+        map.put("1", new Employee("smith"));
+        map.put("2", new Employee("jordan"));
+        System.out.println("done");
+        System.exit(0);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you first run the class <code>ListenerWithPredicate</code> and then run <code>Modify</code>,
+an output similar to the one below appears.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>entryAdded:EntryEvent {Address[192.168.178.10]:5702} key=1,oldValue=null,
+value=Person{name= smith }, event=ADDED, by Member [192.168.178.10]:5702</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="../query/continuous-query-cache.html" class="page">Continuous Query Cache section</a>
+for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removing-map-entries-in-bulk-with-predicates"><a class="anchor" href="#removing-map-entries-in-bulk-with-predicates"></a>Removing Map Entries in Bulk with Predicates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can remove all map entries that match your predicate. For this,
+Hazelcast offers the method <code>removeAll()</code>. Its syntax is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">void removeAll(Predicate&lt;K, V&gt; predicate);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Normally the map entries matching the predicate are found with a full scan
+of the map. If the entries are indexed, Hazelcast uses the index search to find them.
+With index, you can expect that finding the entries is faster.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When <code>removeAll()</code> is called, ALL entries in the caller member&#8217;s
+Near Cache are also removed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-interceptors"><a class="anchor" href="#adding-interceptors"></a>Adding Interceptors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can add intercept operations and execute your own business logic
+synchronously blocking the operations. You can change the returned value
+from a <code>get</code> operation, change the value in <code>put</code>, or <code>cancel</code> operations
+by throwing an exception.</p>
+</div>
+<div class="paragraph">
+<p>Interceptors are different from listeners. With listeners, you take an action
+after the operation has been completed. Interceptor actions are synchronous and
+you can alter the behavior of operation, change its values, or totally cancel it.</p>
+</div>
+<div class="paragraph">
+<p>Map interceptors are chained, so adding the same interceptor multiple times to the
+same map can result in duplicate effects. This can easily happen when the interceptor
+is added to the map at member initialization, so that each member adds the same interceptor.
+When you add the interceptor in this way, be sure to implement the <code>hashCode()</code>
+method to return the same value for every instance of the interceptor.
+It is not strictly necessary, but it is a good idea to also implement <code>equals()</code>
+as this ensures that the map interceptor can be removed reliably.</p>
+</div>
+<div class="paragraph">
+<p>The IMap API has two methods for adding and removing an interceptor to the map:
+<code>addInterceptor</code> and <code>removeInterceptor</code>. See also the
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/MapInterceptor.html" target="_blank" rel="noopener"><code>MapInterceptor</code> interface</a>
+to learn about the methods used to intercept the changes in a map.</p>
+</div>
+<div class="paragraph">
+<p>The following is an example usage.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MapInterceptorMember {
+
+    public static void main(String[] args) {
+        HazelcastInstance hz = Hazelcast.newHazelcastInstance();
+        IMap&lt;String, String&gt; map = hz.getMap("themap");
+        map.addInterceptor(new MyMapInterceptor());
+
+        map.put("1", "1");
+        System.out.println(map.get("1"));
+    }
+
+    private static class MyMapInterceptor implements MapInterceptor {
+
+        @Override
+        public Object interceptGet(Object value) {
+            return value + "-foo";
+        }
+
+        @Override
+        public void afterGet(Object value) {
+        }
+
+        @Override
+        public Object interceptPut(Object oldValue, Object newValue) {
+            return null;
+        }
+
+        @Override
+        public void afterPut(Object value) {
+        }
+
+        @Override
+        public Object interceptRemove(Object removedValue) {
+            return null;
+        }
+
+        @Override
+        public void afterRemove(Object value) {
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preventing-out-of-memory-exceptions"><a class="anchor" href="#preventing-out-of-memory-exceptions"></a>Preventing Out of Memory Exceptions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is very easy to trigger an out of memory exception (OOME) with query-based map methods,
+especially with large clusters or heap sizes. For example, on a cluster with five members
+having 10 GB of data and 25 GB heap size per member, a single call of <code>IMap.entrySet()</code>
+fetches 50 GB of data and crashes the calling instance.</p>
+</div>
+<div class="paragraph">
+<p>A call of <code>IMap.values()</code> may return too much data for a single member.
+This can also happen with a real query and an unlucky choice of predicates,
+especially when the parameters are chosen by a user of your application.</p>
+</div>
+<div class="paragraph">
+<p>To prevent this, you can configure a maximum result size limit for query based operations.
+This is not a limit like <code>SELECT * FROM map LIMIT 100</code>, which you can achieve by a
+<a href="../query/how-distributed-query-works.html#filtering-with-paging-predicates" class="page">Paging Predicate</a>. A maximum result size limit
+for query based operations is meant to be a last line of defense to prevent your members
+from retrieving more data than they can handle.</p>
+</div>
+<div class="paragraph">
+<p>The Hazelcast component which calculates this limit is the <code>QueryResultSizeLimiter</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="setting-query-result-size-limit"><a class="anchor" href="#setting-query-result-size-limit"></a>Setting Query Result Size Limit</h3>
+<div class="paragraph">
+<p>If the <code>QueryResultSizeLimiter</code> is activated, it calculates a result size limit per partition.
+Each <code>QueryOperation</code> runs on all partitions of a member, so it collects result entries
+as long as the member limit is not exceeded. If that happens, a
+<code>QueryResultSizeExceededException</code> is thrown and propagated to the calling instance.</p>
+</div>
+<div class="paragraph">
+<p>This feature depends on an equal distribution of the data on the cluster members to
+calculate the result size limit per member. Therefore, there is a minimum value defined
+in <code>QueryResultSizeLimiter.MINIMUM_MAX_RESULT_LIMIT</code>. Configured values below the minimum
+will be increased to the minimum.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="local-pre-check"><a class="anchor" href="#local-pre-check"></a>Local Pre-check</h3>
+<div class="paragraph">
+<p>In addition to the distributed result size check in the <code>QueryOperations</code>,
+there is a local pre-check on the calling instance. If you call the method from a client,
+the pre-check is executed on the member that invokes the <code>QueryOperations</code>.</p>
+</div>
+<div class="paragraph">
+<p>Since the local pre-check can increase the latency of a <code>QueryOperation</code>,
+you can configure how many local partitions should be considered for the pre-check,
+or you can deactivate the feature completely.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scope-of-result-size-limit"><a class="anchor" href="#scope-of-result-size-limit"></a>Scope of Result Size Limit</h3>
+<div class="paragraph">
+<p>Besides the designated query operations, there are other operations that use predicates internally.
+Those method calls throw the <code>QueryResultSizeExceededException</code> as well.
+See the following matrix for the methods that are covered by the query result size limit.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/Map-QueryResultSizeLimiterScope.png" alt="Methods Covered by Query Result Size Limit"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-query-result-size"><a class="anchor" href="#configuring-query-result-size"></a>Configuring Query Result Size</h3>
+<div class="paragraph">
+<p>The query result size limit is configured via the following system properties.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.query.result.size.limit</code>: Result size limit for query operations on maps.
+This value defines the maximum number of returned elements for a single query result.
+If a query exceeds this number of elements, a QueryResultSizeExceededException is thrown.</p>
+</li>
+<li>
+<p><code>hazelcast.query.max.local.partition.limit.for.precheck</code>: Maximum value of local partitions
+to trigger local pre-check for <code>Predicates#alwaysTrue()</code> query operations on maps.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="../system-properties.html" class="page">System Properties appendix</a> to see the full descriptions
+of these properties and how to set them.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="overview.html">Overview of Hazelcast Distributed Objects</a></span>
+  <span class="next"><a href="queue.html">Queue</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+  <a href="#yes-feedback" id="yes-button"><i class="far fa-check-circle"></i>  Yes </a>
+  <a href="#no-feedback" id="no-button"><i class="far fa-times-circle"></i>  No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for Map&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest-dev/docs/modules/data-structures/pages/map.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest-dev/docs/modules/data-structures/pages/map.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
+
+</aside>
+  </div>
+</main>
+
+</div>
+<footer class="footer">
+  <a>Terms of service</a>
+  <a>Privacy</a>
+  <a>Contact us</a>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
+  </body>
+</html>

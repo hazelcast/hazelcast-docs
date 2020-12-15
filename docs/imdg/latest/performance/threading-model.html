@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Threading Model Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/imdg/latest-dev/performance/threading-model.html">
+    <link rel="prev" href="back-pressure.html">
+    <link rel="next" href="slowoperationdetector.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'GTM-M267KFN', 'auto')
+ga('send', 'pageview')
+</script>
+<!-- End Google Analytics -->
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc"><img src="../../../_/img/hazelcast-logo.svg"></img></a>
+      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
+            </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search All Resources</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Integration Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a href="https://hazelcast.com/get-started/"><img class="nav-button" src="../../../_/img/nav-button.svg"></img></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="imdg" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../overview/hazelcast-overview.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/what-is-imdg.html">What is Hazelcast IMDG?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/topology.html">Topology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/data-partitioning.html">Data Partitioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/use-cases.html">Use Cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/resources.html">Resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../installation/installing-upgrading.html">Installing and Upgrading</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-maven.html">Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-docker.html">Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-download-archives.html">Download Archives</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-hazelcast-cloud.html">Hazelcast Cloud</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-kubernetes.html">Kubernetes/OpenShift Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-vmware-tanzu.html">Deploying in VMware Tanzu</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-cloud.html">Deploying in Cloud Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/using-enterprise-edition.html">Using Pro and Enterprise editions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/rolling-upgrades.html">Rolling Member Upgrades</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/running-in-modular-java.html">Running in Modular Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/supported-jvms.html">Supported Java Virtual Machines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../starting-members-clients.html">Starting the Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/understanding-configuration.html">Understanding Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-declaratively.html">Configuring Declaratively</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-programmatically.html">Configuring Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-with-system-properties.html">Configuring with System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-within-spring.html">Configuring within the Spring Context</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/overriding-configuration-settings.html">Overriding Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/dynamic-data-structure-configuration.html">Dynamically Adding Data Structure Configuration on a Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/checking-configuration.html">Checking Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/pattern-matcher.html">Configuration Pattern Matcher</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-wildcards.html">Using Wildcards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-variables.html">Using Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/variable-replacers.html">Variable Replacers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clusters/setting-up-clusters.html">Setting Up Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovery-mechanisms.html">Discovery Mechanisms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-auto-detection.html">Discovering Members by Auto Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-tcp.html">Discovering Members by TCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-multicast.html">Discovering Members by Multicast</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-native-clients.html">Discovering Native Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/creating-clusters.html">Creating Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-on-member.html">Deploying User Code on the Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-from-clients.html">Deploying User Code from Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/accessing-domain-objects.html">Accessing Domain Objects without Domain Classes - BETA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/partition-group-configuration.html">Partition Group Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/logging-configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/network-configuration.html">Other Network Configurations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/failure-detector-configuration.html">Failure Detector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/advanced-network-configuration.html">Advanced Network Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../data-structures/distributed-data-structures.html">Distributed Data Structures</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/overview.html">Overview of Hazelcast Distributed Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/map.html">Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/queue.html">Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/priority-queue.html">Priority Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/multimap.html">MultiMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/set.html">Set</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/list.html">List</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/ringbuffer.html">Ringbuffer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/topic.html">Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/reliable-topic.html">Reliable Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomiclong.html">IAtomicLong</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/isemaphore.html">ISemaphore</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomicreference.html">IAtomicReference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/icountdownlatch.html">ICountDownLatch</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/pn-counter.html">PN Counter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/flake-id-generator.html">Flake ID Generator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/replicated-map.html">Replicated Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/cardinality-estimator-service.html">Cardinality Estimator Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/event-journal.html">Event Journal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../events/distributed-events.html">Distributed Events</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/cluster-events.html">Cluster Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/object-events.html">Distributed Object Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/event-listeners-for-clients.html">Event Listeners for Hazelcast Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/global-event-configuration.html">Global Event Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast-jet.html">Hazelcast Jet</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../computing/distributed-computing.html">Distributed Computing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/executor-service.html">Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/durable-executor-service.html">Durable Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/scheduled-executor-service.html">Scheduled Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/entry-processor.html">Entry Processor</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sql/distributed-sql.html">SQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/querying-imap.html">Querying IMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/data-types.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/select-statement.html">SELECT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/expressions.html">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/lite-members.html">Lite Members</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/how-distributed-sql-works.html">How Distributed SQL Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/sql-and-high-density-memory.html">SQL on Data Structures Backed by High-Density Memory Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../query/distributed-query.html">Distributed Query</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/how-distributed-query-works.html">How Distributed Query Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/custom-attributes.html">Custom Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/aggregations.html">Aggregations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/projections.html">Projections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/continuous-query-cache.html">Continuous Query Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/mapreduce-deprecation-and-removal.html">MapReduce Deprecation and Removal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cp-subsystem/cp-subsystem.html">CP Subsystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/discovery-process.html">CP Discovery Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/persistence.html">CP Subsystem Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/member-shutdown.html">CP Member Shutdown</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fault-tolerance.html">CP Subsystem&#8217;s Fault Tolerance Capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/listeners.html">CP Subsystem Listeners</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/sessions.html">CP Sessions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/unsafe-mode.html">CP Subsystem Unsafe Mode</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/management.html">CP Subsystem Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transactions/transactions.html">Transactions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/creating-a-transaction-interface.html">Creating a Transaction Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/providing-xa-transactions.html">Providing XA Transactions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jcache/jcache.html">Hazelcast JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/overview.html">JCache Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/setup.html">JCache Setup and Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/providers.html">JCache Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/hazelcast-integration.html">JCache - Hazelcast Instance Integration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/icache.html">Hazelcast JCache Extension - ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/tck.html">Testing for JCache Specification Compliance</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../integrated-clustering/integrated-clustering.html">Integrated Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/hibernate-second-level-cache.html">Integration with Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/web-session-replication.html">Web Session Replications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/javaee.html">Integration with Java EE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/spring.html">Integration with Spring</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../storage/storage.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/high-density-memory.html">High-Density Memory Store</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/sizing-practices.html">Sizing Practices</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/hot-restart-persistence.html">Hot Restart Persistence</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../striim-cdc.html">Database CDC Integration Using Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clients/hazelcast-clients.html">Hazelcast Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/java.html">Java Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/cplusplus.html">C++ Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/dotnet.html">.NET Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/rest.html">REST Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/memcache.html">Memcache Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/python.html">Python Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/nodejs.html">Node.js Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/go.html">Go Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../serialization/serialization.html">Serialization</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/interface-types.html">Serialization Interface Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/comparing-interfaces.html">Comparing Serialization Interfaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-java-serializable.html">Implementing Java Serializable and Externalizable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-dataserializable.html">Implementing DataSerializable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-portable-serialization.html">Implementing Portable Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/custom-serialization.html">Custom Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/global-serializer.html">Global Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-hazelcastinstanceaware.html">Implementing HazelcastInstanceAware</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/untrusted-deserialization-protection.html">Untrusted Deserialization Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/serialization-configuration.html">Serialization Configuration Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../management/management.html">Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/member-statistics.html">Getting Member Statistics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-api.html">JMX API per Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-monitoring.html">Monitoring with JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/rest-endpoint-groups.html">Using the REST Endpoint Groups</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/cluster-utilities.html">Cluster Utilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/diagnostics.html">Diagnostics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/health-check-monitoring.html">Health Check and Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/management-center.html">Management Center</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/license-info.html">License Information</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/instance-tracking.html">Instance Tracking</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/enabling-jaas.html">Enabling JAAS Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/socket-interceptor.html">Socket Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-interceptor.html">Security Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/encryption.html">Encryption</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-ssl.html">TLS/SSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/integrating-openssl.html">Integrating OpenSSL / BoringSSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-configuration.html">Other TLS related configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/validating-secrets.html">Validating Secrets Using Strength Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-realms.html">Security Realms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/jaas-authentication.html">JAAS authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/cluster-member-security.html">Cluster Member Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/default-authentication.html">Default authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/native-client-security.html">Native Client Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/logging-auditable-events.html">Logging Auditable Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-debugging.html">Security Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/fips-140-2.html">FIPS 140-2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="performance.html">Performance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pipelining.html">Pipelining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="data-affinity.html">Data Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="cpu-thread-affinity.html">CPU Thread Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="running-on-ec2.html">Running on EC2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="back-pressure.html">Back Pressure</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="threading-model.html">Threading Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="slowoperationdetector.html">SlowOperationDetector</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="near-cache.html">Near Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="caching-deserialized-values.html">Caching Deserialized Values</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../wan/wan.html">WAN Replication</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/modes.html">WAN Replication Modes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/defining-wan-replication.html">Configuring WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/configuring-for-map-and-cache.html">Configuring for IMap and ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/advanced-features.html">Advanced Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/tuning.html">Fine-Tuning WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/failures.html">Failure Detection and Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/rest-api.html">REST API Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../osgi/osgi.html">OSGI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/osgi-support.html">OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/configuring-osgi-support.html">Configuring Hazelcast OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/design.html">Design</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/using-osgi-service.html">Using Hazelcast OSGI Service</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extending-hazelcast/extending-hazelcast.html">Extending Hazelcast</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/operationparker.html">OperationParker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/discovery-spi.html">Discovery SPI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/config-properties-spi.html">Config Properties SPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/hazelcast-plugins.html">Hazelcast Plugins</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/cloud-discovery.html">Cloud Discovery Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/web-session-replication.html">Web Session Replication Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/framework-integration.html">Framework Integration Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/other-integrations.html">Other Integrations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../consistency-and-replication/consistency.html">Consistency and Replication Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/replication-algorithm.html">Hazelcast&#8217;s Replication Algorithm</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/invocation-lifecycle.html">Invocation Lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/exactly-once-execution.html">Exactly-once, At-least-once or At-most-once Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/indeterminateoperationstateexception.html">IndeterminateOperationStateException</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../network-partitioning/network-partitioning.html">Network Partitioning</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/dealing-with-network-partitions.html">Dealing with Network Partitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-protection.html">Split-Brain Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-recovery.html">Split-Brain Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/partial-network-partitions.html">Partial Network Partitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../system-properties.html">Appendix A: System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../phone-homes.html">Appendix E: Phone Homes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">Appendix F: Frequently Asked Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../revision-history.html">Appendix G: Document Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../latest-dev/index.html">4.1</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.3/index.html">4.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.2/index.html">4.0.2</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.1/index.html">4.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4/index.html">4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.11/index.html">3.12.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.10/index.html">3.12.10</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.9/index.html">3.12.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.8/index.html">3.12.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.7/index.html">3.12.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.6/index.html">3.12.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.5/index.html">3.12.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.4/index.html">3.12.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.3/index.html">3.12.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.2/index.html">3.12.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.1/index.html">3.12.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12/index.html">3.12</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.7/index.html">3.11.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.6/index.html">3.11.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.5/index.html">3.11.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.4/index.html">3.11.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.3/index.html">3.11.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.2/index.html">3.11.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.1/index.html">3.11.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11/index.html">3.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.7/index.html">3.10.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.6/index.html">3.10.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.5/index.html">3.10.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.4/index.html">3.10.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.3/index.html">3.10.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.2/index.html">3.10.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.1/index.html">3.10.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.4/index.html">3.9.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.3/index.html">3.9.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.2/index.html">3.9.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.1/index.html">3.9.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9/index.html">3.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.9/index.html">3.8.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.8/index.html">3.8.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.7/index.html">3.8.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.6/index.html">3.8.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.5/index.html">3.8.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.4/index.html">3.8.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.3/index.html">3.8.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.2/index.html">3.8.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.1/index.html">3.8.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8/index.html">3.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.8/index.html">3.7.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.7/index.html">3.7.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.6/index.html">3.7.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.5/index.html">3.7.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.4/index.html">3.7.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.3/index.html">3.7.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.2/index.html">3.7.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.1/index.html">3.7.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.8/index.html">3.6.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.7/index.html">3.6.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.6/index.html">3.6.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.5/index.html">3.6.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.4/index.html">3.6.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.3/index.html">3.6.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.2/index.html">3.6.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.1/index.html">3.6.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.5/index.html">3.5.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.4/index.html">3.5.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.3/index.html">3.5.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.2/index.html">3.5.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.1/index.html">3.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5/index.html">3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.8/index.html">3.4.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.7/index.html">3.4.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.6/index.html">3.4.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.5/index.html">3.4.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.4/index.html">3.4.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.3/index.html">3.4.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.2/index.html">3.4.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.1/index.html">3.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4/index.html">3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.5/index.html">3.3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.4/index.html">3.3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.2/index.html">3.3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.1/index.html">3.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3/index.html">3.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.7/index.html">3.2.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.6/index.html">3.2.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.5/index.html">3.2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.4/index.html">3.2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.3/index.html">3.2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.2/index.html">3.2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.1/index.html">3.2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2/index.html">3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.9/index.html">3.1.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.8/index.html">3.1.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1/index.html">3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.0.3/index.html">3.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.6.9/index.html">2.6.9</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5.1/index.html">2.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5/index.html">2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4.1/index.html">2.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4/index.html">2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3.1/index.html">2.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3/index.html">2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.2/index.html">2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1.3/index.html">2.1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1/index.html">2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0.4/index.html">2.0.4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Hazelcast IMDG</a></li>
+    <li><a href="performance.html">Performance</a></li>
+    <li><a href="threading-model.html">Threading Model</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">4.1</button>
+  <div class="version-menu">
+        <a class="version" href="../../latest-dev/performance/threading-model.html">4.1</a>
+        <a class="version is-current" href="threading-model.html">4.1</a>
+        <a class="version is-missing" href="../../4.0.3/index.html">4.0.3</a>
+        <a class="version is-missing" href="../../4.0.2/index.html">4.0.2</a>
+        <a class="version is-missing" href="../../4.0.1/index.html">4.0.1</a>
+        <a class="version is-missing" href="../../4/index.html">4</a>
+        <a class="version is-missing" href="../../3.12.11/index.html">3.12.11</a>
+        <a class="version is-missing" href="../../3.12.10/index.html">3.12.10</a>
+        <a class="version is-missing" href="../../3.12.9/index.html">3.12.9</a>
+        <a class="version is-missing" href="../../3.12.8/index.html">3.12.8</a>
+        <a class="version is-missing" href="../../3.12.7/index.html">3.12.7</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Threading Model</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Your application server has its own threads. Hazelcast does not use these; it manages its own threads.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="io-threading"><a class="anchor" href="#io-threading"></a>I/O Threading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast uses a pool of threads for I/O. A single thread does not perform all the I/O.
+Instead, multiple threads perform the I/O. On each cluster member, the I/O threading is split up in 3 types of I/O threads:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>I/O thread for the accept requests</p>
+</li>
+<li>
+<p>I/O threads to read data from other members/clients</p>
+</li>
+<li>
+<p>I/O threads to write data to other members/clients</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can configure the number of I/O threads using the <code>hazelcast.io.thread.count</code> system property.
+Its default value is 3 per member. If 3 is used, in total there are 7 I/O threads:
+1 accept I/O thread, 3 read I/O threads and 3 write I/O threads. Each I/O thread has
+its own Selector instance and waits on the <code>Selector.select</code> if there is nothing to do.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also specify counts for input and output threads separately.
+There are <code>hazelcast.io.input.thread.count</code> and <code>hazelcast.io.output.thread.count</code> properties for this purpose.
+See the <a href="../system-properties.html" class="page">System Properties appendix</a> for information on these properties and how to set them.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Hazelcast periodically scans utilization of each I/O thread and
+can decide to migrate a connection to a new thread if
+the existing thread is servicing a disproportionate number of I/O events.
+You can customize the scanning interval by configuring the <code>hazelcast.io.balancer.interval.seconds</code> system property;
+its default interval is 20 seconds. You can disable the balancing process by setting this property to a negative value.</p>
+</div>
+<div class="paragraph">
+<p>In case of the read I/O thread, when sufficient bytes for a packet have been received, the <code>Packet</code> object is created. This <code>Packet</code> object is
+then sent to the system where it is de-multiplexed. If the <code>Packet</code> header signals that it is an operation/response, the <code>Packet</code> is handed
+over to the operation service (see the <a href="#operation-threading">Operation Threading section</a>). If the <code>Packet</code> is an event, it is handed
+over to the event service (see the <a href="#event-threading">Event Threading section</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="event-threading"><a class="anchor" href="#event-threading"></a>Event Threading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast uses a shared event system to deal with components that rely on events, such as topic, collections, listeners and Near Cache.</p>
+</div>
+<div class="paragraph">
+<p>Each cluster member has an array of event threads and each thread has its own work queue. When an event is produced,
+either locally or remotely, an event thread is selected (depending on if there is a message ordering) and the event is placed
+in the work queue for that event thread.</p>
+</div>
+<div class="paragraph">
+<p>You can set the following properties
+to alter the system&#8217;s behavior:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.event.thread.count</code>: Number of event-threads in this array. Its default value is 5.</p>
+</li>
+<li>
+<p><code>hazelcast.event.queue.capacity</code>: Capacity of the work queue. Its default value is 1000000.</p>
+</li>
+<li>
+<p><code>hazelcast.event.queue.timeout.millis</code>: Timeout for placing an item on the work queue in milliseconds. Its default value is 250 milliseconds.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you process a lot of events and have many cores, changing the value of <code>hazelcast.event.thread.count</code> property to
+a higher value is a good practice. This way, more events can be processed in parallel.</p>
+</div>
+<div class="paragraph">
+<p>Multiple components share the same event queues. If there are 2 topics, say A and B, for certain messages
+they may share the same queue(s) and hence the same event thread. If there are a lot of pending messages produced by A, then B needs to wait.
+Also, when processing a message from A takes a lot of time and the event thread is used for that, B suffers from this.
+That is why it is better to offload processing to a dedicated thread (pool) so that systems are better isolated.</p>
+</div>
+<div class="paragraph">
+<p>If the events are produced at a higher rate than they are consumed, the queue grows in size. To prevent overloading the system
+and running into an <code>OutOfMemoryException</code>, the queue is given a capacity of 1 million items. When the maximum capacity is reached, the items are
+dropped. This means that the event system is a 'best effort' system. There is no guarantee that you are going to get an
+event. Topic A might have a lot of pending messages and therefore B cannot receive messages because the queue
+has no capacity and messages for B are dropped.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="iexecutor-threading"><a class="anchor" href="#iexecutor-threading"></a>IExecutor Threading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Executor threading is straight forward. When a task is received to be executed on Executor E, then E will have its
+own <code>ThreadPoolExecutor</code> instance and the work is placed in the work queue of this executor.
+Thus, Executors are fully isolated, but still share the same underlying hardware - most importantly the CPUs.</p>
+</div>
+<div class="paragraph">
+<p>You can configure the IExecutor using the <code>ExecutorConfig</code> (programmatic configuration) or
+using <code>&lt;executor&gt;</code> (declarative configuration). See also the <a href="../computing/executor-service.html#configuring-executor-service" class="page">Configuring Executor Service section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="operation-threading"><a class="anchor" href="#operation-threading"></a>Operation Threading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following are the operation types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>operations that are aware of a certain partition, e.g., <code>IMap.get(key)</code></p>
+</li>
+<li>
+<p>operations that are not partition aware, e.g., <code>IExecutorService.executeOnMember(command, member)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of these operation types has a different threading model explained in the following sections.</p>
+</div>
+<div class="sect2">
+<h3 id="partition-aware-operations"><a class="anchor" href="#partition-aware-operations"></a>Partition-aware Operations</h3>
+<div class="paragraph">
+<p>To execute partition-aware operations, an array of operation threads is created.
+The default value of this array&#8217;s size is the number of cores and it has a minimum value of 2.
+This value can be changed using the <code>hazelcast.operation.thread.count</code> property.</p>
+</div>
+<div class="paragraph">
+<p>Each operation thread has its own work queue and it consumes messages from this work queue. If a partition-aware
+operation needs to be scheduled, the right thread is found using the formula below.</p>
+</div>
+<div class="paragraph">
+<p><code>threadIndex = partitionId % partition thread-count</code></p>
+</div>
+<div class="paragraph">
+<p>After the <code>threadIndex</code> is determined, the operation is put in the work queue of that operation thread. This means the followings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A single operation thread executes operations for multiple partitions;
+if there are 271 partitions and 10 partition threads, then roughly every operation thread executes operations for 27 partitions.</p>
+</li>
+<li>
+<p>Each partition belongs to only 1 operation thread.
+All operations for a partition are always handled by exactly the same operation thread.</p>
+</li>
+<li>
+<p>Concurrency control is not needed to deal with partition-aware operations because
+once a partition-aware operation is put in the work queue of a partition-aware operation thread, only 1 thread is able to touch that partition.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because of this threading strategy, there are two forms of false sharing you need to be aware of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>False sharing of the partition - two completely independent data structures share the same partition.
+For example, if there is a map <code>employees</code> and a map <code>orders</code>,
+the method <code>employees.get("peter")</code> running on partition 25 may be blocked by
+the method <code>orders.get(1234)</code> also running on partition 25.
+If independent data structures share the same partition, a slow operation on one data structure can slow down the other data structures.</p>
+</li>
+<li>
+<p>False sharing of the partition-aware operation thread - each operation thread is responsible for executing
+operations on a number of partitions. For example, <strong>thread 1</strong> could be responsible for partitions 0, 10, 20, etc. and <strong>thread-2</strong> could be responsible for partitions
+1, 11, 21, etc. If an operation for partition 1 takes a lot of time, it blocks the execution of an operation for partition
+11 because both of them are mapped to the same operation thread.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You need to be careful with long running operations because you could starve operations of a thread.
+As a general rule, the partition thread should be released as soon as possible because operations are not designed
+as long running operations. That is why, for example, it is very dangerous to execute a long running operation
+using <code>AtomicReference.alter()</code> or an <code>IMap.executeOnKey()</code>, because these operations block other operations to be executed.</p>
+</div>
+<div class="paragraph">
+<p>Currently, there is no support for work stealing. Different partitions that map to the same thread may need to wait
+till one of the partitions is finished, even though there are other free partition-aware operation threads available.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>Take a cluster with three members. Two members have 90 primary partitions and one member has 91 primary partitions. Let&#8217;s
+say you have one CPU and four cores per CPU. By default, four operation threads will be allocated to serve 90 or 91 partitions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="non-partition-aware-operations"><a class="anchor" href="#non-partition-aware-operations"></a>Non-Partition-aware Operations</h3>
+<div class="paragraph">
+<p>To execute operations that are not partition-aware, e.g., <code>IExecutorService.executeOnMember(command, member)</code>, generic operation
+threads are used. When the Hazelcast instance is started, an array of operation threads is created. The size of this array
+has a default value of the number of cores divided by two with a minimum value of 2. It can be changed using the
+<code>hazelcast.operation.generic.thread.count</code> property.</p>
+</div>
+<div class="paragraph">
+<p>A non-partition-aware operation thread does not execute an operation for a specific partition. Only partition-aware
+  operation threads execute partition-aware operations.</p>
+</div>
+<div class="paragraph">
+<p>Unlike the partition-aware operation threads, all the generic operation threads share the same work queue: <code>genericWorkQueue</code>.</p>
+</div>
+<div class="paragraph">
+<p>If a non-partition-aware operation needs to be executed, it is placed in that work queue and any generic operation
+thread can execute it. The big advantage is that you automatically have work balancing since any generic operation
+thread is allowed to pick up work from this queue.</p>
+</div>
+<div class="paragraph">
+<p>The disadvantage is that this shared queue can be a point of contention. You may not see this contention in
+production since performance is dominated by I/O and the system does not run many non-partition-aware operations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="priority-operations"><a class="anchor" href="#priority-operations"></a>Priority Operations</h3>
+<div class="paragraph">
+<p>In some cases, the system needs to run operations with a higher priority, e.g., an important system operation.
+To support priority operations, Hazelcast has the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For partition-aware operations: Each partition thread has its own work queue and it also has a priority
+work queue. The partition thread always checks the priority queue before it processes work from its normal work queue.</p>
+</li>
+<li>
+<p>For non-partition-aware operations: Next to the <code>genericWorkQueue</code>, there is also a <code>genericPriorityWorkQueue</code>. When a priority operation
+needs to be run, it is put in the <code>genericPriorityWorkQueue</code>. Like the partition-aware operation threads, a generic
+operation thread first checks the <code>genericPriorityWorkQueue</code> for work.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since a worker thread blocks on the normal work queue (either partition specific or generic), a priority operation
+may not be picked up because it is not put in the queue where it is blocking. Hazelcast always sends a 'kick the worker' operation that
+only triggers the worker to wake up and check the priority queue.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="operation-response-and-invocation-future"><a class="anchor" href="#operation-response-and-invocation-future"></a>Operation-response and Invocation-future</h3>
+<div class="paragraph">
+<p>When an Operation is invoked, a <code>Future</code> is returned. See the example code below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">GetOperation operation = new GetOperation( mapName, key );
+Future future = operationService.invoke( operation );
+future.get();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The calling side blocks for a reply. In this case, <code>GetOperation</code> is set in the work queue for the partition of <code>key</code>, where
+it eventually is executed. Upon execution, a response is returned and placed on the <code>genericWorkQueue</code> where it is executed by a
+"generic operation thread". This thread signals the <code>future</code> and notifies the blocked thread that a response is available.
+Hazelcast has a plan of exposing this <code>future</code> to the outside world, and we will provide the ability to register a completion listener so you can perform asynchronous calls.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="local-calls"><a class="anchor" href="#local-calls"></a>Local Calls</h3>
+<div class="paragraph">
+<p>When a local partition-aware call is done, an operation is made and handed over to the work queue of the correct partition operation thread,
+and a <code>future</code> is returned. When the calling thread calls <code>get</code> on that <code>future</code>, it acquires a lock and waits for the result
+to become available. When a response is calculated, the <code>future</code> is looked up and the waiting thread is notified.</p>
+</div>
+<div class="paragraph">
+<p>In the future, this will be optimized to reduce the amount of expensive systems calls, such as <code>lock.acquire()</code>/<code>notify()</code> and the expensive
+interaction with the operation-queue. Probably, we will add support for a caller-runs mode, so that an operation is directly run on
+the calling thread.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="back-pressure.html">Back Pressure</a></span>
+  <span class="next"><a href="slowoperationdetector.html">SlowOperationDetector</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+  <a href="#yes-feedback" id="yes-button"><i class="far fa-check-circle"></i>  Yes </a>
+  <a href="#no-feedback" id="no-button"><i class="far fa-times-circle"></i>  No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for Threading Model&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest/docs/modules/performance/pages/threading-model.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest/docs/modules/performance/pages/threading-model.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
+
+</aside>
+  </div>
+</main>
+
+</div>
+<footer class="footer">
+  <a>Terms of service</a>
+  <a>Privacy</a>
+  <a>Contact us</a>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
+  </body>
+</html>

@@ -1,0 +1,2918 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Advanced Features Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/imdg/latest-dev/wan/advanced-features.html">
+    <link rel="prev" href="configuring-for-map-and-cache.html">
+    <link rel="next" href="tuning.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'GTM-M267KFN', 'auto')
+ga('send', 'pageview')
+</script>
+<!-- End Google Analytics -->
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc"><img src="../../../_/img/hazelcast-logo.svg"></img></a>
+      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
+            </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search All Resources</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Integration Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a href="https://hazelcast.com/get-started/"><img class="nav-button" src="../../../_/img/nav-button.svg"></img></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="imdg" data-version="latest-dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../overview/hazelcast-overview.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/what-is-imdg.html">What is Hazelcast IMDG?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/topology.html">Topology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/data-partitioning.html">Data Partitioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/use-cases.html">Use Cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/resources.html">Resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../installation/installing-upgrading.html">Installing and Upgrading</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-maven.html">Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-docker.html">Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-download-archives.html">Download Archives</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-hazelcast-cloud.html">Hazelcast Cloud</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-kubernetes.html">Kubernetes/OpenShift Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-vmware-tanzu.html">Deploying in VMware Tanzu</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-cloud.html">Deploying in Cloud Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/using-enterprise-edition.html">Using Pro and Enterprise editions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/rolling-upgrades.html">Rolling Member Upgrades</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/running-in-modular-java.html">Running in Modular Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/supported-jvms.html">Supported Java Virtual Machines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../starting-members-clients.html">Starting the Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/understanding-configuration.html">Understanding Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-declaratively.html">Configuring Declaratively</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-programmatically.html">Configuring Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-with-system-properties.html">Configuring with System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-within-spring.html">Configuring within the Spring Context</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/overriding-configuration-settings.html">Overriding Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/dynamic-data-structure-configuration.html">Dynamically Adding Data Structure Configuration on a Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/checking-configuration.html">Checking Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/pattern-matcher.html">Configuration Pattern Matcher</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-wildcards.html">Using Wildcards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-variables.html">Using Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/variable-replacers.html">Variable Replacers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clusters/setting-up-clusters.html">Setting Up Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovery-mechanisms.html">Discovery Mechanisms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-auto-detection.html">Discovering Members by Auto Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-tcp.html">Discovering Members by TCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-multicast.html">Discovering Members by Multicast</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-native-clients.html">Discovering Native Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/creating-clusters.html">Creating Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-on-member.html">Deploying User Code on the Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-from-clients.html">Deploying User Code from Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/accessing-domain-objects.html">Accessing Domain Objects without Domain Classes - BETA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/partition-group-configuration.html">Partition Group Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/logging-configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/network-configuration.html">Other Network Configurations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/failure-detector-configuration.html">Failure Detector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/advanced-network-configuration.html">Advanced Network Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../data-structures/distributed-data-structures.html">Distributed Data Structures</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/overview.html">Overview of Hazelcast Distributed Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/map.html">Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/queue.html">Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/priority-queue.html">Priority Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/multimap.html">MultiMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/set.html">Set</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/list.html">List</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/ringbuffer.html">Ringbuffer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/topic.html">Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/reliable-topic.html">Reliable Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomiclong.html">IAtomicLong</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/isemaphore.html">ISemaphore</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomicreference.html">IAtomicReference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/icountdownlatch.html">ICountDownLatch</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/pn-counter.html">PN Counter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/flake-id-generator.html">Flake ID Generator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/replicated-map.html">Replicated Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/cardinality-estimator-service.html">Cardinality Estimator Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/event-journal.html">Event Journal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../events/distributed-events.html">Distributed Events</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/cluster-events.html">Cluster Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/object-events.html">Distributed Object Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/event-listeners-for-clients.html">Event Listeners for Hazelcast Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/global-event-configuration.html">Global Event Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast-jet.html">Hazelcast Jet</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../computing/distributed-computing.html">Distributed Computing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/executor-service.html">Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/durable-executor-service.html">Durable Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/scheduled-executor-service.html">Scheduled Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/entry-processor.html">Entry Processor</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sql/distributed-sql.html">SQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/querying-imap.html">Querying IMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/data-types.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/select-statement.html">SELECT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/expressions.html">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/lite-members.html">Lite Members</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/how-distributed-sql-works.html">How Distributed SQL Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/sql-and-high-density-memory.html">SQL on Data Structures Backed by High-Density Memory Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../query/distributed-query.html">Distributed Query</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/how-distributed-query-works.html">How Distributed Query Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/custom-attributes.html">Custom Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/aggregations.html">Aggregations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/projections.html">Projections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/continuous-query-cache.html">Continuous Query Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../query/mapreduce-deprecation-and-removal.html">MapReduce Deprecation and Removal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cp-subsystem/cp-subsystem.html">CP Subsystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/discovery-process.html">CP Discovery Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/persistence.html">CP Subsystem Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/member-shutdown.html">CP Member Shutdown</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fault-tolerance.html">CP Subsystem&#8217;s Fault Tolerance Capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/listeners.html">CP Subsystem Listeners</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/sessions.html">CP Sessions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/unsafe-mode.html">CP Subsystem Unsafe Mode</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/management.html">CP Subsystem Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transactions/transactions.html">Transactions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/creating-a-transaction-interface.html">Creating a Transaction Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/providing-xa-transactions.html">Providing XA Transactions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jcache/jcache.html">Hazelcast JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/overview.html">JCache Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/setup.html">JCache Setup and Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/providers.html">JCache Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/hazelcast-integration.html">JCache - Hazelcast Instance Integration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/icache.html">Hazelcast JCache Extension - ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/tck.html">Testing for JCache Specification Compliance</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../integrated-clustering/integrated-clustering.html">Integrated Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/hibernate-second-level-cache.html">Integration with Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/web-session-replication.html">Web Session Replications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/javaee.html">Integration with Java EE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/spring.html">Integration with Spring</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../storage/storage.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/high-density-memory.html">High-Density Memory Store</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/sizing-practices.html">Sizing Practices</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/hot-restart-persistence.html">Hot Restart Persistence</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../striim-cdc.html">Database CDC Integration Using Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clients/hazelcast-clients.html">Hazelcast Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/java.html">Java Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/cplusplus.html">C++ Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/dotnet.html">.NET Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/rest.html">REST Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/memcache.html">Memcache Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/python.html">Python Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/nodejs.html">Node.js Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/go.html">Go Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../serialization/serialization.html">Serialization</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/interface-types.html">Serialization Interface Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/comparing-interfaces.html">Comparing Serialization Interfaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-java-serializable.html">Implementing Java Serializable and Externalizable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-dataserializable.html">Implementing DataSerializable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-portable-serialization.html">Implementing Portable Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/custom-serialization.html">Custom Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/global-serializer.html">Global Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-hazelcastinstanceaware.html">Implementing HazelcastInstanceAware</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/untrusted-deserialization-protection.html">Untrusted Deserialization Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/serialization-configuration.html">Serialization Configuration Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../management/management.html">Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/member-statistics.html">Getting Member Statistics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-api.html">JMX API per Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-monitoring.html">Monitoring with JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/rest-endpoint-groups.html">Using the REST Endpoint Groups</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/cluster-utilities.html">Cluster Utilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/diagnostics.html">Diagnostics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/health-check-monitoring.html">Health Check and Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/management-center.html">Management Center</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/license-info.html">License Information</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/instance-tracking.html">Instance Tracking</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/enabling-jaas.html">Enabling JAAS Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/socket-interceptor.html">Socket Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-interceptor.html">Security Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/encryption.html">Encryption</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-ssl.html">TLS/SSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/integrating-openssl.html">Integrating OpenSSL / BoringSSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-configuration.html">Other TLS related configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/validating-secrets.html">Validating Secrets Using Strength Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-realms.html">Security Realms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/jaas-authentication.html">JAAS authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/cluster-member-security.html">Cluster Member Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/default-authentication.html">Default authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/native-client-security.html">Native Client Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/logging-auditable-events.html">Logging Auditable Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-debugging.html">Security Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/fips-140-2.html">FIPS 140-2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../performance/performance.html">Performance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/pipelining.html">Pipelining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/data-affinity.html">Data Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/cpu-thread-affinity.html">CPU Thread Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/running-on-ec2.html">Running on EC2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/back-pressure.html">Back Pressure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/threading-model.html">Threading Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/slowoperationdetector.html">SlowOperationDetector</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/near-cache.html">Near Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/caching-deserialized-values.html">Caching Deserialized Values</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="wan.html">WAN Replication</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="modes.html">WAN Replication Modes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="defining-wan-replication.html">Configuring WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="configuring-for-map-and-cache.html">Configuring for IMap and ICache</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="advanced-features.html">Advanced Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuning.html">Fine-Tuning WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="failures.html">Failure Detection and Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rest-api.html">REST API Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../osgi/osgi.html">OSGI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/osgi-support.html">OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/configuring-osgi-support.html">Configuring Hazelcast OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/design.html">Design</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/using-osgi-service.html">Using Hazelcast OSGI Service</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extending-hazelcast/extending-hazelcast.html">Extending Hazelcast</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/operationparker.html">OperationParker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/discovery-spi.html">Discovery SPI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/config-properties-spi.html">Config Properties SPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/hazelcast-plugins.html">Hazelcast Plugins</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/cloud-discovery.html">Cloud Discovery Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/web-session-replication.html">Web Session Replication Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/framework-integration.html">Framework Integration Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/other-integrations.html">Other Integrations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../consistency-and-replication/consistency.html">Consistency and Replication Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/replication-algorithm.html">Hazelcast&#8217;s Replication Algorithm</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/invocation-lifecycle.html">Invocation Lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/exactly-once-execution.html">Exactly-once, At-least-once or At-most-once Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/indeterminateoperationstateexception.html">IndeterminateOperationStateException</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../network-partitioning/network-partitioning.html">Network Partitioning</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/dealing-with-network-partitions.html">Dealing with Network Partitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-protection.html">Split-Brain Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-recovery.html">Split-Brain Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/partial-network-partitions.html">Partial Network Partitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../system-properties.html">Appendix A: System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../phone-homes.html">Appendix E: Phone Homes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">Appendix F: Frequently Asked Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../revision-history.html">Appendix G: Document Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../latest/index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.3/index.html">4.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.2/index.html">4.0.2</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.1/index.html">4.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4/index.html">4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.11/index.html">3.12.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.10/index.html">3.12.10</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.9/index.html">3.12.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.8/index.html">3.12.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.7/index.html">3.12.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.6/index.html">3.12.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.5/index.html">3.12.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.4/index.html">3.12.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.3/index.html">3.12.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.2/index.html">3.12.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.1/index.html">3.12.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12/index.html">3.12</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.7/index.html">3.11.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.6/index.html">3.11.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.5/index.html">3.11.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.4/index.html">3.11.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.3/index.html">3.11.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.2/index.html">3.11.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.1/index.html">3.11.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11/index.html">3.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.7/index.html">3.10.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.6/index.html">3.10.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.5/index.html">3.10.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.4/index.html">3.10.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.3/index.html">3.10.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.2/index.html">3.10.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.1/index.html">3.10.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.4/index.html">3.9.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.3/index.html">3.9.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.2/index.html">3.9.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.1/index.html">3.9.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9/index.html">3.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.9/index.html">3.8.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.8/index.html">3.8.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.7/index.html">3.8.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.6/index.html">3.8.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.5/index.html">3.8.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.4/index.html">3.8.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.3/index.html">3.8.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.2/index.html">3.8.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.1/index.html">3.8.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8/index.html">3.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.8/index.html">3.7.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.7/index.html">3.7.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.6/index.html">3.7.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.5/index.html">3.7.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.4/index.html">3.7.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.3/index.html">3.7.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.2/index.html">3.7.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.1/index.html">3.7.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.8/index.html">3.6.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.7/index.html">3.6.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.6/index.html">3.6.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.5/index.html">3.6.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.4/index.html">3.6.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.3/index.html">3.6.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.2/index.html">3.6.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.1/index.html">3.6.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.5/index.html">3.5.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.4/index.html">3.5.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.3/index.html">3.5.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.2/index.html">3.5.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.1/index.html">3.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5/index.html">3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.8/index.html">3.4.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.7/index.html">3.4.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.6/index.html">3.4.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.5/index.html">3.4.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.4/index.html">3.4.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.3/index.html">3.4.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.2/index.html">3.4.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.1/index.html">3.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4/index.html">3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.5/index.html">3.3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.4/index.html">3.3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.2/index.html">3.3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.1/index.html">3.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3/index.html">3.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.7/index.html">3.2.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.6/index.html">3.2.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.5/index.html">3.2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.4/index.html">3.2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.3/index.html">3.2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.2/index.html">3.2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.1/index.html">3.2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2/index.html">3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.9/index.html">3.1.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.8/index.html">3.1.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1/index.html">3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.0.3/index.html">3.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.6.9/index.html">2.6.9</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5.1/index.html">2.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5/index.html">2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4.1/index.html">2.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4/index.html">2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3.1/index.html">2.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3/index.html">2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.2/index.html">2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1.3/index.html">2.1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1/index.html">2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0.4/index.html">2.0.4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Hazelcast IMDG</a></li>
+    <li><a href="wan.html">WAN Replication</a></li>
+    <li><a href="advanced-features.html">Advanced Features</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">4.1</button>
+  <div class="version-menu">
+        <a class="version is-current" href="advanced-features.html">4.1</a>
+        <a class="version" href="../../latest/wan/advanced-features.html">4.1</a>
+        <a class="version is-missing" href="../../4.0.3/index.html">4.0.3</a>
+        <a class="version is-missing" href="../../4.0.2/index.html">4.0.2</a>
+        <a class="version is-missing" href="../../4.0.1/index.html">4.0.1</a>
+        <a class="version is-missing" href="../../4/index.html">4</a>
+        <a class="version is-missing" href="../../3.12.11/index.html">3.12.11</a>
+        <a class="version is-missing" href="../../3.12.10/index.html">3.12.10</a>
+        <a class="version is-missing" href="../../3.12.9/index.html">3.12.9</a>
+        <a class="version is-missing" href="../../3.12.8/index.html">3.12.8</a>
+        <a class="version is-missing" href="../../3.12.7/index.html">3.12.7</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Advanced Features</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes how you can synchronize your WAN replicated clusters,
+change their configurations dynamically and intercept WAN replication events using
+the event filtering API.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="synchronizing-wan-clusters"><a class="anchor" href="#synchronizing-wan-clusters"></a>Synchronizing WAN Clusters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WAN Replication replicates mutation events that happen on the source
+cluster as they happen. The events are queued up, collected in a batch
+and sent to the target cluster to be applied, without any user interaction.</p>
+</div>
+<div class="paragraph">
+<p>However, Hazelcast clusters connected over WAN may become out-of-sync because of various reasons
+including but not limited to the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Member failures</p>
+</li>
+<li>
+<p>Concurrent updates</p>
+</li>
+<li>
+<p>Target cluster freshly starts with no data</p>
+</li>
+<li>
+<p>Target cluster experiences problems and some operations fail</p>
+</li>
+<li>
+<p>Two sides disconnect and the in-memory buffer of the source
+cluster gets full (the behavior in this case is <a href="tuning.html#queue-full-behavior" class="page">configurable</a>)</p>
+</li>
+<li>
+<p>The WAN link can&#8217;t keep up with the burst that the source cluster experiences
+and its in-memory buffer gets full (the behavior in this case is <a href="tuning.html#queue-full-behavior" class="page">configurable</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To overcome this out-of-sync issue, you have the
+following options to synchronize your WAN replicated clusters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Full synchronization</p>
+</li>
+<li>
+<p>Delta synchronization</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sections describe each.</p>
+</div>
+<div class="sect2">
+<h3 id="synchronizing-wan-target-cluster"><a class="anchor" href="#synchronizing-wan-target-cluster"></a>Full WAN Synchronization</h3>
+<div class="paragraph">
+<p>Full WAN synchronization sends all the data of an IMap to a target cluster to align the state of target IMap with source IMap.
+It is useful if two remote clusters lost their synchronizations due to overflow in the WAN queue or in restart scenarios.
+This is the default synchronization option.</p>
+</div>
+<div class="paragraph">
+<p>Full WAN Synchronization can be initiated through
+<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#wan-sync" target="_blank" rel="noopener">Management Center</a> and
+Hazelcast&#8217;s REST API.</p>
+</div>
+<div class="paragraph">
+<p>Below is the URL for the REST call;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/sync/map</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You need to add URL-encoded parameters to the request in the following order separated by "&amp;";</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cluster name</p>
+</li>
+<li>
+<p>Cluster password</p>
+</li>
+<li>
+<p>Name of the WAN replication configuration</p>
+</li>
+<li>
+<p>WAN replication publisher ID/target cluster name</p>
+</li>
+<li>
+<p>Map name to be synchronized</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Assume that you have configured an IMap with a WAN replication configuration as follows:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset1_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;wan-replication name="london-wan-rep"&gt;
+        &lt;batch-publisher&gt;
+            &lt;cluster-name&gt;istanbul&lt;/cluster-name&gt;
+        &lt;/batch-publisher&gt;
+    &lt;/wan-replication&gt;
+    &lt;map name="my-map"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"&gt;
+            &lt;merge-policy&gt;com.hazelcast.spi.merge.PassThroughMergePolicy&lt;/merge-policy&gt;
+        &lt;/wan-replication-ref&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  wan-replication name: london-wan-rep
+    batch-publisher:
+      cluster-name: istanbul
+  map:
+    my-map:
+      wan-replication-ref:
+        london-wan-rep:
+          merge-policy: com.hazelcast.spi.merge.PassThroughMergePolicy</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, an example curl command to initiate the synchronization for "my-map" would be as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterName}&amp;{clusterPassword}&amp;london-wan-rep&amp;istanbul&amp;my-map" --URL http://127.0.0.1:5701/hazelcast/rest/wan/sync/map</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also synchronize all maps in the source and target clusters.
+In that case the curl command using the above parameters becomes as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "{clusterName}&amp;{clusterPassword}&amp;london-wan-rep&amp;istanbul" --URL http://127.0.0.1:5701/hazelcast/rest/wan/sync/allMaps</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Synchronization for a target cluster operates only with
+the data residing in the memory. Therefore, evicted entries are not
+synchronized, not even if <code>MapLoader</code> is configured.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delta-wan-synchronization"><a class="anchor" href="#delta-wan-synchronization"></a>Delta WAN Synchronization</h3>
+<div class="paragraph">
+<p>As explained in the previous section, the default <a href="#synchronizing-wan-target-cluster">Full WAN Synchronization</a> feature
+synchronizes  the maps in different clusters by transferring all the entries from the source to the target cluster.
+This may be not efficient since some of the entries have remained unchanged on both clusters and
+do not require to be transferred. Also, for the entries to be transferred, they need to be copied to
+on-heap on the source cluster. This may cause spikes in the heap usage, especially if using large off-heap stores.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the default Full WAN Synchronization, Hazelcast provides Delta WAN Synchronization which uses
+<a href="https://en.wikipedia.org/wiki/Merkle_tree" target="_blank" rel="noopener">Merkle tree</a> for the same purpose.
+It is a data structure used for efficient comparison of the difference in the contents of large data structures.
+The precision of this comparison is defined by Merkle tree&#8217;s depth.
+Merkle tree hash exchanges can detect inconsistencies in the map data and
+synchronize only the different entries when using WAN synchronization, instead of sending all the map entries.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently, Delta WAN Synchronization is implemented only for Hazelcast IMap.
+It will be implemented also for ICache in the future releases.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="requirements-for-delta-wan-sync"><a class="anchor" href="#requirements-for-delta-wan-sync"></a>Requirements</h4>
+<div class="paragraph">
+<p>To be able to use Delta WAN synchronization, the following must be met:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Source and target cluster versions must be at least Hazelcast 3.11.</p>
+</li>
+<li>
+<p>Both clusters must have the same number of partitions.</p>
+</li>
+<li>
+<p>Both clusters must use the same partitioning strategy.</p>
+</li>
+<li>
+<p>Both clusters must have the Merkle tree structure enabled.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-delta-wan-synchronization"><a class="anchor" href="#using-delta-wan-synchronization"></a>Using Delta WAN Synchronization</h4>
+<div class="paragraph">
+<p>To be able to use Delta WAN synchronization for a Hazelcast data structure:</p>
+</div>
+<div class="paragraph">
+<p>1 - Configure the WAN synchronization mechanism for your WAN publisher so that
+it uses the Merkle tree: If configuring declaratively, you can use the <code>consistency-check-strategy</code> sub-element of
+the <code>sync</code> element. If configuring programmatically, you can use the setter of the
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/WanSyncConfig.html" target="_blank" rel="noopener">WanSyncConfig</a> object.
+Here is a declarative example:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset2_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+     &lt;wan-replication name="wanReplicationScheme"&gt;
+        &lt;batch-publisher&gt;
+            &lt;cluster-name&gt;clusterName&lt;/cluster-name&gt;
+            &lt;sync&gt;
+                &lt;consistency-check-strategy&gt;MERKLE_TREES&lt;/consistency-check-strategy&gt;
+            &lt;/sync&gt;
+        &lt;/batch-publisher&gt;
+    &lt;/wan-replication&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  wan-replication:
+    wanReplicationScheme:
+      batch-publisher:
+        cluster-name: clusterName
+        sync:
+          consistency-check-strategy: MERKLE_TREES</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>2 - Bind that WAN synchronization configuration to the data structure (currently IMap):
+Simply set the WAN replication reference of your map to the name of the WAN replication
+configuration which uses the Merkle tree.
+Here is a declarative example:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset3_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="myMap"&gt;
+        &lt;wan-replication-ref name="wanReplicationScheme"&gt;
+          ...
+        &lt;/wan-replication-ref&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    myMap:
+      wan-replication-ref:
+        wanReplicationScheme:
+          ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>3 - Finally, configure the Merkle tree using the <code>merkle-tree</code> element which is contained
+in the <code>map</code> configuration:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset4_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="myMap"&gt;
+        &lt;merkle-tree enabled="true"&gt;
+            &lt;depth&gt;5&lt;/depth&gt;
+        &lt;/merkle-tree&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    myMap:
+      merkle-tree:
+        enabled: true
+        depth: 5</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can programmatically configure it, too, using the
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/MerkleTreeConfig.html" target="_blank" rel="noopener">MerkleTreeConfig</a> object.</p>
+</div>
+<div class="paragraph">
+<p>Here is the full declarative configuration example showing how to
+enable Delta WAN Synchronization, bind it to a Hazelcast data structure (an IMap in this case) and specify its depth:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset5_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="myMap"&gt;
+        &lt;wan-replication-ref name="wanReplicationScheme"&gt;
+            ...
+        &lt;/wan-replication-ref&gt;
+        &lt;merkle-tree enabled="true"&gt;
+            &lt;depth&gt;10&lt;/depth&gt;
+        &lt;/merkle-tree&gt;
+    &lt;/map&gt;
+
+    &lt;wan-replication name="wanReplicationScheme"&gt;
+        &lt;batch-publisher&gt;
+            &lt;cluster-name&gt;clusterName&lt;/cluster-name&gt;
+            &lt;sync&gt;
+                &lt;consistency-check-strategy&gt;MERKLE_TREES&lt;/consistency-check-strategy&gt;
+            &lt;/sync&gt;
+        &lt;/batch-publisher&gt;
+    &lt;/wan-replication&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    myMap:
+      wan-replication-ref:
+        wanReplicationScheme:
+          ...
+      merkle-tree:
+        enabled: true
+        depth: 10
+  wan-replication:
+    wanReplicationScheme:
+      batch-publisher:
+        cluster-name: clusterName
+        sync:
+          consistency-check-strategy: MERKLE_TREES</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, the element <code>consistency-check-strategy</code> sets the strategy for
+checking the consistency of data between the source and target clusters.
+You must initiate the WAN synchronization (via Management Center or REST API as explained in
+<a href="#synchronizing-wan-target-cluster">Synchronizing WAN clusters</a>) to let this strategy reconcile the inconsistencies.
+The element <code>consistency-check-strategy</code> has currently two values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NONE</code>: Means that there are no consistency checks. This is the default value.</p>
+</li>
+<li>
+<p><code>MERKLE_TREES</code>: Means that WAN synchronization uses Merkle tree structure.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Merkle tree structure is enabled using its <code>enabled</code> attribute (default is <code>true</code>).
+Its  <code>depth</code> element specifies the depth of Merkle tree. Valid values are between 2 and 27 (exclusive).
+Its default value is <code>10</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A larger depth means that a data synchronization mechanism is able to pinpoint a smaller subset of
+the data structure (e.g., IMap) contents in which a change has occurred.
+This causes the synchronization mechanism to be more efficient.
+However, keep in mind that a large depth means that the Merkle tree will consume more memory.
+As the comparison mechanism is iterative, a larger depth also prolongs the comparison duration.
+Therefore, it is recommended not to have large tree depths if the latency of the comparison operation is high.</p>
+</li>
+<li>
+<p>A smaller depth means that the Merkle tree is shallower and the data synchronization mechanism transfers
+larger chunks of the data structure (e.g., IMap) in which a possible change has happened.
+As you can imagine, a shallower Merkle tree will consume less memory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also see the <a href="#defining-the-depth">Defining the Depth section</a> for more insights.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you do not specifically configure the <code>merkle-tree</code> in your
+Hazelcast configuration, Hazelcast uses the default Merkle tree structure values
+(i.e., it is enabled by default and its default depth is 10) when there is a WAN publisher using
+the Merkle tree (i.e., <code>consistency-check-strategy</code> for a WAN replication configuration is set as
+<code>MERKLE_TREES</code> and there is a data structure using that WAN replication configuration).
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Merkle trees are created for each partition holding IMap data.
+Therefore, increasing the partition count also
+increases the efficiency of the Delta WAN Synchronization.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="the-process"><a class="anchor" href="#the-process"></a>The Process</h5>
+<div class="paragraph">
+<p>Synchronizing the maps based on Merkle trees consists of two phases:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>Consistency check</em>: Process of exchanging and comparing the hashes stored in the Merkle tree structures in the
+source and target clusters. The check starts with the root node and continues recursively with the children with different
+hash codes. Both sides send the children of the nodes that the other side sent, hence the comparison is done by <code>depth/2</code>
+steps. After this check, the tree leaves holding different entries are identified.</p>
+</li>
+<li>
+<p><em>Synchronization</em>: Process of transferring the entries belong to the leaves identified by the <em>consistency
+check</em> from the source to target cluster. On the target cluster the configured merge policy is applied for each entry that
+is in both the source and target clusters.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you only need the differences between the clusters, you can trigger the consistency check without performing
+synchronization.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The two phases of the Merkle tree based synchronization can be triggered by the REST calls, as it can be done with the
+full synchronization.</p>
+</div>
+<div class="paragraph">
+<p>The URL for the consistency check REST call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/consistencyCheck/map</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The URL for the synchronization REST call - the same as it is for the default synchronization:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{member IP address:port}/hazelcast/rest/wan/sync/map</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the REST call details <a href="rest-api.html#synchronizing-the-clusters" class="page">here</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="memory-consumption"><a class="anchor" href="#memory-consumption"></a>Memory Consumption</h5>
+<div class="paragraph">
+<p>Since Merkle trees are built for each partition and each map, the memory overhead of the trees with high entry count and deep
+trees can be significant. The trees are maintained on-heap, therefore - besides the memory consumption - garbage collection could be another
+concern.</p>
+</div>
+<div class="paragraph">
+<p>The table below shows a few examples for what the memory overhead could be.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Merkle trees memory overhead for a member, for one map</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Partitions Owned</th>
+<th class="tableblock halign-left valign-top">Depth</th>
+<th class="tableblock halign-left valign-top">Memory Overhead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">271</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.27 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">271</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">271</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">271</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">68 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5009</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5009</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5009</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">157 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5009</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1252 MB</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="defining-the-depth"><a class="anchor" href="#defining-the-depth"></a>Defining the Depth</h5>
+<div class="paragraph">
+<p>The efficiency of the Delta WAN Synchronization (WAN synchronization based on Merkle trees) is determined by the average number of entries per the tree
+leaves that is proportionate to the number of entries in the map. The bigger this average the more entries are getting
+synchronized for the same difference. Raising the depth decreases this average at the cost of increasing the memory overhead.</p>
+</div>
+<div class="paragraph">
+<p>This average can be calculated for a map as <code>avgEntriesPerLeaf = mapEntryCount / totalLeafCount</code>, where <code>totalLeafCount =
+partitionCount * 2<sup>depth-1</sup></code>. The ideal value is 1, however this may come at significant memory overhead as shown in the
+table above.</p>
+</div>
+<div class="paragraph">
+<p>In order to specify the tree depth, a trade-off between memory consumption and effectiveness might be needed.</p>
+</div>
+<div class="paragraph">
+<p>Even if the map is huge and the Merkle trees are configured to be relatively shallow, the Merkle tree based synchronization
+may be leveraged if only a small subset of the whole map is expected to be synchronized. The table below illustrates the
+efficiency of the Merkle tree based synchronization compared to the default synchronization mechanism.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Efficiency examples</caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Map entry count</th>
+<th class="tableblock halign-left valign-top">Depth</th>
+<th class="tableblock halign-left valign-top">Memory consumption</th>
+<th class="tableblock halign-left valign-top">Avg entries / leaf</th>
+<th class="tableblock halign-left valign-top">Difference count</th>
+<th class="tableblock halign-left valign-top">Entries synced</th>
+<th class="tableblock halign-left valign-top">Efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39 MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0%</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78 MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100%</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150%</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10K</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">160K</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6150%</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78 MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10K</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10K</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">99900%</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>Difference count</code> column shows the number of the entries different in the source and the target clusters.
+This is the minimum number of the entries that need to be synchronized to make the clusters consistent. The <code>Entries synced</code>
+column shows how many entries are synchronized in the given case, calculated as <code>Entries synced</code> = <code>Difference count</code>
+* <code>Avg entries / leaf</code>.</p>
+</div>
+<div class="paragraph">
+<p>As shown in the last two rows, the Merkle tree based synchronization transfers significantly less entries than what the
+default mechanism does even with 8 deep trees. The efficiency with depth 12 is even better but consumes much more memory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The averages in the table are calculated with 5009 partitions.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The average entries per leaf number above assumes perfect distribution of the entries amongst the leaves. Since this is
+typically not true in real-life scenarios the efficiency can be slightly worse. The statistics section below describes how to
+get the actual average for the leaves involved in the synchronization.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="wan-synchronization-statistics"><a class="anchor" href="#wan-synchronization-statistics"></a>WAN Synchronization Statistics</h4>
+<div class="paragraph">
+<p>Both Full and Delta WAN Synchronization processes write statistics into the
+<a href="../management/diagnostics.html" class="page">diagnostics</a> subsystem and send them to Hazelcast Management
+Center. Using these statistics you can measure the efficiency of your configuration.</p>
+</div>
+<div class="paragraph">
+<p>Full WAN Synchronization reports the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Duration of the synchronization</p>
+</li>
+<li>
+<p>Count of the synchronized entries</p>
+</li>
+<li>
+<p>Total count of the synchronized partitions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is an example output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">Synchronization statistics:
+  Synchronization UUID: 8af2f9e7-3f9f-4c31-b594-47c421bfb33c
+  Duration: 0 secs
+  Total records synchronized: 448
+  Total partitions synchronized: 5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Delta WAN Synchronization reports the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Duration of the synchronization</p>
+</li>
+<li>
+<p>Count of the synchronized entries</p>
+</li>
+<li>
+<p>Total count of the synchronized partitions</p>
+</li>
+<li>
+<p>Merkle tree nodes checked</p>
+</li>
+<li>
+<p>Merkle tree nodes found to be different</p>
+</li>
+<li>
+<p>Count of the entries needed to be synchronized to make the clusters consistent</p>
+</li>
+<li>
+<p>Average count of entries per tree leaves in the synchronized leaves</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is an example output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">Merkle synchronization statistics:
+  Synchronization UUID: f49a25ba-dc57-4547-817b-bea67ff7f0fe
+  Duration: 0 secs
+  Total records synchronized: 528
+  Total partitions synchronized: 6
+  Total Merkle tree nodes synchronized: 178
+  Average records per Merkle tree node: 2.97
+  StdDev of records per Merkle tree node: 1.55
+  Minimum records per Merkle tree node: 1
+  Maximum records per Merkle tree node: 7</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="../management/diagnostics.html" class="page">Diagnostics section</a> to learn how to enable
+diagnostics and locate its log file to see the above statistics.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dynamically-adding-wan-publishers"><a class="anchor" href="#dynamically-adding-wan-publishers"></a>Dynamically Adding WAN Publishers</h4>
+<div class="paragraph">
+<p>When running clusters for an extensive period, you might need to
+dynamically change the configuration while the cluster is running.
+This includes dynamically adding new WAN replication publishers (new target clusters) and
+replicating the subsequent map and cache updates to the new publishers without any manual intervention.</p>
+</div>
+<div class="paragraph">
+<p>You can add new WAN publishers to an existing WAN replication using
+almost all of the configuration options that are available when
+configuring the WAN publishers in the static configuration (including using Discovery SPI).
+The new configuration is not persisted but it is replicated to all existing and new members.
+Once the cluster is completely restarted, the dynamically added publisher configuration is lost and
+the updates are not replicated to the target cluster anymore until added again.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to preserve the new configuration over cluster restarts, you must add
+the exact same configuration to the static configuration file after dynamically adding the publisher configuration to a running cluster.</p>
+</div>
+<div class="paragraph">
+<p>You cannot remove the existing configurations but can put the publishers into
+a STOPPED state which prevents the WAN events from being enqueued in the WAN queues and
+prevents the replication, rendering the publisher idle. The configurations also cannot be changed.</p>
+</div>
+<div class="paragraph">
+<p>You can dynamically add a WAN publisher configuration using the
+following REST call URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://{memberIPaddress:port}/hazelcast/rest/wan/addWanConfig</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You need to add the following URL-encoded parameters to the request in the following order separated by "&amp;";</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cluster name</p>
+</li>
+<li>
+<p>Cluster password</p>
+</li>
+<li>
+<p>WAN replication configuration, serialized as JSON</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can, at any point, even when maps and caches are concurrently mutated, add a new WAN publisher to
+an existing WAN replication configuration.
+The limitation is that there must be an existing WAN replication configuration but
+it can be empty, without any publishers (target clusters).
+For instance, this is an example of an XML configuration to which you can dynamically add new publishers:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset6_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;wan-replication name="myWanReplication"&gt;&lt;/wan-replication&gt;
+    &lt;map name="my-map"&gt;
+        &lt;wan-replication-ref name="myWanReplication"&gt;
+            &lt;merge-policy&gt;com.hazelcast.spi.merge.PassThroughMergePolicy&lt;/merge-policy&gt;
+            &lt;republishing-enabled&gt;false&lt;/republishing-enabled&gt;
+       &lt;/wan-replication-ref&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  wan-replication:
+    myWanReplication:
+  map:
+    myMap:
+      wan-replication-ref:
+        myWanReplication:
+          merge-policy: com.hazelcast.spi.merge.PassThroughMergePolicy
+          republishing-enabled: false</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the map has defined WAN replication but there is no target cluster yet.
+You can then add the new WAN replication publishers (target clusters) by
+performing an HTTP POST as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>curl -X POST -d "clusterName&amp;clusterPassword&amp;{...}" --URL http://127.0.0.1:5701/hazelcast/rest/wan/addWanConfig</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can provide the full configuration as JSON as a parameter.
+Any WAN configuration supported in the XML and programmatic configurations is also supported in this JSON format.
+Below are some examples of JSON configuration for a WAN publisher using
+the Discovery SPI and static IP configuration. Here are the integer values for <code>initialPublisherState</code>,
+<code>queueFullBehavior</code> and <code>consistencyCheckStrategy</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>initialPublisherState</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>0: REPLICATING</p>
+</li>
+<li>
+<p>1: PAUSED</p>
+</li>
+<li>
+<p>2: STOPPED</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>queueFullBehavior</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>0: DISCARD_AFTER_MUTATION</p>
+</li>
+<li>
+<p>1: THROW_EXCEPTION</p>
+</li>
+<li>
+<p>2: THROW_EXCEPTION_ONLY_IF_REPLICATION_ACTIVE</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>consistencyCheckStrategy</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>0: NONE</p>
+</li>
+<li>
+<p>1: MERKLE_TREES</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is an example using Discovery SPI (AWS configuration):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{
+   "name":"wanReplication",
+   "publishers":[
+      {
+         "clusterName":"tokyo",
+         "queueCapacity":10000,
+         "queueFullBehavior":0,
+         "initialPublisherState":0,
+         "discovery":{
+            "nodeFilterClass":null,
+            "discoveryStrategy":[
+               {
+                  "className":"com.hazelcast.aws.AwsDiscoveryStrategy",
+                  "properties":{
+                     "security-group-name":"hazelcast",
+                     "tag-value":"cluster1",
+                     "host-header":"ec2.amazonaws.com",
+                     "tag-key":"aws-test-cluster",
+                     "secret-key":"my-secret-key",
+                     "iam-role":"s3access",
+                     "access-key":"my-access-key",
+                     "hz-port":"5701-5708",
+                     "region":"us-west-1"
+                  }
+               }
+            ]
+         }
+      }
+   ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is an example with Discovery SPI (the new AWS configuration)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{
+   "name":"wanReplication",
+   "publishers":[
+      {
+         "clusterName":"tokyo",
+         "queueCapacity":1000,
+         "queueFullBehavior":0,
+         "initialPublisherState":0,
+         "aws":{
+            "enabled":true,
+            "usePublicIp":false,
+            "properties":{
+               "security-group-name":"hazelcast-sg",
+               "tag-value":"hz-nodes",
+               "host-header":"ec2.amazonaws.com",
+               "tag-key":"type",
+               "secret-key":"my-secret-key",
+               "iam-role":"dummy",
+               "access-key":"my-access-key",
+               "region":"us-west-1"
+            }
+         },
+         "sync":{
+            "consistencyCheckStrategy":0
+         }
+      }
+   ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is an example with static IP configuration (with some optional attributes):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{
+   "name":"wanReplication",
+   "publishers":[
+      {
+         "clusterName":"tokyo",
+         "queueCapacity":1000,
+         "queueFullBehavior":0,
+         "initialPublisherState":0,
+         "responseTimeoutMillis":5000,
+         "targetEndpoints":"10.3.5.1:5701, 10.3.5.2:5701",
+         "batchMaxDelayMillis":3000,
+         "batchSize":50,
+         "snapshotEnabled":false,
+         "acknowledgeType":1,
+         "sync":{
+            "consistencyCheckStrategy":0
+         }
+      }
+   ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is an XML configuration with two publishers and several (disabled) discovery strategy configurations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{
+   "name":"wanReplication",
+   "publishers":[
+      {
+         "clusterName":"tokyo",
+         "queueCapacity":1000,
+         "queueFullBehavior":0,
+         "initialPublisherState":0,
+         "aws":{
+            "enabled":true,
+            "usePublicIp":false,
+            "properties":{
+               "security-group-name":"hazelcast-sg",
+               "tag-value":"hz-nodes",
+               "host-header":"ec2.amazonaws.com",
+               "tag-key":"type",
+               "secret-key":"my-secret-key",
+               "iam-role":"dummy",
+               "access-key":"my-access-key",
+               "region":"us-west-1"
+            }
+         },
+         "gcp":{
+            "enabled":false,
+            "usePublicIp":true,
+            "properties":{
+               "gcp-prop":"gcp-val"
+            }
+         },
+         "azure":{
+            "enabled":false,
+            "usePublicIp":true,
+            "properties":{
+               "azure-prop":"azure-val"
+            }
+         },
+         "kubernetes":{
+            "enabled":false,
+            "usePublicIp":true,
+            "properties":{
+               "k8s-prop":"k8s-val"
+            }
+         },
+         "eureka":{
+            "enabled":false,
+            "usePublicIp":true,
+            "properties":{
+               "eureka-prop":"eureka-val"
+            }
+         },
+         "discovery":{
+            "nodeFilterClass":null,
+            "discoveryStrategy":[
+
+            ]
+         },
+         "sync":{
+            "consistencyCheckStrategy":0
+         }
+      },
+      {
+         "clusterName":"london",
+         "queueCapacity":1000,
+         "queueFullBehavior":0,
+         "initialPublisherState":0,
+         "responseTimeoutMillis":5000,
+         "targetEndpoints":"10.3.5.1:5701, 10.3.5.2:5701",
+         "batchMaxDelayMillis":3000,
+         "batchSize":50,
+         "snapshotEnabled":false,
+         "acknowledgeType":1,
+         "aws":{
+            "enabled":false,
+            "usePublicIp":false
+         },
+         "gcp":{
+            "enabled":false,
+            "usePublicIp":false
+         },
+         "azure":{
+            "enabled":false,
+            "usePublicIp":false
+         },
+         "kubernetes":{
+            "enabled":false,
+            "usePublicIp":false
+         },
+         "eureka":{
+            "enabled":false,
+            "usePublicIp":false
+         },
+         "discovery":{
+            "nodeFilterClass":null,
+            "discoveryStrategy":[
+
+            ]
+         },
+         "sync":{
+            "consistencyCheckStrategy":1
+         }
+      }
+   ]
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="event-filtering-api"><a class="anchor" href="#event-filtering-api"></a>Event Filtering API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WAN replication allows you to intercept WAN replication events before they are placed to
+WAN event replication queues by providing a filtering API.
+Using this API, you can monitor WAN replication events of each data structure
+separately.</p>
+</div>
+<div class="paragraph">
+<p>You can attach filters to your data structures using the <code>filter</code> element of
+<code>wan-replication-ref</code> configuration inside <code>hazelcast.xml</code> as shown below.
+You can also configure it using the programmatic configuration.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset7_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="testMap"&gt;
+        &lt;wan-replication-ref name="test"&gt;
+            &lt;filters&gt;
+                &lt;filter-impl&gt;com.example.MyFilter&lt;/filter-impl&gt;
+                &lt;filter-impl&gt;com.example.MyFilter2&lt;/filter-impl&gt;
+            &lt;/filters&gt;
+        &lt;/wan-replication-ref&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    testMap:
+      wan-replication-ref:
+        test:
+          filters:
+            - com.example.MyFilter
+            - com.example.MyFilter2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>As shown in the above configuration, you can define more than one filter. Filters are called in the order that they are introduced.
+A WAN replication event is only eligible to publish if it passes all the filters.</p>
+</div>
+<div class="paragraph">
+<p>Map and Cache have different filter interfaces: <code>MapWanEventFilter</code> and
+<code>CacheWanEventFilter</code>. Both of these interfaces have the method <code>filter</code> which takes the following parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mapName</code>/<code>cacheName</code>: Name of the related data structure.</p>
+</li>
+<li>
+<p><code>entryView</code>: <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/core/EntryView.html" target="_blank" rel="noopener">EntryView</a>
+or <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/cache/CacheEntryView.html" target="_blank" rel="noopener">CacheEntryView</a> depending on the data structure.</p>
+</li>
+<li>
+<p><code>eventType</code>: Enum type - <code>UPDATED(1)</code>, <code>REMOVED(2)</code> or <code>LOADED(3)</code> - depending on the event.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>LOADED</code> events are filtered out and not replicated to target cluster.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="defining-custom-wr"><a class="anchor" href="#defining-custom-wr"></a>Implementing a Custom WAN Publisher</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to using the Hazelcast&#8217;s built-in WAN Replication implementation, you can implement your own replication mechanism using the WAN publisher SPI.</p>
+</div>
+<div class="paragraph">
+<p>Following is the configuration snippet where <code>replicatedMap</code> and <code>replicatedCache</code> use the custom implementation
+<code>com.my.WanPublisher</code> to replicate map and cache updates.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset8_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;wan-replication name="london-wan-rep"&gt;
+        &lt;custom-publisher&gt;
+            &lt;publisher-id&gt;myCustomPublisher&lt;/publisher-id&gt;
+            &lt;class-name&gt;com.my.WanPublisher&lt;/class-name&gt;
+            &lt;properties&gt;
+                &lt;property name="prop1"&gt;val1&lt;/property&gt;
+                &lt;property name="prop2"&gt;val2&lt;/property&gt;
+            &lt;/properties&gt;
+        &lt;/custom-publisher&gt;
+    &lt;/wan-replication&gt;
+
+    &lt;map name="replicatedMap"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"/&gt;
+        ...
+    &lt;/map&gt;
+
+    &lt;cache name="replicatedCache"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"/&gt;
+        ...
+    &lt;/cache&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  wan-replication:
+    london-wan-rep:
+      custom-publisher:
+        publisher-id: myCustomPublisher
+        class-name: com.my.WanPublisher
+        properties:
+          prop1: val1
+          prop2: val2
+  map:
+    replicatedMap:
+      wan-replication-ref:
+        london-wan-rep:
+          ...
+  cache:
+    replicatedCache:
+      wan-replication-ref:
+        london-wan-rep:
+          ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>custom-publisher</code> is used to configure a custom implementation of a WAN replication implementing
+<code>com.hazelcast.wan.WanPublisher</code>. For example, you might implement replication to Kafka or some JMS queue or even
+write out map and cache event changes to a log on disk. It has the following sub-elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class-name</code>: Mandatory configuration value defining the fully qualified class name of the
+WAN publisher implementation. The class must implement <code>com.hazelcast.wan.WanPublisher</code>.</p>
+</li>
+<li>
+<p><code>publisher-id</code>: Mandatory configuration value for the publisher ID used for identifying the
+publisher in a <code>WanReplicationConfig</code>. This ID will be used to refer to this specific WAN publisher in
+a certain WAN replication scheme.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In some cases, specifying the configuration on the source/active cluster is enough to fully implement your use case.
+This is the case when you don&#8217;t have any target/passive Hazelcast cluster which consumes these events. In cases when
+you do have a target Hazelcast cluster and you wish to use a custom WAN Replication implementation, you will need to
+configure the target cluster as well. For example, you might want to implement WAN Replication by transmitting WAN events
+through some JMS queue like ActiveMQ. In this case, you need to implement both your custom WAN publisher and WAN consumer.</p>
+</div>
+<div class="paragraph">
+<p>Below is a configuration example for specifying a custom WAN replication consumer on the target/passive cluster:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset9_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;wan-replication name="london-wan-rep"&gt;
+        &lt;consumer&gt;
+            &lt;class-name&gt;com.my.WanConsumer&lt;/class-name&gt;
+            &lt;properties&gt;
+                &lt;property name="prop1"&gt;val1&lt;/property&gt;
+                &lt;property name="prop2"&gt;val2&lt;/property&gt;
+            &lt;/properties&gt;
+        &lt;/consumer&gt;
+    &lt;/wan-replication&gt;
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset9_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  wan-replication:
+    london-wan-rep:
+      consumer:
+        class-name: com.my.WanConsumer
+        properties:
+          prop1: val1
+          prop2: val2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>consumer</code> is used to configure the implementation of the <code>com.hazelcast.wan.WanConsumer</code> interface
+which will be used to retrieve and process WAN events. A custom WAN consumer allows you to
+define custom processing logic and is used in combination with a custom WAN publisher.</p>
+</div>
+<div class="paragraph">
+<p>The <code>consumer</code> configuration element has the following sub-elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>class-name</code>: Name of the class implementing a custom WAN consumer (<code>com.hazelcast.wan.WanConsumer</code>).</p>
+</li>
+<li>
+<p><code>properties</code>: Properties for the custom WAN consumer. These properties are accessible when initializing the WAN consumer.
+You can define the host, username and password for the host, name of the queue to be polled by the consumer, etc.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="customizing-wan-event-processing-on-passivetarget-cluster"><a class="anchor" href="#customizing-wan-event-processing-on-passivetarget-cluster"></a>Customizing WAN Event Processing on Passive/Target Cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to customizing behavior of the source cluster and how WAN events are sent and retained, you can also
+configure some aspects of how WAN events are processed on the receiving (target/passive) cluster. In addition, you
+can also define a custom implementation of a WAN event consumer. A custom WAN consumer allows you to define custom
+processing logic and is usually used in combination with a custom WAN publisher. A custom consumer is optional and
+you may simply omit defining it which causes the default processing logic to be used. See the
+<a href="#defining-custom-wr">Using the WAN Custom Publisher section</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>Below you can see an example configuration of the target/passive cluster where we configure how incoming WAN events
+are processed.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset10_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset10_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+
+    &lt;wan-replication name="london-wan-rep"&gt;
+        &lt;consumer&gt;
+            &lt;persist-wan-replicated-data&gt;false&lt;/persist-wan-replicated-data&gt;
+        &lt;/consumer&gt;
+    &lt;/wan-replication&gt;
+
+    &lt;map name="replicatedMap"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"/&gt;
+        ...
+    &lt;/map&gt;
+
+    &lt;cache name="replicatedCache"&gt;
+        &lt;wan-replication-ref name="london-wan-rep"/&gt;
+        ...
+    &lt;/cache&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset10_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  wan-replication:
+    london-wan-rep:
+      consumer:
+        persist-wan-replicated-data: false
+  map:
+    replicatedMap:
+      wan-replication-ref:
+        london-wan-rep:
+          ...
+  cache:
+    replicatedCache:
+      wan-replication-ref:
+        london-wan-rep:
+          ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the configuration above you can see that the WAN Replication configuration is again matched by WAN replication
+scheme name to the exact map and cache configuration. This means that different structures can process WAN events
+differently.</p>
+</div>
+<div class="paragraph">
+<p>The processing behavior is configured using the <code>consumer</code> element. It has the following sub-elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>persist-wan-replicated-data</code>: When set to <code>true</code>, an incoming event over WAN replication can be
+persisted to a database for example, otherwise it is not persisted. Default value is <code>true</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="configuring-for-map-and-cache.html">Configuring for IMap and ICache</a></span>
+  <span class="next"><a href="tuning.html">Fine-Tuning WAN Replication</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+  <a href="#yes-feedback" id="yes-button"><i class="far fa-check-circle"></i>  Yes </a>
+  <a href="#no-feedback" id="no-button"><i class="far fa-times-circle"></i>  No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for Advanced Features&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest-dev/docs/modules/wan/pages/advanced-features.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest-dev/docs/modules/wan/pages/advanced-features.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
+
+</aside>
+  </div>
+</main>
+
+</div>
+<footer class="footer">
+  <a>Terms of service</a>
+  <a>Privacy</a>
+  <a>Contact us</a>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
+  </body>
+</html>

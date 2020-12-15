@@ -1,0 +1,3129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How Distributed Query Works Documentation</title>
+    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/imdg/latest-dev/query/how-distributed-query-works.html">
+    <link rel="prev" href="distributed-query.html">
+    <link rel="next" href="custom-attributes.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'GTM-M267KFN', 'auto')
+ga('send', 'pageview')
+</script>
+<!-- End Google Analytics -->
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://jakescahill.github.io/docs-poc"><img src="../../../_/img/hazelcast-logo.svg"></img></a>
+      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+            <div class="navbar-item">
+                <input id="search-input" type="text" placeholder="Search docs">
+                <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a id="search-close"><i class="fa fa-times"  aria-hidden="true"></i></a>
+            </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/platform/">Hazelcast Cloud</a>
+            <a class="navbar-item" href="https://hazelcast.org/imdg/">Hazelcast IMDG</a>
+            <a class="navbar-item" href="https://jet-start.sh">Hazelcast Jet</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://jakescahill.github.io/docs-poc/home/index.html">Docs</a>
+            <a class="navbar-item" href="https://training.hazelcast.com/">Online Training</a>
+            <a class="navbar-item" href="https://hazelcast.com/resources/mastering-hazelcast/">Mastering Hazelcast eBook</a>
+            <a class="navbar-item" href="https://hazelcast.org/resources/">Search All Resources</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources<img class="dropdown-caret" src="../../../_/img/caret-blue.svg"></img></a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://hazelcast.org/hub/">Integration Hub</a>
+            <a class="navbar-item" href="https://hazelcast.org/use-cases/">Use Cases</a>
+            <a class="navbar-item" href="https://hazelcast.org/community/">Community</a>
+            <a class="navbar-item" href="https://hazelcast.org/blog/">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a href="https://hazelcast.com/get-started/"><img class="nav-button" src="../../../_/img/nav-button.svg"></img></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="imdg" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Hazelcast IMDG</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Hazelcast IMDG Reference Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../overview/hazelcast-overview.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/what-is-imdg.html">What is Hazelcast IMDG?</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/topology.html">Topology</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/data-partitioning.html">Data Partitioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/use-cases.html">Use Cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/resources.html">Resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../installation/installing-upgrading.html">Installing and Upgrading</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-maven.html">Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-docker.html">Docker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/installing-using-download-archives.html">Download Archives</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-hazelcast-cloud.html">Hazelcast Cloud</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-kubernetes.html">Kubernetes/OpenShift Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-vmware-tanzu.html">Deploying in VMware Tanzu</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/deploying-in-cloud.html">Deploying in Cloud Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/using-enterprise-edition.html">Using Pro and Enterprise editions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/rolling-upgrades.html">Rolling Member Upgrades</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/running-in-modular-java.html">Running in Modular Java</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../installation/supported-jvms.html">Supported Java Virtual Machines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../starting-members-clients.html">Starting the Members and Clients</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../configuration/understanding-configuration.html">Understanding Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-declaratively.html">Configuring Declaratively</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-programmatically.html">Configuring Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-with-system-properties.html">Configuring with System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/configuring-within-spring.html">Configuring within the Spring Context</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/overriding-configuration-settings.html">Overriding Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/dynamic-data-structure-configuration.html">Dynamically Adding Data Structure Configuration on a Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/checking-configuration.html">Checking Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/pattern-matcher.html">Configuration Pattern Matcher</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-wildcards.html">Using Wildcards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/using-variables.html">Using Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/variable-replacers.html">Variable Replacers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clusters/setting-up-clusters.html">Setting Up Clusters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovery-mechanisms.html">Discovery Mechanisms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-auto-detection.html">Discovering Members by Auto Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-tcp.html">Discovering Members by TCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-by-multicast.html">Discovering Members by Multicast</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/discovering-native-clients.html">Discovering Native Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/creating-clusters.html">Creating Clusters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-on-member.html">Deploying User Code on the Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/deploying-code-from-clients.html">Deploying User Code from Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/accessing-domain-objects.html">Accessing Domain Objects without Domain Classes - BETA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/partition-group-configuration.html">Partition Group Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/logging-configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/network-configuration.html">Other Network Configurations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/failure-detector-configuration.html">Failure Detector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clusters/advanced-network-configuration.html">Advanced Network Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../data-structures/distributed-data-structures.html">Distributed Data Structures</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/overview.html">Overview of Hazelcast Distributed Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/map.html">Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/queue.html">Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/priority-queue.html">Priority Queue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/multimap.html">MultiMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/set.html">Set</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/list.html">List</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/ringbuffer.html">Ringbuffer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/topic.html">Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/reliable-topic.html">Reliable Topic</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomiclong.html">IAtomicLong</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/isemaphore.html">ISemaphore</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/iatomicreference.html">IAtomicReference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/icountdownlatch.html">ICountDownLatch</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/pn-counter.html">PN Counter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/flake-id-generator.html">Flake ID Generator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/replicated-map.html">Replicated Map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/cardinality-estimator-service.html">Cardinality Estimator Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../data-structures/event-journal.html">Event Journal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../events/distributed-events.html">Distributed Events</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/cluster-events.html">Cluster Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/object-events.html">Distributed Object Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/event-listeners-for-clients.html">Event Listeners for Hazelcast Clients</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../events/global-event-configuration.html">Global Event Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hazelcast-jet.html">Hazelcast Jet</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../computing/distributed-computing.html">Distributed Computing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/executor-service.html">Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/durable-executor-service.html">Durable Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/scheduled-executor-service.html">Scheduled Executor Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../computing/entry-processor.html">Entry Processor</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sql/distributed-sql.html">SQL</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/querying-imap.html">Querying IMap</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/data-types.html">Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/select-statement.html">SELECT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/expressions.html">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/lite-members.html">Lite Members</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/how-distributed-sql-works.html">How Distributed SQL Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sql/sql-and-high-density-memory.html">SQL on Data Structures Backed by High-Density Memory Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="distributed-query.html">Distributed Query</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="how-distributed-query-works.html">How Distributed Query Works</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="custom-attributes.html">Custom Attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="aggregations.html">Aggregations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="projections.html">Projections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="continuous-query-cache.html">Continuous Query Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mapreduce-deprecation-and-removal.html">MapReduce Deprecation and Removal</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cp-subsystem/cp-subsystem.html">CP Subsystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/discovery-process.html">CP Discovery Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/persistence.html">CP Subsystem Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/member-shutdown.html">CP Member Shutdown</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fault-tolerance.html">CP Subsystem&#8217;s Fault Tolerance Capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/listeners.html">CP Subsystem Listeners</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/sessions.html">CP Sessions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/fencedlock.html">FencedLock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/unsafe-mode.html">CP Subsystem Unsafe Mode</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cp-subsystem/management.html">CP Subsystem Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transactions/transactions.html">Transactions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/creating-a-transaction-interface.html">Creating a Transaction Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transactions/providing-xa-transactions.html">Providing XA Transactions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jcache/jcache.html">Hazelcast JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/overview.html">JCache Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/setup.html">JCache Setup and Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/providers.html">JCache Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/api.html">JCache API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/hazelcast-integration.html">JCache - Hazelcast Instance Integration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/icache.html">Hazelcast JCache Extension - ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jcache/tck.html">Testing for JCache Specification Compliance</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../integrated-clustering/integrated-clustering.html">Integrated Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/hibernate-second-level-cache.html">Integration with Hibernate Second Level Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/web-session-replication.html">Web Session Replications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/javaee.html">Integration with Java EE</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../integrated-clustering/spring.html">Integration with Spring</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../storage/storage.html">Storage</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/high-density-memory.html">High-Density Memory Store</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/sizing-practices.html">Sizing Practices</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../storage/hot-restart-persistence.html">Hot Restart Persistence</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../striim-cdc.html">Database CDC Integration Using Striim Hot Cache</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../clients/hazelcast-clients.html">Hazelcast Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/java.html">Java Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/cplusplus.html">C++ Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/dotnet.html">.NET Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/rest.html">REST Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/memcache.html">Memcache Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/python.html">Python Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/nodejs.html">Node.js Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../clients/go.html">Go Client</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../serialization/serialization.html">Serialization</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/interface-types.html">Serialization Interface Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/comparing-interfaces.html">Comparing Serialization Interfaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-java-serializable.html">Implementing Java Serializable and Externalizable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-dataserializable.html">Implementing DataSerializable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-portable-serialization.html">Implementing Portable Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/custom-serialization.html">Custom Serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/global-serializer.html">Global Serializer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/implementing-hazelcastinstanceaware.html">Implementing HazelcastInstanceAware</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/untrusted-deserialization-protection.html">Untrusted Deserialization Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../serialization/serialization-configuration.html">Serialization Configuration Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../management/management.html">Management</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/member-statistics.html">Getting Member Statistics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-api.html">JMX API per Member</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/jmx-monitoring.html">Monitoring with JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/rest-endpoint-groups.html">Using the REST Endpoint Groups</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/cluster-utilities.html">Cluster Utilities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/metrics.html">Metrics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/diagnostics.html">Diagnostics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/health-check-monitoring.html">Health Check and Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/management-center.html">Management Center</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/license-info.html">License Information</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../management/instance-tracking.html">Instance Tracking</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/enabling-jaas.html">Enabling JAAS Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/socket-interceptor.html">Socket Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-interceptor.html">Security Interceptor</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/encryption.html">Encryption</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-ssl.html">TLS/SSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/integrating-openssl.html">Integrating OpenSSL / BoringSSL</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/tls-configuration.html">Other TLS related configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/validating-secrets.html">Validating Secrets Using Strength Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-realms.html">Security Realms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/jaas-authentication.html">JAAS authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/cluster-member-security.html">Cluster Member Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/default-authentication.html">Default authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/native-client-security.html">Native Client Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/logging-auditable-events.html">Logging Auditable Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/security-debugging.html">Security Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/fips-140-2.html">FIPS 140-2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../performance/performance.html">Performance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/pipelining.html">Pipelining</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/data-affinity.html">Data Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/cpu-thread-affinity.html">CPU Thread Affinity</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/running-on-ec2.html">Running on EC2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/back-pressure.html">Back Pressure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/threading-model.html">Threading Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/slowoperationdetector.html">SlowOperationDetector</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/near-cache.html">Near Cache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../performance/caching-deserialized-values.html">Caching Deserialized Values</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../simulator.html">Hazelcast Simulator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../wan/wan.html">WAN Replication</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/modes.html">WAN Replication Modes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/quick-start.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/defining-wan-replication.html">Configuring WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/configuring-for-map-and-cache.html">Configuring for IMap and ICache</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/advanced-features.html">Advanced Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/tuning.html">Fine-Tuning WAN Replication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/failures.html">Failure Detection and Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../wan/rest-api.html">REST API Wrap-Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../osgi/osgi.html">OSGI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/osgi-support.html">OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/configuring-osgi-support.html">Configuring Hazelcast OSGI Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/design.html">Design</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../osgi/using-osgi-service.html">Using Hazelcast OSGI Service</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extending-hazelcast/extending-hazelcast.html">Extending Hazelcast</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/operationparker.html">OperationParker</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/discovery-spi.html">Discovery SPI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extending-hazelcast/config-properties-spi.html">Config Properties SPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/hazelcast-plugins.html">Hazelcast Plugins</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/cloud-discovery.html">Cloud Discovery Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/web-session-replication.html">Web Session Replication Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/framework-integration.html">Framework Integration Plugins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/other-integrations.html">Other Integrations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../consistency-and-replication/consistency.html">Consistency and Replication Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/replication-algorithm.html">Hazelcast&#8217;s Replication Algorithm</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/invocation-lifecycle.html">Invocation Lifecycle</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/exactly-once-execution.html">Exactly-once, At-least-once or At-most-once Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../consistency-and-replication/indeterminateoperationstateexception.html">IndeterminateOperationStateException</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../network-partitioning/network-partitioning.html">Network Partitioning</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/dealing-with-network-partitions.html">Dealing with Network Partitions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-protection.html">Split-Brain Protection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/split-brain-recovery.html">Split-Brain Recovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../network-partitioning/partial-network-partitions.html">Partial Network Partitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../system-properties.html">Appendix A: System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration-guides.html">Appendix B: Migration Guides</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../common-exception-types.html">Appendix C: Common Exception Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../licenses.html">Appendix D: License Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../phone-homes.html">Appendix E: Phone Homes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">Appendix F: Frequently Asked Questions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../revision-history.html">Appendix G: Document Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Hazelcast IMDG</span>
+    <span class="version">4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Hazelcast IMDG</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../latest-dev/index.html">4.1</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.3/index.html">4.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.2/index.html">4.0.2</a>
+        </li>
+        <li class="version">
+          <a href="../../4.0.1/index.html">4.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../4/index.html">4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.11/index.html">3.12.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.10/index.html">3.12.10</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.9/index.html">3.12.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.8/index.html">3.12.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.7/index.html">3.12.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.6/index.html">3.12.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.5/index.html">3.12.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.4/index.html">3.12.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.3/index.html">3.12.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.2/index.html">3.12.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12.1/index.html">3.12.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.12/index.html">3.12</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.7/index.html">3.11.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.6/index.html">3.11.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.5/index.html">3.11.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.4/index.html">3.11.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.3/index.html">3.11.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.2/index.html">3.11.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11.1/index.html">3.11.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.11/index.html">3.11</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.7/index.html">3.10.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.6/index.html">3.10.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.5/index.html">3.10.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.4/index.html">3.10.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.3/index.html">3.10.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.2/index.html">3.10.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.10.1/index.html">3.10.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.4/index.html">3.9.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.3/index.html">3.9.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.2/index.html">3.9.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9.1/index.html">3.9.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.9/index.html">3.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.9/index.html">3.8.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.8/index.html">3.8.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.7/index.html">3.8.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.6/index.html">3.8.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.5/index.html">3.8.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.4/index.html">3.8.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.3/index.html">3.8.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.2/index.html">3.8.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8.1/index.html">3.8.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.8/index.html">3.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.8/index.html">3.7.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.7/index.html">3.7.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.6/index.html">3.7.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.5/index.html">3.7.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.4/index.html">3.7.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.3/index.html">3.7.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.2/index.html">3.7.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7.1/index.html">3.7.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.7/index.html">3.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.8/index.html">3.6.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.7/index.html">3.6.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.6/index.html">3.6.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.5/index.html">3.6.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.4/index.html">3.6.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.3/index.html">3.6.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.2/index.html">3.6.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6.1/index.html">3.6.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.6/index.html">3.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.5/index.html">3.5.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.4/index.html">3.5.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.3/index.html">3.5.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.2/index.html">3.5.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5.1/index.html">3.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.5/index.html">3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.8/index.html">3.4.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.7/index.html">3.4.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.6/index.html">3.4.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.5/index.html">3.4.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.4/index.html">3.4.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.3/index.html">3.4.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.2/index.html">3.4.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4.1/index.html">3.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.4/index.html">3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.5/index.html">3.3.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.4/index.html">3.3.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.2/index.html">3.3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3.1/index.html">3.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.3/index.html">3.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.7/index.html">3.2.7</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.6/index.html">3.2.6</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.5/index.html">3.2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.4/index.html">3.2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.3/index.html">3.2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.2/index.html">3.2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2.1/index.html">3.2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.2/index.html">3.2</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.9/index.html">3.1.9</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1.8/index.html">3.1.8</a>
+        </li>
+        <li class="version">
+          <a href="../../3.1/index.html">3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../3.0.3/index.html">3.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.6.9/index.html">2.6.9</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5.1/index.html">2.5.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.5/index.html">2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4.1/index.html">2.4.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4/index.html">2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3.1/index.html">2.3.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3/index.html">2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.2/index.html">2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1.3/index.html">2.1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1/index.html">2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0.4/index.html">2.0.4</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <span class="title">Home</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../home/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../home/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Hazelcast IMDG</a></li>
+    <li><a href="distributed-query.html">Distributed Query</a></li>
+    <li><a href="how-distributed-query-works.html">How Distributed Query Works</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">4.1</button>
+  <div class="version-menu">
+        <a class="version" href="../../latest-dev/query/how-distributed-query-works.html">4.1</a>
+        <a class="version is-current" href="how-distributed-query-works.html">4.1</a>
+        <a class="version is-missing" href="../../4.0.3/index.html">4.0.3</a>
+        <a class="version is-missing" href="../../4.0.2/index.html">4.0.2</a>
+        <a class="version is-missing" href="../../4.0.1/index.html">4.0.1</a>
+        <a class="version is-missing" href="../../4/index.html">4</a>
+        <a class="version is-missing" href="../../3.12.11/index.html">3.12.11</a>
+        <a class="version is-missing" href="../../3.12.10/index.html">3.12.10</a>
+        <a class="version is-missing" href="../../3.12.9/index.html">3.12.9</a>
+        <a class="version is-missing" href="../../3.12.8/index.html">3.12.8</a>
+        <a class="version is-missing" href="../../3.12.7/index.html">3.12.7</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">How Distributed Query Works</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The requested predicate is sent to each member in the cluster.
+Each member looks at its own local entries and filters them according
+to the predicate. At this stage, key/value pairs of the entries are
+deserialized and then passed to the predicate.
+The predicate requester merges all the results coming from each
+member into a single set.</p>
+</div>
+<div class="paragraph">
+<p>Distributed query is highly scalable. If you add new members to the
+cluster, the partition count for each member is reduced and thus the
+time spent by each member on iterating its entries is reduced. In addition,
+the pool of partition threads evaluates the entries concurrently in each
+member and the network traffic is also reduced since only filtered data
+is sent to the requester.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast offers the following APIs for distributed query purposes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Criteria API</p>
+</li>
+<li>
+<p>Distributed SQL Query</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="employee-map-query-example"><a class="anchor" href="#employee-map-query-example"></a>Employee Map Query Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Assume that you have an "employee" map containing values of
+<code>Employee</code> objects, as coded below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Employee implements Serializable {
+    private String name;
+    private int age;
+    private boolean active;
+    private double salary;
+
+    public Employee(String name, int age, boolean active, double salary) {
+        this.name = name;
+        this.age = age;
+        this.active = active;
+        this.salary = salary;
+    }
+
+    public Employee() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s look for the employees who are active and have an age less
+than 30 using the aforementioned APIs (Criteria API and Distributed
+SQL Query). The following subsections describe each query mechanism
+for this example.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When using Portable objects, if one field of an object exists
+on one member but does not exist on another one, Hazelcast does not
+throw an unknown field exception.
+Instead, Hazelcast treats that predicate, which tries to perform a
+query on an unknown field, as an always false predicate.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="querying-with-criteria-api"><a class="anchor" href="#querying-with-criteria-api"></a>Querying with Criteria API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Criteria API is a programming interface offered by Hazelcast that
+is similar to the Java Persistence Query Language (JPQL). Below
+is the code for the <a href="#employee-map-query-example">above example query</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IMap&lt;String, Employee&gt; map = hazelcastInstance.getMap( "employee" );
+
+EntryObject e = Predicates.newPredicateBuilder().getEntryObject();
+Predicate predicate = e.is( "active" ).and( e.get( "age" ).lessThan( 30 ) );
+
+Collection&lt;Employee&gt; employees = map.values( predicate );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example code, <code>predicate</code> verifies whether the entry is
+active and its <code>age</code> value is less than 30. This <code>predicate</code> is
+applied to the <code>employee</code> map using the <code>map.values(predicate)</code> method.
+This method sends the predicate to all cluster members
+and merges the results coming from them. Since the predicate is
+communicated between the members, it needs to
+be serializable.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Predicates can also be applied to <code>keySet</code>, <code>entrySet</code> and
+<code>localKeySet</code> of the Hazelcast distributed map.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="predicates-class-operators"><a class="anchor" href="#predicates-class-operators"></a>Predicates Class Operators</h3>
+<div class="paragraph">
+<p>The <code>Predicates</code> class includes many operators for your query requirements.
+The following are descriptions for some of them:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>equal</code>: Checks if the result of an expression is equal to a given value.</p>
+</li>
+<li>
+<p><code>notEqual</code>: Checks if the result of an expression is not equal to a given value.</p>
+</li>
+<li>
+<p><code>instanceOf</code>: Checks if the result of an expression has a certain type.</p>
+</li>
+<li>
+<p><code>like</code>: Checks if the result of an expression matches some string pattern. %
+(percentage sign) is the placeholder for many characters,  (underscore) is
+placeholder for only one character.</p>
+</li>
+<li>
+<p><code>ilike</code>: A case-insensitive variant of <code>like</code>.</p>
+</li>
+<li>
+<p><code>greaterThan</code>: Checks if the result of an expression is greater than a
+certain value.</p>
+</li>
+<li>
+<p><code>greaterEqual</code>: Checks if the result of an expression is greater than or
+equal to a certain value.</p>
+</li>
+<li>
+<p><code>lessThan</code>: Checks if the result of an expression is less than a certain
+value.</p>
+</li>
+<li>
+<p><code>lessEqual</code>: Checks if the result of an expression is less than or equal
+to a certain value.</p>
+</li>
+<li>
+<p><code>between</code>: Checks if the result of an expression is between two values
+(this is inclusive).</p>
+</li>
+<li>
+<p><code>in</code>: Checks if the result of an expression is an element of a certain
+collection.</p>
+</li>
+<li>
+<p><code>isNot</code>: Checks if the result of an expression is false.</p>
+</li>
+<li>
+<p><code>regex</code>: Checks if the result of an expression matches some regular
+expression.</p>
+</li>
+<li>
+<p><code>alwaysTrue</code>: The result of an expression always matches.</p>
+</li>
+<li>
+<p><code>alwaysFalse</code>: The result of an expression ever matches.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/query/Predicates.html" target="_blank" rel="noopener">Predicates Javadoc</a>
+for all predicates provided.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="combining-predicates-with-and-or-not"><a class="anchor" href="#combining-predicates-with-and-or-not"></a>Combining Predicates with AND, OR, NOT</h3>
+<div class="paragraph">
+<p>You can combine predicates using the <code>and</code>, <code>or</code> and <code>not</code> operators,
+as shown in the below examples.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public Collection&lt;Employee&gt; getWithNameAndAge( String name, int age ) {
+    Predicate namePredicate = Predicates.equal( "name", name );
+    Predicate agePredicate = Predicates.equal( "age", age );
+    Predicate predicate = Predicates.and( namePredicate, agePredicate );
+    return employeeMap.values( predicate );
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public Collection&lt;Employee&gt; getWithNameOrAge( String name, int age ) {
+    Predicate namePredicate = Predicates.equal( "name", name );
+    Predicate agePredicate = Predicates.equal( "age", age );
+    Predicate predicate = Predicates.or( namePredicate, agePredicate );
+    return employeeMap.values( predicate );
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public Collection&lt;Employee&gt; getNotWithName( String name ) {
+    Predicate namePredicate = Predicates.equal( "name", name );
+    Predicate predicate = Predicates.not( namePredicate );
+    return employeeMap.values( predicate );
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="simplifying-with-predicatebuilder"><a class="anchor" href="#simplifying-with-predicatebuilder"></a>Simplifying with PredicateBuilder</h3>
+<div class="paragraph">
+<p>You can simplify predicate usage with the <code>PredicateBuilder</code> interface,
+which offers simpler predicate building. See the
+below example code which selects all people with a certain name and age.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public Collection&lt;Employee&gt; getWithNameAndAgeSimplified( String name, int age ) {
+    EntryObject e = Predicates.newPredicateBuilder().getEntryObject();
+    Predicate agePredicate = e.get( "age" ).equal( age );
+    Predicate predicate = e.get( "name" ).equal( name ).and( agePredicate );
+    return employeeMap.values( predicate );
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="querying-with-sql"><a class="anchor" href="#querying-with-sql"></a>Querying with SQL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Predicates.sql()</code> takes the regular SQL <code>where</code> clause.
+Here is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IMap&lt;String, Employee&gt; map = hazelcastInstance.getMap( "employee" );
+Set&lt;Employee&gt; employees = map.values( Predicates.sql( "active AND age &lt; 30" ) );</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Hazelcast offers an SQL service that allows to execute SQL queries,
+as opposed to SQL-like predicates in case of <code>Predicates.sql()</code>. See the
+<a href="../sql/distributed-sql.html" class="page">SQL chapter</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="supported-sql-syntax"><a class="anchor" href="#supported-sql-syntax"></a>Supported SQL Syntax</h3>
+<div class="paragraph">
+<p><strong>AND/OR:</strong> `&lt;expression&gt; AND &lt;expression&gt; AND &lt;expression&gt;&#8230;&#8203; `</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>active AND age&gt;30</code></p>
+</li>
+<li>
+<p><code>active=false OR age = 45 OR name = 'Joe'</code></p>
+</li>
+<li>
+<p><code>active AND ( age &gt; 20 OR salary &lt; 60000 )</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Equality:</strong> <code>=, !=, &lt;, &#8656;, &gt;, &gt;=</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;expression&gt; = value</code></p>
+</li>
+<li>
+<p><code>age &#8656; 30</code></p>
+</li>
+<li>
+<p><code>name = 'Joe'</code></p>
+</li>
+<li>
+<p><code>salary != 50000</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>BETWEEN: </strong> <code>&lt;attribute&gt; [NOT] BETWEEN &lt;value1&gt; AND &lt;value2&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>age BETWEEN 20 AND 33 ( same as age &gt;= 20  AND age &#8656; 33 )</code></p>
+</li>
+<li>
+<p><code>age NOT BETWEEN 30 AND 40 ( same as age &lt; 30 OR age &gt; 40 )</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>IN:</strong> <code>&lt;attribute&gt; [NOT] IN (val1, val2,&#8230;&#8203;)</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>age IN ( 20, 30, 40 )</code></p>
+</li>
+<li>
+<p><code>age NOT IN ( 60, 70 )</code></p>
+</li>
+<li>
+<p><code>active AND ( salary &gt;= 50000 OR ( age NOT BETWEEN 20 AND 30 ) )</code></p>
+</li>
+<li>
+<p><code>age IN ( 20, 30, 40 ) AND salary BETWEEN ( 50000, 80000 )</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>LIKE:</strong> <code>&lt;attribute&gt; [NOT] LIKE "expression"</code></p>
+</div>
+<div class="paragraph">
+<p>The <code>%</code> (percentage sign) is placeholder for multiple characters,
+an <code>_</code> (underscore) is placeholder for only one character.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name LIKE 'Jo%'</code> (true for 'Joe', 'Josh', 'Joseph' etc.)</p>
+</li>
+<li>
+<p><code>name LIKE 'Jo_'</code> (true for 'Joe'; false for 'Josh')</p>
+</li>
+<li>
+<p><code>name NOT LIKE 'Jo_'</code> (true for 'Josh'; false for 'Joe')</p>
+</li>
+<li>
+<p><code>name LIKE 'J_s%'</code> (true for 'Josh', 'Joseph'; false 'John', 'Joe')</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>ILIKE:</strong> <code>&lt;attribute&gt; [NOT] ILIKE 'expression'</code></p>
+</div>
+<div class="paragraph">
+<p>Similar to LIKE predicate but in a case-insensitive manner.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name ILIKE 'Jo%'</code> (true for 'Joe', 'joe', 'jOe','Josh','joSH', etc.)</p>
+</li>
+<li>
+<p><code>name ILIKE 'Jo_'</code> (true for 'Joe' or 'jOE'; false for 'Josh')</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>REGEX</strong>: <code>&lt;attribute&gt; [NOT] REGEX 'expression'</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name REGEX 'abc-.*'</code> (true for 'abc-123'; false for 'abx-123')</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can escape the <code>%</code> and <code>_</code> placeholder characters in your
+SQL queries with predicates using the
+backslash (<code>\</code>) character. The apostrophe (<code>'</code>) can be escaped with another
+apostrophe, i.e., <code>''</code>. If you use REGEX, you need to escape characters
+according to the normal Java escape syntax; see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html" target="_blank" rel="noopener">here</a>
+for the details.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="querying-entry-keys-with-predicates"><a class="anchor" href="#querying-entry-keys-with-predicates"></a>Querying Entry Keys with Predicates</h3>
+<div class="paragraph">
+<p>You can use <code>__key</code> attribute to perform a predicated search for entry
+keys. See the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IMap&lt;String, Person&gt; personMap = hazelcastInstance.getMap(persons);
+personMap.put("Alice", new Person("Alice", 35, Gender.FEMALE));
+personMap.put("Andy",  new Person("Andy",  37, Gender.MALE));
+personMap.put("Bob",   new Person("Bob",   22, Gender.MALE));
+[...]
+Predicate predicate = Predicates.sql("__key like A%");
+Collection&lt;Person&gt; startingWithA = personMap.values(predicate);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the code creates a collection with the entries whose
+keys start with the letter "A”.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="querying-json-strings"><a class="anchor" href="#querying-json-strings"></a>Querying JSON Strings</h3>
+<div class="paragraph">
+<p>You can query JSON strings stored inside your Hazelcast clusters. To
+query a JSON string,
+you first need to create a <code>HazelcastJsonValue</code> from the JSON string.
+You can use <code>HazelcastJsonValue</code>s both as keys and values in the
+distributed data structures. Then, it is
+possible to query these objects using the Hazelcast query methods
+explained in this section.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String person1 = "{ \"name\": \"John\", \"age\": 35 }";
+String person2 = "{ \"name\": \"Jane\", \"age\": 24 }";
+String person3 = "{ \"name\": \"Trey\", \"age\": 17 }";
+
+IMap&lt;Integer, HazelcastJsonValue&gt; idPersonMap = instance.getMap("jsonValues");
+
+idPersonMap.put(1, new HazelcastJsonValue(person1));
+idPersonMap.put(2, new HazelcastJsonValue(person2));
+idPersonMap.put(3, new HazelcastJsonValue(person3));
+
+Collection&lt;HazelcastJsonValue&gt; peopleUnder21 = idPersonMap.values(Predicates.lessThan("age", 21));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When running the queries, Hazelcast treats values extracted from
+the JSON documents as Java types so they
+can be compared with the query attribute. JSON specification
+defines five primitive types to be used in the JSON
+documents: <code>number</code>,<code>string</code>, <code>true</code>, <code>false</code> and <code>null</code>. The <code>string</code>,
+<code>true/false</code> and <code>null</code> types are treated
+as <code>String</code>, <code>boolean</code> and <code>null</code>, respectively. We treat the extracted
+<code>number</code> values as <code>long</code>s if they
+can be represented by a <code>long</code>. Otherwise, <code>number</code>s are treated
+as <code>double</code>s.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to query nested attributes and arrays in JSON documents.
+The query syntax is the same
+as querying other Hazelcast objects as explained in the
+<a href="querying-collections-and-arrays.html" class="page">Querying in Collections and Arrays section</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">/**
+ * Sample JSON object
+ *
+ * {
+ *     "departmentId": 1,
+ *     "room": "alpha",
+ *     "people": [
+ *         {
+ *             "name": "Peter",
+ *             "age": 26,
+ *             "salary": 50000
+ *         },
+ *         {
+ *             "name": "Jonah",
+ *             "age": 50,
+ *             "salary": 140000
+ *         }
+ *     ]
+ * }
+ *
+ *
+ * The following query finds all the departments that have a person named "Peter" working in them.
+ */
+Collection&lt;HazelcastJsonValue&gt; departmentWithPeter = departments.values(Predicates.equal("people[any].name", "Peter"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>HazelcastJsonValue</code> is a lightweight wrapper around your JSON strings.
+It is used merely as a way to indicate
+that the contained string should be treated as a valid JSON value.
+Hazelcast does not check the validity of JSON
+strings put into to maps. Putting an invalid JSON string in a map is
+permissible. However, in that case
+whether such an entry is going to be returned or not from a query is not defined.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="metadata-creation-for-json-querying"><a class="anchor" href="#metadata-creation-for-json-querying"></a>Metadata Creation for JSON Querying</h3>
+<div class="paragraph">
+<p>Hazelcast stores a metadata object per <code>HazelcastJsonValue</code> stored.
+This metadata object is created every time
+a <code>HazelcastJsonValue</code> is put into an IMap. Metadata is later used
+to speed up the query operations. Metadata creation
+is on by default. Depending on your application&#8217;s needs, you may want
+to turn off the metadata creation
+to decrease the put latency and increase the throughput. You can configure
+this using <a href="../data-structures/map.html#metadata-policy" class="page">Metadata Policy</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+JSON metadata is stored on-heap even when you use the <code>NATIVE</code>
+in-memory format. If you are storing
+<code>HazelcastJsonValue</code>s in your <code>NATIVE</code> maps, there is a certain
+amount of on-heap cost per object. Metadata is not created unless you
+put <code>HazelcastJsonValue</code>s in your <code>NATIVE</code> maps even when metadata
+creation is on.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="filtering-with-paging-predicates"><a class="anchor" href="#filtering-with-paging-predicates"></a>Filtering with Paging Predicates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast provides paging for defined predicates. With its <code>PagingPredicate</code>
+interface, you can
+get a collection of keys, values, or entries page by page by filtering
+them with predicates and giving the size of the pages. Also, you
+can sort the entries by specifying comparators. In this case, the comparator
+should be <code>Serializable</code> and the serialization factory implementations you use,
+e.g., <code>PortableFactory</code> and <code>DataSerializableFactory</code>, should be registered.
+See the <a href="../serialization/serialization.html" class="page">Serialization chapter</a> on how to register these
+factories.</p>
+</div>
+<div class="paragraph">
+<p>Paging predicates require the objects to be deserialized both on the calling
+side (either a member or client) and the member side from which the collection
+is retrieved. Therefore, you need to register the serialization factories
+you use on all the members and clients on which the paging predicates are used.
+See the <a href="../serialization/serialization.html" class="page">Serialization chapter</a> on how to register these
+factories.</p>
+</div>
+<div class="paragraph">
+<p>In the example code below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>greaterEqual</code> predicate gets values from the "students" map. This
+predicate has a filter
+to retrieve the objects with an "age" greater than or equal to 18.</p>
+</li>
+<li>
+<p>Then a <code>PagingPredicate</code> is constructed in which the page size is 5,
+so that there are five objects in each page.
+The first time the values are called creates the first page.</p>
+</li>
+<li>
+<p>It gets subsequent pages with the <code>nextPage()</code>
+method of <code>PagingPredicate</code> and querying the map again with the
+updated <code>PagingPredicate</code>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IMap&lt;Integer, Student&gt; map = hazelcastInstance.getMap( "students" );
+Predicate greaterEqual = Predicates.greaterEqual( "age", 18 );
+PagingPredicate pagingPredicate = Predicates.pagingPredicate( greaterEqual, 5 );
+// Retrieve the first page
+Collection&lt;Student&gt; values = map.values( pagingPredicate );
+...
+// Set up next page
+pagingPredicate.nextPage();
+// Retrieve next page
+values = map.values( pagingPredicate );
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a comparator is not specified for <code>PagingPredicate</code>, but you want
+to get a collection of keys or values page by page, this collection must
+be an instance of <code>Comparable</code> (i.e., it must implement <code>java.lang.Comparable</code>).
+Otherwise, the <code>java.lang.IllegalArgument</code> exception is thrown.</p>
+</div>
+<div class="paragraph">
+<p>You can also access a specific page more
+easily with the help of the <code>setPage()</code> method. This way, if you make
+a query for the hundredth page, for example, it gets all 100 pages at
+once instead of reaching the hundredth page one by one using the <code>nextPage()</code> method.
+Note that this feature tires the memory and see the
+<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/query/PagingPredicate.html" target="_blank" rel="noopener">PagingPredicate Javadoc</a>.</p>
+</div>
+<div class="paragraph">
+<p>Paging Predicate, also known as Order &amp; Limit, is not supported in
+Transactional Context.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="filtering-with-partition-predicate"><a class="anchor" href="#filtering-with-partition-predicate"></a>Filtering with Partition Predicate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can run queries on a single partition in your cluster using
+the partition predicate (<code>PartitionPredicate</code>).</p>
+</div>
+<div class="paragraph">
+<p>The <code>Predicates.partitionPredicate()</code> method takes a predicate and partition key
+as parameters, gets the partition ID using the key and  runs that predicate only
+on the partition where that key belongs.</p>
+</div>
+<div class="paragraph">
+<p>See the following code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">...
+Predicate predicate = Predicates.partitionPredicate(partitionKey, Predicates.alwaysTrue());
+
+Collection&lt;Integer&gt; values = map.values(predicate);
+Collection&lt;String&gt; keys = map.keySet(predicate);
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default there are 271 partitions, and using a regular predicate,
+each partition needs to be accessed. However, if the
+partition predicate only accesses a single partition, this can lead
+to a big performance gain.</p>
+</div>
+<div class="paragraph">
+<p>For the partition predicate to work correctly, you need to know which
+partition your data belongs to so that you can send the
+request to the correct partition. One of the ways of doing it is to
+make use of the <code>PartitionAware</code> interface when data is
+inserted, thereby controlling the owning partition. See the
+<a href="../performance/data-affinity.html#partitionaware" class="page">PartitionAware section</a> for more information and examples.</p>
+</div>
+<div class="paragraph">
+<p>A concrete example may be a web shop that sells phones and accessories.
+To find all the accessories of a phone,
+a query could be executed that selects all accessories for that phone.
+This query is executed on all members in the cluster and
+therefore could generate quite a lot of load. However, if we would store
+the accessories in the same partition as the phone, the
+partition predicate could use the <code>partitionKey</code> of the phone to select
+the right partition and then it queries for
+the accessories for that phone; and this reduces the load on the system
+and get faster query results.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="indexing-queries"><a class="anchor" href="#indexing-queries"></a>Indexing Queries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hazelcast distributed queries run on each member in parallel and return
+only the results to the caller.
+Then, on the caller side, the results are merged.</p>
+</div>
+<div class="paragraph">
+<p>When a query runs on a
+member, Hazelcast iterates through all the owned entries and finds the
+matching ones. This can be made faster by indexing
+the most-queried fields, just like you would do for your database.
+Indexing adds overhead for each write
+operation but reading will be a lot faster. If you query your map a
+lot, make sure to add indexes for the most frequently
+queried fields. For example, if you do <code>active AND age &lt; 30</code> query,
+make sure you add an index for the <code>active</code> and
+<code>age</code> fields. The following example code does that by getting the map
+from the Hazelcast instance and adding indexes to the map with the
+IMap <code>addIndex</code> method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IMap map = hazelcastInstance.getMap( "employees" );
+// ordered, since we have ranged queries for this field
+map.addIndex(new IndexConfig(IndexType.SORTED, "age"));
+// not ordered, because boolean field cannot have range
+map.addIndex(new IndexConfig(IndexType.HASH, "active"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that creating indexes once is sufficient. Subsequent write
+operations on the map are reflected in the index automatically. So,
+although it is safe to call the <code>addIndex()</code> method repeatedly, there
+will be a performance penalty due to the redundant index creation.</p>
+</div>
+<div class="paragraph">
+<p>When you call, for example, <code>map.addIndex("fieldName", true)</code>, each
+partition iterates over its records and adds each entry to the index.
+The previously created index entry will be recreated and replaced with the new entry.
+The performance penalty will be proportional to the number of entries. If you
+have maps with a large number of entries, then synchronizing index addition process
+is recommended.</p>
+</div>
+<div class="paragraph">
+<p>Other than using the <code>addIndex()</code> method, you can define your index
+declaratively or programmatically as described in the <a href="#configuring-imap-indexes">Configuring IMap Indexes section</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="indexing-ranged-queries"><a class="anchor" href="#indexing-ranged-queries"></a>Indexing Ranged Queries</h3>
+<div class="paragraph">
+<p><code>IMap.addIndex(IndexConfig)</code> is used for adding index. For
+each indexed field, if you have ranged queries such as <code>age&gt;30</code>,
+<code>age BETWEEN 40 AND 60</code>, then use <code>IndexType.SORTED</code> index
+Otherwise, use <code>IndexType.HASH</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-imap-indexes"><a class="anchor" href="#configuring-imap-indexes"></a>Configuring IMap Indexes</h3>
+<div class="paragraph">
+<p>Also, you can define <code>IMap</code> indexes in configuration. An example is
+shown below.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset1_yaml"></a>YAML</p>
+</li>
+<li>
+<p><a id="tabset1_spring"></a>Spring</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="default"&gt;
+        &lt;indexes&gt;
+            &lt;index type="HASH"&gt;
+                &lt;attributes&gt;
+                    &lt;attribute&gt;name&lt;/attribute&gt;
+                &lt;/attributes&gt;
+            &lt;/index&gt;
+            &lt;index&gt;
+                &lt;attributes&gt;
+                    &lt;attribute&gt;age&lt;/attribute&gt;
+                &lt;/attributes&gt;
+            &lt;/index&gt;
+        &lt;/indexes&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    default:
+      indexes:
+        - type: HASH
+            attributes:
+              - "name"
+        - attributes:
+            - "age"</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_spring">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hz:map name="default"&gt;
+    &lt;hz:indexes&gt;
+        &lt;hz:index type="HASH"&gt;
+            &lt;hz:attributes&gt;
+                &lt;hz:attribute&gt;name&lt;/hz:attribute&gt;
+            &lt;/hz:attributes&gt;
+        &lt;/hz:index&gt;
+        &lt;hz:index&gt;
+            &lt;hz:attributes&gt;
+                &lt;hz:attribute&gt;age&lt;/hz:attribute&gt;
+            &lt;/hz:attributes&gt;
+        &lt;/hz:index&gt;
+    &lt;/hz:indexes&gt;
+&lt;/hz:map&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also define <code>IMap</code> indexes using programmatic configuration,
+as in the example below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">mapConfig.addIndexConfig(new IndexConfig(IndexType.HASH, "name"));
+mapConfig.addIndexConfig(new IndexConfig(IndexType.SORTED, "age"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following is the Spring declarative configuration for the same
+example.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Non-primitive types to be indexed should implement <strong><code>Comparable</code></strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you configure the data structure to use
+<a href="../storage/high-density-memory.html#configuring-high-density-memory-store" class="page">High-Density Memory Store</a> <strong>and</strong>
+indexes, the indexes are automatically stored in the High-Density Memory Store
+as well. This prevents from running into full garbage collections when doing
+a lot of updates to index.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="composite-indexes"><a class="anchor" href="#composite-indexes"></a>Composite Indexes</h3>
+<div class="paragraph">
+<p>Composite indexes, also known as compound indexes, are special kind of
+indexes that are built on top of the multiple map entry attributes and
+therefore may be used to significantly speed up the queries involving
+those attributes simultaneously.</p>
+</div>
+<div class="paragraph">
+<p>There are two distinct composite index types used for two different
+purposes: unordered composite indexes and ordered ones.</p>
+</div>
+<div class="sect3">
+<h4 id="unordered-composite-indexes"><a class="anchor" href="#unordered-composite-indexes"></a>Unordered Composite Indexes</h4>
+<div class="paragraph">
+<p>The unordered indexes are used to perform equality queries, also known
+as the point queries, e.g., <code>name = 'Alice'</code>. These are specifically
+optimized for equality queries and don&#8217;t support other comparison operators
+like <code>&gt;</code> or <code>&lt;=</code>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the <em>composite</em> unordered indexes allow speeding up the equality
+queries involving multiple attributes simultaneously, e.g., <code>name = 'Alice'
+and age = 33</code>. This example query results in a single composite index lookup
+operation which can be performed very efficiently.</p>
+</div>
+<div class="paragraph">
+<p>The unordered composite index on the <code>name</code> and <code>age</code> attributes may be
+configured for a map as follows:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset2_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="persons"&gt;
+        &lt;indexes&gt;
+            &lt;index type="HASH"&gt;
+                &lt;attributes&gt;
+                    &lt;attribute&gt;name&lt;/attribute&gt;
+                    &lt;attribute&gt;age&lt;/attribute&gt;
+                &lt;/attributes&gt;
+            &lt;/index&gt;
+        &lt;/indexes&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    default:
+      - type: HASH
+          attributes:
+            - "name"
+            - "age"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The attributes indexed by the <em>unordered</em> composite indexes can&#8217;t be
+matched partially: the <code>name = 'Alice'</code> query can&#8217;t utilize the composite
+index configured above.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ordered-composite-indexes"><a class="anchor" href="#ordered-composite-indexes"></a>Ordered Composite Indexes</h4>
+<div class="paragraph">
+<p>The ordered indexes are specifically designed to perform efficient order
+comparison queries, also known as the range queries, e.g., <code>age &gt; 33</code>. The
+equality queries, like <code>age = 33</code>, are still supported by the ordered indexes,
+but they are handled in a slightly less efficient manner comparing to the
+unordered indexes.</p>
+</div>
+<div class="paragraph">
+<p>The <em>composite</em> ordered indexes extend the concept by allowing multiple
+equality predicates and a single order comparison predicate to be combined
+into a single index query operation. For instance, the <code>name = 'Alice' and
+age &gt; 33</code> and <code>name = 'Bob' and age = 33 and balance &gt; 0.0</code> queries are good
+candidates to be covered by an ordered composite index configured as follows:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset3_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="persons"&gt;
+        &lt;indexes&gt;
+            &lt;index&gt;
+                &lt;attributes&gt;
+                    &lt;attribute&gt;name&lt;/attribute&gt;
+                    &lt;attribute&gt;age&lt;/attribute&gt;
+                    &lt;attribute&gt;balance&lt;/attribute&gt;
+                &lt;/attributes&gt;
+            &lt;/index&gt;
+        &lt;/indexes&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    persons:
+      indexes:
+        - attributes:
+          - "name"
+          - "age"
+          - "balance"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Unlike the <em>unordered</em> composite indexes, partial attribute prefixes may be
+matched for the <em>ordered</em> composite indexes. In general, a valid non-empty
+attribute prefix is formed as a sequence of zero or more equality predicates
+followed by a zero or exactly one order comparison predicate. Given the index
+definition above, the following queries may be served by the index: <code>name = 'Alice'</code>,
+<code>name &gt; 'Alice'</code>, <code>name = 'Alice' and age &gt; 33</code>, <code>name = 'Alice' and age = 33 and
+balance = 5.0</code>. The following queries can&#8217;t be served the index: <code>age = 33</code>,
+<code>age &gt; 33 and balance = 0.0</code>, <code>balance &gt; 0.0</code>.</p>
+</div>
+<div class="paragraph">
+<p>While matching the ordered composite indexes, multiple order comparison
+predicates acting on the same attribute are treated as a single range
+predicate acting on that attribute. Given the index definition above, the
+following queries may be served by the index: <code>name &gt; 'Alice' and name &lt; 'Bob'</code>,
+<code>name = 'Alice' and age &gt; 33 and age &lt; 55</code>, <code>name = 'Alice' and age = 33 and
+balance &gt; 0.0 and balance &lt; 100.0</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="composite-index-matching-and-selection"><a class="anchor" href="#composite-index-matching-and-selection"></a>Composite Index Matching and Selection</h4>
+<div class="paragraph">
+<p>The order of attributes involved in a query plays no role in the selection
+of the matching composite index: <code>name = 'Alice' and age = 33</code> and
+<code>age = 33 and name = 'Alice'</code> queries are equivalent from the point of
+view of the index matching procedure.</p>
+</div>
+<div class="paragraph">
+<p>The attributes involved in a query can be matched partially by the composite
+index matcher: <code>name = 'Alice' and age = 33 and balance &gt; 0.0</code> can be
+partially matched by the <code>name, age</code> composite index, the <code>name = 'Alice'
+and age = 33</code> predicates are served by the matched index, while the
+<code>balance &gt; 0.0</code> predicate is processed by other means.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bitmap-indexes"><a class="anchor" href="#bitmap-indexes"></a>Bitmap Indexes</h3>
+<div class="paragraph">
+<p>Bitmap indexes provide capabilities similar to unordered/hash indexes.
+The same set of predicates is supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>equal</code></p>
+</li>
+<li>
+<p><code>notEqual</code></p>
+</li>
+<li>
+<p><code>in</code>,</p>
+</li>
+<li>
+<p><code>and</code></p>
+</li>
+<li>
+<p><code>or</code></p>
+</li>
+<li>
+<p><code>not</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>But, unlike hash indexes, bitmap indexes are able
+to achieve a much higher memory efficiency for low cardinality attributes
+at the cost of reduced query performance. In practice, the query
+performance is comparable to the performance of hash indexes, while
+memory footprint reduction is high, usually around an order of magnitude.</p>
+</div>
+<div class="paragraph">
+<p>Bitmap indexes are specifically designed for indexing of collection and
+array attributes since a single <code>IMap</code> entry produces many index entries
+in that case. A single hash index entry costs a few tens of bytes, while
+a single bitmap index entry usually costs just a few bytes.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s also possible to improve the memory footprint while indexing regular
+single-value attributes, but the improvement is usually minor, depending
+on the data layout and total number of indexes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently, bitmap indexes are not supported by off-heap High-Density
+Memory Stores (HD).
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="configuring-bitmap-indexes"><a class="anchor" href="#configuring-bitmap-indexes"></a>Configuring Bitmap Indexes</h4>
+<div class="paragraph">
+<p>In the simplest form, bitmap index for an <code>IMap</code> entry attribute can be
+declaratively configured as follows:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset4_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;map name="persons"&gt;
+        &lt;indexes&gt;
+            &lt;index type="BITMAP"&gt;
+                &lt;attributes&gt;
+                    &lt;attribute&gt;age&lt;/attribute&gt;
+                &lt;/attributes&gt;
+            &lt;/index&gt;
+        &lt;/indexes&gt;
+    &lt;/map&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  map:
+    persons:
+      indexes:
+        - type: BITMAP
+          attributes:
+            - "age"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Internally, a unique non-negative <code>long</code> ID is assigned to every
+indexed <code>IMap</code> entry based on the entry key. That unique ID is
+required for bitmap indexes to distinguish one indexed <code>IMap</code> entry from
+another.</p>
+</div>
+<div class="paragraph">
+<p>The mapping between <code>IMap</code> entries and <code>long</code> IDs is not free and its
+performance and memory footprint can be improved in certain cases. For
+instance, if <code>IMap</code> entries already have a unique integer-valued
+attribute, the attribute values can be used as unique <code>long</code> IDs
+directly without any additional transformations. That can be configured
+as follows:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset5_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset5_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset5_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;age&lt;/attribute&gt;
+    &lt;/attributes&gt;
+    &lt;bitmap-index-options&gt;
+        &lt;unique-key&gt;uniqueId&lt;/unique-key&gt;
+        &lt;unique-key-transformation&gt;RAW&lt;/unique-key-transformation&gt;
+    &lt;/bitmap-index-options&gt;
+&lt;/index&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset5_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      indexes:
+        - type: BITMAP
+          attributes:
+            - "age"
+          bitmap-index-options:
+            unique-key: uniqueId
+            unique-key-transformation: RAW</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The index definition above instructs Hazelcast to create a bitmap index
+on the <code>age</code> attribute, extract the unique key values from <code>uniqueId</code> attribute
+and use the raw (<code>RAW</code>) extracted values directly as <code>long</code> IDs. If the
+extracted unique key value is not of <code>long</code> type, the widening
+conversion is performed for the following types: <code>byte</code>, <code>short</code> and
+<code>int</code>; boxed variants are also supported.</p>
+</div>
+<div class="paragraph">
+<p>In certain cases, the extracted raw IDs might be randomly distributed.
+This causes increased memory usage in bitmap indexes since the best case
+scenario for them is sequential contiguous IDs. That can be countered by
+applying the renumbering technique:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset6_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset6_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset6_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;age&lt;/attribute&gt;
+    &lt;/attributes&gt;
+    &lt;bitmap-index-options&gt;
+        &lt;unique-key&gt;uniqueId&lt;/unique-key&gt;
+        &lt;unique-key-transformation&gt;LONG&lt;/unique-key-transformation&gt;
+    &lt;/bitmap-index-options&gt;
+&lt;/index&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset6_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      indexes:
+        - type: BITMAP
+          attributes:
+            - "age"
+          bitmap-index-options:
+            unique-key: uniqueId
+            unique-key-transformation: LONG</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The index definition above instructs the bitmap index to extract the unique
+keys from <code>uniqueId</code> attribute, convert every extracted non-negative
+value to <code>long</code> (<code>LONG</code>) and assign an internal sequential unique <code>long</code>
+ID based on that extracted and then converted unique value. The widening
+conversion is applied to the extracted values, if necessary.</p>
+</div>
+<div class="paragraph">
+<p>This long-to-long mapping is performed more efficiently than the general
+object-to-long mapping done for the simple index definitions. Basically,
+the following simple bitmap index definition:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset7_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset7_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset7_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;age&lt;/attribute&gt;
+    &lt;/attributes&gt;
+&lt;/index&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset7_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      indexes:
+        - type: BITMAP
+          attributes:
+            - "age"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>is equivalent to the following full-form definition:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset8_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset8_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset8_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;age&lt;/attribute&gt;
+    &lt;/attributes&gt;
+    &lt;bitmap-index-options&gt;
+        &lt;unique-key&gt;__key&lt;/unique-key&gt;
+        &lt;unique-key-transformation&gt;OBJECT&lt;/unique-key-transformation&gt;
+    &lt;/bitmap-index-options&gt;
+&lt;/index&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset8_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      indexes:
+        - type: BITMAP
+          attributes:
+            - "age"
+          bitmap-index-options:
+            unique-key: __key
+            unique-key-transformation: OBJECT</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Which indexes <code>age</code> attribute, uses <code>IMap</code> entry keys (<code>__key</code>) interpreted
+as Java objects (<code>OBJECT</code>) to assign internal unique <code>long</code> IDs.</p>
+</div>
+<div class="paragraph">
+<p>The full-form definition syntax is defined as follows:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset9_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset9_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset9_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;&lt;attr&gt;&lt;/attribute&gt;
+    &lt;/attributes&gt;
+    &lt;bitmap-index-options&gt;
+        &lt;unique-key&gt;&lt;key&gt;&lt;/unique-key&gt;
+        &lt;unique-key-transformation&gt;&lt;transformation&gt;&lt;/unique-key-transformation&gt;
+    &lt;/bitmap-index-options&gt;
+&lt;/index&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset9_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      indexes:
+        - type: BITMAP
+          attributes:
+            - &lt;attribute&gt;
+          bitmap-index-options:
+            unique-key: &lt;key&gt;
+            unique-key-transformation: &lt;transformation&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the parameter descriptions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;attr&gt;</code>: Specifies the attribute index.</p>
+</li>
+<li>
+<p><code>&lt;key&gt;</code>: Specifies the attribute to use as a unique key source
+for internal unique <code>long</code> ID assignment.</p>
+</li>
+<li>
+<p><code>&lt;transformation&gt;</code>: Specifies the transformation to be applied
+to unique keys to generate unique <code>long</code> IDs from them. The following
+transformations are supported:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OBJECT</code>: Object-to-long transformation. Each extracted unique
+key value is interpreted as a Java object instance. Internally, an
+object-to-long hash table is used to establish the mapping from unique
+keys to unique IDs. Good as a general-purpose transformation.</p>
+</li>
+<li>
+<p><code>LONG</code>: Long-to-long transformation. Each extracted unique key value
+is interpreted as a non-negative <code>long</code> value, the widening conversion
+from <code>byte</code>, <code>short</code> and <code>int</code> is performed, if necessary.
+Internally, a long-to-long hash table is used to establish the mapping
+from unique keys to unique IDs, which is more efficient than the
+object-to-long hash table. It is good for sparse/random unique integer-valued keys
+renumbering to raise the IDs density and to make the bitmap index more
+memory-efficient as a result.</p>
+</li>
+<li>
+<p><code>RAW</code>: Raw transformation. Each extracted unique key value is interpreted as
+a non-negative <code>long</code> value, the widening conversion from <code>byte</code>, <code>short</code> and
+<code>int</code> is performed, if necessary. Internally, no hash table of any kind is
+used to establish the mapping from unique keys to unique IDs, the raw extracted
+keys are used directly as IDs. It is good for dense unique integer-valued keys,
+and it has the best performance in terms of time and memory.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The regular dotted attribute path syntax is supported for <code>&lt;attr&gt;</code> and
+<code>&lt;key&gt;</code>:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset10_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset10_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset10_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;name.first&lt;/attribute&gt;
+    &lt;/attributes&gt;
+&lt;/index&gt;
+&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;name.first&lt;/attribute&gt;
+    &lt;/attributes&gt;
+    &lt;bitmap-index-options&gt;
+        &lt;unique-key&gt;__key.id&lt;/unique-key&gt;
+    &lt;/bitmap-index-options&gt;
+&lt;/index&gt;
+&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;name.first&lt;/attribute&gt;
+    &lt;/attributes&gt;
+    &lt;bitmap-index-options&gt;
+        &lt;unique-key&gt;id.external&lt;/unique-key&gt;
+    &lt;/bitmap-index-options&gt;
+&lt;/index&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset10_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      indexes:
+        - type: BITMAP
+          attributes:
+            - name.first
+        - type: BITMAP
+          attributes:
+            - name.first
+          bitmap-index-options:
+            unique-key: __key.id
+        - type: BITMAP
+          attributes:
+            - name.first
+          bitmap-index-options:
+            unique-key: id.external</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Collection and array indexing is also possible using the regular syntax:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset11_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset11_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset11_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;habits[any]&lt;/attribute&gt;
+    &lt;/attributes&gt;
+&lt;/index&gt;
+&lt;index type="BITMAP"&gt;
+    &lt;attributes&gt;
+        &lt;attribute&gt;habits[0]&lt;/attribute&gt;
+    &lt;/attributes&gt;
+&lt;/index&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset11_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      indexes:
+        - type: BITMAP
+          attributes:
+            - habits[any]
+        - type: BITMAP
+          attributes:
+            - habits[0]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="querying-collections-and-arrays.html#indexing-in-collections-and-arrays" class="page">Indexing in Collections and Arrays section</a>
+for more details.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="bitmap-index-querying"><a class="anchor" href="#bitmap-index-querying"></a>Bitmap Index Querying</h4>
+<div class="paragraph">
+<p>Bitmap index matching and selection for queries are performed
+automatically. No special treatment is required. The querying can be
+performed using the regular <code>IMap</code> querying methods:
+<code>IMap.values(Predicate)</code>, <code>IMap.entrySet(Predicate)</code>, etc.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copying-indexes"><a class="anchor" href="#copying-indexes"></a>Copying Indexes</h3>
+<div class="paragraph">
+<p>The underlying data structures used by the indexes need to copy the
+query results to make sure that the results are correct. This copying
+process is performed either when reading the index from the data
+structure (on-read) or writing to it (on-write).</p>
+</div>
+<div class="paragraph">
+<p>On-read copying means that, for each index-read operation, the result
+of the query is copied before it is sent to the caller. Depending on
+the query result&#8217;s size, this type of index copying may be slower since
+the result is stored in a map, i.e., all entries need to have the hash
+calculated before being stored. Unlike the index-read operations, each
+index-write operation is fast, since there is no copying. So, this
+option can be preferred in index-write intensive cases.</p>
+</div>
+<div class="paragraph">
+<p>On-write copying means that each index-write operation completely copies
+the underlying map to provide the copy-on-write semantics and this may
+be a slow operation depending on the index size. Unlike index-write operations,
+each index-read operation is fast since the operation only includes accessing
+the map that stores the results and returning them to the caller.</p>
+</div>
+<div class="paragraph">
+<p>Another option is never copying the results of a query to a separate map.
+This means the results backed by the underlying index-map can change after
+the query has been executed (such as an entry might have been added or removed
+from an index, or it might have been remapped). This option can be preferred
+if you expect "mostly correct" results, i.e., if it is not a problem when
+some entries returned in the query result set do not match the initial query
+criteria. This is the fastest option since there is no copying.</p>
+</div>
+<div class="paragraph">
+<p>You can set one these options using the system property
+<code>hazelcast.index.copy.behavior</code>. The following values, which are explained
+in the above paragraphs, can be set:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>COPY_ON_READ</code> (the default value)</p>
+</li>
+<li>
+<p><code>COPY_ON_WRITE</code></p>
+</li>
+<li>
+<p><code>NEVER</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Usage of this system property is supported for BINARY and OBJECT
+in-memory formats. Only in Hazelcast 3.8.7, it is also supported for
+NATIVE in-memory format.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="indexing-attributes-with-valueextractor"><a class="anchor" href="#indexing-attributes-with-valueextractor"></a>Indexing Attributes with ValueExtractor</h3>
+<div class="paragraph">
+<p>You can also define custom attributes that may be referenced in predicates,
+queries and indexes. Custom attributes can be defined by implementing a
+<code>ValueExtractor</code>. See the <a href="custom-attributes.html" class="page">Custom Attributes section</a>
+for details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-this-as-an-attribute"><a class="anchor" href="#using-this-as-an-attribute"></a>Using "this" as an Attribute</h3>
+<div class="paragraph">
+<p>You can use the keyword <code>this</code> as an attribute name while adding an
+index or creating a predicate. A basic usage is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">map.addIndex(new IndexConfig(IndexType.SORTED, "this"));
+Predicate&lt;Integer, Integer&gt; lessEqual = Predicates.between("this", 12, 20);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another basic example using <code>SQL</code> predicate is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Predicates.sql("this = 'jones'")
+Predicates.sql("this.age &gt; 33")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The special attribute <code>this</code> acts on the value of a map entry. Typically,
+you do not need to specify it while accessing a property of an entry&#8217;s
+value, since its presence is implicitly assumed if the special attribute
+<a href="#querying-entry-keys-with-predicates">__key</a> is not specified.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-query-thread-pool"><a class="anchor" href="#configuring-query-thread-pool"></a>Configuring Query Thread Pool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can change the size of thread pool dedicated to query operations
+using the <code>pool-size</code> property. Each query consumes a single thread
+from a Generic Operations ThreadPool on each Hazelcast member - let&#8217;s
+call it the query-orchestrating thread.  That thread is blocked throughout
+the whole execution-span of a query on the member.</p>
+</div>
+<div class="paragraph">
+<p>The query-orchestrating thread uses the threads from the query-thread
+pool in the following cases:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>if you run a <code>PagingPredicate</code> (since each page runs as a separate task)</p>
+</li>
+<li>
+<p>if you set the system property <code>hazelcast.query.predicate.parallel.evaluation</code>
+to true (since the predicates are evaluated in parallel)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="#filtering-with-paging-predicates">Filtering with Paging Predicates section</a>
+and <a href="../system-properties.html#parallel-predicates" class="page">System Properties appendix</a> for information on paging
+predicates and for description of the above system property.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example of that declarative configuration.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset12_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset12_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    ...
+    &lt;executor-service name="hz:query"&gt;
+        &lt;pool-size&gt;100&lt;/pool-size&gt;
+    &lt;/executor-service&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset12_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  ...
+  executor-service:
+    "hz:query":
+      pool-size: 100</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is the equivalent programmatic configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config cfg = new Config();
+cfg.getExecutorConfig("hz:query").setPoolSize(100);</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="query-requests-from-clients"><a class="anchor" href="#query-requests-from-clients"></a>Query Requests from Clients</h3>
+<div class="paragraph">
+<p>When dealing with the query requests coming from the clients to your
+members, Hazelcast offers the following system properties to tune your
+thread pools:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hazelcast.clientengine.thread.count</code> which is the number of threads
+to process non-partition-aware client requests, like <code>map.size()</code> and
+executor tasks. Its default value is the number of cores multiplied by 20.</p>
+</li>
+<li>
+<p><code>hazelcast.clientengine.query.thread.count</code> which is the number of
+threads to process query requests coming from the clients. Its default
+value is the number of cores.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If there are a lot of query request from the clients, you may want to
+increase the value of <code>hazelcast.clientengine.query.thread.count</code>. In
+addition to this tuning, you may also consider increasing the value of
+<code>hazelcast.clientengine.thread.count</code> if the CPU load in your system is
+not high and there is plenty of free memory.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="distributed-query.html">Distributed Query</a></span>
+  <span class="next"><a href="custom-attributes.html">Custom Attributes</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu">
+  </div>
+  </br>
+<div id="feedback-prompt">
+  <h3>Was this page helpful?</h3>
+  <a href="#yes-feedback" id="yes-button"><i class="far fa-check-circle"></i>  Yes </a>
+  <a href="#no-feedback" id="no-button"><i class="far fa-times-circle"></i>  No </a>
+</div>
+<div id="feedback-response">
+<p class="feedback-response">Thanks for the feedback!</p>
+</div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-reference-manual/issues/new?title=Docs: Feedback for How Distributed Query Works&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest/docs/modules/query/pages/how-distributed-query-works.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/latest/docs/modules/query/pages/how-distributed-query-works.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
+
+</aside>
+  </div>
+</main>
+
+</div>
+<footer class="footer">
+  <a>Terms of service</a>
+  <a>Privacy</a>
+  <a>Contact us</a>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<!-- Before the closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
+    indexName: 'dev_docs',
+    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '#search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false,
+  });
+</script>
+  </body>
+</html>

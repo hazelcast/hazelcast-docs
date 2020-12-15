@@ -1,0 +1,37 @@
+{
+  "index_name": "dev_docs",
+  "start_urls": [
+    {
+      "url": "https://jakescahill.github.io/docs-poc/imdg/(?P<version>.*?)/",
+      "variables": {
+        "version": ["latest"]
+      },
+      "selectors_key": "imdg"
+    }
+  ],
+  "sitemap_urls": [
+    "https://jakescahill.github.io/docs-poc/sitemap-imdg.xml"
+  ],
+  "stop_urls": [],
+  "selectors": {
+    "default": {
+      "lvl0": ".doc h1",
+      "lvl1": ".doc h2",
+      "lvl2": ".doc h3",
+      "lvl3": ".doc h4",
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
+    },
+    "imdg": {
+      "lvl0": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "type": "xpath",
+        "default_value": "Docs"
+      },
+      "lvl1": ".doc h1",
+      "lvl2": ".doc h2",
+      "lvl3": ".doc h3",
+      "lvl4": ".doc h4",
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
+    }
+  }
+}

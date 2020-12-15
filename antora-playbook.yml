@@ -3,17 +3,20 @@ site:
   start_page: home::index.adoc
   url: https://jakescahill.github.io/docs-poc
 content:
-  branches: [v*]
-  sources: 
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual 
+  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
+    branches: [latest]
     start_path: docs
+    #branches: HEAD
+  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
+    branches: [archive]
+    start_path: docs/*
     #branches: HEAD
 ui: 
   bundle:
-    url: https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.9/ui-bundle.zip
+    url: https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.10/ui-bundle.zip
     snapshot: true
   #supplemental_files: ./supplemental_ui 
 asciidoc:

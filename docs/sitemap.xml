@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap>
+<<<<<<< HEAD
 <loc>http:localhost:5000/sitemap-home.xml</loc>
 </sitemap>
 <sitemap>
 <loc>http:localhost:5000/sitemap-imdg.xml</loc>
+=======
+<loc>https://jakescahill.github.io/docs-poc/sitemap-hazelcast.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://jakescahill.github.io/docs-poc/sitemap-home.xml</loc>
+>>>>>>> 1b3fa8c8fcd8856a4d27713b4f320059e5f71602
 </sitemap>
 </sitemapindex>

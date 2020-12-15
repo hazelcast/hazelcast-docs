@@ -3,17 +3,21 @@ site:
   start_page: home::index.adoc
   url: http:localhost:5000
 content:
-  branches: [v*]
   sources: 
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual 
+  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
+    branches: [latest, latest-dev]
     start_path: docs
+    #branches: HEAD
+  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
+    branches: [archive]
+    start_paths: docs/*
     #branches: HEAD
 ui: 
   bundle:
-    url: ../docs-poc-ui/build/ui-bundle.zip #https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.9/ui-bundle.zip #../docs-poc-ui/build/ui-bundle.zip
+    url: ../docs-poc-ui/build/ui-bundle.zip #https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.10/ui-bundle.zip #../docs-poc-ui/build/ui-bundle.zip
     snapshot: true
   #supplemental_files: ./supplemental_ui 
 asciidoc:

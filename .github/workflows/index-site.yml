@@ -17,5 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        sudo apt-get install jq
-        docker run -it -e "APPLICATION_ID=$APPLICATION_ID API_KEY=$API_KEY CONFIG=$(cat search-config.json | jq -r tostring)" algolia/docsearch-scraper
+        docker run -e APPLICATION_ID=$APPLICATION_ID API_KEY=$API_KEY "CONFIG=$(cat search-config.json | jq -r tostring)" algolia/docsearch-scraper

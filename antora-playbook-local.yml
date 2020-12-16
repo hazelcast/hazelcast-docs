@@ -14,10 +14,9 @@ content:
   - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
     branches: [archive]
     start_paths: docs/*
-    #branches: HEAD
 ui: 
   bundle:
-    url: ../docs-poc-ui/build/ui-bundle.zip #https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.10/ui-bundle.zip #../docs-poc-ui/build/ui-bundle.zip
+    url: ../docs-poc-ui/build/ui-bundle.zip #https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.11/ui-bundle.zip #../docs-poc-ui/build/ui-bundle.zip
     snapshot: true
   #supplemental_files: ./supplemental_ui 
 asciidoc:

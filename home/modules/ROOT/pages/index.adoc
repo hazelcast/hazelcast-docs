@@ -33,7 +33,7 @@
 		<li><a href="https://guides.hazelcast.org/home/">Integration Guides</a></li>
 		<li><a href="https://hazelcast.com/resources/hazelcast-deployment-operations-guide/">Operations Guide</a></li>
 		<li class="get-started-home">
-			<a href="https://jakescahill.github.io/docs-poc/imdg/latest/getting-started.html">Get Started <img src="/docs-poc/docs-poc/home/_images/right-arrow.svg"></a>
+			<a href="https://jakescahill.github.io/docs-poc/imdg/latest/getting-started.html">Get Started <img src="/docs-poc/home/_images/right-arrow.svg"></a>
 		</li>
 	</ul>
 	

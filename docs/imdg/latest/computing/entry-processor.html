@@ -1323,7 +1323,7 @@ When <code>in-memory-format</code> is <code>OBJECT</code>, the old value of the 
 <div class="sect2">
 <h3 id="processing-entries"><a class="anchor" href="#processing-entries"></a>Processing Entries</h3>
 <div class="paragraph">
-<p>The <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/IMap.html" target="_blank" rel="noopener">IMap interface</a> provides the following methods for entry processing:</p>
+<p>The <a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/map/IMap.html" target="_blank" rel="noopener">IMap interface</a> provides the following methods for entry processing:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1345,10 +1345,10 @@ When <code>in-memory-format</code> is <code>OBJECT</code>, the old value of the 
 </ul>
 </div>
 <div class="paragraph">
-<p>When using the <code>executeOnEntries</code> method, if the number of entries is high and you do not need the results, then returning null with the <code>process()</code> method is a good practice. This method is offered by the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/EntryProcessor.html" target="_blank" rel="noopener">EntryProcessor interface</a>. By returning null, results of the processing are not collected and thus out of memory errors are eliminated.</p>
+<p>When using the <code>executeOnEntries</code> method, if the number of entries is high and you do not need the results, then returning null with the <code>process()</code> method is a good practice. This method is offered by the <a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/map/EntryProcessor.html" target="_blank" rel="noopener">EntryProcessor interface</a>. By returning null, results of the processing are not collected and thus out of memory errors are eliminated.</p>
 </div>
 <div class="paragraph">
-<p>If you do not need to read or modify the entry in any way but would like to execute a task on the member owning the entry with that key (i.e. the member is the partition owner for that key), you can also use <code>executeOnKeyOwner</code> provided by <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/core/IExecutorService.html#executeOnKeyOwner-java.lang.Runnable-java.lang.Object-" target="_blank" rel="noopener">IExecutorService</a>. You need to make sure that the runnable can be serialized (using any of the available serialization techniques in Hazelcast). The runnable will not receive the map entry key or value and is not running on the same thread as operations reading the map data so operations such as <code>map.get()</code> or <code>map.put()</code> will not be blocked.</p>
+<p>If you do not need to read or modify the entry in any way but would like to execute a task on the member owning the entry with that key (i.e. the member is the partition owner for that key), you can also use <code>executeOnKeyOwner</code> provided by <a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/core/IExecutorService.html#executeOnKeyOwner-java.lang.Runnable-java.lang.Object-" target="_blank" rel="noopener">IExecutorService</a>. You need to make sure that the runnable can be serialized (using any of the available serialization techniques in Hazelcast). The runnable will not receive the map entry key or value and is not running on the same thread as operations reading the map data so operations such as <code>map.get()</code> or <code>map.put()</code> will not be blocked.</p>
 </div>
 <div class="paragraph">
 <p>You can also use entry processors to remove entries from your map simply
@@ -1568,7 +1568,7 @@ The key is locked for the time span of the processing in order to not generate a
 </ol>
 </div>
 <div class="paragraph">
-<p>The method <code>getExecutorName()</code> method may also return two constants defined in the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/core/Offloadable.html" target="_blank" rel="noopener">Offloadable interface</a>:</p>
+<p>The method <code>getExecutorName()</code> method may also return two constants defined in the <a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/core/Offloadable.html" target="_blank" rel="noopener">Offloadable interface</a>:</p>
 </div>
 <div class="ulist">
 <ul>

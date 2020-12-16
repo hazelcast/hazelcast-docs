@@ -2662,7 +2662,7 @@ is not supported.
 </td>
 <td class="content">
 Also note that the <code>MapStore</code> interface extends the <code>MapLoader</code> interface
-as you can see in the interface <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/MapStore.html" target="_blank" rel="noopener">code</a>.
+as you can see in the interface <a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/map/MapStore.html" target="_blank" rel="noopener">code</a>.
 </td>
 </tr>
 </table>
@@ -3224,7 +3224,7 @@ mapStoreConfig.setFactoryImplementation( new MapStoreFactory&lt;Object, Object&g
 <div class="paragraph">
 <p>To initialize the <code>MapLoader</code> implementation with the given map name, configuration
 properties and the Hazelcast instance, implement the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/MapLoaderLifecycleSupport.html" target="_blank" rel="noopener"><code>MapLoaderLifecycleSupport</code> interface</a>
+<a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/map/MapLoaderLifecycleSupport.html" target="_blank" rel="noopener"><code>MapLoaderLifecycleSupport</code> interface</a>
 which is described in the previous section.</p>
 </div>
 </div>
@@ -3245,12 +3245,12 @@ its owned portion of the entries.</p>
 </div>
 <div class="paragraph">
 <p>The <code>InitialLoadMode</code> configuration parameter in the class
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/MapStoreConfig.html" target="_blank" rel="noopener">MapStoreConfig</a>
+<a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/config/MapStoreConfig.html" target="_blank" rel="noopener">MapStoreConfig</a>
 has two values: <code>LAZY</code> and <code>EAGER</code>. If <code>InitialLoadMode</code> is set to
 <code>LAZY</code>, data is not loaded during the map creation. If it is set to
 <code>EAGER</code>, all the data is loaded while the map is created and everything becomes
 ready to use. Also, if you add indices to your map with the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/IndexConfig.html" target="_blank" rel="noopener">IndexConfig</a>
+<a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/config/IndexConfig.html" target="_blank" rel="noopener">IndexConfig</a>
 class or the <a href="../query/how-distributed-query-works.html#indexing-queries" class="page"><code>addIndex</code></a> method, then
 <code>InitialLoadMode</code> is overridden and <code>MapStoreConfig</code> behaves as if <code>EAGER</code> mode is on.</p>
 </div>
@@ -4376,7 +4376,7 @@ as this ensures that the map interceptor can be removed reliably.</p>
 <div class="paragraph">
 <p>The IMap API has two methods for adding and removing an interceptor to the map:
 <code>addInterceptor</code> and <code>removeInterceptor</code>. See also the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/MapInterceptor.html" target="_blank" rel="noopener"><code>MapInterceptor</code> interface</a>
+<a href="https://docs.hazelcast.org/docs/latest/javadoc/com/hazelcast/map/MapInterceptor.html" target="_blank" rel="noopener"><code>MapInterceptor</code> interface</a>
 to learn about the methods used to intercept the changes in a map.</p>
 </div>
 <div class="paragraph">

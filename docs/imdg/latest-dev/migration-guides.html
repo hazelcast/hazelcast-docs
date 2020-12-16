@@ -1403,7 +1403,7 @@ degradation.</p>
 <div class="sect2">
 <h3 id="removing-deprecated-client-configurations"><a class="anchor" href="#removing-deprecated-client-configurations"></a>Removing Deprecated Client Configurations</h3>
 <div class="paragraph">
-<p>The following methods of <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/client/config/ClientConfig.html" target="_blank" rel="noopener">ClientConfig</a> have been refactored:</p>
+<p>The following methods of <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/client/config/ClientConfig.html" target="_blank" rel="noopener">ClientConfig</a> have been refactored:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1455,7 +1455,7 @@ degradation.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Also the <code>ClientAwsConfig</code> class has been renamed as <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/AwsConfig.html" target="_blank" rel="noopener">AwsConfig</a>.</p>
+<p>Also the <code>ClientAwsConfig</code> class has been renamed as <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/config/AwsConfig.html" target="_blank" rel="noopener">AwsConfig</a>.</p>
 </div>
 <div class="paragraph">
 <p>The naming for the declarative configuration elements have not been changed.
@@ -1823,10 +1823,10 @@ with one abstract method. They have been converted into functional interfaces:</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/query/extractor/ValueCallback.html" target="_blank" rel="noopener">ValueCallback</a></p>
+<p><a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/query/extractor/ValueCallback.html" target="_blank" rel="noopener">ValueCallback</a></p>
 </li>
 <li>
-<p><a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/query/extractor/ValueExtractor.html" target="_blank" rel="noopener">ValueExtractor</a></p>
+<p><a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/query/extractor/ValueExtractor.html" target="_blank" rel="noopener">ValueExtractor</a></p>
 </li>
 </ul>
 </div>
@@ -2082,7 +2082,7 @@ public class ClusterMigrationListener implements MigrationListener {
 </tbody>
 </table>
 <div class="paragraph">
-<p>See the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/partition/MigrationListener.html" target="_blank" rel="noopener">MigrationListener</a> Javadoc
+<p>See the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/partition/MigrationListener.html" target="_blank" rel="noopener">MigrationListener</a> Javadoc
 for a full insight.</p>
 </div>
 </div>
@@ -2350,7 +2350,7 @@ and also reading the endpoint address from it works with the new
 <code>ClusterRolePrincipals</code> and <code>ClusterEndpointPrincipals</code> principal types.</p>
 </div>
 <div class="paragraph">
-<p>See the following table for the before/after sample <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/security/IPermissionPolicy.html" target="_blank" rel="noopener">IPermissionPolicy</a> implementations.</p>
+<p>See the following table for the before/after sample <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/security/IPermissionPolicy.html" target="_blank" rel="noopener">IPermissionPolicy</a> implementations.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2821,7 +2821,7 @@ have been renamed:</p>
 <div class="sect2">
 <h3 id="renaming-getid-to-getclassid-in-identifieddataserializable"><a class="anchor" href="#renaming-getid-to-getclassid-in-identifieddataserializable"></a>Renaming getID to getClassId in IdentifiedDataSerializable</h3>
 <div class="paragraph">
-<p>The <code>getId()</code> method of the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/nio/serialization/IdentifiedDataSerializable.html" target="_blank" rel="noopener">IdentifiedDataSerializable</a> interface
+<p>The <code>getId()</code> method of the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/nio/serialization/IdentifiedDataSerializable.html" target="_blank" rel="noopener">IdentifiedDataSerializable</a> interface
 is a method with a common name, meaning a naming conflict would happen frequently.
 For example, database entities also have a <code>getId()</code> method.
 Therefore, it has been renamed as <code>getClassId()</code>.</p>
@@ -2881,7 +2881,7 @@ public interface IdentifiedDataSerializable extends DataSerializable {
 <h4 id="entry-processor"><a class="anchor" href="#entry-processor"></a>Entry Processor</h4>
 <div class="paragraph">
 <p>The <code>EntryBackupProcessor</code> interface has been removed in favor
-of <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/map/EntryProcessor.html" target="_blank" rel="noopener">EntryProcessor</a> which now defines how the entries will be processed
+of <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/map/EntryProcessor.html" target="_blank" rel="noopener">EntryProcessor</a> which now defines how the entries will be processed
 both on the primary and the backup replicas.</p>
 </div>
 <div class="paragraph">
@@ -2970,7 +2970,7 @@ checked exception. The interfaces are also <code>Serializable</code> and can be
 readily used when providing a lambda which is then serialized.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/projection/Projection.html" target="_blank" rel="noopener">Projection</a> class was an abstract interface for historical reasons.
+<p>The <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/projection/Projection.html" target="_blank" rel="noopener">Projection</a> class was an abstract interface for historical reasons.
 It has been turned into a functional interface so it&#8217;s more lambda-friendly.</p>
 </div>
 <div class="paragraph">
@@ -3908,7 +3908,7 @@ request listener service.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/ServiceConfig.html" target="_blank" rel="noopener">here</a>
+<p>See the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/config/ServiceConfig.html" target="_blank" rel="noopener">here</a>
 for <code>ServiceConfig</code>s Javadoc.</p>
 </div>
 </div>
@@ -3919,7 +3919,7 @@ for <code>ServiceConfig</code>s Javadoc.</p>
 should be used instead.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/core/HazelcastInstance.html" target="_blank" rel="noopener">here</a>
+<p>See the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/core/HazelcastInstance.html" target="_blank" rel="noopener">here</a>
 for <code>HazelcastInstance</code>s Javadoc.</p>
 </div>
 </div>
@@ -3930,7 +3930,7 @@ for <code>HazelcastInstance</code>s Javadoc.</p>
 instead.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/core/DistributedObjectEvent.html" target="_blank" rel="noopener">here</a>
+<p>See the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/core/DistributedObjectEvent.html" target="_blank" rel="noopener">here</a>
 for <code>DistributedObjectEvents</code>s Javadoc.</p>
 </div>
 </div>

@@ -1499,7 +1499,7 @@ It will be implemented also for ICache in the future releases.
 <p>1 - Configure the WAN synchronization mechanism for your WAN publisher so that
 it uses the Merkle tree: If configuring declaratively, you can use the <code>consistency-check-strategy</code> sub-element of
 the <code>sync</code> element. If configuring programmatically, you can use the setter of the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/WanSyncConfig.html" target="_blank" rel="noopener">WanSyncConfig</a> object.
+<a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/config/WanSyncConfig.html" target="_blank" rel="noopener">WanSyncConfig</a> object.
 Here is a declarative example:</p>
 </div>
 <div class="tabset is-loading">
@@ -1641,7 +1641,7 @@ in the <code>map</code> configuration:</p>
 </div>
 <div class="paragraph">
 <p>You can programmatically configure it, too, using the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/MerkleTreeConfig.html" target="_blank" rel="noopener">MerkleTreeConfig</a> object.</p>
+<a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/config/MerkleTreeConfig.html" target="_blank" rel="noopener">MerkleTreeConfig</a> object.</p>
 </div>
 <div class="paragraph">
 <p>Here is the full declarative configuration example showing how to
@@ -2575,8 +2575,8 @@ A WAN replication event is only eligible to publish if it passes all the filters
 <p><code>mapName</code>/<code>cacheName</code>: Name of the related data structure.</p>
 </li>
 <li>
-<p><code>entryView</code>: <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/core/EntryView.html" target="_blank" rel="noopener">EntryView</a>
-or <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/cache/CacheEntryView.html" target="_blank" rel="noopener">CacheEntryView</a> depending on the data structure.</p>
+<p><code>entryView</code>: <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/core/EntryView.html" target="_blank" rel="noopener">EntryView</a>
+or <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/cache/CacheEntryView.html" target="_blank" rel="noopener">CacheEntryView</a> depending on the data structure.</p>
 </li>
 <li>
 <p><code>eventType</code>: Enum type - <code>UPDATED(1)</code>, <code>REMOVED(2)</code> or <code>LOADED(3)</code> - depending on the event.</p>

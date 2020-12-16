@@ -1279,7 +1279,7 @@ a scheduled execution is skipped, instead of postponing, if another thread is st
 </ul>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/scheduledexecutor/IScheduledExecutorService.html" target="_blank" rel="noopener">IScheduledExecutorService Javadoc</a> for its API details.</p>
+<p>See the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/scheduledexecutor/IScheduledExecutorService.html" target="_blank" rel="noopener">IScheduledExecutorService Javadoc</a> for its API details.</p>
 </div>
 <div class="paragraph">
 <p>There are two different modes of durability for the service:</p>
@@ -1303,7 +1303,7 @@ The name of the task can be user-defined if it needs to be, by implementing the 
 <p>Upon scheduling, the service returns an <code>IScheduledFuture</code>, which on top of the <code>java.util.concurrent.ScheduledFuture</code> functionality, provides an API to get the resource handler of the task <code>ScheduledTaskHandler</code> and also the runtime statistics of the task.</p>
 </div>
 <div class="paragraph">
-<p>Futures associated with a scheduled task, in order to be aware of lost partitions and/or members, act as listeners on the local member/client. Therefore, they are always strongly referenced, on the member/client side. In order to clean up their resources, once completed, you can use the method <code>dispose()</code>. This method also cancels further executions of the task if scheduled at a fixed rate. See the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/scheduledexecutor/IScheduledFuture.html" target="_blank" rel="noopener">IScheduledFuture Javadoc</a> for its API details.</p>
+<p>Futures associated with a scheduled task, in order to be aware of lost partitions and/or members, act as listeners on the local member/client. Therefore, they are always strongly referenced, on the member/client side. In order to clean up their resources, once completed, you can use the method <code>dispose()</code>. This method also cancels further executions of the task if scheduled at a fixed rate. See the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/scheduledexecutor/IScheduledFuture.html" target="_blank" rel="noopener">IScheduledFuture Javadoc</a> for its API details.</p>
 </div>
 <div class="paragraph">
 <p>The task handler is a descriptor class holding information for the scheduled future, which is used to pinpoint the actual task in the cluster. It contains the name of the task, the owner (member or partition) and the scheduler name.</p>
@@ -1533,7 +1533,7 @@ long totalTaskRuns = stats.getTotalRuns(); // = 1</code></pre>
 <p><strong>Configuring Split-Brain Protection</strong></p>
 </div>
 <div class="paragraph">
-<p>Split-brain protection for Scheduled Executor Service can be configured programmatically using the method <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/config/ScheduledExecutorConfig.html" target="_blank" rel="noopener">setSplitBrainProtectionName()</a>, or declaratively using the element <code>split-brain-protection-ref</code>. Following is an example declarative configuration:</p>
+<p>Split-brain protection for Scheduled Executor Service can be configured programmatically using the method <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/config/ScheduledExecutorConfig.html" target="_blank" rel="noopener">setSplitBrainProtectionName()</a>, or declaratively using the element <code>split-brain-protection-ref</code>. Following is an example declarative configuration:</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">

@@ -1257,7 +1257,7 @@ ga('send', 'pageview')
 using the Auditlog feature. Auditable events have a unique type ID;
 they contain a timestamp and importance level.
 The events may also contain a message and parameters.
-Supported event type identifiers are listed in <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/auditlog/AuditlogTypeIds.html" target="_blank" rel="noopener"><code>AuditlogTypeIds</code></a>.</p>
+Supported event type identifiers are listed in <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/auditlog/AuditlogTypeIds.html" target="_blank" rel="noopener"><code>AuditlogTypeIds</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>You can enable the auditlog feature in the configuration as follows:</p>
@@ -1340,23 +1340,23 @@ as log entries with the category name <code>"hazelcast.auditlog"</code>.</p>
 <div class="paragraph">
 <p>The auditlog has its own SPI allowing you to provide your implementations.
 Relevant classes and interfaces are located
-in the <a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/auditlog/package-summary.html" target="_blank" rel="noopener"><code>com.hazelcast.auditlog</code> package</a>.</p>
+in the <a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/auditlog/package-summary.html" target="_blank" rel="noopener"><code>com.hazelcast.auditlog</code> package</a>.</p>
 </div>
 <div class="paragraph">
 <p>The central point of auditlog SPI is the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/auditlog/AuditlogService.html" target="_blank" rel="noopener"><code>AuditlogService</code> interface</a>
+<a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/auditlog/AuditlogService.html" target="_blank" rel="noopener"><code>AuditlogService</code> interface</a>
 and its <code>log(&#8230;&#8203;)</code> methods. Their implementations are responsible for
 processing auditable events, e.g., writing them to a database.</p>
 </div>
 <div class="paragraph">
 <p><code>AuditlogService</code> also creates the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/auditlog/EventBuilder.html" target="_blank" rel="noopener"><code>EventBuilder</code></a>
+<a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/auditlog/EventBuilder.html" target="_blank" rel="noopener"><code>EventBuilder</code></a>
 instances which are used to build
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/auditlog/AuditableEvent.html" target="_blank" rel="noopener"><code>AuditableEvents</code></a>.</p>
+<a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/auditlog/AuditableEvent.html" target="_blank" rel="noopener"><code>AuditableEvents</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>Another important piece in the SPI is the
-<a href="https://docs.hazelcast.org/docs/{version}/javadoc/com/hazelcast/auditlog/AuditlogServiceFactory.html" target="_blank" rel="noopener"><code>AuditlogServiceFactory</code> interface</a>.
+<a href="https://docs.hazelcast.org/docs/latest-dev/javadoc/com/hazelcast/auditlog/AuditlogServiceFactory.html" target="_blank" rel="noopener"><code>AuditlogServiceFactory</code> interface</a>.
 The factory class allows the <code>AuditlogService</code> initialization based on parameters.</p>
 </div>
 </div>

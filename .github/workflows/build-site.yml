@@ -23,5 +23,5 @@ jobs:
         npm run-script build
         touch docs/.nojekyll
         git add -f docs
-        git commit -m "Deploy site"
+        git commit -m "Build site"
         git push origin HEAD:develop

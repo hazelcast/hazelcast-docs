@@ -1410,8 +1410,11 @@ Listeners have to offload all blocking operations to another thread (pool).
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listening-for-lost-map-partitions"><a class="anchor" href="#listening-for-lost-map-partitions"></a>Listening for Lost Map Partitions</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="listening-for-lost-map-partitions"><a class="anchor" href="#listening-for-lost-map-partitions"></a>Listening for Lost Map Partitions</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You can listen to <code>MapPartitionLostEvent</code> instances by registering an implementation
 of <code>MapPartitionLostListener</code>, which is also a sub-interface of <code>MapListener</code>.</p>
@@ -1456,8 +1459,8 @@ owned by the crashed member are kept on other members.</p>
 <p>See the <a href="cluster-events.html#listening-for-partition-lost-events" class="page">Listening for Partition Lost Events section</a> for more
 information about partition lost detection and partition lost events.</p>
 </div>
-<div class="sect3">
-<h4 id="registering-map-listeners"><a class="anchor" href="#registering-map-listeners"></a>Registering Map Listeners</h4>
+<div class="sect2">
+<h3 id="registering-map-listeners"><a class="anchor" href="#registering-map-listeners"></a>Registering Map Listeners</h3>
 <div class="paragraph">
 <p>After you create your listener class, you can configure your cluster
 to include map listeners using the method <code>addEntryListener</code> (as you
@@ -1552,8 +1555,8 @@ new EntryListenerConfig( "com.yourpackage.MyEntryListener",
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="map-listener-attributes"><a class="anchor" href="#map-listener-attributes"></a>Map Listener Attributes</h4>
+<div class="sect2">
+<h3 id="map-listener-attributes"><a class="anchor" href="#map-listener-attributes"></a>Map Listener Attributes</h3>
 <div class="paragraph">
 <p>As you see, there are attributes of the map listeners in the above
 examples: <code>include-value</code> and <code>local</code>. The attribute <code>include-value</code>
@@ -1567,8 +1570,10 @@ Its default value is <code>false</code>.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listening-for-multimap-events"><a class="anchor" href="#listening-for-multimap-events"></a>Listening for MultiMap Events</h3>
+</div>
+<div class="sect1">
+<h2 id="listening-for-multimap-events"><a class="anchor" href="#listening-for-multimap-events"></a>Listening for MultiMap Events</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You can listen to entry-based events in the MultiMap using <code>EntryListener</code>.
 The following is an example entry listener implementation for MultiMap.</p>
@@ -1607,8 +1612,8 @@ The following is an example entry listener implementation for MultiMap.</p>
 }</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="registering-multimap-listeners"><a class="anchor" href="#registering-multimap-listeners"></a>Registering MultiMap Listeners</h4>
+<div class="sect2">
+<h3 id="registering-multimap-listeners"><a class="anchor" href="#registering-multimap-listeners"></a>Registering MultiMap Listeners</h3>
 <div class="paragraph">
 <p>After you create your listener class, you can configure your cluster to
 include MultiMap listeners using the method <code>addEntryListener</code>. Below
@@ -1704,8 +1709,8 @@ programmatic, or Spring configuration, as shown below.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="multimap-listener-attributes"><a class="anchor" href="#multimap-listener-attributes"></a>MultiMap Listener Attributes</h4>
+<div class="sect2">
+<h3 id="multimap-listener-attributes"><a class="anchor" href="#multimap-listener-attributes"></a>MultiMap Listener Attributes</h3>
 <div class="paragraph">
 <p>As you see, there are attributes of the MultiMap listeners in the above
 examples: <code>include-value</code> and <code>local</code>. The attribute <code>include-value</code> is
@@ -1719,8 +1724,10 @@ Its default value is <code>false</code>.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listening-for-item-events"><a class="anchor" href="#listening-for-item-events"></a>Listening for Item Events</h3>
+</div>
+<div class="sect1">
+<h2 id="listening-for-item-events"><a class="anchor" href="#listening-for-item-events"></a>Listening for Item Events</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The Item Listener is used by the Hazelcast <code>IQueue</code>, <code>ISet</code> and <code>IList</code> interfaces.</p>
 </div>
@@ -1762,8 +1769,8 @@ use <code>IQueue</code>, <code>ISet</code> or <code>IList</code> instead of <cod
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="registering-item-listeners"><a class="anchor" href="#registering-item-listeners"></a>Registering Item Listeners</h4>
+<div class="sect2">
+<h3 id="registering-item-listeners"><a class="anchor" href="#registering-item-listeners"></a>Registering Item Listeners</h3>
 <div class="paragraph">
 <p>After you create your class, you can configure your cluster to include
 item listeners. Below is an example using the method <code>addItemListener</code>
@@ -1857,8 +1864,8 @@ new ItemListenerConfig( "com.yourpackage.ExampleItemListener", true ) );</code><
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="item-listener-attributes"><a class="anchor" href="#item-listener-attributes"></a>Item Listener Attributes</h4>
+<div class="sect2">
+<h3 id="item-listener-attributes"><a class="anchor" href="#item-listener-attributes"></a>Item Listener Attributes</h3>
 <div class="paragraph">
 <p>As you see, there is an attribute in the above examples: <code>include-value</code>.
 It is a boolean attribute that is optional, and if you set it to <code>true</code>,
@@ -1872,8 +1879,10 @@ Its default value is <code>false</code>.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listening-for-topic-messages"><a class="anchor" href="#listening-for-topic-messages"></a>Listening for Topic Messages</h3>
+</div>
+<div class="sect1">
+<h2 id="listening-for-topic-messages"><a class="anchor" href="#listening-for-topic-messages"></a>Listening for Topic Messages</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The Message Listener is used by the <code>ITopic</code> interface. It notifies
 when a message is received for the registered topic.</p>
@@ -1897,8 +1906,8 @@ when a message is received for the registered topic.</p>
 }</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="registering-message-listeners"><a class="anchor" href="#registering-message-listeners"></a>Registering Message Listeners</h4>
+<div class="sect2">
+<h3 id="registering-message-listeners"><a class="anchor" href="#registering-message-listeners"></a>Registering Message Listeners</h3>
 <div class="paragraph">
 <p>After you create your class, you can configure your cluster to include
 message listeners. Below is an example using the method <code>addMessageListener</code>.</p>
@@ -1982,7 +1991,6 @@ programmatic, or Spring configuration, as shown below.</p>
             class-name="com.yourpackage.ExampleMessageListener"/&gt;
     &lt;/hz:message-listeners&gt;
 &lt;/hz:topic&gt;</code></pre>
-</div>
 </div>
 </div>
 </div>

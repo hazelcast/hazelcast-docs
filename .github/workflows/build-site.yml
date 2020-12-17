@@ -5,6 +5,8 @@ name: Build site
 on:
   push:
     branches: [ develop ]
+  repository_dispatch:
+    types: [build-site]
 
 jobs:
   build:

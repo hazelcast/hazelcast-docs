@@ -17,7 +17,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-          ref: master
     - run: |
-        docker run -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY algolia/docsearch-scraper
+        docker run -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper

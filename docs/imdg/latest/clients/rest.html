@@ -1428,7 +1428,7 @@ Also, if the call contains the MIME type, Hazelcast stores this information, too
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -H "Content-Type: text/plain" -d "bar"
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -H "Content-Type: text/plain" -d "bar"
     http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/maps/mapName/foo</code></pre>
 </div>
 </div>
@@ -1437,7 +1437,7 @@ Also, if the call contains the MIME type, Hazelcast stores this information, too
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 200 OK
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 200 OK
 &lt; Content-Length: 0</code></pre>
 </div>
 </div>
@@ -1446,7 +1446,7 @@ Also, if the call contains the MIME type, Hazelcast stores this information, too
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -H "Content-Type: text/plain" -d "bar"
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -H "Content-Type: text/plain" -d "bar"
     http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/maps/mapName/foo/</code></pre>
 </div>
 </div>
@@ -1455,7 +1455,7 @@ Also, if the call contains the MIME type, Hazelcast stores this information, too
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -H "Content-Type: text/plain" -d "bar"
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -H "Content-Type: text/plain" -d "bar"
     http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/maps/mapName/foo</code></pre>
 </div>
 </div>
@@ -1496,7 +1496,7 @@ bar</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 204 No Content
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 204 No Content
 &lt; Content-Length: 0</code></pre>
 </div>
 </div>
@@ -1511,7 +1511,7 @@ bar</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -X DELETE http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/maps/mapName/foo</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -X DELETE http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/maps/mapName/foo</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1525,12 +1525,12 @@ bar</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -X DELETE http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/maps/mapName</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -X DELETE http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/maps/mapName</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 200 OK
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 200 OK
 &lt; Content-Length: 0</code></pre>
 </div>
 </div>
@@ -1542,7 +1542,7 @@ bar</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -H "Content-Type: text/plain" -d "foo"
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -H "Content-Type: text/plain" -d "foo"
     http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/queues/myEvents</code></pre>
 </div>
 </div>
@@ -1554,7 +1554,7 @@ bar</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 200 OK
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 200 OK
 &lt; Content-Length: 0</code></pre>
 </div>
 </div>
@@ -1563,7 +1563,7 @@ bar</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 503 Service Unavailable
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 503 Service Unavailable
 &lt; Content-Length: 0</code></pre>
 </div>
 </div>
@@ -1579,7 +1579,7 @@ Note that you should state the poll timeout while polling for queue events by an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -X DELETE \http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/queues/myEvents/10</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -X DELETE \http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/queues/myEvents/10</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1588,7 +1588,7 @@ Below is the response.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 200 OK
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 200 OK
 &lt; Content-Type: text/plain
 &lt; Content-Length: 3
 foo</code></pre>
@@ -1600,7 +1600,7 @@ there is no item on the queue to be returned.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 204 No Content
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 204 No Content
 &lt; Content-Length: 0</code></pre>
 </div>
 </div>
@@ -1609,7 +1609,7 @@ there is no item on the queue to be returned.</p>
 <h3 id="getting-the-size-of-the-queue-for-rest-client"><a class="anchor" href="#getting-the-size-of-the-queue-for-rest-client"></a>Getting the size of the queue for REST Client</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v -X GET \http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/queues/myEvents/size</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v -X GET \http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/queues/myEvents/size</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1618,7 +1618,7 @@ Below is an example response.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 200 OK
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 200 OK
 &lt; Content-Type: text/plain
 &lt; Content-Length: 1
 5</code></pre>
@@ -1636,7 +1636,7 @@ an example of which is shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/cluster</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/cluster</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1644,7 +1644,7 @@ an example of which is shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 200 OK
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 200 OK
 
 {
   "members": [
@@ -1686,7 +1686,7 @@ An example is shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl -v http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/instance</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl -v http://&lt;member IP address&gt;:&lt;port&gt;/hazelcast/rest/instance</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1694,7 +1694,7 @@ An example is shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">&lt; HTTP/1.1 200 OK
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">&lt; HTTP/1.1 200 OK
 &lt; Content-Length: 27
 
 {"name":"adoring_brattain"}</code></pre>

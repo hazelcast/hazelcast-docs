@@ -1456,7 +1456,7 @@ do the following changes:</p>
 to be selected when a JCA API call is made without specifying an explicit security provider.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">security.provider.1=com.ibm.crypto.fips.provider.IBMJCEFIPS</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">security.provider.1=com.ibm.crypto.fips.provider.IBMJCEFIPS</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1468,7 +1468,7 @@ of provider by one, i.e., the old <code>security.provider.1</code> becomes <code
 <p>Add the new security properties (related to handling TLS protected communication):</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">ssl.SocketFactory.provider=com.ibm.jsse2.SSLSocketFactoryImpl
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ssl.SocketFactory.provider=com.ibm.jsse2.SSLSocketFactoryImpl
 ssl.ServerSocketFactory.provider=com.ibm.jsse2.SSLServerSocketFactoryImpl</code></pre>
 </div>
 </div>

@@ -1702,7 +1702,7 @@ Only HTTP GET request method is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl http://127.0.0.1:${PORT}/hazelcast/health/ready</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl http://127.0.0.1:${PORT}/hazelcast/health/ready</code></pre>
 </div>
 </div>
 </li>
@@ -1713,7 +1713,7 @@ Only HTTP GET request method is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/state</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/state</code></pre>
 </div>
 </div>
 </li>
@@ -1724,7 +1724,7 @@ Only HTTP GET request method is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}&amp;${STATE}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/changeState</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}&amp;${STATE}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/changeState</code></pre>
 </div>
 </div>
 </li>
@@ -1735,7 +1735,7 @@ Only HTTP GET request method is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}"  http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/clusterShutdown</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}"  http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/clusterShutdown</code></pre>
 </div>
 </div>
 </li>
@@ -1746,7 +1746,7 @@ Only HTTP GET request method is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/version
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/version
   {"status":"success","version":"3.9"}</code></pre>
 </div>
 </div>
@@ -1767,7 +1767,7 @@ Only HTTP GET request method is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/partialStart/</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/partialStart/</code></pre>
 </div>
 </div>
 </li>
@@ -1778,7 +1778,7 @@ Only HTTP GET request method is supported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/forceStart/</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/forceStart/</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1804,7 +1804,7 @@ and <a href="#using-the-script-cluster-sh"><code>cluster.sh</code></a> sections.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/hotBackup</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/hotBackup</code></pre>
 </div>
 </div>
 </li>
@@ -1816,7 +1816,7 @@ a new minor version, use the following <code>curl</code> command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}&amp;${CLUSTER_VERSION}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/version</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl --data "${CLUSTERNAME}&amp;$\{PASSWORD}&amp;${CLUSTER_VERSION}" http://127.0.0.1:${PORT}/hazelcast/rest/management/cluster/version</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1825,7 +1825,7 @@ of the cluster to upgrade from cluster version 3.8 to 3.9:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">$ curl --data "dev&amp;dev-pass&amp;3.9" http://127.0.0.1:5701/hazelcast/rest/management/cluster/version
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ curl --data "dev&amp;dev-pass&amp;3.9" http://127.0.0.1:5701/hazelcast/rest/management/cluster/version
   {"status":"success","version":"3.9"}</code></pre>
 </div>
 </div>

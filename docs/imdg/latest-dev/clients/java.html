@@ -3306,7 +3306,7 @@ Its default value is 20000.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain"> begin_time = getCurrentTime()
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"> begin_time = getCurrentTime()
  current_backoff_millis = INITIAL_BACKOFF_MILLIS
  while (TryConnect(connectionTimeout)) != SUCCESS) {
     if (getCurrentTime() - begin_time &gt;= CLUSTER_CONNECT_TIMEOUT_MILLIS) {

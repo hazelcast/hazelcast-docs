@@ -1,0 +1,84 @@
+= Hazelcast Documentation Site
+
+image:https://img.shields.io/github/workflow/status/JakeSCahill/docs-poc/Build%20site[GitHub Workflow Status] image:https://img.shields.io/github/workflow/status/JakeSCahill/docs-poc/Index%20site?label=Indexer[GitHub Workflow Status] image:https://img.shields.io/github/workflow/status/JakeSCahill/docs-poc/Publish?label=GitHub%20Pages[GitHub Workflow Status]
+
+This repository hosts an https://docs.antora.org/antora/2.3/[Antora] playbook project for the Hazelcast documentation site.
+
+image::images/docs-preview.png[Preview of the documentation site]
+
+== Work in progress
+
+The roadmap for this site includes the following items:
+
+- [ ] Migrate Hazelcast Cloud content
+- [ ] Migrate Jet content
+- [ ] Migrate Management Center content
+- [ ] Review and restructure content, starting with IMDG
+
+== Introduction to Antora
+
+Antora is a static site generator that facilitates a docs-as-code workflow where documentation is stored in Git repositories and processed to output a static website.
+
+Documentation can be stored in one or more repositories and/or branches.
+
+Antora uses Asciidoctor.js to convert Asciidoc to HTML, then it uses Handlebars to set that HTML into a page layout.
+
+NOTE: The page layouts and UI code (css, JavaScript, Handlebars templates) is stored in a https://github.com/JakeSCahill/docs-poc-ui[separate repository], which outputs a `ui-bundle.zip` file that this project references in the playbook.
+
+video::BAJ8F7yQz64[youtube]
+
+== The playbook
+
+The playbook defines the content sources (repositories and branches), site URL, UI bundle URL, global AsciiDoc attributes, and Asciidoctor extensions.
+
+This project has two playbook files, which configure the build process for the documentation site:
+
+- `antora-playbook-local.yml`: link:.github/CONTRIBUTING.adoc#local-builds[For local builds]
+- `antora-playbook.yml`: For production builds
+
+The current playbooks pull from the following content sources:
+
+- The `latest`, `latest-dev`, and `archive` branches of this forked[`hazelcast-reference-manual` repository](https://github.com/JakeSCahill/hazelcast-reference-manual)
+- The `home/` folder in this repository, which contains an Antora component for the home page
+
+[[home]]
+== Home Component
+
+The `home/` folder in this repository contains the source for the Home documentation component with links to all major documentation projects.
+
+image::images/home-page.png[Preview of the home page]
+
+== Custom Asciidoctor Extensions
+The custom extension in the `lib/` directory processes the Asciidoc `tabs` blocks to generate tabbed code samples in the output HTML.
+
+For more information about writing Asciidoctor.js extensions, see the https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions[Asciidoctor docs].
+
+== GitHub Actions
+
+To automate some elements of the build process, this repository includes the following GitHub Actions:
+
+.GitHub Actions
+[cols="m,a,a"]
+|===
+|File |Description |Triggers
+
+|validate-site.yml
+|Validates that the build process completes without errors and checks that all internal links are working
+|On a pull request to both this repository and any repositories listed in the `content.sources` field of the playbook
+
+|build-site.yml
+|Builds the site and commits the result to the `develop branch` of this repository
+|On a push to both this repository and any repositories listed in the `content.sources` field of the playbook
+
+|index-site.yml
+|Runs the Docsearch indexer in a Docker container to index the site and send the index to Algolia
+|Once per day at 00:00 UTC
+
+|publish.yml
+|Commits the contents of the `docs` folder on the `develop` branch to the `master` branch, which is set up to host the site on GitHub Pages
+|Manual trigger
+|===
+
+== Contributing
+
+To learn how to use the playbook and generate the docs site locally, see our link:.github/CONTRIBUTING.adoc[contributing guide].

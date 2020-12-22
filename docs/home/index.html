@@ -73,13 +73,21 @@ ga('send', 'pageview')
       </div>
     </div>
   </nav>
-</header>
+  <div class='cookie-banner' id='cookie'>
+<p>
+    This website uses cookies to give you the best experience.
+    <a href=’https://hazelcast.com/privacy/’>Learn more</a>
+  </p>
+<button class='close' id='cookie-close'>Close</button>
+</div></header>
 <div class="home">
   <div class="home-background">
     <h1>What are you looking for?</h1>
+    <!-- Remove search bar on home page
+    until we have search integrated for other docs
     <div class="search-container">
       <input id="search-input" type="text" placeholder="">
-    </div>
+    </div>-->
   </div>
 <main data-ceiling="topbar">
 <article class="article">
@@ -167,27 +175,13 @@ ga('send', 'pageview')
 </article>
 </main>
 </div><footer class="footer">
-  <a>Terms of service</a>
-  <a>Privacy</a>
-  <a>Contact us</a>
+  <a href="https://hazelcast.com/terms-of-use/">Terms of service</a>
+  <a href="https://hazelcast.com/privacy/">Privacy</a>
+  <a href="https://hazelcast.com/contact/">Contact us</a>
 </footer>
 <script src="../_/js/site.js"></script>
 <script async src="../_/js/vendor/highlight.js"></script>
 <!-- Before the closing </body> -->
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    // Your apiKey and indexName will be given to you once
-    // we create your config
-    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
-    indexName: 'dev_docs',
-    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
-    // Replace inputSelector with a CSS selector
-    // matching your search input
-    inputSelector: '#search-input',
-    // Set debug to true to inspect the dropdown
-    debug: false,
-  });
-</script>
   </body>
 </html>

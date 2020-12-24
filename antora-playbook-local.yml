@@ -8,7 +8,7 @@ content:
     start_path: home
     branches: HEAD
   - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
-    branches: [latest, latest-dev] #branches: HEAD
+    branches: [master, v*] #branches: HEAD
     start_path: docs
   - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
     branches: [archive] #branches: HEAD

@@ -1,4 +1,7 @@
 = Contributing to Hazelcast Docs
+:url-node: https://nodejs.org/en/download/
+:url-imdg-docs: https://github.com/JakeSCahill/imdg-docs
+:url-antora-yml: https://docs.antora.org/antora/2.3/component-version-descriptor
 
 The Hazelcast docs are open source, and we welcome your contributions!
 
@@ -17,7 +20,7 @@ node --version
 
 If you see an active Node.js LTS version on your device, you’re ready to build the docs.
 
-If no version number is displayed in the output, you need to [install Node.js](https://nodejs.org/en/download/).
+If no version number is displayed in the output, you need to {url-node}[install Node.js].
 
 === Step 2. Clone a documentation project
 
@@ -25,14 +28,14 @@ Documentation is hosted in separate GitHub repositorites. So, to work on a parti
 
 For example, to build the IMDG reference manual on your local device:
 
-. Fork the https://github.com/JakeSCahill/hazelcast-reference-manual[`hazelcast-reference-manual` repository]
+. Fork the {url-imdg-docs}[`imdg-docs` repository]
 
 . Clone your forked repository, and check out the branch that you want to work on
 +
 [source,bash]
 ----
-git clone https://github.com/<your-username>/hazelcast-reference-manual
-cd hazelcast-reference-manual
+git clone https://github.com/<your-username>/imdg-docs
+cd imdg-docs
 git checkout latest
 ----
 
@@ -42,31 +45,6 @@ git checkout latest
 ----
 git checkout -b add-my-awesome-feature
 ----
-
-. Clone the playbook repository
-+
-[source,bash]
-----
-cd ..
-git clone https://github.com/JakeSCahill/docs-poc
-cd docs-poc
-----
-
-. Edit the `antora-playbook-local.yml` file to process your local version
-+
-[source,yaml]
-----
-content:
-  sources: 
-  - url: .
-    start_path: home
-    branches: HEAD
-  - url: ../hazelcast-reference-manual
-    start_path: docs
-    branches: HEAD
-----
-+
-NOTE: The `branches: HEAD` line tells Antora to pull content from the head of your locally checked out branch.
 
 === Step 3. Make your Changes
 
@@ -82,7 +60,6 @@ TIP: See the <<structure, Docs Structure section>> for help navigating a documen
 git status
 ----
 
-[[local-builds]]
 === Step 4. Build and Test your Changes Locally
 
 When working on a documentation project, you should build and preview the docs on your local machine to see your changes before going live.
@@ -97,15 +74,9 @@ npm run-script build-local
 +
 NOTE: This script is defined in the `package.json` file, and runs Antora with the `antora-playbook-local.yml` file.
 +
-You will see the following warnings, which you can ignore:
+In the `test` folder you will now have all the webpages for your documentation component.
 +
-[source,bash]
-----
-asciidoctor: WARNING: migration_guides.adoc: line 1025: unterminated listing block
-asciidoctor: WARNING: migration_guides.adoc: line 1043: unterminated listing block
-----
-+
-In the `docs` folder you will now have all the webpages for your documentation site.
+NOTE: This script builds the documentation only for your local branch. If you want to build the whole site, you can run the script from the `hazelcast-docs` repository.
 
 . To view the documentation site from a localhost web server, run the `serve` script
 +
@@ -115,6 +86,7 @@ npm run-script serve
 ----
 +
 Then on the same device, go to `http:localhost:5000` to view the local site.
++
 
 . If you want to show others your changes, you can expose your web server to the Internet, using ngrok by doing the following:
 +
@@ -169,37 +141,44 @@ modules/ <2>
     nav.adoc <9>
   another-module/ <10>
 ----
-<1> The `antora.yml` file tells Antora that the contents of the `modules/` folder should be processed and added to the documentation site. This file is called the https://docs.antora.org/antora/2.3/component-version-descriptor[component version descriptor file].
-<2> The https://docs.antora.org/antora/2.3/module-directories[`modules/` folder] contains the content that Antora will process
-<3> The https://docs.antora.org/antora/2.3/root-module-directory[`ROOT/` folder] contains any content that can't be categorized uner a specfic module name. Unlike other modules, the name of this module is never displayed in the URL of the site.
-<4> The https://docs.antora.org/antora/2.3/asciidoc/link-attachment[`attachments/` folder] contains downloadable content such as ZIP files that a user can download through a link. To include a download link, use the following syntax:
+<1> This file tells Antora that the contents of the `modules/` folder should be processed and added to the documentation site. This file is called the {url-antora-yml}[component version descriptor file].
+<2> This folder contains the content that Antora will process
+<3> This folder contains any content that can't be categorized uner a specfic module name. Unlike other modules, the name of this module is never displayed in the URL of the site.
+<4> In any module, this folder contains downloadable content such as ZIP files that a user can download through a link.
+<5> In any module, this folder contains examples such as source code that you can include in Asciidoc pages.
+<6> In any module, this folder contains images that you can include in Asciidoc pages.
+<7> In any module, this folder contains the Asciidoc pages that make up the documentation project.
+<8> In any module, this folder contains Asciidoc snippets such as warnings or copyright material that you can include in any Asciidoc pages.
+<9> In any module, this file contains a list of links that will become part of the left-hand navigation menu.
+<10> This folder is an example of how you can include any number of named modules to use to categorize your content. All modules follow the same structure as ROOT. Unlike the ROOT module, the names of other modules are included in the URL of the site. For example a page named `example.adoc` inside the `pages/` folder of the `example` module will have the following path: `example/example.adoc`
+
+[[local-builds]]
+== Build the whole site locally
+
+Sometimes, you may want to build the whole documentation site instead of just a single component. For example, if you want to check that links to other components are working.
+
+. Clone this repository
 +
-[source,asciidoc]
+[source,bash]
 ----
-link:path/to/example.zip[Download the example]
+git clone {url-imdg-docs}
+cd imdg-docs
 ----
 
-<5> The https://docs.antora.org/antora/2.3/page/examples-and-source-snippets[`examples/` folder] contains examples such as source code that you can include in Asciidoc pages, using the following syntax:
+. Create a new local branch for your work
 +
-[source,asciidoc]
+[source,bash]
 ----
-include::example$example-filename.json[]
+git checkout -b add-my-awesome-feature
 ----
 
-<6> The https://docs.antora.org/antora/2.3/page/images[`images/` folder] contains images that you can include in Asciidoc pages, using the following syntax:
+. Run the local build script
 +
-[source,asciidoc]
-.Block images
+[source,bash]
 ----
-image::path/to/image[Alt text]
+npm i
+npm run-script build-local
 ----
+NOTE: This script is defined in the `package.json` file, and runs Antora with the `antora-playbook-local.yml` file.
 +
-[source,asciidoc]
-.Inline images
-----
-image:path/to/image[Alt text]
-----
-<7> The https://docs.antora.org/antora/2.3/page[`pages/` folder] contains the Asciidoc pages that make up the documentation project.
-<8> The `partials/` folder contains Asciidoc snippets such as warnings or copyright material that you can include in any Asciidoc pages, using the following syntax: `include::partial$partial-filename.adoc[]`
-<9> The https://docs.antora.org/antora/2.3/navigation[`nav.adoc`] file contains a list of links that will become part of the left-hand navigation menu.
-<10> This folder is an example of how you can include any number of named modules to use to categorize your content. All modules follow the same structure as ROOT. Unlike the ROOT module, the names of other modules are included in the URL of the site. For example a page named `example.adoc` inside the `pages/` folder of the `example` module will have the following path: `example/example.html`
+In the `docs` folder you will now have all the webpages for your documentation component.

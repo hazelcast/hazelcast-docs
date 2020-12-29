@@ -1,21 +1,21 @@
 site:
   title: Documentation
   start_page: home::index.adoc
-  url: https://jakescahill.github.io/docs-poc
+  url: https://jakescahill.github.io/hazelcast-docs
 content:
   sources: 
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual
-    branches: [master, v*]
+  - url: https://github.com/JakeSCahill/imdg-docs
+    branches: [latest, latest-dev]
     start_path: docs
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual
+  - url: https://github.com/JakeSCahill/imdg-docs
     branches: [archive]
     start_paths: docs/*
 ui: 
   bundle:
-    url: https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.13/ui-bundle.zip
+    url: https://github.com/JakeSCahill/hazelcast-docs-ui/releases/download/v1.1.13/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:

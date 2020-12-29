@@ -7,15 +7,15 @@ content:
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
+  - url: https://github.com/JakeSCahill/imdg-docs #../imdg-docs
     branches: [latest, latest-dev] #branches: HEAD
     start_path: docs
-  - url: https://github.com/JakeSCahill/hazelcast-reference-manual #../hazelcast-reference-manual
+  - url: https://github.com/JakeSCahill/imdg-docs #../imdg-docs
     branches: [archive] #branches: HEAD
     start_paths: docs/*
 ui: 
   bundle:
-    url: https://github.com/JakeSCahill/docs-poc-ui/releases/download/v1.1.13/ui-bundle.zip #../docs-poc-ui/build/ui-bundle.zip
+    url: https://github.com/JakeSCahill/hazelcast-docs-ui/releases/download/v1.1.13/ui-bundle.zip #../hazelcast-docs-ui/build/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:

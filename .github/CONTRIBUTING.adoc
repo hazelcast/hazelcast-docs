@@ -43,31 +43,6 @@ git checkout latest
 git checkout -b add-my-awesome-feature
 ----
 
-. Clone the playbook repository
-+
-[source,bash]
-----
-cd ..
-git clone https://github.com/JakeSCahill/docs-poc
-cd docs-poc
-----
-
-. Edit the `antora-playbook-local.yml` file to process your local version
-+
-[source,yaml]
-----
-content:
-  sources: 
-  - url: .
-    start_path: home
-    branches: HEAD
-  - url: ../hazelcast-reference-manual
-    start_path: docs
-    branches: HEAD
-----
-+
-NOTE: The `branches: HEAD` line tells Antora to pull content from the head of your locally checked out branch.
-
 === Step 3. Make your Changes
 
 After installing the dependencies and cloning a documentation project, you're ready to make your changes.
@@ -97,15 +72,7 @@ npm run-script build-local
 +
 NOTE: This script is defined in the `package.json` file, and runs Antora with the `antora-playbook-local.yml` file.
 +
-You will see the following warnings, which you can ignore:
-+
-[source,bash]
-----
-asciidoctor: WARNING: migration_guides.adoc: line 1025: unterminated listing block
-asciidoctor: WARNING: migration_guides.adoc: line 1043: unterminated listing block
-----
-+
-In the `docs` folder you will now have all the webpages for your documentation site.
+In the `test` folder you will now have all the webpages for your documentation component.
 
 . To view the documentation site from a localhost web server, run the `serve` script
 +

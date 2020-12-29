@@ -1,7 +1,7 @@
 {
   "name": "hazelcast-docs-playbook",
   "version": "1.0.0",
-  "description": "A proof of concept to demo how the new Hazelcast documentation could work.",
+  "description": "Hazelcast Antora project.",
   "author": "Jake Cahill",
   "license": "ISC",
   "scripts": {

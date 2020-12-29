@@ -1,6 +1,8 @@
 = Get support
+:url-slack: https://slack.hazelcast.com
+:url-stackoverflow: https://stackoverflow.com/questions/tagged/hazelcast
 
 If you have a general or technical question, you can use one of the following resources:
 
-- https://slack.hazelcast.com[Slack] For real-time chats with developers and community members
-- https://stackoverflow.com/questions/tagged/hazelcast[StackOverflow] For technical and troubleshooting questions
+- {url-slack}[Slack] For real-time chats with developers and community members
+- {url-stackoverflow}[StackOverflow] For technical and troubleshooting questions

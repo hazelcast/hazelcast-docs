@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Hazelcast Documentation</title>
-    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/home/index.html">
+    <link rel="canonical" href="https://jakescahill.github.io/hazelcast-docs/home/index.html">
 <link rel="stylesheet" href="../_/css/site.css">
 <link
 rel="stylesheet"
@@ -31,7 +31,7 @@ ga('send', 'pageview')
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://hazelcast.org/"><img src="../_/img/hazelcast-logo.svg"></img></a>
-      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/hazelcast-docs">Documentation</img></a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -73,19 +73,27 @@ ga('send', 'pageview')
       </div>
     </div>
   </nav>
-</header>
+  <div class='cookie-banner' id='cookie'>
+<p>
+    This website uses cookies to give you the best experience.
+    <a href=’https://hazelcast.com/privacy/’>Learn more</a>
+  </p>
+<button class='close' id='cookie-close'>Close</button>
+</div></header>
 <div class="home">
   <div class="home-background">
     <h1>What are you looking for?</h1>
+    <!-- Remove search bar on home page
+    until we have search integrated for other docs
     <div class="search-container">
       <input id="search-input" type="text" placeholder="">
-    </div>
+    </div>-->
   </div>
 <main data-ceiling="topbar">
 <article class="article">
 <div class="cards">
 <div class="card">
-	<h3 class="card-header cloud"><img src="/docs-poc/home/_images/cloud.svg">
+	<h3 class="card-header cloud"><img src="/hazelcast-docs/home/_images/cloud.svg">
 		 hazelcast
 	</h3>
 	<p class="card-summary">
@@ -93,10 +101,10 @@ ga('send', 'pageview')
 	</p>
 	<ul>
 		<li class="get-started-home">
-			<a href="https://docs.cloud.hazelcast.com/docs/getting-started">Get Started <img src="/docs-poc/home/_images/right-arrow.svg"></a>
+			<a href="https://docs.cloud.hazelcast.com/docs/getting-started">Get Started <img src="/hazelcast-docs/home/_images/right-arrow.svg"></a>
 		</li>
 	</ul>
-	<h3 class="card-header imdg"><img src="/docs-poc/home/_images/imdg.svg"></img>
+	<h3 class="card-header imdg"><img src="/hazelcast-docs/home/_images/imdg.svg"></img>
 		 hazelcast
 	</h3>
 	<p class="card-summary">
@@ -106,10 +114,10 @@ ga('send', 'pageview')
 		<li><a href="https://guides.hazelcast.org/home/">Tutorials</a></li>
 		<li><a href="https://hazelcast.com/resources/hazelcast-deployment-operations-guide/">Operations Guide</a></li>
 		<li class="get-started-home">
-			<a href="https://jakescahill.github.io/docs-poc/imdg/latest/getting-started.html">Get Started <img src="/docs-poc/home/_images/right-arrow.svg"></a>
+			<a href="https://jakescahill.github.io/hazelcast-docs/imdg/latest/getting-started.html">Get Started <img src="/hazelcast-docs/home/_images/right-arrow.svg"></a>
 		</li>
 	</ul>
-	<h3 class="card-header jet"><img src="/docs-poc/home/_images/jet.svg">
+	<h3 class="card-header jet"><img src="/hazelcast-docs/home/_images/jet.svg">
 		 hazelcast
 	</h3>
 	<p class="card-summary">
@@ -119,7 +127,7 @@ ga('send', 'pageview')
 		<li><a href="https://jet-start.sh/docs/tutorials/kafka">Tutorials</a></li>
 		<li><a href="https://jet-start.sh/docs/operations/installation">Operations Guide</a></li>
 		<li class="get-started-home">
-			<a href="https://jet-start.sh/docs/get-started/intro">Get Started <img src="/docs-poc/home/_images/right-arrow.svg"></a>
+			<a href="https://jet-start.sh/docs/get-started/intro">Get Started <img src="/hazelcast-docs/home/_images/right-arrow.svg"></a>
 		</li>
 	</ul>
 </div>
@@ -132,7 +140,7 @@ ga('send', 'pageview')
 	</p>
 	<ul>
 		<li class="get-started-home">
-			<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#deploying-and-starting">Get Started <img src="/docs-poc/home/_images/right-arrow.svg"></a>
+			<a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#deploying-and-starting">Get Started <img src="/hazelcast-docs/home/_images/right-arrow.svg"></a>
 		</li>
 	</ul>
 	<h3 class="card-header">Hazelcast Clients
@@ -167,27 +175,13 @@ ga('send', 'pageview')
 </article>
 </main>
 </div><footer class="footer">
-  <a>Terms of service</a>
-  <a>Privacy</a>
-  <a>Contact us</a>
+  <a href="https://hazelcast.com/terms-of-use/">Terms of service</a>
+  <a href="https://hazelcast.com/privacy/">Privacy</a>
+  <a href="https://hazelcast.com/contact/">Contact us</a>
 </footer>
 <script src="../_/js/site.js"></script>
 <script async src="../_/js/vendor/highlight.js"></script>
 <!-- Before the closing </body> -->
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    // Your apiKey and indexName will be given to you once
-    // we create your config
-    apiKey: 'ef7bd9485eafbd75d6e8425949eda1f5',
-    indexName: 'dev_docs',
-    appId: 'QK2EAH8GB0', // Should be only included if you are running DocSearch on your own.
-    // Replace inputSelector with a CSS selector
-    // matching your search input
-    inputSelector: '#search-input',
-    // Set debug to true to inspect the dropdown
-    debug: false,
-  });
-</script>
   </body>
 </html>

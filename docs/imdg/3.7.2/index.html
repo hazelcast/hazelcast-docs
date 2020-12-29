@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Hazelcast IMDG Reference Manual 3.7.2 Documentation</title>
-    <link rel="canonical" href="https://jakescahill.github.io/docs-poc/imdg/latest-dev/index.html">
+    <link rel="canonical" href="https://jakescahill.github.io/hazelcast-docs/imdg/4.0.3/index.html">
     <meta name="generator" content="Antora 2.3.4">
 <link rel="stylesheet" href="../../_/css/site.css">
 <link
@@ -32,7 +32,7 @@ ga('send', 'pageview')
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://hazelcast.org/"><img src="../../_/img/hazelcast-logo.svg"></img></a>
-      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/docs-poc">Documentation</img></a>
+      <a class="navbar-item" id="documentation-header" href="https://jakescahill.github.io/hazelcast-docs">Documentation</img></a>
             <div class="navbar-item">
                 <input id="search-input" type="text" placeholder="Search docs">
                 <a id="search-open" ><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -79,7 +79,13 @@ ga('send', 'pageview')
       </div>
     </div>
   </nav>
-</header>
+  <div class='cookie-banner' id='cookie'>
+<p>
+    This website uses cookies to give you the best experience.
+    <a href=’https://hazelcast.com/privacy/’>Learn more</a>
+  </p>
+<button class='close' id='cookie-close'>Close</button>
+</div></header>
 <div class="body">
 <div class="nav-container" data-component="imdg" data-version="3.7.2">
   <aside class="nav">
@@ -94,12 +100,6 @@ ga('send', 'pageview')
       <span class="title">Hazelcast IMDG <a id="more-versions">See all versions</a><a id="fewer-versions">See fewer versions</a></span>
       <ul class="versions">
           <li class="version is-latest">
-            <a href="../latest-dev/index.html">latest-dev</a>
-          </li>
-          <li class="version">
-            <a href="../latest/index.html">4.1</a>
-          </li>
-          <li class="version">
             <a href="../4.0.3/index.html">4.0.3</a>
           </li>
           <li class="version">
@@ -114,10 +114,10 @@ ga('send', 'pageview')
           <li class="version">
             <a href="../3.12.11/index.html">3.12.11</a>
           </li>
-          <li class="version hidden">
+          <li class="version">
             <a href="../3.12.10/index.html">3.12.10</a>
           </li>
-          <li class="version hidden">
+          <li class="version">
             <a href="../3.12.9/index.html">3.12.9</a>
           </li>
           <li class="version hidden">
@@ -444,8 +444,6 @@ ga('send', 'pageview')
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">3.7.2</button>
   <div class="version-menu">
-        <a class="version" href="../latest-dev/index.html">latest-dev</a>
-        <a class="version" href="../latest/index.html">4.1</a>
         <a class="version" href="../4.0.3/index.html">4.0.3</a>
         <a class="version" href="../4.0.2/index.html">4.0.2</a>
         <a class="version" href="../4.0.1/index.html">4.0.1</a>
@@ -455,6 +453,8 @@ ga('send', 'pageview')
         <a class="version" href="../3.12.9/index.html">3.12.9</a>
         <a class="version" href="../3.12.8/index.html">3.12.8</a>
         <a class="version" href="../3.12.7/index.html">3.12.7</a>
+        <a class="version" href="../3.12.6/index.html">3.12.6</a>
+        <a class="version" href="../3.12.5/index.html">3.12.5</a>
   </div>
 </div>
 </div>
@@ -477,8 +477,8 @@ ga('send', 'pageview')
 <div id="feedback-response">
 <p class="feedback-response">Thanks for the feedback!</p>
 </div>
-<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-docs/issues/new?title=Docs: Feedback for Hazelcast IMDG Reference Manual 3.7.2&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/hazelcast-reference-manual/edit/archive/docs/3.7.2/modules/ROOT/pages/index.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
-  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/hazelcast-reference-manual/edit/archive/docs/3.7.2/modules/ROOT/pages/index.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
+<div class="additional-feedback"><a href="https://github.com/JakeSCahill/hazelcast-docs/issues/new?title=Docs: Feedback for Hazelcast IMDG Reference Manual 3.7.2&body=Hi, I have some feedback about [this page](https://github.com/JakeSCahill/imdg-docs/edit/archive/docs/3.7.2/modules/ROOT/pages/index.adoc)%0D%0A" class ="git" target="_blank">Report an issue</a></div>
+  <div class="edit-this-page"><a class="git-pull" href="https://github.com/JakeSCahill/imdg-docs/edit/archive/docs/3.7.2/modules/ROOT/pages/index.adoc" onclick="window.open(this.href,'_blank');return false;">Edit this Page</a></div>
 <div class="edit-this-page"><a href="https://www.surveymonkey.co.uk/r/NYGJNF9" class="survey" onclick="window.open(this.href,'_blank');return false;">Take our Survey</a></div>
 
 </aside>
@@ -487,9 +487,9 @@ ga('send', 'pageview')
 
 </div>
 <footer class="footer">
-  <a>Terms of service</a>
-  <a>Privacy</a>
-  <a>Contact us</a>
+  <a href="https://hazelcast.com/terms-of-use/">Terms of service</a>
+  <a href="https://hazelcast.com/privacy/">Privacy</a>
+  <a href="https://hazelcast.com/contact/">Contact us</a>
 </footer>
 <script src="../../_/js/site.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>

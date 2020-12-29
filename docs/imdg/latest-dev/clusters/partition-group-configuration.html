@@ -1527,6 +1527,53 @@ partitionGroupConfig.setEnabled( true )
 </div>
 </div>
 <div class="sect2">
+<h3 id="node-aware-partition-grouping"><a class="anchor" href="#node-aware-partition-grouping"></a>NODE_AWARE</h3>
+<div class="paragraph">
+<p>You can use the NODE_AWARE configuration with <a href="https://github.com/hazelcast/hazelcast-kubernetes/tree/1.5.x">Hazelcast Kubernetes Discovery Service plugin</a>.
+For container orchestration tools like Kubernetes and Docker Swarm, node is the term
+used to refer to the machine that containers/pods run on.</p>
+</div>
+<div class="paragraph">
+<p>As discovery services, these plugins put node information
+to the Hazelcast <a href="../management/cluster-utilities.html#defining-member-attributes" class="page">member attributes</a> map during the
+discovery process. When NODE_AWARE is configured as partition group type,
+Hazelcast creates the partition groups with respect to member attributes map&#8217;s entries
+that include the node information. That means backups are created
+in the other nodes and each node is accepted as one partition group.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When using the NODE_AWARE partition grouping, the orchestration
+tool must distribute Hazelcast containers/pods equally
+between the nodes. Otherwise, it results in uneven partition
+distribution among the members.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following are declarative and programmatic configuration snippets that show how to enable <code>NODE_AWARE</code> grouping:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;partition-group enabled="true" group-type="NODE_AWARE" /&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Config config = ...;
+PartitionGroupConfig partitionGroupConfig = config.getPartitionGroupConfig();
+partitionGroupConfig.setEnabled( true )
+    .setGroupType( MemberGroupType.NODE_AWARE );</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="spi"><a class="anchor" href="#spi"></a>SPI</h3>
 <div class="paragraph">
 <p>You can provide your own partition group implementation using the SPI configuration.

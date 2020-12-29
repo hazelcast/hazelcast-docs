@@ -1641,7 +1641,7 @@ This class must be run on the <strong>member</strong> side. The following is an 
         });
 
         //this will trigger `clientConnected` event
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
 
         final Collection&lt;Client&gt; connectedClients = clientService.getConnectedClients();
 
@@ -3322,12 +3322,8 @@ Its default value is 20000.</p>
 and for each connection we have a connection timeout; see the
 <a href="#setting-connection-timeout">Setting Connection Timeout section</a>.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="blue-green-deployment-and-disaster-recovery"><a class="anchor" href="#blue-green-deployment-and-disaster-recovery"></a>Blue-Green Deployment and Disaster Recovery</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="blue-green-deployment-and-disaster-recovery"><a class="anchor" href="#blue-green-deployment-and-disaster-recovery"></a>Implementing Blue-Green Deployment using Client Filtering</h4>
 <div class="paragraph">
 <p><strong class="blue">Hazelcast IMDG Enterprise</strong></p>
 </div>
@@ -3340,6 +3336,8 @@ diverted to another cluster on demand or when the intended cluster becomes unava
 <p>Using the blue-green system, the clients can connect to another cluster automatically
 when they are blacklisted from their currently connected cluster.
 See the <a href="https://docs.hazelcast.org/docs/management-center/latest/manual/html/index.html#changing-cluster-client-filtering" target="_blank" rel="noopener">Hazelcast Management Center Reference Manual</a> for information on blacklisting the clients.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="blue-green-mechanism"><a class="anchor" href="#blue-green-mechanism"></a>Blue-Green Mechanism</h3>
@@ -3382,8 +3380,8 @@ in the background and throws <code>ClientOfflineException</code> while doing so.
 </td>
 <td class="content">
 Here it could be the case that the whole cluster is restarted.
-In this case, the owner member of the client connection in the restarted cluster
-rejects the client&#8217;s connection request, since the client is trying to connect to the old cluster.
+In this case, the members in the restarted cluster
+reject the client&#8217;s connection request, since the client is trying to connect to the old cluster.
 So, the client needs to search for a new cluster, if available and
 according to the blue-green configuration (see the following configuration related sections in this section).
 </td>
@@ -3423,9 +3421,9 @@ The client is not able to connect to a cluster with different partition count.</
 <h3 id="disaster-recovery-mechanism"><a class="anchor" href="#disaster-recovery-mechanism"></a>Disaster Recovery Mechanism</h3>
 <div class="paragraph">
 <p>When one of your clusters is gone due to a failure, the connection between
-your clients and owner member in that cluster is gone, too.
+your clients and members in that cluster is gone, too.
 When a client is disconnected because of a failure in the cluster,
-it first tries to connect to another member of that same cluster.</p>
+it first tries to reconnect to the same cluster.</p>
 </div>
 <div class="paragraph">
 <p>The client&#8217;s behavior after this disconnection depends on its

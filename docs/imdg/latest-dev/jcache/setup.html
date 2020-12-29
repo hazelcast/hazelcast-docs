@@ -1376,7 +1376,8 @@ inside an application in an easy but typesafe way.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">        // Retrieve the CachingProvider which is automatically backed by
-        // the chosen Hazelcast member or client provider.
+        // the chosen Hazelcast member or client provider. By default,
+        // it returns the client-side provider.
         CachingProvider cachingProvider = Caching.getCachingProvider();
 
         // Create a CacheManager.
@@ -1404,38 +1405,36 @@ inside an application in an easy but typesafe way.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Although the example is simple, let&#8217;s go through the code
-lines one by one.</p>
+<p>Let&#8217;s go through the code lines of the above example one by one from
+top to bottom.</p>
 </div>
 <div class="sect2">
-<h3 id="getting-the-hazelcast-jcache-implementation"><a class="anchor" href="#getting-the-hazelcast-jcache-implementation"></a>Getting the Hazelcast JCache Implementation</h3>
+<h3 id="1-getting-the-hazelcast-jcache-implementation"><a class="anchor" href="#1-getting-the-hazelcast-jcache-implementation"></a>1. Getting the Hazelcast JCache Implementation</h3>
 <div class="paragraph">
 <p>First of all, we retrieve the <code>javax.cache.spi.CachingProvider</code>
 using the static method from
 <code>javax.cache.Caching.getCachingManager()</code>, which automatically
 picks up Hazelcast as the underlying JCache implementation, if
 available in the classpath. This way, the Hazelcast implementation
-of a <code>CachingProvider</code> automatically starts a new Hazelcast
-member or client (depending on the chosen provider type) and
-pick up the configuration from either the command line parameter
+of a <code>CachingProvider</code> automatically starts a new Hazelcast client and
+picks up the configuration from either the command line parameter
 or from the classpath. We will show how to use an existing
 <code>HazelcastInstance</code> later in this chapter; for now, we keep
 it simple.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-the-jcache-entry-point"><a class="anchor" href="#setting-up-the-jcache-entry-point"></a>Setting up the JCache Entry Point</h3>
+<h3 id="2-setting-up-the-jcache-entry-point"><a class="anchor" href="#2-setting-up-the-jcache-entry-point"></a>2. Setting up the JCache Entry Point</h3>
 <div class="paragraph">
-<p>In the next line, we ask the <code>CachingProvider</code> to return a
-<code>javax.cache.CacheManager</code>. This is the general application&#8217;s entry
+<p>The next line in the example code above asks the <code>CachingProvider</code> to return a <code>javax.cache.CacheManager</code>. This is the general application&#8217;s entry
 point into JCache. The <code>CacheManager</code> creates and manages
 named caches.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuring-the-cache-before-creating-it"><a class="anchor" href="#configuring-the-cache-before-creating-it"></a>Configuring the Cache Before Creating It</h3>
+<h3 id="3-configuring-the-cache-before-creating-it"><a class="anchor" href="#3-configuring-the-cache-before-creating-it"></a>3. Configuring the Cache Before Creating It</h3>
 <div class="paragraph">
-<p>The next few lines create a simple
+<p>Then we create a simple
 <code>javax.cache.configuration.MutableConfiguration</code> to configure
 the cache before actually
 creating it. In this case, we only configure the key and value
@@ -1444,7 +1443,7 @@ checked on retrieval of the cache.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-the-cache"><a class="anchor" href="#creating-the-cache"></a>Creating the Cache</h3>
+<h3 id="4-creating-the-cache"><a class="anchor" href="#4-creating-the-cache"></a>4. Creating the Cache</h3>
 <div class="paragraph">
 <p>To create the cache, we call <code>javax.cache.CacheManager.createCache()</code>
 with a name for the cache and the previously created
@@ -1456,9 +1455,9 @@ afterward using the type checking version of <code>getCache</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="get-put-and-getandput"><a class="anchor" href="#get-put-and-getandput"></a>get, put and getAndPut</h3>
+<h3 id="5-get-put-and-getandput"><a class="anchor" href="#5-get-put-and-getandput"></a>5. get, put and getAndPut</h3>
 <div class="paragraph">
-<p>The following lines are simple <code>put</code> and <code>get</code> calls from the
+<p>Then we use the simple <code>put</code> and <code>get</code> calls from the
 <code>java.util.Map</code> interface. The
 <code>javax.cache.Cache.put()</code> has a <code>void</code> return type and does
 not return the previously assigned value of the key. To imitate the
@@ -1477,7 +1476,7 @@ called <code>getAndPut</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>declaratively: using <code>hazelcast.xml</code> or <code>hazelcast-client.xml</code></p>
+<p>declaratively: using <code>hazelcast.xml/yaml</code> or <code>hazelcast-client.xml/yaml</code></p>
 </li>
 <li>
 <p>programmatically: the typical Hazelcast way, using the Config API seen above</p>

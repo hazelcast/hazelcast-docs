@@ -1276,9 +1276,35 @@ Expressions may have optional aliases.</p>
 <p>An optional <code>WHERE</code> clause defines a <code>condition</code>, that is any expression that evaluates to a result of type boolean.
 Any row that doesn&#8217;t satisfy the condition is eliminated from the result.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unsupported-features"><a class="anchor" href="#unsupported-features"></a>Unsupported Features</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The following features are <strong>not supported</strong> and are planned for future releases:
-<code>ORDER BY</code>, <code>LIMIT</code>/<code>OFFSET</code>, <code>GROUP BY</code>/<code>HAVING</code>, <code>JOIN</code>, set operators (<code>UNION</code>, <code>INTERSECT</code>, <code>MINUS</code>), subqueries.</p>
+<p>The following features are <strong>not supported</strong> and are planned for future releases:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ORDER BY</code></p>
+</li>
+<li>
+<p><code>LIMIT</code>/<code>OFFSET</code></p>
+</li>
+<li>
+<p><code>GROUP BY</code>/<code>HAVING</code></p>
+</li>
+<li>
+<p><code>JOIN</code></p>
+</li>
+<li>
+<p>set operators (<code>UNION</code>, <code>INTERSECT</code>, <code>MINUS</code>)</p>
+</li>
+<li>
+<p>subqueries (<code>SELECT &#8230;&#8203; FROM table WHERE x = (SELECT …)</code>)</p>
+</li>
+</ul>
 </div>
 </div>
 </div>

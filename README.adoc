@@ -1,8 +1,13 @@
 = Hazelcast Documentation Site
+:url-imdg-docs: https://github.com/JakeSCahill/hazelcast-reference-manual
+:url-antora: https://docs.antora.org/antora/2.3/
+:url-docs-ui: https://github.com/JakeSCahill/docs-poc-ui
+:url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions
+:url-contributing: .github/CONTRIBUTING.adoc
 
 image:https://img.shields.io/github/workflow/status/JakeSCahill/docs-poc/Build%20site[GitHub Workflow Status] image:https://img.shields.io/github/workflow/status/JakeSCahill/docs-poc/Index%20site?label=Indexer[GitHub Workflow Status] image:https://img.shields.io/github/workflow/status/JakeSCahill/docs-poc/Publish?label=GitHub%20Pages[GitHub Workflow Status]
 
-This repository hosts an https://docs.antora.org/antora/2.3/[Antora] playbook project for the Hazelcast documentation site.
+This repository hosts an {url-antora}[Antora] playbook project for the Hazelcast documentation site.
 
 image::images/docs-preview.png[Preview of the documentation site]
 
@@ -23,7 +28,7 @@ Documentation can be stored in one or more repositories and/or branches.
 
 Antora uses Asciidoctor.js to convert Asciidoc to HTML, then it uses Handlebars to set that HTML into a page layout.
 
-NOTE: The page layouts and UI code (css, JavaScript, Handlebars templates) is stored in a https://github.com/JakeSCahill/docs-poc-ui[separate repository], which outputs a `ui-bundle.zip` file that this project references in the playbook.
+NOTE: The page layouts and UI code (css, JavaScript, Handlebars templates) is stored in a {url-docs-ui}[separate repository], which outputs a `ui-bundle.zip` file that this project references in the playbook.
 
 video::BAJ8F7yQz64[youtube]
 
@@ -33,12 +38,12 @@ The playbook defines the content sources (repositories and branches), site URL, 
 
 This project has two playbook files, which configure the build process for the documentation site:
 
-- `antora-playbook-local.yml`: link:.github/CONTRIBUTING.adoc#local-builds[For local builds]
+- `antora-playbook-local.yml`: link:{url-contributing}#local-builds[For local builds]
 - `antora-playbook.yml`: For production builds
 
 The current playbooks pull from the following content sources:
 
-- The `latest`, `latest-dev`, and `archive` branches of this forked[`hazelcast-reference-manual` repository](https://github.com/JakeSCahill/hazelcast-reference-manual)
+- The `master`, `archive`, and all `v` branches of the{url-imdg-docs}[`hazelcast-reference-manual` repository]
 - The `home/` folder in this repository, which contains an Antora component for the home page
 
 [[home]]
@@ -51,7 +56,7 @@ image::images/home-page.png[Preview of the home page]
 == Custom Asciidoctor Extensions
 The custom extension in the `lib/` directory processes the Asciidoc `tabs` blocks to generate tabbed code samples in the output HTML.
 
-For more information about writing Asciidoctor.js extensions, see the https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions[Asciidoctor docs].
+For more information about writing Asciidoctor.js extensions, see the {url-asciidoc-extensions}[Asciidoctor docs].
 
 == GitHub Actions
 
@@ -81,4 +86,4 @@ To automate some elements of the build process, this repository includes the fol
 
 == Contributing
 
-To learn how to use the playbook and generate the docs site locally, see our link:.github/CONTRIBUTING.adoc[contributing guide].
+To learn how to use the playbook and generate the docs site locally, see our link:{url-contributing}[contributing guide].

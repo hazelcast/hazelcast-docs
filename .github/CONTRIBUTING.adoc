@@ -1,4 +1,7 @@
 = Contributing to Hazelcast Docs
+:url-node: https://nodejs.org/en/download/
+:url-imdg-docs: https://github.com/JakeSCahill/hazelcast-reference-manual
+:url-antora-yml: https://docs.antora.org/antora/2.3/component-version-descriptor
 
 The Hazelcast docs are open source, and we welcome your contributions!
 
@@ -17,7 +20,7 @@ node --version
 
 If you see an active Node.js LTS version on your device, you’re ready to build the docs.
 
-If no version number is displayed in the output, you need to [install Node.js](https://nodejs.org/en/download/).
+If no version number is displayed in the output, you need to {url-node}[install Node.js].
 
 === Step 2. Clone a documentation project
 
@@ -25,7 +28,7 @@ Documentation is hosted in separate GitHub repositorites. So, to work on a parti
 
 For example, to build the IMDG reference manual on your local device:
 
-. Fork the https://github.com/JakeSCahill/hazelcast-reference-manual[`hazelcast-reference-manual` repository]
+. Fork the {url-imdg-docs}[`hazelcast-reference-manual` repository]
 
 . Clone your forked repository, and check out the branch that you want to work on
 +
@@ -57,7 +60,6 @@ TIP: See the <<structure, Docs Structure section>> for help navigating a documen
 git status
 ----
 
-[[local-builds]]
 === Step 4. Build and Test your Changes Locally
 
 When working on a documentation project, you should build and preview the docs on your local machine to see your changes before going live.
@@ -73,6 +75,8 @@ npm run-script build-local
 NOTE: This script is defined in the `package.json` file, and runs Antora with the `antora-playbook-local.yml` file.
 +
 In the `test` folder you will now have all the webpages for your documentation component.
++
+NOTE: This script builds the documentation only for your local branch. If you want to build the whole site, you can run the script from the `docs-poc` repository.
 
 . To view the documentation site from a localhost web server, run the `serve` script
 +
@@ -82,6 +86,7 @@ npm run-script serve
 ----
 +
 Then on the same device, go to `http:localhost:5000` to view the local site.
++
 
 . If you want to show others your changes, you can expose your web server to the Internet, using ngrok by doing the following:
 +
@@ -136,7 +141,7 @@ modules/ <2>
     nav.adoc <9>
   another-module/ <10>
 ----
-<1> This file tells Antora that the contents of the `modules/` folder should be processed and added to the documentation site. This file is called the https://docs.antora.org/antora/2.3/component-version-descriptor[component version descriptor file].
+<1> This file tells Antora that the contents of the `modules/` folder should be processed and added to the documentation site. This file is called the {url-antora-yml}[component version descriptor file].
 <2> This folder contains the content that Antora will process
 <3> This folder contains any content that can't be categorized uner a specfic module name. Unlike other modules, the name of this module is never displayed in the URL of the site.
 <4> In any module, this folder contains downloadable content such as ZIP files that a user can download through a link.
@@ -146,3 +151,34 @@ modules/ <2>
 <8> In any module, this folder contains Asciidoc snippets such as warnings or copyright material that you can include in any Asciidoc pages.
 <9> In any module, this file contains a list of links that will become part of the left-hand navigation menu.
 <10> This folder is an example of how you can include any number of named modules to use to categorize your content. All modules follow the same structure as ROOT. Unlike the ROOT module, the names of other modules are included in the URL of the site. For example a page named `example.adoc` inside the `pages/` folder of the `example` module will have the following path: `example/example.adoc`
+
+[[local-builds]]
+== Build the whole site locally
+
+Sometimes, you may want to build the whole documentation site instead of just a single component. For example, if you want to check that links to other components are working.
+
+. Clone this repository
++
+[source,bash]
+----
+git clone {url-imdg-docs}
+cd hazelcast-reference-manual
+----
+
+. Create a new local branch for your work
++
+[source,bash]
+----
+git checkout -b add-my-awesome-feature
+----
+
+. Run the local build script
++
+[source,bash]
+----
+npm i
+npm run-script build-local
+----
+NOTE: This script is defined in the `package.json` file, and runs Antora with the `antora-playbook-local.yml` file.
++
+In the `docs` folder you will now have all the webpages for your documentation component.

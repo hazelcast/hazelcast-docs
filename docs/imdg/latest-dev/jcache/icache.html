@@ -1259,7 +1259,7 @@ ga('send', 'pageview')
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Hazelcast provides extension methods to Cache API through
+<p>Hazelcast provides extension methods to the Cache API through
 the interface <code>com.hazelcast.cache.ICache</code>.</p>
 </div>
 <div class="paragraph">
@@ -1307,27 +1307,8 @@ read from and write to ICache.
 <div class="paragraph">
 <p>A <code>CacheManager</code>, started either as a client or as an embedded member,
 can be configured to start a new Hazelcast instance or reuse an already
-existing one to connect to a Hazelcast cluster. To achieve this, request
-a <code>CacheManager</code> by passing a <code>java.net.URI</code> instance to <code>CachingProvider.getCacheManager()</code>.
-The <code>java.net.URI</code> instance must point to either a Hazelcast configuration or to the name of a named
-<code>com.hazelcast.core.HazelcastInstance</code> instance. In addition to the above,
-the same can be achieved by passing Hazelcast-specific properties to
-<code>CachingProvider.getCacheManager(URI, ClassLoader, Properties)</code> as detailed in the
-sections that follow.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Multiple requests for the same <code>java.net.URI</code> result in returning a <code>CacheManager</code>
-instance that shares the same <code>HazelcastInstance</code> as the <code>CacheManager</code>
-returned by the previous call.
-</td>
-</tr>
-</table>
+existing one to connect to a Hazelcast cluster. To achieve this, request a <code>CacheManager</code> by passing a <code>java.net.URI</code> instance to <code>CachingProvider.getCacheManager()</code>. The <code>java.net.URI</code> instance must point to a Hazelcast configuration, e.g., <code>hazelcast.xml</code>.
+In addition to the above, the same can be achieved by passing Hazelcast-specific properties to <code>CachingProvider.getCacheManager(URI, ClassLoader, Properties)</code> as detailed in the sections that follow.</p>
 </div>
 <div class="sect2">
 <h3 id="examples"><a class="anchor" href="#examples"></a>Examples</h3>
@@ -1419,7 +1400,7 @@ CacheManager cacheManager = caching.getCacheManager();</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>By passing the <code>URI</code> to the configuration file as the <code>CacheManager&#8217;s `URI</code>:</p>
+<p>By passing the URI to the configuration file as the CacheManager&#8217;s <code>URI</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CachingProvider caching = Caching.getCachingProvider();
@@ -1433,7 +1414,7 @@ CacheManager cacheManager = caching.getCacheManager(new URI("classpath:com/domai
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Properties properties = HazelcastCachingProvider.propertiesByLocation("classpath:com/domain/aaa-hazelcast.xml");
 CachingProvider caching = Caching.getCachingProvider();
-CacheManager cacheManager = caching.getCacheManager(new URI("any-uri-will-do"), null, properties);</code></pre>
+CacheManager cacheManager = caching.getCacheManager(null, null, properties);</code></pre>
 </div>
 </div>
 </li>
@@ -1441,7 +1422,7 @@ CacheManager cacheManager = caching.getCacheManager(new URI("any-uri-will-do"), 
 </div>
 <div class="paragraph">
 <p>Note that if the Hazelcast configuration file does specify an
-instance name, then any <code>CacheManager</code>s referencing the
+instance name, then any <code>CacheManager</code> referencing the
 same configuration file locates by name and reuses the same
 <code>HazelcastInstance</code>.</p>
 </div>
@@ -1451,30 +1432,14 @@ same configuration file locates by name and reuses the same
 <div class="paragraph">
 <p>Assuming a <code>HazelcastInstance</code> named <code>hc-instance</code> is already
 started, it can be used as the <code>HazelcastInstance</code> to back a
-<code>CacheManager</code>:</p>
+<code>CacheManager</code> by specifying the instance name as a property:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>By using the instance&#8217;s name as the <code>CacheManager&#8217;s `URI</code>:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CachingProvider caching = Caching.getCachingProvider();
-CacheManager cacheManager = caching.getCacheManager(new URI("hc-instance"), null);</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>By specifying the instance name as a property:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Properties properties = HazelcastCachingProvider.propertiesByInstanceName("hc-instance");
 CachingProvider caching = Caching.getCachingProvider();
-CacheManager cacheManager = caching.getCacheManager(new URI("any-uri-will-do"), null, properties);</code></pre>
+CacheManager cacheManager = caching.getCacheManager(null, null, properties);</code></pre>
 </div>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1636,33 +1601,21 @@ instance. If the <code>instanceName</code> is specified in <code>com.hazelcast.c
 it can be used directly by passing it to <code>CachingProvider</code> implementation.
 Otherwise (<code>instanceName</code> not set or instance is a client instance) you must
 get the instance name from the <code>HazelcastInstance</code> instance via the <code>String getName()</code>
-method to pass the <code>CachingProvider</code> implementation. Please note that
-<code>instanceName</code> is not configurable for the client side <code>HazelcastInstance</code>
-instance and is auto-generated by using cluster name (if it is specified).
-In general, <code>String getName()</code> method over <code>HazelcastInstance</code> is safer and
-the preferable way to get the name of the instance. Multiple <code>CacheManager</code>s
-created using an equal <code>java.net.URI</code> share the same <code>HazelcastInstance</code>.</p>
+method method to pass the <code>CachingProvider</code> implementation.</p>
+</div>
+<div class="paragraph">
+<p>Please note that <code>instanceName</code> is not configurable for the client-side <code>HazelcastInstance</code>
+instance and is auto-generated by the using cluster name (if it is specified).
+In general, the <code>String getName()</code> method over <code>HazelcastInstance</code> is safer and the preferable way to get the name of the instance. Multiple <code>CacheManager</code>s created using an equal <code>java.net.URI</code> share the same <code>HazelcastInstance</code>.</p>
+</div>
+<div class="paragraph">
+<p>Note that the client- and member-side <code>CacheManager</code>'s look for client- and member-side
+Hazelcast instances by those instance names, respectively.</p>
 </div>
 <div class="paragraph">
 <p>A named scope is applied nearly the same way as the configuration scope.
-Pass the instance name using:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>either the property <code>HazelcastCachingProvider#HAZELCAST_INSTANCE_NAME</code>
-(which resolves to <code>hazelcast.instance.name</code>) as a mapping inside a <code>java.util.Properties</code>
-instance to the <code>CachingProvider.getCacheManager(uri, classLoader, properties)</code> call.</p>
-</li>
-<li>
-<p>or use the instance name when specifying the <code>CacheManager&#8217;s `URI</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>If a valid instance name is provided both as property and as <code>URI</code>, then the
-property value takes precedence and is used to resolve the <code>HazelcastInstance</code>
-the first time a <code>CacheManager</code> is created for the given <code>URI</code>.</p>
+You can pass the instance name using the property <code>HazelcastCachingProvider#HAZELCAST_INSTANCE_NAME</code>
+(which resolves to <code>hazelcast.instance.name</code>) as a mapping inside a <code>java.util.Properties</code> instance to the <code>CachingProvider.getCacheManager(uri, classLoader, properties)</code> call. When a valid instance name is provided, the property value is used to resolve the <code>HazelcastInstance</code> the first time a <code>CacheManager</code> is created.</p>
 </div>
 <div class="paragraph">
 <p>Here is an example of Named Instance Scope with specified name:</p>
@@ -1790,23 +1743,45 @@ but an already used name will result in undefined behavior.
 <div class="sect2">
 <h3 id="binding-to-an-existing-hazelcast-instance-object"><a class="anchor" href="#binding-to-an-existing-hazelcast-instance-object"></a>Binding to an Existing Hazelcast Instance Object</h3>
 <div class="paragraph">
-<p>When an existing <code>HazelcastInstance</code> object is available, it can be
-passed to the <code>CacheManager</code> by setting the property
-<code>HazelcastCachingProvider#HAZELCAST_INSTANCE_ITSELF</code>:</p>
+<p>When an existing <code>HazelcastInstance</code> object is available, you can pass it to <code>CacheManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows it for a member-side instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Create a member HazelcastInstance
 HazelcastInstance instance = Hazelcast.newHazelcastInstance();
-
-Properties properties = new Properties();
-properties.put( HazelcastCachingProvider.HAZELCAST_INSTANCE_ITSELF,
-     instance );
-
-CachingProvider cachingProvider = Caching.getCachingProvider();
-// cacheManager initialized for uri will be bound to instance
-CacheManager cacheManager = cachingProvider.getCacheManager(uri, classLoader, properties);</code></pre>
+CachingProvider cachingProvider = Caching.getCachingProvider(HazelcastCachingProvider.MEMBER_CACHING_PROVIDER);
+cachingProvider.getCacheManager(null, null, HazelcastCachingProvider.propertiesByInstanceName("instance"));</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The following example shows it for a client-side instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">HazelcastInstance client-instance = HazelcastClient.newHazelcastClient();
+// the line below by default returns the client-side CachingProvider
+CachingProvider cachingProvider = Caching.getCachingProvider();
+// obtain a CacheManager backed by the named client instance
+CacheManager cacheManager = cachingProvider.getCacheManager(null, null, HazelcastCachingProvider.propertiesByInstanceName("client-instance"));</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When binding to an existing Hazelcast instance, the member- and client-side <code>CachingProviders</code>
+must be backed by member- and client-side instances, respectively. Also note that, the <code>getCachingProvider</code>
+returns the client-side provider by default, if the provider is not explicitly passed as an argument (as shown
+in the above client-side code sample).
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>

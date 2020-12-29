@@ -1747,6 +1747,7 @@ will create:</p>
         &lt;batch-publisher&gt;
             &lt;cluster-name&gt;clusterB&lt;/cluster-name&gt;
             &lt;target-endpoints&gt;...&lt;/target-endpoints&gt;
+            &lt;endpoint&gt;tokyo&lt;/endpoint&gt;
         &lt;/batch-publisher&gt;
     &lt;/wan-replication&gt;
     ...
@@ -1776,8 +1777,9 @@ will create:</p>
     wan-replication:
       replicate-to-tokyo:
         batch-publisher:
-          cluster-name: clusterB&lt;
+          cluster-name: clusterB
           target-endpoints: ...
+          endpoint: tokyo
     map:
       customer:
         wan-replication-ref:

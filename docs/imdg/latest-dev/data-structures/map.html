@@ -1636,13 +1636,34 @@ is performed on the local entries.
 <h2 id="map-eviction"><a class="anchor" href="#map-eviction"></a>Map Eviction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Unless you delete the map entries manually or use an eviction policy, they will remain in the map.
-Hazelcast supports policy-based eviction for distributed maps. Currently supported policies are
-LRU (Least Recently Used) and LFU (Least Frequently Used).</p>
+<p>Hazelcast maps have no restrictions on the size and may grow arbitrarily
+large, by default. Unless you delete the map entries manually or use an
+eviction policy, they will remain in the map. When it comes to reducing the size of a map, there are two concepts: expiration and eviction.</p>
 </div>
 <div class="paragraph">
-<p>Hazelcast Map uses the same eviction mechanism as the JCache implementation.
-See the <a href="../jcache/icache.html#eviction-algorithm" class="page">Eviction Algorithm section</a> for details.</p>
+<p>Expiration puts a limit on the maximum lifetime of an entry stored inside the map.
+When the entry expires it cannot be retrieved from the map any longer and at some point
+in time it will be cleaned out from the map to free up the memory. You can configure the expiration,
+and hence the eviction based on the expiration, using the elements <code>time-to-live-seconds</code>
+and <code>max-idle-seconds</code> as described in <a href="#configuring-map-eviction">Configuring Map Eviction</a> below.</p>
+</div>
+<div class="paragraph">
+<p>Eviction puts a limit on the maximum size of the map. If the size of the map grows larger than
+the maximum allowed size, an eviction policy decides which item to evict from the map to reduce
+its size. You can configure the maximum allowed size and eviction policy using the elements
+<code>size</code> and <code>eviction-policy</code> as described in <a href="#configuring-map-eviction">Configuring Map Eviction</a> below.</p>
+</div>
+<div class="paragraph">
+<p>Eviction and expiration can be used together. In this case, the expiration configurations
+(<code>time-to-live-seconds</code> and <code>max-idle-seconds</code>) continue to work as usual cleaning out the
+expired entries regardless of the map size. Note that locked map entries are not the subjects
+for eviction and expiration.</p>
+</div>
+<div class="paragraph">
+<p>Hazelcast Map uses the same eviction mechanism as our JCache implementation.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="../jcache/icache.html#eviction-algorithm" class="page">Eviction Algorithm section</a> for details.</p>
 </div>
 <div class="sect2">
 <h3 id="understanding-map-eviction"><a class="anchor" href="#understanding-map-eviction"></a>Understanding Map Eviction</h3>
@@ -1843,7 +1864,8 @@ the value specified by the <code>size</code> element described below.  Valid val
 <ul>
 <li>
 <p>NONE: Default policy. If set, no items are evicted and the property <code>size</code> described
-below is ignored. You still can combine it with <code>time-to-live-seconds</code> and <code>max-idle-seconds</code>.</p>
+below is ignored. However, entries could still be expired if you configure
+<code>time-to-live-seconds</code> and/or <code>max-idle-seconds</code>.</p>
 </li>
 <li>
 <p>LRU: Least Recently Used.</p>
@@ -1914,28 +1936,28 @@ free heap size is below 100 MB.</p>
 </div>
 </li>
 <li>
-<p><code>USED_NATIVE_MEMORY_SIZE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Maximum used native memory
+<p><code>USED_NATIVE_MEMORY_SIZE</code>: (<strong class="navy">Hazelcast IMDG Pro and Enterprise</strong>) Maximum used native memory
 size in megabytes per map for each Hazelcast instance.</p>
 <div class="paragraph">
 <p><code>&lt;eviction max-size-policy="USED_NATIVE_MEMORY_SIZE" size="1024" /&gt;</code></p>
 </div>
 </li>
 <li>
-<p><code>USED_NATIVE_MEMORY_PERCENTAGE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Maximum used native
+<p><code>USED_NATIVE_MEMORY_PERCENTAGE</code>: (<strong class="navy">Hazelcast IMDG Pro and Enterprise</strong>) Maximum used native
 memory size percentage per map for each Hazelcast instance.</p>
 <div class="paragraph">
 <p><code>&lt;eviction max-size-policy="USED_NATIVE_MEMORY_PERCENTAGE" size="65" /&gt;</code></p>
 </div>
 </li>
 <li>
-<p><code>FREE_NATIVE_MEMORY_SIZE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Minimum free native memory
+<p><code>FREE_NATIVE_MEMORY_SIZE</code>: (<strong class="navy">Hazelcast IMDG Pro and Enterprise</strong>) Minimum free native memory
 size in megabytes for each Hazelcast instance.</p>
 <div class="paragraph">
 <p><code>&lt;eviction max-size-policy="FREE_NATIVE_MEMORY_SIZE" size="256" /&gt;</code></p>
 </div>
 </li>
 <li>
-<p><code>FREE_NATIVE_MEMORY_PERCENTAGE</code>: (<strong class="navy">Hazelcast IMDG Enterprise HD</strong>) Minimum free native
+<p><code>FREE_NATIVE_MEMORY_PERCENTAGE</code>: (<strong class="navy">Hazelcast IMDG Pro and Enterprise</strong>) Minimum free native
 memory size percentage for each Hazelcast instance.</p>
 <div class="paragraph">
 <p><code>&lt;eviction max-size-policy="FREE_NATIVE_MEMORY_PERCENTAGE" size="5" /&gt;</code></p>
@@ -1945,30 +1967,6 @@ memory size percentage for each Hazelcast instance.</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>To put it briefly, Hazelcast maps have no restrictions on the size and may grow arbitrarily
-large, by default. When it comes to reducing the size of a map, there are two concepts:
-expiration and eviction.</p>
-</div>
-<div class="paragraph">
-<p>Expiration puts a limit on the maximum lifetime of an entry stored inside the map.
-When the entry expires it cannot be retrieved from the map any longer and at some point
-in time it will be cleaned out from the map to free up the memory. Expiration, and hence
-the eviction based on the expiration, can be configured using the element <code>time-to-live-seconds</code>
-and <code>max-idle-seconds</code> as described above.</p>
-</div>
-<div class="paragraph">
-<p>Eviction puts a limit on the maximum size of the map. If the size of the map grows larger than
-the maximum allowed size, an eviction policy decides which item to evict from the map to reduce
-its size. The maximum allowed size can be configured using the element <code>size</code> and the
-eviction policy can be configured using the element <code>eviction-policy</code> as described above.</p>
-</div>
-<div class="paragraph">
-<p>Eviction and expiration can be used together. In this case, the expiration configurations
-(<code>time-to-live-seconds</code> and <code>max-idle-seconds</code>) continue to work as usual cleaning out the
-expired entries regardless of the map size. Note that locked map entries are not the subjects
-for eviction and expiration.</p>
 </div>
 <div class="sect3">
 <h4 id="example-eviction-configurations"><a class="anchor" href="#example-eviction-configurations"></a>Example Eviction Configurations</h4>
@@ -3754,7 +3752,7 @@ a race condition is likely. You can solve this condition with Hazelcast
 using either pessimistic or optimistic locking.</p>
 </div>
 <div class="sect2">
-<h3 id="pessimistic-looking"><a class="anchor" href="#pessimistic-looking"></a>Pessimistic Locking</h3>
+<h3 id="pessimistic-locking"><a class="anchor" href="#pessimistic-locking"></a>Pessimistic Locking</h3>
 <div class="paragraph">
 <p>One way to solve the race issue is by using pessimistic locking -
 lock the map entry until you are finished with it.</p>
@@ -4136,21 +4134,22 @@ System.out.println ( "value           : " + entry.getValue() );</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="map-listener"><a class="anchor" href="#map-listener"></a>Map Listener</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>See the <a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="listening-to-map-entries-with-predicates"><a class="anchor" href="#listening-to-map-entries-with-predicates"></a>Listening to Map Entries with Predicates</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can listen to the modifications performed on specific map entries.
-You can think of it as an entry listener with predicates. See the
-<a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a> for
-information on how to add entry listeners to a map.</p>
+<p>You can think of it as an entry listener with predicates.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See the <a href="../events/object-events.html#listening-for-map-events" class="page">Listening for Map Events section</a> for information on the listeners for Hazelcast maps and how to use them.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>

@@ -2900,7 +2900,7 @@ some entries returned in the query result set do not match the initial query
 criteria. This is the fastest option since there is no copying.</p>
 </div>
 <div class="paragraph">
-<p>You can set one these options using the system property
+<p>You can set one of these options using the system property
 <code>hazelcast.index.copy.behavior</code>. The following values, which are explained
 in the above paragraphs, can be set:</p>
 </div>
@@ -2916,6 +2916,53 @@ in the above paragraphs, can be set:</p>
 <p><code>NEVER</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The following is an example configuration snippet:</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset12_xml"></a>XML</p>
+</li>
+<li>
+<p><a id="tabset12_yaml"></a>YAML</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset12_xml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
+    &lt;cluster-name&gt;dev&lt;/cluster-name&gt;
+    ...
+    &lt;properties&gt;
+        &lt;property name="hazelcast.index.copy.behavior"&gt;NEVER&lt;/property&gt;
+    &lt;/properties&gt;
+    ...
+&lt;/hazelcast&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset12_yaml">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:
+  cluster-name: dev
+  ...
+  properties:
+    hazelcast.index.copy.behavior: NEVER
+  ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See also the <a href="../configuration/configuring-with-system-properties.html" class="page">Configuring with System Properties section</a>
+for reference.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3008,15 +3055,15 @@ predicates and for description of the above system property.</p>
 <div class="ulist tabs">
 <ul>
 <li>
-<p><a id="tabset12_xml"></a>XML</p>
+<p><a id="tabset13_xml"></a>XML</p>
 </li>
 <li>
-<p><a id="tabset12_yaml"></a>YAML</p>
+<p><a id="tabset13_yaml"></a>YAML</p>
 </li>
 </ul>
 </div>
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset12_xml">
+<div class="tab-pane" aria-labelledby="tabset13_xml">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;hazelcast&gt;
@@ -3029,7 +3076,7 @@ predicates and for description of the above system property.</p>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset12_yaml">
+<div class="tab-pane" aria-labelledby="tabset13_yaml">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">hazelcast:

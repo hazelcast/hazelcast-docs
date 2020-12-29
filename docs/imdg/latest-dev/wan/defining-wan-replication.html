@@ -1290,6 +1290,11 @@ to build your own implementation; see the <a href="advanced-features.html#defini
 for details in case you need more custom configurations.</p>
 </div>
 <div class="paragraph">
+<p>Please see also the <a href="../clusters/advanced-network-configuration.html#setting-up-wan-endpoints-configuration" class="page">Setting Up WAN Endpoints Configuration section</a>
+for the examples that use advanced network configuration to set up, for example, security features such as
+TLS and mutual authentication for your WAN replicated clusters.</p>
+</div>
+<div class="paragraph">
 <p>The default settings for WAN Replication configuration suit most use cases. If, however, you have specific needs or if you
 would like to fine-tune the behavior of WAN Replication for your application, see the
 <a href="tuning.html" class="page">Fine-Tuning WAN Replication section</a>.</p>
@@ -1339,6 +1344,7 @@ need any kind of configuration and configuring the source cluster is enough for 
     &lt;wan-replication name="london-wan-rep"&gt;
         &lt;batch-publisher&gt;
             &lt;cluster-name&gt;london&lt;/cluster-name&gt;
+            &lt;publisher-id&gt;londonID&lt;/publisher-id&gt;
             &lt;target-endpoints&gt;10.3.5.1:5701, 10.3.5.2:5701&lt;/target-endpoints&gt;
         &lt;/batch-publisher&gt;
     &lt;/wan-replication&gt;
@@ -1364,8 +1370,9 @@ need any kind of configuration and configuring the source cluster is enough for 
   wan-replication:
     london-wan-rep:
       batch-publisher:
-        cluster-name: london
-        target-endpoints: 10.3.5.1:5701, 10.3.5.2:5701
+        londonID:
+          cluster-name: london
+          target-endpoints: 10.3.5.1:5701, 10.3.5.2:5701
   map:
     replicatedMap:
       wan-replication-ref:
@@ -1487,6 +1494,7 @@ Note that you must have <code>hazelcast-all</code> (or <code>hazelcast-aws</code
     &lt;wan-replication name="london-wan-rep"&gt;
         &lt;batch-publisher&gt;
             &lt;cluster-name&gt;london&lt;/cluster-name&gt;
+            &lt;publisher-id&gt;londonID&lt;/publisher-id&gt;
             &lt;discovery-strategies&gt;
                 &lt;discovery-strategy enabled="true" class="com.hazelcast.aws.AwsDiscoveryStrategy"&gt;
                     &lt;properties&gt;
@@ -1527,22 +1535,23 @@ Note that you must have <code>hazelcast-all</code> (or <code>hazelcast-aws</code
   wan-replication:
     london-wan-rep:
       batch-publisher:
-        cluster-name: london
-        discovery-strategies:
-          discovery-strategy:
-            - enabled: true
-              class: com.hazelcast.aws.AwsDiscoveryStrategy
-              properties:
-                access-key: test-access-key
-                secret-key: test-secret-key
-                region: test-region
-                iam-role: test-iam-role
-                host-header: ec2.test-host-header
-                security-group-name: test-security-group-name
-                tag-key: test-tag-key
-                tag-value: test-tag-value
-                connection-timeout-seconds: 10
-                hz-port: 5701</code></pre>
+        londonID:
+          cluster-name: london
+          discovery-strategies:
+            discovery-strategy:
+              - enabled: true
+                class: com.hazelcast.aws.AwsDiscoveryStrategy
+                properties:
+                  access-key: test-access-key
+                  secret-key: test-secret-key
+                  region: test-region
+                  iam-role: test-iam-role
+                  host-header: ec2.test-host-header
+                  security-group-name: test-security-group-name
+                  tag-key: test-tag-key
+                  tag-value: test-tag-value
+                  connection-timeout-seconds: 10
+                  hz-port: 5701</code></pre>
 </div>
 </div>
 </div>
@@ -1613,6 +1622,7 @@ element, but not both at the same time.</p>
     &lt;wan-replication name="london-wan-rep"&gt;
         &lt;batch-publisher&gt;
             &lt;cluster-name&gt;london&lt;/cluster-name&gt;
+            &lt;publisher-id&gt;londonID&lt;/publisher-id&gt;
             &lt;use-endpoint-private-address&gt;false&lt;/use-endpoint-private-address&gt;
             &lt;aws enabled="true"&gt;
                 &lt;access-key&gt;my-access-key&lt;/access-key&gt;
@@ -1647,17 +1657,18 @@ element, but not both at the same time.</p>
   wan-replication:
     london-wan-rep:
       batch-publisher:
-        cluster-name: london
-        use-endpoint-private-address: false
-        aws:
-          enabled: true
-            access-key: my-access-key
-            secret-key: my-secret-key
-            region: us-west-1
-            security-group-name: hazelcast-sg
-            tag-key: type
-            tag-value: hz-members
-            hz-port: 5701
+        londonID:
+          cluster-name: london
+          use-endpoint-private-address: false
+          aws:
+            enabled: true
+              access-key: my-access-key
+              secret-key: my-secret-key
+              region: us-west-1
+              security-group-name: hazelcast-sg
+              tag-key: type
+              tag-value: hz-members
+              hz-port: 5701
   map:
     replicatedMap:
       wan-replication-ref:

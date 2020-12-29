@@ -1260,15 +1260,15 @@ ga('send', 'pageview')
 <h2 id="listening-for-map-events"><a class="anchor" href="#listening-for-map-events"></a>Listening for Map Events</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can listen to map-wide or entry-based events using the listeners
+<p>You can listen to map-level or entry-based events using the listeners
 provided by the Hazelcast&#8217;s eventing framework. To listen to these events,
 implement a <code>MapListener</code> sub-interface.</p>
 </div>
 <div class="paragraph">
-<p>A map-wide event is fired as a result of a map-wide operation. For
-example, <code>IMap.clear()</code> or <code>IMap.evictAll()</code>.
+<p>A map-level event is fired as a result of a map-level operation, e.g.,
+<code>IMap.clear()</code> or <code>IMap.evictAll()</code>.
 An entry-based event is fired after the operations that affect a
-specific entry. For example, <code>IMap.remove()</code> or <code>IMap.evict()</code>.</p>
+specific entry, e.g., <code>IMap.remove()</code> or <code>IMap.evict()</code>.</p>
 </div>
 <div class="sect2">
 <h3 id="catching-a-map-event"><a class="anchor" href="#catching-a-map-event"></a>Catching a Map Event</h3>

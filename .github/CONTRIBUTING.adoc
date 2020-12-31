@@ -36,7 +36,6 @@ For example, to build the IMDG reference manual on your local device:
 ----
 git clone https://github.com/<your-username>/imdg-docs
 cd imdg-docs
-git checkout latest
 ----
 
 . Create a new local branch for your work
@@ -126,7 +125,7 @@ Thanks! We'll review your changes and provide feedback and guidance as necessary
 
 == Docs structure
 
-All documentation projects are organized according to the same content heirarchy.
+All documentation projects are organized according to the same content hierarchy.
 
 [source,bash]
 ----

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Page Not Found Documentation</title>
     <meta name="generator" content="Antora 2.3.4">
-<link rel="stylesheet" href="/hazelcast-docs/_/css/site.css">
 <link
 rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
 />
+<!-- Apply the site styles after the docsearch ones -->
+<link rel="stylesheet" href="/hazelcast-docs/_/css/site.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <!-- Google Analytics -->
@@ -18,18 +19,17 @@ href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
 ga('create', 'GTM-M267KFN', 'auto')
 ga('send', 'pageview')
 </script>
+<!-- Report the 404 event -->
 <script>
   var url = document.referrer
   if (url == '') { url = 'No referrer' }
   ga('send', 'event', '404', url /* page as action */)
 </script>
 <!-- End Google Analytics -->
-<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script>
-<link rel="icon" href="/hazelcast-docs/_/img/favicon.ico" type="image/x-icon">
+<script src="https://kit.fontawesome.com/097f7829d8.js" crossorigin="anonymous"></script><link rel="icon" href="/hazelcast-docs/_/img/favicon.ico" type="image/x-icon">
   </head>
   <body class="status-404">
 <header class="header">
@@ -469,7 +469,7 @@ If you entered the URL of this page manually, please double check that you enter
     </ul>
     <div class="search-box-404">
         <img src="/hazelcast-docs/_/img/home.svg"><a href="/hazelcast-docs/home/index.html" class="">Check the home page</a>
-      <p id="search-404"><i class="fa fa-search" aria-hidden="true"></i><input id="search-input" type="text" placeholder="Search the IMDG docs "></p>
+      <p id="search-404"><i class="fa fa-search" id="search-icon-404" aria-hidden="true"></i><input id="search-input" type="text" placeholder="Search the IMDG docs "></p>
     </div>
   </div>
 </div>
@@ -500,6 +500,24 @@ If you entered the URL of this page manually, please double check that you enter
     // Set debug to true to inspect the dropdown
     debug: false,
   });
+</script>
+<!-- Move the search results dropdown above the search box -->
+<script>
+  //document.addEventListener("load", restyleDropdown);
+  var algoliaBox = document.getElementsByClassName('algolia-autocomplete')[0]
+  //var searchIcon = document.getElementById('search-icon-404')
+  //var searchBox =  document.getElementById('search-input')
+  var dropdown = document.getElementById('algolia-autocomplete-listbox-0')
+
+  algoliaBox.insertBefore(dropdown, algoliaBox.childNodes[0])
+  //algoliaBox.insertBefore(searchIcon, searchBox)
+
+  /* function restyleDropdown() {
+    var dropdown = document.getElementById('algolia-autocomplete-listbox-0')
+    dropdown.style.removeProperty('top')
+    dropdown.style.removeProperty('right')
+    dropdown.style.removeProperty('left')
+  } */
 </script>
   </body>
 </html>

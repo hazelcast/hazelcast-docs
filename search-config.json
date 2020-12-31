@@ -17,7 +17,6 @@
     "default": {
       "lvl0": ".doc h1",
       "lvl1": ".doc h2",
-      "lvl2": ".doc h3",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     },
     "imdg": {
@@ -28,7 +27,6 @@
       },
       "lvl1": ".doc h1",
       "lvl2": ".doc h2",
-      "lvl3": ".doc h3",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     }
   }

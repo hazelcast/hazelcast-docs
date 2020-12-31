@@ -1,5 +1,5 @@
 {
-  "index_name": "dev_docs",
+  "index_name": "dev_DOCS",
   "start_urls": [
     {
       "url": "https://jakescahill.github.io/hazelcast-docs/imdg/(?P<version>.*?)/",

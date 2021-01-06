@@ -2,6 +2,11 @@ site:
   title: Documentation
   start_page: home::index.adoc
   url: https://jakescahill.github.io/hazelcast-docs
+  keys:
+    google_analytics: 'GTM-M267KFN'
+    docsearch_id: '3L6KPQWLIB'
+    docsearch_api: '11e84402b279a5748fa7bb3a10c4eaff'
+    docsearch_index: 'dev_DOCS'
 content:
   sources: 
   - url: .
@@ -15,7 +20,7 @@ content:
     start_paths: docs/*
 ui: 
   bundle:
-    url: https://github.com/JakeSCahill/hazelcast-docs-ui/releases/download/v1.1.14/ui-bundle.zip
+    url: https://github.com/JakeSCahill/hazelcast-docs-ui/releases/download/v1.1.15/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:

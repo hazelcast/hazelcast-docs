@@ -67,21 +67,9 @@ To automate some elements of the build process, this repository includes the fol
 |===
 |File |Description |Triggers
 
-|validate-site.yml
-|Validates that the build process completes without errors and checks that all internal links are working
-|On a pull request to both this repository and any repositories listed in the `content.sources` field of the playbook
-
-|build-site.yml
-|Builds the site and commits the result to the `develop branch` of this repository
-|On a push to both this repository and any repositories listed in the `content.sources` field of the playbook
-
 |index-site.yml
 |Runs the Docsearch indexer in a Docker container to index the site and send the index to Algolia
 |Once per day at 00:00 UTC
-
-|publish.yml
-|Commits the contents of the `docs` folder on the `develop` branch to the `master` branch, which is set up to host the site on GitHub Pages
-|Manual trigger
 |===
 
 == Contributing

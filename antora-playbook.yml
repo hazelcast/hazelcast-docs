@@ -1,7 +1,7 @@
 site:
   title: Documentation
   start_page: home::index.adoc
-  url: https://laughing-jepsen-c9f089.netlify.app
+  url: https://docs.hazelcast.com
   keys:
     google_analytics: 'GTM-M267KFN'
     docsearch_id: '3L6KPQWLIB'

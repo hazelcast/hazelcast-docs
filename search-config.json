@@ -2,7 +2,7 @@
   "index_name": "dev_DOCS",
   "start_urls": [
     {
-      "url": "https://jakescahill.github.io/hazelcast-docs/imdg/(?P<version>.*?)/",
+      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "variables": {
         "version": ["latest"]
       },
@@ -10,7 +10,7 @@
     }
   ],
   "sitemap_urls": [
-    "https://jakescahill.github.io/hazelcast-docs/sitemap-imdg.xml"
+    "https://docs.hazelcast.com/sitemap-imdg.xml"
   ],
   "stop_urls": [],
   "selectors": {

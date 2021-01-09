@@ -1,5 +1,6 @@
 = Hazelcast Documentation Site
 :url-imdg-docs: https://github.com/JakeSCahill/imdg-docs
+:url-mc-docs: https://github.com/Serdaro/mc-docs
 :url-antora: https://docs.antora.org/antora/2.3/
 :url-docs-ui: https://github.com/JakeSCahill/hazelcast-docs-ui
 :url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions

@@ -1,5 +1,6 @@
 = Hazelcast Documentation Site
 :url-imdg-docs: https://github.com/JakeSCahill/imdg-docs
+:url-mc-docs: https://github.com/Serdaro/mc-docs
 :url-antora: https://docs.antora.org/antora/2.3/
 :url-docs-ui: https://github.com/JakeSCahill/hazelcast-docs-ui
 :url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions
@@ -51,13 +52,13 @@ This project has two playbook files, which configure the build process for the d
 
 The current playbooks pull from the following content sources:
 
-- The `master`, `archive`, and all `v` branches of the{url-imdg-docs}[`imdg-docs` repository]
+- The `master`, `archive`, and all `v` branches of the {url-imdg-docs}[`imdg-docs` repository] and the {url-mc-docs}[`mc-docs` repository]
 - The `home/` folder in this repository, which contains an Antora component for the home page
 
 [[home]]
 == Home Component
 
-The `home/` folder in this repository contains the source for the Home documentation component with links to all major documentation projects.
+The `home/` folder in this repository contains the Home documentation component. The source code for the home page is in the `body-home.hbs` template of the {url-docs-ui}[`hazelcast-docs-ui` repository].
 
 image::images/home-page.png[Preview of the home page]
 

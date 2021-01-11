@@ -8,7 +8,7 @@
 :url-netlify: https://netlify.com/
 :url-netlify-docs: https://docs.netlify.com/
 :url-production: https://docs.hazelcast.com
-:url-staging: https://develop--laughing-jepsen-c9f089.netlify.app/home/index.html
+:url-staging: https://develop--laughing-jepsen-c9f089.netlify.app
 
 
 image:https://img.shields.io/github/workflow/status/JakeSCahill/hazelcast-docs/Index%20site?label=Indexer[GitHub Workflow Status]

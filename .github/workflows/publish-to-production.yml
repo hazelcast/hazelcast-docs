@@ -14,9 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Merge staging -> uat
+      - name: Merge staging to production
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
+          from_branch: develop
           target_branch: main
           github_token: ${{ github.token }}

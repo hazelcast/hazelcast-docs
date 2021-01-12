@@ -26,7 +26,7 @@ The roadmap for this site includes the following items:
 
 - [ ] Migrate Hazelcast Cloud content
 - [ ] Migrate Jet content
-- [ ] Migrate Management Center content
+- [x] Migrate Management Center content
 - [ ] Review and restructure content, starting with IMDG
 
 == Introduction to Antora

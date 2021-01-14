@@ -4,9 +4,9 @@ site:
   url: http:localhost:5000
   keys:
     google_analytics: 'GTM-M267KFN'
-    docsearch_id: '3L6KPQWLIB'
-    docsearch_api: '11e84402b279a5748fa7bb3a10c4eaff'
-    docsearch_index: 'dev_DOCS'
+    docsearch_id: 'QK2EAH8GB0'
+    docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
+    docsearch_index: 'prod_hazelcast_docs'
 content:
   sources: 
   - url: .

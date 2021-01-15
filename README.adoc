@@ -1,8 +1,8 @@
 = Hazelcast Documentation Site
-:url-imdg-docs: https://github.com/JakeSCahill/imdg-docs
-:url-mc-docs: https://github.com/Serdaro/mc-docs
+:url-imdg-docs: https://github.com/hazelcast/imdg-docs
+:url-mc-docs: https://github.com/hazelcast/mc-docs
 :url-antora: https://docs.antora.org/antora/2.3/
-:url-docs-ui: https://github.com/JakeSCahill/hazelcast-docs-ui
+:url-docs-ui: https://github.com/hazelcast/hazelcast-docs-ui
 :url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions
 :url-contributing: .github/CONTRIBUTING.adoc
 :url-netlify: https://netlify.com/
@@ -95,7 +95,7 @@ As well as these actions, repositories that are listed under the `content.source
 ```yaml
 content:
   sources: 
-  - url: https://github.com/JakeSCahill/imdg-docs
+  - url: https://github.com/hazelcast/imdg-docs
     branches: [master, v*]
     start_path: docs
 ```

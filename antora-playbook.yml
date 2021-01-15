@@ -12,21 +12,21 @@ content:
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/JakeSCahill/imdg-docs
+  - url: https://github.com/hazelcast/imdg-docs
     branches: [master, v*]
     start_path: docs
-  - url: https://github.com/JakeSCahill/imdg-docs
+  - url: https://github.com/hazelcast/imdg-docs
     branches: [archive]
     start_paths: docs/*
-  - url: https://github.com/Serdaro/mc-docs
+  - url: https://github.com/hazelcast/mc-docs
     branches: [main, v*]
     start_path: docs
-  - url: https://github.com/Serdaro/mc-docs
+  - url: https://github.com/hazelcast/mc-docs
     branches: [archive]
     start_paths: docs/*
 ui: 
   bundle:
-    url: https://github.com/JakeSCahill/hazelcast-docs-ui/releases/download/v1.1.18/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v1.1.18/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:

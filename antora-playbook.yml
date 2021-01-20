@@ -3,7 +3,7 @@ site:
   start_page: home::index.adoc
   url: https://docs.hazelcast.com
   keys:
-    google_analytics: 'GTM-M267KFN'
+    google_analytics: 'GTM-MQ59XD6'
     docsearch_id: 'QK2EAH8GB0'
     docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
     docsearch_index: 'prod_hazelcast_docs'
@@ -26,7 +26,7 @@ content:
     start_paths: docs/*
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v1.1.20/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v1.1.21/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:

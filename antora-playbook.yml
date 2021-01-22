@@ -26,7 +26,7 @@ content:
     start_paths: docs/*
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v1.1.22/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/untagged-7c08cb1e7c93ad42a82c/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:

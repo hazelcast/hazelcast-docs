@@ -8,10 +8,10 @@
 :url-netlify: https://netlify.com/
 :url-netlify-docs: https://docs.netlify.com/
 :url-production: https://docs.hazelcast.com
-:url-staging: https://develop--nifty-wozniak-71a44b.netlify.app
+:url-staging: https://60116f027a05f66bcc0ce5d4--nifty-wozniak-71a44b.netlify.app/home/index.html
 
 
-image:https://img.shields.io/github/workflow/status/JakeSCahill/hazelcast-docs/Index%20site?label=Indexer[GitHub Workflow Status]
+image:https://img.shields.io/github/workflow/status/hazelcast/hazelcast-docs/Index%20site?label=Indexer[GitHub Workflow Status]
 image:https://api.netlify.com/api/v1/badges/4e7593c9-5553-4732-99ee-aa3fd69cb765/deploy-status[Netlify deploy status]
 image:https://img.shields.io/badge/Build-Production-blue[link="{url-production}"]
 image:https://img.shields.io/badge/Build-Staging-yellow[link="{url-staging}"]

@@ -24,8 +24,8 @@ content:
   - url: https://github.com/hazelcast/management-center-docs #../mc-docs
     branches: [archive] #branches: HEAD
     start_paths: docs/*
-  - url: https://github.com/JakeSCahill/hazelcast-platform
-    branches: [add-antora-structure]
+  - url: https://github.com/hazelcast/hazelcast-platform
+    branches: [master]
     start_path: docs
 ui: 
   bundle:

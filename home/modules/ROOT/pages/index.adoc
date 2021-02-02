@@ -1,4 +1,4 @@
-= What are you looking for?
+= Welcome to the Hazelcast Documentation
 :page-layout: home
 :!sectids:
 :!toc:

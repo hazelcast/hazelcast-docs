@@ -1,6 +1,6 @@
 = Contributing to Hazelcast Docs
 :url-node: https://nodejs.org/en/download/
-:url-imdg-docs: https://github.com/JakeSCahill/imdg-docs
+:url-imdg-docs: https://github.com/hazelcast/imdg-docs
 :url-antora-yml: https://docs.antora.org/antora/2.3/component-version-descriptor
 
 The Hazelcast docs are open source, and we welcome your contributions!

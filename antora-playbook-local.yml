@@ -2,20 +2,34 @@ site:
   title: Documentation
   start_page: home::index.adoc
   url: http:localhost:5000
+  keys:
+    google_analytics: 'GTM-MQ59XD6'
+    docsearch_id: 'QK2EAH8GB0'
+    docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
+    docsearch_index: 'prod_hazelcast_docs'
 content:
   sources: 
   - url: .
     start_path: home
     branches: HEAD
-  - url: ../imdg-docs
-    branches: HEAD
+  - url: https://github.com/hazelcast/imdg-docs
+    branches: [master, v*]
     start_path: docs
-  - url: https://github.com/JakeSCahill/imdg-docs #../imdg-docs
+  - url: https://github.com/hazelcast/imdg-docs
+    branches: [archive]
+    start_paths: docs/*
+  - url: https://github.com/hazelcast/management-center-docs
+    branches: [main, v*]
+    start_path: docs
+  - url: https://github.com/hazelcast/management-center-docs #../mc-docs
     branches: [archive] #branches: HEAD
     start_paths: docs/*
+  - url: https://github.com/hazelcast/hazelcast-platform
+    branches: [master]
+    start_path: docs
 ui: 
   bundle:
-    url: https://github.com/JakeSCahill/hazelcast-docs-ui/releases/download/v1.1.14/ui-bundle.zip #../hazelcast-docs-ui/build/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v1.4.2/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:
@@ -23,16 +37,16 @@ asciidoc:
     kroki-fetch-diagram: true
     # Inlude next and previous links on each page
     page-pagination: true
-    page-survey: https://www.surveymonkey.co.uk/r/NYGJNF9
-    # Remove prefixes from anchor link names
     idprefix: ''
     # Separate anchor link names by dashes
     idseparator: '-'
+    page-survey: https://www.surveymonkey.co.uk/r/NYGJNF9
     imdg-javadoc: https://docs.hazelcast.org/docs/latest-dev/javadoc
     imdg-samples: https://github.com/hazelcast/hazelcast-code-samples
     imdg-core: https://github.com/hazelcast/hazelcast/tree/master/hazelcast/src/main/java/com/hazelcast
-    hz-refman: https://docs.hazelcast.org/docs/latest/manual/html-single/index.html
-    jet-refman: https://docs.hazelcast.org/docs/jet/latest/manual/
+    imdg-docs: https://docs.hazelcast.org/docs/latest/manual/html-single/index.html
+    imdg-ops-guide: https://hazelcast.com/resources/hazelcast-deployment-operations-guide/
+    jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
   extensions:
     - ./lib/tabs-block.js

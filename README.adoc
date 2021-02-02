@@ -1,11 +1,20 @@
 = Hazelcast Documentation Site
-:url-imdg-docs: https://github.com/JakeSCahill/imdg-docs
+:url-imdg-docs: https://github.com/hazelcast/imdg-docs
+:url-mc-docs: https://github.com/hazelcast/management-center-docs
 :url-antora: https://docs.antora.org/antora/2.3/
-:url-docs-ui: https://github.com/JakeSCahill/hazelcast-docs-ui
+:url-docs-ui: https://github.com/hazelcast/hazelcast-docs-ui
 :url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions
 :url-contributing: .github/CONTRIBUTING.adoc
+:url-netlify: https://netlify.com/
+:url-netlify-docs: https://docs.netlify.com/
+:url-production: https://docs.hazelcast.com
+:url-staging: https://60116f027a05f66bcc0ce5d4--nifty-wozniak-71a44b.netlify.app/home/index.html
 
-image:https://img.shields.io/github/workflow/status/JakeSCahill/hazelcast-docs/Build%20site?label=Build[GitHub Workflow Status] image:https://img.shields.io/github/workflow/status/JakeSCahill/hazelcast-docs/Index%20site?label=Indexer[GitHub Workflow Status] image:https://img.shields.io/github/workflow/status/JakeSCahill/hazelcast-docs/Publish?label=GitHub%20Pages[GitHub Workflow Status]
+
+image:https://img.shields.io/github/workflow/status/hazelcast/hazelcast-docs/Index%20site?label=Indexer[GitHub Workflow Status]
+image:https://api.netlify.com/api/v1/badges/4e7593c9-5553-4732-99ee-aa3fd69cb765/deploy-status[Netlify deploy status]
+image:https://img.shields.io/badge/Build-Production-blue[link="{url-production}"]
+image:https://img.shields.io/badge/Build-Staging-yellow[link="{url-staging}"]
 
 This repository hosts an {url-antora}[Antora] playbook project for the Hazelcast documentation site.
 
@@ -17,7 +26,7 @@ The roadmap for this site includes the following items:
 
 - [ ] Migrate Hazelcast Cloud content
 - [ ] Migrate Jet content
-- [ ] Migrate Management Center content
+- [x] Migrate Management Center content
 - [ ] Review and restructure content, starting with IMDG
 
 == Introduction to Antora
@@ -43,13 +52,13 @@ This project has two playbook files, which configure the build process for the d
 
 The current playbooks pull from the following content sources:
 
-- The `master`, `archive`, and all `v` branches of the{url-imdg-docs}[`imdg-docs` repository]
+- The `master`, `archive`, and all `v` branches of the {url-imdg-docs}[`imdg-docs` repository] and the {url-mc-docs}[`mc-docs` repository]
 - The `home/` folder in this repository, which contains an Antora component for the home page
 
 [[home]]
 == Home Component
 
-The `home/` folder in this repository contains the source for the Home documentation component with links to all major documentation projects.
+The `home/` folder in this repository contains the Home documentation component. The source code for the home page is in the `body-home.hbs` template of the {url-docs-ui}[`hazelcast-docs-ui` repository].
 
 image::images/home-page.png[Preview of the home page]
 
@@ -57,6 +66,15 @@ image::images/home-page.png[Preview of the home page]
 The custom extension in the `lib/` directory processes the Asciidoc `tabs` blocks to generate tabbed code samples in the output HTML.
 
 For more information about writing Asciidoctor.js extensions, see the {url-asciidoc-extensions}[Asciidoctor docs].
+
+== Production and Staging Sites
+
+The documentation site is hosted on {url-netlify}[Netlify], which builds two versions of the site from this GitHub repository:
+
+- {url-production}[Production site]: This site is hosted on {url-production} and is built from the `main` branch
+- {url-staging}[Staging site]: This site is hosted on {url-staging} and is built from the `develop` branch
+
+To preview changes, all pull requests are made to the `develop` branch. When the team are happy with the changes, the `develop` branch is merged into the `main` branch to deploy the changes to the production site.
 
 == GitHub Actions
 
@@ -67,22 +85,24 @@ To automate some elements of the build process, this repository includes the fol
 |===
 |File |Description |Triggers
 
-|validate-site.yml
-|Validates that the build process completes without errors and checks that all internal links are working
-|On a pull request to both this repository and any repositories listed in the `content.sources` field of the playbook
-
-|build-site.yml
-|Builds the site and commits the result to the `develop branch` of this repository
-|On a push to both this repository and any repositories listed in the `content.sources` field of the playbook
-
 |index-site.yml
 |Runs the Docsearch indexer in a Docker container to index the site and send the index to Algolia
 |Once per day at 00:00 UTC
-
-|publish.yml
-|Commits the contents of the `docs` folder on the `develop` branch to the `master` branch, which is set up to host the site on GitHub Pages
-|Manual trigger
 |===
+
+As well as these actions, repositories that are listed under the `content.sources` field in the `antora-playbook.yml` file also include GitHub actions to trigger builds of the staging site.
+
+```yaml
+content:
+  sources: 
+  - url: https://github.com/hazelcast/imdg-docs
+    branches: [master, v*]
+    start_path: docs
+```
+
+Whenever content in the repository's listed branches are changed, the GitHub Action sends a {url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
+
+For an example of these GitHub Actions, see the {url-imdg-docs}[IMDG documentation repository].
 
 == Contributing
 

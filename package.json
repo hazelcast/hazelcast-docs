@@ -5,8 +5,8 @@
   "author": "Jake Cahill",
   "license": "ISC",
   "scripts": {
-    "build": "antora --to-dir docs --fetch --generator @antora/site-generator-default antora-playbook.yml",
-    "build-local": "antora --to-dir docs --fetch --generator @antora/site-generator-default antora-playbook-local.yml",
+    "build": "antora --to-dir docs --fetch --generator @antora/site-generator-default antora-playbook.yml && cp _redirects docs",
+    "build-local": "antora --to-dir docs --fetch --generator @antora/site-generator-default antora-playbook-local.yml && cp _redirects docs",
     "check-links": "antora --generator @antora/xref-validator antora-playbook.yml",
     "check-links-local": "antora --generator @antora/xref-validator antora-playbook-local.yml",
     "serve": "serve docs",

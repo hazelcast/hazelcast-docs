@@ -2,6 +2,7 @@
 :url-node: https://nodejs.org/en/download/
 :url-imdg-docs: https://github.com/hazelcast/imdg-docs
 :url-antora-yml: https://docs.antora.org/antora/2.3/component-version-descriptor
+:toc: preamble
 
 The Hazelcast docs are open source, and we welcome your contributions!
 
@@ -26,11 +27,13 @@ If no version number is displayed in the output, you need to {url-node}[install 
 
 Documentation is hosted in separate GitHub repositorites. So, to work on a particular documentation project, you must fork it, clone it, and configure the `antora-playbook-local.yml` file to process your local version.
 
+NOTE: You can find all content repositories in the `antora-playbook.yml` file under `content.sources`.
+
 For example, to build the IMDG reference manual on your local device:
 
-. Fork the {url-imdg-docs}[`imdg-docs` repository]
+. Fork the {url-imdg-docs}[`imdg-docs` repository].
 
-. Clone your forked repository, and check out the branch that you want to work on
+. Clone your forked repository, and check out the branch that you want to work on.
 +
 [source,bash]
 ----
@@ -38,7 +41,7 @@ git clone https://github.com/<your-username>/imdg-docs
 cd imdg-docs
 ----
 
-. Create a new local branch for your work
+. Create a new local branch for your work.
 +
 [source,bash]
 ----
@@ -52,7 +55,7 @@ After installing the dependencies and cloning a documentation project, you're re
 . Make your changes to the documentation in your local branch
 TIP: See the <<structure, Docs Structure section>> for help navigating a documentation project.
 
-. Check the files that you changed
+. Check the files that you changed.
 +
 [source,bash]
 ----
@@ -63,7 +66,7 @@ git status
 
 When working on a documentation project, you should build and preview the docs on your local machine to see your changes before going live.
 
-. Run the local build script
+. Run the local build script.
 +
 [source,bash]
 ----
@@ -77,7 +80,7 @@ In the `test` folder you will now have all the webpages for your documentation c
 +
 NOTE: This script builds the documentation only for your local branch. If you want to build the whole site, you can run the script from the `hazelcast-docs` repository.
 
-. To view the documentation site from a localhost web server, run the `serve` script
+. To view the documentation site from a localhost web server, run the `serve` script.
 +
 [source,bash]
 ----
@@ -103,23 +106,23 @@ When you've finished viewing your changes, use **CTRL-C** to stop the server.
 
 After making your changes, and testing how they look, you're ready to send them to us for review.
 
-. Stage your changes for commit
+. Stage your changes for commit.
 +
 [source,bash]
 ----
 git add <filename>
 ----
 
-. Commit your changes
+. Commit your changes.
 +
 [source,bash]
 ----
 git commit -m "Concise message that describes your changes"
 ----
 
-. Push your local branch to your remote fork
+. Push your local branch to your remote fork.
 
-. In the GitHub UI, go to your forked repository and open a pull request for the documentation project that you forked
+. In the GitHub UI, go to your forked repository and open a pull request for the documentation project that you forked.
 
 Thanks! We'll review your changes and provide feedback and guidance as necessary.
 
@@ -156,7 +159,7 @@ modules/ <2>
 
 Sometimes, you may want to build the whole documentation site instead of just a single component. For example, if you want to check that links to other components are working.
 
-. Clone this repository
+. Clone this repository.
 +
 [source,bash]
 ----
@@ -164,14 +167,14 @@ git clone {url-imdg-docs}
 cd imdg-docs
 ----
 
-. Create a new local branch for your work
+. Create a new local branch for your work.
 +
 [source,bash]
 ----
 git checkout -b add-my-awesome-feature
 ----
 
-. Run the local build script
+. Run the local build script.
 +
 [source,bash]
 ----
@@ -181,3 +184,29 @@ npm run-script build-local
 NOTE: This script is defined in the `package.json` file, and runs Antora with the `antora-playbook-local.yml` file.
 +
 In the `docs` folder you will now have all the webpages for your documentation component.
+
+== Release a new version of a docs component
+
+Documentation components are hosted in their own repositories, using the following branches:
+
+- `main`/`master`: Documentation for the latest development version of the product
+- `v\{version\}`: Documentation for the latest stable version of the product
+- `archive`: Documentation for old versions of the product
+
+To release a new version, you must do the following:
+
+. In the `main`/`master` branch of your component's repository, update the `version` field of the `docs/antora.yml` file to the new development version.
+
+. Create a new branch based on `main`/`master` and name it `v\{version\}`.
++
+TIP: Replace the `version` placeholder with the version of the product that you are releasing.
++
+NOTE: Antora will automatically build content that is in a branch named with the `v` prefix.
+
+. In your new branch, delete the `prerelease` field in the `docs/antora.yml` file and remove the `-SNAPSHOT` suffix from the `version` field.
+
+. In the `develop` branch of the `hazelcast/hazelcast-docs` repository, update the version numbers of your component in the `_redirects` file.
++
+NOTE: This file is used to alias the `latest` and `latest-dev` paths in URLS.
++
+

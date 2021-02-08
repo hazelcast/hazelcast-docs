@@ -122,7 +122,7 @@ git commit -m "Concise message that describes your changes"
 
 . Push your local branch to your remote fork.
 
-. In the GitHub UI, go to your forked repository and open a pull request for the documentation project that you forked.
+. In the GitHub UI, go to your forked repository and open a pull request against the `develop` branch for the documentation project that you forked.
 
 Thanks! We'll review your changes and provide feedback and guidance as necessary.
 

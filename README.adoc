@@ -9,6 +9,8 @@
 :url-netlify-docs: https://docs.netlify.com/
 :url-production: https://docs.hazelcast.com
 :url-staging: https://60116f027a05f66bcc0ce5d4--nifty-wozniak-71a44b.netlify.app/home/index.html
+:video:
+:toc: preamble
 
 
 image:https://img.shields.io/github/workflow/status/hazelcast/hazelcast-docs/Index%20site?label=Indexer[GitHub Workflow Status]
@@ -20,15 +22,6 @@ This repository hosts an {url-antora}[Antora] playbook project for the Hazelcast
 
 image::images/docs-preview.png[Preview of the documentation site]
 
-== Work in progress
-
-The roadmap for this site includes the following items:
-
-- [ ] Migrate Hazelcast Cloud content
-- [ ] Migrate Jet content
-- [x] Migrate Management Center content
-- [ ] Review and restructure content, starting with IMDG
-
 == Introduction to Antora
 
 Antora is a static site generator that facilitates a docs-as-code workflow where documentation is stored in Git repositories and processed to output a static website.
@@ -39,7 +32,9 @@ Antora uses Asciidoctor.js to convert Asciidoc to HTML, then it uses Handlebars 
 
 NOTE: The page layouts and UI code (css, JavaScript, Handlebars templates) is stored in a {url-docs-ui}[separate repository], which outputs a `ui-bundle.zip` file that this project references in the playbook.
 
-video::BAJ8F7yQz64[youtube]
+++++
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BAJ8F7yQz64" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+++++
 
 == The playbook
 
@@ -103,6 +98,15 @@ content:
 Whenever content in the repository's listed branches are changed, the GitHub Action sends a {url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
 
 For an example of these GitHub Actions, see the {url-imdg-docs}[IMDG documentation repository].
+
+== Work in progress
+
+The roadmap for this site includes the following items:
+
+- [x] Migrate Management Center content
+- [ ] Migrate Hazelcast Cloud content
+- [ ] Migrate Jet content
+- [ ] Review and restructure content, starting with IMDG
 
 == Contributing
 

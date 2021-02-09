@@ -23,7 +23,8 @@ content:
     branches: [archive]
     start_paths: docs/*
   - url: https://github.com/hazelcast/management-center-docs
-    branches: [main, v*]
+    branches: [main]
+    tags: [v*]
     start_path: docs
   - url: https://github.com/hazelcast/management-center-docs #../mc-docs
     branches: [archive] #branches: HEAD

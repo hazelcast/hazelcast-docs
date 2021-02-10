@@ -42,13 +42,6 @@ git clone https://github.com/<your-username>/imdg-docs
 cd imdg-docs
 ----
 
-. Create a new local branch for your work.
-+
-[source,bash]
-----
-git checkout -b add-my-awesome-feature
-----
-
 === Step 3. Make your Changes
 
 After installing the dependencies and cloning a documentation project, you're ready to make your changes.
@@ -146,7 +139,7 @@ modules/ <2>
 ----
 <1> This file tells Antora that the contents of the `modules/` folder should be processed and added to the documentation site. This file is called the {url-antora-yml}[component version descriptor file].
 <2> This folder contains the content that Antora will process
-<3> This folder contains any content that can't be categorized uner a specfic module name. Unlike other modules, the name of this module is never displayed in the URL of the site.
+<3> This folder contains any content that can't be categorized under a specfic module name. Unlike other modules, the name of this module is never displayed in the URL of the site.
 <4> In any module, this folder contains downloadable content such as ZIP files that a user can download through a link.
 <5> In any module, this folder contains examples such as source code that you can include in Asciidoc pages.
 <6> In any module, this folder contains images that you can include in Asciidoc pages.

@@ -26,7 +26,7 @@ image::images/docs-preview.png[Preview of the documentation site]
 
 Antora is a static site generator that facilitates a docs-as-code workflow where documentation is stored in Git repositories and processed to output a static website.
 
-Documentation can be stored in one or more repositories and/or branches.
+Documentation can be stored in one or more repositories, using either branches or tags to version it.
 
 Antora uses Asciidoctor.js to convert Asciidoc to HTML, then it uses Handlebars to set that HTML into a page layout.
 
@@ -45,10 +45,20 @@ This project has two playbook files, which configure the build process for the d
 - `antora-playbook-local.yml`: link:{url-contributing}#local-builds[For local builds]
 - `antora-playbook.yml`: For production builds
 
-The current playbooks pull from the following content sources:
+== Documentation Content
 
-- The `master`, `archive`, and all `v` branches of the {url-imdg-docs}[`imdg-docs` repository] and the {url-mc-docs}[`mc-docs` repository]
-- The `home/` folder in this repository, which contains an Antora component for the home page
+The current playbooks pull from the following content repositories:
+
+- {url-imdg-docs}[IMDG documentation]
+- {url-mc-docs}[Management Center documentation]
+
+Inside these repositories, content is stored in the following:
+
+- `master/main` branch: The `lastest-dev` content, which represents the current development version of the product
+- `archive` branch: Legacy content that is not hosted on Antora, but instead given a single page with a link to the legacy documentation site
+- Tags prefixed with `v`: Versioned releases
+
+NOTE: To learn about the release workflow, see the contributing guidelines of a content repository.
 
 [[home]]
 == Home Component
@@ -85,17 +95,17 @@ To automate some elements of the build process, this repository includes the fol
 |Once per day at 00:00 UTC
 |===
 
-As well as these actions, repositories that are listed under the `content.sources` field in the `antora-playbook.yml` file also include GitHub actions to trigger builds of the staging site.
+As well as these actions, content repositories that are listed under the `content.sources` field in the `antora-playbook.yml` file also include GitHub actions to trigger builds of the staging and production site.
 
 ```yaml
 content:
   sources: 
   - url: https://github.com/hazelcast/imdg-docs
-    branches: [master, v*]
+    branches: [master]
     start_path: docs
 ```
 
-Whenever content in the repository's listed branches are changed, the GitHub Action sends a {url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
+Whenever content in the repository's listed branches/tags are changed, the GitHub Action sends a {url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
 
 For an example of these GitHub Actions, see the {url-imdg-docs}[IMDG documentation repository].
 

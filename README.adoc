@@ -8,7 +8,6 @@
 :url-netlify: https://netlify.com/
 :url-netlify-docs: https://docs.netlify.com/
 :url-production: https://docs.hazelcast.com
-:url-staging: https://develop--nifty-wozniak-71a44b.netlify.app/home/index.html
 :toc: preamble
 
 
@@ -17,7 +16,7 @@ image:https://api.netlify.com/api/v1/badges/4e7593c9-5553-4732-99ee-aa3fd69cb765
 image:https://img.shields.io/badge/Build-Production-blue[link="{url-production}"]
 ++++
 <p>
-    <a href="{url-staging}" style="text-decoration:none;">
+    <a href="https://develop--nifty-wozniak-71a44b.netlify.app/home/index.html" style="text-decoration:none;">
     <img src="https://img.shields.io/badge/Build-Staging-yellow" alt="Documentation prototype">
 </p>
 ++++

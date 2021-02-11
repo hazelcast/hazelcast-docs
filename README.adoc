@@ -8,8 +8,7 @@
 :url-netlify: https://netlify.com/
 :url-netlify-docs: https://docs.netlify.com/
 :url-production: https://docs.hazelcast.com
-:url-staging: https://60116f027a05f66bcc0ce5d4--nifty-wozniak-71a44b.netlify.app/home/index.html
-:video:
+:url-staging: https://develop--nifty-wozniak-71a44b.netlify.app/home/index.html
 :toc: preamble
 
 

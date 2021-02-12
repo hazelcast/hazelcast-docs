@@ -1,7 +1,7 @@
 # Redirect latest imdg alias to the latest version
 /imdg/latest/*  /imdg/4.1.1/:splat 200!
 # Redirect latest management-center alias to the latest version
-/management-center/latest/*  /management-center/4.2020.12/:splat 200!
+/management-center/latest/*  /management-center/4.2021.02/:splat 200!
 # Redirect latest-dev imdg alias to the latest-dev version
 /imdg/latest-dev/*  /imdg/4.2-snapshot/:splat 200!
 # Redirect latest-dev management-center alias to the latest version

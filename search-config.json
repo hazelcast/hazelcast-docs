@@ -4,14 +4,14 @@
     {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "variables": {
-        "version": ["latest"]
+        "version": ["4.1.2"]
       },
       "selectors_key": "imdg"
     },
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "variables": {
-        "version": ["latest"]
+        "version": ["4.2021.03"]
       },
       "selectors_key": "mc"
     },

@@ -22,7 +22,8 @@
   ],
   "sitemap_urls": [
     "https://docs.hazelcast.com/sitemap-imdg.xml",
-    "https://docs.hazelcast.com/sitemap-management-center.xml"
+    "https://docs.hazelcast.com/sitemap-management-center.xml",
+    "https://docs.hazelcast.com/sitemap-cloud.xml"
   ],
   "stop_urls": [],
   "selectors": {

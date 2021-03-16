@@ -29,6 +29,9 @@ content:
   - url: https://github.com/hazelcast/management-center-docs #../mc-docs
     branches: [archive] #branches: HEAD
     start_paths: docs/*
+  - url: https://github.com/hazelcast/cloud-docs
+    branches: [main]
+    start_path: docs
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v1.5.1/ui-bundle.zip

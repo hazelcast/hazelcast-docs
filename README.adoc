@@ -1,6 +1,7 @@
 = Hazelcast Documentation Site
 :url-imdg-docs: https://github.com/hazelcast/imdg-docs
 :url-mc-docs: https://github.com/hazelcast/management-center-docs
+:url-cloud-docs: https://github.com/hazelcast/cloud-docs
 :url-antora: https://docs.antora.org/antora/2.3/
 :url-docs-ui: https://github.com/hazelcast/hazelcast-docs-ui
 :url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions
@@ -52,10 +53,11 @@ This project has two playbook files, which configure the build process for the d
 
 The current playbooks pull from the following content repositories:
 
+- {url-cloud-docs}[Cloud documentation]
 - {url-imdg-docs}[IMDG documentation]
 - {url-mc-docs}[Management Center documentation]
 
-Inside these repositories, content is stored in the following:
+Inside these repositories, content may be stored in the following:
 
 - `master/main` branch: The `lastest-dev` content, which represents the current development version of the product
 - `archive` branch: Legacy content that is not hosted on Antora, but instead given a single page with a link to the legacy documentation site
@@ -117,7 +119,7 @@ For an example of these GitHub Actions, see the {url-imdg-docs}[IMDG documentati
 The roadmap for this site includes the following items:
 
 - [x] Migrate Management Center content
-- [ ] Migrate Hazelcast Cloud content
+- [x] Migrate Hazelcast Cloud content
 - [ ] Migrate Jet content
 - [ ] Review and restructure content, starting with IMDG
 

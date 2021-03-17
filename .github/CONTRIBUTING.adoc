@@ -2,6 +2,7 @@
 :url-node: https://nodejs.org/en/download/
 :url-imdg-docs: https://github.com/hazelcast/imdg-docs
 :url-antora-yml: https://docs.antora.org/antora/2.3/component-version-descriptor
+:url-antora-local-content: https://docs.antora.org/antora/2.3/playbook/content-source-url/#local-urls
 :url-readme: ../README.adoc
 :toc: preamble
 
@@ -26,7 +27,7 @@ If no version number is displayed in the output, you need to {url-node}[install 
 
 === Step 2. Clone a documentation project
 
-Documentation is hosted in xref:{url-readme}#documentation-content[separate GitHub repositorites]. So, to work on a particular documentation project, you must fork it, clone it, and configure the `antora-playbook-local.yml` file to process your local version.
+Documentation is hosted in xref:{url-readme}#documentation-content[separate GitHub repositorites]. To work on a particular documentation project, you must fork it, clone it, and configure the `antora-playbook-local.yml` file to process your local version.
 
 NOTE: You can find all content repositories in the `antora-playbook.yml` file under `content.sources`.
 
@@ -116,7 +117,7 @@ git commit -m "Concise message that describes your changes"
 
 . Push your local branch to your remote fork.
 
-. In the GitHub UI, go to your forked repository and open a pull request against the `develop` branch for the documentation project that you forked.
+. In the GitHub UI, go to your forked repository and open a pull request in the documentation project that you forked.
 
 Thanks! We'll review your changes and provide feedback and guidance as necessary.
 
@@ -157,16 +158,22 @@ Sometimes, you may want to build the whole documentation site instead of just a 
 +
 [source,bash]
 ----
-git clone {url-imdg-docs}
-cd imdg-docs
+git clone https://github.com/hazelcast/hazelcast-docs
+cd hazelcast-docs
 ----
 
-. Create a new local branch for your work.
+. Open the `antora-playbook-local.yml` file.
+
+. Point the content source that you are working on to your local changes. For example, if you are working on the Cloud documentation in a local folder called `cloud-docs`, replace the cloud content source with the following:
 +
-[source,bash]
+[source,yaml]
 ----
-git checkout -b add-my-awesome-feature
+- url: ../path-to-local-cloud-docs
+  branches: HEAD
+  start_path: docs
 ----
++
+For more information about using local content, see the link:{url-antora-local-content}[Antora documentation].
 
 . Run the local build script.
 +
@@ -178,4 +185,26 @@ npm run-script build-local
 NOTE: This script is defined in the `package.json` file, and runs Antora with the `antora-playbook-local.yml` file.
 +
 In the `docs` folder you will now have all the webpages for your documentation component.
+
+. To view the documentation site from a localhost web server, run the `serve` script.
++
+[source,bash]
+----
+npm run-script serve
+----
++
+Then on the same device, go to `http:localhost:5000` to view the local site.
++
+
+. If you want to show others your changes, you can expose your web server to the Internet, using ngrok by doing the following:
++
+```bash
+npm run-script expose
+```
++
+The public URL is displayed in the output:
++
+image::../images/ngrok.png[ngrok output]
+
+When you've finished viewing your changes, use **CTRL-C** to stop the server.
 

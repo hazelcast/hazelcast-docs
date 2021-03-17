@@ -6,8 +6,12 @@
 :url-docs-ui: https://github.com/hazelcast/hazelcast-docs-ui
 :url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions
 :url-contributing: .github/CONTRIBUTING.adoc
-:url-netlify: https://netlify.com/
-:url-netlify-docs: https://docs.netlify.com/
+:url-netlify: https://netlify.com
+:url-netlify-docs: https://docs.netlify.com
+:url-docsearch: https://docsearch.algolia.com/docs
+:url-algolia: https://www.algolia.com/
+:url-asciidoc: https://docs.asciidoctor.org/asciidoc/latest/
+:url-github-docsearch-scraper: https://github.com/algolia/docsearch-scraper
 :url-production: https://docs.hazelcast.com
 :toc: preamble
 
@@ -16,11 +20,11 @@ image:https://img.shields.io/github/workflow/status/hazelcast/hazelcast-docs/Ind
 image:https://api.netlify.com/api/v1/badges/4e7593c9-5553-4732-99ee-aa3fd69cb765/deploy-status[Netlify deploy status]
 image:https://img.shields.io/badge/Build-Production-blue[link="{url-production}"]
 ++++
-<p>
-    <a href="https://develop--nifty-wozniak-71a44b.netlify.app/home/index.html" style="text-decoration:none;">
-    <img src="https://img.shields.io/badge/Build-Staging-yellow" alt="Documentation prototype">
-</p>
+<a href="https://develop--nifty-wozniak-71a44b.netlify.app/home/index.html" style="text-decoration:none;">
+<img src="https://img.shields.io/badge/Build-Staging-yellow" alt="Documentation prototype">
+</a>
 ++++
+
 
 This repository hosts an {url-antora}[Antora] playbook project for the Hazelcast documentation site.
 
@@ -28,17 +32,17 @@ image::images/docs-preview.png[Preview of the documentation site]
 
 == Introduction to Antora
 
-Antora is a static site generator that facilitates a docs-as-code workflow where documentation is stored in Git repositories and processed to output a static website.
+Antora is a static site generator that facilitates a docs-as-code workflow.
+
+In Antora, documentation is stored in Git repositories and processed to output a static website.
 
 Documentation can be stored in one or more repositories, using either branches or tags to version it.
 
 Antora uses Asciidoctor.js to convert Asciidoc to HTML, then it uses Handlebars to set that HTML into a page layout.
 
-NOTE: The page layouts and UI code (css, JavaScript, Handlebars templates) is stored in a {url-docs-ui}[separate repository], which outputs a `ui-bundle.zip` file that this project references in the playbook.
+NOTE: The page layouts and UI code (css, JavaScript, Handlebars templates) are stored in a {url-docs-ui}[separate repository], which outputs a `ui-bundle.zip` file that this project references in the playbook.
 
-++++
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BAJ8F7yQz64" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-++++
+TIP: Learn more about Antora with this excellent link:https://www.youtube.com/watch?v=BAJ8F7yQz64&t=4s[introduction on YouTube].
 
 == The playbook
 
@@ -47,15 +51,17 @@ The playbook defines the content sources (repositories and branches), site URL, 
 This project has two playbook files, which configure the build process for the documentation site:
 
 - `antora-playbook-local.yml`: link:{url-contributing}#local-builds[For local builds]
-- `antora-playbook.yml`: For production builds
+- `antora-playbook.yml`: For production builds (used by our hosting provider link:{url-netlify}[Netlify])
 
 == Documentation Content
 
-The current playbooks pull from the following content repositories:
+Source content for the documentation site is marked up in link:{url-asciidoc}[Asciidoc].
 
-- {url-cloud-docs}[Cloud documentation]
-- {url-imdg-docs}[IMDG documentation]
-- {url-mc-docs}[Management Center documentation]
+The current playbooks pull content from the following repositories:
+
+- link:{url-cloud-docs}[Cloud documentation]
+- link:{url-imdg-docs}[IMDG documentation]
+- link:{url-mc-docs}[Management Center documentation]
 
 Inside these repositories, content may be stored in the following:
 
@@ -63,28 +69,48 @@ Inside these repositories, content may be stored in the following:
 - `archive` branch: Legacy content that is not hosted on Antora, but instead given a single page with a link to the legacy documentation site
 - Tags prefixed with `v`: Versioned releases
 
-NOTE: To learn about the release workflow, see the contributing guidelines of a content repository.
+NOTE: To learn about release workflows, see the README of a content repository.
 
 [[home]]
 == Home Component
 
-The `home/` folder in this repository contains the Home documentation component. The source code for the home page is in the `body-home.hbs` template of the {url-docs-ui}[`hazelcast-docs-ui` repository].
+The `home/` folder in this repository contains the Home documentation component. The source code for the home page is in the `body-home.hbs` template of the link:{url-docs-ui}[`hazelcast-docs-ui` repository].
 
 image::images/home-page.png[Preview of the home page]
 
 == Custom Asciidoctor Extensions
+
 The custom extension in the `lib/` directory processes the Asciidoc `tabs` blocks to generate tabbed code samples in the output HTML.
 
 For more information about writing Asciidoctor.js extensions, see the {url-asciidoc-extensions}[Asciidoctor docs].
 
 == Production and Staging Sites
 
-The documentation site is hosted on {url-netlify}[Netlify], which builds two versions of the site from this GitHub repository:
+The documentation site is hosted on link:{url-netlify}[Netlify], which builds two versions of the site from this GitHub repository:
 
-- {url-production}[Production site]: This site is hosted on {url-production} and is built from the `main` branch
-- {url-staging}[Staging site]: This site is hosted on {url-staging} and is built from the `develop` branch
+- link:{url-production}[Production site]: This site is hosted on {url-production} and is built from the `main` branch
+- link:{url-staging}[Staging site]: This site is hosted on {url-staging} and is built from the `develop` branch
 
 To preview changes, all pull requests are made to the `develop` branch. When the team are happy with the changes, the `develop` branch is merged into the `main` branch to deploy the changes to the production site.
+
+== Redirects
+
+To make it easy for users to find and bookmark the latest IMDG and Management Center content, we use the following aliases:
+
+- `latest`: The latest stable version
+-`latest-dev`: The latest development version
+
+These aliases are configured in the `_redirects` file, which Netlify uses to redirect to their actual versioned content.
+
+For details about this file, see the link:{url-netlify-docs}/routing/redirects/redirect-options[Netlify documentation].
+
+== Search
+
+The search bar in the documentation is powered by an link:{url-algolia}[Algolia] search index.
+
+Once a day, we use a link:{url-github-docsearch-scraper}[DocSearch scraper] to index the site, using a <<github-actions, GitHub Action>>, and to send that index to Algolia.
+
+To index the documentation, DocSearch uses our `search-config.json` file. For more information about search configuration, see the link:{url-docsearch}/config-file[DocSearch documentation].
 
 == GitHub Actions
 
@@ -96,11 +122,15 @@ To automate some elements of the build process, this repository includes the fol
 |File |Description |Triggers
 
 |index-site.yml
-|Runs the Docsearch indexer in a Docker container to index the site and send the index to Algolia
+|Runs the link:{url-github-docsearch-scraper}[DocSearch scraper] in a Docker container to index the site and send the index to Algolia
 |Once per day at 00:00 UTC
+
+|publish-to-production.yml
+|Merges the `develop` branch into the `main` branch to publish changes on the staging site to production.
+|Manual
 |===
 
-As well as these actions, content repositories that are listed under the `content.sources` field in the `antora-playbook.yml` file also include GitHub actions to trigger builds of the staging and production site.
+As well as these actions, content repositories that are listed under the `content.sources` field in the `antora-playbook.yml` file also include GitHub actions to trigger builds of the production site.
 
 ```yaml
 content:
@@ -110,9 +140,9 @@ content:
     start_path: docs
 ```
 
-Whenever content in the repository's listed branches/tags are changed, the GitHub Action sends a {url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
+Whenever content in the repository's listed branches/tags are changed, the GitHub Action sends a link:{url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
 
-For an example of these GitHub Actions, see the {url-imdg-docs}[IMDG documentation repository].
+For an example of these GitHub Actions, see the link:{url-imdg-docs}[IMDG documentation repository].
 
 == Work in progress
 

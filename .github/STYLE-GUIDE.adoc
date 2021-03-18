@@ -34,8 +34,8 @@ image:../images/tabs.png[Tabs for Homebrew, Debian, and RPM installation instruc
 
 To create tabs, use the following Asciidoc syntax:
 
-[source,asciidoc]
-----
+[source]
+....
 [tabs] 
 ==== 
 Tab Title:: 
@@ -49,12 +49,12 @@ Next Tab Title::
 Next tab content
 --
 ====
-----
+....
 
 For example, you could document XML and YAML configurations, using the following tabs.
 
-[source,asciidoc]
-----
+[source]
+....
 [tabs] 
 ==== 
 XML:: 
@@ -85,7 +85,7 @@ hazelcast-client:
     - bar
 ----
 ====
-----
+....
 
 === Workflow Maps
 
@@ -300,13 +300,13 @@ To write inline code, use backticks (``).
 
 To write block code, use the following syntax:
 
-[source,asciidoc]
-----
+[source]
+....
 [source,language] <1>
 ----
 code goes here
 ----
-----
+....
 
 <1> Replace the `language` placeholder with the programming language that you are writing in. For a list of available languages, see the highlighter code in the link:{url-github-docs-ui}//blob/master/src/js/vendor/highlight.bundle.js[hazelcast-docs-ui repository].
 

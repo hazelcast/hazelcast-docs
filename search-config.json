@@ -3,9 +3,6 @@
   "start_urls": [
     {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
-      "tags": [
-        "imdg"
-      ],
       "variables": {
         "version": ["4.1.2"]
       },
@@ -13,9 +10,6 @@
     },
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
-        "management-center"
-      ],
       "variables": {
         "version": ["4.2021.03"]
       },
@@ -23,18 +17,15 @@
     },
     {
       "url": "https://docs.hazelcast.com/cloud/",
-      "tags": [
-        "cloud"
-      ],
       "selectors_key": "cloud"
     }
   ],
   "sitemap_urls": [
-    "https://docs.hazelcast.com/sitemap.xml"
+    "https://docs.hazelcast.com/sitemap-imdg.xml",
+    "https://docs.hazelcast.com/sitemap-management-center.xml",
+    "https://docs.hazelcast.com/sitemap-cloud.xml"
   ],
-  "stop_urls": [
-    "index.html"
-  ],
+  "stop_urls": [],
   "selectors": {
     "default": {
       "lvl0": ".doc h1",
@@ -89,10 +80,5 @@
       "lvl3": ".doc h2",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     }
-  },
-  "custom_settings": {
-    "attributesForFaceting": [
-      "tags"
-    ]
   }
 }

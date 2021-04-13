@@ -13,21 +13,16 @@ content:
     start_path: home
     branches: HEAD
   - url: https://github.com/hazelcast/imdg-docs
-    branches: [master]
-    tags: [v*, "!v4.0*" , "!v3.12", "!v3.12.1", "!v3.12.2", "!v3.12.3",
-    "!v3.12.4", "!v3.12.5*", "!v3.12.6", "!v3.12.7", "!v3.12.8", "!v3.12.9",
-    "!v3.12.11", "!v3.11*", "!v3.10*", "!v3.9*", "!v3.8*", "!v3.7*", "!v3.6*",
-    "!v3.5*", "!v3.4*", "!v3.3*", "!v3.12-BETA*", "!v4.1-BETA*"]
+    branches: [master, v/*]
     start_path: docs
   - url: https://github.com/hazelcast/imdg-docs
     branches: [archive]
     start_paths: docs/*
   - url: https://github.com/hazelcast/management-center-docs
-    branches: [main]
-    tags: [v*]
+    branches: [main, v/*]
     start_path: docs
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [archive]
+  - url: https://github.com/hazelcast/management-center-docs #../mc-docs
+    branches: [archive] #branches: HEAD
     start_paths: docs/*
   - url: https://github.com/hazelcast/cloud-docs
     branches: [main]

@@ -65,9 +65,9 @@ The current playbooks pull content from the following repositories:
 
 Inside these repositories, content may be stored in the following:
 
-- `master/main` branch: The `lastest-dev` content, which represents the current development version of the product
+- `master/main` branch: The `latest-dev` content, which represents the current development version of the product
 - `archive` branch: Legacy content that is not hosted on Antora, but instead given a single page with a link to the legacy documentation site
-- Tags prefixed with `v`: Versioned releases
+- Branches prefixed with `v/`: Versioned releases
 
 NOTE: To learn about release workflows, see the README of a content repository.
 
@@ -140,7 +140,7 @@ content:
     start_path: docs
 ```
 
-Whenever content in the repository's listed branches/tags are changed, the GitHub Action sends a link:{url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
+Whenever content in the repository's listed branches are changed, the GitHub Action sends a link:{url-netlify-docs}/configure-builds/build-hooks/[build hook] to Netlify to trigger a new build of the staging site.
 
 For an example of these GitHub Actions, see the link:{url-imdg-docs}[IMDG documentation repository].
 

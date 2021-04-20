@@ -66,7 +66,7 @@ The current playbooks pull content from the following repositories:
 Inside these repositories, content may be stored in the following:
 
 - `master/main` branch: The `latest-dev` content, which represents the current development version of the product
-- `archive` branch: Legacy content that is not hosted on Antora, but instead given a single page with a link to the legacy documentation site
+- `archived-versions` branch: Legacy content that is not hosted on Antora, but instead given a single page with a link to the legacy documentation site
 - Branches prefixed with `v/`: Versioned releases
 
 NOTE: To learn about release workflows, see the README of a content repository.

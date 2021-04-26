@@ -13,3 +13,6 @@
 # Redirect version 4.1.1 and 4.1.2 URLs to 4.1
 /imdg/4.1.1/*  /imdg/4.1/:splat 200!
 /imdg/4.1.2/*  /imdg/4.1/:splat 200!
+
+# Redirect version 3.12.12 to 3.12
+/imdg/3.12.12/*  /imdg/3.12/:splat 200!

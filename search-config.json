@@ -17,7 +17,7 @@
         "management-center"
       ],
       "variables": {
-        "version": ["4.2021.03"]
+        "version": ["4.2021.04"]
       },
       "selectors_key": "mc"
     },

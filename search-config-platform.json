@@ -2,7 +2,7 @@
   "index_name": "test_hazelcast_platform",
   "start_urls": [
     {
-      "url": "https://hardcore-allen-f5257d.netlify.app/platform/(?P<version>.*?)/",
+      "url": "https://hardcore-allen-f5257d.netlify.app/hazelcast/(?P<version>.*?)/",
       "tags": [
         "hazelcast"
       ],

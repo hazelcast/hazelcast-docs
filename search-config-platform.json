@@ -4,12 +4,12 @@
     {
       "url": "https://hardcore-allen-f5257d.netlify.app/platform/(?P<version>.*?)/",
       "tags": [
-        "platform"
+        "hazelcast"
       ],
       "variables": {
         "version": ["5.0-snapshot"]
       },
-      "selectors_key": "platform"
+      "selectors_key": "hazelcast"
     }
   ],
   "sitemap_urls": [
@@ -24,7 +24,7 @@
       "lvl1": ".doc h2",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     },
-    "platform": {
+    "hazelcast": {
       "lvl0": {
         "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
         "type": "xpath",

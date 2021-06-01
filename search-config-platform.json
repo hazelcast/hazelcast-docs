@@ -26,13 +26,13 @@
     },
     "hazelcast": {
       "lvl0": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[2]",
         "type": "xpath",
         "global": true,
         "default_value": "Hazelcast"
       },
       "lvl1": {
-          "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[3]",
+          "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[3]",
           "type": "xpath",
           "global": true
       },

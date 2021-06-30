@@ -7,7 +7,7 @@
         "imdg"
       ],
       "variables": {
-        "version": ["4.2"]
+        "version": ["4.2.1"]
       },
       "selectors_key": "imdg"
     },

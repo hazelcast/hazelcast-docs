@@ -1,4 +1,4 @@
-= Welcome to the Hazelcast Documentation
+= Hazelcast Documentation
 :page-layout: home
 :!sectids:
 :!toc:

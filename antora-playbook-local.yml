@@ -13,7 +13,7 @@ content:
     start_path: home
     branches: HEAD
   - url: https://github.com/hazelcast/hz-docs
-    branches: [master, v/*]
+    branches: [main, v/*]
     start_path: docs
   - url: https://github.com/hazelcast/imdg-docs
     branches: [master, v/*]

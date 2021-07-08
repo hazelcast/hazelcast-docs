@@ -144,15 +144,6 @@ Whenever content in the repository's listed branches are changed, the GitHub Act
 
 For an example of these GitHub Actions, see the link:{url-imdg-docs}[IMDG documentation repository].
 
-== Work in progress
-
-The roadmap for this site includes the following items:
-
-- [x] Migrate Management Center content
-- [x] Migrate Hazelcast Cloud content
-- [ ] Migrate Jet content
-- [ ] Review and restructure content, starting with IMDG
-
 == Contributing
 
 To learn how to use the playbook and generate the docs site locally, see our link:{url-contributing}[contributing guide].

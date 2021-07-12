@@ -16,7 +16,7 @@ content:
     branches: [main, v/*]
     start_path: docs
   - url: https://github.com/hazelcast/imdg-docs
-    branches: [master, v/*]
+    branches: [v/*]
     start_path: docs
   - url: https://github.com/hazelcast/imdg-docs
     branches: [archived-versions]

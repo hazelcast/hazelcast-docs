@@ -12,8 +12,11 @@ content:
   - url: .
     start_path: home
     branches: HEAD
+  - url: https://github.com/hazelcast/hz-docs
+    branches: [main, v/*]
+    start_path: docs
   - url: https://github.com/hazelcast/imdg-docs
-    branches: [master, v/*]
+    branches: [v/*]
     start_path: docs
   - url: https://github.com/hazelcast/imdg-docs
     branches: [archived-versions]
@@ -29,7 +32,7 @@ content:
     start_path: docs
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v2/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v2.1/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:

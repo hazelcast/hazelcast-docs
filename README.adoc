@@ -1,6 +1,7 @@
 = Hazelcast Documentation Site
 :url-imdg-docs: https://github.com/hazelcast/imdg-docs
 :url-mc-docs: https://github.com/hazelcast/management-center-docs
+:url-hz-docs: https://github.com/hazelcast/hz-docs
 :url-cloud-docs: https://github.com/hazelcast/cloud-docs
 :url-antora: https://docs.antora.org/antora/2.3/
 :url-docs-ui: https://github.com/hazelcast/hazelcast-docs-ui
@@ -59,6 +60,7 @@ Source content for the documentation site is marked up in link:{url-asciidoc}[As
 
 The current playbooks pull content from the following repositories:
 
+- link:{url-hz-docs}[Hazelcast 5.0 documentation]
 - link:{url-cloud-docs}[Cloud documentation]
 - link:{url-imdg-docs}[IMDG documentation]
 - link:{url-mc-docs}[Management Center documentation]

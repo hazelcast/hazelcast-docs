@@ -47,8 +47,8 @@ asciidoc:
     imdg-ops-guide: https://hazelcast.com/resources/hazelcast-deployment-operations-guide/
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
-    distribution-link-windows: https://download.hazelcast.com/download.jsp?version=hazelcast-5.0-BETA-1&p=
-    distribution-link-mac-linux: https://download.hazelcast.com/download.jsp?version=hazelcast-5.0-BETA-1&p=
+    distribution-link-windows: 'https://download.hazelcast.com/download.jsp?version=hazelcast-5.0-BETA-1&p='
+    distribution-link-mac-linux: 'https://download.hazelcast.com/download.jsp?version=hazelcast-5.0-BETA-1&type=tar&p='
     distribution-link-ee: https://download.hazelcast.com/enterprise/hazelcast-enterprise-5.0-BETA-1.zip
   extensions:
     - ./lib/tabs-block.js

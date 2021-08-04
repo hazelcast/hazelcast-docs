@@ -15,7 +15,7 @@ If you have a question about writing that we don't cover in this guide, feel fre
 
 == Writing Tools
 
-We recommend using a code editor that supports markdown files, for example Visual Studio Code with the markdown Lint extension.
+We recommend using a code editor that supports Asciidoc files, for example Visual Studio Code.
 
 == Asciidoc Markup
 

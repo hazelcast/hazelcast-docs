@@ -34,7 +34,7 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center"
+        "management-center-5.0-snapshot"
       ],
       "variables": {
         "version": ["5.0-snapshot"]
@@ -44,17 +44,17 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center"
+        "management-center-5.0-beta-2"
       ],
       "variables": {
-        "version": ["5.0-beta-1"]
+        "version": ["5.0-beta-2"]
       },
       "selectors_key": "mc"
     },
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center"
+        "management-center-4.2021.06"
       ],
       "variables": {
         "version": ["4.2021.06"]
@@ -64,7 +64,7 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center"
+        "management-center-4.2021.04"
       ],
       "variables": {
         "version": ["4.2021.04"]
@@ -74,7 +74,7 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center"
+        "management-center-4.2021.03"
       ],
       "variables": {
         "version": ["4.2021.03"]
@@ -84,7 +84,7 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center"
+        "management-center-4.2021.02"
       ],
       "variables": {
         "version": ["4.2021.02"]
@@ -94,7 +94,7 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center"
+        "management-center-4.2020.12"
       ],
       "variables": {
         "version": ["4.2020.12"]
@@ -104,7 +104,7 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast"
+        "hazelcast-5.0-snapshot"
       ],
       "variables": {
         "version": ["5.0-snapshot"]
@@ -114,10 +114,10 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast"
+        "hazelcast-5.0-beta-2"
       ],
       "variables": {
-        "version": ["5.0-beta-1"]
+        "version": ["5.0-beta-2"]
       },
       "selectors_key": "hz"
     },

@@ -1,5 +1,5 @@
 {
-  "index_name": "test_hazelcast_docs",
+  "index_name": "prod_hazelcast_docs",
   "start_urls": [
     {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",

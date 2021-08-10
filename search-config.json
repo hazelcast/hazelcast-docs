@@ -1,15 +1,55 @@
 {
-  "index_name": "prod_hazelcast_docs",
+  "index_name": "test_hazelcast_docs",
   "start_urls": [
     {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [
-        "imdg"
+        "imdg-4.2"
       ],
       "variables": {
         "version": ["4.2"]
       },
       "selectors_key": "imdg"
+    },
+    {
+      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
+      "tags": [
+        "imdg-4.1"
+      ],
+      "variables": {
+        "version": ["4.1"]
+      },
+      "selectors_key": "imdg"
+    },
+    {
+      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
+      "tags": [
+        "imdg-3.12"
+      ],
+      "variables": {
+        "version": ["3.12"]
+      },
+      "selectors_key": "imdg"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center"
+      ],
+      "variables": {
+        "version": ["5.0-snapshot"]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center"
+      ],
+      "variables": {
+        "version": ["5.0-beta-1"]
+      },
+      "selectors_key": "mc"
     },
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
@@ -20,6 +60,56 @@
         "version": ["4.2021.06"]
       },
       "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center"
+      ],
+      "variables": {
+        "version": ["4.2021.04"]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center"
+      ],
+      "variables": {
+        "version": ["4.2021.03"]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center"
+      ],
+      "variables": {
+        "version": ["4.2021.02"]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center"
+      ],
+      "variables": {
+        "version": ["4.2020.12"]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast"
+      ],
+      "variables": {
+        "version": ["5.0-snapshot"]
+      },
+      "selectors_key": "hz"
     },
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",

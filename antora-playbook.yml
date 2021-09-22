@@ -36,7 +36,7 @@ ui:
     snapshot: true
 asciidoc:
   attributes:
-    page-pagination: true
+    page-pagination: true@
     idprefix: ''
     idseparator: '-'
     page-survey: https://www.surveymonkey.co.uk/r/NYGJNF9

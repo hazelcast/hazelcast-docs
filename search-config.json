@@ -206,9 +206,11 @@
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     }
   },
+  "scrape_start_urls": false,
   "custom_settings": {
     "attributesForFaceting": [
       "tags"
-    ]
+    ],
+    "attributeForDistinct": "url_without_anchor"
   }
 }

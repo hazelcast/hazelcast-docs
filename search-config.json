@@ -133,7 +133,7 @@
     "https://docs.hazelcast.com/sitemap.xml"
   ],
   "stop_urls": [
-    ""
+    ".*\.html$"
   ],
   "selectors": {
     "default": {
@@ -206,7 +206,6 @@
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     }
   },
-  "scrape_start_urls": false,
   "custom_settings": {
     "attributesForFaceting": [
       "tags"

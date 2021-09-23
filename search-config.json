@@ -133,7 +133,7 @@
     "https://docs.hazelcast.com/sitemap.xml"
   ],
   "stop_urls": [
-    "*.html"
+    ""
   ],
   "selectors": {
     "default": {

@@ -8,7 +8,7 @@
 /hazelcast/latest/*  /hazelcast/5.0/:splat 200!
 
 # Redirect /hazelcast to home page
-/hazelcast/  /home/:splat 200!
+/hazelcast  /home 200!
 
 # Redirect latest-dev imdg alias to the latest-dev version
 /imdg/latest-dev/*  /hazelcast/5.1-snapshot/:splat 200!

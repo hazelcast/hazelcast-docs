@@ -139,7 +139,7 @@
     "default": {
       "lvl0": ".doc h1",
       "lvl1": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock"
+      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
     },
     "imdg": {
       "lvl0": {
@@ -155,7 +155,7 @@
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock"
+      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
     },
     "mc": {
       "lvl0": {
@@ -171,7 +171,7 @@
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock"
+      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
     },
     "hz": {
       "lvl0": {
@@ -187,7 +187,7 @@
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock"
+      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
     },
     "cloud": {
       "lvl0": {
@@ -203,7 +203,7 @@
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock"
+      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
     }
   },
   "custom_settings": {

@@ -1,0 +1,44 @@
+{
+  "name": "@whoindeed/antora-aggregate-collector",
+  "version": "0.0.1",
+  "description": "Antora support for mapping files into expected Antora directory structure",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rob Winch",
+      "email": "?"
+    },
+    {
+      "name": "David Jencks",
+      "email": "djencks@apache.org"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/djencks/antora-aggregate-collector.git"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib/*.js"
+  ],
+  "scripts": {
+    "clean-install": "rm -rf node_modules/ ;npm i --cache=.cache/npm",
+    "test": "mocha",
+    "lint": "eslint lib/**/**.js test/**/**.js",
+    "lint-fix": "eslint lib/**/**.js test/**/**.js --fix"
+  },
+  "dependencies": {
+    "picomatch": "^2.3.0"
+  },
+  "devDependencies": {
+    "chai": "~4.2",
+    "eslint": "~6.7",
+    "eslint-config-standard": "~14.1",
+    "eslint-plugin-import": "~2.19",
+    "eslint-plugin-node": "~10.0",
+    "eslint-plugin-promise": "~4.2",
+    "eslint-plugin-standard": "~4.0",
+    "mocha": "~6.2",
+    "prettier-eslint-cli": "~5.0"
+  }
+}

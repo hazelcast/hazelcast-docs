@@ -7,6 +7,9 @@
 # Redirect latest hazelcast alias to the latest version
 /hazelcast/latest/*  /hazelcast/5.0/:splat 200!
 
+# Redirect latest operator alias to the latest version
+/operator/latest/*  /operator/5.0/:splat 200!
+
 # Redirect /hazelcast to home page
 /hazelcast  /home 200!
 
@@ -18,6 +21,9 @@
 
 # Redirect latest-dev hazelcast alias to the latest-dev version
 /hazelcast/latest-dev/*  /hazelcast/5.1-snapshot/:splat 200!
+
+# Redirect latest-dev operator alias to the latest-dev version
+/operator/latest-dev/*  /operator/5.1-snapshot/:splat 200!
 
 # Redirect older 4.1.x versions to 4.1
 /imdg/4.1.1/*  /imdg/4.1/:splat 200!

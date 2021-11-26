@@ -68,7 +68,7 @@ antora:
                     - 'v/5.0'
 asciidoc:
   attributes:
-    page-pagination: true
+    page-pagination: true@
     idprefix: ''
     idseparator: '-'
     page-survey: https://www.surveymonkey.co.uk/r/NYGJNF9

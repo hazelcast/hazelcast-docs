@@ -131,7 +131,7 @@
     {
       "url": "https://docs.hazelcast.com/turbine/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-0.1"
+        "turbine-0.1"
       ],
       "variables": {
         "version": ["0.1"]

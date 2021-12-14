@@ -7,7 +7,9 @@
         "imdg-4.2"
       ],
       "variables": {
-        "version": ["4.2"]
+        "version": [
+          "4.2"
+        ]
       },
       "selectors_key": "imdg"
     },
@@ -17,7 +19,9 @@
         "imdg-4.1"
       ],
       "variables": {
-        "version": ["4.1"]
+        "version": [
+          "4.1"
+        ]
       },
       "selectors_key": "imdg"
     },
@@ -27,7 +31,9 @@
         "imdg-4.0"
       ],
       "variables": {
-        "version": ["4.0"]
+        "version": [
+          "4.0"
+        ]
       },
       "selectors_key": "imdg"
     },
@@ -37,7 +43,9 @@
         "imdg-3.12"
       ],
       "variables": {
-        "version": ["3.12"]
+        "version": [
+          "3.12"
+        ]
       },
       "selectors_key": "imdg"
     },
@@ -47,7 +55,9 @@
         "management-center-5.1-snapshot"
       ],
       "variables": {
-        "version": ["5.1-snapshot"]
+        "version": [
+          "5.1-snapshot"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -57,7 +67,9 @@
         "management-center-5.0"
       ],
       "variables": {
-        "version": ["5.0"]
+        "version": [
+          "5.0"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -67,7 +79,9 @@
         "management-center-4.2021.06"
       ],
       "variables": {
-        "version": ["4.2021.06"]
+        "version": [
+          "4.2021.06"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -77,7 +91,9 @@
         "management-center-4.2021.04"
       ],
       "variables": {
-        "version": ["4.2021.04"]
+        "version": [
+          "4.2021.04"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -87,7 +103,9 @@
         "management-center-4.2021.03"
       ],
       "variables": {
-        "version": ["4.2021.03"]
+        "version": [
+          "4.2021.03"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -97,7 +115,9 @@
         "management-center-4.2021.02"
       ],
       "variables": {
-        "version": ["4.2021.02"]
+        "version": [
+          "4.2021.02"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -107,7 +127,9 @@
         "management-center-4.2020.12"
       ],
       "variables": {
-        "version": ["4.2020.12"]
+        "version": [
+          "4.2020.12"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -117,7 +139,9 @@
         "hazelcast-5.1-snapshot"
       ],
       "variables": {
-        "version": ["5.1-snapshot"]
+        "version": [
+          "5.1-snapshot"
+        ]
       },
       "selectors_key": "hz"
     },
@@ -127,7 +151,9 @@
         "hazelcast-5.0"
       ],
       "variables": {
-        "version": ["5.0"]
+        "version": [
+          "5.0"
+        ]
       },
       "selectors_key": "hz"
     },
@@ -144,7 +170,9 @@
         "turbine-0.1"
       ],
       "variables": {
-        "version": ["0.1"]
+        "version": [
+          "0.1"
+        ]
       },
       "selectors_key": "turbine"
     }
@@ -169,9 +197,9 @@
         "default_value": "IMDG"
       },
       "lvl1": {
-          "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
-          "type": "xpath",
-          "global": true
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "type": "xpath",
+        "global": true
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",

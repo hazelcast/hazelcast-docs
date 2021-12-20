@@ -30,6 +30,9 @@ content:
   - url: https://github.com/hazelcast/cloud-docs
     branches: [main]
     start_path: docs
+  - url: https://github.com/hazelcast/kubernetes-operator-docs
+    branches: [main, v/*]
+    start_path: docs
   - url: https://github.com/hazelcast/turbine
     branches: [main]
     start_path: docs/content

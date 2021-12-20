@@ -165,6 +165,26 @@
       "selectors_key": "cloud"
     },
     {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.0"
+      ],
+      "variables": {
+        "version": ["5.0"]
+      },
+      "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-latest-snapshot"
+      ],
+      "variables": {
+        "version": ["latest-snapshot"]
+      },
+      "selectors_key": "operator"
+    },
+    {
       "url": "https://docs.hazelcast.com/turbine/(?P<version>.*?)/",
       "tags": [
         "turbine-0.1"
@@ -253,6 +273,22 @@
       "lvl3": ".doc h2",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     },
+    "operator": {
+    "lvl0": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "type": "xpath",
+        "global": true,
+        "default_value": "Operator"
+      },
+      "lvl1": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "type": "xpath",
+        "global": true
+      },
+      "lvl2": ".doc h1",
+      "lvl3": ".doc h2",
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
+    }
     "turbine": {
       "lvl0": {
         "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",

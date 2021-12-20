@@ -23,7 +23,7 @@
 /hazelcast/latest-dev/*  /hazelcast/5.1-snapshot/:splat 200!
 
 # Redirect latest-dev operator alias to the latest-dev version
-/operator/latest-dev/*  /operator/5.1-snapshot/:splat 200!
+/operator/latest-dev/*  /operator/latest-snapshot/:splat 200!
 
 # Redirect older 4.1.x versions to 4.1
 /imdg/4.1.1/*  /imdg/4.1/:splat 200!

@@ -24,8 +24,8 @@ content:
   - url: https://github.com/hazelcast/management-center-docs
     branches: [main, v/*]
     start_path: docs
-  - url: https://github.com/hazelcast/management-center-docs #../mc-docs
-    branches: [archived-versions] #branches: HEAD
+  - url: https://github.com/hazelcast/management-center-docs
+    branches: [archived-versions]
     start_paths: docs/*
   - url: https://github.com/hazelcast/cloud-docs
     branches: [main]
@@ -33,10 +33,47 @@ content:
   - url: https://github.com/hazelcast/kubernetes-operator-docs
     branches: [main, v/*]
     start_path: docs
+  - url: https://github.com/hazelcast/turbine
+    branches: [main]
+    start_path: docs/content
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
+runtime:
+  log:
+    level: debug
+antora:
+  extensions:
+    - require: "./extension/lib/index.js"
+      trace: true
+      enabled: false
+      componentversions:
+        - name: management-center
+          version: '5.1-snapshot'
+          mappings:
+            - module: ROOT
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/JakeSCahill/management-center'
+                branch:
+                  includes:
+                    - 'master'
+
+        - name: management-center
+          version: '5.0'
+          mappings:
+            - module: ROOT
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/JakeSCahill/management-center'
+                branch:
+                  includes:
+                    - 'v/5.0'
 asciidoc:
   attributes:
     page-pagination: true
@@ -50,8 +87,6 @@ asciidoc:
     imdg-ops-guide: https://hazelcast.com/resources/hazelcast-deployment-operations-guide/
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
-    distribution-link-windows: 'https://download.hazelcast.com/download.jsp?version=hazelcast-5.0-BETA-1&p='
-    distribution-link-mac-linux: 'https://download.hazelcast.com/download.jsp?version=hazelcast-5.0-BETA-1&type=tar&p='
-    distribution-link-ee: https://download.hazelcast.com/enterprise/hazelcast-enterprise-5.0-BETA-1.zip
   extensions:
     - ./lib/tabs-block.js
+    - ./lib/swagger-ui-block-macro.js

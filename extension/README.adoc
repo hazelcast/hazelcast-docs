@@ -1,0 +1,95 @@
+= Antora aggregate collector pipeline extension
+
+This Antora pipeline extension includes content in a component-version that is not in the Antora file system layout.
+The content to be included must be in a listed source, under a start path with an `antora.yml` component descriptor.
+
+== Configuration
+
+Most configuration is done in a `componentversions` key in the Antora playbook:
+
+[source,yaml]
+----
+antora:
+  extensions:
+    - require: "@whoindeed/antora-aggregate-collector"
+      trace: true
+      componentversions:
+        - name: components
+          version: latest
+          mappings:
+            - module: ROOT
+              family: page
+              origin:
+                url:
+                  includes:
+                    - '**/*component'
+              path:
+                includes:
+                  - '*/**/README.adoc'
+              relativemap:
+                - match: '(?<project>*)/src/main/docs/README.adoc'
+                  format: 'projects/${project}.adoc'
+----
+
+The `mappings` key contains a list of mapping elements, which are applied in order.
+Once there is a match, no further mappings are considered.
+
+=== Matching
+
+All matching is done with https://github.com/micromatch/picomatch#picomatch[picomatch].
+The filtering keys allow you to specify lists of include and exclude globs.
+The `relativemap.match` allows only a single glob with named groups.
+
+=== Selecting content to be included
+
+`componentversions` key::
+Specify single include patterns for component name and version to be scanned.
+
+`origin.url` key::
+This filters the url (`file.src.origin.url`) of sources of files in the content aggregate.
+
+`origin.branch` key::
+This filters the branch (`file.src.origin.branch`) of sources of files in the content aggregate.
+Either branch or tag can match.
+
+`origin.tag` key::
+This filters the tag (`file.src.origin.tag`) of sources of files in the content aggregate.
+Either branch or tag can match.
+
+`origin.startPath` key::
+This filters the start_path (`file.src.origin.startPath`) of sources of files in the content aggregate.
+
+`path` key::
+This filters the path (`file.src.path`) of files in the content aggregate.
+
+=== Mapping the location of selected files
+
+The module and family of the mapped target location are specified directly in the mapping configuration.
+By default, the file path (from the start path) is used as the relative segment of the target.
+You may also specify a list of `relativemap` mappings.
+At most one `relativemap` mapping is applied to any file.
+
+`match`::
+A single picomatch glob expression with named capture groups.
+A named capture group is of the form `(?<name>pattern)` just as in a javascript regular expression named capture group.
+
+`format`::
+A simple format string containing literals and expressions of the form `${name}` where `name` is the name of a capture group in the match expression.
+The relative segment of the file is set to the evaluation of the format string using the named values extracted from the original path.
+
+For example, suppose you have a maven multi-module project with the `antora.yml` file in the root of the project, and per-project `README.adoc` files in a maven-appropriate location `src/main/docs/` in each project.
+The sample relativemap above will relocate these `README.adoc` files in the Antora content aggregate to appear in an Antora appropriate location of `modules/components/pages/projects/<project-name>.adoc`.
+
+== Log configuration
+
+Setting the `trace` key will cause the extension to log aggregated files at debug level, something like this:
+
+----
+[16:30:43.743] DEBUG (antora-aggregate-collector): mapped file to modules/project/pages/projects/project.adoc
+    component: "java-project"
+    version: "2.6"
+    file: /Users/david/projects/antora/extensions/antora-aggregate-collector/example/java-project/project/src/main/docs/README.adoc
+    source: /Users/david/projects/antora/extensions/antora-aggregate-collector (refname: rwinch-copy1 <worktree>, start path: example/java-project)
+----
+
+Note that you have to set the `runtime.log.level` key to `debug` to see debug level logging.

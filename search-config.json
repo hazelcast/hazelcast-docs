@@ -137,6 +137,16 @@
         "version": ["5.0"]
       },
       "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-latest-snapshot"
+      ],
+      "variables": {
+        "version": ["latest-snapshot"]
+      },
+      "selectors_key": "operator"
     }
   ],
   "sitemap_urls": [

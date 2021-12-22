@@ -243,7 +243,7 @@
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock"
+      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
     },
     "hz": {
       "lvl0": {

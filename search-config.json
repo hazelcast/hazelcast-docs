@@ -7,7 +7,9 @@
         "imdg-4.2"
       ],
       "variables": {
-        "version": ["4.2"]
+        "version": [
+          "4.2"
+        ]
       },
       "selectors_key": "imdg"
     },
@@ -17,7 +19,21 @@
         "imdg-4.1"
       ],
       "variables": {
-        "version": ["4.1"]
+        "version": [
+          "4.1"
+        ]
+      },
+      "selectors_key": "imdg"
+    },
+    {
+      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
+      "tags": [
+        "imdg-4.0"
+      ],
+      "variables": {
+        "version": [
+          "4.0"
+        ]
       },
       "selectors_key": "imdg"
     },
@@ -27,7 +43,9 @@
         "imdg-3.12"
       ],
       "variables": {
-        "version": ["3.12"]
+        "version": [
+          "3.12"
+        ]
       },
       "selectors_key": "imdg"
     },
@@ -37,7 +55,9 @@
         "management-center-5.1-snapshot"
       ],
       "variables": {
-        "version": ["5.1-snapshot"]
+        "version": [
+          "5.1-snapshot"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -47,7 +67,9 @@
         "management-center-5.0"
       ],
       "variables": {
-        "version": ["5.0"]
+        "version": [
+          "5.0"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -57,7 +79,9 @@
         "management-center-4.2021.06"
       ],
       "variables": {
-        "version": ["4.2021.06"]
+        "version": [
+          "4.2021.06"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -67,7 +91,9 @@
         "management-center-4.2021.04"
       ],
       "variables": {
-        "version": ["4.2021.04"]
+        "version": [
+          "4.2021.04"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -77,7 +103,9 @@
         "management-center-4.2021.03"
       ],
       "variables": {
-        "version": ["4.2021.03"]
+        "version": [
+          "4.2021.03"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -87,7 +115,9 @@
         "management-center-4.2021.02"
       ],
       "variables": {
-        "version": ["4.2021.02"]
+        "version": [
+          "4.2021.02"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -97,7 +127,9 @@
         "management-center-4.2020.12"
       ],
       "variables": {
-        "version": ["4.2020.12"]
+        "version": [
+          "4.2020.12"
+        ]
       },
       "selectors_key": "mc"
     },
@@ -107,7 +139,9 @@
         "hazelcast-5.1-snapshot"
       ],
       "variables": {
-        "version": ["5.1-snapshot"]
+        "version": [
+          "5.1-snapshot"
+        ]
       },
       "selectors_key": "hz"
     },
@@ -117,7 +151,9 @@
         "hazelcast-5.0"
       ],
       "variables": {
-        "version": ["5.0"]
+        "version": [
+          "5.0"
+        ]
       },
       "selectors_key": "hz"
     },
@@ -127,6 +163,42 @@
         "cloud"
       ],
       "selectors_key": "cloud"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.0"
+      ],
+      "variables": {
+        "version": [
+          "5.0"
+        ]
+      },
+      "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-latest-snapshot"
+      ],
+      "variables": {
+        "version": [
+          "latest-snapshot"
+        ]
+      },
+      "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/turbine/(?P<version>.*?)/",
+      "tags": [
+        "turbine-0.1"
+      ],
+      "variables": {
+        "version": [
+          "0.1"
+        ]
+      },
+      "selectors_key": "turbine"
     }
   ],
   "sitemap_urls": [
@@ -139,7 +211,7 @@
     "default": {
       "lvl0": ".doc h1",
       "lvl1": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
     },
     "imdg": {
       "lvl0": {
@@ -149,13 +221,13 @@
         "default_value": "IMDG"
       },
       "lvl1": {
-          "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
-          "type": "xpath",
-          "global": true
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "type": "xpath",
+        "global": true
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
     },
     "mc": {
       "lvl0": {
@@ -187,7 +259,7 @@
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
     },
     "cloud": {
       "lvl0": {
@@ -203,7 +275,39 @@
       },
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
-      "text": ".doc p, .doc td.content, .doc th.tableblock, .swagger-ui .opblock-summary-path span"
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
+    },
+    "operator": {
+      "lvl0": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "type": "xpath",
+        "global": true,
+        "default_value": "Operator"
+      },
+      "lvl1": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "type": "xpath",
+        "global": true
+      },
+      "lvl2": ".doc h1",
+      "lvl3": ".doc h2",
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
+    },
+    "turbine": {
+      "lvl0": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "type": "xpath",
+        "global": true,
+        "default_value": "Turbine"
+      },
+      "lvl1": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "type": "xpath",
+        "global": true
+      },
+      "lvl2": ".doc h1",
+      "lvl3": ".doc h2",
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
     }
   },
   "custom_settings": {

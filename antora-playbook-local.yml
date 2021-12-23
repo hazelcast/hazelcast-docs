@@ -12,30 +12,13 @@ content:
   - url: .
     start_path: home
     branches: HEAD
-  - url: https://github.com/hazelcast/hz-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/imdg-docs
-    branches: [v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/imdg-docs
-    branches: [archived-versions]
-    start_paths: docs/*
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [archived-versions]
-    start_paths: docs/*
-  - url: https://github.com/hazelcast/cloud-docs
-    branches: [main]
-    start_path: docs
-  - url: https://github.com/hazelcast/turbine
-    branches: [main]
-    start_path: docs/content
+  - url: ../caching-springboot-jcache
+    branches: HEAD
+  - url: ../tutorials
+    branches: HEAD
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
+    url: ../hazelcast-docs-ui/build/ui-bundle.zip
     snapshot: true
 runtime:
   log:

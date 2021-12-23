@@ -24,7 +24,7 @@ antora:
                   includes:
                     - '**/*component'
               path:
-                includes:
+                exc:
                   - '*/**/README.adoc'
               relativemap:
                 - match: '(?<project>*)/src/main/docs/README.adoc'

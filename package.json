@@ -13,8 +13,8 @@
     "expose": "ngrok http 5000"
   },
   "devDependencies": {
-    "@antora/cli": "^3.0.0-rc.6",
-    "@antora/site-generator-default": "^3.0.0-rc.6",
+    "@antora/cli": "^3.0.0",
+    "@antora/site-generator-default": "^3.0.0",
     "@antora/xref-validator": "gitlab:antora/xref-validator",
     "asciidoctor-kroki": "^0.10.0",
     "ngrok": "^4.2.2",

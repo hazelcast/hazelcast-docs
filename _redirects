@@ -11,7 +11,7 @@
 /hazelcast/latest/*  /hazelcast/5.0/:splat 200!
 
 # Redirect latest operator alias to the latest version
-/operator/latest/*  /operator/5.0/:splat 200!
+/operator/latest/*  /operator/5.1/:splat 200!
 
 # Redirect latest turbine alias to the latest version
 /turbine/latest/*  /turbine/0.1/:splat 200!

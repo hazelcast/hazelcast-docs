@@ -75,6 +75,8 @@ antora:
 asciidoc:
   attributes:
     page-pagination: true@
+    # Allows us to use UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
+    experimental: true
     idprefix: ''
     idseparator: '-'
     page-survey: https://www.surveymonkey.co.uk/r/NYGJNF9

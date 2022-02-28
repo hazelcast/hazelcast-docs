@@ -21,8 +21,8 @@ content:
   - url: https://github.com/hazelcast/imdg-docs
     branches: [archived-versions]
     start_paths: docs/*
-  - url: ../management-center-docs
-    branches: HEAD
+  - url: https://github.com/hazelcast/management-center-docs
+    branches: [main, v/*]
     start_path: docs
   - url: https://github.com/hazelcast/management-center-docs
     branches: [archived-versions]

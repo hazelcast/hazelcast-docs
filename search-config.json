@@ -259,6 +259,18 @@
         ]
       },
       "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center-5.1"
+      ],
+      "variables": {
+        "version": [
+          "5.1"
+        ]
+      },
+      "selectors_key": "mc"
     }
   ],
   "sitemap_urls": [

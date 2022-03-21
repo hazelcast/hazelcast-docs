@@ -129,17 +129,17 @@ antora:
                   includes:
                     - 'master'
         - name: management-center
-            version: '5.1'
-            mappings:
-              - module: integrate
-                family: attachment
-                origin:
-                  url:
-                    include:
-                      - '**/hazelcast/management-center'
-                  branch:
-                    includes:
-                      - '5.1'
+          version: '5.1'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.1'
 asciidoc:
   attributes:
     page-pagination: true@

@@ -3,6 +3,7 @@
 :url-mc-docs: https://github.com/hazelcast/management-center-docs
 :url-hz-docs: https://github.com/hazelcast/hz-docs
 :url-cloud-docs: https://github.com/hazelcast/cloud-docs
+:url-k8-docs: https://github.com/hazelcast/hazelcast-platform-operator-docs
 :url-antora: https://docs.antora.org/antora/2.3/
 :url-docs-ui: https://github.com/hazelcast/hazelcast-docs-ui
 :url-asciidoc-extensions: https://asciidoctor-docs.netlify.app/asciidoctor.js/latest/extend/extensions
@@ -60,9 +61,10 @@ Source content for the documentation site is marked up in link:{url-asciidoc}[As
 
 The current playbooks pull content from the following repositories:
 
-- link:{url-hz-docs}[Hazelcast 5.0 documentation]
+- link:{url-hz-docs}[Platform documentation]
 - link:{url-cloud-docs}[Cloud documentation]
 - link:{url-imdg-docs}[IMDG documentation]
+- link:{url-k8-docs}[Platform Operator documentation]
 - link:{url-mc-docs}[Management Center documentation]
 
 Inside these repositories, content may be stored in the following:
@@ -76,9 +78,15 @@ NOTE: To learn about release workflows, see the README of a content repository.
 [[home]]
 == Home Component
 
-The `home/` folder in this repository contains the Home documentation component. The source code for the home page is in the `body-home.hbs` template of the link:{url-docs-ui}[`hazelcast-docs-ui` repository].
+The `home/` directory in this repository contains the Home documentation component. The source code for the home page is in the `body-home.hbs` template of the link:{url-docs-ui}[`hazelcast-docs-ui` repository].
 
 image::images/home-page.png[Preview of the home page]
+
+== Tutorials Component
+
+The `tutorials/` directory in this repository contains the Tutorials documentation component. The source code for the tutorials subsite is in the `tutorials-*.hbs` templates of the link:{url-docs-ui}[`hazelcast-docs-ui` repository].
+
+For information about contributing new tutorials, see link:https://github.com/hazelcast-guides/adoc-templates[Tutorial Templates]
 
 == Custom Asciidoctor Extensions
 

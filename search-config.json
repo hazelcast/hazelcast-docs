@@ -235,6 +235,12 @@
         ]
       },
       "selectors_key": "turbine"
+    },
+    {
+      "url": "https://docs.hazelcast.com/tutorials/",
+      "tags": [
+        "tutorials"
+      ]
     }
   ],
   "sitemap_urls": [

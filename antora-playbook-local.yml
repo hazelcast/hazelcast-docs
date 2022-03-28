@@ -38,100 +38,100 @@ content:
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
   - url: https://github.com/hazelcast-guides/caching-springboot-jcache
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/hazelcast-embedded-springboot
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/springboot-hibernate
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/hibernate-jcache
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/istio
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/caching-micronaut
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/kubernetes-embedded
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/hazelcast-embedded-microprofile
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/hazelcast-client-quarkus
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/springboot-webfilter-session-replication
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/caching-springboot
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/ecs-embedded
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/striim-cdc
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/springboot-tomcat-session-replication
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/vmware-tanzu
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/terraform-quickstarts
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/kubernetes-external-client
-    branches: tutorials
+    branches: main
     start_path: docs
   - url: https://github.com/hazelcast-guides/active-directory-authentication
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/kubernetes-sidecar
-    branches: tutorials
+    branches: main
     start_path: docs
   - url: https://github.com/hazelcast-guides/kubernetes-hpa
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/kubernetes-ssl
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/kubernetes-wan
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/kubernetes
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/spring-session-hazelcast
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/ec2-cluster
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/linkerd
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/consul
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/openshift
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/nodejs-client-getting-started
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/go-client-getting-started
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/openfaas-hz-client
-    branches: tutorials
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-expose-externally
-    branches: tutorials
+    branches: main
     start_path: docs
 ui: 
   bundle:

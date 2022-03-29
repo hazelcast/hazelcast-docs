@@ -1,7 +1,7 @@
 site:
   title: Documentation
   start_page: home::index.adoc
-  url: http:localhost:5000
+  url: http:localhost:3000
   keys:
     google_analytics: 'GTM-MQ59XD6'
     docsearch_id: 'QK2EAH8GB0'
@@ -21,8 +21,8 @@ content:
   - url: https://github.com/hazelcast/imdg-docs
     branches: [archived-versions]
     start_paths: docs/*
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [main, v/*]
+  - url: ../management-center-docs
+    branches: HEAD
     start_path: docs
   - url: https://github.com/hazelcast/management-center-docs
     branches: [archived-versions]
@@ -36,6 +36,9 @@ content:
   - url: https://github.com/hazelcast/turbine
     branches: [main]
     start_path: docs/content
+  - url: https://github.com/hazelcast/management-center
+    branches: [master, 5.1]
+    start_path: openapi/external
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
@@ -45,35 +48,33 @@ runtime:
     level: debug
 antora:
   extensions:
-    - require: "./extension/lib/index.js"
+    - require: '@djencks/antora-aggregate-collector'
       trace: true
-      enabled: false
       componentversions:
         - name: management-center
           version: '5.1-snapshot'
           mappings:
-            - module: ROOT
+            - module: integrate
               family: attachment
               origin:
                 url:
                   include:
-                    - '**/JakeSCahill/management-center'
+                    - '**/hazelcast/management-center'
                 branch:
                   includes:
                     - 'master'
-
         - name: management-center
-          version: '5.0'
+          version: '5.1'
           mappings:
-            - module: ROOT
+            - module: integrate
               family: attachment
               origin:
                 url:
                   include:
-                    - '**/JakeSCahill/management-center'
+                    - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - 'v/5.0'
+                    - '5.1'
 asciidoc:
   attributes:
     page-pagination: true

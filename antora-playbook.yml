@@ -39,7 +39,7 @@ content:
     branches: [main]
     start_path: docs/content
   - url: https://github.com/hazelcast/management-center
-    branches: [master, 5.1]
+    branches: [master, 5.1.z]
     start_path: openapi/external
 ui: 
   bundle:

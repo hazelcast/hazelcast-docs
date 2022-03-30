@@ -21,8 +21,8 @@ content:
   - url: https://github.com/hazelcast/imdg-docs
     branches: [archived-versions]
     start_paths: docs/*
-  - url: ../management-center-docs
-    branches: HEAD
+  - url: https://github.com/hazelcast/management-center-docs
+    branches: [main, v/*]
     start_path: docs
   - url: https://github.com/hazelcast/management-center-docs
     branches: [archived-versions]
@@ -36,6 +36,9 @@ content:
   - url: https://github.com/hazelcast/turbine
     branches: [main]
     start_path: docs/content
+  - url: https://github.com/hazelcast/management-center
+    branches: [master, 5.1]
+    start_path: openapi/external
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
@@ -43,6 +46,35 @@ ui:
 runtime:
   log:
     level: debug
+antora:
+  extensions:
+    - require: '@djencks/antora-aggregate-collector'
+      trace: true
+      componentversions:
+        - name: management-center
+          version: '5.2-snapshot'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - 'master'
+        - name: management-center
+            version: '5.1'
+            mappings:
+              - module: integrate
+                family: attachment
+                origin:
+                  url:
+                    include:
+                      - '**/hazelcast/management-center'
+                  branch:
+                    includes:
+                      - '5.1'
 asciidoc:
   attributes:
     page-pagination: true

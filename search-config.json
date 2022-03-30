@@ -64,6 +64,18 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
+        "management-center-5.1"
+      ],
+      "variables": {
+        "version": [
+          "5.1"
+        ]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
         "management-center-5.0"
       ],
       "variables": {
@@ -136,11 +148,11 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-5.1-snapshot"
+        "hazelcast-5.2-snapshot"
       ],
       "variables": {
         "version": [
-          "5.1-snapshot"
+          "5.2-snapshot"
         ]
       },
       "selectors_key": "hz"
@@ -148,11 +160,11 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-5.1-beta-1"
+        "hazelcast-5.1"
       ],
       "variables": {
         "version": [
-          "5.1-beta-1"
+          "5.1"
         ]
       },
       "selectors_key": "hz"
@@ -175,6 +187,18 @@
         "cloud"
       ],
       "selectors_key": "cloud"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.2"
+      ],
+      "variables": {
+        "version": [
+          "5.2"
+        ]
+      },
+      "selectors_key": "operator"
     },
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
@@ -223,18 +247,6 @@
         ]
       },
       "selectors_key": "turbine"
-    },
-    {
-      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
-        "management-center-5.1-beta-1"
-      ],
-      "variables": {
-        "version": [
-          "5.1-beta-1"
-        ]
-      },
-      "selectors_key": "mc"
     }
   ],
   "sitemap_urls": [

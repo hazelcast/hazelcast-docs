@@ -35,9 +35,6 @@ content:
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
-  - url: https://github.com/hazelcast/turbine
-    branches: [main]
-    start_path: docs/content
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
   - url: https://github.com/hazelcast-guides/caching-springboot-jcache
@@ -136,10 +133,42 @@ content:
   - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-expose-externally
     branches: master
     start_path: docs
+  - url: https://github.com/hazelcast/management-center
+    branches: [master, 5.1.z]
+    start_path: openapi/external
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v2.16-BETA/ui-bundle.zip
     snapshot: true
+antora:
+  extensions:
+    - require: '@djencks/antora-aggregate-collector'
+      trace: true
+      componentversions:
+        - name: management-center
+          version: '5.2-snapshot'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - 'master'
+        - name: management-center
+          version: '5.1'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.1.z'
 asciidoc:
   attributes:
     page-pagination: true@

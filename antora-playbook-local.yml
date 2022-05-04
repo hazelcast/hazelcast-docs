@@ -32,9 +32,6 @@ content:
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
-  - url: https://github.com/hazelcast/turbine
-    branches: [main]
-    start_path: docs/content
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
   - url: https://github.com/hazelcast-guides/caching-springboot-jcache

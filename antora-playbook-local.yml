@@ -15,30 +15,6 @@ content:
   - url: .
     start_path: tutorials
     branches: HEAD
-  - url: https://github.com/hazelcast/hz-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/imdg-docs
-    branches: [v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/imdg-docs
-    branches: [archived-versions]
-    start_paths: docs/*
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [archived-versions]
-    start_paths: docs/*
-  - url: https://github.com/hazelcast/cloud-docs
-    branches: [main]
-    start_path: docs
-  - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/turbine
-    branches: [main]
-    start_path: docs/content
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
   - url: https://github.com/JakeSCahill/caching-springboot-jcache
@@ -147,7 +123,7 @@ antora:
       trace: true
       componentversions:
         - name: management-center
-          version: '5.1-snapshot'
+          version: '5.2-snapshot'
           mappings:
             - module: integrate
               family: attachment

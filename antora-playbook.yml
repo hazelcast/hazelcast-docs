@@ -1,6 +1,6 @@
 site:
   title: Documentation
-  start_page: tutorials::index.adoc
+  start_page: home::index.adoc
   url: https://docs.hazelcast.com
   keys:
     google_analytics: 'GTM-MQ59XD6'
@@ -12,112 +12,133 @@ urls:
 content:
   sources: 
   - url: .
-    start_path: home
+    start_paths: [home,tutorials]
     branches: HEAD
-  - url: .
-    start_path: tutorials
-    branches: HEAD
+  - url: https://github.com/hazelcast/hz-docs
+    branches: [main, v/*]
+    start_path: docs
+  - url: https://github.com/hazelcast/imdg-docs
+    branches: [v/*]
+    start_path: docs
+  - url: https://github.com/hazelcast/imdg-docs
+    branches: [archived-versions]
+    start_paths: docs/*
+  - url: https://github.com/hazelcast/management-center-docs
+    branches: [main, v/*]
+    start_path: docs
+  - url: https://github.com/hazelcast/management-center-docs
+    branches: [archived-versions]
+    start_paths: docs/*
+  - url: https://github.com/hazelcast/cloud-docs
+    branches: [main]
+    start_path: docs
+  - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
+    branches: [main, v/*]
+    start_path: docs
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
-  - url: https://github.com/JakeSCahill/caching-springboot-jcache
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/caching-springboot-jcache
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/hazelcast-embedded-springboot
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/hazelcast-embedded-springboot
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/springboot-hibernate
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/springboot-hibernate
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/hibernate-jcache
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/hibernate-jcache
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/istio
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/istio
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/caching-micronaut
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/caching-micronaut
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/kubernetes-embedded
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/kubernetes-embedded
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/hazelcast-embedded-microprofile
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/hazelcast-embedded-microprofile
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/hazelcast-client-quarkus
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/hazelcast-client-quarkus
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/springboot-webfilter-session-replication
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/springboot-webfilter-session-replication
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/caching-springboot
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/caching-springboot
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/ecs-embedded
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/ecs-embedded
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/striim-cdc
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/striim-cdc
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/springboot-tomcat-session-replication
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/springboot-tomcat-session-replication
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/vmware-tanzu
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/vmware-tanzu
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/terraform-quickstarts
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/terraform-quickstarts
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/kubernetes-external-client
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/kubernetes-external-client
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/active-directory-authentication
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/active-directory-authentication
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/kubernetes-sidecar
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/kubernetes-sidecar
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/kubernetes-hpa
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/kubernetes-hpa
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/kubernetes-ssl
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/kubernetes-ssl
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/kubernetes-wan
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/kubernetes-wan
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/kubernetes
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/kubernetes
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/spring-session-hazelcast
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/spring-session-hazelcast
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/ec2-cluster
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/ec2-cluster
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/linkerd
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/linkerd
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/consul
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/consul
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/openshift
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/openshift
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/nodejs-client-getting-started
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/nodejs-client-getting-started
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/go-client-getting-started
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/go-client-getting-started
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/openfaas-hz-client
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/openfaas-hz-client
+    branches: master
     start_path: docs
-  - url: https://github.com/JakeSCahill/hazelcast-platform-operator-expose-externally
-    branches: tutorials
+  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-expose-externally
+    branches: master
     start_path: docs
+  - url: https://github.com/hazelcast/management-center
+    branches: [master, 5.1.z]
+    start_path: openapi/external
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v2.16-BETA/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
 antora:
   extensions:
@@ -147,7 +168,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - '5.1'
+                    - '5.1.z'
 asciidoc:
   attributes:
     page-pagination: true@

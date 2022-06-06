@@ -46,7 +46,7 @@ NOTE: The page layouts and UI code (css, JavaScript, Handlebars templates) are s
 
 TIP: Learn more about Antora with this excellent link:https://www.youtube.com/watch?v=BAJ8F7yQz64&t=4s[introduction on YouTube].
 
-== The playbook
+== The Playbook
 
 The playbook defines the content sources (repositories and branches), site URL, UI bundle URL, global AsciiDoc attributes, and Asciidoctor extensions.
 
@@ -86,7 +86,7 @@ image::images/home-page.png[Preview of the home page]
 
 The `tutorials/` directory in this repository contains the Tutorials documentation component. The source code for the tutorials subsite is in the `tutorials-*.hbs` templates of the link:{url-docs-ui}[`hazelcast-docs-ui` repository].
 
-For information about contributing new tutorials, see link:https://github.com/hazelcast-guides/adoc-templates[Tutorial Templates]
+For information about contributing new tutorials, see link:https://github.com/hazelcast-guides/base-guide/blob/master/.github/CONTRIBUTING.adoc[Tutorial Templates]
 
 == Custom Asciidoctor Extensions
 

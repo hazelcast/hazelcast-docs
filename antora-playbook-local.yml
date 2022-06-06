@@ -135,7 +135,7 @@ content:
     start_path: openapi/external
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v2.16-BETA/ui-bundle.zip
     snapshot: true
 runtime:
   log:

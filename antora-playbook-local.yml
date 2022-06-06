@@ -35,100 +35,100 @@ content:
   - url: https://github.com/JakeSCahill/adoc-templates.git
     branches: antora-doc
   - url: https://github.com/JakeSCahill/caching-springboot-jcache
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/hazelcast-embedded-springboot
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/springboot-hibernate
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/hibernate-jcache
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/istio
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/caching-micronaut
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/kubernetes-embedded
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/hazelcast-embedded-microprofile
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/hazelcast-client-quarkus
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/springboot-webfilter-session-replication
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/caching-springboot
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/ecs-embedded
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/striim-cdc
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/springboot-tomcat-session-replication
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/vmware-tanzu
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/terraform-quickstarts
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/kubernetes-external-client
-    branches: main
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/active-directory-authentication
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/kubernetes-sidecar
-    branches: main
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/kubernetes-hpa
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/kubernetes-ssl
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/kubernetes-wan
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/kubernetes
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/spring-session-hazelcast
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/ec2-cluster
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/linkerd
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/consul
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/openshift
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/nodejs-client-getting-started
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/go-client-getting-started
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/openfaas-hz-client
-    branches: master
+    branches: tutorials
     start_path: docs
   - url: https://github.com/JakeSCahill/hazelcast-platform-operator-expose-externally
-    branches: main
+    branches: tutorials
     start_path: docs
   - url: https://github.com/hazelcast/management-center
     branches: [master, 5.1.z]

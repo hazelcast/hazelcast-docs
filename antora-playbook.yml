@@ -118,9 +118,6 @@ content:
   - url: https://github.com/hazelcast-guides/consul
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast-guides/openshift
-    branches: master
-    start_path: docs
   - url: https://github.com/hazelcast-guides/nodejs-client-getting-started
     branches: master
     start_path: docs

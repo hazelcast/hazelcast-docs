@@ -2,6 +2,13 @@
   "index_name": "prod_hazelcast_docs",
   "start_urls": [
     {
+      "url": "https://docs.hazelcast.com/tutorials/",
+      "tags": [
+        "tutorials"
+      ],
+      "selectors_key": "tutorials"
+    },
+    {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [
         "imdg-4.2"
@@ -319,6 +326,22 @@
         "type": "xpath",
         "global": true,
         "default_value": "Operator"
+      },
+      "lvl1": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "type": "xpath",
+        "global": true
+      },
+      "lvl2": ".doc h1",
+      "lvl3": ".doc h2",
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
+    },
+    "tutorials": {
+      "lvl0": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "type": "xpath",
+        "global": true,
+        "default_value": "Tutorial"
       },
       "lvl1": {
         "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",

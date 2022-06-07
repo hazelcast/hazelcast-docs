@@ -4,7 +4,7 @@ Please write a summary of your changes and why you made them. Be sure to referen
 
 ## Type of change
 
-Select the type of change you're making by adding an X to the box:
+Select the type of change that you're making:
 
 - [ ] Bug fix (Addresses an issue in existing content such as a typo)
 - [ ] Enhancement (Adds new content)

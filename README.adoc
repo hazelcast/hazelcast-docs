@@ -158,7 +158,13 @@ This script generates a PDF for the Hazelcast Platform 5.1 documentation.
 
 The result of this script is a `pdf-docs` directory, in which the artifacts for the PDF files are assembled and the PDF files are generated.
 
-This script uses the link:https://gitlab.com/antora/antora-assembler/-/blob/main/README.adoc[Antora assembler extension].
+Some errors are displayed in the output, but you can ignore them.
+
+- Management Center links are broken: Since the script builds only a PDF of the Platform documentation, it's normal that these links are broken.
+
+- `null startLine`: The script uses the link:https://gitlab.com/antora/antora-assembler/-/blob/main/README.adoc[Antora assembler extension], which is in an alpha state. These errors are generated from the PDF converter. The output does not appear to be broken, so you can ignore this type of error.
+
+We will track the status of the extension and update it when new releases are available.
 
 == GitHub Actions
 

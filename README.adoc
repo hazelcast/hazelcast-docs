@@ -148,7 +148,11 @@ npm i
 bundle
 ```
 
-. Execute the `create-pdfs.sh` script.
+. Execute the script.
++
+```bash
+npm run-script generate-pdfs
+```
 
 The result of this script is a `pdf-docs` directory, in which the artifacts for the PDF files are assembled and the PDF files are generated.
 

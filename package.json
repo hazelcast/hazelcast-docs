@@ -9,6 +9,8 @@
     "build-local": "antora --to-dir docs --fetch --generator @antora/site-generator-default antora-playbook-local.yml",
     "check-links": "antora --generator @antora/xref-validator antora-playbook.yml",
     "check-links-local": "antora --generator @antora/xref-validator antora-playbook-local.yml",
+    "generate-pdfs-platform-5-1": "antora assembler-playbook-platform-5-1.yml",
+    "generate-pdfs-platform-5-0": "antora assembler-playbook-platform-5-0.yml",
     "serve": "serve docs",
     "expose": "ngrok http 5000"
   },
@@ -20,5 +22,8 @@
     "asciidoctor-kroki": "^0.10.0",
     "ngrok": "^4.2.2",
     "serve": "^13.0.2"
+  },
+  "dependencies": {
+    "@antora/pdf-extension": "^1.0.0-alpha.1"
   }
 }

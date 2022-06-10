@@ -122,6 +122,44 @@ Once a day, we use a link:{url-github-docsearch-scraper}[DocSearch scraper] to i
 
 To index the documentation, DocSearch uses our `search-config.json` file. For more information about search configuration, see the link:{url-docsearch}/config-file[DocSearch documentation].
 
+== Generating PDFs
+
+You can generate a PDF of the following documentation:
+
+- Hazelcast Platform version 5.0
+- Hazelcast Platform version 5.1
+
+To generate PDFs, you'll need the following prerequisites:
+
+- At least Ruby 2.7
+- Node.js 16
+
+To generate the PDFs, do the following in the root of this repository:
+
+. Install the dependencies.
++
+```bash
+npm i
+```
+
+. Install Asciidoctor PDF.
++
+```bash
+bundle
+```
+
+. Execute a script to generate the PDFs for a version of the documentation.
++
+```bash
+npm run-script generate-pdfs-platform-5-1
+```
+
+This script generates a PDF for the Hazelcast Platform 5.1 documentation. 
+
+The result of this script is a `pdf-docs` directory, in which the artifacts for the PDF files are assembled and the PDF files are generated.
+
+This script uses the link:https://gitlab.com/antora/antora-assembler/-/blob/main/README.adoc[Antora assembler extension].
+
 == GitHub Actions
 
 To automate some elements of the build process, this repository includes the following GitHub Actions:

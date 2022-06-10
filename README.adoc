@@ -148,11 +148,13 @@ npm i
 bundle
 ```
 
-. Execute the script.
+. Execute a script to generate the PDFs for a version of the documentation.
 +
 ```bash
-npm run-script generate-pdfs
+npm run-script generate-pdfs-platform-5-1
 ```
+
+This script generates a PDF for the Hazelcast Platform 5.1 documentation. 
 
 The result of this script is a `pdf-docs` directory, in which the artifacts for the PDF files are assembled and the PDF files are generated.
 

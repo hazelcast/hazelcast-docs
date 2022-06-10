@@ -1,16 +1,10 @@
 site:
   title: Documentation
   url: https:/docs.hazelcast.com
-  start_page: hazelcast:getting-started:get-started-cli.adoc
-  robots: disallow
-  keys:
-    docsearch_id: 'QK2EAH8GB0'
-    docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
-    docsearch_index: 'prod_hazelcast_docs'
 content:
   sources: 
   - url: https://github.com/hazelcast/hz-docs
-    branches: [v/*]
+    branches: [v/5.0]
     start_path: docs
 antora:
   extensions:

@@ -23,7 +23,6 @@ asciidoc:
     # Filter out content that doesn't apply to PDF such as embedded scripts
     backend-pdf: true
     hazelcast-cloud: Hazelcast Viridian
-    cloud-platform-version: 5.1
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js

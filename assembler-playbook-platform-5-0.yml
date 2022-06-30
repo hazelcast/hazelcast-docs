@@ -17,15 +17,13 @@ asciidoc:
   attributes:
     # Download images from kroki at build time (does not work for inline images)
     kroki-fetch-diagram: true
-    # Inlude next and previous links on each page
-    page-pagination: true
     idprefix: ''
     # Separate anchor link names by dashes
     idseparator: '-'
-    # Variables used in the docs
-    page-survey: https://www.surveymonkey.co.uk/r/NYGJNF9
     # Filter out content that doesn't apply to PDF such as embedded scripts
     backend-pdf: true
+    hazelcast-cloud: Hazelcast Viridian
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js
+    - asciidoctor-kroki

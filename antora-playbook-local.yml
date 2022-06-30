@@ -181,6 +181,7 @@ asciidoc:
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
     hazelcast-cloud: Hazelcast Viridian
+    cloud-platform-version: 5.1
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js

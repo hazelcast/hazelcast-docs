@@ -28,9 +28,18 @@ content:
     start_paths: docs/*
   - url: https://github.com/hazelcast/cloud-docs
     branches: [main]
-    start_path: docs
+    start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
+    start_path: docs
+  - url: https://github.com/hazelcast/hazelcast-cloud-code-samples
+    branches: master
+    start_paths:
+    - spring-sample/docs
+    - client-failover/client-failover-sample-hazelcast5/docs
+    - mapstore/mapstore-sample-hazelcast5-mongodb/docs
+  - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
+    branches: serverless-mvp-uat
     start_path: docs
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
@@ -132,7 +141,7 @@ content:
     start_path: openapi/external
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v3.1-beta/ui-bundle.zip
     snapshot: true
 runtime:
   log:

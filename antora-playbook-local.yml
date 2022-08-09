@@ -38,6 +38,7 @@ content:
     - spring-sample/docs
     - client-failover/client-failover-sample-hazelcast5/docs
     - mapstore/mapstore-sample-hazelcast5-mongodb/docs
+    - serverless-fraud-detection/docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
     branches: serverless-mvp-uat
     start_path: docs

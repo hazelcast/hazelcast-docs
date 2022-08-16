@@ -30,7 +30,7 @@ content:
     branches: [archived-versions]
     start_paths: docs/*
   - url: https://github.com/hazelcast/cloud-docs
-    branches: [main]
+    branches: [staging]
     start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
@@ -42,6 +42,7 @@ content:
     - client-failover/client-failover-sample-hazelcast5/docs
     - mapstore/mapstore-sample-hazelcast5-mongodb/docs
     - serverless-fraud-detection/docs
+    - compute/standard-deviation/docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
     branches: serverless-mvp-uat
     start_path: docs

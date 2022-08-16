@@ -44,7 +44,7 @@ content:
     - serverless-fraud-detection/docs
     - compute/standard-deviation/docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
-    branches: serverless-mvp-uat
+    branches: main
     start_path: docs
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc

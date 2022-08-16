@@ -130,6 +130,9 @@ content:
   - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-expose-externally
     branches: main
     start_path: docs
+  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-external-backup-restore
+    branches: master
+    start_path: docs
   - url: https://github.com/hazelcast/management-center
     branches: [master, 5.1.z]
     start_path: openapi/external

@@ -41,7 +41,7 @@ content:
     - serverless-fraud-detection/docs
     - compute/standard-deviation/docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
-    branches: main
+    branches: serverless-mvp-uat
     start_path: docs
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
@@ -191,7 +191,7 @@ asciidoc:
     imdg-ops-guide: https://hazelcast.com/resources/hazelcast-deployment-operations-guide/
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
-    hazelcast-cloud: Hazelcast Viridian
+    hazelcast-cloud: Viridian
     page-cloud-console: https://viridian.hazelcast.com/
   extensions:
     - ./lib/tabs-block.js

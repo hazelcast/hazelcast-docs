@@ -131,8 +131,11 @@ content:
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast/management-center
-    branches: [master, 5.1.z, 5.2-BETA-1]
+    branches: [master, 5.1.z]
     start_path: openapi/external
+  - url: https://github.com/hazelcast-guides/cpp-client-getting-started
+    branches: [master]
+    start_path: docs
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
@@ -166,18 +169,6 @@ antora:
                 branch:
                   includes:
                     - '5.1.z'
-        - name: management-center
-          version: '5.2-beta-1'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.2-BETA-1'
 asciidoc:
   attributes:
     page-pagination: true@

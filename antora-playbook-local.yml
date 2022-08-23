@@ -38,8 +38,10 @@ content:
     - spring-sample/docs
     - client-failover/client-failover-sample-hazelcast5/docs
     - serverless-fraud-detection/docs
-    - compute/standard-deviation/docs
   - url: https://github.com/hazelcast-guides/write-through-cache-mongodb-mapstore
+    branches: master
+    start_paths: docs
+  - url: https://github.com/hazelcast-guides/standard-deviation-parallel-processing
     branches: master
     start_paths: docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin

@@ -40,9 +40,11 @@ content:
     start_paths:
     - spring-sample/docs
     - client-failover/client-failover-sample-hazelcast5/docs
-    - mapstore/mapstore-sample-hazelcast5-mongodb/docs
     - serverless-fraud-detection/docs
     - compute/standard-deviation/docs
+  - url: https://github.com/hazelcast-guides/write-through-cache-mongodb-mapstore
+    branches: master
+    start_paths: docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
     branches: serverless-mvp-uat
     start_path: docs

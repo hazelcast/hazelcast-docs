@@ -128,15 +128,12 @@ content:
     branches: main
     start_path: docs
   - url: https://github.com/hazelcast/management-center
-    branches: [master, 5.1.z]
+    branches: [master, 5.1.z, 5.2-BETA-1]
     start_path: openapi/external
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
-runtime:
-  log:
-    level: debug
 antora:
   extensions:
     - require: '@djencks/antora-aggregate-collector'
@@ -166,6 +163,18 @@ antora:
                 branch:
                   includes:
                     - '5.1.z'
+        - name: management-center
+          version: '5.2-beta-1'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.2-BETA-1'
 asciidoc:
   attributes:
     page-pagination: true@

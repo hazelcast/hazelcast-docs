@@ -136,7 +136,10 @@ content:
   - url: https://github.com/hazelcast/management-center
     branches: [master, 5.1.z]
     start_path: openapi/external
-ui: 
+  - url: https://github.com/hazelcast-guides/cpp-client-getting-started
+    branches: [master]
+    start_path: docs
+ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true

@@ -32,11 +32,12 @@ content:
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
-  - url: https://github.com/hazelcast/hazelcast-cloud-code-samples
+  - url: https://github.com/hazelcast-guides/client-failover
     branches: master
-    start_paths:
-    - spring-sample/docs
-    - client-failover/client-failover-sample-hazelcast5/docs
+    start_paths: docs
+  - url: https://github.com/hazelcast-guides/spring-boot-sample
+    branches: master
+    start_paths: docs
   - url: https://github.com/hazelcast-guides/serverless-fraud-detection
     branches: master
     start_paths: docs

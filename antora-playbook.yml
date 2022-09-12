@@ -30,7 +30,7 @@ content:
     branches: [archived-versions]
     start_paths: docs/*
   - url: https://github.com/hazelcast/cloud-docs
-    branches: [staging]
+    branches: [main]
     start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
@@ -159,7 +159,7 @@ content:
     start_path: docs
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v3.1-beta/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
 antora:
   extensions:

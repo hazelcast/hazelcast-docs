@@ -11,7 +11,7 @@ antora:
   - '@antora/pdf-extension'
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v3.1-beta/ui-bundle.zip #../hazelcast-docs-ui/build/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip #../hazelcast-docs-ui/build/ui-bundle.zip
     snapshot: true
 asciidoc:
   attributes:
@@ -22,8 +22,8 @@ asciidoc:
     idseparator: '-'
     # Filter out content that doesn't apply to PDF such as embedded scripts
     backend-pdf: true
-    hazelcast-cloud: Hazelcast Viridian
-    page-cloud-console: https://cloud.hazelcast.com/
+    hazelcast-cloud: Viridian
+    page-cloud-console: https://viridian.hazelcast.com/
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js

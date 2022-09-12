@@ -27,7 +27,7 @@ content:
     branches: [archived-versions]
     start_paths: docs/*
   - url: https://github.com/hazelcast/cloud-docs
-    branches: [staging]
+    branches: [main]
     start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
@@ -48,7 +48,7 @@ content:
     branches: master
     start_paths: docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
-    branches: serverless-mvp-uat
+    branches: main
     start_path: docs
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc
@@ -156,7 +156,7 @@ content:
     start_path: docs
 ui: 
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v3.1-beta/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
 antora:
   extensions:
@@ -214,7 +214,7 @@ asciidoc:
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
     hazelcast-cloud: Viridian
-    page-cloud-console: https://viridian.hazelcast.cloud/
+    page-cloud-console: https://viridian.hazelcast.com/
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js

@@ -50,6 +50,9 @@ content:
   - url: https://github.com/hazelcast-guides/standard-deviation-parallel-processing
     branches: master
     start_paths: docs
+  - url: https://github.com/hazelcast-guides/stream-to-stream-joins
+    branches: master
+    start_paths: docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
     branches: main
     start_path: docs

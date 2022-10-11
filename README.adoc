@@ -15,6 +15,7 @@
 :url-asciidoc: https://docs.asciidoctor.org/asciidoc/latest/
 :url-github-docsearch-scraper: https://github.com/algolia/docsearch-scraper
 :url-production: https://docs.hazelcast.com
+:url-staging: https://develop--nifty-wozniak-71a44b.netlify.app/home/
 :toc: preamble
 
 

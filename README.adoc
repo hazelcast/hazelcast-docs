@@ -106,7 +106,7 @@ To preview changes, all pull requests are made to the `develop` branch. When the
 
 == Redirects
 
-To make it easy for users to find and bookmark the latest IMDG and Management Center content, we use the following aliases:
+To make it easy for users to find and bookmark the latest content, we use the following aliases:
 
 - `latest`: The latest stable version
 - `latest-dev`: The latest development version

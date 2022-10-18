@@ -198,6 +198,9 @@ antora:
                     - '5.1.z'
 asciidoc:
   attributes:
+    # Order the products in the version selector dropdown.
+    # Use * to list all remaining products in alphabetical order.
+    page-component-order: 'hazelcast, management-center, cloud, *'
     page-pagination: true@
     # Allows us to use UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
     page-experimental: true

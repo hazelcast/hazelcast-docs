@@ -170,7 +170,7 @@ antora:
       trace: true
       componentversions:
         - name: management-center
-          version: '5.2-snapshot'
+          version: '5.3-snapshot'
           mappings:
             - module: integrate
               family: attachment
@@ -207,8 +207,11 @@ antora:
                     - '5.2-BETA-1'
 asciidoc:
   attributes:
+    # Order the products in the version selector dropdown.
+    # Use * to list all remaining products in alphabetical order.
+    page-component-order: 'hazelcast, management-center, cloud, *'
     page-pagination: true@
-    # Allows us to use UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
+    # Allow the use of UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
     page-experimental: true
     idprefix: ''
     idseparator: '-'

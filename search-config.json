@@ -59,18 +59,6 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center-5.2-beta-1"
-      ],
-      "variables": {
-        "version": [
-          "5.2-beta-1"
-        ]
-      },
-      "selectors_key": "mc"
-    },
-    {
-      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
         "management-center-5.3-snapshot"
       ],
       "variables": {
@@ -294,11 +282,11 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center-5.2.0"
+        "management-center-5.2"
       ],
       "variables": {
         "version": [
-          "5.2.0"
+          "5.2"
         ]
       },
       "selectors_key": "mc"

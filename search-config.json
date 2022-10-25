@@ -167,11 +167,21 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-5.2-snapshot"
+        "hazelcast-5.2"
+      ],
+      "variables": {
+        "version": ["5.2"]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast-5.3-snapshot"
       ],
       "variables": {
         "version": [
-          "5.2-snapshot"
+          "5.3-snapshot"
         ]
       },
       "selectors_key": "hz"

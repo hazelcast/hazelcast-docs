@@ -154,6 +154,9 @@ content:
   - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-wan-replication
     branches: master
     start_path: docs
+  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-map-store
+    branches: master
+    start_path: docs
   - url: https://github.com/hazelcast-guides/kafka-kerberos
     branches: master
     start_path: docs

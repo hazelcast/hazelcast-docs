@@ -8,6 +8,7 @@
       ],
       "selectors_key": "tutorials"
     },
+    
     {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [
@@ -163,6 +164,18 @@
         ]
       },
       "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast-commandline-client/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast-commandline-client-5.2-beta-2"
+      ],
+      "variables": {
+        "version": [
+          "5.2-beta-2"
+        ]
+      },
+      "selectors_key": "command-line-client"
     },
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",

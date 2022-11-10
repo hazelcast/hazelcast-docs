@@ -7,8 +7,7 @@
         "tutorials"
       ],
       "selectors_key": "tutorials"
-    },
-    
+    },   
     {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [

@@ -170,6 +170,17 @@ ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
+  supplemental_files:
+    - path: netlify.toml
+      contents: >
+        [[headers]]
+          for = "/api/*"
+          [headers.values]
+            Access-Control-Allow-Origin = "*"
+    - path: ui.yml
+      contents: |
+        static_files: [ netlify.toml ]
+
 antora:
   extensions:
     - require: '@djencks/antora-aggregate-collector'

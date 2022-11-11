@@ -211,6 +211,35 @@ antora:
                 branch:
                   includes:
                     - '5.1.z'
+    - require: ./lib/api_json.js
+      tags:
+        - Favorites
+        - Videos
+        - Get Started
+        - Whitepapers
+        - Use cases
+        - Case studies
+        - Documentation
+        - Develop Applications
+        - Manage Accounts
+        - Manage Clusters
+      data:
+        - title: What is Viridian Serverless?
+          url: https://www.youtube.com/embed/5bLjl-iqFaU'
+          type: video
+          order: 7
+          tags: Videos, Get Started
+        - title: What is client?
+          url: https://www.youtube.com/embed/lkQEAdgxvbE
+          type: video
+          order: 8
+          tags: Videos, Get Started
+        - title: What is the Hazelcast Platform?
+          url: https://www.youtube.com/embed/UpIgHzKbMp0
+          type: video
+          order: 9
+          tags: Videos, Get Started
+
 asciidoc:
   attributes:
     # Order the products in the version selector dropdown.

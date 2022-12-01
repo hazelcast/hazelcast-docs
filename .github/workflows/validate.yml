@@ -19,7 +19,11 @@ jobs:
         node-version: 16
     - name: Check for broken internal links
       env:
+<<<<<<< HEAD
         GIT_CREDENTIALS: ${{ secrets.GH_PAT }}
+=======
+        GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS2 }}
+>>>>>>> develop
       run: |
         npm i
         npm run-script check-links-local

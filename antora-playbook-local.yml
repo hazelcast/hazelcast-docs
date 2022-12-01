@@ -154,11 +154,14 @@ content:
   - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-wan-replication
     branches: master
     start_path: docs
+  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-map-store
+    branches: master
+    start_path: docs
   - url: https://github.com/hazelcast-guides/kafka-kerberos
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast/management-center
-    branches: [master, 5.1.z, 5.2-BETA-1]
+    branches: [master, 5.1.z, 5.2-z]
     start_path: openapi/external
   - url: https://github.com/hazelcast-guides/cpp-client-getting-started
     branches: [master]

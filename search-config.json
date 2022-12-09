@@ -59,11 +59,11 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center-5.2-snapshot"
+        "management-center-5.3-snapshot"
       ],
       "variables": {
         "version": [
-          "5.2-snapshot"
+          "5.3-snapshot"
         ]
       },
       "selectors_key": "mc"
@@ -155,11 +155,35 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-5.2-snapshot"
+        "hazelcast-5.2-beta-1"
       ],
       "variables": {
         "version": [
-          "5.2-snapshot"
+          "5.2-beta-1"
+        ]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast-5.2"
+      ],
+      "variables": {
+        "version": [
+          "5.2"
+        ]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast-5.3-snapshot"
+      ],
+      "variables": {
+        "version": [
+          "5.3-snapshot"
         ]
       },
       "selectors_key": "hz"
@@ -206,6 +230,30 @@
         ]
       },
       "selectors_key": "command-line-client"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.5"
+      ],
+      "variables": {
+        "version": [
+          "5.5"
+        ]
+      },
+      "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.4"
+      ],
+      "variables": {
+        "version": [
+          "5.4"
+        ]
+      },
+      "selectors_key": "operator"
     },
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
@@ -266,6 +314,18 @@
         ]
       },
       "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center-5.2"
+      ],
+      "variables": {
+        "version": [
+          "5.2"
+        ]
+      },
+      "selectors_key": "mc"
     }
   ],
   "sitemap_urls": [
@@ -298,13 +358,13 @@
     },
     "mc": {
       "lvl0": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[1]/a[1]",
         "type": "xpath",
         "global": true,
         "default_value": "Management Center"
       },
       "lvl1": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[2]",
         "type": "xpath",
         "global": true
       },
@@ -314,13 +374,13 @@
     },
     "hz": {
       "lvl0": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[1]/a[1]",
         "type": "xpath",
         "global": true,
-        "default_value": "Hazelcast"
+        "default_value": "Platform"
       },
       "lvl1": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[2]",
         "type": "xpath",
         "global": true
       },
@@ -330,13 +390,13 @@
     },
     "cloud": {
       "lvl0": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[1]/a[1]",
         "type": "xpath",
         "global": true,
-        "default_value": "Cloud"
+        "default_value": "Viridian Cloud Managed Services"
       },
       "lvl1": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[2]",
         "type": "xpath",
         "global": true
       },
@@ -362,13 +422,13 @@
     },
     "operator": {
       "lvl0": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[1]/a[1]",
         "type": "xpath",
         "global": true,
-        "default_value": "Operator"
+        "default_value": "Platform Operator"
       },
       "lvl1": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[2]",
         "type": "xpath",
         "global": true
       },
@@ -378,18 +438,18 @@
     },
     "tutorials": {
       "lvl0": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[1]/a[1]",
         "type": "xpath",
         "global": true,
-        "default_value": "Tutorial"
+        "default_value": "Tutorials"
       },
       "lvl1": {
-        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+        "selector": "/html[1]/head[1]/title[1]",
         "type": "xpath",
         "global": true
       },
-      "lvl2": ".doc h1",
-      "lvl3": ".doc h2",
+      "lvl2": ".doc h2",
+      "lvl3": ".doc h3",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     }
   },

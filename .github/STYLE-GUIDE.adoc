@@ -87,6 +87,37 @@ hazelcast-client:
 ====
 ....
 
+To use nested tabs, use the following syntax:
+
+[source]
+....
+[tabs]
+====
+Windows::
++
+[tabs]
+======
+XML::
++
+[,xml]
+----
+<root/>
+----
+
+YAML::
++
+[,ts]
+----
+loadData()
+----
+======
+
+Linux::
++
+...
+====
+....
+
 === Workflow Maps
 
 Workflow maps give users the big picture of a tutorial or task by showing them where they are in a series of steps.

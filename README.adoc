@@ -15,6 +15,7 @@
 :url-asciidoc: https://docs.asciidoctor.org/asciidoc/latest/
 :url-github-docsearch-scraper: https://github.com/algolia/docsearch-scraper
 :url-production: https://docs.hazelcast.com
+:url-staging: https://develop--nifty-wozniak-71a44b.netlify.app/home/
 :toc: preamble
 
 
@@ -62,7 +63,7 @@ Source content for the documentation site is marked up in link:{url-asciidoc}[As
 The current playbooks pull content from the following repositories:
 
 - link:{url-hz-docs}[Platform documentation]
-- link:{url-cloud-docs}[Cloud documentation]
+- link:{url-cloud-docs}[Viridian documentation]
 - link:{url-imdg-docs}[IMDG documentation]
 - link:{url-k8-docs}[Platform Operator documentation]
 - link:{url-mc-docs}[Management Center documentation]
@@ -105,7 +106,7 @@ To preview changes, all pull requests are made to the `develop` branch. When the
 
 == Redirects
 
-To make it easy for users to find and bookmark the latest IMDG and Management Center content, we use the following aliases:
+To make it easy for users to find and bookmark the latest content, we use the following aliases:
 
 - `latest`: The latest stable version
 - `latest-dev`: The latest development version
@@ -177,7 +178,9 @@ To automate some elements of the build process, this repository includes the fol
 
 |index-site.yml
 |Runs the link:{url-github-docsearch-scraper}[DocSearch scraper] in a Docker container to index the site and send the index to Algolia
-|Once per day at 00:00 UTC
+|1st and 15th of every month at 00:00 UTC
+
+NOTE: We used to run this one per day but it was causing overage charges. The crawler that we use uploads a temporary index before deleting the old one. This causes us to go over our limit more than three days in a month, which is the grace period that Algolia provides.
 
 |publish-to-production.yml
 |Merges the `develop` branch into the `main` branch to publish changes on the staging site to production.

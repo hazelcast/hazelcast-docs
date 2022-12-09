@@ -31,7 +31,7 @@ content:
     start_paths: docs/*
   - url: https://github.com/hazelcast/cloud-docs
     branches: [main]
-    start_path: docs
+    start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast/hazelcast-commandline-client
     branches: [main]
     start_paths: docs

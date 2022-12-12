@@ -34,7 +34,7 @@ content:
     start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast/hazelcast-commandline-client
     branches: [main]
-    start_paths: docs
+    start_path: ../docs
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs

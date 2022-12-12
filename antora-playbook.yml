@@ -32,6 +32,9 @@ content:
   - url: https://github.com/hazelcast/cloud-docs
     branches: [main]
     start_paths: [docs, tutorials]
+  - url: https://github.com/hazelcast/hazelcast-commandline-client
+    branches: [main]
+    start_path: docs
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
@@ -173,6 +176,17 @@ ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
+  supplemental_files:
+    - path: netlify.toml
+      contents: >
+        [[headers]]
+          for = "/api/*"
+          [headers.values]
+            Access-Control-Allow-Origin = "*"
+    - path: ui.yml
+      contents: |
+        static_files: [ netlify.toml ]
+
 antora:
   extensions:
     - require: '@djencks/antora-aggregate-collector'
@@ -214,6 +228,35 @@ antora:
                 branch:
                   includes:
                     - '5.1.z'
+    - require: ./lib/api_json.js
+      tags:
+        - Favorites
+        - Videos
+        - Get Started
+        - Whitepapers
+        - Use cases
+        - Case studies
+        - Documentation
+        - Develop Applications
+        - Manage Accounts
+        - Manage Clusters
+      data:
+        - title: What is Viridian Serverless?
+          url: https://www.youtube.com/embed/5bLjl-iqFaU'
+          type: video
+          order: 7
+          tags: Videos, Get Started
+        - title: What is client?
+          url: https://www.youtube.com/embed/lkQEAdgxvbE
+          type: video
+          order: 8
+          tags: Videos, Get Started
+        - title: What is the Hazelcast Platform?
+          url: https://www.youtube.com/embed/UpIgHzKbMp0
+          type: video
+          order: 9
+          tags: Videos, Get Started
+
 asciidoc:
   attributes:
     # Order the products in the version selector dropdown.

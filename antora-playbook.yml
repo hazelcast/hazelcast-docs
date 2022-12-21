@@ -38,6 +38,9 @@ content:
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
+  - url: https://github.com/hazelcast-guides/automl
+    branches: main
+    start_paths: docs
   - url: https://github.com/hazelcast-guides/client-failover
     branches: master
     start_paths: docs

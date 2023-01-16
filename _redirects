@@ -11,7 +11,7 @@
 /hazelcast/latest/*  /hazelcast/5.2/:splat 200!
 
 # Redirect latest operator alias to the latest version
-/operator/latest/*  /operator/5.5/:splat 200!
+/operator/latest/*  /operator/5.6/:splat 200!
 
 # Redirect latest-dev imdg alias to the latest-dev version
 /imdg/latest-dev/*  /hazelcast/5.3-snapshot/:splat 200!

@@ -234,6 +234,18 @@
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
       "tags": [
+        "operator-5.6"
+      ],
+      "variables": {
+        "version": [
+          "5.6"
+        ]
+      },
+      "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
         "operator-5.5"
       ],
       "variables": {

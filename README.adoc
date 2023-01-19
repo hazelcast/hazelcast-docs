@@ -132,7 +132,8 @@ You can generate a PDF of the following documentation:
 To generate PDFs, you'll need the following prerequisites:
 
 - At least Ruby 2.7
-- Node.js 16
+- Node.js 16, preferably using nvm
+- Make sure that the PATH environment variable includes both Ruby and Node
 
 To generate the PDFs, do the following in the root of this repository:
 
@@ -145,8 +146,10 @@ npm i
 . Install Asciidoctor PDF.
 +
 ```bash
-bundle
+bundle --path=.bundle/gems
 ```
+NOTE: On Windows, you may need to replace the forward slash in the `--path` value with a backslash (i.e., `--path=.bundle\gems`).
+
 
 . Execute a script to generate the PDFs for a version of the documentation.
 +

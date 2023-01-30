@@ -16,6 +16,9 @@
 # Redirect latest-dev imdg alias to the latest-dev version
 /imdg/latest-dev/*  /hazelcast/5.3-snapshot/:splat 200!
 
+# Redirect latest-dev clc alias to the latest-dev version
+/clc/latest-dev/*  /clc/5.2.0-beta-3/:splat 200!
+
 # Redirect latest-dev management-center alias to the latest version
 /management-center/latest-dev/*  /management-center/5.3-snapshot/:splat 200!
 

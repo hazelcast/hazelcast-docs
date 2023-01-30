@@ -220,13 +220,13 @@
       "selectors_key": "cloud"
     },
     {
-      "url": "https://docs.hazelcast.com/hazelcast-commandline-client/(?P<version>.*?)/",
+      "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-commandline-client-5.2-beta-3"
+        "clc-5.2-beta-3"
       ],
       "variables": {
         "version": [
-          "5.2-beta-3"
+          "5.2.0-beta-3"
         ]
       },
       "selectors_key": "command-line-client"

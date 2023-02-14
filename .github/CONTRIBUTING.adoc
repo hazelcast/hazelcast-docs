@@ -216,7 +216,7 @@ Asciidoctor comes with a feature to produce tabbed blocks in the HTML output. Se
 
 image::../images/example-tabs.png[{half-width}]
 
-The syntax to be used in the source Asciidoc files is as follows:
+The syntax to be used in the source Asciidoc files is as follows.
 
 [,asciidoc]
 ----

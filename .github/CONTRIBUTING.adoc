@@ -241,7 +241,7 @@ Contains more than one block.
 * You can provide links to a specific tab in a tabbed block.
 ** Click on a specific tab and get the ID of its `a` tag using the "Inspect Element" developer tool:
 +
-image::..images/tab-id.png[Tab ID]
+image::../images/tab-id.png[Tab ID]
 ** Use this ID as the anchor when giving a https://docs.asciidoctor.org/asciidoc/latest/macros/xref/[link/cross-reference].
 
 

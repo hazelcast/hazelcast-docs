@@ -4,6 +4,7 @@
 :url-antora-yml: https://docs.antora.org/antora/2.3/component-version-descriptor
 :url-antora-local-content: https://docs.antora.org/antora/2.3/playbook/content-source-url/#local-urls
 :url-readme: ../README.adoc
+:half-width: role=half-width
 :toc: preamble
 
 The Hazelcast docs are open source, and we welcome your contributions!
@@ -207,4 +208,43 @@ The public URL is displayed in the output:
 image::../images/ngrok.png[ngrok output]
 
 When you've finished viewing your changes, use **CTRL-C** to stop the server.
+
+[[tabs]]
+== Tabbed Blocks
+
+Asciidoctor comes with a feature to produce tabbed blocks in the HTML output. See the example:
+
+image::../images/example-tabs.png[{half-width}]
+
+The syntax to be used in the source Asciidoc files is as follows.
+
+[,asciidoc]
+----
+[tabs]
+====
+Tab A:: Contents of tab A.
+
+Tab B::
++
+Contents of tab B.
+
+Tab C::
++
+--
+Contents of tab C.
+
+Contains more than one block.
+--
+====
+----
+
+* You can use the usual https://docs.asciidoctor.org/asciidoc/latest/verbatim/callouts/[Callouts] feature for the tabbed blocks.
+* You can provide links to a specific tab in a tabbed block.
+** Click on a specific tab and get the ID of its `a` tag using the "Inspect Element" developer tool:
++
+image::../images/tab-id.png[{half-width}]
+** Use this ID as the anchor when giving a https://docs.asciidoctor.org/asciidoc/latest/macros/xref/[link/cross-reference].
+
+
+
 

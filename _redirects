@@ -5,7 +5,7 @@
 /hazelcast  /home 200!
 
 # Redirect latest management-center alias to the latest version
-/management-center/latest/*  /management-center/5.2/:splat 200!
+/management-center/latest/*  /management-center/5.3-beta-1/:splat 200!
 
 # Redirect latest hazelcast alias to the latest version
 /hazelcast/latest/*  /hazelcast/5.2/:splat 200!

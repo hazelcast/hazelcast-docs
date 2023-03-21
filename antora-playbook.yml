@@ -167,7 +167,7 @@ content:
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
-    branches: main
+    branches: master
     start_path: docs
   - url: https://github.com/hazelcast/management-center
     branches: [master, 5.1.z, 5.2.z]

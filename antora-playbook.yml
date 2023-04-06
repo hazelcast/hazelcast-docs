@@ -211,6 +211,18 @@ antora:
                   includes:
                     - 'master'
         - name: management-center
+          version: '5.3-beta-1'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.3-BETA-1'
+        - name: management-center
           version: '5.2'
           mappings:
             - module: integrate

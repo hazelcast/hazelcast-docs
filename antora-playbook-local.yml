@@ -167,7 +167,7 @@ content:
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast/management-center
-    branches: [master, 5.1.z, 5.2.z]
+    branches: [master, 5.1.z, 5.2.z, 5.3-BETA-1]
     start_path: openapi/external
   - url: https://github.com/hazelcast-guides/cpp-client-getting-started
     branches: [master]

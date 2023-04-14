@@ -17,7 +17,10 @@
 /imdg/latest-dev/*  /hazelcast/5.3-snapshot/:splat 200!
 
 # Redirect latest-dev clc alias to the latest-dev version
-/clc/latest-dev/*  /clc/5.2-beta-3/:splat 200!
+# TODO:/clc/latest-dev/*  /clc/{snapshot}/:splat 200!
+
+# Redirect latest clc alias to the latestversion
+# TODO:/clc/latest/*  /clc/5.2/:splat 200!
 
 # Redirect renamed beta version to the currecnt beta version
 /clc/5.2.0-beta-3/* /clc/5.2-beta-3/:splat 200!

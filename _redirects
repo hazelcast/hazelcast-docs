@@ -20,7 +20,7 @@
 # TODO:/clc/latest-dev/*  /clc/{snapshot}/:splat 200!
 
 # Redirect latest clc alias to the latest version
-/clc/latest/*  /clc/5.2/:splat 200!
+/clc/latest/*  /clc/5.3/:splat 200!
 
 # Redirect renamed beta version to the currecnt beta version
 /clc/5.2.0-beta-3/* /clc/5.2-beta-3/:splat 200!

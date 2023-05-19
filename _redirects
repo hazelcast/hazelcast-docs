@@ -8,7 +8,7 @@
 /management-center/latest/*  /management-center/5.3.0/:splat 200!
 
 # Redirect latest hazelcast alias to the latest version
-/hazelcast/latest/*  /hazelcast/5.2/:splat 200!
+/hazelcast/latest/*  /hazelcast/5.3/:splat 200!
 
 # Redirect latest operator alias to the latest version
 /operator/latest/*  /operator/5.7/:splat 200!
@@ -29,7 +29,7 @@
 /management-center/latest-dev/*  /management-center/5.3.1-snapshot/:splat 200!
 
 # Redirect latest-dev hazelcast alias to the latest-dev version
-/hazelcast/latest-dev/*  /hazelcast/5.3-snapshot/:splat 200!
+/hazelcast/latest-dev/*  /hazelcast/5.4-snapshot/:splat 200!
 
 # Redirect latest-dev operator alias to the latest-dev version
 /operator/latest-dev/*  /operator/latest-snapshot/:splat 200!

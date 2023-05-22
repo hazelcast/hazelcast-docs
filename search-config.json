@@ -170,7 +170,9 @@
         "hazelcast-5.3"
       ],
       "variables": {
-        "version": ["5.3"]
+        "version": [
+          "5.3"
+        ]
       },
       "selectors_key": "hz"
     },

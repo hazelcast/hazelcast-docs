@@ -12,7 +12,7 @@ jobs:
   merge-branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Merge staging to production
         uses: devmasx/merge-branch@v1.3.1

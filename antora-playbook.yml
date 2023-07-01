@@ -181,6 +181,9 @@ content:
   - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
     branches: master
     start_path: docs
+  - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
+    branches: main
+    start_path: docs
 ui: 
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip

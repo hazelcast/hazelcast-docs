@@ -38,6 +38,15 @@ content:
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
+  - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
+    branches: master
+    start_path: docs
   - url: https://github.com/hazelcast-guides/client-failover
     branches: master
     start_paths: docs
@@ -173,15 +182,6 @@ content:
     branches: [master]
     start_path: docs
   - url: https://github.com/hazelcast-guides/csharp-client-getting-started
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
     branches: master
     start_path: docs
 ui: 

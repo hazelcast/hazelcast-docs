@@ -26,15 +26,24 @@ content:
   - url: https://github.com/hazelcast/management-center-docs
     branches: [archived-versions]
     start_paths: docs/*
-  - url: https://github.com/hazelcast/cloud-docs
-    branches: [main]
-    start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast/hazelcast-commandline-client
     branches: [main, v/*]
     start_path: docs
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
+  - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast/cloud-docs
+    branches: [main]
+    start_paths: [docs, tutorials]
   - url: https://github.com/hazelcast-guides/client-failover
     branches: master
     start_paths: docs
@@ -55,15 +64,6 @@ content:
     start_paths: docs
   - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
     branches: main
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
-    branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/adoc-templates.git
     branches: antora-doc

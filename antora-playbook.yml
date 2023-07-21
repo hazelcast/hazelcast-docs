@@ -184,7 +184,10 @@ content:
   - url: https://github.com/hazelcast-guides/csharp-client-getting-started
     branches: master
     start_path: docs
-ui: 
+  - url: https://github.com/hazelcast-guides/python-client-getting-started
+    branches: master
+    start_path: docs
+ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true

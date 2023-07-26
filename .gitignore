@@ -5,3 +5,4 @@
 package-lock.json
 /pdf-docs/
 Gemfile.lock
+.idea

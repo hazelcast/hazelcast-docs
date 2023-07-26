@@ -145,12 +145,6 @@ content:
   - url: https://github.com/hazelcast-guides/consul
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast-guides/nodejs-client-getting-started
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/go-client-getting-started
-    branches: master
-    start_path: docs
   - url: https://github.com/hazelcast-guides/openfaas-hz-client
     branches: master
     start_path: docs
@@ -175,13 +169,25 @@ content:
   - url: https://github.com/hazelcast/management-center
     branches: [master, 5.1.z, 5.2.z, 5.3.0]
     start_path: openapi/external
-  - url: https://github.com/hazelcast-guides/cpp-client-getting-started
-    branches: [master]
-    start_path: docs
   - url: https://github.com/hazelcast-guides/csharp-client-getting-started
     branches: master
     start_path: docs
-ui: 
+  - url: https://github.com/hazelcast-guides/python-client-getting-started
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/java-client-getting-started
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/nodejs-client-getting-started
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/go-client-getting-started
+    branches: master
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/cpp-client-getting-started
+    branches: master
+    start_path: docs
+ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true

@@ -182,7 +182,7 @@ To automate some elements of the build process, this repository includes the fol
 |Runs the link:{url-github-docsearch-scraper}[DocSearch scraper] in a Docker container to index the site and send the index to Algolia
 |1st and 15th of every month at 00:00 UTC
 
-NOTE: We used to run this one per day but it was causing overage charges. The crawler that we use uploads a temporary index before deleting the old one. This causes us to go over our limit more than three days in a month, which is the grace period that Algolia provides.
+NOTE: We used to run this once per day, but it was causing overage charges. The crawler that we use uploads a temporary index before deleting the old one. This causes us to go over our limit more than three days in a month, which is the grace period that Algolia provides.
 
 |publish-to-production.yml
 |Merges the `develop` branch into the `main` branch to publish changes on the staging site to production.

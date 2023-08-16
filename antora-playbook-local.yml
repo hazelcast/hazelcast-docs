@@ -263,6 +263,11 @@ antora:
         - Manage Accounts
         - Manage Clusters
       data:
+        - title: What is Viridian Serverless?
+          url: https://www.youtube.com/embed/5bLjl-iqFaU
+          type: video
+          order: 7
+          tags: Videos, Get Started
         - title: What is a client?
           url: https://www.youtube.com/embed/lkQEAdgxvbE
           type: video

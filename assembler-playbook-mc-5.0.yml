@@ -22,7 +22,7 @@ asciidoc:
     idseparator: '-'
     # Filter out content that doesn't apply to PDF such as embedded scripts
     backend-pdf: true
-    hazelcast-cloud: Viridian
+    hazelcast-cloud: Viridian Cloud
     page-cloud-console: https://viridian.hazelcast.com/
   extensions:
     - ./lib/tabs-block.js

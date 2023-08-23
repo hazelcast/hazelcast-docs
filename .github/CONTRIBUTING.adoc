@@ -28,7 +28,7 @@ If no version number is displayed in the output, you need to {url-node}[install 
 
 === Step 2. Clone a documentation project
 
-Documentation is hosted in xref:{url-readme}#documentation-content[separate GitHub repositorites]. To work on a particular documentation project, you must fork it, clone it, and configure the `antora-playbook-local.yml` file to process your local version.
+Documentation is hosted in xref:{url-readme}#documentation-content[separate GitHub repositories]. To work on a particular documentation project, you must fork it, clone it, and configure the `antora-playbook-local.yml` file to process your local version.
 
 NOTE: You can find all content repositories in the `antora-playbook.yml` file under `content.sources`.
 
@@ -141,7 +141,7 @@ modules/ <2>
 ----
 <1> This file tells Antora that the contents of the `modules/` folder should be processed and added to the documentation site. This file is called the {url-antora-yml}[component version descriptor file].
 <2> This folder contains the content that Antora will process
-<3> This folder contains any content that can't be categorized under a specfic module name. Unlike other modules, the name of this module is never displayed in the URL of the site.
+<3> This folder contains any content that can't be categorized under a specific module name. Unlike other modules, the name of this module is never displayed in the URL of the site.
 <4> In any module, this folder contains downloadable content such as ZIP files that a user can download through a link.
 <5> In any module, this folder contains examples such as source code that you can include in Asciidoc pages.
 <6> In any module, this folder contains images that you can include in Asciidoc pages.

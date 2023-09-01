@@ -213,7 +213,7 @@ antora:
               origin:
                 url:
                   include:
-                    - '**/hazelcast/management-center/src'
+                    - '**/hazelcast/management-center'
                 branch:
                   includes:
                     - 'master'

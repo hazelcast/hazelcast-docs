@@ -251,7 +251,7 @@ antora:
               origin:
                 url:
                   include:
-                    - '**/hazelcast/management-center'
+                    - '**/hazelcast/management-center/src'
                 branch:
                   includes:
                     - '5.2.z'

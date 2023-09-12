@@ -175,12 +175,12 @@ content:
   - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast/management-center
-    branches: [master]
-    start_path: src/openapi/external
-  - url: https://github.com/hazelcast/management-center
-    branches: [5.1.z, 5.2.z, 5.3.0]
-    start_path: openapi/external
+#  - url: https://github.com/hazelcast/management-center
+#    branches: [master]
+#    start_path: src/openapi/external
+#  - url: https://github.com/hazelcast/management-center
+#    branches: [5.1.z, 5.2.z, 5.3.0]
+#    start_path: openapi/external
   - url: https://github.com/hazelcast-guides/csharp-client-getting-started
     branches: master
     start_path: docs
@@ -214,59 +214,59 @@ ui:
       contents: |
         static_files: [ netlify.toml ]
 
-antora:
-  extensions:
-    - require: '@djencks/antora-aggregate-collector'
-      trace: true
-      componentversions:
-        - name: management-center
-          version: '5.4-snapshot'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - 'master'
-        - name: management-center
-          version: '5.3'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.3.0'
-        - name: management-center
-          version: '5.2'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.2.z'
-        - name: management-center
-          version: '5.1'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.1.z'
+ antora:
+#  extensions:
+#    - require: '@djencks/antora-aggregate-collector'
+#      trace: true
+#      componentversions:
+#        - name: management-center
+#          version: '5.4-snapshot'
+#          mappings:
+#            - module: integrate
+#              family: attachment
+#              origin:
+#                url:
+#                  include:
+#                    - '**/hazelcast/management-center'
+#                branch:
+#                  includes:
+#                    - 'master'
+#        - name: management-center
+#          version: '5.3'
+#          mappings:
+#            - module: integrate
+#              family: attachment
+#             origin:
+#                url:
+#                  include:
+#                    - '**/hazelcast/management-center'
+#                branch:
+#                  includes:
+#                    - '5.3.0'
+#        - name: management-center
+#          version: '5.2'
+#          mappings:
+#            - module: integrate
+#              family: attachment
+#              origin:
+#                url:
+#                  include:
+#                    - '**/hazelcast/management-center'
+#                branch:
+#                  includes:
+#                    - '5.2.z'
+#        - name: management-center
+#          version: '5.1'
+#          mappings:
+#            - module: integrate
+#              family: attachment
+#              origin:
+#                url:
+#                  include:
+#                    - '**/hazelcast/management-center'
+#                branch:
+#                  includes:
+#                    - '5.1.z'
     - require: ./lib/api_json.js
       tags:
         - Favorites

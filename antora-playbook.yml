@@ -215,7 +215,7 @@ ui:
         static_files: [ netlify.toml ]
 
 antora:
-#  extensions:
+  extensions:
 #    - require: '@djencks/antora-aggregate-collector'
 #      trace: true
 #      componentversions:

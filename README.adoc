@@ -108,8 +108,8 @@ To preview changes, all pull requests are made to the `develop` branch. When the
 
 To make it easy for users to find and bookmark the latest content, we use the following aliases:
 
-- `latest`: The latest stable version
-- `latest-dev`: The latest development version
+- `latest`: The latest stable version.
+- `latest-dev`: The latest development version.
 
 These aliases are configured in the `_redirects` file, which Netlify uses to redirect to their actual versioned content.
 

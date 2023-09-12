@@ -7,6 +7,9 @@
 # Redirect latest-dev management-center alias to the latest version
 /management-center/latest-dev/*  /management-center/5.4-snapshot/:splat 200!
 
+# Redirect latest cloud-only management-center alias to the latest version
+/management-center/5.4-CLOUD-1/* /management-center/5.4-snapshot/:splat 200!
+
 # Redirect latest hazelcast alias to the latest version
 /hazelcast/latest/*  /hazelcast/5.3/:splat 200!
 

@@ -236,7 +236,7 @@ antora:
           mappings:
             - module: integrate
               family: attachment
-             origin:
+              origin:
                 url:
                   include:
                     - '**/hazelcast/management-center'

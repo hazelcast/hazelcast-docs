@@ -35,6 +35,9 @@ content:
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
+  - url: https://github.com/hazelcast-guides/airline-connections
+    branches: master
+    start_path: docs
   - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
     branches: master
     start_path: docs

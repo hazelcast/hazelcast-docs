@@ -35,6 +35,9 @@ content:
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
     start_path: docs
+  - url: https://github.com/hazelcast-guides/airline-connections
+    branches: master
+    start_path: docs
   - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
     branches: master
     start_path: docs
@@ -177,7 +180,7 @@ content:
     start_path: docs
   - url: https://github.com/hazelcast/management-center
     branches: [master]
-    start_path: src/openapi/external
+    start_path: hazelcast-management-center/src/openapi/external
   - url: https://github.com/hazelcast/management-center
     branches: [5.1.z, 5.2.z, 5.3.0]
     start_path: openapi/external

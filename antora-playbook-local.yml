@@ -33,7 +33,7 @@ content:
     branches: [main, v/*]
     start_path: docs
   - url: https://github.com/hazelcast-guides/airline-connections
-    branches: master
+    branches: main
     start_path: docs
   - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
     branches: master

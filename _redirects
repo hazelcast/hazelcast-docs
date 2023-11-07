@@ -17,7 +17,7 @@
 /hazelcast/latest-dev/*  /hazelcast/5.4-snapshot/:splat 200!
 
 # Redirect latest operator alias to the latest version
-/operator/latest/*  /operator/5.9/:splat 200!
+/operator/latest/*  /operator/5.10/:splat 200!
 
 # Redirect latest-dev operator alias to the latest-dev version
 /operator/latest-dev/*  /operator/latest-snapshot/:splat 200!

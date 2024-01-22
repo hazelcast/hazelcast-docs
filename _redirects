@@ -26,7 +26,7 @@
 /imdg/latest/*  /imdg/4.2/:splat 200!
 
 # Redirect latest-dev imdg alias to the latest-dev version
-/imdg/latest-dev/*  /hazelcast/5.3-snapshot/:splat 200!
+/imdg/latest-dev/*  /hazelcast/5.4-snapshot/:splat 200!
 
 # Redirect latest-dev clc alias to the latest-dev version
 /clc/latest-dev/*  /clc/5.3.6/:splat 200!

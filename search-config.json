@@ -95,6 +95,18 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
+        "management-center-4.2022.01"
+      ],
+      "variables": {
+        "version": [
+          "4.2022.01"
+        ]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
         "management-center-4.2021.06"
       ],
       "variables": {

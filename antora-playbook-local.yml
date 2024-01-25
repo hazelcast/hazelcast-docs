@@ -112,9 +112,6 @@ content:
   - url: https://github.com/hazelcast-guides/springboot-tomcat-session-replication
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast-guides/vmware-tanzu
-    branches: master
-    start_path: docs
   - url: https://github.com/hazelcast-guides/terraform-quickstarts
     branches: master
     start_path: docs
@@ -181,12 +178,12 @@ content:
   - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast/management-center
-    branches: [master]
-    start_path: hazelcast-management-center/src/openapi/external
-  - url: https://github.com/hazelcast/management-center
-    branches: [5.1.z, 5.2.z, 5.3.0]
-    start_path: openapi/external
+#  - url: https://github.com/hazelcast/management-center
+#    branches: [master]
+#    start_path: hazelcast-management-center/src/openapi/external
+#  - url: https://github.com/hazelcast/management-center
+#    branches: [5.1.z, 5.2.z, 5.3.0]
+#    start_path: openapi/external
   - url: https://github.com/hazelcast-guides/csharp-client-getting-started
     branches: master
     start_path: docs

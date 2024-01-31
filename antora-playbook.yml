@@ -283,7 +283,9 @@ antora:
         - Case studies
         - Documentation
         - Develop Applications
+        - Organizations and Accounts
         - Manage Accounts
+        - Manage Organizations
         - Manage Clusters
       data:
         - title: What is a client?

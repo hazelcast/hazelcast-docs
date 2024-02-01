@@ -287,6 +287,8 @@ antora:
         - Manage Accounts
         - Manage Organizations
         - Manage Clusters
+        - Organizations and Accounts
+        - Manage Organizations
       data:
         - title: What is a client?
           url: https://www.youtube.com/embed/lkQEAdgxvbE

@@ -317,6 +317,8 @@ asciidoc:
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
     hazelcast-cloud: Viridian Cloud
+    ucn: User Code Namespaces
+    ucd: User Code Deployment    
     page-cloud-console: https://viridian.hazelcast.com/
   extensions:
     - ./lib/tabs-block.js

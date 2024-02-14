@@ -199,7 +199,7 @@
         ]
       },
       "selectors_key": "hz"
-    },    
+    },
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [

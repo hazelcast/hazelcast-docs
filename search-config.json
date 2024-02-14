@@ -191,6 +191,18 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
+        "hazelcast-5.4-beta-2"
+      ],
+      "variables": {
+        "version": [
+          "5.4"
+        ]
+      },
+      "selectors_key": "hz"
+    },    
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
         "hazelcast-5.2"
       ],
       "variables": {

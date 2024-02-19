@@ -44,7 +44,7 @@ content:
   - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
+  - url: https://github.com/hazelcast-guides/sql_stock_ticker_cloud:
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/Stream-Processing-Intro

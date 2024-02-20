@@ -185,7 +185,7 @@ content:
     branches: [master, 5.4.0-BETA-2]
     start_path: hazelcast-management-center/src/openapi/external
   - url: https://github.com/hazelcast/management-center
-    branches: [5.1.z, 5.2.z, 5.3.z]
+    branches: [5.1.z, 5.2.z, 5.3.0]
     start_path: openapi/external
   - url: https://github.com/hazelcast-guides/csharp-client-getting-started
     branches: master
@@ -260,7 +260,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - '5.3.z'
+                    - '5.3.0'
         - name: management-center
           version: '5.2'
           mappings:

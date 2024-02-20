@@ -35,7 +35,7 @@ content:
   - url: https://github.com/hazelcast-guides/airline-connections
     branches: main
     start_path: docs
-  - url: https://github.com/hazelcast-guides/sql_basics_on_viridian
+  - url: https://github.com/hazelcast-guides/sql_basics_on_cloud
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
@@ -299,8 +299,8 @@ asciidoc:
     imdg-ops-guide: https://hazelcast.com/resources/hazelcast-deployment-operations-guide/
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
-    hazelcast-cloud: Viridian Cloud
-    page-cloud-console: https://viridian.hazelcast.com/
+    hazelcast-cloud: Cloud
+    page-cloud-console: https://cloud.hazelcast.com/
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js

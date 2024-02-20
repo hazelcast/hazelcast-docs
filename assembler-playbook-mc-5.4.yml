@@ -3,8 +3,8 @@ site:
   url: https:/docs.hazelcast.com
 content:
   sources: 
-  - url: https://github.com/hazelcast/hz-docs
-    branches: [v/5.2]
+  - url: https://github.com/hazelcast/management-center-docs
+    branches: [v/5.4]
     start_path: docs
 antora:
   extensions:

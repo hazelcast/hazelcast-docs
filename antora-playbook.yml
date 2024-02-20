@@ -182,7 +182,7 @@ content:
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast/management-center
-    branches: [master]
+    branches: [master, 5.4.0-BETA-2]
     start_path: hazelcast-management-center/src/openapi/external
   - url: https://github.com/hazelcast/management-center
     branches: [5.1.z, 5.2.z, 5.3.z]

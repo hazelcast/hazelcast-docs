@@ -63,7 +63,7 @@ Source content for the documentation site is marked up in link:{url-asciidoc}[As
 The current playbooks pull content from the following repositories:
 
 - link:{url-hz-docs}[Platform documentation]
-- link:{url-cloud-docs}[Viridian Cloud documentation]
+- link:{url-cloud-docs}[Cloud documentation]
 - link:{url-imdg-docs}[IMDG documentation]
 - link:{url-k8-docs}[Platform Operator documentation]
 - link:{url-mc-docs}[Management Center documentation]

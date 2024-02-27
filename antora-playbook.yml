@@ -328,10 +328,10 @@ asciidoc:
     imdg-ops-guide: https://hazelcast.com/resources/hazelcast-deployment-operations-guide/
     jet-docs: https://jet-start.sh/
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
-    hazelcast-cloud: Viridian Cloud
+    hazelcast-cloud: Cloud
+    page-cloud-console: https://cloud.hazelcast.com/
     ucn: User Code Namespaces
     ucd: User Code Deployment    
-    page-cloud-console: https://viridian.hazelcast.com/
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js

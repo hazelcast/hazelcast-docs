@@ -95,6 +95,18 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
+        "management-center-4.2022.01"
+      ],
+      "variables": {
+        "version": [
+          "4.2022.01"
+        ]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
         "management-center-4.2021.06"
       ],
       "variables": {
@@ -179,6 +191,18 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
+        "hazelcast-5.4-beta-2"
+      ],
+      "variables": {
+        "version": [
+          "5.4"
+        ]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
         "hazelcast-5.2"
       ],
       "variables": {
@@ -222,11 +246,11 @@
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
-        "clc-5.3-snapshot"
+        "clc-5.3.6"
       ],
       "variables": {
         "version": [
-          "5.3-snapshot"
+          "5.3.6"
         ]
       },
       "selectors_key": "command-line-client"
@@ -234,11 +258,11 @@
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
-        "clc-5.3"
+        "clc-5.3.5"
       ],
       "variables": {
         "version": [
-          "5.3"
+          "5.3.5"
         ]
       },
       "selectors_key": "command-line-client"
@@ -246,11 +270,11 @@
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
-        "clc-5.2"
+        "clc-5.3.4"
       ],
       "variables": {
         "version": [
-          "5.2"
+          "5.3.4"
         ]
       },
       "selectors_key": "command-line-client"
@@ -258,14 +282,26 @@
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
-        "clc-5.2-beta-3"
+        "clc-5.2.1"
       ],
       "variables": {
         "version": [
-          "5.2-beta-3"
+          "5.2.1"
         ]
       },
       "selectors_key": "command-line-client"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.10"
+      ],
+      "variables": {
+        "version": [
+          "5.10"
+        ]
+      },
+      "selectors_key": "operator"
     },
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
@@ -431,6 +467,18 @@
       "variables": {
         "version": [
           "5.3"
+        ]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center-5.4.0-beta-2"
+      ],
+      "variables": {
+        "version": [
+          "5.4.0-beta-2"
         ]
       },
       "selectors_key": "mc"

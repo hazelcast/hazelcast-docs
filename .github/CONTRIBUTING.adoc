@@ -83,16 +83,16 @@ NOTE: This script builds the documentation only for your local branch. If you wa
 npm run-script serve
 ----
 +
-Then on the same device, go to `http:localhost:5000` to view the local site.
+Then on the same device, go to the "Local" address shown after you run the `serve` command above, to view the local site. Usually it is `http://localhost:3000`.
 +
 
-. If you want to show others your changes, you can expose your web server to the Internet, using ngrok by doing the following:
+. If you want to show others your changes, you can expose your web server to the Internet. While the terminal in which you run `npm run-script serve` is open, open another terminal and run the following command:
 +
 ```bash
-npm run-script expose
+ngrok http http://localhost:3000 (assuming the the local address is http://localhost:3000; if a different one is assigned after the `serve` command, use that one here)
 ```
 +
-The public URL is displayed in the output:
+The public URL is displayed in the output of the above command, which you can share with colleagues to show your changes on the preferred browsers:
 +
 image::../images/ngrok.png[ngrok output]
 

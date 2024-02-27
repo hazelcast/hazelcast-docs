@@ -4,7 +4,7 @@ site:
 content:
   sources: 
   - url: https://github.com/serdaro/hz-docs
-    branches: [54-pdf]
+    branches: [53-pdf]
     start_path: docs
 #  - url: https://github.com/hazelcast/hz-docs
 #    branches: [v/5.3]

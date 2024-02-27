@@ -30,10 +30,13 @@ content:
     branches: [archived-versions]
     start_paths: docs/*
   - url: https://github.com/hazelcast/clc-docs
-    branches: [main, v/*]
+    branches: [v/*]
     start_path: docs
   - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
     branches: [main, v/*]
+    start_path: docs
+  - url: https://github.com/hazelcast-guides/stream-processing-fundamentals
+    branches: main
     start_path: docs
   - url: https://github.com/hazelcast-guides/airline-connections
     branches: main
@@ -41,7 +44,7 @@ content:
   - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast-guides/sql_basics_on_cloud
+  - url: https://github.com/hazelcast-guides/sql_stock_ticker_cloud
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
@@ -112,9 +115,6 @@ content:
   - url: https://github.com/hazelcast-guides/springboot-tomcat-session-replication
     branches: master
     start_path: docs
-  - url: https://github.com/hazelcast-guides/vmware-tanzu
-    branches: master
-    start_path: docs
   - url: https://github.com/hazelcast-guides/terraform-quickstarts
     branches: master
     start_path: docs
@@ -182,7 +182,7 @@ content:
     branches: master
     start_path: docs
   - url: https://github.com/hazelcast/management-center
-    branches: [master]
+    branches: [master, 5.4.0-BETA-2]
     start_path: hazelcast-management-center/src/openapi/external
   - url: https://github.com/hazelcast/management-center
     branches: [5.1.z, 5.2.z, 5.3.0]
@@ -225,6 +225,18 @@ antora:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
+        - name: management-center
+          version: '5.4.0-beta-2'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.4.0-BETA-2'
         - name: management-center
           version: '5.4-snapshot'
           mappings:
@@ -283,7 +295,9 @@ antora:
         - Case studies
         - Documentation
         - Develop Applications
+        - Organizations and Accounts
         - Manage Accounts
+        - Manage Organizations
         - Manage Clusters
       data:
         - title: What is a client?
@@ -316,6 +330,8 @@ asciidoc:
     docs-archive: 'https://hazelcast.org/imdg/download/archives/'
     hazelcast-cloud: Cloud
     page-cloud-console: https://cloud.hazelcast.com/
+    ucn: User Code Namespaces
+    ucd: User Code Deployment    
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js

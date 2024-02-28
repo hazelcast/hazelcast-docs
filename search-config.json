@@ -474,11 +474,11 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center-5.4.0-beta-2"
+        "management-center-5.4"
       ],
       "variables": {
         "version": [
-          "5.4.0-beta-2"
+          "5.4"
         ]
       },
       "selectors_key": "mc"

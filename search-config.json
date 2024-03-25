@@ -23,30 +23,6 @@
     {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [
-        "imdg-4.1"
-      ],
-      "variables": {
-        "version": [
-          "4.1"
-        ]
-      },
-      "selectors_key": "imdg"
-    },
-    {
-      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
-      "tags": [
-        "imdg-4.0"
-      ],
-      "variables": {
-        "version": [
-          "4.0"
-        ]
-      },
-      "selectors_key": "imdg"
-    },
-    {
-      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
-      "tags": [
         "imdg-3.12"
       ],
       "variables": {
@@ -100,66 +76,6 @@
       "variables": {
         "version": [
           "4.2022.01"
-        ]
-      },
-      "selectors_key": "mc"
-    },
-    {
-      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
-        "management-center-4.2021.06"
-      ],
-      "variables": {
-        "version": [
-          "4.2021.06"
-        ]
-      },
-      "selectors_key": "mc"
-    },
-    {
-      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
-        "management-center-4.2021.04"
-      ],
-      "variables": {
-        "version": [
-          "4.2021.04"
-        ]
-      },
-      "selectors_key": "mc"
-    },
-    {
-      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
-        "management-center-4.2021.03"
-      ],
-      "variables": {
-        "version": [
-          "4.2021.03"
-        ]
-      },
-      "selectors_key": "mc"
-    },
-    {
-      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
-        "management-center-4.2021.02"
-      ],
-      "variables": {
-        "version": [
-          "4.2021.02"
-        ]
-      },
-      "selectors_key": "mc"
-    },
-    {
-      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
-      "tags": [
-        "management-center-4.2020.12"
-      ],
-      "variables": {
-        "version": [
-          "4.2020.12"
         ]
       },
       "selectors_key": "mc"
@@ -292,18 +208,6 @@
       "selectors_key": "command-line-client"
     },
     {
-      "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
-      "tags": [
-        "clc-5.2.1"
-      ],
-      "variables": {
-        "version": [
-          "5.2.1"
-        ]
-      },
-      "selectors_key": "command-line-client"
-    },
-    {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
       "tags": [
         "operator-5.10"
@@ -371,78 +275,6 @@
       "variables": {
         "version": [
           "5.5"
-        ]
-      },
-      "selectors_key": "operator"
-    },
-    {
-      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
-      "tags": [
-        "operator-5.5"
-      ],
-      "variables": {
-        "version": [
-          "5.5"
-        ]
-      },
-      "selectors_key": "operator"
-    },
-    {
-      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
-      "tags": [
-        "operator-5.4"
-      ],
-      "variables": {
-        "version": [
-          "5.4"
-        ]
-      },
-      "selectors_key": "operator"
-    },
-    {
-      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
-      "tags": [
-        "operator-5.3"
-      ],
-      "variables": {
-        "version": [
-          "5.3"
-        ]
-      },
-      "selectors_key": "operator"
-    },
-    {
-      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
-      "tags": [
-        "operator-5.2"
-      ],
-      "variables": {
-        "version": [
-          "5.2"
-        ]
-      },
-      "selectors_key": "operator"
-    },
-    {
-      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
-      "tags": [
-        "operator-5.1"
-      ],
-      "variables": {
-        "version": [
-          "5.1"
-        ]
-      },
-      "selectors_key": "operator"
-    },
-    {
-      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
-      "tags": [
-        "operator-5.0"
-      ],
-      "variables": {
-        "version": [
-          "5.0"
         ]
       },
       "selectors_key": "operator"

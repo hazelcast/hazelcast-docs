@@ -11,10 +11,10 @@
 /management-center/5.4-CLOUD-1/* /management-center/5.4-snapshot/:splat 200!
 
 # Redirect latest hazelcast alias to the latest version
-/hazelcast/latest/*  /hazelcast/5.3/:splat 200!
+/hazelcast/latest/*  /hazelcast/5.4/:splat 200!
 
 # Redirect latest-dev hazelcast alias to the latest-dev version
-/hazelcast/latest-dev/*  /hazelcast/5.4-snapshot/:splat 200!
+/hazelcast/latest-dev/*  /hazelcast/5.5-snapshot/:splat 200!
 
 # Redirect beta links from hazelcast.com to correct addresses
 /hazelcast/5.4/* /hazelcast/5.4-beta-2/:splat 200! 

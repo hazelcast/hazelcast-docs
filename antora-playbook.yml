@@ -12,200 +12,200 @@ urls:
   html_extension_style: drop
 content:
   sources:
-  - url: .
-    start_paths: [home,tutorials]
-    branches: HEAD
-  - url: https://github.com/hazelcast/hz-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/imdg-docs
-    branches: [v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/imdg-docs
-    branches: [archived-versions]
-    start_paths: docs/*
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/management-center-docs
-    branches: [archived-versions]
-    start_paths: docs/*
-  - url: https://github.com/hazelcast/clc-docs
-    branches: [v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
-    branches: [main, v/*]
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/stream-processing-fundamentals
-    branches: main
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/airline-connections
-    branches: main
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/sql_stock_ticker_cloud
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast/cloud-docs
-    branches: [main]
-    start_paths: [docs, tutorials]
-  - url: https://github.com/hazelcast-guides/client-failover
-    branches: master
-    start_paths: docs
-  - url: https://github.com/hazelcast-guides/spring-boot-sample
-    branches: master
-    start_paths: docs
-  - url: https://github.com/hazelcast-guides/serverless-fraud-detection
-    branches: master
-    start_paths: docs
-  - url: https://github.com/hazelcast-guides/write-through-cache-mongodb-mapstore
-    branches: master
-    start_paths: docs
-  - url: https://github.com/hazelcast-guides/standard-deviation-parallel-processing
-    branches: master
-    start_paths: docs
-  - url: https://github.com/hazelcast-guides/stream-to-stream-joins
-    branches: master
-    start_paths: docs
-  - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
-    branches: main
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/adoc-templates.git
-    branches: antora-doc
-  - url: https://github.com/hazelcast-guides/caching-springboot-jcache
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-embedded-springboot
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/springboot-hibernate
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hibernate-jcache
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/istio
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/caching-micronaut
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kubernetes-embedded
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-embedded-microprofile
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-client-quarkus
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/springboot-webfilter-session-replication
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/caching-springboot
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/ecs-embedded
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/springboot-tomcat-session-replication
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/terraform-quickstarts
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kubernetes-external-client
-    branches: main
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/active-directory-authentication
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kubernetes-sidecar
-    branches: main
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kubernetes-hpa
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kubernetes-ssl
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kubernetes-wan
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kubernetes
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/spring-session-hazelcast
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/ec2-cluster
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/Hazelcast-Embedded-with-Eureka-discovery
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/linkerd
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/consul
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/openfaas-hz-client
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-expose-externally
-    branches: main
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-external-backup-restore
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-wan-replication
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-jet
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-jet-job-snapshot
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-tls
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/kafka-kerberos
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast/management-center
-    branches: [master, 5.4.0-BETA-2]
-    start_path: hazelcast-management-center/src/openapi/external
-  - url: https://github.com/hazelcast/management-center
-    branches: [5.1.z, 5.2.z, 5.3.0]
-    start_path: openapi/external
-  - url: https://github.com/hazelcast-guides/csharp-client-getting-started
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/python-client-getting-started
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/java-client-getting-started
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/nodejs-client-getting-started
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/go-client-getting-started
-    branches: master
-    start_path: docs
-  - url: https://github.com/hazelcast-guides/cpp-client-getting-started
-    branches: master
-    start_path: docs
+    - url: .
+      start_paths: [home, tutorials]
+      branches: HEAD
+    - url: https://github.com/hazelcast/hz-docs
+      branches: [main, v/*]
+      start_path: docs
+    - url: https://github.com/hazelcast/imdg-docs
+      branches: [v/*]
+      start_path: docs
+    - url: https://github.com/hazelcast/imdg-docs
+      branches: [archived-versions]
+      start_paths: docs/*
+    - url: https://github.com/hazelcast/management-center-docs
+      branches: [main, v/*]
+      start_path: docs
+    - url: https://github.com/hazelcast/management-center-docs
+      branches: [archived-versions]
+      start_paths: docs/*
+    - url: https://github.com/hazelcast/clc-docs
+      branches: [v/*]
+      start_path: docs
+    - url: https://github.com/hazelcast/hazelcast-platform-operator-docs
+      branches: [main, v/*]
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/stream-processing-fundamentals
+      branches: main
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/airline-connections
+      branches: main
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/sql_stock_ticker_cloud
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast/cloud-docs
+      branches: [main]
+      start_paths: [docs, tutorials]
+    - url: https://github.com/hazelcast-guides/client-failover
+      branches: master
+      start_paths: docs
+    - url: https://github.com/hazelcast-guides/spring-boot-sample
+      branches: master
+      start_paths: docs
+    - url: https://github.com/hazelcast-guides/serverless-fraud-detection
+      branches: master
+      start_paths: docs
+    - url: https://github.com/hazelcast-guides/write-through-cache-mongodb-mapstore
+      branches: master
+      start_paths: docs
+    - url: https://github.com/hazelcast-guides/standard-deviation-parallel-processing
+      branches: master
+      start_paths: docs
+    - url: https://github.com/hazelcast-guides/stream-to-stream-joins
+      branches: master
+      start_paths: docs
+    - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
+      branches: main
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/adoc-templates.git
+      branches: antora-doc
+    - url: https://github.com/hazelcast-guides/caching-springboot-jcache
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-embedded-springboot
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/springboot-hibernate
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hibernate-jcache
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/istio
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/caching-micronaut
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kubernetes-embedded
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-embedded-microprofile
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-client-quarkus
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/springboot-webfilter-session-replication
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/caching-springboot
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/ecs-embedded
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/springboot-tomcat-session-replication
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/terraform-quickstarts
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kubernetes-external-client
+      branches: main
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/active-directory-authentication
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kubernetes-sidecar
+      branches: main
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kubernetes-hpa
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kubernetes-ssl
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kubernetes-wan
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kubernetes
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/spring-session-hazelcast
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/ec2-cluster
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/Hazelcast-Embedded-with-Eureka-discovery
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/linkerd
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/consul
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/openfaas-hz-client
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-expose-externally
+      branches: main
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-external-backup-restore
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-wan-replication
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-jet
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-jet-job-snapshot
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-tls
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/kafka-kerberos
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast/management-center
+      branches: [master, 5.4.0]
+      start_path: hazelcast-management-center/src/openapi/external
+    - url: https://github.com/hazelcast/management-center
+      branches: [5.1.z, 5.2.z, 5.3.0]
+      start_path: openapi/external
+    - url: https://github.com/hazelcast-guides/csharp-client-getting-started
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/python-client-getting-started
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/java-client-getting-started
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/nodejs-client-getting-started
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/go-client-getting-started
+      branches: master
+      start_path: docs
+    - url: https://github.com/hazelcast-guides/cpp-client-getting-started
+      branches: master
+      start_path: docs
 ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
@@ -214,30 +214,21 @@ ui:
     - path: netlify.toml
       contents: >
         [[headers]]
+
+
+
+
           for = "/api/*"
           [headers.values]
             Access-Control-Allow-Origin = "*"
     - path: ui.yml
       contents: |
         static_files: [ netlify.toml ]
-
 antora:
   extensions:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
-        - name: management-center
-          version: '5.4.0-beta-2'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.4.0-BETA-2'
         - name: management-center
           version: '5.4-snapshot'
           mappings:
@@ -286,6 +277,18 @@ antora:
                 branch:
                   includes:
                     - '5.1.z'
+        - name: management-center
+          version: "5.4"
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                  branch:
+                    includes:
+                      - 5.4.0
     - require: ./lib/api_json.js
       tags:
         - Favorites
@@ -311,7 +314,6 @@ antora:
           type: video
           order: 9
           tags: Videos, Get Started
-
 asciidoc:
   attributes:
     # Order the products in the version selector dropdown.

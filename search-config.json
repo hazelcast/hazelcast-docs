@@ -182,7 +182,7 @@
         ]
       },
       "selectors_key": "command-line-client"
-    },    
+    },
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [

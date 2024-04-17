@@ -212,7 +212,7 @@ antora:
       trace: true
       componentversions:
         - name: management-center
-          version: '5.4-snapshot'
+          version: '5.5-snapshot'
           mappings:
             - module: integrate
               family: attachment
@@ -260,7 +260,7 @@ antora:
                   includes:
                     - '5.1.z'
         - name: management-center
-          version: "5.4"
+          version: '5.4'
           mappings:
             - module: integrate
               family: attachment
@@ -270,7 +270,7 @@ antora:
                     - '**/hazelcast/management-center'
                   branch:
                     includes:
-                      - 5.4.0
+                      - '5.4.0'
     - require: ./lib/api_json.js
       tags:
         - Favorites

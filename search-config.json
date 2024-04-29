@@ -21,18 +21,6 @@
       "selectors_key": "imdg"
     },
     {
-      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
-      "tags": [
-        "imdg-3.12"
-      ],
-      "variables": {
-        "version": [
-          "3.12"
-        ]
-      },
-      "selectors_key": "imdg"
-    },
-    {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
         "management-center-5.5-snapshot"
@@ -112,18 +100,6 @@
       "variables": {
         "version": [
           "5.5-snapshot"
-        ]
-      },
-      "selectors_key": "hz"
-    },
-    {
-      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
-      "tags": [
-        "hazelcast-5.4-beta-2"
-      ],
-      "variables": {
-        "version": [
-          "5.4"
         ]
       },
       "selectors_key": "hz"

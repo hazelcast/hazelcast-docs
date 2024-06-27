@@ -3,9 +3,12 @@ site:
   url: https:/docs.hazelcast.com
 content:
   sources:
-  - url: https://github.com/hazelcast/hz-docs
-    branches: [v/5.3]
+  - url: https://github.com/serdaro/hz-docs
+    branches: [53-pdf]
     start_path: docs
+#  - url: https://github.com/hazelcast/hz-docs
+#    branches: [v/5.3]
+#    start_path: docs
 antora:
   extensions:
   - '@antora/pdf-extension'

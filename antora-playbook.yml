@@ -230,6 +230,18 @@ antora:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
+        - name: hz-docs
+          version: '5.5-snapshot'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/hazelcast-mono'
+                branch:
+                  includes:
+                    - 'master'
         - name: management-center
           version: '5.5-snapshot'
           mappings:

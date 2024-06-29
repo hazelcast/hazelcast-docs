@@ -40,15 +40,15 @@ content:
       branches: master
       start_path: docs
     - url: https://github.com/hazelcast-guides/stream-processing-fundamentals
-      branches: master
+      branches: main
       start_path: docs
     - url: https://github.com/hazelcast-guides/airline-connections
       branches: main
       start_path: docs
-    - url: https://github.com/hazelcast-guides/sql_stock_ticker_cloud
+    - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
       branches: master
       start_path: docs
-    - url: https://github.com/hazelcast-guides/Generating-Data-using-SQL
+    - url: https://github.com/hazelcast-guides/sql_stock_ticker_cloud
       branches: master
       start_path: docs
     - url: https://github.com/hazelcast-guides/Stream-Processing-Intro
@@ -185,12 +185,18 @@ content:
     - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
       branches: master
       start_path: docs
-      #  - url: https://github.com/hazelcast/management-center
-      #    branches: [master]
-      #    start_path: hazelcast-management-center/src/openapi/external
-      #  - url: https://github.com/hazelcast/management-center
-      #    branches: [5.1.z, 5.2.z, 5.3.0]
-      #    start_path: openapi/external
+#    Uncomment to build Swagger docs locally
+#    These are private repos. You need to do private repository authentication.
+#    See [here](https://docs.antora.org/antora/latest/playbook/private-repository-auth/) how to do that
+    - url: https://github.com/hazelcast/hazelcast-mono
+      branches: [master]
+      start_path: docs/rest
+    - url: https://github.com/hazelcast/management-center
+      branches: [master]
+      start_path: hazelcast-management-center/src/openapi/external
+    - url: https://github.com/hazelcast/management-center
+      branches: [5.1.z, 5.2.z, 5.3.0]
+      start_path: openapi/external
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master
       start_path: docs
@@ -218,6 +224,18 @@ antora:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
+        - name: hazelcast
+          version: '5.5-snapshot'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/hazelcast-mono'
+                branch:
+                  includes:
+                    - 'master'
         - name: management-center
           version: '5.5-snapshot'
           mappings:
@@ -241,7 +259,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - '5.3.z'
+                    - '5.3.0'
         - name: management-center
           version: '5.2'
           mappings:
@@ -309,7 +327,7 @@ asciidoc:
     # Use * to list all remaining products in alphabetical order.
     page-component-order: 'hazelcast, management-center, cloud, *'
     page-pagination: true@
-    # Allow the use of UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
+    # Allows us to use UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
     page-experimental: true
     idprefix: ''
     idseparator: '-'

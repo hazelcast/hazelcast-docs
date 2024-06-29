@@ -230,7 +230,7 @@ antora:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
-        - name: hz-docs
+        - name: hazelcast
           version: '5.5-snapshot'
           mappings:
             - module: integrate

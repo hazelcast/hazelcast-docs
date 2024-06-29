@@ -187,6 +187,9 @@ content:
     - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
       branches: master
       start_path: docs
+    - url: https://github.com/hazelcast/hazelcast-mono
+      branches: [master]
+      start_path: docs/rest
     - url: https://github.com/hazelcast/management-center
       branches: [master, 5.4.0]
       start_path: hazelcast-management-center/src/openapi/external
@@ -233,7 +236,7 @@ antora:
         - name: hazelcast
           version: '5.5-snapshot'
           mappings:
-            - module: integrate
+            - module: maintain-cluster
               family: attachment
               origin:
                 url:

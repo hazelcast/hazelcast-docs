@@ -188,15 +188,15 @@ content:
 #    Uncomment to build Swagger docs locally
 #    These are private repos. You need to do private repository authentication.
 #    See [here](https://docs.antora.org/antora/latest/playbook/private-repository-auth/) how to do that
-    - url: https://github.com/hazelcast/hazelcast-mono
-      branches: [master]
-      start_path: docs/rest
-    - url: https://github.com/hazelcast/management-center
-      branches: [master]
-      start_path: hazelcast-management-center/src/openapi/external
-    - url: https://github.com/hazelcast/management-center
-      branches: [5.1.z, 5.2.z, 5.3.0]
-      start_path: openapi/external
+#    - url: https://github.com/hazelcast/hazelcast-mono
+#      branches: [master]
+#      start_path: docs/rest
+#    - url: https://github.com/hazelcast/management-center
+#      branches: [master]
+#      start_path: hazelcast-management-center/src/openapi/external
+#    - url: https://github.com/hazelcast/management-center
+#      branches: [5.1.z, 5.2.z, 5.3.0]
+#      start_path: openapi/external
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master
       start_path: docs
@@ -227,7 +227,7 @@ antora:
         - name: hazelcast
           version: '5.5-snapshot'
           mappings:
-            - module: integrate
+            - module: maintain-cluster
               family: attachment
               origin:
                 url:

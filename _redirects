@@ -5,7 +5,7 @@
 /management-center/latest/*  /management-center/5.4/:splat 200!
 
 # Redirect latest-dev management-center alias to the latest version
-/management-center/latest-dev/*  /management-center/5.5-snapshot/:splat 200!
+/management-center/latest-dev/*  /management-center/6.0.0-snapshot/:splat 200!
 
 # Redirect latest cloud-only management-center alias to the latest version
 /management-center/5.4-CLOUD-1/* /management-center/5.4-snapshot/:splat 200!

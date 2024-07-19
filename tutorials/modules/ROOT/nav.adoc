@@ -1,0 +1,4 @@
+.Tutorials
+* xref:ROOT:user-code-namespaces.adoc
+* xref:ROOT:sql-gen-data.adoc
+// you don't need to add all existing docs here, if you add at least one, breadcrumbs appear...

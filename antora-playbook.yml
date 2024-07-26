@@ -191,7 +191,7 @@ content:
       branches: [master]
       start_path: docs/rest
     - url: https://github.com/hazelcast/management-center
-      branches: [master, 5.4.0]
+      branches: [master, 5.4.0, 5.5.0]
       start_path: hazelcast-management-center/src/openapi/external
     - url: https://github.com/hazelcast/management-center
       branches: [5.1.z, 5.2.z, 5.3.0]
@@ -222,6 +222,10 @@ ui:
     - path: netlify.toml
       contents: >
         [[headers]]
+
+
+
+
           for = "/api/*"
           [headers.values]
             Access-Control-Allow-Origin = "*"
@@ -305,6 +309,18 @@ antora:
                   branch:
                     includes:
                       - '5.4.0'
+        - name: management-center
+          version: "5.5"
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                  branch:
+                    includes:
+                      - 5.5.0
     - require: ./lib/api_json.js
       tags:
         - Favorites

@@ -86,7 +86,9 @@
         "hazelcast-5.5"
       ],
       "variables": {
-        "version": ["5.5"]
+        "version": [
+          "5.5"
+        ]
       },
       "selectors_key": "hz"
     },

@@ -86,7 +86,9 @@
         "hazelcast-5.5"
       ],
       "variables": {
-        "version": ["5.5"]
+        "version": [
+          "5.5"
+        ]
       },
       "selectors_key": "hz"
     },
@@ -216,6 +218,18 @@
         ]
       },
       "selectors_key": "command-line-client"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.13"
+      ],
+      "variables": {
+        "version": [
+          "5.13"
+        ]
+      },
+      "selectors_key": "operator"
     },
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",

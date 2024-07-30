@@ -191,7 +191,7 @@ content:
       branches: master
       start_path: docs
     - url: https://github.com/hazelcast/hazelcast-mono
-      branches: [master]
+      branches: [master, 5.5.0]
       start_path: docs/rest
     - url: https://github.com/hazelcast/management-center
       branches: [master, 5.4.0, 5.5.0]
@@ -252,6 +252,33 @@ antora:
                 branch:
                   includes:
                     - 'master'
+    - require: '@djencks/antora-aggregate-collector'
+      trace: true
+      componentversions:
+        - name: hazelcast
+          version: '5.5'
+          mappings:
+            - module: maintain-cluster
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/hazelcast-mono'
+                branch:
+                  includes:
+                    - '5.5.0'                    
+        - name: management-center
+          version: '6.0-snapshot'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                      - 'master'                    
         - name: management-center
           version: '5.5'
           mappings:

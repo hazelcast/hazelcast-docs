@@ -181,6 +181,9 @@ content:
     - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-tls
       branches: master
       start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-user-code-namespace
+      branches: master
+      start_path: docs 
     - url: https://github.com/hazelcast-guides/kafka-kerberos
       branches: master
       start_path: docs
@@ -238,7 +241,7 @@ antora:
       trace: true
       componentversions:
         - name: hazelcast
-          version: '5.5-snapshot'
+          version: '6.0-snapshot'
           mappings:
             - module: maintain-cluster
               family: attachment
@@ -250,7 +253,7 @@ antora:
                   includes:
                     - 'master'
         - name: management-center
-          version: '5.5-snapshot'
+          version: '5.5'
           mappings:
             - module: integrate
               family: attachment
@@ -260,7 +263,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - 'master'
+                      - '5.5.0'
         - name: management-center
           version: '5.3'
           mappings:

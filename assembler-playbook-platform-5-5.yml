@@ -1,0 +1,30 @@
+site:
+  title: Documentation
+  url: https:/docs.hazelcast.com
+content:
+  sources:
+  - url: https://github.com/hazelcast/hz-docs
+    branches: [v/5.5]
+    start_path: docs
+antora:
+  extensions:
+  - '@antora/pdf-extension'
+ui:
+  bundle:
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip #../hazelcast-docs-ui/build/ui-bundle.zip
+    snapshot: true
+asciidoc:
+  attributes:
+    # Download images from kroki at build time (does not work for inline images)
+    kroki-fetch-diagram: true
+    idprefix: ''
+    # Separate anchor link names by dashes
+    idseparator: '-'
+    # Filter out content that doesn't apply to PDF such as embedded scripts
+    backend-pdf: true
+    hazelcast-cloud: Cloud
+    page-cloud-console: https://cloud.hazelcast.com/
+  extensions:
+    - ./lib/tabs-block.js
+    - ./lib/swagger-ui-block-macro.js
+    - asciidoctor-kroki

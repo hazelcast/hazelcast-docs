@@ -12,9 +12,12 @@ content:
     - url: .
       start_paths: [home, tutorials]
       branches: HEAD
-    - url: https://github.com/hazelcast/hz-docs
-      branches: [main, v/*]
-      start_path: docs
+#    - url: https://github.com/hazelcast/hz-docs
+#      branches: [main, v/*]
+#      start_path: docs
+    - url: ../hz-flow-docs
+      branches: [flow-content-v1]
+      start_path: docs      
     - url: https://github.com/hazelcast/imdg-docs
       branches: [v/*]
       start_path: docs

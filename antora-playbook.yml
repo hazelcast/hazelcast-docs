@@ -6,7 +6,7 @@ site:
     google_analytics: 'GTM-MQ59XD6'
     docsearch_id: 'QK2EAH8GB0'
     docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
-    docsearch_index: 'prod_hazelcast_docs'
+    docsearch_index: 'prod_hazelcast_docs'   
 urls:
   html_extension_style: drop
 content:
@@ -181,9 +181,6 @@ content:
     - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-tls
       branches: master
       start_path: docs
-    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-user-code-namespace
-      branches: master
-      start_path: docs 
     - url: https://github.com/hazelcast-guides/kafka-kerberos
       branches: master
       start_path: docs
@@ -191,7 +188,7 @@ content:
       branches: master
       start_path: docs
     - url: https://github.com/hazelcast/hazelcast-mono
-      branches: [master, 5.5.0]
+      branches: [master, 5.5.z]
       start_path: docs/rest
     - url: https://github.com/hazelcast/management-center
       branches: [master, 5.4.0, 5.5.0]
@@ -266,7 +263,7 @@ antora:
                     - '**/hazelcast/hazelcast-mono'
                 branch:
                   includes:
-                    - '5.5.0'                    
+                    - '5.5.z'                    
         - name: management-center
           version: '6.0-snapshot'
           mappings:
@@ -339,18 +336,6 @@ antora:
                   branch:
                     includes:
                       - '5.4.0'
-        - name: management-center
-          version: "5.5"
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                  branch:
-                    includes:
-                      - 5.5.0
     - require: ./lib/api_json.js
       tags:
         - Favorites

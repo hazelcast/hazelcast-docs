@@ -1,5 +1,5 @@
 site:
-  title: Documentation (Internal with Kapa)
+  title: Documentation (Internal w/Kapa)
   start_page: home::index.adoc
   url: https://docs.hazelcast.com
   keys:

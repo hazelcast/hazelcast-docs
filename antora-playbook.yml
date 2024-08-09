@@ -181,6 +181,9 @@ content:
     - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-tls
       branches: master
       start_path: docs
+    - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-user-code-namespace
+      branches: master
+      start_path: docs       
     - url: https://github.com/hazelcast-guides/kafka-kerberos
       branches: master
       start_path: docs

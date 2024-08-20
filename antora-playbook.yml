@@ -15,7 +15,7 @@ content:
     - url: .
       start_paths: [home, tutorials]
       branches: HEAD
-    - url: https://github.com/hazelcast/hz-flow-docs
+    - url: https://github.com/amandalindsay/hz-flow-docs
       branches: [flow-content-v1]
       start_path: docs         
     - url: https://github.com/hazelcast/hz-docs

@@ -80,8 +80,6 @@ content:
     - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
       branches: main
       start_path: docs
-    - url: https://github.com/hazelcast-guides/adoc-templates.git
-      branches: antora-doc
     - url: https://github.com/hazelcast-guides/caching-springboot-jcache
       branches: master
       start_path: docs
@@ -186,7 +184,7 @@ content:
       start_path: docs
     - url: https://github.com/hazelcast-guides/hazelcast-platform-operator-user-code-namespace
       branches: master
-      start_path: docs 
+      start_path: docs
     - url: https://github.com/hazelcast-guides/kafka-kerberos
       branches: master
       start_path: docs
@@ -269,7 +267,7 @@ antora:
                     - '**/hazelcast/hazelcast-mono'
                 branch:
                   includes:
-                    - '5.5.0'                    
+                    - '5.5.0'
         - name: management-center
           version: '6.0-snapshot'
           mappings:
@@ -281,7 +279,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                      - 'master'                    
+                      - 'master'
         - name: management-center
           version: '5.5'
           mappings:

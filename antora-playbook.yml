@@ -1,14 +1,12 @@
 site:
   title: Documentation
   start_page: home::index.adoc
-  url: https://docs.hazelcast.com
+  url: http:localhost:3000
   keys:
-    google_analytics: 'GTM-MQ59XD6'
     docsearch_id: 'QK2EAH8GB0'
     docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
     docsearch_index: 'prod_hazelcast_docs'
-urls:
-  html_extension_style: drop
+    ai_search_id: 'ad664bf0-07e2-42e7-9150-2e1b04b15cca'
 content:
   sources:
     - url: .
@@ -193,15 +191,18 @@ content:
     - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
       branches: master
       start_path: docs
-    - url: https://github.com/hazelcast/hazelcast-mono
-      branches: [master, 5.5.0]
-      start_path: docs/rest
-    - url: https://github.com/hazelcast/management-center
-      branches: [master, 5.4.0, 5.5.0]
-      start_path: hazelcast-management-center/src/openapi/external
-    - url: https://github.com/hazelcast/management-center
-      branches: [5.1.z, 5.2.z, 5.3.0]
-      start_path: openapi/external
+      #    Uncomment to build Swagger docs locally
+      #    These are private repos. You need to do private repository authentication.
+      #    See [here](https://docs.antora.org/antora/latest/playbook/private-repository-auth/) how to do that
+      #    - url: https://github.com/hazelcast/hazelcast-mono
+      #      branches: [master]
+      #      start_path: docs/rest
+      #    - url: https://github.com/hazelcast/management-center
+      #      branches: [master]
+      #      start_path: hazelcast-management-center/src/openapi/external
+      #    - url: https://github.com/hazelcast/management-center
+      #      branches: [5.1.z, 5.2.z, 5.3.0]
+      #      start_path: openapi/external
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master
       start_path: docs
@@ -224,27 +225,13 @@ ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
-  supplemental_files:
-    - path: netlify.toml
-      contents: >
-        [[headers]]
-
-
-
-
-          for = "/api/*"
-          [headers.values]
-            Access-Control-Allow-Origin = "*"
-    - path: ui.yml
-      contents: |
-        static_files: [ netlify.toml ]
 antora:
   extensions:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
         - name: hazelcast
-          version: '6.0-snapshot'
+          version: '5.5-snapshot'
           mappings:
             - module: maintain-cluster
               family: attachment
@@ -255,23 +242,8 @@ antora:
                 branch:
                   includes:
                     - 'master'
-    - require: '@djencks/antora-aggregate-collector'
-      trace: true
-      componentversions:
-        - name: hazelcast
-          version: '5.5'
-          mappings:
-            - module: maintain-cluster
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/hazelcast-mono'
-                branch:
-                  includes:
-                    - '5.5.0'
         - name: management-center
-          version: '6.0-snapshot'
+          version: '5.5-snapshot'
           mappings:
             - module: integrate
               family: attachment
@@ -281,19 +253,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                      - 'master'
-        - name: management-center
-          version: '5.5'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                      - '5.5.0'
+                    - 'master'
         - name: management-center
           version: '5.3'
           mappings:
@@ -342,6 +302,18 @@ antora:
                   branch:
                     includes:
                       - '5.4.0'
+        - name: management-center
+          version: "5.5"
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                  branch:
+                    includes:
+                      - 5.5.0
     - require: ./lib/api_json.js
       tags:
         - Favorites
@@ -391,4 +363,3 @@ asciidoc:
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js
-    - asciidoctor-kroki

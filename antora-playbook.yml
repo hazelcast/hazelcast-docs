@@ -1,12 +1,18 @@
 site:
+  #  https://docs.antora.org/antora/latest/playbook/set-up-playbook/#configure-your-sites-properties
   title: Documentation
   start_page: home::index.adoc
-  url: http:localhost:3000
+  url: https://docs.hazelcast.com
   keys:
+    google_analytics: 'GTM-MQ59XD6'
+    # The following 3 parameters: id, api and index are used for
+    # Algolia docsearch setup in the hazelcast-docs-ui repo
     docsearch_id: 'QK2EAH8GB0'
     docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
     docsearch_index: 'prod_hazelcast_docs'
-    ai_search_id: 'ad664bf0-07e2-42e7-9150-2e1b04b15cca'
+urls:
+  #  https://docs.antora.org/antora/latest/playbook/urls-html-extension-style/
+  html_extension_style: drop
 content:
   sources:
     - url: .
@@ -191,18 +197,15 @@ content:
     - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
       branches: master
       start_path: docs
-      #    Uncomment to build Swagger docs locally
-      #    These are private repos. You need to do private repository authentication.
-      #    See [here](https://docs.antora.org/antora/latest/playbook/private-repository-auth/) how to do that
-      #    - url: https://github.com/hazelcast/hazelcast-mono
-      #      branches: [master]
-      #      start_path: docs/rest
-      #    - url: https://github.com/hazelcast/management-center
-      #      branches: [master]
-      #      start_path: hazelcast-management-center/src/openapi/external
-      #    - url: https://github.com/hazelcast/management-center
-      #      branches: [5.1.z, 5.2.z, 5.3.0]
-      #      start_path: openapi/external
+    - url: https://github.com/hazelcast/hazelcast-mono
+      branches: [master, 5.5.z]
+      start_path: docs/rest
+    - url: https://github.com/hazelcast/management-center
+      branches: [master, 5.4.0, 5.5.0]
+      start_path: hazelcast-management-center/src/openapi/external
+    - url: https://github.com/hazelcast/management-center
+      branches: [5.1.z, 5.2.z, 5.3.0]
+      start_path: openapi/external
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master
       start_path: docs
@@ -224,14 +227,28 @@ content:
 ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
+    # https://docs.antora.org/antora/latest/playbook/set-up-playbook/#configure-your-sites-ui-bundle
+    # When snapshot is set to true, Antora will download the UI bundle
+    # whenever fetch is activated in the playbook or from the CLI.
     snapshot: true
+  #  Needed for API calls from Cloud Web App (Learning Centre page)
+  supplemental_files:
+    - path: netlify.toml
+      contents: >
+        [[headers]]
+          for = "/api/*"
+          [headers.values]
+            Access-Control-Allow-Origin = "*"
+    - path: ui.yml
+      contents: |
+        static_files: [ netlify.toml ]
 antora:
   extensions:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
         - name: hazelcast
-          version: '5.5-snapshot'
+          version: '6.0-snapshot'
           mappings:
             - module: maintain-cluster
               family: attachment
@@ -242,8 +259,23 @@ antora:
                 branch:
                   includes:
                     - 'master'
+    - require: '@djencks/antora-aggregate-collector'
+      trace: true
+      componentversions:
+        - name: hazelcast
+          version: '5.5'
+          mappings:
+            - module: maintain-cluster
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/hazelcast-mono'
+                branch:
+                  includes:
+                    - '5.5.z'
         - name: management-center
-          version: '5.5-snapshot'
+          version: '5.6-snapshot'
           mappings:
             - module: integrate
               family: attachment
@@ -254,6 +286,18 @@ antora:
                 branch:
                   includes:
                     - 'master'
+        - name: management-center
+          version: '5.5'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.5.0'
         - name: management-center
           version: '5.3'
           mappings:
@@ -302,18 +346,7 @@ antora:
                   branch:
                     includes:
                       - '5.4.0'
-        - name: management-center
-          version: "5.5"
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                  branch:
-                    includes:
-                      - 5.5.0
+    #  Needed for API calls from Cloud Web App (Learning Centre page)
     - require: ./lib/api_json.js
       tags:
         - Favorites
@@ -344,9 +377,12 @@ asciidoc:
     # Order the products in the version selector dropdown.
     # Use * to list all remaining products in alphabetical order.
     page-component-order: 'hazelcast, management-center, cloud, *'
+    # https://docs.antora.org/antora/latest/playbook/asciidoc-attributes/#precedence-rules
+    # page-pagination is soft-set to true
     page-pagination: true@
     # Allows us to use UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
     page-experimental: true
+    # AsciiDoc ID settings https://docs.asciidoctor.org/asciidoc/latest/sections/id-prefix-and-separator/
     idprefix: ''
     idseparator: '-'
     imdg-javadoc: https://docs.hazelcast.org/docs/latest-dev/javadoc
@@ -363,3 +399,4 @@ asciidoc:
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js
+#    - asciidoctor-kroki

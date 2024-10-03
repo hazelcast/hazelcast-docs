@@ -363,3 +363,4 @@ asciidoc:
   extensions:
     - ./lib/tabs-block.js
     - ./lib/swagger-ui-block-macro.js
+    - asciidoctor-kroki

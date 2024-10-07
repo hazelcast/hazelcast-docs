@@ -22,6 +22,6 @@ jobs:
         GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
       run: |
         npm i
-        npm run-script check-links
+        npm run-script check-links-local
 
 

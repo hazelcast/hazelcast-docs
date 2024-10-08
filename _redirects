@@ -32,7 +32,7 @@
 /clc/latest-dev/*  /clc/latest/:splat 200!
 
 # Redirect latest clc alias to the latest version
-/clc/latest/*  /clc/5.4.0/:splat 200!
+/clc/latest/*  /clc/5.4.1/:splat 200!
 
 # Redirect legacy /4 version to the /4.0 version
 /imdg/4/*  /imdg/4.0/:splat 301!

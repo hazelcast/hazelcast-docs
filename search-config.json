@@ -23,11 +23,11 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center-5.6-snapshot"
+        "management-center-6.0-snapshot"
       ],
       "variables": {
         "version": [
-          "5.6-snapshot"
+          "6.0-snapshot"
         ]
       },
       "selectors_key": "mc"
@@ -158,6 +158,18 @@
         "cloud"
       ],
       "selectors_key": "cloud"
+    },
+    {
+      "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
+      "tags": [
+        "clc-5.4.1"
+      ],
+      "variables": {
+        "version": [
+          "5.4.1"
+        ]
+      },
+      "selectors_key": "command-line-client"
     },
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
@@ -383,6 +395,18 @@
       "variables": {
         "version": [
           "5.5"
+        ]
+      },
+      "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center-5.6"
+      ],
+      "variables": {
+        "version": [
+          "5.6"
         ]
       },
       "selectors_key": "mc"

@@ -162,11 +162,11 @@
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
-        "clc-5.4.1"
+        "clc-5.5.0"
       ],
       "variables": {
         "version": [
-          "5.4.1"
+          "5.5.0"
         ]
       },
       "selectors_key": "command-line-client"

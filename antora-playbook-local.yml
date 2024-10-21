@@ -9,7 +9,7 @@ site:
 content:
   sources:
     - url: .
-      start_paths: [home, tutorials]
+      start_paths: [home, tutorials, templates]
       branches: HEAD
     - url: https://github.com/hazelcast/hz-docs
       branches: [main, v/*]
@@ -80,8 +80,6 @@ content:
     - url: https://github.com/hazelcast/hazelcast-cloud-maven-plugin
       branches: main
       start_path: docs
-    - url: https://github.com/hazelcast-guides/adoc-templates.git
-      branches: antora-doc
     - url: https://github.com/hazelcast-guides/caching-springboot-jcache
       branches: master
       start_path: docs

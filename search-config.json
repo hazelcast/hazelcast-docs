@@ -9,6 +9,18 @@
       "selectors_key": "tutorials"
     },
     {
+      "url": "https://docs.hazelcast.com/flow/(?P<version>.*?)",
+      "tags": [
+        "flow"
+      ],
+      "variables": {
+        "version": [
+          "5.5"
+        ]
+      },
+      "selectors_key": "flow"
+    },
+    {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [
         "imdg-4.2"
@@ -162,11 +174,11 @@
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
-        "clc-5.4.1"
+        "clc-5.5.0"
       ],
       "variables": {
         "version": [
-          "5.4.1"
+          "5.5.0"
         ]
       },
       "selectors_key": "command-line-client"

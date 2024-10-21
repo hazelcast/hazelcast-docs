@@ -9,9 +9,9 @@
       "selectors_key": "tutorials"
     },
     {
-      "url": "https://docs.hazelcast.com/flow/(?P<version>.*?)",
+      "url": "https://docs.hazelcast.com/flow/(?P<version>.*?)/",
       "tags": [
-        "flow"
+        "flow-5.5"
       ],
       "variables": {
         "version": [

@@ -9,6 +9,18 @@
       "selectors_key": "tutorials"
     },
     {
+      "url": "https://docs.hazelcast.com/flow/(?P<version>.*?)",
+      "tags": [
+        "flow"
+      ],
+      "variables": {
+        "version": [
+          "5.5"
+        ]
+      },      
+      "selectors_key": "flow"
+    },    
+    {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [
         "imdg-4.2"

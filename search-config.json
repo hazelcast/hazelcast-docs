@@ -575,7 +575,7 @@
       "lvl2": ".doc h1",
       "lvl3": ".doc h2",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
-    }    
+    }
   },
   "custom_settings": {
     "attributesForFaceting": [

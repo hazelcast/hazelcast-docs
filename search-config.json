@@ -9,6 +9,18 @@
       "selectors_key": "tutorials"
     },
     {
+      "url": "https://docs.hazelcast.com/flow/(?P<version>.*?)/",
+      "tags": [
+        "flow-5.5"
+      ],
+      "variables": {
+        "version": [
+          "5.5"
+        ]
+      },
+      "selectors_key": "flow"
+    },
+    {
       "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
       "tags": [
         "imdg-4.2"
@@ -23,11 +35,11 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center-5.6-snapshot"
+        "management-center-6.0-snapshot"
       ],
       "variables": {
         "version": [
-          "5.6-snapshot"
+          "6.0-snapshot"
         ]
       },
       "selectors_key": "mc"
@@ -162,6 +174,18 @@
     {
       "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
       "tags": [
+        "clc-5.5.0"
+      ],
+      "variables": {
+        "version": [
+          "5.5.0"
+        ]
+      },
+      "selectors_key": "command-line-client"
+    },
+    {
+      "url": "https://docs.hazelcast.com/clc/(?P<version>.*?)/",
+      "tags": [
         "clc-5.4.0"
       ],
       "variables": {
@@ -218,6 +242,18 @@
         ]
       },
       "selectors_key": "command-line-client"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
+        "operator-5.14"
+      ],
+      "variables": {
+        "version": [
+          "5.14"
+        ]
+      },
+      "selectors_key": "operator"
     },
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
@@ -386,6 +422,18 @@
         ]
       },
       "selectors_key": "mc"
+    },
+    {
+      "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
+      "tags": [
+        "management-center-5.6"
+      ],
+      "variables": {
+        "version": [
+          "5.6"
+        ]
+      },
+      "selectors_key": "mc"
     }
   ],
   "sitemap_urls": [
@@ -510,6 +558,22 @@
       },
       "lvl2": ".doc h2",
       "lvl3": ".doc h3",
+      "text": ".doc p, .doc td.content, .doc th.tableblock"
+    },
+    "flow": {
+      "lvl0": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[1]/a[1]",
+        "type": "xpath",
+        "global": true,
+        "default_value": "Flow"
+      },
+      "lvl1": {
+        "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[2]",
+        "type": "xpath",
+        "global": true
+      },
+      "lvl2": ".doc h1",
+      "lvl3": ".doc h2",
       "text": ".doc p, .doc td.content, .doc th.tableblock"
     }
   },

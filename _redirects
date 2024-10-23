@@ -2,10 +2,10 @@
 /hazelcast  /home 200!
 
 # Redirect latest management-center alias to the latest version
-/management-center/latest/*  /management-center/5.5/:splat 200!
+/management-center/latest/*  /management-center/5.6/:splat 200!
 
 # Redirect latest-dev management-center alias to the latest version
-/management-center/latest-dev/*  /management-center/5.6-snapshot/:splat 200!
+/management-center/latest-dev/*  /management-center/6.0-snapshot/:splat 200!
 
 # Redirect latest cloud-only management-center alias to the latest version
 /management-center/5.4-CLOUD-1/* /management-center/5.4-snapshot/:splat 200!
@@ -17,10 +17,13 @@
 /hazelcast/latest-dev/*  /hazelcast/6.0-snapshot/:splat 200!
 
 # Redirect latest operator alias to the latest version
-/operator/latest/*  /operator/5.13/:splat 200!
+/operator/latest/*  /operator/5.14/:splat 200!
 
 # Redirect latest-dev operator alias to the latest-dev version
 /operator/latest-dev/*  /operator/latest-snapshot/:splat 200!
+
+# Redirect latest Flow alias to the latest version
+/flow/latest/*  /flow/5.5/:splat 200!
 
 # Redirect latest imdg alias to the latest version
 /imdg/latest/*  /imdg/4.2/:splat 200!
@@ -32,7 +35,7 @@
 /clc/latest-dev/*  /clc/latest/:splat 200!
 
 # Redirect latest clc alias to the latest version
-/clc/latest/*  /clc/5.4.0/:splat 200!
+/clc/latest/*  /clc/5.4.1/:splat 200!
 
 # Redirect legacy /4 version to the /4.0 version
 /imdg/4/*  /imdg/4.0/:splat 301!

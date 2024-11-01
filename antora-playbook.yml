@@ -1,13 +1,18 @@
 site:
+  #  https://docs.antora.org/antora/latest/playbook/set-up-playbook/#configure-your-sites-properties
   title: Documentation
   start_page: home::index.adoc
   url: https://docs.hazelcast.com
   keys:
     google_analytics: 'GTM-MQ59XD6'
+    # The following 3 parameters: id, api and index are used for
+    # Algolia docsearch setup in the hazelcast-docs-ui repo
     docsearch_id: 'QK2EAH8GB0'
     docsearch_api: 'ef7bd9485eafbd75d6e8425949eda1f5'
     docsearch_index: 'prod_hazelcast_docs'
+    ai_search_id: '6b326171-dd1e-40c6-a948-1f9bb6c0ed52'       
 urls:
+  #  https://docs.antora.org/antora/latest/playbook/urls-html-extension-style/
   html_extension_style: drop
 content:
   sources:
@@ -19,7 +24,7 @@ content:
       start_path: docs
     - url: https://github.com/hazelcast/hz-flow-docs
       branches: [main]
-      start_path: docs         
+      start_path: docs
     - url: https://github.com/hazelcast/imdg-docs
       branches: [v/*]
       start_path: docs
@@ -224,19 +229,15 @@ content:
 ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
+    # https://docs.antora.org/antora/latest/playbook/set-up-playbook/#configure-your-sites-ui-bundle
+    # When snapshot is set to true, Antora will download the UI bundle
+    # whenever fetch is activated in the playbook or from the CLI.
     snapshot: true
+  #  Needed for API calls from Cloud Web App (Learning Centre page)
   supplemental_files:
     - path: netlify.toml
       contents: >
         [[headers]]
-
-
-
-
-
-
-
-
           for = "/api/*"
           [headers.values]
             Access-Control-Allow-Origin = "*"
@@ -272,9 +273,6 @@ antora:
                   branch:
                     includes:
                       - '5.6.0'
-    - require: '@djencks/antora-aggregate-collector'
-      trace: true
-      componentversions:
         - name: hazelcast
           version: '5.5'
           mappings:
@@ -389,9 +387,12 @@ asciidoc:
     # Order the products in the version selector dropdown.
     # Use * to list all remaining products in alphabetical order.
     page-component-order: 'hazelcast, management-center, cloud, *'
+    # https://docs.antora.org/antora/latest/playbook/asciidoc-attributes/#precedence-rules
+    # page-pagination is soft-set to true
     page-pagination: true@
     # Allows us to use UI macros. See https://docs.asciidoctor.org/asciidoc/latest/macros/ui-macros/
     page-experimental: true
+    # AsciiDoc ID settings https://docs.asciidoctor.org/asciidoc/latest/sections/id-prefix-and-separator/
     idprefix: ''
     idseparator: '-'
     imdg-javadoc: https://docs.hazelcast.org/docs/latest-dev/javadoc

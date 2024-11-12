@@ -19,7 +19,7 @@ content:
       start_path: docs
     - url: https://github.com/hazelcast/hz-flow-docs
       branches: [main]
-      start_path: docs         
+      start_path: docs
     - url: https://github.com/hazelcast/imdg-docs
       branches: [v/*]
       start_path: docs
@@ -229,14 +229,6 @@ ui:
     - path: netlify.toml
       contents: >
         [[headers]]
-
-
-
-
-
-
-
-
           for = "/api/*"
           [headers.values]
             Access-Control-Allow-Origin = "*"

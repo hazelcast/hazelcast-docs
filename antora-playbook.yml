@@ -259,7 +259,7 @@ antora:
                   include:
                     - '**/hazelcast/hazelcast-mono'
                 branch:
-                  includes:
+                  include:
                     - 'master'
         - name: management-center
           version: '5.6'
@@ -271,7 +271,7 @@ antora:
                   include:
                     - '**/hazelcast/management-center'
                 branch:
-                  includes:
+                  include:
                     - '5.6.0'
         - name: hazelcast
           version: '5.5'
@@ -283,7 +283,7 @@ antora:
                   include:
                     - '**/hazelcast/hazelcast-mono'
                 branch:
-                  includes:
+                  include:
                     - '5.5.z'
         - name: management-center
           version: '6.0-snapshot'
@@ -295,7 +295,7 @@ antora:
                   include:
                     - '**/hazelcast/management-center'
                 branch:
-                  includes:
+                  include:
                     - 'master'
         - name: management-center
           version: '5.5'
@@ -307,7 +307,7 @@ antora:
                   include:
                     - '**/hazelcast/management-center'
                 branch:
-                  includes:
+                  include:
                     - '5.5.0'
         - name: management-center
           version: '5.3'
@@ -319,7 +319,7 @@ antora:
                   include:
                     - '**/hazelcast/management-center'
                 branch:
-                  includes:
+                  include:
                     - '5.3.0'
         - name: management-center
           version: '5.2'
@@ -331,7 +331,7 @@ antora:
                   include:
                     - '**/hazelcast/management-center'
                 branch:
-                  includes:
+                  include:
                     - '5.2.z'
         - name: management-center
           version: '5.1'
@@ -343,7 +343,7 @@ antora:
                   include:
                     - '**/hazelcast/management-center'
                 branch:
-                  includes:
+                  include:
                     - '5.1.z'
         - name: management-center
           version: '5.4'
@@ -355,7 +355,7 @@ antora:
                   include:
                     - '**/hazelcast/management-center'
                 branch:
-                  includes:
+                  include:
                     - '5.4.0'
     - require: ./lib/api_json.js
       tags:

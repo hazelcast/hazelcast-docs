@@ -17,7 +17,7 @@ content:
       start_path: docs
     - url: https://github.com/hazelcast/hz-flow-docs
       branches: [main]
-      start_path: docs         
+      start_path: docs
     - url: https://github.com/hazelcast/imdg-docs
       branches: [v/*]
       start_path: docs
@@ -231,8 +231,20 @@ antora:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
+        - name: management-center
+          version: '6.0-snapshot'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - 'master'
         - name: hazelcast
-          version: '5.5-snapshot'
+          version: '6.0-snapshot'
           mappings:
             - module: maintain-cluster
               family: attachment
@@ -244,7 +256,7 @@ antora:
                   includes:
                     - 'master'
         - name: management-center
-          version: '5.5-snapshot'
+          version: '5.6'
           mappings:
             - module: integrate
               family: attachment
@@ -254,7 +266,43 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - 'master'
+                    - '5.6.0'
+        - name: management-center
+          version: '5.5'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.5.2'
+        - name: hazelcast
+          version: '5.5'
+          mappings:
+            - module: maintain-cluster
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/hazelcast-mono'
+                branch:
+                  includes:
+                    - '5.5.z'
+        - name: management-center
+          version: '5.4'
+          mappings:
+            - module: integrate
+              family: attachment
+              origin:
+                url:
+                  include:
+                    - '**/hazelcast/management-center'
+                branch:
+                  includes:
+                    - '5.4.1'
         - name: management-center
           version: '5.3'
           mappings:
@@ -266,7 +314,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - '5.3.0'
+                    - '5.3.4'
         - name: management-center
           version: '5.2'
           mappings:
@@ -278,7 +326,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - '5.2.z'
+                    - '5.2.1'
         - name: management-center
           version: '5.1'
           mappings:
@@ -290,43 +338,7 @@ antora:
                     - '**/hazelcast/management-center'
                 branch:
                   includes:
-                    - '5.1.z'
-        - name: management-center
-          version: '5.4'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                  branch:
-                    includes:
-                      - '5.4.0'
-        - name: management-center
-          version: "5.5"
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                  branch:
-                    includes:
-                      - 5.5.0
-        - name: management-center
-          version: "5.6"
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                  branch:
-                    includes:
-                      - 5.6.0
+                    - '5.1.4'
     - require: ./lib/api_json.js
       tags:
         - Favorites

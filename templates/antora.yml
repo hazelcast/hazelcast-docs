@@ -1,7 +1,5 @@
 name: templates
 title: Templates
 version: v0.1
-nav:
-  - modules/ROOT/nav.adoc
 
 

@@ -4,7 +4,6 @@ description: Check for dead links
 runs:
   using: 'composite'
   steps:
-    - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
         node-version: 20
@@ -13,13 +12,17 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: hazelcast/hazelcast-docs
-        sparse-checkout: antora-playbook.yml
+        sparse-checkout: |
+          antora-playbook.yml
+          lib/load-check-links-playbook.js
         sparse-checkout-cone-mode: false
         path: hazelcast-docs
         ref: main
 
     - name: Check for broken internal links
+      shell: bash
       run: |
+        cp "./hazelcast-docs/lib/load-check-links-playbook.js" "./load-check-links-playbook.js"
         npm i
         npm i -D yaml@2.6.0
         node load-check-links-playbook.js $GITHUB_REPOSITORY $GITHUB_BASE_REF

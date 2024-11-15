@@ -157,7 +157,7 @@ NOTE: On Windows, you may need to replace the forward slash in the `--path` valu
 npm run-script generate-pdfs-platform-5-1
 ```
 
-This script generates a PDF for the Hazelcast Platform 5.1 documentation. 
+This script generates a PDF for the Hazelcast Platform 5.1 documentation.
 
 The result of this script is a `pdf-docs` directory, in which the artifacts for the PDF files are assembled and the PDF files are generated.
 
@@ -168,6 +168,44 @@ Some errors are displayed in the output, but you can ignore them.
 - `null startLine`: The script uses the link:https://gitlab.com/antora/antora-assembler/-/blob/main/README.adoc[Antora assembler extension], which is in an alpha state. These errors are generated from the PDF converter. The output does not appear to be broken, so you can ignore this type of error.
 
 We will track the status of the extension and update it when new releases are available.
+
+== Links Checker
+
+=== History
+Previously each branch of each repo had its own `check-links-playbook.yml` for links-checker. The problem was, that for the correct links check `check-links-playbook.yml` should have contained the full list of all other repos and branches that have targets of the links from the current branch, and all repos and branches that have links TO the current branch. In other words - that file was complicated to maintain, so no one did, resulting in a wrong link check with many false negatives and positives.
+
+=== Idea
+We do care about broken links only in the context of the full production build. That's why the only correct way to check links is using global link:https://github.com/hazelcast/hazelcast-docs/blob/main/antora-playbook.yml[`antora-playbook.yml`].
+
+=== How it works now
+The links checker workflow consists of the next steps:
+
+. Check out the global `antora-playbook.yml`.
+. Check out the local `antora-playbook.yml`.
+. Modify `content.sources` from the global `antora-playbook.yml` (use correct syntax for current PR branch).
+. Inject `content.sources` from the global `antora-playbook.yml` to the local one (for links check we need only that list, but we cannot reuse the whole global `antora-playbook.yml`, because it might contain some extensions or parts not runnable in the context of a docs repo).
+. Run the links check and report the results.
+
+For this to happen we have several common files in the link:https://github.com/hazelcast/hazelcast-docs[hazelcast-docs repo]
+
+.Files for links checker
+[cols="m,a"]
+|===
+|File |Description
+
+|link:https://github.com/hazelcast/hazelcast-docs/blob/main/.github/actions/validate/action.yml[action.yml]
+|Contains common parts of the links checker workflow
+
+|link:https://github.com/hazelcast/hazelcast-docs/blob/main/lib/load-check-links-playbook.js[load-check-links-playbook.js]
+|Responsible for modification of `content.sources` from the global `antora-playbook.yml`.
+|===
+
+Each of the docs repos can just call the common validate action from its workflow.
+
+[source,yaml]
+----
+uses: hazelcast/hazelcast-docs/.github/actions/validate@main
+----
 
 == GitHub Actions
 
@@ -193,7 +231,7 @@ As well as these actions, content repositories that are listed under the `conten
 
 ```yaml
 content:
-  sources: 
+  sources:
   - url: https://github.com/hazelcast/imdg-docs
     branches: [master]
     start_path: docs

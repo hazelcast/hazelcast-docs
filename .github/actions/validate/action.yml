@@ -9,17 +9,6 @@ runs:
         node-version: 20
         cache: 'npm'
 
-    - name: Checkout global antora-playbook
-      uses: actions/checkout@v4
-      with:
-        repository: hazelcast/hazelcast-docs
-        sparse-checkout: |
-          antora-playbook.yml
-          lib/load-check-links-playbook.js
-        sparse-checkout-cone-mode: false
-        path: hazelcast-docs
-        ref: main
-
     - name: Check for broken internal links
       shell: bash
       run: |

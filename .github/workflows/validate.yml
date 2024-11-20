@@ -4,7 +4,7 @@ name: Check for dead links
 
 on:
   pull_request:
-    branches: [develop]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 20
     - name: Check for broken internal links

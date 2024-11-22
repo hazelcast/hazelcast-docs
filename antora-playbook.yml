@@ -287,7 +287,7 @@ antora:
                   includes:
                     - '5.6.0'
         - name: management-center
-          version: '5.5'
+          version: '5.5.2'
           mappings:
             - module: integrate
               family: attachment

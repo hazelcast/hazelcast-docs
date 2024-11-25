@@ -27,4 +27,4 @@ runs:
         npm i
         npm i -D yaml@2.6.0 @jcahills/antora-link-checker@1.0.1
         node load-check-links-playbook.js $GITHUB_REPOSITORY $GITHUB_BASE_REF
-        ./node_modules/.bin/antora --fetch --to-dir test --log-level=error --log-failure-level=error --extension=@jcahills/antora-link-checker check-links-playbook.yml
+        ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=@jcahills/antora-link-checker check-links-playbook.yml

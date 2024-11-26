@@ -69,7 +69,22 @@ function addHazelcastDocsUrl(sources) {
 }
 
 function rewriteCurrentVersion() {
-
+	const antoraYmlPath = './docs/antora.yml';
+	try {
+		const antoraYml = YAML.parse(fs.readFileSync(antoraYmlPath, 'utf8'));
+		const version = 'snapshot_ci';
+		antoraYml.version = version;
+		antoraYml.display_version = version;
+		antoraYml.asciidoc.attributes['full-version'] = version;
+		fs.writeFileSync(
+			antoraYmlPath,
+			YAML.stringify(antoraYml),
+			{ encoding: 'utf8' },
+		);
+	} catch (err) {
+		console.debug(err);
+		console.warn('Could not rewrite version. There might be an error with version collision!');
+	}
 }
 
 function excludeBaseBranch(sources, repoName, branchName) {
@@ -115,7 +130,7 @@ function writeCheckLinksPlaybookFile(localPlaybook, sources) {
 	localPlaybook.content.sources = sources;
 	const checkLinksPlaybook = YAML.stringify(localPlaybook);
 
-	console.debug(checkLinksPlaybook);
+	// console.debug(checkLinksPlaybook);
 
 	fs.writeFileSync(
 		'./check-links-playbook.yml',

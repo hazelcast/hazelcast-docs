@@ -16,6 +16,7 @@ runs:
         sparse-checkout: |
           antora-playbook.yml
           lib/load-check-links-playbook.js
+          lib/antora-link-checker-extension.js
         sparse-checkout-cone-mode: false
         path: hazelcast-docs
         ref: main
@@ -25,6 +26,6 @@ runs:
       run: |
         cp "./hazelcast-docs/lib/load-check-links-playbook.js" "./load-check-links-playbook.js"
         npm i
-        npm i -D yaml@2.6.0 @jcahills/antora-link-checker@1.0.1
+        npm i -D yaml@2.6.0 matcher@3.0.0
         node load-check-links-playbook.js $GITHUB_REPOSITORY $GITHUB_BASE_REF
-        ./node_modules/.bin/antora --fetch --to-dir test --log-level=error --log-failure-level=error --extension=@jcahills/antora-link-checker check-links-playbook.yml
+        ./node_modules/.bin/antora --fetch --to-dir test --log-level=error --log-failure-level=error --extension=hazelcast-docs/lib/antora-link-checker-extension.js check-links-playbook.yml

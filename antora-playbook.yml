@@ -204,11 +204,8 @@ content:
       branches: [master, 5.5.z]
       start_path: docs/rest
     - url: https://github.com/hazelcast/management-center
-      branches: [master, 5.4.1, 5.5.2, 5.6.0]
-      start_path: hazelcast-management-center/src/openapi/external
-    - url: https://github.com/hazelcast/management-center
-      branches: [5.1.4, 5.2.1, 5.3.4]
-      start_path: openapi/external
+      branches: [master, 5.1.4, 5.2.1, 5.3.4, 5.4.1, 5.5.2, 5.6.0]
+      start_path: antora
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master
       start_path: docs
@@ -250,18 +247,6 @@ antora:
     - require: '@djencks/antora-aggregate-collector'
       trace: true
       componentversions:
-        - name: management-center
-          version: '6.0-snapshot'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - 'master'
         - name: hazelcast
           version: '6.0-snapshot'
           mappings:
@@ -274,30 +259,6 @@ antora:
                 branch:
                   includes:
                     - 'master'
-        - name: management-center
-          version: '5.6'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.6.0'
-        - name: management-center
-          version: '5.5'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.5.2'
         - name: hazelcast
           version: '5.5'
           mappings:
@@ -310,54 +271,6 @@ antora:
                 branch:
                   includes:
                     - '5.5.z'
-        - name: management-center
-          version: '5.4'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.4.1'
-        - name: management-center
-          version: '5.3'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.3.4'
-        - name: management-center
-          version: '5.2'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.2.1'
-        - name: management-center
-          version: '5.1'
-          mappings:
-            - module: integrate
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/management-center'
-                branch:
-                  includes:
-                    - '5.1.4'
     - require: ./lib/api_json.js
       tags:
         - Favorites

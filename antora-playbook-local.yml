@@ -195,6 +195,7 @@ content:
       #    Uncomment to build Swagger docs locally
       #    These are private repos. You need to do private repository authentication.
       #    See [here](https://docs.antora.org/antora/latest/playbook/private-repository-auth/) how to do that
+      #    The easiest way is to use a GitHub token like https://{TOKEN}:@github.com/hazelcast/hazelcast-mono
       #    - url: https://github.com/hazelcast/hazelcast-mono
       #      branches: [master]
       #      start_path: docs/rest

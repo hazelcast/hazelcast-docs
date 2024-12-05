@@ -244,33 +244,6 @@ ui:
         static_files: [ netlify.toml ]
 antora:
   extensions:
-    - require: '@djencks/antora-aggregate-collector'
-      trace: true
-      componentversions:
-        - name: hazelcast
-          version: '6.0-snapshot'
-          mappings:
-            - module: maintain-cluster
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/hazelcast-mono'
-                branch:
-                  includes:
-                    - 'master'
-        - name: hazelcast
-          version: '5.5'
-          mappings:
-            - module: maintain-cluster
-              family: attachment
-              origin:
-                url:
-                  include:
-                    - '**/hazelcast/hazelcast-mono'
-                branch:
-                  includes:
-                    - '5.5.z'
     - require: ./lib/api_json.js
       tags:
         - Favorites

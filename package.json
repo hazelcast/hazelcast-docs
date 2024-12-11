@@ -4,6 +4,9 @@
   "description": "Hazelcast Antora project",
   "author": "Jake Cahill",
   "license": "ISC",
+  "directories": {
+    "lib": "lib"
+  },
   "files": [
     "lib"
   ],

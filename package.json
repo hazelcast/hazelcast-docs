@@ -4,6 +4,9 @@
   "description": "Hazelcast Antora project",
   "author": "Jake Cahill",
   "license": "ISC",
+  "files": [
+    "lib"
+  ],
   "exports": {
     "./orphan-pages-checker.js": "./lib/orphan-pages-checker.js",
     "./swagger-ui-block-macro.js": "./lib/swagger-ui-block-macro.js"

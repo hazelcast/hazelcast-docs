@@ -196,7 +196,7 @@ For this to happen we have several common files in the link:https://github.com/h
 |link:https://github.com/hazelcast/hazelcast-docs/blob/main/.github/actions/validate/action.yml[action.yml]
 |Contains common parts of the links checker workflow
 
-|link:https://github.com/hazelcast/hazelcast-docs/blob/main/lib/load-check-links-playbook.js[load-check-links-playbook.js]
+|link:https://github.com/hazelcast/hazelcast-docs-tools/blob/v1.0.0/scripts/check-links-playbook-loader.js[load-check-links-playbook.js]
 |Responsible for modification of `content.sources` from the global `antora-playbook.yml`.
 |===
 

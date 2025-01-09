@@ -28,6 +28,6 @@ asciidoc:
     hazelcast-cloud: Cloud
     page-cloud-console: https://cloud.hazelcast.com/
   extensions:
-    - ./lib/tabs-block.js
-    - ./lib/swagger-ui-block-macro.js
+    - ./node_modules/hazelcast-docs-tools/antora-macro/tabs-block.js
+    - ./node_modules/hazelcast-docs-tools/antora-macro/swagger-ui-block-macro.js
     - asciidoctor-kroki

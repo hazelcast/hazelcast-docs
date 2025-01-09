@@ -15,8 +15,6 @@ runs:
         repository: hazelcast/hazelcast-docs
         sparse-checkout: |
           antora-playbook.yml
-          lib/load-check-links-playbook.js
-          lib/antora-link-checker-extension.js
         sparse-checkout-cone-mode: false
         path: hazelcast-docs
         ref: main
@@ -24,8 +22,11 @@ runs:
     - name: Check for broken internal links
       shell: bash
       run: |
-        cp "./hazelcast-docs/lib/load-check-links-playbook.js" "./load-check-links-playbook.js"
         npm i
-        npm i -D yaml@2.6.0 matcher@3.0.0
-        node load-check-links-playbook.js $GITHUB_REPOSITORY $GITHUB_BASE_REF
-        ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=hazelcast-docs/lib/antora-link-checker-extension.js check-links-playbook.yml
+        npm i -D hazelcast/hazelcast-docs-tools#v1.0.0 yaml@2.6.0 matcher@3.0.0
+        load-check-links-playbook -r $GITHUB_REPOSITORY -b $GITHUB_BASE_REF
+        ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js check-links-playbook.yml
+
+    - name: Check orphan pages
+      shell: bash
+      run: check-orphan-pages

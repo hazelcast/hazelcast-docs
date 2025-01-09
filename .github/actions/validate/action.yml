@@ -1,6 +1,20 @@
 name: Validate
 description: Validate Docs
 
+inputs:
+  orphan-checker-directory:
+    description: Directory parameter (--directory) for check-orphan-pages
+    required: false
+    default: docs
+  orphan-checker-log-failure-level:
+    description: Failure level parameter (--log-failure-level) for check-orphan-pages
+    required: false
+    default: error
+  check-links-loader-log-level:
+    description: Log level parameter (--log-level) for load-check-links-playbook
+    required: false
+    default: log
+
 runs:
   using: 'composite'
   steps:
@@ -23,10 +37,10 @@ runs:
       shell: bash
       run: |
         npm i
-        npm i -D hazelcast/hazelcast-docs-tools#v1.0.0 yaml@2.6.0 matcher@3.0.0
-        load-check-links-playbook -r $GITHUB_REPOSITORY -b $GITHUB_BASE_REF
+        npm i -D hazelcast/hazelcast-docs-tools#v1.1.0 yaml@2.6.0 matcher@3.0.0
+        load-check-links-playbook -r $GITHUB_REPOSITORY -b $GITHUB_BASE_REF --log-level ${{ inputs.check-links-loader-log-level }}
         ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js check-links-playbook.yml
 
     - name: Check orphan pages
       shell: bash
-      run: check-orphan-pages
+      run: check-orphan-pages -d ${{ inputs.orphan-checker-directory }} --log-failure-level ${{ inputs.orphan-checker-log-failure-level }}

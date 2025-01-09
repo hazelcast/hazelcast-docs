@@ -1,5 +1,5 @@
 name: Validate
-description: Check for dead links
+description: Validate Docs
 
 runs:
   using: 'composite'

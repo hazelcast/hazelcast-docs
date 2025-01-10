@@ -39,8 +39,8 @@ runs:
         npm i
         npm i -D hazelcast/hazelcast-docs-tools#v1.1.0 yaml@2.6.0 matcher@3.0.0
         ./node_modules/.bin/load-check-links-playbook -r $GITHUB_REPOSITORY -b $GITHUB_BASE_REF --log-level ${{ inputs.check-links-loader-log-level }}
-        ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js check-links-playbook.yml
+        antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js check-links-playbook.yml
 
     - name: Check orphan pages
       shell: bash
-      run: check-orphan-pages -d ${{ inputs.orphan-checker-directory }} --log-failure-level ${{ inputs.orphan-checker-log-failure-level }}
+      run: ./node_modules/.bin/check-orphan-pages -d ${{ inputs.orphan-checker-directory }} --log-failure-level ${{ inputs.orphan-checker-log-failure-level }}

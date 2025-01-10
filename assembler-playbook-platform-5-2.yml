@@ -2,14 +2,14 @@ site:
   title: Documentation
   url: https:/docs.hazelcast.com
 content:
-  sources: 
+  sources:
   - url: https://github.com/hazelcast/hz-docs
     branches: [v/5.2]
     start_path: docs
 antora:
   extensions:
   - '@antora/pdf-extension'
-ui: 
+ui:
   bundle:
     url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip #../hazelcast-docs-ui/build/ui-bundle.zip
     snapshot: true
@@ -25,6 +25,6 @@ asciidoc:
     hazelcast-cloud: Cloud
     page-cloud-console: https://cloud.hazelcast.com/
   extensions:
-    - ./lib/tabs-block.js
-    - ./lib/swagger-ui-block-macro.js
+    - ./node_modules/hazelcast-docs-tools/antora-macro/tabs-block.js
+    - ./node_modules/hazelcast-docs-tools/antora-macro/swagger-ui-block-macro.js
     - asciidoctor-kroki

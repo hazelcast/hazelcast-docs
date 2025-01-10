@@ -226,7 +226,7 @@ ui:
     snapshot: true
 antora:
   extensions:
-    - require: ./lib/api_json.js
+    - require: ./node_modules/hazelcast-docs-tools/antora-extensions/api-json.js
       tags:
         - Favorites
         - Videos
@@ -273,6 +273,6 @@ asciidoc:
     ucn: User Code Namespaces
     ucd: User Code Deployment
   extensions:
-    - ./lib/tabs-block.js
-    - ./lib/swagger-ui-block-macro.js
+    - ./node_modules/hazelcast-docs-tools/antora-macro/tabs-block.js
+    - ./node_modules/hazelcast-docs-tools/antora-macro/swagger-ui-block-macro.js
     - asciidoctor-kroki

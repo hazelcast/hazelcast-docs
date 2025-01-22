@@ -20,7 +20,7 @@
     "generate-pdfs-mc-5-1": "antora assembler-playbook-mc-5.1.yml",
     "generate-pdfs-mc-5-0": "antora assembler-playbook-mc-5.0.yml",
     "serve": "serve docs",
-    "expose": "ngrok http 5000"
+    "expose": "ngrok http 3000"
   },
   "devDependencies": {
     "@antora/cli": "^3.1.1",

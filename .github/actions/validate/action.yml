@@ -44,3 +44,14 @@ runs:
     - name: Check orphan pages
       shell: bash
       run: ./node_modules/.bin/check-orphan-pages -d ${{ inputs.orphan-checker-directory }} --log-failure-level ${{ inputs.orphan-checker-log-failure-level }}
+
+    - name: Slack notification
+      uses: 8398a7/action-slack@v3
+      if: failure()
+      with:
+       status: failure
+       fields: repo,job,workflow
+       text: "👎 Validate docs failed - ⛓️‍💥 broken internal links or ASCIIDOC syntax errors found ⛓️‍💥."
+       channel: "#docs-notifications"
+      env:
+       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DOCS }}

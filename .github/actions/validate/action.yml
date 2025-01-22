@@ -14,6 +14,10 @@ inputs:
     description: Log level parameter (--log-level) for load-check-links-playbook
     required: false
     default: log
+  SLACK_WEBHOOK_URL:
+    description: Secret for a Slack webhook to show failed notifications
+    required: false
+    default: ''
 
 runs:
   using: 'composite'
@@ -44,3 +48,14 @@ runs:
     - name: Check orphan pages
       shell: bash
       run: ./node_modules/.bin/check-orphan-pages -d ${{ inputs.orphan-checker-directory }} --log-failure-level ${{ inputs.orphan-checker-log-failure-level }}
+
+    - name: Slack notification
+      uses: 8398a7/action-slack@v3
+      if: failure() && inputs.SLACK_WEBHOOK_URL != ''
+      with:
+       status: failure
+       fields: repo,job,workflow
+       text: "👎 Validate docs failed - ⛓️‍💥 broken internal links or ASCIIDOC syntax errors found ⛓️‍💥."
+       channel: "#docs-notifications"
+      env:
+       SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}

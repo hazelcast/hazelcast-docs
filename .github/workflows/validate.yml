@@ -16,6 +16,8 @@ jobs:
     - name: Checkout Current Repo
       uses: actions/checkout@v4
     - name: Check dead links
-      uses: hazelcast/hazelcast-docs/.github/actions/validate@main
+      uses: ./.github/actions/validate@main
+      with:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DOCS }}
 
 

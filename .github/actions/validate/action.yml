@@ -14,7 +14,7 @@ inputs:
     description: Log level parameter (--log-level) for load-check-links-playbook
     required: false
     default: log
-  SLACK_WEBHOOK:
+  SLACK_WEBHOOK_URL:
     description: Secret for a Slack webhook to show failed notifications
     required: false
 
@@ -57,4 +57,4 @@ runs:
        text: "👎 Validate docs failed - ⛓️‍💥 broken internal links or ASCIIDOC syntax errors found ⛓️‍💥."
        channel: "#docs-notifications"
       env:
-       SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK }}
+       SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}

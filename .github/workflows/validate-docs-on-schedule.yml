@@ -1,0 +1,18 @@
+name: Validate docs on schedule
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 1" # Runs at 12:00, only on Monday
+
+jobs:
+  test-external-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate docs
+        uses: ./.github/actions/validate
+        with:
+          orphan-checker-directory: tutorials
+          slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_DOCS }}

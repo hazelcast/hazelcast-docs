@@ -50,7 +50,7 @@ runs:
 
     - name: Slack notification
       uses: 8398a7/action-slack@v3
-      if: failure() && inputs.SLACK_WEBHOOK != ''
+      if: failure()
       with:
        status: failure
        fields: repo,job,workflow

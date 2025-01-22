@@ -16,7 +16,7 @@ jobs:
     - name: Checkout Current Repo
       uses: actions/checkout@v4
     - name: Check dead links
-      uses: ./.github/actions/validate@main
+      uses: ./.github/actions/validate
       with:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DOCS }}
 

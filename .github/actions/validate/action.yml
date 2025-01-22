@@ -9,7 +9,7 @@ inputs:
   orphan-checker-log-failure-level:
     description: Failure level parameter (--log-failure-level) for check-orphan-pages
     required: false
-    default: error
+    default: log
   check-links-loader-log-level:
     description: Log level parameter (--log-level) for load-check-links-playbook
     required: false

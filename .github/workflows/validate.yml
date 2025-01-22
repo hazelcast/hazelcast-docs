@@ -18,6 +18,7 @@ jobs:
     - name: Check dead links
       uses: ./.github/actions/validate
       with:
+        orphan-checker-directory: tutorials
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DOCS }}
 
 

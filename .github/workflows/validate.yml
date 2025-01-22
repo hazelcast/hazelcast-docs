@@ -15,7 +15,10 @@ jobs:
     steps:
     - name: Checkout Current Repo
       uses: actions/checkout@v4
-    - name: Check dead links
-      uses: hazelcast/hazelcast-docs/.github/actions/validate@main
+    - name: Validate docs
+      uses: ./.github/actions/validate
+      with:
+        orphan-checker-directory: tutorials
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DOCS }}
 
 

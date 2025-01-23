@@ -6,7 +6,7 @@ on:
     - cron: "0 12 * * 1" # Runs at 12:00, only on Monday
 
 env:
-  GITHUB_BASE_REF: ${{ github.ref_name }}
+  GITHUB_BASE_REF: main
 
 jobs:
   validate-docs:

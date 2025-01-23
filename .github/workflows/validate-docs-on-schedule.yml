@@ -15,4 +15,5 @@ jobs:
         uses: ./.github/actions/validate
         with:
           orphan-checker-directory: tutorials
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DOCS }}
+          base-branch-name: main
+          slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_DOCS }}

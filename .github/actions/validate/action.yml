@@ -14,7 +14,11 @@ inputs:
     description: Log level parameter (--log-level) for load-check-links-playbook
     required: false
     default: log
-  SLACK_WEBHOOK_URL:
+  base-branch-name:
+    description: Branch name used by load-check-links-playbook.js
+    required: false
+    default: ${{ github.base_ref }}
+  slack-webhook-url:
     description: Secret for a Slack webhook to show failed notifications
     required: false
     default: ''
@@ -42,7 +46,7 @@ runs:
       run: |
         npm i
         npm i -D hazelcast/hazelcast-docs-tools#v1.1.0 yaml@2.6.0 matcher@3.0.0
-        ./node_modules/.bin/load-check-links-playbook -r $GITHUB_REPOSITORY -b $GITHUB_BASE_REF --log-level ${{ inputs.check-links-loader-log-level }}
+        ./node_modules/.bin/load-check-links-playbook -r $GITHUB_REPOSITORY -b ${{ inputs.base-branch-name }} --log-level ${{ inputs.check-links-loader-log-level }}
         ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js check-links-playbook.yml
 
     - name: Check orphan pages
@@ -51,11 +55,11 @@ runs:
 
     - name: Slack notification
       uses: 8398a7/action-slack@v3
-      if: failure() && inputs.SLACK_WEBHOOK_URL != ''
+      if: failure() && inputs.slack-webhook-url != ''
       with:
        status: failure
        fields: repo,job,workflow
        text: "👎 Validate docs failed - ⛓️‍💥 broken internal links or ASCIIDOC syntax errors found ⛓️‍💥."
        channel: "#docs-notifications"
       env:
-       SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}
+       SLACK_WEBHOOK_URL: ${{ inputs.slack-webhook-url }}

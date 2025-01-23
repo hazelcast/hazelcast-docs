@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 12 * * 1" # Runs at 12:00, only on Monday
 
+env:
+  GITHUB_BASE_REF: ${{ github.ref_name }}
+
 jobs:
   validate-docs:
     runs-on: ubuntu-latest

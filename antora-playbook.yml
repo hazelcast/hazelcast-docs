@@ -18,7 +18,7 @@ urls:
 content:
   sources:
     - url: .
-      start_paths: [home, tutorials, templates]
+      start_paths: [home, tutorials, templates, privacy]
       branches: HEAD
     - url: https://github.com/hazelcast/hz-docs
       branches: [main, v/*]

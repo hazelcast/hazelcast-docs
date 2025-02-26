@@ -229,7 +229,7 @@ content:
       start_path: docs
 ui:
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v4.1.47-canary-5/ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/download/v4.1.47-canary-6/ui-bundle.zip
     # https://docs.antora.org/antora/latest/playbook/set-up-playbook/#configure-your-sites-ui-bundle
     # When snapshot is set to true, Antora will download the UI bundle
     # whenever fetch is activated in the playbook or from the CLI.

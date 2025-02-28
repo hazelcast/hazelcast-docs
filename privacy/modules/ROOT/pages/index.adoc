@@ -1,0 +1,4 @@
+= Privacy Policy
+:page-layout: privacy
+:!sectids:
+:!toc:

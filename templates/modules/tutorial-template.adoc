@@ -11,7 +11,6 @@ Include the learning objectives (these may be in the description) and some rough
 
 This tutorial will take approximately 10-15 minutes to complete.
 
-Optionally, you may also want to state the intended audience. 
 
 == Prerequisites
 

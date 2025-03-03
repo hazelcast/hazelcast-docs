@@ -7,7 +7,7 @@
 
 This template includes writing instructions and boilerplate text that you can customize, use as-is, or replace with your own text.
 
-Include the learning objectives (these may be in the description) and some rough timings. Ideally, your tutorial should take less than 60 minutes to complete as lengthy tutorials can overwhelm users. Consider condensing or removing steps or reevaluating the scope of the tutorial. For example: 
+Include the learning objectives (these may be in the description) and some rough timings. Ideally, your tutorial should take less than 60 minutes to complete as lengthy tutorials can overwhelm users. Consider condensing or removing steps or reevaluating the scope of the tutorial. Optionally, you may also want to state the intended audience. 
 
 This tutorial will take approximately 10-15 minutes to complete.
 

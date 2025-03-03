@@ -34,6 +34,8 @@ Before you begin, make sure you have the following:
 
 Tips for writing steps:
 
+- Steps typically include a paragraph or a numbered list of sub-steps. Don't use bulleted lists for instructions.
+- Explain any examples and note any placeholders that will need to be replaced with real values.
 - Don't number your step's main headings (for example, don't use 'Step 1 - Configure the thing')
 - Avoid gerunds (-ing words such as 'Configuring')
 - Remember to orient users when guiding them through each step. If they need to open a particular file or dialog to complete the task, provide that information first

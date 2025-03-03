@@ -1,5 +1,5 @@
 = Title of your tutorial topic
-:description: Enter a brief description of your tutorial here, for example: This tutorial will get you started with the Hazelcast Python client and show you how to manipulate a map.
+:description: Enter a brief description of your tutorial here, for example: Get started with the Hazelcast Python client and learn how to manipulate a map.
 
 == Overview
 

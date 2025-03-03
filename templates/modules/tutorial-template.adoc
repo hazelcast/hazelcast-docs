@@ -54,7 +54,7 @@ In this tutorial, you learned how to get started with the Hazelcast Python Clien
 
 == Next steps
 
-Use this section to include links to other tutorials, such as tutorials that allow users to learn about related features. You can also include links to relevant resources, like articles, blogs, or videos. For example:
+Use this section to include links to related tutorials, documentation, or other relevant resources, typically in a bulleted list.
 
 For more information, such as how you can query a map with predicates and SQL, check out the Python Client repository and the Python API documentation.
 

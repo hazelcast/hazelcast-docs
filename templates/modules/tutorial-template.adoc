@@ -42,7 +42,9 @@ Tips for writing steps:
 
 == Title of your second step
 
-Rinse and repeat the steps until you complete the tutorial.
+Add steps until you complete the tutorial.
+
+You should include a final "clean up" step to reset any changes where appropriate, e.g. if the tutorial deploys resources in the cloud.
 
 == Summary
 

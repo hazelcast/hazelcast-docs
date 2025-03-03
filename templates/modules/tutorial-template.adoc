@@ -58,4 +58,3 @@ Use this section to include links to related tutorials, documentation, or other 
 
 For more information, such as how you can query a map with predicates and SQL, check out the Python Client repository and the Python API documentation.
 
-If you have any questions, suggestions, or feedback, contact the Hazelcast Community Slack. To contribute to the client, take a look at the issue list.

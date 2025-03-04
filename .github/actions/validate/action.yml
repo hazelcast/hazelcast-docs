@@ -11,15 +11,15 @@ inputs:
     required: false
     default: log
   check-links-loader-log-level:
-    description: Log level parameter (--log-level) for load-check-links-playbook
+    description: Log level parameter (--log-level) for load-global-playbook
     required: false
     default: log
   repository-name:
-    description: Repository name used by load-check-links-playbook.js
+    description: Repository name used by load-global-playbook
     required: false
     default: ${{ github.repository }}
   base-branch-name:
-    description: Branch name used by load-check-links-playbook.js
+    description: Branch name used by load-global-playbook
     required: false
     default: ${{ github.base_ref }}
   slack-webhook-url:
@@ -49,9 +49,9 @@ runs:
       shell: bash
       run: |
         npm i
-        npm i -D hazelcast/hazelcast-docs-tools#v1.1.1 yaml@2.6.0 matcher@3.0.0
-        ./node_modules/.bin/load-check-links-playbook -r ${{ inputs.repository-name }} -b ${{ inputs.base-branch-name }} --log-level ${{ inputs.check-links-loader-log-level }}
-        ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js check-links-playbook.yml
+        npm i -D hazelcast/hazelcast-docs-tools#v1.2.1
+        ./node_modules/.bin/load-global-playbook -r ${{ inputs.repository-name }} -b ${{ inputs.base-branch-name }} --log-level ${{ inputs.check-links-loader-log-level }} --skip-private-repos --enforce-global-sources
+        ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js global-antora-playbook.yml
 
     - name: Check orphan pages
       shell: bash

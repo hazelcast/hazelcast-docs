@@ -37,6 +37,11 @@
 # Redirect latest clc alias to the latest version
 /clc/latest/*  /clc/5.5.0/:splat 200!
 
+# Redirect bad links from MC to CLC, SUP-714
+# Temporary 307 redirects so can be changed later once released
+/clc/5.5.2/* /clc/5.5.0/:splat 307!
+/clc/6.0.0/* /clc/5.5.0/:splat 307!
+
 # Redirect legacy /4 version to the /4.0 version
 /imdg/4/*  /imdg/4.0/:splat 301!
 

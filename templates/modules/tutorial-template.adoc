@@ -10,10 +10,11 @@
 In the Overview, include the learning objectives—these may be in the description—and some rough timings. For example:)
 
 Get started with the Hazelcast Python client and learn how to manipulate a map. The tutorial will take approximately 10-15 minutes to complete.
+Include the learning objectives (these may be in the description) and some rough timings. Ideally, your tutorial should take less than 60 minutes to complete as lengthy tutorials can overwhelm users. Consider condensing or removing steps or reevaluating the scope of the tutorial. Optionally, you may also want to state the intended audience. 
 
 (Ideally, your tutorial should take less than 60 minutes to complete as lengthy tutorials can overwhelm users. Consider condensing or removing steps or re-evaluating the scope of the tutorial. Optionally, you may also want to state the intended audience.
 
-For more general guidance on tutorials, see: https://gitlab.com/tgdp/templates/-/blob/main/tutorial/guide_tutorial.md[The Good Docs Project])
+Optionally, you may also want to state the intended audience. 
 
 == Prerequisites
 
@@ -34,16 +35,17 @@ Before you begin, make sure you have the following:
 
 == (Title of your first step
 
-1. Steps typically include a paragraph or a numbered list of sub-steps. Don't use bulleted lists for instructions.
-2. Explain any examples and note any placeholders that will need to be replaced with real values.
-3. Don't number your step's main headings — for example, don't use 'Step 1 - Configure the thing'.
-4. Avoid gerunds i.e. -ing words such as 'Configuring'.
-5. Remember to orient users when guiding them through each step. If they need to open a particular file or dialog to complete the task, provide that information first.)
+Tips for writing steps:
 
-== (Title of your second step
+- Don't number your step's main headings (for example, don't use 'Step 1 - Configure the thing')
+- Avoid gerunds (-ing words such as 'Configuring')
+- Remember to orient users when guiding them through each step. If they need to open a particular file or dialog to complete the task, provide that information first
+- Avoid writing procedures that are more than seven primary steps long
+- Aim for no more than four substeps in any primary step
 
-1. Add steps until you complete the tutorial. 
-2. Include a final "clean up" step to reset any changes where appropriate, e.g. if the tutorial deploys resources in the cloud.)
+== Title of your second step
+
+Rinse and repeat the steps until you complete the tutorial.
 
 == Summary
 
@@ -53,6 +55,8 @@ In this tutorial, you learned how to get started with the Hazelcast Python Clien
 
 == Next steps
 
-(Use this section to include links to related tutorials, documentation, or other relevant resources, typically in a bulleted list. For example:)
+Use this section to include links to other tutorials, such as tutorials that allow users to learn about related features. You can also include links to relevant resources, like articles, blogs, or videos. For example:
 
 For more information, such as how you can query a map with predicates and SQL, check out the Python Client repository and the Python API documentation.
+
+If you have any questions, suggestions, or feedback, contact the Hazelcast Community Slack. To contribute to the client, take a look at the issue list.

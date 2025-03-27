@@ -30,6 +30,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
     - name: Checkout global antora-playbook
       uses: actions/checkout@v4
       with:

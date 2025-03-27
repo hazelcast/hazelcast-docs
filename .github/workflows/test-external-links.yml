@@ -1,6 +1,7 @@
 name: Test external links
 
 on:
+  pull_request:
   workflow_dispatch:
   schedule:
     - cron: "0 12 * * 1" # Runs at 12:00, only on Monday
@@ -46,6 +47,11 @@ jobs:
 
           distinct_urls=$(sort -u "${temp_file}")
   
+          echo "## ❌ Dead links found" >> "${summary_file}"
+          echo "" >> "${summary_file}"
+          echo "| URL | Status | Locations |" >> "${summary_file}"
+          echo "| --- | -----: | --------- |" >> "${summary_file}"
+
           while read -r url; do
               if [[ -n "${url}" ]]; then
                 echo "::debug::Checking URL '${url}'..."
@@ -64,8 +70,13 @@ jobs:
                 if [[ "${status}" -eq 404 ]]; then
                     # In the event of unicode control characters, grep's behaviour may be unpredictable - but lets not fail the workflow for that
                     locations=$(grep -rl "${url}" || true)
-                    echo "::error::❌ URL '${url}' had status ${status} (found in ${locations})" 1>&2
+                    echo "::debug::❌ URL '${url}' had status ${status} (found in ${locations})" 1>&2
+                    echo "| ${url} | ${status} | ${locations} |" >> "${summary_file}"
                     found_error=1
+
+                    # TODO REMOVE
+                    cat "${summary_file}" >> "$GITHUB_STEP_SUMMARY"
+                    exit 1
                 else
                     echo "::debug::✅ URL '${url}' had status ${status}"
                 fi
@@ -73,8 +84,10 @@ jobs:
           done <<< "${distinct_urls}"
           
           if [[ "${found_error}" -eq 1 ]]; then
+              cat "${summary_file}" >> "$GITHUB_STEP_SUMMARY"
               exit 1
           else
+              echo "✅ No dead links found" >> "$GITHUB_STEP_SUMMARY"
               exit 0
           fi
 

@@ -26,7 +26,7 @@ jobs:
       - name: Build documentation
         run: |
           npm install
-          npm run-script build
+          npm run-script build-local
   
       - run: |
           echo "temp_file=$(mktemp)" >> $GITHUB_ENV

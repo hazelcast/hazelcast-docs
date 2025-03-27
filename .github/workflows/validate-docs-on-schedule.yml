@@ -11,9 +11,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
       - name: Validate docs
         uses: ./.github/actions/validate
         with:
           orphan-checker-directory: tutorials
           base-branch-name: main
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_DOCS }}
+      - uses: ./.github/actions/test-external-links
+        with:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_DOCS }}

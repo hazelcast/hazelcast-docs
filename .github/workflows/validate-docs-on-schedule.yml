@@ -17,3 +17,6 @@ jobs:
           orphan-checker-directory: tutorials
           base-branch-name: main
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_DOCS }}
+      - uses: ./.github/actions/test-external-links
+        with:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_DOCS }}

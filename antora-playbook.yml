@@ -20,6 +20,9 @@ content:
     - url: .
       start_paths: [home, tutorials, templates, privacy]
       branches: HEAD
+    - url: https://github.com/hazelcast/hazelcast-code-samples
+      branches: [master]
+      start_path: docs         
     - url: https://github.com/hazelcast/hz-docs
       branches: [main, v/*]
       start_path: docs

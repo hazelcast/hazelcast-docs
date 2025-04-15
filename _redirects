@@ -60,3 +60,6 @@
 /management-center/5.0.4/*  /management-center/5.0/:splat 301!
 /management-center/5.1.1/*  /management-center/5.1/:splat 301!
 /management-center/5.1.2/*  /management-center/5.1/:splat 301!
+
+# Redirect partial builds, so the contributors see their work in a convenient way
+https://frosty-curran-1fc0c4.netlify.app https://frosty-curran-1fc0c4.netlify.app/management-center/6.0-snapshot 200!

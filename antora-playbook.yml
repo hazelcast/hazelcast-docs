@@ -26,9 +26,6 @@ content:
     - url: https://github.com/hazelcast/hz-docs
       branches: [main, v/*]
       start_path: docs
-    - url: https://github.com/hazelcast/hz-flow-docs
-      branches: [main]
-      start_path: docs
     - url: https://github.com/hazelcast/imdg-docs
       branches: [v/*]
       start_path: docs

@@ -22,8 +22,10 @@
 # Redirect latest-dev operator alias to the latest-dev version
 /operator/latest-dev/*  /operator/latest-snapshot/:splat 200!
 
-# Redirect latest Flow alias to the latest version
+# Redirect latest Flow alias to homepage
 /flow/latest/*  /home 200!
+
+# Redirect Flow 5.5 to homepage
 /flow/5.5/*  /home 200!
 
 # Redirect latest imdg alias to the latest version
@@ -62,3 +64,4 @@
 /management-center/5.0.4/*  /management-center/5.0/:splat 301!
 /management-center/5.1.1/*  /management-center/5.1/:splat 301!
 /management-center/5.1.2/*  /management-center/5.1/:splat 301!
+

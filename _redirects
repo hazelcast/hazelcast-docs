@@ -23,6 +23,9 @@
 /operator/latest-dev/*  /operator/latest-snapshot/:splat 200!
 
 # Redirect latest Flow alias to homepage
+/flow/*  /home 200!
+
+# Redirect latest Flow alias to homepage
 /flow/latest/*  /home 200!
 
 # Redirect Flow 5.5 to homepage

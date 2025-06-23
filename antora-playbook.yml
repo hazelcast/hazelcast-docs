@@ -12,6 +12,8 @@ site:
     docsearch_index: 'prod_hazelcast_docs'
     # KapaAI Website ID
     ai_search_id: '6b326171-dd1e-40c6-a948-1f9bb6c0ed52'
+    # Clarity
+    clarity: 'l8c076m4u9'
 urls:
   #  https://docs.antora.org/antora/latest/playbook/urls-html-extension-style/
   html_extension_style: drop
@@ -22,7 +24,7 @@ content:
       branches: HEAD
     - url: https://github.com/hazelcast/hazelcast-code-samples
       branches: [master]
-      start_path: docs         
+      start_path: docs
     - url: https://github.com/hazelcast/hz-docs
       branches: [main, v/*]
       start_path: docs

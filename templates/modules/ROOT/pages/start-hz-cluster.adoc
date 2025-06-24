@@ -10,7 +10,7 @@ You can easily create a Hazelcast cluster on https://cloud.hazelcast.com[Hazelca
 Docker Image::
 +
 --
-You can start members inside Docker containers. See the https://github.com/hazelcast/hazelcast-docker[documentation] for details.
+You can start members inside Docker containers. See the https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-docker[documentation] for details.
 [source, bash]
 ----
 $ docker run hazelcast/hazelcast:$HAZELCAST_VERSION
@@ -20,7 +20,7 @@ $ docker run hazelcast/hazelcast:$HAZELCAST_VERSION
 Hazelcast CLI::
 +
 --
-You can start members via Hazelcast CLI. See the https://github.com/hazelcast/hazelcast-command-line[documentation] for the installation instructions and details.
+You can start members via Hazelcast CLI. See the https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-cli[documentation] for the installation instructions and details.
 [source, bash]
 ----
 $ hz start
@@ -30,7 +30,7 @@ $ hz start
 Download Packages::
 +
 --
-You can start members via `start` script in https://hazelcast.org/imdg/download[IMDG bundle].
+You can start members via `start` script. See the https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-binary[documentation] for the installation instructions and details.
 [source, bash]
 ----
 $ sh bin/start.sh

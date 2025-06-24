@@ -4,11 +4,6 @@ inputs:
   SLACK_WEBHOOK:
     required: true
 
-env:
-    # Not possible to set this as a default
-    # https://github.com/orgs/community/discussions/46670
-    shell: bash
-
 runs:
     using: composite
 
@@ -20,24 +15,24 @@ runs:
         #     cache: 'npm'
 
         - name: Install Lynx
-          shell: ${{ env.shell }}
+          shell: bash
           run: |
             sudo apt-get update
             sudo apt-get install -y lynx
   
         - name: Build documentation
-          shell: ${{ env.shell }}
+          shell: bash
           run: |
             npm install
             npm run-script build-local
   
-        - shell: ${{ env.shell }}
+        - shell: bash
           run: |
             echo "temp_file=$(mktemp)" >> $GITHUB_ENV
             echo "docs_output=docs" >> $GITHUB_ENV
   
         - name: Extract links
-          shell: ${{ env.shell }}
+          shell: bash
           run: |
             ${RUNNER_DEBUG:+set -o xtrace}
 
@@ -48,7 +43,7 @@ runs:
             done
   
         - name: Check links
-          shell: ${{ env.shell }}
+          shell: bash
           working-directory: ${{ env.docs_output }}
           run: |
             ${RUNNER_DEBUG:+set -o xtrace}

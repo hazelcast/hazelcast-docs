@@ -37,10 +37,3 @@ $ sh bin/start.sh
 ----
 --
 ====
-
-[NOTE]
-====
-You can find other ways of starting Hazelcast members and forming a cluster
-https://docs.hazelcast.org/docs/latest/manual/html-single/#installing-hazelcast-imdg[here].
-====
-

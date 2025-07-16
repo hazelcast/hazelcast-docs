@@ -278,7 +278,8 @@ asciidoc:
   attributes:
     # Order the products in the version selector dropdown.
     # Use * to list all remaining products in alphabetical order.
-    page-component-order: '!home, !templates, !imdg, !privacy, hazelcast, management-center, cloud, *'
+    # Use !{componentName} to exclude it from the dropdown
+    page-component-order: '!home, !templates, !imdg, !privacy, !jdbc-driver, hazelcast, management-center, cloud, *'
     # https://docs.antora.org/antora/latest/playbook/asciidoc-attributes/#precedence-rules
     # page-pagination is soft-set to true
     page-pagination: true@

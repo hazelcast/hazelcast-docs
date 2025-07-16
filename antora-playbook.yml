@@ -278,7 +278,7 @@ asciidoc:
   attributes:
     # Order the products in the version selector dropdown.
     # Use * to list all remaining products in alphabetical order.
-    page-component-order: 'hazelcast, management-center, cloud, *'
+    page-component-order: '!home, !templates, !imdg, !privacy, hazelcast, management-center, cloud, *'
     # https://docs.antora.org/antora/latest/playbook/asciidoc-attributes/#precedence-rules
     # page-pagination is soft-set to true
     page-pagination: true@

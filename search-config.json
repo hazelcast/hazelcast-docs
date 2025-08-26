@@ -9,18 +9,6 @@
       "selectors_key": "tutorials"
     },
     {
-      "url": "https://docs.hazelcast.com/imdg/(?P<version>.*?)/",
-      "tags": [
-        "imdg-4.2"
-      ],
-      "variables": {
-        "version": [
-          "4.2"
-        ]
-      },
-      "selectors_key": "imdg"
-    },
-    {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
         "management-center-5.9-snapshot"

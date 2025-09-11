@@ -616,6 +616,13 @@
       "tags"
     ]
   },
-  "selectors_exclude": [".nav-container", ".toc-container", "header.header", ".feedback-footer-container", ".footer", ".ez-consent"],
+  "selectors_exclude": [
+    ".nav-container",
+    ".toc-container",
+    "header.header",
+    ".feedback-footer-container",
+    ".footer",
+    ".ez-consent"
+  ],
   "only_content_level": true
 }

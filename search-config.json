@@ -83,18 +83,6 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-5.5"
-      ],
-      "variables": {
-        "version": [
-          "5.5"
-        ]
-      },
-      "selectors_key": "hz"
-    },
-    {
-      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
-      "tags": [
         "hazelcast-5.4"
       ],
       "variables": {
@@ -107,11 +95,35 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-5.6-snapshot"
+        "hazelcast-5.5"
       ],
       "variables": {
         "version": [
-          "5.6-snapshot"
+          "5.5"
+        ]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast-5.6"
+      ],
+      "variables": {
+        "version": [
+          "5.6"
+        ]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast-5.7-snapshot"
+      ],
+      "variables": {
+        "version": [
+          "5.7-snapshot"
         ]
       },
       "selectors_key": "hz"
@@ -525,7 +537,7 @@
         "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[1]/a[1]",
         "type": "xpath",
         "global": true,
-        "default_value": "Platform"
+        "default_value": "Hazelcast Platform"
       },
       "lvl1": {
         "selector": "/html[1]/body[1]/div[1]/main[1]/div[1]/article[1]/nav[1]/ul[1]/li[2]",

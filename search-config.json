@@ -635,7 +635,6 @@
       "content"
     ],
     "attributesToRetrieve": [
-      "anchor",
       "content",
       "hierarchy",
       "url",

@@ -626,6 +626,13 @@
   "custom_settings": {
     "attributesForFaceting": [
       "tags"
+    ],
+    "attributesToRetrieve": [
+      "anchor",
+      "content",
+      "hierarchy",
+      "url",
+      "version"
     ]
   },
   "selectors_exclude": [

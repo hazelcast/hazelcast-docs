@@ -23,11 +23,11 @@
     {
       "url": "https://docs.hazelcast.com/management-center/(?P<version>.*?)/",
       "tags": [
-        "management-center-5.9-snapshot"
+        "management-center-5.10-snapshot"
       ],
       "variables": {
         "version": [
-          "5.9-snapshot"
+          "5.10-snapshot"
         ]
       },
       "selectors_key": "mc"

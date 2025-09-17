@@ -627,6 +627,13 @@
     "attributesForFaceting": [
       "tags"
     ],
+    "searchableAttributes": [
+      "hierarchy.lvl2",
+      "hierarchy.lvl3",
+      "hierarchy.lvl4",
+      "hierarchy.lvl5",
+      "content"
+    ],
     "attributesToRetrieve": [
       "anchor",
       "content",

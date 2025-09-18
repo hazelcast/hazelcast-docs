@@ -209,7 +209,7 @@ content:
       branches: [master, 5.5.z, 5.6.z]
       start_path: docs/rest
     - url: https://github.com/hazelcast/management-center
-      branches: [master, 5.1.4, 5.2.1, 5.3.4, 5.4.1, 5.5.2, 5.6.0, 5.7.0, 5.8.0]
+      branches: [master, 5.1.4, 5.2.1, 5.3.4, 5.4.1, 5.5.2, 5.6.0, 5.7.0, 5.8.0, 5.9.0]
       start_path: antora
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master
@@ -281,7 +281,7 @@ asciidoc:
     # Use !{componentName} to exclude it from the dropdown
     page-component-order: '!home, !templates, !imdg, !privacy, !jdbc-driver, hazelcast, management-center, cloud, *'
     # Versions of components to be hidden on the UI
-    page-excluded-versions: 'hazelcast:5.6'
+    page-excluded-versions: 'hazelcast:5.6,management-center:5.9'
     #  How many last versions of each component to display
     page-last-versions-count: 10
     # https://docs.antora.org/antora/latest/playbook/asciidoc-attributes/#precedence-rules

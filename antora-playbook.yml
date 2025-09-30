@@ -26,7 +26,7 @@ content:
       branches: [master]
       start_path: docs
     - url: https://github.com/hazelcast/hz-docs
-      branches: [main, v/*]
+      branches: [main, v/*, "!v/5.6"]
       start_path: docs
     - url: https://github.com/hazelcast/imdg-docs
       branches: [v/*]
@@ -35,7 +35,7 @@ content:
       branches: [archived-versions]
       start_paths: docs/*
     - url: https://github.com/hazelcast/management-center-docs
-      branches: [main, v/*]
+      branches: [main, v/*, "!v/5.9"]
       start_path: docs
     - url: https://github.com/hazelcast/management-center-docs
       branches: [archived-versions]
@@ -206,10 +206,10 @@ content:
       branches: master
       start_path: docs
     - url: https://github.com/hazelcast/hazelcast-mono
-      branches: [master, 5.5.z, 5.6.z]
+      branches: [master, 5.5.z, "!5.6.z"]
       start_path: docs/rest
     - url: https://github.com/hazelcast/management-center
-      branches: [master, 5.1.4, 5.2.1, 5.3.4, 5.4.1, 5.5.2, 5.6.0, 5.7.0, 5.8.0, 5.9.0]
+      branches: [master, 5.1.4, 5.2.1, 5.3.4, 5.4.1, 5.5.2, 5.6.0, 5.7.0, 5.8.0, "!5.9.0"]
       start_path: antora
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master

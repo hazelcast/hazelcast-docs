@@ -5,7 +5,7 @@
   "author": "Hazelcast Docs",
   "license": "ISC",
   "scripts": {
-    "build": "antora --to-dir docs --fetch antora-playbook.yml && cp _redirects docs",
+    "build": "antora --to-dir docs --fetch antora-playbook.yml && cp _redirects && llms.txt docs",
     "build-local": "antora --to-dir docs --fetch antora-playbook-local.yml",
     "generate-pdfs-platform-5-5": "antora assembler-playbook-platform-5-5.yml",
     "generate-pdfs-platform-5-4": "antora assembler-playbook-platform-5-4.yml",

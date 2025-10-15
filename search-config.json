@@ -71,6 +71,16 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
+        "hazelcast-5.6"
+      ],
+      "variables": {
+        "version": ["5.6"]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
         "hazelcast-5.4"
       ],
       "variables": {
@@ -95,11 +105,11 @@
     {
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "tags": [
-        "hazelcast-5.6-snapshot"
+        "hazelcast-5.7-snapshot"
       ],
       "variables": {
         "version": [
-          "5.6-snapshot"
+          "5.7-snapshot"
         ]
       },
       "selectors_key": "hz"

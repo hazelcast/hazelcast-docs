@@ -283,7 +283,7 @@ asciidoc:
     # Use !{componentName} to exclude it from the dropdown
     page-component-order: '!home, !templates, !imdg, !privacy, !jdbc-driver, hazelcast, management-center, cloud, *'
     # Versions of components to be hidden on the UI
-    page-excluded-versions: 'hazelcast:5.6,management-center:5.9'
+    page-excluded-versions: ''
     #  How many last versions of each component to display
     page-last-versions-count: 10
     # https://docs.antora.org/antora/latest/playbook/asciidoc-attributes/#precedence-rules

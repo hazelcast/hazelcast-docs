@@ -231,9 +231,9 @@ content:
       start_path: docs
 ui:
   bundle:
-    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip    
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     # uncomment below (and comment above) for local builds using local UI
-    # url: ../hazelcast-docs-ui/build/ui-bundle.zip 
+    # url: ../hazelcast-docs-ui/build/ui-bundle.zip
     # https://docs.antora.org/antora/latest/playbook/set-up-playbook/#configure-your-sites-ui-bundle
     # When snapshot is set to true, Antora will download the UI bundle
     # whenever fetch is activated in the playbook or from the CLI.
@@ -281,7 +281,7 @@ asciidoc:
     # Order the products in the version selector dropdown.
     # Use * to list all remaining products in alphabetical order.
     # Use !{componentName} to exclude it from the dropdown
-    page-component-order: '!home, !templates, !imdg, !privacy, !jdbc-driver, hazelcast, management-center, cloud, *'
+    page-component-order: '!home, !templates, !imdg, !privacy, !jdbc-driver, hazelcast, management-center, operator, cloud, *'
     # Versions of components to be hidden on the UI
     page-excluded-versions: ''
     #  How many last versions of each component to display

@@ -4,7 +4,7 @@ site:
 content:
   sources:
   - url: https://github.com/hazelcast/hz-docs
-    branches: [5-6-pdf-fix-2]
+    branches: [5-6-pdf-fix-2] # cut from v/5.6 to fix PDF errors which will not be merged to 'main'
     start_path: docs
 antora:
   extensions:

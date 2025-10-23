@@ -47,6 +47,7 @@
 # Temporary 307 redirects so can be changed later once released
 /clc/5.5.2/* /clc/5.5.0/:splat 307!
 /clc/6.0.0/* /clc/5.5.0/:splat 307!
+/clc/6.0.1/* /clc/5.5.1/:splat 307!
 
 # Redirect legacy /4 version to the /4.0 version
 /imdg/4/*  /imdg/4.0/:splat 301!
@@ -67,4 +68,3 @@
 /management-center/5.0.4/*  /management-center/5.0/:splat 301!
 /management-center/5.1.1/*  /management-center/5.1/:splat 301!
 /management-center/5.1.2/*  /management-center/5.1/:splat 301!
-

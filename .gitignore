@@ -5,3 +5,4 @@
 /pdf-docs/
 Gemfile.lock
 .idea
+.env

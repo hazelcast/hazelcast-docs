@@ -1,21 +1,3 @@
-// This Edge Function implements an authless MCP (Model Context Protocol) server
-// that proxies requests to Kapa AI’s chat and search APIs for Hazelcast documentation.
-// It uses the official MCP SDK plus the Netlify adapter (modelfetch) to support
-// JSON-RPC over HTTP and SSE streaming.
-//
-// For background and reference implementations, see:
-// - Kapa AI blog: Build an MCP Server with Kapa AI
-//   https://www.kapa.ai/blog/build-an-mcp-server-with-kapa-ai
-// - Netlify guide: Writing MCPs on Netlify
-//   https://developers.netlify.com/guides/write-mcps-on-netlify/
-//
-// Key challenges on Netlify Edge:
-// 1. Edge transport: leverage the `streamingHttp` protocol via the `@modelfetch/netlify` adapter, which under the hood uses `StreamableHTTPServerTransport` to handle SSE streams in Edge environments. Adapter docs:
-//    - Modelfetch npm: https://www.npmjs.com/package/@modelfetch/netlify
-//    - Modelfetch GitHub: https://github.com/modelcontextprotocol/modelfetch
-// 2. Header requirements: MCP expects both application/json and text/event-stream in Accept,
-//    and requires Content-Type: application/json on incoming JSON-RPC messages.
-
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import handle from '@modelfetch/netlify'
 import { z } from 'zod'
@@ -96,19 +78,7 @@ server.registerTool(
   }
 );
 
-// Wrap the server with the Netlify Edge handler
-// ---------------------------------------------
-// The `handle` function from `@modelfetch/netlify` does several things:
-// 1. Adapts the Edge `fetch` Request/Response to the Node-style HTTP transport
-//    that the MCP SDK expects (using streamingHttp under the hood).
-// 2. Parses incoming JSON-RPC payloads from the request body.
-// 3. Routes `initialize`, `tool:discover`, and `tool:invoke` JSON-RPC methods
-//    to the registered tools on our `server` instance.
-// 4. Manages Server-Sent Events (SSE) streaming: it takes ReadableStreams
-//    returned by streaming tools and writes them as
-//    text/event-stream chunks back through the Edge Function response.
-// 5. Handles error formatting according to JSON-RPC (wrapping exceptions in
-//    appropriate error objects).
+
 const baseHandler = handle({
   server: server,
   pre: (app) => {
@@ -119,47 +89,14 @@ const baseHandler = handle({
   },
 })
 
-// Wrapper to handle both browser requests (show docs) and MCP client requests
 export default async (request, context) => {
   const url = new URL(request.url)
-
-  // Simple health check for POP/routing tests (no SSE)
-  if (request.method === 'GET' && url.pathname === '/mcp/health') {
-    return new Response('ok', { status: 200, headers: { 'cache-control': 'no-store' } })
-  }
-
-  // Check if this is a browser request (not an MCP client)
-  const userAgent = request.headers.get('user-agent') || ''
-  const accept = request.headers.get('accept') || ''
-  const contentType = request.headers.get('content-type') || ''
-
-  // Detect browser requests:
-  // - User-Agent contains browser identifiers
-  // - Accept header includes text/html
-  // - NOT a JSON-RPC POST request
-  const isBrowserRequest = (
-    request.method === 'GET' &&
-    (userAgent.includes('Mozilla') || userAgent.includes('Chrome') || userAgent.includes('Safari') || userAgent.includes('Edge')) &&
-    accept.includes('text/html') &&
-    !contentType.includes('application/json')
-  )
-
-  // If it's a browser request, redirect to the documentation page
-  if (isBrowserRequest) {
-    return new Response(null, {
-      status: 302,
-      headers: {
-        'Location': '/', // Redirect to the built docs page
-      },
-    })
-  }
 
   // Enforce POST for /mcp (some tools accidentally send GET)
   if (url.pathname === '/mcp' && request.method !== 'POST') {
     return new Response('Method not allowed', { status: 405, headers: { 'Allow': 'POST' } })
   }
 
-  // Otherwise, handle as MCP client request
   const patchedHeaders = new Headers(request.headers)
   patchedHeaders.set('accept', 'application/json, text/event-stream')
   patchedHeaders.set('content-type', 'application/json')

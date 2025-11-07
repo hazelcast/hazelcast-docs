@@ -1,10 +1,10 @@
-// OAuth 2.1 Token endpoint
-import { authCodes, type AuthorizationCode } from "../lib/auth-code-storage.ts";
+import { authCodes, type AuthorizationCode } from '../lib/auth-code-storage.ts';
+import { SignJWT } from 'jose';
 
 const ACCESS_TOKEN_EXPIRY = 3600; // 1 hour
 const REFRESH_TOKEN_EXPIRY = 7 * 24 * 3600; // 7 days
 
-interface TokenPayload {
+export interface TokenPayload {
   sub: string; // user ID
   email: string;
   name: string;
@@ -61,33 +61,24 @@ async function verifyAuthorizationCode(
 }
 
 async function createToken(payload: TokenPayload): Promise<string> {
-  const header = {
-    alg: 'HS256',
-    typ: 'JWT',
-  };
-
-  const headerB64 = btoa(JSON.stringify(header)).replace(/=/g, '');
-  const payloadB64 = btoa(JSON.stringify(payload)).replace(/=/g, '');
-  const data = `${headerB64}.${payloadB64}`;
-
   const TOKEN_SECRET = process.env.TOKEN_SECRET || 'default-token-secret-change-me';
   const encoder = new TextEncoder();
-  const keyBuffer = encoder.encode(TOKEN_SECRET);
-  const key = await crypto.subtle.importKey(
-    'raw',
-    keyBuffer,
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['sign']
-  );
+  const secret = encoder.encode(TOKEN_SECRET);
 
-  const signature = await crypto.subtle.sign('HMAC', key, encoder.encode(data));
-  const signatureB64 = btoa(String.fromCharCode(...new Uint8Array(signature)))
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=/g, '');
+  const token = await new SignJWT({
+    email: payload.email,
+    name: payload.name,
+    scope: payload.scope,
+    token_type: payload.token_type
+  })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setSubject(payload.sub)
+    .setAudience(payload.aud)
+    .setExpirationTime(payload.exp)
+    .setIssuedAt(payload.iat)
+    .sign(secret);
 
-  return `${data}.${signatureB64}`;
+  return token;
 }
 
 async function createAccessToken(
@@ -277,7 +268,6 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
     );
   }
 
-  // Verify refresh token
   const payload = getRefreshTokenPayload(refreshToken);
 
   if (!payload) {

@@ -1,70 +1,32 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import handle from '@modelfetch/netlify'
 import { z } from 'zod'
+import { jwtVerify } from 'jose'
+import { TokenPayload } from './oauth-token';
 
 const API_BASE = 'https://api.kapa.ai'
 const SERVER_VERSION = '0.0.1';
 
-interface TokenPayload {
-  sub: string;
-  email: string;
-  name: string;
-  aud: string;
-  scope: string;
-  exp: number;
-  iat: number;
-  token_type: 'access' | 'refresh';
-}
-
 async function verifyToken(token: string, expectedAudience?: string): Promise<TokenPayload | null> {
   try {
-    const parts = token.split('.');
-    if (parts.length !== 3) {
-      return null;
-    }
-
-    const [headerB64, payloadB64, signatureB64] = parts;
-
-    // Verify signature
-    const data = `${headerB64}.${payloadB64}`;
-    const TOKEN_SECRET = process.env.TOKEN_SECRET || 'default-token-secret-change-me';
+    const TOKEN_SECRET = process.env.TOKEN_SECRET;
     const encoder = new TextEncoder();
-    const keyBuffer = encoder.encode(TOKEN_SECRET);
-    const key = await crypto.subtle.importKey(
-      'raw',
-      keyBuffer,
-      { name: 'HMAC', hash: 'SHA-256' },
-      false,
-      ['verify']
-    );
+    const secret = encoder.encode(TOKEN_SECRET);
 
-    const signature = Uint8Array.from(
-      atob(signatureB64.replace(/-/g, '+').replace(/_/g, '/')),
-      c => c.charCodeAt(0)
-    );
+    const { payload } = await jwtVerify<TokenPayload>(token, secret, {
+      audience: expectedAudience,
+    });
 
-    const valid = await crypto.subtle.verify('HMAC', key, signature, encoder.encode(data));
-    if (!valid) {
-      return null;
-    }
-
-    // Decode payload
-    const payload: TokenPayload = JSON.parse(
-      atob(payloadB64.replace(/-/g, '+').replace(/_/g, '/'))
-    );
-
-    // Check expiration
-    const now = Math.floor(Date.now() / 1000);
-    if (payload.exp < now) {
-      return null;
-    }
-
-    // Check audience if provided
-    if (expectedAudience && payload.aud !== expectedAudience) {
-      return null;
-    }
-
-    return payload;
+    return {
+      sub: payload.sub,
+      email: payload.email,
+      name: payload.name,
+      aud: payload.aud,
+      scope: payload.scope,
+      exp: payload.exp,
+      iat: payload.iat,
+      token_type: payload.token_type,
+    };
   } catch (error) {
     console.error('Token verification error:', error);
     return null;

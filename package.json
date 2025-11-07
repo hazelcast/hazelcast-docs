@@ -28,18 +28,19 @@
   "devDependencies": {
     "@antora/cli": "^3.1.1",
     "@antora/site-generator": "^3.1.1",
+    "@types/node": "^24.9.2",
     "asciidoctor-kroki": "^0.15.0",
     "hazelcast-docs-tools": "github:hazelcast/hazelcast-docs-tools#v1.2.1",
+    "netlify-cli": "^23.9.5",
     "ngrok": "^5.0.0-beta.2",
     "serve": "^13.0.2",
-    "@types/node": "^24.9.2",
-    "netlify-cli": "^23.9.5",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "@antora/pdf-extension": "^1.0.0-alpha.1",
     "@modelcontextprotocol/sdk": "^1.20.2",
     "@modelfetch/netlify": "^1.0.13",
+    "jose": "^6.1.0",
     "zod": "^3.25.76"
   }
 }

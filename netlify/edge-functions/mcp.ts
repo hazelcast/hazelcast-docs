@@ -2,7 +2,17 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import handle from '@modelfetch/netlify'
 import { z } from 'zod'
 import { jwtVerify } from 'jose'
-import { TokenPayload } from './oauth-token';
+
+export interface TokenPayload {
+  sub: string;
+  email: string;
+  name: string;
+  aud: string;
+  scope: string;
+  exp: number;
+  iat: number;
+  token_type: 'access' | 'refresh';
+}
 
 const API_BASE = 'https://api.kapa.ai'
 const SERVER_VERSION = '0.0.1';
@@ -57,6 +67,10 @@ server.registerTool(
     const KAPA_API_KEY = process.env.KAPA_API_KEY;
     const KAPA_PROJECT_ID = process.env.KAPA_PROJECT_ID;
     const KAPA_INTEGRATION_ID = process.env.KAPA_INTEGRATION_ID;
+
+    if (!KAPA_API_KEY || !KAPA_PROJECT_ID || !KAPA_INTEGRATION_ID) {
+      throw new Error('KAPA_API_KEY, KAPA_PROJECT_ID, and KAPA_INTEGRATION_ID environment variables must be set');
+    }
 
     try {
       const response = await fetch(

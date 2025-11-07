@@ -5,10 +5,10 @@ const ACCESS_TOKEN_EXPIRY = 3600; // 1 hour
 const REFRESH_TOKEN_EXPIRY = 7 * 24 * 3600; // 7 days
 
 export interface TokenPayload {
-  sub: string; // user ID
+  sub: string;
   email: string;
   name: string;
-  aud: string; // audience (resource server)
+  aud: string;
   scope: string;
   exp: number;
   iat: number;
@@ -61,7 +61,10 @@ async function verifyAuthorizationCode(
 }
 
 async function createToken(payload: TokenPayload): Promise<string> {
-  const TOKEN_SECRET = process.env.TOKEN_SECRET || 'default-token-secret-change-me';
+  const TOKEN_SECRET = process.env.TOKEN_SECRET;
+  if (!TOKEN_SECRET) {
+    throw new Error("TOKEN_SECRET environment variable must be set");
+  }
   const encoder = new TextEncoder();
   const secret = encoder.encode(TOKEN_SECRET);
 
@@ -191,7 +194,6 @@ async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Re
   const code = params.get('code');
   const codeVerifier = params.get('code_verifier');
   const redirectUri = params.get('redirect_uri');
-  const clientId = params.get('client_id');
 
   if (!code || !codeVerifier || !redirectUri) {
     return new Response(
@@ -239,7 +241,7 @@ async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Re
   const response = {
     access_token: accessToken,
     token_type: 'Bearer',
-    expires_in: 3600,
+    expires_in: ACCESS_TOKEN_EXPIRY,
     refresh_token: refreshToken,
     scope: authCode.scope,
   };
@@ -318,7 +320,7 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
   const response = {
     access_token: newAccessToken,
     token_type: 'Bearer',
-    expires_in: 3600,
+    expires_in: ACCESS_TOKEN_EXPIRY,
     refresh_token: newRefreshToken,
     scope: payload.scope,
   };

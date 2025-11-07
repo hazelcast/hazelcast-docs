@@ -43,6 +43,14 @@ Set the following environment variables in Netlify:
 # GitHub OAuth Application credentials
 GITHUB_CLIENT_ID=your_github_oauth_app_client_id
 GITHUB_CLIENT_SECRET=your_github_oauth_app_client_secret
+```
+
+Use this command to generate secure random secrets:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+Run it twice to generate both `TOKEN_SECRET` and `SESSION_SECRET`.
 
 # Token signing secret (generate a secure random string)
 TOKEN_SECRET=your_secure_random_secret_at_least_32_chars
@@ -54,7 +62,6 @@ SESSION_SECRET=your_secure_random_secret_at_least_32_chars
 KAPA_API_KEY=your_kapa_api_key
 KAPA_PROJECT_ID=your_kapa_project_id
 KAPA_INTEGRATION_ID=your_kapa_integration_id
-```
 
 ### Optional Variables (Access Control)
 

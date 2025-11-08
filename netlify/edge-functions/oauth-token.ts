@@ -48,7 +48,7 @@ async function verifyAuthorizationCode(
   return authCode;
 }
 
-export default async (request: Request) => {
+export default async (request: Request): Promise<Response> => {
   // Handle CORS preflight
   if (request.method === 'OPTIONS') {
     return new Response(null, {

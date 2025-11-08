@@ -1,7 +1,7 @@
 // RFC 7591 Dynamic Client Registration endpoint
 // For MCP clients - auto-registers public clients
 
-export default async (request: Request) => {
+export default async (request: Request): Promise<Response> => {
   // Handle CORS preflight
   if (request.method === 'OPTIONS') {
     return new Response(null, {

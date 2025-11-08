@@ -1,6 +1,6 @@
 // RFC 9728 Protected Resource Metadata endpoint
 
-export default async (request: Request) => {
+export default async (request: Request): Promise<Response> => {
   const url = new URL(request.url);
   const origin = url.origin;
 

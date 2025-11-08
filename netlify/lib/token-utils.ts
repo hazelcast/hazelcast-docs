@@ -19,9 +19,9 @@ const refreshTokens = new Map<string, TokenPayload>();
 
 export function extractBearerToken(authHeader: string | null): string | null {
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return null
+    return null;
   }
-  return authHeader.substring(7)
+  return authHeader.substring(7);
 }
 
 export async function verifyToken(token: string, expectedAudience: string, tokenSecretEnvVar: string): Promise<TokenPayload | null> {
@@ -50,8 +50,8 @@ export async function verifyToken(token: string, expectedAudience: string, token
 }
 
 export function validateScope(payload: TokenPayload, requiredScope: string): boolean {
-  const tokenScopes = payload.scope.split(' ')
-  return tokenScopes.includes(requiredScope)
+  const tokenScopes = payload.scope.split(' ');
+  return tokenScopes.includes(requiredScope);
 }
 
 async function createToken(payload: TokenPayload): Promise<string> {
@@ -66,9 +66,9 @@ async function createToken(payload: TokenPayload): Promise<string> {
     email: payload.email,
     name: payload.name,
     scope: payload.scope,
-    token_type: payload.token_type
+    token_type: payload.token_type,
   })
-    .setProtectedHeader({ alg: 'HS256' })
+    .setProtectedHeader({ alg: 'RS256' })
     .setSubject(payload.sub)
     .setAudience(payload.aud)
     .setExpirationTime(payload.exp)

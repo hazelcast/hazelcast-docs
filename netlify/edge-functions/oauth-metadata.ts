@@ -1,6 +1,6 @@
 // RFC 8414 Authorization Server Metadata endpoint
 
-export default async (request: Request) => {
+export default async (request: Request): Promise<Response> => {
   const url = new URL(request.url);
   const origin = url.origin;
 

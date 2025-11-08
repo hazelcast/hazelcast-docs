@@ -45,23 +45,21 @@ GITHUB_CLIENT_ID=your_github_oauth_app_client_id
 GITHUB_CLIENT_SECRET=your_github_oauth_app_client_secret
 ```
 
-Use this command to generate secure random secrets:
+Use this command to generate a secure random secret:
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
-Run it twice to generate both `TOKEN_SECRET` and `SESSION_SECRET`.
 
+```bash
 # Token signing secret (generate a secure random string)
 TOKEN_SECRET=your_secure_random_secret_at_least_32_chars
-
-# Session secret for internal use (generate a secure random string)
-SESSION_SECRET=your_secure_random_secret_at_least_32_chars
 
 # Existing Kapa.ai credentials
 KAPA_API_KEY=your_kapa_api_key
 KAPA_PROJECT_ID=your_kapa_project_id
 KAPA_INTEGRATION_ID=your_kapa_integration_id
+```
 
 ### Optional Variables (Access Control)
 
@@ -322,27 +320,6 @@ The client will:
 - Check that authorization code hasn't expired (10 minutes)
 - Verify redirect_uri matches exactly
 
-## Production Considerations
-
-### Token Storage
-
-Currently, authorization codes and refresh tokens are stored in-memory. For production:
-
-- Use Netlify Blobs or Redis for persistent storage
-- Implement token revocation
-- Add rate limiting for token endpoints
-
-### Monitoring
-
-- Monitor failed authentication attempts
-- Track token usage and expiration
-- Alert on unusual access patterns
-
-### Secrets Management
-
-- Use strong random values for `TOKEN_SECRET` and `SESSION_SECRET`
-- Rotate secrets periodically
-- Never commit secrets to version control
 
 ## References
 

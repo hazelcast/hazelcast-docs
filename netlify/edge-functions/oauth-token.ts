@@ -114,7 +114,6 @@ async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Re
     );
   }
 
-  // Verify authorization code and PKCE
   const authCode = await verifyAuthorizationCode(code, codeVerifier, redirectUri);
 
   if (!authCode) {
@@ -130,7 +129,6 @@ async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Re
   const url = new URL(request.url);
   const audience = `${url.origin}/mcp`;
 
-  // Create access and refresh tokens
   const accessToken = await createAccessToken(
     String(authCode.user.id),
     authCode.user.email,

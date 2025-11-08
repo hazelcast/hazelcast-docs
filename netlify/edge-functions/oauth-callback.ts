@@ -2,6 +2,8 @@
 import { authCodes, type AuthorizationCode } from '../lib/auth-code-storage.ts';
 import { pendingAuths } from './oauth-authorize.ts';
 
+const AUTH_CODE_EXPIRY = 10 * 60 * 1000; // 10 minutes
+
 async function createAuthorizationCode(
   user: { id: number; login: string; email: string; name: string },
   codeChallenge: string,
@@ -17,13 +19,13 @@ async function createAuthorizationCode(
     codeChallengeMethod,
     redirectUri,
     scope,
-    expiresAt: Date.now() + 600000, // 10 minutes
+    expiresAt: Date.now() + AUTH_CODE_EXPIRY,
   };
 
   authCodes.set(code, authCode);
 
   // Clean up after expiry
-  setTimeout(() => authCodes.delete(code), 600000);
+  setTimeout(() => authCodes.delete(code), AUTH_CODE_EXPIRY);
 
   return code;
 }

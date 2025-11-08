@@ -32,7 +32,7 @@ async function verifyAuthorizationCode(
     const data = encoder.encode(codeVerifier);
     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
     const hashArray = new Uint8Array(hashBuffer);
-    const base64 = btoa(String.fromCharCode(...hashArray))
+    const base64 = btoa(String.fromCharCode.apply(null, Array.from(hashArray)))
       .replace(/\+/g, '-')
       .replace(/\//g, '_')
       .replace(/=/g, '');

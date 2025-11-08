@@ -1,22 +1,10 @@
 import { authCodes, type AuthorizationCode } from '../lib/auth-code-storage.ts';
-import { SignJWT } from 'jose';
-
-const ACCESS_TOKEN_EXPIRY = 3600; // 1 hour
-const REFRESH_TOKEN_EXPIRY = 7 * 24 * 3600; // 7 days
-
-export interface TokenPayload {
-  sub: string;
-  email: string;
-  name: string;
-  aud: string;
-  scope: string;
-  exp: number;
-  iat: number;
-  token_type: 'access' | 'refresh';
-}
-
-// In-memory storage (replace with Redis/KV in production)
-const refreshTokens = new Map<string, TokenPayload>();
+import {
+  ACCESS_TOKEN_EXPIRY,
+  createAccessToken,
+  createRefreshToken,
+  getRefreshTokenPayload, revokeRefreshToken,
+} from '../lib/token-utils.ts';
 
 async function verifyAuthorizationCode(
   code: string,
@@ -58,85 +46,6 @@ async function verifyAuthorizationCode(
   authCodes.delete(code);
 
   return authCode;
-}
-
-async function createToken(payload: TokenPayload): Promise<string> {
-  const TOKEN_SECRET = process.env.TOKEN_SECRET;
-  if (!TOKEN_SECRET) {
-    throw new Error("TOKEN_SECRET environment variable must be set");
-  }
-  const encoder = new TextEncoder();
-  const secret = encoder.encode(TOKEN_SECRET);
-
-  const token = await new SignJWT({
-    email: payload.email,
-    name: payload.name,
-    scope: payload.scope,
-    token_type: payload.token_type
-  })
-    .setProtectedHeader({ alg: 'HS256' })
-    .setSubject(payload.sub)
-    .setAudience(payload.aud)
-    .setExpirationTime(payload.exp)
-    .setIssuedAt(payload.iat)
-    .sign(secret);
-
-  return token;
-}
-
-async function createAccessToken(
-  userId: string,
-  email: string,
-  name: string,
-  audience: string,
-  scope: string
-): Promise<string> {
-  const now = Math.floor(Date.now() / 1000);
-  const payload: TokenPayload = {
-    sub: userId,
-    email,
-    name,
-    aud: audience,
-    scope,
-    exp: now + ACCESS_TOKEN_EXPIRY,
-    iat: now,
-    token_type: 'access',
-  };
-
-  return await createToken(payload);
-}
-
-async function createRefreshToken(
-  userId: string,
-  email: string,
-  name: string,
-  audience: string,
-  scope: string
-): Promise<string> {
-  const now = Math.floor(Date.now() / 1000);
-  const payload: TokenPayload = {
-    sub: userId,
-    email,
-    name,
-    aud: audience,
-    scope,
-    exp: now + REFRESH_TOKEN_EXPIRY,
-    iat: now,
-    token_type: 'refresh',
-  };
-
-  const token = await createToken(payload);
-  refreshTokens.set(token, payload);
-
-  return token;
-}
-
-function getRefreshTokenPayload(refreshToken: string): TokenPayload | null {
-  return refreshTokens.get(refreshToken) || null;
-}
-
-function revokeRefreshToken(refreshToken: string): void {
-  refreshTokens.delete(refreshToken);
 }
 
 export default async (request: Request) => {

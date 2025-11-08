@@ -1,47 +1,19 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-import handle from '@modelfetch/netlify'
+import type { JSONRPCMessage } from '@modelcontextprotocol/sdk/types.js'
 import { z } from 'zod'
-import { jwtVerify } from 'jose'
-
-export interface TokenPayload {
-  sub: string;
-  email: string;
-  name: string;
-  aud: string;
-  scope: string;
-  exp: number;
-  iat: number;
-  token_type: 'access' | 'refresh';
-}
+import { extractBearerToken, validateScope, verifyToken } from '../lib/token-utils.ts';
+import { SimpleTransport } from '../lib/simple-transport.ts';
+import {
+  createInsufficientScopeResponse,
+  createInvalidTokenResponse,
+  createJsonRpcParsingErrorResponse,
+  createMethodNotAllowedResponse,
+  createSuccessResponse,
+  createUnauthorizedResponse,
+} from '../lib/mcp-response-creators.ts';
 
 const API_BASE = 'https://api.kapa.ai'
 const SERVER_VERSION = '0.0.1';
-
-async function verifyToken(token: string, expectedAudience?: string): Promise<TokenPayload | null> {
-  try {
-    const TOKEN_SECRET = process.env.TOKEN_SECRET;
-    const encoder = new TextEncoder();
-    const secret = encoder.encode(TOKEN_SECRET);
-
-    const { payload } = await jwtVerify<TokenPayload>(token, secret, {
-      audience: expectedAudience,
-    });
-
-    return {
-      sub: payload.sub,
-      email: payload.email,
-      name: payload.name,
-      aud: payload.aud,
-      scope: payload.scope,
-      exp: payload.exp,
-      iat: payload.iat,
-      token_type: payload.token_type,
-    };
-  } catch (error) {
-    console.error('Token verification error:', error);
-    return null;
-  }
-}
 
 const server = new McpServer({
   name: 'Hazelcast Docs MCP',
@@ -121,94 +93,62 @@ server.registerTool(
   }
 );
 
+async function parseJsonRpcRequest(request: Request): Promise<JSONRPCMessage | null> {
+  try {
+    return await request.json() as JSONRPCMessage
+  } catch (error) {
+    return null
+  }
+}
 
-const baseHandler = handle({
-  server: server,
-  pre: (app) => {
-    app.use('/mcp', async (c, next) => {
-      await next();
-      c.res.headers.set('X-MCP-Server', `Hazelcast Docs MCP/${SERVER_VERSION}`);
-    });
-  },
-})
+async function handleMcpRequest(jsonRpcRequest: JSONRPCMessage): Promise<JSONRPCMessage> {
+  const transport = new SimpleTransport()
 
-export default async (request, context) => {
+  const responsePromise = new Promise<JSONRPCMessage>((resolve) => {
+    transport.setResponseHandler(resolve)
+  })
+
+  await server.connect(transport)
+  transport.onmessage?.(jsonRpcRequest)
+
+  const jsonRpcResponse = await responsePromise
+  await transport.close()
+
+  return jsonRpcResponse
+}
+
+export default async (request: Request): Promise<Response> => {
   const url = new URL(request.url)
 
-  // Enforce POST for /mcp (some tools accidentally send GET)
-  if (url.pathname === '/mcp' && request.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405, headers: { 'Allow': 'POST' } })
+  if (request.method !== 'POST') {
+    return createMethodNotAllowedResponse();
   }
 
-  // Extract Bearer token from Authorization header
-  const authHeader = request.headers.get('Authorization')
   const resourceUrl = `${url.origin}/mcp`
   const resourceMetadataUrl = `${url.origin}/.well-known/oauth-protected-resource`
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    // Return 401 with WWW-Authenticate header as per MCP spec (RFC 9728)
-    return new Response(
-      JSON.stringify({
-        error: 'unauthorized',
-        message: 'Bearer token required'
-      }),
-      {
-        status: 401,
-        headers: {
-          'Content-Type': 'application/json',
-          'WWW-Authenticate': `Bearer realm="${resourceUrl}", resource_metadata="${resourceMetadataUrl}", scope="mcp:query"`
-        }
-      }
-    )
+  const token = extractBearerToken(request.headers.get('Authorization'))
+  if (!token) {
+    return createUnauthorizedResponse(resourceUrl, resourceMetadataUrl)
   }
 
-  const token = authHeader.substring(7) // Remove 'Bearer ' prefix
-
-  // Verify token with audience validation
-  const payload = await verifyToken(token, resourceUrl)
-
+  const payload = await verifyToken(token, resourceUrl, process.env.TOKEN_SECRET)
   if (!payload) {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_token',
-        message: 'Invalid or expired access token'
-      }),
-      {
-        status: 401,
-        headers: {
-          'Content-Type': 'application/json',
-          'WWW-Authenticate': `Bearer realm="${resourceUrl}", resource_metadata="${resourceMetadataUrl}", error="invalid_token", error_description="The access token is invalid or expired"`
-        }
-      }
-    )
+    return createInvalidTokenResponse(resourceUrl, resourceMetadataUrl)
   }
 
-  // Check scope (MCP spec requires proper scope validation)
   const requiredScope = 'mcp:query'
-  const tokenScopes = payload.scope.split(' ')
-
-  if (!tokenScopes.includes(requiredScope)) {
-    return new Response(
-      JSON.stringify({
-        error: 'insufficient_scope',
-        message: 'Token does not have required scope'
-      }),
-      {
-        status: 403,
-        headers: {
-          'Content-Type': 'application/json',
-          'WWW-Authenticate': `Bearer realm="${resourceUrl}", resource_metadata="${resourceMetadataUrl}", error="insufficient_scope", scope="${requiredScope}"`
-        }
-      }
-    )
+  if (!validateScope(payload, requiredScope)) {
+    return createInsufficientScopeResponse(resourceUrl, resourceMetadataUrl, requiredScope)
   }
 
-  const patchedHeaders = new Headers(request.headers)
-  patchedHeaders.set('accept', 'application/json, text/event-stream')
-  patchedHeaders.set('content-type', 'application/json')
+  const jsonRpcRequest = await parseJsonRpcRequest(request)
+  if (!jsonRpcRequest) {
+    return createJsonRpcParsingErrorResponse()
+  }
 
-  const patchedRequest = new Request(request, { headers: patchedHeaders })
-  return baseHandler(patchedRequest, context)
+  const jsonRpcResponse = await handleMcpRequest(jsonRpcRequest)
+  return createSuccessResponse(jsonRpcResponse)
 }
 
 export const config = {

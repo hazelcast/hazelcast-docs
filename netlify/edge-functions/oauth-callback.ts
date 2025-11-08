@@ -1,6 +1,6 @@
 // OAuth callback from GitHub
-import { authCodes, type AuthorizationCode } from "../lib/auth-code-storage.ts";
-import { pendingAuths } from "./oauth-authorize.ts";
+import { authCodes, type AuthorizationCode } from '../lib/auth-code-storage.ts';
+import { pendingAuths } from './oauth-authorize.ts';
 
 async function createAuthorizationCode(
   user: { id: number; login: string; email: string; name: string },

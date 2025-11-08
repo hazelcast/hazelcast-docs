@@ -65,7 +65,7 @@ server.registerTool(
       try {
         data = raw ? JSON.parse(raw) : [];
       } catch (error) {
-        console.error('JSON parse error from upstream response:', error.message, 'Raw response:', raw);
+        console.error('JSON parse error from upstream response:', error?.message, 'Raw response:', raw);
         data = [];
       }
 

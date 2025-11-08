@@ -76,7 +76,7 @@ interface GitHubEmail {
   verified: boolean;
 }
 
-export default async (request: Request) => {
+export default async (request: Request): Promise<Response> => {
   const url = new URL(request.url);
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state');

@@ -3,6 +3,33 @@ import { authCodes, type AuthorizationCode } from './auth-code-storage.ts';
 const AUTH_CODE_EXPIRY = 10 * 60 * 1000; // 10 minutes
 
 // ============================================================================
+// Cryptographic Utilities
+// ============================================================================
+
+/**
+ * Generates a cryptographically secure random string using crypto.getRandomValues().
+ * The output is base64url-encoded for safe use in URLs and tokens.
+ */
+export function generateSecureRandomString(bytes: number = 32): string {
+  const randomBytes = new Uint8Array(bytes);
+  crypto.getRandomValues(randomBytes);
+  return base64UrlEncode(randomBytes);
+}
+
+/**
+ * Encodes a byte array to base64url format (RFC 4648).
+ * Converts standard base64 to base64url by replacing + with -, / with _, and removing padding =
+ */
+export function base64UrlEncode(buffer: Uint8Array): string {
+  const base64 = btoa(String.fromCharCode(...Array.from(buffer)));
+
+  return base64
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '');
+}
+
+// ============================================================================
 // Authorization Code Management
 // ============================================================================
 
@@ -16,8 +43,6 @@ export interface UserInfo {
 /**
  * Creates and stores an authorization code with PKCE parameters.
  * The code will automatically expire after AUTH_CODE_EXPIRY.
- *
- * @returns The generated authorization code
  */
 export async function createAuthorizationCode(
   user: UserInfo,
@@ -26,7 +51,9 @@ export async function createAuthorizationCode(
   redirectUri: string,
   scope: string
 ): Promise<string> {
-  const code = crypto.randomUUID();
+  // Generate cryptographically secure authorization code (256 bits of entropy)
+  // Using crypto.getRandomValues() as per OAuth 2.0 RFC 6749 security requirements
+  const code = generateSecureRandomString(32);
 
   const authCode: AuthorizationCode = {
     code,
@@ -81,19 +108,6 @@ async function generateCodeChallenge(codeVerifier: string): Promise<string> {
   return base64UrlEncode(hashArray);
 }
 
-/**
- * Encodes a byte array to base64url format (RFC 4648).
- * Converts standard base64 to base64url by replacing + with -, / with _, and removing padding =
- */
-function base64UrlEncode(buffer: Uint8Array): string {
-  const base64 = btoa(String.fromCharCode(...Array.from(buffer)));
-
-  return base64
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=/g, '');
-}
-
 // ============================================================================
 // User Authorization
 // ============================================================================
@@ -104,9 +118,6 @@ function base64UrlEncode(buffer: Uint8Array): string {
  *
  * If no restrictions are configured (both ALLOWED_EMAILS and ALLOWED_DOMAINS are empty),
  * all users are allowed.
- *
- * @param email - The user's email address
- * @returns true if the user is authorized, false otherwise
  */
 export function isUserAuthorized(email: string): boolean {
   const allowedEmails = process.env.ALLOWED_EMAILS || '';

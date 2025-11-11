@@ -1,5 +1,7 @@
 // OAuth 2.1 Authorization endpoint with PKCE
 
+import { generateSecureRandomString } from '../lib/oauth-utils.ts';
+
 const GITHUB_OAUTH_URL = 'https://github.com/login/oauth/authorize';
 
 interface PendingAuth {
@@ -91,8 +93,9 @@ export default async (request: Request) => {
     return new Response('GitHub OAuth not configured', { status: 500 });
   }
 
-  // Create internal state to track this auth request
-  const internalState = crypto.randomUUID();
+  // Create internal state to track this auth request (CSRF protection)
+  // Use cryptographically secure random values for security (256 bits of entropy)
+  const internalState = generateSecureRandomString(32);
   const pendingAuth: PendingAuth = {
     clientId,
     redirectUri,

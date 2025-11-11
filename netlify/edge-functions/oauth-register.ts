@@ -1,6 +1,8 @@
 // RFC 7591 Dynamic Client Registration endpoint
 // For MCP clients - auto-registers public clients
 
+import { generateSecureRandomString } from '../lib/oauth-utils.ts';
+
 export default async (request: Request): Promise<Response> => {
   // Handle CORS preflight
   if (request.method === 'OPTIONS') {
@@ -66,7 +68,8 @@ export default async (request: Request): Promise<Response> => {
   }
 
   // Generate client ID (for MCP, we accept any public client)
-  const clientId = crypto.randomUUID();
+  // Use cryptographically secure random values for security (128 bits of entropy)
+  const clientId = generateSecureRandomString(16);
 
   // Return client registration response
   const response = {

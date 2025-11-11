@@ -1,5 +1,10 @@
 // RFC 7591 Dynamic Client Registration endpoint
 // For MCP clients - auto-registers public clients
+//
+// DESIGN NOTE: This endpoint generates client IDs but does NOT store or validate them.
+// Rate limiting prevents abuse (10 requests/minute per IP/domain).
+// Moreover, ALLOWED_EMAILS and ALLOWED_DOMAINS are limiting the actual server users.
+// Client validation is optional since PKCE provides security without client secrets.
 
 import { generateSecureRandomString } from '../lib/oauth-utils.ts';
 
@@ -94,4 +99,9 @@ export default async (request: Request): Promise<Response> => {
 
 export const config = {
   path: '/oauth/register',
+  rateLimit: {
+    windowLimit: 10,    // 10 registration requests
+    windowSize: 60,     // per 60 seconds (1 minute)
+    aggregateBy: ['ip', 'domain'],  // rate limit by IP and domain
+  },
 };

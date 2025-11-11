@@ -114,12 +114,12 @@ export async function createAccessToken({
 }
 
 export async function createRefreshToken({
-   userId,
-   email,
-   name,
-   audience,
-   scope,
- }: CreateTokenParams): Promise<string> {
+  userId,
+  email,
+  name,
+  audience,
+  scope,
+}: CreateTokenParams): Promise<string> {
   const now = Math.floor(Date.now() / 1000);
   const payload: TokenPayload = {
     sub: userId,

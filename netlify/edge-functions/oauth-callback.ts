@@ -1,6 +1,5 @@
 import { pendingAuths } from './oauth-authorize.ts';
-import { createAuthorizationCode } from '../lib/auth-code-utils.ts';
-import { isUserAuthorized } from '../lib/user-authorization-utils.ts';
+import { createAuthorizationCode, isUserAuthorized } from '../lib/oauth-utils.ts';
 import {
   exchangeGitHubCode,
   getGitHubUserData,

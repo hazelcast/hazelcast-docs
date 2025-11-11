@@ -6,7 +6,7 @@ import {
   getRefreshTokenPayload,
   revokeRefreshToken,
 } from '../lib/token-utils.ts';
-import { verifyPkceChallenge } from '../lib/pkce-utils.ts';
+import { verifyPkceChallenge } from '../lib/oauth-utils.ts';
 import { parseRequestParams, extractAudience } from '../lib/request-utils.ts';
 import {
   createCorsPreflightResponse,

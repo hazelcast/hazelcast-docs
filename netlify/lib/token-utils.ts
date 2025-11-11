@@ -1,7 +1,9 @@
 import { jwtVerify, SignJWT } from 'jose';
+import { createBlobStorage } from './blob-storage.ts';
 
 export const ACCESS_TOKEN_EXPIRY = 3600; // 1 hour
 export const REFRESH_TOKEN_EXPIRY = 7 * 24 * 3600; // 7 days
+export const REFRESH_TOKEN_EXPIRY_MS = REFRESH_TOKEN_EXPIRY * 1000; // Convert to milliseconds for TTL
 
 export interface CreateTokenParams {
   userId: string;
@@ -22,8 +24,8 @@ export interface TokenPayload {
   token_type: 'access' | 'refresh';
 }
 
-// In-memory storage (replace with Redis/KV in production)
-const refreshTokens = new Map<string, TokenPayload>();
+// Persistent storage using Netlify Blobs
+const refreshTokens = createBlobStorage<TokenPayload>('oauth-refresh-tokens');
 
 export function extractBearerToken(authHeader: string | null): string | null {
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -131,15 +133,16 @@ export async function createRefreshToken({
   };
 
   const token = await createToken(payload);
-  refreshTokens.set(token, payload);
+  // Store with automatic expiration (TTL handled by blob storage)
+  await refreshTokens.set(token, payload, REFRESH_TOKEN_EXPIRY_MS);
 
   return token;
 }
 
-export function getRefreshTokenPayload(refreshToken: string): TokenPayload | null {
-  return refreshTokens.get(refreshToken) || null;
+export async function getRefreshTokenPayload(refreshToken: string): Promise<TokenPayload | null> {
+  return await refreshTokens.get(refreshToken);
 }
 
-export function revokeRefreshToken(refreshToken: string): void {
-  refreshTokens.delete(refreshToken);
+export async function revokeRefreshToken(refreshToken: string): Promise<void> {
+  await refreshTokens.delete(refreshToken);
 }

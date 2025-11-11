@@ -24,14 +24,15 @@ async function verifyAuthorizationCode(
   codeVerifier: string,
   redirectUri: string
 ): Promise<AuthorizationCode | null> {
-  const authCode = authCodes.get(code);
+  const authCode = await authCodes.get(code);
 
   if (!authCode) {
     return null;
   }
 
+  // Expiration is now handled by blob storage, but we check for safety
   if (Date.now() > authCode.expiresAt) {
-    authCodes.delete(code);
+    await authCodes.delete(code);
     return null;
   }
 
@@ -50,7 +51,7 @@ async function verifyAuthorizationCode(
   }
 
   // Delete code after successful verification (single use)
-  authCodes.delete(code);
+  await authCodes.delete(code);
 
   return authCode;
 }
@@ -128,19 +129,19 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
     return createMissingParametersResponse('refresh_token');
   }
 
-  const payload = getRefreshTokenPayload(refreshToken);
+  const payload = await getRefreshTokenPayload(refreshToken);
 
   if (!payload) {
     return createInvalidGrantResponse('Invalid refresh token');
   }
 
   if (isTokenExpired(payload.exp)) {
-    revokeRefreshToken(refreshToken);
+    await revokeRefreshToken(refreshToken);
     return createInvalidGrantResponse('Refresh token expired');
   }
 
   // Revoke old refresh token and create new one (refresh token rotation)
-  revokeRefreshToken(refreshToken);
+  await revokeRefreshToken(refreshToken);
 
   const tokenParams = {
     userId: payload.sub,

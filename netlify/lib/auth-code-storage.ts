@@ -1,6 +1,8 @@
 // Shared authorization code storage
 // Must be shared between oauth-callback (creates) and oauth-token (verifies)
 
+import { createBlobStorage } from './blob-storage.ts';
+
 export interface AuthorizationCode {
   code: string;
   user: {
@@ -16,5 +18,5 @@ export interface AuthorizationCode {
   expiresAt: number;
 }
 
-// In-memory storage (replace with Redis/KV in production)
-export const authCodes = new Map<string, AuthorizationCode>();
+// Persistent storage using Netlify Blobs
+export const authCodes = createBlobStorage<AuthorizationCode>('oauth-auth-codes');

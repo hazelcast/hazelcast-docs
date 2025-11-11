@@ -1,22 +1,10 @@
 // OAuth 2.1 Authorization endpoint with PKCE
 
 import { generateSecureRandomString } from '../lib/oauth-utils.ts';
+import { pendingAuths, type PendingAuth } from '../lib/pending-auth-storage.ts';
 
 const GITHUB_OAUTH_URL = 'https://github.com/login/oauth/authorize';
-
-interface PendingAuth {
-  clientId: string;
-  redirectUri: string;
-  state: string;
-  codeChallenge: string;
-  codeChallengeMethod: string;
-  scope: string;
-  resource: string;
-  expiresAt: number;
-}
-
-// Store pending auth requests (replace with Redis/KV in production)
-const pendingAuths = new Map<string, PendingAuth>();
+const PENDING_AUTH_EXPIRY = 10 * 60 * 1000; // 10 minutes
 
 export default async (request: Request) => {
   const url = new URL(request.url);
@@ -104,11 +92,11 @@ export default async (request: Request) => {
     codeChallengeMethod,
     scope,
     resource: resource || `${url.origin}/mcp`,
-    expiresAt: Date.now() + 600000, // 10 minutes
+    expiresAt: Date.now() + PENDING_AUTH_EXPIRY,
   };
 
-  pendingAuths.set(internalState, pendingAuth);
-  setTimeout(() => pendingAuths.delete(internalState), 600000);
+  // Store with automatic expiration (TTL handled by blob storage)
+  await pendingAuths.set(internalState, pendingAuth, PENDING_AUTH_EXPIRY);
 
   // Redirect to GitHub OAuth
   const githubParams = new URLSearchParams({
@@ -124,5 +112,3 @@ export default async (request: Request) => {
 export const config = {
   path: '/oauth/authorize',
 };
-
-export { pendingAuths };

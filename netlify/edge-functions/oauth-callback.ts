@@ -1,4 +1,4 @@
-import { pendingAuths } from './oauth-authorize.ts';
+import { pendingAuths } from '../lib/pending-auth-storage.ts';
 import { createAuthorizationCode, isUserAuthorized } from '../lib/oauth-utils.ts';
 import {
   exchangeGitHubCode,
@@ -26,13 +26,15 @@ export default async (request: Request): Promise<Response> => {
   }
 
   // Retrieve pending auth request
-  const pendingAuth = pendingAuths.get(state);
+  const pendingAuth = await pendingAuths.get(state);
   if (!pendingAuth) {
     return createPlainErrorResponse('Invalid or expired state', 400);
   }
 
-  pendingAuths.delete(state);
+  // Delete after retrieval (single use)
+  await pendingAuths.delete(state);
 
+  // Expiration is now handled by blob storage, but we check for safety
   if (Date.now() > pendingAuth.expiresAt) {
     return createPlainErrorResponse('Authorization request expired', 400);
   }

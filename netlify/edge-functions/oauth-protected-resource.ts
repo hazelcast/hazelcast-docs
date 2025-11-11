@@ -8,7 +8,7 @@ export default async (request: Request): Promise<Response> => {
     resource: `${origin}/mcp`,
     authorization_servers: [`${origin}/oauth`],
     bearer_methods_supported: ["header"],
-    resource_signing_alg_values_supported: ["RS256"],
+    resource_signing_alg_values_supported: ["HS256"],
     resource_documentation: "https://docs.hazelcast.com",
     scopes_supported: ["mcp:query"],
   };

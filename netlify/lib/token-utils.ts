@@ -79,7 +79,7 @@ async function createToken(payload: TokenPayload): Promise<string> {
     scope: payload.scope,
     token_type: payload.token_type,
   })
-    .setProtectedHeader({ alg: 'RS256' })
+    .setProtectedHeader({ alg: 'HS256' })
     .setSubject(payload.sub)
     .setAudience(payload.aud)
     .setExpirationTime(payload.exp)

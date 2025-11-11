@@ -31,10 +31,8 @@ export default async (request: Request): Promise<Response> => {
     return createPlainErrorResponse('Invalid or expired state', 400);
   }
 
-  // Delete after retrieval (single use)
   await pendingAuths.delete(state);
 
-  // Expiration is now handled by blob storage, but we check for safety
   if (Date.now() > pendingAuth.expiresAt) {
     return createPlainErrorResponse('Authorization request expired', 400);
   }

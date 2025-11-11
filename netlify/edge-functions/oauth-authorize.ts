@@ -95,7 +95,6 @@ export default async (request: Request) => {
     expiresAt: Date.now() + PENDING_AUTH_EXPIRY,
   };
 
-  // Store with automatic expiration (TTL handled by blob storage)
   await pendingAuths.set(internalState, pendingAuth, PENDING_AUTH_EXPIRY);
 
   // Redirect to GitHub OAuth

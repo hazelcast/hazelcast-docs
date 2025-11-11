@@ -1,7 +1,7 @@
 // Shared pending authorization storage
 // Must be shared between oauth-authorize (creates) and oauth-callback (verifies)
 
-import { createBlobStorage } from './blob-storage.ts';
+import { createAuthStorage } from './auth-storage.ts';
 
 export interface PendingAuth {
   clientId: string;
@@ -14,5 +14,4 @@ export interface PendingAuth {
   expiresAt: number;
 }
 
-// Persistent storage using Netlify Blobs
-export const pendingAuths = createBlobStorage<PendingAuth>('oauth-pending-auths');
+export const pendingAuths = createAuthStorage<PendingAuth>('oauth-pending-auths');

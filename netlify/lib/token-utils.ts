@@ -1,5 +1,5 @@
 import { jwtVerify, SignJWT } from 'jose';
-import { createBlobStorage } from './blob-storage.ts';
+import { createAuthStorage } from './auth-storage.ts';
 
 export const ACCESS_TOKEN_EXPIRY = 3600; // 1 hour
 export const REFRESH_TOKEN_EXPIRY = 7 * 24 * 3600; // 7 days
@@ -24,8 +24,7 @@ export interface TokenPayload {
   token_type: 'access' | 'refresh';
 }
 
-// Persistent storage using Netlify Blobs
-const refreshTokens = createBlobStorage<TokenPayload>('oauth-refresh-tokens');
+const refreshTokens = createAuthStorage<TokenPayload>('oauth-refresh-tokens');
 
 export function extractBearerToken(authHeader: string | null): string | null {
   if (!authHeader || !authHeader.startsWith('Bearer ')) {

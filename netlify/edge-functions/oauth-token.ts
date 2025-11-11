@@ -30,7 +30,6 @@ async function verifyAuthorizationCode(
     return null;
   }
 
-  // Expiration is now handled by blob storage, but we check for safety
   if (Date.now() > authCode.expiresAt) {
     await authCodes.delete(code);
     return null;

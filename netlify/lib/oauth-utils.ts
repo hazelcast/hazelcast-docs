@@ -65,7 +65,6 @@ export async function createAuthorizationCode(
     expiresAt: Date.now() + AUTH_CODE_EXPIRY,
   };
 
-  // Store with automatic expiration (TTL handled by blob storage)
   await authCodes.set(code, authCode, AUTH_CODE_EXPIRY);
 
   return code;

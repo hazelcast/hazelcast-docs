@@ -3,8 +3,21 @@ import {
   ACCESS_TOKEN_EXPIRY,
   createAccessToken,
   createRefreshToken,
-  getRefreshTokenPayload, revokeRefreshToken,
+  getRefreshTokenPayload,
+  revokeRefreshToken,
 } from '../lib/token-utils.ts';
+import { verifyPkceChallenge } from '../lib/pkce-utils.ts';
+import { parseRequestParams, extractAudience } from '../lib/request-utils.ts';
+import {
+  createCorsPreflightResponse,
+  createMethodNotAllowedResponse,
+  createUnsupportedContentTypeResponse,
+  createUnsupportedGrantTypeResponse,
+  createMissingParametersResponse,
+  createInvalidGrantResponse,
+  createTokenSuccessResponse,
+  type TokenResponse,
+} from '../lib/oauth-response-creators.ts';
 
 async function verifyAuthorizationCode(
   code: string,
@@ -26,20 +39,14 @@ async function verifyAuthorizationCode(
     return null;
   }
 
-  // Verify PKCE challenge
-  if (authCode.codeChallengeMethod === 'S256') {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(codeVerifier);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = new Uint8Array(hashBuffer);
-    const base64 = btoa(String.fromCharCode.apply(null, Array.from(hashArray)))
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_')
-      .replace(/=/g, '');
+  const isValidChallenge = await verifyPkceChallenge(
+    codeVerifier,
+    authCode.codeChallenge,
+    authCode.codeChallengeMethod
+  );
 
-    if (base64 !== authCode.codeChallenge) {
-      return null;
-    }
+  if (!isValidChallenge) {
+    return null;
   }
 
   // Delete code after successful verification (single use)
@@ -49,54 +56,30 @@ async function verifyAuthorizationCode(
 }
 
 export default async (request: Request): Promise<Response> => {
-  // Handle CORS preflight
   if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Max-Age': '86400',
-      },
-    });
+    return createCorsPreflightResponse();
   }
 
   if (request.method !== 'POST') {
-    return new Response(
-      JSON.stringify({ error: 'invalid_request', error_description: 'Method must be POST' }),
-      { status: 405, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-    );
+    return createMethodNotAllowedResponse();
   }
 
-  const contentType = request.headers.get('content-type');
-  let params: URLSearchParams;
-
-  if (contentType?.includes('application/x-www-form-urlencoded')) {
-    const body = await request.text();
-    params = new URLSearchParams(body);
-  } else if (contentType?.includes('application/json')) {
-    const json = await request.json();
-    params = new URLSearchParams(json);
-  } else {
-    return new Response(
-      JSON.stringify({ error: 'invalid_request', error_description: 'Unsupported content type' }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+  const params = await parseRequestParams(request);
+  if (!params) {
+    return createUnsupportedContentTypeResponse();
   }
 
   const grantType = params.get('grant_type');
 
   if (grantType === 'authorization_code') {
     return handleAuthorizationCodeGrant(params, request);
-  } else if (grantType === 'refresh_token') {
-    return handleRefreshTokenGrant(params, request);
-  } else {
-    return new Response(
-      JSON.stringify({ error: 'unsupported_grant_type', error_description: `Grant type ${grantType} not supported` }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
   }
+
+  if (grantType === 'refresh_token') {
+    return handleRefreshTokenGrant(params, request);
+  }
+
+  return createUnsupportedGrantTypeResponse(grantType);
 };
 
 async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Request): Promise<Response> {
@@ -105,126 +88,72 @@ async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Re
   const redirectUri = params.get('redirect_uri');
 
   if (!code || !codeVerifier || !redirectUri) {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_request',
-        error_description: 'Missing required parameters: code, code_verifier, redirect_uri'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createMissingParametersResponse('code, code_verifier, redirect_uri');
   }
 
   const authCode = await verifyAuthorizationCode(code, codeVerifier, redirectUri);
-
   if (!authCode) {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_grant',
-        error_description: 'Invalid authorization code or code_verifier'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createInvalidGrantResponse('Invalid authorization code or code_verifier');
   }
 
-  const url = new URL(request.url);
-  const audience = `${url.origin}/mcp`;
+  const tokenParams = {
+    userId: String(authCode.user.id),
+    email: authCode.user.email,
+    name: authCode.user.name,
+    audience: extractAudience(request),
+    scope: authCode.scope,
+  };
 
-  const accessToken = await createAccessToken(
-    String(authCode.user.id),
-    authCode.user.email,
-    authCode.user.name,
-    audience,
-    authCode.scope
-  );
+  const accessToken = await createAccessToken({ ...tokenParams });
+  const refreshToken = await createRefreshToken({ ...tokenParams });
 
-  const refreshToken = await createRefreshToken(
-    String(authCode.user.id),
-    authCode.user.email,
-    authCode.user.name,
-    audience,
-    authCode.scope
-  );
-
-  const response = {
+  return createTokenSuccessResponse({
     access_token: accessToken,
     token_type: 'Bearer',
     expires_in: ACCESS_TOKEN_EXPIRY,
     refresh_token: refreshToken,
     scope: authCode.scope,
-  };
-
-  return new Response(JSON.stringify(response), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-store',
-      'Pragma': 'no-cache',
-      'Access-Control-Allow-Origin': '*',
-    },
   });
+}
+
+function isTokenExpired(expiry: number): boolean {
+  const now = Math.floor(Date.now() / 1000);
+  return expiry < now;
 }
 
 async function handleRefreshTokenGrant(params: URLSearchParams, request: Request): Promise<Response> {
   const refreshToken = params.get('refresh_token');
 
   if (!refreshToken) {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_request',
-        error_description: 'Missing refresh_token'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createMissingParametersResponse('refresh_token');
   }
 
   const payload = getRefreshTokenPayload(refreshToken);
 
   if (!payload) {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_grant',
-        error_description: 'Invalid refresh token'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createInvalidGrantResponse('Invalid refresh token');
   }
 
-  // Check if token is expired
-  const now = Math.floor(Date.now() / 1000);
-  if (payload.exp < now) {
+  if (isTokenExpired(payload.exp)) {
     revokeRefreshToken(refreshToken);
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_grant',
-        error_description: 'Refresh token expired'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createInvalidGrantResponse('Refresh token expired');
   }
 
   // Revoke old refresh token and create new one (refresh token rotation)
   revokeRefreshToken(refreshToken);
 
-  const url = new URL(request.url);
-  const audience = `${url.origin}/mcp`;
+  const tokenParams = {
+    userId: payload.sub,
+    email: payload.email,
+    name: payload.name,
+    audience: extractAudience(request),
+    scope: payload.scope,
+  };
 
-  const newAccessToken = await createAccessToken(
-    payload.sub,
-    payload.email,
-    payload.name,
-    audience,
-    payload.scope
-  );
+  const newAccessToken = await createAccessToken({ ...tokenParams });
+  const newRefreshToken = await createRefreshToken({ ...tokenParams });
 
-  const newRefreshToken = await createRefreshToken(
-    payload.sub,
-    payload.email,
-    payload.name,
-    audience,
-    payload.scope
-  );
-
-  const response = {
+  const tokenResponse: TokenResponse = {
     access_token: newAccessToken,
     token_type: 'Bearer',
     expires_in: ACCESS_TOKEN_EXPIRY,
@@ -232,15 +161,7 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
     scope: payload.scope,
   };
 
-  return new Response(JSON.stringify(response), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-store',
-      'Pragma': 'no-cache',
-      'Access-Control-Allow-Origin': '*',
-    },
-  });
+  return createTokenSuccessResponse(tokenResponse);
 }
 
 export const config = {

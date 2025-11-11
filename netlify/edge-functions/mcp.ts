@@ -132,7 +132,7 @@ export default async (request: Request): Promise<Response> => {
     return createUnauthorizedResponse(resourceUrl, resourceMetadataUrl)
   }
 
-  const payload = await verifyToken(token, resourceUrl, process.env.TOKEN_SECRET)
+  const payload = await verifyToken(token, resourceUrl)
   if (!payload) {
     return createInvalidTokenResponse(resourceUrl, resourceMetadataUrl)
   }

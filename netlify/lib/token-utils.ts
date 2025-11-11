@@ -3,6 +3,14 @@ import { jwtVerify, SignJWT } from 'jose';
 export const ACCESS_TOKEN_EXPIRY = 3600; // 1 hour
 export const REFRESH_TOKEN_EXPIRY = 7 * 24 * 3600; // 7 days
 
+export interface CreateTokenParams {
+  userId: string;
+  email: string;
+  name: string;
+  audience: string;
+  scope: string;
+}
+
 export interface TokenPayload {
   sub: string;
   email: string;
@@ -24,10 +32,13 @@ export function extractBearerToken(authHeader: string | null): string | null {
   return authHeader.substring(7);
 }
 
-export async function verifyToken(token: string, expectedAudience: string, tokenSecretEnvVar: string): Promise<TokenPayload | null> {
+export async function verifyToken(token: string, expectedAudience: string): Promise<TokenPayload | null> {
+  if (!process.env.TOKEN_SECRET) {
+    throw new Error("TOKEN_SECRET environment variable must be set");
+  }
   try {
     const encoder = new TextEncoder();
-    const secret = encoder.encode(tokenSecretEnvVar);
+    const secret = encoder.encode(process.env.TOKEN_SECRET);
 
     const { payload } = await jwtVerify<TokenPayload>(token, secret, {
       audience: expectedAudience,
@@ -78,13 +89,13 @@ async function createToken(payload: TokenPayload): Promise<string> {
   return token;
 }
 
-export async function createAccessToken(
-  userId: string,
-  email: string,
-  name: string,
-  audience: string,
-  scope: string
-): Promise<string> {
+export async function createAccessToken({
+  userId,
+  email,
+  name,
+  audience,
+  scope,
+}: CreateTokenParams): Promise<string> {
   const now = Math.floor(Date.now() / 1000);
   const payload: TokenPayload = {
     sub: userId,
@@ -100,13 +111,13 @@ export async function createAccessToken(
   return await createToken(payload);
 }
 
-export async function createRefreshToken(
-  userId: string,
-  email: string,
-  name: string,
-  audience: string,
-  scope: string
-): Promise<string> {
+export async function createRefreshToken({
+   userId,
+   email,
+   name,
+   audience,
+   scope,
+ }: CreateTokenParams): Promise<string> {
   const now = Math.floor(Date.now() / 1000);
   const payload: TokenPayload = {
     sub: userId,

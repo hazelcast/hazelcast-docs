@@ -43,6 +43,8 @@ server.registerTool(
       throw new Error('KAPA_API_KEY, KAPA_PROJECT_ID, and KAPA_INTEGRATION_ID environment variables must be set');
     }
 
+    console.log('Sending query to Kapa:', q);
+
     try {
       const response = await fetch(
         `${API_BASE}/query/v1/projects/${KAPA_PROJECT_ID}/retrieval/`,
@@ -55,6 +57,7 @@ server.registerTool(
           body: JSON.stringify({
             integration_id: KAPA_INTEGRATION_ID,
             query: q,
+            // top_k: 5,
           }),
         }
       );

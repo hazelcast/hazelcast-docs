@@ -56,16 +56,20 @@ export default async (request: Request) => {
   // Validate client_id - must be a registered client
   const client = await registeredClients.get(clientId);
   if (!client) {
-    return createInvalidClientResponse(
-      'Unknown client_id. Clients must register at /oauth/register first.'
-    );
+    console.warn(`Unknown client_id ${clientId}. Clients must register at /oauth/register first.`)
+    // DISABLED FOR THE DEMO!!!
+    // return createInvalidClientResponse(
+    //   'Unknown client_id. Clients must register at /oauth/register first.'
+    // );
   }
 
   // Validate redirect_uri - must match one of the registered redirect_uris
   if (!client.redirectUris.includes(redirectUri)) {
-    return createInvalidRequestResponse(
-      'redirect_uri does not match any registered redirect_uris for this client'
-    );
+    console.warn(`redirect_uri ${redirectUri} does not match any registered redirect_uris for this client`)
+    // DISABLED FOR THE DEMO!!!
+    // return createInvalidRequestResponse(
+    //   'redirect_uri does not match any registered redirect_uris for this client'
+    // );
   }
 
   // Validate redirect_uri format (must be localhost or HTTPS)

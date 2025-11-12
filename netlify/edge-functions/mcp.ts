@@ -25,7 +25,7 @@ server.registerTool(
   'ask_hazelcast_docs',
   {
     title: 'Search Hazelcast Sources',
-    description: 'Search the official Hazelcast documentation and return the most relevant sections from it for a user query. Each returned section includes the url and its actual content in markdown. Use this tool to for all queries that require Hazelcast knowledge.',
+    description: 'Search the official Hazelcast documentation and return the most relevant sections from it for a user query. Results are ordered by relevance, with the most relevant result returned first. Each returned section includes the url and its actual content in markdown. Use this tool to for all queries that require Hazelcast knowledge.',
     inputSchema: {
       question: z.string()
         .min(1, 'Question cannot be empty')

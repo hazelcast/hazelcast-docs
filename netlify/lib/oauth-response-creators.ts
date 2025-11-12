@@ -37,16 +37,7 @@ export function createMethodNotAllowedResponse(): Response {
 }
 
 export function createUnsupportedContentTypeResponse(): Response {
-  return new Response(
-    JSON.stringify({
-      error: 'invalid_request',
-      error_description: 'Unsupported content type',
-    }),
-    {
-      status: 400,
-      headers: JSON_HEADERS,
-    }
-  );
+  return createOAuthErrorResponse('invalid_request', 'Unsupported content type', 400);
 }
 
 export function createUnsupportedGrantTypeResponse(grantType: string | null): Response {

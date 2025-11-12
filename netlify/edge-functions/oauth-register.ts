@@ -3,50 +3,67 @@
 //
 // DESIGN NOTE: This endpoint generates client IDs but does NOT store or validate them.
 // Rate limiting prevents abuse (10 requests/minute per IP/domain).
-// Moreover, ALLOWED_EMAILS and ALLOWED_DOMAINS are limiting the actual server users.
 // Client validation is optional since PKCE provides security without client secrets.
 
 import { generateSecureRandomString } from '../lib/oauth-utils.ts';
 
+function createCORSPreflightResponse(): Response {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Max-Age': '86400',
+    },
+  });
+}
+
+function createInvalidRequestResponse(description: string, status = 400): Response {
+  return new Response(
+    JSON.stringify({ error: 'invalid_request', error_description: description }),
+    {
+      status,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+    }
+  );
+}
+
+function createMethodNotAllowedResponse(): Response {
+  return createInvalidRequestResponse('Method must be POST', 405);
+}
+
+function createInvalidRedirectUriResponse(description: string): Response {
+  return new Response(
+    JSON.stringify({
+      error: 'invalid_redirect_uri',
+      error_description: description,
+    }),
+    { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
+  );
+}
+
 export default async (request: Request): Promise<Response> => {
-  // Handle CORS preflight
   if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Max-Age': '86400',
-      },
-    });
+    return createCORSPreflightResponse();
   }
 
   if (request.method !== 'POST') {
-    return new Response(
-      JSON.stringify({ error: 'invalid_request', error_description: 'Method must be POST' }),
-      { status: 405, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-    );
+    return createMethodNotAllowedResponse();
   }
 
   let body;
   try {
     body = await request.json();
   } catch (e) {
-    return new Response(
-      JSON.stringify({ error: 'invalid_request', error_description: 'Invalid JSON' }),
-      { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-    );
+    return createInvalidRequestResponse('Invalid JSON');
   }
 
   const { redirect_uris, client_name, grant_types, response_types } = body;
 
   // Validate redirect URIs (must be localhost or HTTPS)
   if (!redirect_uris || !Array.isArray(redirect_uris) || redirect_uris.length === 0) {
-    return new Response(
-      JSON.stringify({ error: 'invalid_redirect_uri', error_description: 'redirect_uris is required' }),
-      { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-    );
+    return createInvalidRedirectUriResponse('redirect_uris is required');
   }
 
   for (const uri of redirect_uris) {
@@ -56,19 +73,10 @@ export default async (request: Request): Promise<Response> => {
       const isHttps = url.protocol === 'https:';
 
       if (!isLocalhost && !isHttps) {
-        return new Response(
-          JSON.stringify({
-            error: 'invalid_redirect_uri',
-            error_description: 'redirect_uri must be localhost or HTTPS'
-          }),
-          { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-        );
+        return createInvalidRedirectUriResponse('redirect_uri must be localhost or HTTPS')
       }
     } catch (e) {
-      return new Response(
-        JSON.stringify({ error: 'invalid_redirect_uri', error_description: 'Invalid redirect_uri format' }),
-        { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-      );
+      return createInvalidRedirectUriResponse('Invalid redirect_uri format')
     }
   }
 

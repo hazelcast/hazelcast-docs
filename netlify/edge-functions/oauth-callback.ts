@@ -18,18 +18,23 @@ export default async (request: Request): Promise<Response> => {
   const error = url.searchParams.get('error');
 
   if (error) {
+    console.error('GitHub OAuth error:', error);
     return createPlainErrorResponse(`GitHub OAuth error: ${error}`, 400);
   }
 
   if (!code || !state) {
+    console.error('Missing OAuth callback parameters');
     return createPlainErrorResponse('Missing code or state', 400);
   }
 
   // Retrieve pending auth request
   const pendingAuth = await pendingAuths.get(state);
   if (!pendingAuth) {
+    console.error('Invalid or expired state in OAuth callback');
     return createPlainErrorResponse('Invalid or expired state', 400);
   }
+
+  console.log('Processing OAuth callback for client:', pendingAuth.clientId);
 
   await pendingAuths.delete(state);
 
@@ -82,10 +87,10 @@ export default async (request: Request): Promise<Response> => {
 
     // Check if user is authorized
     if (!isUserAuthorized(userData.email)) {
-      console.error('User not authorized:', {
+      console.error('User authorization failed:', {
         email: userData.email,
-        allowedEmails: process.env.ALLOWED_EMAILS || '(not set)',
-        allowedDomains: process.env.ALLOWED_DOMAINS || '(not set)',
+        hasAllowedEmails: !!process.env.ALLOWED_EMAILS,
+        hasAllowedDomains: !!process.env.ALLOWED_DOMAINS,
       });
       return createOAuthErrorRedirect(
         pendingAuth.redirectUri,
@@ -95,7 +100,7 @@ export default async (request: Request): Promise<Response> => {
       );
     }
 
-    console.log('User authorized successfully:', userData.email);
+    console.log('User authorized:', userData.email);
 
     // Create authorization code with PKCE
     const authCode = await createAuthorizationCode(

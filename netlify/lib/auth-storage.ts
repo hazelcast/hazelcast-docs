@@ -136,8 +136,8 @@ class NetlifyAuthStorage<T> implements AuthStorage<T> {
  * Uses Netlify Blobs in production, falls back to in-memory storage for local development.
  */
 export function createAuthStorage<T>(storeName: string): AuthStorage<T> {
-  console.debug('process.env.NETLIFY', process.env.NETLIFY)
-  const isProduction = !!process.env.NETLIFY;
+  console.debug('process.env.IS_NETLIFY', process.env.IS_NETLIFY)
+  const isProduction = !!process.env.IS_NETLIFY;
   return isProduction
     ? new NetlifyAuthStorage<T>(storeName)
     : new InMemoryStorage<T>(storeName);

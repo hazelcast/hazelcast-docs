@@ -66,9 +66,11 @@ export default async (request: Request): Promise<Response> => {
       const isHttps = url.protocol === 'https:';
 
       if (!isLocalhost && !isHttps) {
+        console.error('Invalid redirect_uri (not localhost/HTTPS):', uri);
         return createInvalidRedirectUriResponse('redirect_uri must be localhost or HTTPS')
       }
     } catch (e) {
+      console.error('Invalid redirect_uri format:', uri);
       return createInvalidRedirectUriResponse('Invalid redirect_uri format')
     }
   }
@@ -90,6 +92,8 @@ export default async (request: Request): Promise<Response> => {
   };
 
   await registeredClients.set(clientId, registeredClient, CLIENT_TTL_MS);
+
+  console.log('Client registered:', { clientId, clientName: registeredClient.clientName, redirectUrisCount: redirect_uris.length });
 
   // Return client registration response per RFC 7591
   const response = {

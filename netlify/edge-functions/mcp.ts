@@ -43,8 +43,6 @@ server.registerTool(
       throw new Error('KAPA_API_KEY, KAPA_PROJECT_ID, and KAPA_INTEGRATION_ID environment variables must be set');
     }
 
-    console.log('Sending query to Kapa:', q);
-
     try {
       const response = await fetch(
         `${API_BASE}/query/v1/projects/${KAPA_PROJECT_ID}/retrieval/`,
@@ -72,6 +70,7 @@ server.registerTool(
       }
 
       if (!response.ok) {
+        console.error('Kapa API error:', { status: response.status, statusText: response.statusText });
         return {
           content: [{
             type: 'text',
@@ -86,6 +85,7 @@ server.registerTool(
       }
 
       const arr = Array.isArray(data) ? data : [];
+      console.log('Kapa query successful, returned', arr.length, 'results');
       return { content: [{ type: 'text', text: JSON.stringify(arr) }] };
 
     } catch (error) {
@@ -131,23 +131,29 @@ export default async (request: Request): Promise<Response> => {
 
   const token = extractBearerToken(request.headers.get('Authorization'))
   if (!token) {
+    console.error('MCP request missing authorization token');
     return createUnauthorizedResponse(resourceUrl, resourceMetadataUrl)
   }
 
   const payload = await verifyToken(token, resourceUrl)
   if (!payload) {
+    console.error('MCP request with invalid token');
     return createInvalidTokenResponse(resourceUrl, resourceMetadataUrl)
   }
 
   const requiredScope = 'mcp:query'
   if (!validateScope(payload, requiredScope)) {
+    console.error('MCP request with insufficient scope:', { userEmail: payload.email, scope: payload.scope });
     return createInsufficientScopeResponse(resourceUrl, resourceMetadataUrl, requiredScope)
   }
 
   const jsonRpcRequest = await parseJsonRpcRequest(request)
   if (!jsonRpcRequest) {
+    console.error('MCP request with invalid JSON-RPC format');
     return createJsonRpcParsingErrorResponse()
   }
+
+  console.log('MCP request:', { method: (jsonRpcRequest as any).method, userEmail: payload.email });
 
   const jsonRpcResponse = await handleMcpRequest(jsonRpcRequest)
   return createSuccessResponse(jsonRpcResponse)

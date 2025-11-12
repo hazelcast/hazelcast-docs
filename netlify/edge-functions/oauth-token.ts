@@ -88,11 +88,13 @@ async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Re
   const redirectUri = params.get('redirect_uri');
 
   if (!code || !codeVerifier || !redirectUri) {
+    console.error('Token request missing required parameters');
     return createMissingParametersResponse('code, code_verifier, redirect_uri');
   }
 
   const authCode = await verifyAuthorizationCode(code, codeVerifier, redirectUri);
   if (!authCode) {
+    console.error('Authorization code verification failed');
     return createInvalidGrantResponse('Invalid authorization code or code_verifier');
   }
 
@@ -106,6 +108,8 @@ async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Re
 
   const accessToken = await createAccessToken({ ...tokenParams });
   const refreshToken = await createRefreshToken({ ...tokenParams });
+
+  console.log('Access token granted:', { userId: tokenParams.userId, email: tokenParams.email, scope: authCode.scope });
 
   return createTokenSuccessResponse({
     access_token: accessToken,
@@ -125,16 +129,19 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
   const refreshToken = params.get('refresh_token');
 
   if (!refreshToken) {
+    console.error('Refresh token request missing token');
     return createMissingParametersResponse('refresh_token');
   }
 
   const payload = await getRefreshTokenPayload(refreshToken);
 
   if (!payload) {
+    console.error('Invalid refresh token provided');
     return createInvalidGrantResponse('Invalid refresh token');
   }
 
   if (isTokenExpired(payload.exp)) {
+    console.error('Refresh token expired:', { userId: payload.sub });
     await revokeRefreshToken(refreshToken);
     return createInvalidGrantResponse('Refresh token expired');
   }
@@ -159,8 +166,10 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
     console.error('Failed to create new tokens during refresh:', error);
     return createInvalidGrantResponse('Failed to create new tokens');
   }
-  
+
   await revokeRefreshToken(refreshToken);
+
+  console.log('Token refreshed:', { userId: payload.sub, email: payload.email });
 
   const tokenResponse: TokenResponse = {
     access_token: newAccessToken,

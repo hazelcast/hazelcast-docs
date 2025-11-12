@@ -53,6 +53,8 @@ export default async (request: Request) => {
     return createInvalidRequestResponse('Only code_challenge_method=S256 is supported');
   }
 
+  console.log('Authorization request:', { clientId, redirectUri, scope });
+
   // Validate client_id - must be a registered client
   const client = await registeredClients.get(clientId);
   if (!client) {
@@ -106,6 +108,8 @@ export default async (request: Request) => {
   };
 
   await pendingAuths.set(internalState, pendingAuth, PENDING_AUTH_EXPIRY);
+
+  console.log('Redirecting to GitHub OAuth for client:', clientId);
 
   // Redirect to GitHub OAuth
   const githubParams = new URLSearchParams({

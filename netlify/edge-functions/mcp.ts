@@ -154,8 +154,8 @@ export default async (request: Request): Promise<Response> => {
 export const config = {
   path: '/mcp',
   rateLimit: {
-    windowLimit: 20,
-    windowSize: 120,
+    windowLimit: 10,
+    windowSize: 60,
     aggregateBy: ["ip", "domain"],
-  }
+  },
 }

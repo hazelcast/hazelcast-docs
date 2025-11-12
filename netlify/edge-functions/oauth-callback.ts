@@ -112,4 +112,9 @@ export default async (request: Request): Promise<Response> => {
 
 export const config = {
   path: '/oauth/callback',
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
 };

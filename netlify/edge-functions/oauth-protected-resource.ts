@@ -24,4 +24,9 @@ export default async (request: Request): Promise<Response> => {
 
 export const config = {
   path: '/.well-known/oauth-protected-resource',
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
 };

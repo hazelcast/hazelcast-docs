@@ -28,4 +28,9 @@ export default async (request: Request): Promise<Response> => {
 
 export const config = {
   path: '/.well-known/oauth-authorization-server/oauth',
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
 };

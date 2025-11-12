@@ -4,7 +4,7 @@ import { generateSecureRandomString } from '../lib/oauth-utils.ts';
 import { pendingAuths, type PendingAuth } from '../lib/pending-auth-storage.ts';
 
 const GITHUB_OAUTH_URL = 'https://github.com/login/oauth/authorize';
-const PENDING_AUTH_EXPIRY = 10 * 60 * 1000; // 10 minutes
+const PENDING_AUTH_EXPIRY = 10 * 60 * 1000;
 
 export default async (request: Request) => {
   const url = new URL(request.url);
@@ -16,7 +16,7 @@ export default async (request: Request) => {
   const codeChallenge = url.searchParams.get('code_challenge');
   const codeChallengeMethod = url.searchParams.get('code_challenge_method');
   const scope = url.searchParams.get('scope') || 'mcp:query';
-  const resource = url.searchParams.get('resource'); // RFC 8707
+  const resource = url.searchParams.get('resource');
   const responseType = url.searchParams.get('response_type');
 
   // Validate required parameters
@@ -110,4 +110,9 @@ export default async (request: Request) => {
 
 export const config = {
   path: '/oauth/authorize',
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
 };

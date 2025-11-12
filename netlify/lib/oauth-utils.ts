@@ -1,6 +1,6 @@
 import { authCodes, type AuthorizationCode } from './auth-code-storage.ts';
 
-const AUTH_CODE_EXPIRY = 10 * 60 * 1000; // 10 minutes
+const AUTH_CODE_EXPIRY = 10 * 60 * 1000;
 
 // ============================================================================
 // Cryptographic Utilities

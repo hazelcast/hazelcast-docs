@@ -100,8 +100,8 @@ export default async (request: Request): Promise<Response> => {
 export const config = {
   path: '/oauth/register',
   rateLimit: {
-    windowLimit: 10,    // 10 registration requests
-    windowSize: 60,     // per 60 seconds (1 minute)
-    aggregateBy: ['ip', 'domain'],  // rate limit by IP and domain
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
   },
 };

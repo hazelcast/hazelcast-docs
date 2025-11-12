@@ -64,7 +64,7 @@ export default async (request: Request) => {
   }
 
   // Validate redirect_uri - must match one of the registered redirect_uris
-  if (!client.redirectUris.includes(redirectUri)) {
+  if (!client?.redirectUris.includes(redirectUri)) {
     console.warn(`redirect_uri ${redirectUri} does not match any registered redirect_uris for this client`)
     // DISABLED FOR THE DEMO!!!
     // return createInvalidRequestResponse(

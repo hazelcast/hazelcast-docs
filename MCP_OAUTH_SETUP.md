@@ -7,6 +7,7 @@ This document describes how to set up OAuth 2.1 authentication for the Hazelcast
 The MCP server implements OAuth 2.1 with the following features:
 
 - **OAuth 2.1 compliant** authorization server
+- **RFC 7591** Dynamic Client Registration
 - **PKCE (S256)** for secure authorization code exchange
 - **GitHub** as identity provider
 - **Bearer token** authentication for MCP endpoints
@@ -14,6 +15,7 @@ The MCP server implements OAuth 2.1 with the following features:
 - **RFC 8414** Authorization Server Metadata
 - **Audience validation** to prevent token misuse
 - **Scope-based** access control
+- **Client validation** with redirect_uri binding
 
 ## Architecture
 
@@ -21,16 +23,23 @@ The MCP server implements OAuth 2.1 with the following features:
 ┌─────────────┐         ┌──────────────────┐         ┌─────────────┐
 │             │         │   Authorization  │         │             │
 │ MCP Client  │────────▶│     Server       │────────▶│   GitHub    │
-│             │         │  (OAuth 2.1)     │         │   OAuth     │
-└─────────────┘         └──────────────────┘         └─────────────┘
+│             │  (1)    │  (OAuth 2.1)     │  (2)    │   OAuth     │
+└─────────────┘ Register└──────────────────┘ Verify  └─────────────┘
       │                          │
-      │  Bearer Token            │
-      │                          │
+      │  (3) Authorize            │ (4) Store
+      │  with PKCE               │ Client
       ▼                          ▼
 ┌─────────────────────────────────────────┐
 │         MCP Resource Server             │
 │          (/mcp endpoint)                │
+│   Protected by Bearer Token Auth       │
 └─────────────────────────────────────────┘
+
+Flow:
+1. Client registers at /oauth/register and receives client_id
+2. Client authorization requests are validated against stored registrations
+3. Authorization server verifies identity via GitHub OAuth
+4. Clients are stored persistently with registered redirect_uris
 ```
 
 ## Environment Variables
@@ -95,6 +104,31 @@ If neither `ALLOWED_EMAILS` nor `ALLOWED_DOMAINS` is set, all authenticated GitH
   - Returns OAuth server configuration
   - Lists supported grant types, scopes, and PKCE methods
 
+### Dynamic Client Registration (RFC 7591)
+
+- **Registration**: `/oauth/register`
+  - Dynamically registers MCP clients per RFC 7591
+  - Request body (JSON):
+    ```json
+    {
+      "redirect_uris": ["https://your-app.com/callback"],
+      "client_name": "My MCP Client",
+      "grant_types": ["authorization_code", "refresh_token"],
+      "response_types": ["code"]
+    }
+    ```
+  - Response includes `client_id` to use in authorization requests
+  - Clients are stored persistently in blob storage
+  - All subsequent authorization requests must use a registered `client_id`
+  - The `redirect_uri` in authorization requests must match one of the registered `redirect_uris`
+  - Rate limited: 10 requests per minute per IP/domain
+
+  **Security Note**: Client registration is now **required** before authorization. This prevents:
+  - Unauthorized clients from using the authorization server
+  - Redirect URI hijacking attacks
+  - Client impersonation
+  - Enables tracking and potential revocation of misbehaving clients
+
 ### Authorization Flow Endpoints
 
 - **Authorization**: `/oauth/authorize`
@@ -128,7 +162,7 @@ If neither `ALLOWED_EMAILS` nor `ALLOWED_DOMAINS` is set, all authenticated GitH
 
 ## OAuth Flow
 
-### 1. Client Discovery
+### 1. Protected Resource Discovery
 
 ```http
 GET /.well-known/oauth-protected-resource
@@ -143,7 +177,7 @@ Response:
 }
 ```
 
-### 2. Authorization Server Metadata
+### 2. Authorization Server Metadata Discovery
 
 ```http
 GET /.well-known/oauth-authorization-server/oauth
@@ -155,11 +189,41 @@ Response:
   "issuer": "https://your-domain.netlify.app/oauth",
   "authorization_endpoint": "https://your-domain.netlify.app/oauth/authorize",
   "token_endpoint": "https://your-domain.netlify.app/oauth/token",
+  "registration_endpoint": "https://your-domain.netlify.app/oauth/register",
   "code_challenge_methods_supported": ["S256"]
 }
 ```
 
-### 3. Generate PKCE Values
+### 3. Dynamic Client Registration
+
+Using the `registration_endpoint` from step 2, register the client:
+
+```http
+POST /oauth/register
+Content-Type: application/json
+
+{
+  "redirect_uris": ["https://your-app.com/callback"],
+  "client_name": "My MCP Client"
+}
+```
+
+Response:
+```json
+{
+  "client_id": "randomly_generated_client_id",
+  "client_name": "My MCP Client",
+  "redirect_uris": ["https://your-app.com/callback"],
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "none",
+  "application_type": "web"
+}
+```
+
+**Important**: Store the `client_id` securely. You'll need it for all authorization requests.
+
+### 4. Generate PKCE Values
 
 ```javascript
 // Generate code verifier (random string, 43-128 chars)
@@ -170,7 +234,7 @@ const hash = crypto.createHash('sha256').update(codeVerifier).digest();
 const codeChallenge = hash.toString('base64url');
 ```
 
-### 4. Authorization Request
+### 5. Authorization Request
 
 ```http
 GET /oauth/authorize?response_type=code
@@ -185,7 +249,7 @@ GET /oauth/authorize?response_type=code
 
 User is redirected to GitHub, authenticates, and is redirected back with an authorization code.
 
-### 5. Token Exchange
+### 6. Token Exchange
 
 ```http
 POST /oauth/token
@@ -209,7 +273,7 @@ Response:
 }
 ```
 
-### 6. Access Protected Resource
+### 7. Access Protected Resource
 
 ```http
 POST /mcp
@@ -223,7 +287,7 @@ Content-Type: application/json
 }
 ```
 
-### 7. Refresh Token (Optional)
+### 8. Refresh Token (Optional)
 
 ```http
 POST /oauth/token
@@ -285,18 +349,20 @@ curl https://your-domain.netlify.app/.well-known/oauth-authorization-server/oaut
 
 ## MCP Client Configuration
 
-Most MCP clients will automatically handle the OAuth flow if they support MCP Auth. Configure your client with:
+Most MCP clients will automatically handle the OAuth flow if they support MCP Auth and RFC 7591 Dynamic Client Registration.
 
+Configure your client with:
 - **MCP Server URL**: `https://your-domain.netlify.app/mcp`
-- **Client ID**: Your client application ID (can be any string for public clients)
 
-The client will:
+The client will automatically:
 1. Attempt to access `/mcp`
 2. Receive 401 with discovery information
 3. Fetch protected resource metadata
-4. Initiate OAuth flow with PKCE
-5. Store and use access tokens
-6. Automatically refresh tokens when needed
+4. Fetch authorization server metadata
+5. Register dynamically to obtain a `client_id`
+6. Initiate OAuth flow with PKCE using the registered `client_id`
+7. Store and use access tokens
+8. Automatically refresh tokens when needed
 
 ## Troubleshooting
 
@@ -318,11 +384,25 @@ The client will:
 - Check that authorization code hasn't expired (10 minutes)
 - Verify redirect_uri matches exactly
 
+### "Unknown client_id" or "invalid_client"
+
+- The client must register at `/oauth/register` before authorizing
+- Check that you're using the `client_id` returned from registration
+- Client registrations are stored for 1 year - if expired, re-register
+- Verify you're not mixing client_ids from different environments (dev vs prod)
+
+### "redirect_uri does not match"
+
+- The `redirect_uri` in the authorization request must exactly match one of the URIs registered during client registration
+- Check for trailing slashes, http vs https, and port numbers
+- Re-register the client if you need to add additional redirect URIs
+
 
 ## References
 
 - [MCP Authorization Specification](https://modelcontextprotocol.io/specification/draft/basic/authorization)
 - [OAuth 2.1 Draft](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1)
+- [RFC 7591: Dynamic Client Registration](https://www.rfc-editor.org/rfc/rfc7591.html)
 - [RFC 9728: Protected Resource Metadata](https://www.rfc-editor.org/rfc/rfc9728.html)
 - [RFC 8414: Authorization Server Metadata](https://www.rfc-editor.org/rfc/rfc8414.html)
 - [RFC 7636: PKCE](https://www.rfc-editor.org/rfc/rfc7636.html)

@@ -1,3 +1,5 @@
+import { createOAuthErrorResponse } from './request-utils.ts';
+
 export interface TokenResponse {
   access_token: string;
   token_type: string;
@@ -31,47 +33,58 @@ export function createCorsPreflightResponse(): Response {
 }
 
 export function createMethodNotAllowedResponse(): Response {
-  return createErrorResponse(
-    'invalid_request',
-    'Method must be POST',
-    405,
-    true
-  );
+  return createOAuthErrorResponse('invalid_request', 'Method must be POST', 405);
 }
 
 export function createUnsupportedContentTypeResponse(): Response {
-  return createErrorResponse(
-    'invalid_request',
-    'Unsupported content type',
-    400,
-    false
+  return new Response(
+    JSON.stringify({
+      error: 'invalid_request',
+      error_description: 'Unsupported content type',
+    }),
+    {
+      status: 400,
+      headers: JSON_HEADERS,
+    }
   );
 }
 
 export function createUnsupportedGrantTypeResponse(grantType: string | null): Response {
-  return createErrorResponse(
-    'unsupported_grant_type',
-    `Grant type ${grantType} not supported`,
-    400,
-    false
+  return new Response(
+    JSON.stringify({
+      error: 'unsupported_grant_type',
+      error_description: `Grant type ${grantType} not supported`,
+    }),
+    {
+      status: 400,
+      headers: JSON_HEADERS,
+    }
   );
 }
 
 export function createMissingParametersResponse(params: string): Response {
-  return createErrorResponse(
-    'invalid_request',
-    `Missing required parameters: ${params}`,
-    400,
-    false
+  return new Response(
+    JSON.stringify({
+      error: 'invalid_request',
+      error_description: `Missing required parameters: ${params}`,
+    }),
+    {
+      status: 400,
+      headers: JSON_HEADERS,
+    }
   );
 }
 
 export function createInvalidGrantResponse(description: string): Response {
-  return createErrorResponse(
-    'invalid_grant',
-    description,
-    400,
-    false
+  return new Response(
+    JSON.stringify({
+      error: 'invalid_grant',
+      error_description: description,
+    }),
+    {
+      status: 400,
+      headers: JSON_HEADERS,
+    }
   );
 }
 
@@ -82,26 +95,6 @@ export function createTokenSuccessResponse(tokenResponse: TokenResponse): Respon
       ...JSON_HEADERS,
       ...CACHE_CONTROL_HEADERS,
       ...CORS_HEADERS,
-    },
-  });
-}
-
-function createErrorResponse(
-  error: string,
-  errorDescription: string,
-  status: number,
-  includeCors: boolean
-): Response {
-  const errorResponse: ErrorResponse = {
-    error,
-    error_description: errorDescription,
-  };
-
-  return new Response(JSON.stringify(errorResponse), {
-    status,
-    headers: {
-      ...JSON_HEADERS,
-      ...(includeCors ? CORS_HEADERS : {}),
     },
   });
 }

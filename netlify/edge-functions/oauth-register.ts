@@ -1,11 +1,16 @@
 // RFC 7591 Dynamic Client Registration endpoint
 // For MCP clients - auto-registers public clients
 //
-// DESIGN NOTE: This endpoint generates client IDs but does NOT store or validate them.
+// Stores registered clients in blob storage for validation in authorization requests.
+// Enforces redirect_uri binding and enables client management per RFC 7591.
 // Rate limiting prevents abuse (10 requests/minute per IP/domain).
-// Client validation is optional since PKCE provides security without client secrets.
 
 import { generateSecureRandomString } from '../lib/oauth-utils.ts';
+import { registeredClients, type RegisteredClient } from '../lib/client-storage.ts';
+import { createOAuthErrorResponse } from '../lib/request-utils.ts';
+
+// Store client with 1-year TTL (effectively permanent for MCP use case)
+const CLIENT_TTL_MS = 365 * 24 * 60 * 60 * 1000;
 
 function createCORSPreflightResponse(): Response {
   return new Response(null, {
@@ -20,13 +25,7 @@ function createCORSPreflightResponse(): Response {
 }
 
 function createInvalidRequestResponse(description: string, status = 400): Response {
-  return new Response(
-    JSON.stringify({ error: 'invalid_request', error_description: description }),
-    {
-      status,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-    }
-  );
+  return createOAuthErrorResponse('invalid_request', description, status);
 }
 
 function createMethodNotAllowedResponse(): Response {
@@ -34,13 +33,7 @@ function createMethodNotAllowedResponse(): Response {
 }
 
 function createInvalidRedirectUriResponse(description: string): Response {
-  return new Response(
-    JSON.stringify({
-      error: 'invalid_redirect_uri',
-      error_description: description,
-    }),
-    { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-  );
+  return createOAuthErrorResponse('invalid_redirect_uri', description);
 }
 
 export default async (request: Request): Promise<Response> => {
@@ -84,15 +77,29 @@ export default async (request: Request): Promise<Response> => {
   // Use cryptographically secure random values for security (128 bits of entropy)
   const clientId = generateSecureRandomString(16);
 
-  // Return client registration response
+  // Store the registered client
+  const registeredClient: RegisteredClient = {
+    clientId,
+    clientName: client_name || 'MCP Client',
+    redirectUris: redirect_uris,
+    grantTypes: grant_types || ['authorization_code', 'refresh_token'],
+    responseTypes: response_types || ['code'],
+    tokenEndpointAuthMethod: 'none',
+    applicationType: 'web',
+    createdAt: Date.now(),
+  };
+
+  await registeredClients.set(clientId, registeredClient, CLIENT_TTL_MS);
+
+  // Return client registration response per RFC 7591
   const response = {
     client_id: clientId,
-    client_name: client_name || 'MCP Client',
-    redirect_uris: redirect_uris,
-    grant_types: grant_types || ['authorization_code', 'refresh_token'],
-    response_types: response_types || ['code'],
-    token_endpoint_auth_method: 'none',
-    application_type: 'web',
+    client_name: registeredClient.clientName,
+    redirect_uris: registeredClient.redirectUris,
+    grant_types: registeredClient.grantTypes,
+    response_types: registeredClient.responseTypes,
+    token_endpoint_auth_method: registeredClient.tokenEndpointAuthMethod,
+    application_type: registeredClient.applicationType,
   };
 
   return new Response(JSON.stringify(response), {

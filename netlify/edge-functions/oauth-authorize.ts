@@ -2,9 +2,28 @@
 
 import { generateSecureRandomString } from '../lib/oauth-utils.ts';
 import { pendingAuths, type PendingAuth } from '../lib/pending-auth-storage.ts';
+import { registeredClients } from '../lib/client-storage.ts';
+import { createOAuthErrorResponse } from '../lib/request-utils.ts';
 
 const GITHUB_OAUTH_URL = 'https://github.com/login/oauth/authorize';
 const PENDING_AUTH_EXPIRY = 10 * 60 * 1000;
+
+// Response creation utilities
+function createInvalidRequestResponse(description: string): Response {
+  return createOAuthErrorResponse('invalid_request', description);
+}
+
+function createUnsupportedResponseTypeResponse(): Response {
+  return createOAuthErrorResponse('unsupported_response_type', 'Only response_type=code is supported');
+}
+
+function createInvalidClientResponse(description: string): Response {
+  return createOAuthErrorResponse('invalid_client', description, 401);
+}
+
+function createServerErrorResponse(message: string): Response {
+  return new Response(message, { status: 500 });
+}
 
 export default async (request: Request) => {
   const url = new URL(request.url);
@@ -21,64 +40,51 @@ export default async (request: Request) => {
 
   // Validate required parameters
   if (!clientId || !redirectUri || !codeChallenge || !codeChallengeMethod) {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_request',
-        error_description: 'Missing required parameters: client_id, redirect_uri, code_challenge, code_challenge_method'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
+    return createInvalidRequestResponse(
+      'Missing required parameters: client_id, redirect_uri, code_challenge, code_challenge_method'
     );
   }
 
   if (responseType !== 'code') {
-    return new Response(
-      JSON.stringify({
-        error: 'unsupported_response_type',
-        error_description: 'Only response_type=code is supported'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createUnsupportedResponseTypeResponse();
   }
 
   if (codeChallengeMethod !== 'S256') {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_request',
-        error_description: 'Only code_challenge_method=S256 is supported'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
+    return createInvalidRequestResponse('Only code_challenge_method=S256 is supported');
+  }
+
+  // Validate client_id - must be a registered client
+  const client = await registeredClients.get(clientId);
+  if (!client) {
+    return createInvalidClientResponse(
+      'Unknown client_id. Clients must register at /oauth/register first.'
     );
   }
 
-  // Validate redirect_uri (must be localhost or HTTPS)
+  // Validate redirect_uri - must match one of the registered redirect_uris
+  if (!client.redirectUris.includes(redirectUri)) {
+    return createInvalidRequestResponse(
+      'redirect_uri does not match any registered redirect_uris for this client'
+    );
+  }
+
+  // Validate redirect_uri format (must be localhost or HTTPS)
   try {
     const redirectUrl = new URL(redirectUri);
     const isLocalhost = redirectUrl.hostname === 'localhost' || redirectUrl.hostname === '127.0.0.1';
     const isHttps = redirectUrl.protocol === 'https:';
 
     if (!isLocalhost && !isHttps) {
-      return new Response(
-        JSON.stringify({
-          error: 'invalid_request',
-          error_description: 'redirect_uri must be localhost or HTTPS'
-        }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      return createInvalidRequestResponse('redirect_uri must be localhost or HTTPS');
     }
   } catch (e) {
-    return new Response(
-      JSON.stringify({
-        error: 'invalid_request',
-        error_description: 'Invalid redirect_uri'
-      }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createInvalidRequestResponse('Invalid redirect_uri');
   }
 
   const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 
   if (!GITHUB_CLIENT_ID) {
-    return new Response('GitHub OAuth not configured', { status: 500 });
+    return createServerErrorResponse('GitHub OAuth not configured');
   }
 
   // Create internal state to track this auth request (CSRF protection)

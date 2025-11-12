@@ -9,3 +9,4 @@ Gemfile.lock
 
 # Local Netlify folder
 .netlify
+deno.lock

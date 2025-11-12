@@ -65,6 +65,7 @@ export default async (request: Request): Promise<Response> => {
     const userData = await getGitHubUserData(tokenData.access_token);
 
     if (!userData) {
+      console.error('Failed to retrieve GitHub user data');
       return createOAuthErrorRedirect(
         pendingAuth.redirectUri,
         'server_error',
@@ -73,8 +74,19 @@ export default async (request: Request): Promise<Response> => {
       );
     }
 
+    console.log('GitHub user data retrieved:', {
+      id: userData.id,
+      login: userData.login,
+      email: userData.email,
+    });
+
     // Check if user is authorized
     if (!isUserAuthorized(userData.email)) {
+      console.error('User not authorized:', {
+        email: userData.email,
+        allowedEmails: process.env.ALLOWED_EMAILS || '(not set)',
+        allowedDomains: process.env.ALLOWED_DOMAINS || '(not set)',
+      });
       return createOAuthErrorRedirect(
         pendingAuth.redirectUri,
         'access_denied',
@@ -82,6 +94,8 @@ export default async (request: Request): Promise<Response> => {
         pendingAuth.state
       );
     }
+
+    console.log('User authorized successfully:', userData.email);
 
     // Create authorization code with PKCE
     const authCode = await createAuthorizationCode(

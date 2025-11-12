@@ -62,7 +62,7 @@ export function createJsonRpcParsingErrorResponse(): Response {
   )
 }
 
-export function createMethodNotAllowedResponse() {
+export function createMethodNotAllowedResponse(): Response {
   return new Response('Method not allowed', { status: 405, headers: { 'Allow': 'POST' } })
 }
 

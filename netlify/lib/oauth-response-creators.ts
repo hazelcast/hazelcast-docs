@@ -143,5 +143,6 @@ export function createOAuthSuccessRedirect(
  * Used for simple error messages.
  */
 export function createPlainErrorResponse(message: string, status: number): Response {
-  return new Response(message, { status });
+  // Use a generic error code, and the message as the description
+  return createOAuthErrorResponse('error', message, status);
 }

@@ -48,7 +48,7 @@ export function createUnsupportedGrantTypeResponse(grantType: string | null): Re
     }),
     {
       status: 400,
-      headers: JSON_HEADERS,
+      headers: { ...JSON_HEADERS, ...CORS_HEADERS },
     }
   );
 }
@@ -61,7 +61,7 @@ export function createMissingParametersResponse(params: string): Response {
     }),
     {
       status: 400,
-      headers: JSON_HEADERS,
+      headers: { ...JSON_HEADERS, ...CORS_HEADERS },
     }
   );
 }
@@ -74,7 +74,7 @@ export function createInvalidGrantResponse(description: string): Response {
     }),
     {
       status: 400,
-      headers: JSON_HEADERS,
+      headers: { ...JSON_HEADERS, ...CORS_HEADERS },
     }
   );
 }

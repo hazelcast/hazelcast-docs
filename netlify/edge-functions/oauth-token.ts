@@ -139,9 +139,8 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
     return createInvalidGrantResponse('Refresh token expired');
   }
 
-  // Revoke old refresh token and create new one (refresh token rotation)
-  await revokeRefreshToken(refreshToken);
-
+  // Create new tokens BEFORE revoking the old one
+  // This prevents a race condition where token creation fails after revocation
   const tokenParams = {
     userId: payload.sub,
     email: payload.email,
@@ -150,8 +149,18 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
     scope: payload.scope,
   };
 
-  const newAccessToken = await createAccessToken({ ...tokenParams });
-  const newRefreshToken = await createRefreshToken({ ...tokenParams });
+  let newAccessToken: string;
+  let newRefreshToken: string;
+
+  try {
+    newAccessToken = await createAccessToken({ ...tokenParams });
+    newRefreshToken = await createRefreshToken({ ...tokenParams });
+  } catch (error) {
+    console.error('Failed to create new tokens during refresh:', error);
+    return createInvalidGrantResponse('Failed to create new tokens');
+  }
+  
+  await revokeRefreshToken(refreshToken);
 
   const tokenResponse: TokenResponse = {
     access_token: newAccessToken,
@@ -166,4 +175,9 @@ async function handleRefreshTokenGrant(params: URLSearchParams, request: Request
 
 export const config = {
   path: '/oauth/token',
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
 };

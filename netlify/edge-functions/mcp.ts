@@ -26,15 +26,14 @@ server.registerTool(
   {
     title: 'Search Hazelcast Sources',
     description: 'Search the official Hazelcast documentation and return the most relevant sections from it for a user query. Each returned section includes the url and its actual content in markdown. Use this tool to for all queries that require Hazelcast knowledge.',
-    inputSchema: { question: z.string() },
+    inputSchema: {
+      question: z.string()
+        .min(1, 'Question cannot be empty')
+        .max(5000, 'Question cannot exceed 5000 characters')
+    },
   },
   async (args) => {
-    const q = (args?.question ?? '').trim();
-    if (!q) {
-      return {
-        content: [{ type: 'text', text: JSON.stringify({ error: 'missing_query', message: 'Provide a non-empty "question".' }) }]
-      };
-    }
+    const q = args.question.trim();
 
     const KAPA_API_KEY = process.env.KAPA_API_KEY;
     const KAPA_PROJECT_ID = process.env.KAPA_PROJECT_ID;

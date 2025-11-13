@@ -1,14 +1,11 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-import type { JSONRPCMessage } from '@modelcontextprotocol/sdk/types.js'
 import { z } from 'zod'
+import handle from '@modelfetch/netlify'
 import { extractBearerToken, validateScope, verifyToken } from '../lib/token-utils.ts';
-import { SimpleTransport } from '../lib/simple-transport.ts';
 import {
   createInsufficientScopeResponse,
   createInvalidTokenResponse,
-  createJsonRpcParsingErrorResponse,
   createMethodNotAllowedResponse,
-  createSuccessResponse,
   createUnauthorizedResponse,
 } from '../lib/mcp-response-creators.ts';
 
@@ -43,6 +40,8 @@ server.registerTool(
       throw new Error('KAPA_API_KEY, KAPA_PROJECT_ID, and KAPA_INTEGRATION_ID environment variables must be set');
     }
 
+    console.log('Sending query to Kapa:', q );
+
     try {
       const response = await fetch(
         `${API_BASE}/query/v1/projects/${KAPA_PROJECT_ID}/retrieval/`,
@@ -55,7 +54,7 @@ server.registerTool(
           body: JSON.stringify({
             integration_id: KAPA_INTEGRATION_ID,
             query: q,
-            // top_k: 5,
+            top_k: 5,
           }),
         }
       );
@@ -85,7 +84,7 @@ server.registerTool(
       }
 
       const arr = Array.isArray(data) ? data : [];
-      console.log('Kapa query successful, returned', arr.length, 'results');
+      console.log(`Kapa query successful, returned ${arr.length} results`);
       return { content: [{ type: 'text', text: JSON.stringify(arr) }] };
 
     } catch (error) {
@@ -95,68 +94,53 @@ server.registerTool(
   }
 );
 
-async function parseJsonRpcRequest(request: Request): Promise<JSONRPCMessage | null> {
-  try {
-    return await request.json() as JSONRPCMessage
-  } catch (error) {
-    return null
-  }
-}
+const baseHandler = handle({
+  server: server,
+  pre: (app) => {
+    app.use('/mcp', async (c, next) => {
+      const request = c.req.raw
+      const url = new URL(request.url)
 
-async function handleMcpRequest(jsonRpcRequest: JSONRPCMessage): Promise<JSONRPCMessage> {
-  const transport = new SimpleTransport()
+      // Only allow POST requests
+      if (request.method !== 'POST') {
+        return createMethodNotAllowedResponse()
+      }
 
-  const responsePromise = new Promise<JSONRPCMessage>((resolve) => {
-    transport.setResponseHandler(resolve)
-  })
+      const resourceUrl = `${url.origin}/mcp`
+      const resourceMetadataUrl = `${url.origin}/.well-known/oauth-protected-resource`
 
-  await server.connect(transport)
-  transport.onmessage?.(jsonRpcRequest)
+      // Validate bearer token
+      const token = extractBearerToken(request.headers.get('Authorization'))
+      if (!token) {
+        console.error('MCP request missing authorization token')
+        return createUnauthorizedResponse(resourceUrl, resourceMetadataUrl)
+      }
 
-  const jsonRpcResponse = await responsePromise
-  await transport.close()
+      // Verify token
+      const payload = await verifyToken(token, resourceUrl)
+      if (!payload) {
+        console.error('MCP request with invalid token')
+        return createInvalidTokenResponse(resourceUrl, resourceMetadataUrl)
+      }
 
-  return jsonRpcResponse
-}
+      // Validate scope
+      const requiredScope = 'mcp:query'
+      if (!validateScope(payload, requiredScope)) {
+        console.error('MCP request with insufficient scope:', { userEmail: payload.email, scope: payload.scope })
+        return createInsufficientScopeResponse(resourceUrl, resourceMetadataUrl, requiredScope)
+      }
 
-export default async (request: Request): Promise<Response> => {
-  const url = new URL(request.url)
+      // Log the request
+      console.log('MCP request authenticated:', { userEmail: payload.email })
 
-  if (request.method !== 'POST') {
-    return createMethodNotAllowedResponse();
-  }
+      // Continue to next middleware
+      await next()
+    })
+  },
+})
 
-  const resourceUrl = `${url.origin}/mcp`
-  const resourceMetadataUrl = `${url.origin}/.well-known/oauth-protected-resource`
-
-  const token = extractBearerToken(request.headers.get('Authorization'))
-  if (!token) {
-    console.error('MCP request missing authorization token');
-    return createUnauthorizedResponse(resourceUrl, resourceMetadataUrl)
-  }
-
-  const payload = await verifyToken(token, resourceUrl)
-  if (!payload) {
-    console.error('MCP request with invalid token');
-    return createInvalidTokenResponse(resourceUrl, resourceMetadataUrl)
-  }
-
-  const requiredScope = 'mcp:query'
-  if (!validateScope(payload, requiredScope)) {
-    console.error('MCP request with insufficient scope:', { userEmail: payload.email, scope: payload.scope });
-    return createInsufficientScopeResponse(resourceUrl, resourceMetadataUrl, requiredScope)
-  }
-
-  const jsonRpcRequest = await parseJsonRpcRequest(request)
-  if (!jsonRpcRequest) {
-    console.error('MCP request with invalid JSON-RPC format');
-    return createJsonRpcParsingErrorResponse()
-  }
-
-  console.log('MCP request:', { method: (jsonRpcRequest as any).method, userEmail: payload.email });
-
-  const jsonRpcResponse = await handleMcpRequest(jsonRpcRequest)
-  return createSuccessResponse(jsonRpcResponse)
+export default async (request: Request, context: any): Promise<Response> => {
+  return baseHandler(request, context)
 }
 
 export const config = {

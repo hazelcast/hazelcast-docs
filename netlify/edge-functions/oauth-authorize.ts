@@ -58,7 +58,7 @@ export default async (request: Request) => {
   // Validate client_id - must be a registered client
   const client = await registeredClients.get(clientId);
   if (!client) {
-    console.warn(`Unknown client_id ${clientId}. Clients must register at /oauth/register first.`)
+    console.warn(`Unknown client_id ${clientId}. Clients must register at /oauth/register first.`);
     // DISABLED FOR THE DEMO!!!
     // return createInvalidClientResponse(
     //   'Unknown client_id. Clients must register at /oauth/register first.'

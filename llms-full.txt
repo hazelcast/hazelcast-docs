@@ -2,7 +2,7 @@
 # llms-full.txt
 # AI and LLM crawler access policy + explicit page listings
 # Placed at: https://docs.hazelcast.com/llms-full.txt
-# Updated: 2025-11-04
+# Updated: 2025-11-14
 
 > Hazelcast is a unified real-time data platform combining stream processing with a fast data store for consistently low-latency querying, aggregation, and stateful computation against event streams and traditional data sources.
 
@@ -10,6 +10,8 @@ Hazelcast enables you to build resource-efficient, real-time applications with d
 
 **Community Edition**: Open source under Apache 2.0 license with core in-memory data grid and stream processing features.  
 **Enterprise Edition**: Advanced features including CP Subsystem for strong consistency, WAN Replication, Security, Vector Search, High-Density Memory, and commercial support.
+
+> For AI tools with smaller context windows, see [llms.txt](/llms.txt) which contains the most important documentation links for the current version.
 
 Current version: 5.7
 

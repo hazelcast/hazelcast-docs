@@ -1,6 +1,6 @@
 # Hazelcast Platform Documentation
 # Placed at: https://docs.hazelcast.com/llms.txt
-# Updated: 2025-11-04
+# Updated: 2025-11-14
 
 # Hazelcast Platform Documentation
 
@@ -12,6 +12,8 @@ Hazelcast enables you to build resource-efficient, real-time applications with d
 **Enterprise Edition**: Advanced features including CP Subsystem for strong consistency, WAN Replication, Security, Vector Search, High-Density Memory, and commercial support.
 
 Current version: 5.7
+
+> For AI tools with large context windows, see [llms-full.txt](/llms-full.txt) which contains all documentation in a single file.
 
 ## Getting Started
 

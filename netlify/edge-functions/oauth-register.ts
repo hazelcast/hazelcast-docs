@@ -71,7 +71,7 @@ export default async (request: Request): Promise<Response> => {
       }
     } catch (e) {
       console.error('Invalid redirect_uri format:', uri);
-      return createInvalidRedirectUriResponse('Invalid redirect_uri format')
+      return createInvalidRedirectUriResponse('Invalid redirect_uri format');
     }
   }
 

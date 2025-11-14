@@ -6,7 +6,7 @@ import {
   createMethodNotAllowedResponse,
   createUnauthorizedResponse,
 } from '../lib/mcp-response-creators.ts';
-import { mcpServer, SERVER_VERSION } from '../lib/mcp-server.ts';
+import { mcpServer } from '../lib/mcp-server.ts';
 
 export default async (request: Request, context: any): Promise<Response> => {
   const url = new URL(request.url)

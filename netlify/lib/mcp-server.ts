@@ -82,7 +82,7 @@ mcpServer.registerTool(
       return { content: [{ type: 'text', text: JSON.stringify(arr) }] };
 
     } catch (error) {
-      console.error('MCP tool handler', error)
+      console.error('MCP tool handler', error);
       return { content: [{ type: 'text', text: JSON.stringify({ error: 'MCP server error' }) }] };
     }
   }

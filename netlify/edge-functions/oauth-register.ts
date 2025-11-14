@@ -67,7 +67,7 @@ export default async (request: Request): Promise<Response> => {
 
       if (!isLocalhost && !isHttps) {
         console.error('Invalid redirect_uri (not localhost/HTTPS):', uri);
-        return createInvalidRedirectUriResponse('redirect_uri must be localhost or HTTPS')
+        return createInvalidRedirectUriResponse('redirect_uri must be localhost or HTTPS');
       }
     } catch (e) {
       console.error('Invalid redirect_uri format:', uri);

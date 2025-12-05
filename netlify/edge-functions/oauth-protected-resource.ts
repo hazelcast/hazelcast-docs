@@ -1,0 +1,32 @@
+// RFC 9728 Protected Resource Metadata endpoint
+
+export default async (request: Request): Promise<Response> => {
+  const url = new URL(request.url);
+  const origin = url.origin;
+
+  const metadata = {
+    resource: `${origin}/mcp`,
+    authorization_servers: [`${origin}/oauth`],
+    bearer_methods_supported: ["header"],
+    resource_signing_alg_values_supported: ["HS256"],
+    resource_documentation: "https://docs.hazelcast.com",
+    scopes_supported: ["mcp:query"],
+  };
+
+  return new Response(JSON.stringify(metadata), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  });
+};
+
+export const config = {
+  path: '/.well-known/oauth-protected-resource',
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
+};

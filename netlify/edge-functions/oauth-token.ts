@@ -1,0 +1,192 @@
+import { authCodes, type AuthorizationCode } from '../lib/auth-code-storage.ts';
+import {
+  ACCESS_TOKEN_EXPIRY,
+  createAccessToken,
+  createRefreshToken,
+  getRefreshTokenPayload,
+  revokeRefreshToken,
+} from '../lib/token-utils.ts';
+import { verifyPkceChallenge } from '../lib/oauth-utils.ts';
+import { parseRequestParams, extractAudience } from '../lib/request-utils.ts';
+import {
+  createCorsPreflightResponse,
+  createMethodNotAllowedResponse,
+  createUnsupportedContentTypeResponse,
+  createUnsupportedGrantTypeResponse,
+  createMissingParametersResponse,
+  createInvalidGrantResponse,
+  createTokenSuccessResponse,
+  type TokenResponse,
+} from '../lib/oauth-response-creators.ts';
+
+async function verifyAuthorizationCode(
+  code: string,
+  codeVerifier: string,
+  redirectUri: string
+): Promise<AuthorizationCode | null> {
+  const authCode = await authCodes.get(code);
+
+  if (!authCode) {
+    return null;
+  }
+
+  if (Date.now() > authCode.expiresAt) {
+    await authCodes.delete(code);
+    return null;
+  }
+
+  if (authCode.redirectUri !== redirectUri) {
+    return null;
+  }
+
+  const isValidChallenge = await verifyPkceChallenge(
+    codeVerifier,
+    authCode.codeChallenge,
+    authCode.codeChallengeMethod
+  );
+
+  if (!isValidChallenge) {
+    return null;
+  }
+
+  // Delete code after successful verification (single use)
+  await authCodes.delete(code);
+
+  return authCode;
+}
+
+export default async (request: Request): Promise<Response> => {
+  if (request.method === 'OPTIONS') {
+    return createCorsPreflightResponse();
+  }
+
+  if (request.method !== 'POST') {
+    return createMethodNotAllowedResponse();
+  }
+
+  const params = await parseRequestParams(request);
+  if (!params) {
+    return createUnsupportedContentTypeResponse();
+  }
+
+  const grantType = params.get('grant_type');
+
+  if (grantType === 'authorization_code') {
+    return handleAuthorizationCodeGrant(params, request);
+  }
+
+  if (grantType === 'refresh_token') {
+    return handleRefreshTokenGrant(params, request);
+  }
+
+  return createUnsupportedGrantTypeResponse(grantType);
+};
+
+async function handleAuthorizationCodeGrant(params: URLSearchParams, request: Request): Promise<Response> {
+  const code = params.get('code');
+  const codeVerifier = params.get('code_verifier');
+  const redirectUri = params.get('redirect_uri');
+
+  if (!code || !codeVerifier || !redirectUri) {
+    console.error('Token request missing required parameters');
+    return createMissingParametersResponse('code, code_verifier, redirect_uri');
+  }
+
+  const authCode = await verifyAuthorizationCode(code, codeVerifier, redirectUri);
+  if (!authCode) {
+    console.error('Authorization code verification failed');
+    return createInvalidGrantResponse('Invalid authorization code or code_verifier');
+  }
+
+  const tokenParams = {
+    userId: String(authCode.user.id),
+    email: authCode.user.email,
+    name: authCode.user.name,
+    audience: extractAudience(request),
+    scope: authCode.scope,
+  };
+
+  const accessToken = await createAccessToken({ ...tokenParams });
+  const refreshToken = await createRefreshToken({ ...tokenParams });
+
+  console.log('Access token granted:', { userId: tokenParams.userId, email: tokenParams.email, scope: authCode.scope });
+
+  return createTokenSuccessResponse({
+    access_token: accessToken,
+    token_type: 'Bearer',
+    expires_in: ACCESS_TOKEN_EXPIRY,
+    refresh_token: refreshToken,
+    scope: authCode.scope,
+  });
+}
+
+function isTokenExpired(expiry: number): boolean {
+  const now = Math.floor(Date.now() / 1000);
+  return expiry < now;
+}
+
+async function handleRefreshTokenGrant(params: URLSearchParams, request: Request): Promise<Response> {
+  const refreshToken = params.get('refresh_token');
+
+  if (!refreshToken) {
+    console.error('Refresh token request missing token');
+    return createMissingParametersResponse('refresh_token');
+  }
+
+  const payload = await getRefreshTokenPayload(refreshToken);
+
+  if (!payload) {
+    console.error('Invalid refresh token provided');
+    return createInvalidGrantResponse('Invalid refresh token');
+  }
+
+  if (isTokenExpired(payload.exp)) {
+    console.error('Refresh token expired:', { userId: payload.sub });
+    await revokeRefreshToken(refreshToken);
+    return createInvalidGrantResponse('Refresh token expired');
+  }
+
+  // Create new tokens BEFORE revoking the old one
+  // This prevents a race condition where token creation fails after revocation
+  const tokenParams = {
+    userId: payload.sub,
+    email: payload.email,
+    name: payload.name,
+    audience: extractAudience(request),
+    scope: payload.scope,
+  };
+
+  let newAccessToken: string;
+  let newRefreshToken: string;
+
+  try {
+    newAccessToken = await createAccessToken({ ...tokenParams });
+    newRefreshToken = await createRefreshToken({ ...tokenParams });
+  } catch (error) {
+    console.error('Failed to create new tokens during refresh:', error);
+    return createInvalidGrantResponse('Failed to create new tokens');
+  }
+
+  await revokeRefreshToken(refreshToken);
+
+  console.log('Token refreshed:', { userId: payload.sub, email: payload.email });
+
+  const tokenResponse: TokenResponse = {
+    access_token: newAccessToken,
+    token_type: 'Bearer',
+    expires_in: ACCESS_TOKEN_EXPIRY,
+    refresh_token: newRefreshToken,
+    scope: payload.scope,
+  };
+
+  return createTokenSuccessResponse(tokenResponse);
+}
+
+export const config = {
+  path: '/oauth/token',
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ['ip', 'domain'],
+  },
+};

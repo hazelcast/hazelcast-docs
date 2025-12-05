@@ -5,7 +5,7 @@
   "author": "Hazelcast Docs",
   "license": "ISC",
   "scripts": {
-    "build": "antora --to-dir docs --fetch antora-playbook.yml && cp _redirects docs && cp llms.txt docs",
+    "build": "antora --to-dir docs --fetch antora-playbook.yml && cp _redirects docs && cp llms.txt docs && cp -R netlify docs",
     "build-local": "antora --to-dir docs --fetch antora-playbook-local.yml && cp _redirects docs && cp llms.txt docs",
     "generate-pdfs-platform-5-6": "antora assembler-playbook-platform-5-6.yml",
     "generate-pdfs-platform-5-5": "antora assembler-playbook-platform-5-5.yml",
@@ -22,17 +22,27 @@
     "generate-pdfs-mc-5-1": "antora assembler-playbook-mc-5.1.yml",
     "generate-pdfs-mc-5-0": "antora assembler-playbook-mc-5.0.yml",
     "serve": "serve docs",
-    "expose": "ngrok http 3000"
+    "expose": "ngrok http 3000",
+    "mcp:dev": "netlify dev"
   },
   "devDependencies": {
     "@antora/cli": "^3.1.1",
     "@antora/site-generator": "^3.1.1",
+    "@types/node": "^24.9.2",
     "asciidoctor-kroki": "^0.15.0",
     "hazelcast-docs-tools": "github:hazelcast/hazelcast-docs-tools#v1.2.1",
+    "netlify-cli": "23.9.5",
     "ngrok": "^5.0.0-beta.2",
-    "serve": "^13.0.2"
+    "serve": "^13.0.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@antora/pdf-extension": "^1.0.0-alpha.1"
-  }
+    "@antora/pdf-extension": "^1.0.0-alpha.1",
+    "@modelcontextprotocol/sdk": "^1.20.2",
+    "@modelfetch/netlify": "^1.0.13",
+    "@netlify/blobs": "^10.3.3",
+    "jose": "^6.1.0",
+    "zod": "^3.25.76"
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

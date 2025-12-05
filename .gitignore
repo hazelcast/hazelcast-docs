@@ -5,3 +5,8 @@
 /pdf-docs/
 Gemfile.lock
 .idea
+.env
+
+# Local Netlify folder
+.netlify
+deno.lock

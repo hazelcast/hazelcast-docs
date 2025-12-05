@@ -49,7 +49,7 @@ runs:
       shell: bash
       run: |
         npm i
-        npm i -D hazelcast/hazelcast-docs-tools#v2.2.1
+        npm i github:hazelcast/hazelcast-docs-tools#semver:2.2.2
         ./node_modules/.bin/load-global-playbook -r ${{ inputs.repository-name }} -b ${{ inputs.base-branch-name }} --log-level ${{ inputs.check-links-loader-log-level }} --skip-private-repos --enforce-global-sources
         ./node_modules/.bin/antora --fetch --to-dir test --log-level=warn --log-failure-level=warn --extension=./node_modules/hazelcast-docs-tools/antora-extensions/antora-link-checker-extension.js global-antora-playbook.yml
 

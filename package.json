@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "@antora/pdf-extension": "^1.0.0-alpha.1",
-    "hazelcast-docs-tools": "github:hazelcast/hazelcast-docs-tools#semver:2.2.2"
+    "hazelcast-docs-tools": "github:hazelcast/hazelcast-docs-tools#semver:2.3.0"
   }
 }

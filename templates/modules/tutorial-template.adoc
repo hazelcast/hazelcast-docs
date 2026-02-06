@@ -1,58 +1,58 @@
-= Title of your tutorial topic
-:description: (Enter a brief description of your tutorial in the description).
-
-== Overview
+= Title of your tutorial
+:description: One or two sentences briefly describing the tutorial.
 
 {description}
 
-(This template includes writing instructions—this guidance is contained in '(brackets)'—and boilerplate text that you can customize, use as-is, or replace with your own text. To use the template, either copy and paste the contents, or save a copy of the file. 
+TIP: A tutorial is a complete worked example in a sandbox environment. It is different from a procedure or "how-to", which provides instructions for doing something on a real system. Tutorials are for learning, procedures are for doing. For more guidance, see link:https://diataxis.fr/start-here/#the-four-kinds-of-documentation[Diataxis] and link:https://gitlab.com/tgdp/templates/-/blob/main/tutorial/guide_tutorial.md[The Good Docs Project].
 
-In the Overview, include the learning objectives—these may be in the description—and some rough timings. For example:)
+== Overview
 
-Get started with the Hazelcast Python client and learn how to manipulate a map. The tutorial will take approximately 10-15 minutes to complete.
+A paragraph or two describing the tutorial in more detail. For example:
 
-(Ideally, your tutorial should take less than 60 minutes to complete as lengthy tutorials can overwhelm users. Consider condensing or removing steps or re-evaluating the scope of the tutorial. Optionally, you may also want to state the intended audience.
+Learn how to back up Hazelcast map data to cloud storage and restore a cluster from the backup.
 
-For more general guidance on tutorials, see: https://gitlab.com/tgdp/templates/-/blob/main/tutorial/guide_tutorial.md[The Good Docs Project])
+== Before you begin
 
-== Prerequisites
+List anything needed before users start the tutorial, such as:
 
-(Use this section to tell users about any prerequisites needed before they start the tutorial, such as:
+- Tools or software
+- Account access
+- Prior knowledge
 
-- Expected prior knowledge
-- Software or hardware to obtain
-- Environments to set up and configure
-- Access codes to obtain
+If you can't complete the tutorial without having this thing set up first, or you'd need to break out of the main flow to do something that could have been done in advance, it should be here. Include links for setup instructions.
 
-For example:)
+For example:
 
 Before you begin, make sure you have the following:
 
-- Python 3.6 or above
-- Hazelcast Cloud Account
-- A text editor or IDE
+- Python 3.6 or above.
+- A running Hazelcast cluster.
 
-== (Title of your first step
+== Step 1: Do a thing
 
-1. Steps typically include a paragraph or a numbered list of sub-steps. Don't use bulleted lists for instructions.
-2. Explain any examples and note any placeholders that will need to be replaced with real values.
-3. Don't number your step's main headings — for example, don't use 'Step 1 - Configure the thing'.
-4. Avoid gerunds i.e. -ing words such as 'Configuring'.
-5. Remember to orient users when guiding them through each step. If they need to open a particular file or dialog to complete the task, provide that information first.)
+This is your first step. It might have a paragraph underneath.
 
-== (Title of your second step
+. Or a numbered list.
+. If there's more than one sub-step.
 
-1. Add steps until you complete the tutorial. 
-2. Include a final "clean up" step to reset any changes where appropriate, e.g. if the tutorial deploys resources in the cloud.)
+Explain any examples and note any placeholders that will need to be replaced with real values.
+
+Avoid gerunds (-ing words) in titles -- say "Configure X", not "Configuring X". E.g. "Create a Hazelcast instance", "Configure high availability", "Enable persistence".
+
+Include all the details users need to succeed. E.g. if you need to run a command on a member, include a step to sign in to the member.
+
+== Step 2: Do the next thing
+
+Add steps until you complete the tutorial. 
+
+Include a final "clean up" step to reset any changes where appropriate, e.g. if the tutorial deploys resources in the cloud.
 
 == Summary
 
-(Use this section to summarize what the user learned in the tutorial. For example:) 
+Summarize what the user learned in the tutorial. For example: 
 
-In this tutorial, you learned how to get started with the Hazelcast Python Client, connect to an instance, and put data into a distributed map.
+In this tutorial, you learned how to set up a Hazelcast cluster and use Management Center to view detailed information about members.
 
-== Next steps
+== Learn more
 
-(Use this section to include links to related tutorials, documentation, or other relevant resources, typically in a bulleted list. For example:)
-
-For more information, such as how you can query a map with predicates and SQL, check out the Python Client repository and the Python API documentation.
+Include links to related tutorials, documentation, or other resources, typically in a bulleted list.

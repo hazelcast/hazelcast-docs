@@ -285,7 +285,7 @@ asciidoc:
     # Versions of components to be hidden on the UI
     page-excluded-versions: ''
     #  How many last versions of each component to display
-    page-last-versions-count: 10
+    page-last-versions-count: 6
     # https://docs.antora.org/antora/latest/playbook/asciidoc-attributes/#precedence-rules
     # page-pagination is soft-set to true
     page-pagination: true@

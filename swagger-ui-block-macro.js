@@ -29,7 +29,7 @@ function fetchFromGitHubSync(githubUrl, token) {
   const { execSync } = require('child_process')
 
   if (!token) {
-    throw new Error('GIT_CREDENTIALS environment variable is required for fetching from GitHub')
+    throw new Error('GITHUB_TOKEN environment variable is required for fetching from GitHub')
   }
 
   try {
@@ -125,7 +125,7 @@ function handleGitHubUrl(file, specUrl) {
 
   if (!yamlContent) {
     try {
-      const githubToken = process.env.GIT_CREDENTIALS
+      const githubToken = process.env.GITHUB_TOKEN
 
       console.log(`[swagger_ui] Fetching from GitHub API...`)
       yamlContent = fetchFromGitHubSync(specUrl, githubToken)

@@ -281,5 +281,5 @@ asciidoc:
     ucd: User Code Deployment
   extensions:
     - ./node_modules/hazelcast-docs-tools/antora-macro/tabs-block.js
-    - ./swagger-ui-block-macro.js
+    - ./node_modules/hazelcast-docs-tools/antora-macro/swagger-ui-block-macro.js
     - asciidoctor-kroki

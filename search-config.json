@@ -399,6 +399,8 @@
     "attributesForFaceting": [
       "tags"
     ],
+    "distinct": true,
+    "attributeForDistinct": "url_without_anchor",
     "searchableAttributes": [
       "hierarchy.lvl2",
       "hierarchy.lvl3",

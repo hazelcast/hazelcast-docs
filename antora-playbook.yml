@@ -205,9 +205,6 @@ content:
     - url: https://github.com/hazelcast-guides/serverless-trade-monitor-dashboard
       branches: master
       start_path: docs
-    - url: https://github.com/hazelcast/hazelcast-mono
-      branches: [master, 5.5.z, 5.6.z]
-      start_path: docs/rest
     - url: https://github.com/hazelcast-guides/csharp-client-getting-started
       branches: master
       start_path: docs

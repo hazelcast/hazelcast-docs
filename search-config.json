@@ -397,7 +397,7 @@
   },
   "custom_settings": {
     "attributesForFaceting": [
-      "tags"
+      "searchable(tags)"
     ],
     "distinct": true,
     "attributeForDistinct": "url_without_anchor",

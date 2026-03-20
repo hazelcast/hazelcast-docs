@@ -225,7 +225,7 @@ content:
       start_path: docs
 ui:
   bundle:
-    url: ./ui-bundle.zip
+    url: https://github.com/hazelcast/hazelcast-docs-ui/releases/latest/download/ui-bundle.zip
     # uncomment below (and comment above) for local builds using local UI
     # url: ../hazelcast-docs-ui/build/ui-bundle.zip
     # https://docs.antora.org/antora/latest/playbook/set-up-playbook/#configure-your-sites-ui-bundle
@@ -245,7 +245,7 @@ ui:
         static_files: [ netlify.toml ]
 antora:
   extensions:
-    - require: ./lib/algolia-tags-extension.js
+    - require: ./node_modules/hazelcast-docs-tools/antora-extensions/algolia-tags-extension.js
     - require: ./node_modules/hazelcast-docs-tools/antora-extensions/api-json.js
       tags:
         - Favorites

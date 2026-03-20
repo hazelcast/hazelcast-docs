@@ -245,8 +245,8 @@ ui:
         static_files: [ netlify.toml ]
 antora:
   extensions:
-    - require: ./lib/algolia-tags-extension.js
-    - require: ./lib/api-json.js
+#    - require: ./node_modules/hazelcast-docs-tools/antora-extensions/algolia-tags-extension.js
+    - require: ./node_modules/hazelcast-docs-tools/antora-extensions/api-json.js
       tags:
         - Favorites
         - Videos

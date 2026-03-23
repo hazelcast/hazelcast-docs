@@ -220,7 +220,6 @@ ui:
     snapshot: true
 antora:
   extensions:
-#    - ./node_modules/hazelcast-docs-tools/antora-extensions/algolia-tags-extension.js
     - require: ./node_modules/hazelcast-docs-tools/antora-extensions/api-json.js
       tags:
         - Favorites

@@ -81,12 +81,8 @@ runs:
             fi
 
         - name: Slack notification
-          uses: 8398a7/action-slack@v3
+          uses: hazelcast/docker-actions/slack-notification@master
           if: failure() && github.event_name == 'schedule'
           with:
-            status: failure
-            fields: workflow
-            text: "👎 Test external links failed - ⛓️‍💥 dead link(s) found ⛓️‍💥."
-            channel: "#docs-notifications"
-          env:
-            SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK }}
+            slack-webhook-url: ${{ inputs.SLACK_WEBHOOK }}
+            slack-channel: "#docs-notifications"

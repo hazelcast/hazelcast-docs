@@ -58,12 +58,8 @@ runs:
       run: ./node_modules/.bin/check-orphan-pages -d ${{ inputs.orphan-checker-directory }} --log-failure-level ${{ inputs.orphan-checker-log-failure-level }}
 
     - name: Slack notification
-      uses: 8398a7/action-slack@v3
+      uses: hazelcast/docker-actions/slack-notification@master
       if: failure() && inputs.slack-webhook-url != ''
       with:
-       status: failure
-       fields: repo,job,workflow
-       text: "👎 Validate docs failed - ⛓️‍💥 broken internal links or ASCIIDOC syntax errors found ⛓️‍💥."
-       channel: "#docs-notifications"
-      env:
-       SLACK_WEBHOOK_URL: ${{ inputs.slack-webhook-url }}
+       slack-webhook-url: ${{ inputs.SLACK_WEBHOOK }}
+       slack-channel: "#docs-notifications"

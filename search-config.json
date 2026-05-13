@@ -19,12 +19,22 @@
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "page_rank": 1,
       "tags": [
-        "hazelcast-5.7-snapshot"
+        "hazelcast-5.8-snapshot"
       ],
       "variables": {
         "version": [
-          "5.7-snapshot"
+          "5.8-snapshot"
         ]
+      },
+      "selectors_key": "hz"
+    },
+    {
+      "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
+      "tags": [
+        "hazelcast-5.7"
+      ],
+      "variables": {
+        "version": ["5.7"]
       },
       "selectors_key": "hz"
     },

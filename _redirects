@@ -2,10 +2,10 @@
 /hazelcast  /home 200!
 
 # Redirect latest management-center alias to the latest version
-/management-center/latest/*  /management-center/5.10/:splat 307!
+/management-center/latest/*  /management-center/5.11/:splat 307!
 
 # Redirect latest-dev management-center alias to the latest version
-/management-center/latest-dev/*  /management-center/5.11-snapshot/:splat 307!
+/management-center/latest-dev/*  /management-center/5.12-snapshot/:splat 307!
 
 # Redirect latest cloud-only management-center alias to the latest version
 /management-center/5.4-CLOUD-1/* /management-center/5.4-snapshot/:splat 307!

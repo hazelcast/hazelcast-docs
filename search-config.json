@@ -204,6 +204,18 @@
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
       "tags": [
+        "operator-5.17"
+      ],
+      "variables": {
+        "version": [
+          "5.17"
+        ]
+      },
+      "selectors_key": "operator"
+    },
+    {
+      "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
+      "tags": [
         "operator-latest-snapshot"
       ],
       "variables": {

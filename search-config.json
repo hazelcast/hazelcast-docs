@@ -204,11 +204,11 @@
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
       "tags": [
-        "operator-5.17"
+        "operator-latest-snapshot"
       ],
       "variables": {
         "version": [
-          "5.17"
+          "latest-snapshot"
         ]
       },
       "selectors_key": "operator"
@@ -216,11 +216,11 @@
     {
       "url": "https://docs.hazelcast.com/operator/(?P<version>.*?)/",
       "tags": [
-        "operator-latest-snapshot"
+        "operator-5.17"
       ],
       "variables": {
         "version": [
-          "latest-snapshot"
+          "5.17"
         ]
       },
       "selectors_key": "operator"

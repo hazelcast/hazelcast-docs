@@ -1,7 +1,7 @@
 {
   "name": "hazelcast-docs",
   "version": "1.0.0",
-  "description": "Hazelcast Antora project",
+  "description": "Hazelcast Docs Antora project",
   "author": "Hazelcast Docs",
   "license": "ISC",
   "scripts": {

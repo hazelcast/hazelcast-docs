@@ -27,8 +27,8 @@
     "expose": "ngrok http 3000"
   },
   "devDependencies": {
-    "@antora/cli": "^3.1.1",
-    "@antora/site-generator": "^3.1.1",
+    "@antora/cli": "3.1.1",
+    "@antora/site-generator": "3.1.1",
     "asciidoctor-kroki": "^0.15.0",
     "ngrok": "^5.0.0-beta.2",
     "serve": "^13.0.2"

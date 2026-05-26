@@ -1,8 +1,8 @@
 name: Build and deploy
 
 on:
-#  push:
-#    branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
       - name: Build site
         run: npm run build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Deploy to Netlify
         run: npx netlify-cli deploy --prod --dir=docs

@@ -27,8 +27,8 @@
     "expose": "ngrok http 3000"
   },
   "devDependencies": {
-    "@antora/cli": "^3.1.1",
-    "@antora/site-generator": "^3.1.1",
+    "@antora/cli": "^3.1.14",
+    "@antora/site-generator": "^3.1.14",
     "asciidoctor-kroki": "^0.15.0",
     "ngrok": "^5.0.0-beta.2",
     "serve": "^13.0.2"
@@ -37,5 +37,8 @@
     "@algolia/client-search": "^5.49.2",
     "@antora/pdf-extension": "^1.0.0-alpha.1",
     "hazelcast-docs-tools": "github:hazelcast/hazelcast-docs-tools#semver:2.5.0"
+  },
+  "overrides": {
+    "yauzl": "^3.3.1"
   }
 }

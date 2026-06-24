@@ -3,6 +3,10 @@ site:
   title: Documentation
   start_page: home::index.adoc
   url: https://docs.hazelcast.com
+  robots: |
+    User-agent: *
+    Allow: /
+    Sitemap: https://docs.hazelcast.com/sitemap.xml
   keys:
     google_analytics: 'GTM-MQ59XD6'
     # The following 3 parameters: id, api and index are used for

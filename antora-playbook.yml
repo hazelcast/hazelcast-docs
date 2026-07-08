@@ -12,8 +12,6 @@ site:
     docsearch_index: 'prod_hazelcast_docs'
     # KapaAI Website ID
     ai_search_id: '6b326171-dd1e-40c6-a948-1f9bb6c0ed52'
-    # Clarity
-    clarity: 'l8c076m4u9'
 urls:
   #  https://docs.antora.org/antora/latest/playbook/urls-html-extension-style/
   html_extension_style: drop

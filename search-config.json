@@ -19,11 +19,11 @@
       "url": "https://docs.hazelcast.com/hazelcast/(?P<version>.*?)/",
       "page_rank": 1,
       "tags": [
-        "hazelcast-5.8-snapshot"
+        "hazelcast-6.0-snapshot"
       ],
       "variables": {
         "version": [
-          "5.8-snapshot"
+          "6.0-snapshot"
         ]
       },
       "selectors_key": "hz"

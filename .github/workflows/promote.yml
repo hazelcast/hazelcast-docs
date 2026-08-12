@@ -20,9 +20,6 @@ on:
         description: 'Environment to use'
         required: true
         type: environment
-      distinct_id:
-        description: 'Required exclusively for automated execution to track status of workflow execution'
-        required: false
 
 jobs:
   promote:
@@ -32,12 +29,6 @@ jobs:
       id-token: write
       pull-requests: write
     steps:
-        # https://github.com/Codex-/return-dispatch#receiving-repository-action
-      - name: Logging distinct ID (${{ inputs.distinct_id }})
-        run: echo "${DISTINCT_ID}"
-        env:
-          DISTINCT_ID: ${{ inputs.distinct_id }}
-
       - name: Checkout `main` automation scripts
         uses: actions/checkout@v7
 

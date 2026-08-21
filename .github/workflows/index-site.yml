@@ -6,6 +6,11 @@ name: Index site
 on:
   schedule:
     - cron: "0 0 1,15 * *"
+  push:
+    branches:
+      - main
+    paths:
+      - search-config.json
   workflow_dispatch:
 
 jobs:

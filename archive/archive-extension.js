@@ -1,7 +1,7 @@
 'use strict'
 
 // Builds the archive site: the retired versions in archived-versions.json, rendered from the full
-// production playbook, with an archive banner and without search, Kapa, the feedback widget, or the help and support card.
+// production playbook, with an archive banner and noindex, and without search, Kapa, the feedback widget, or the help and support card.
 // The full playbook must be used so that Antora still knows the real latest version of each product.
 
 const fs = require('node:fs')
@@ -12,6 +12,7 @@ const ARCHIVED = require('./archived-versions.json')
 // Products whose own latest version is archived, so the banner links elsewhere.
 const LATEST_OVERRIDES = {
   'jdbc-driver': '/hazelcast/latest/sql/sql-overview',
+  imdg: '/hazelcast/latest/',
 }
 
 // A sticky notice bar under the sticky header, using the page's fonts and the Try Hazelcast button's style.
@@ -97,7 +98,8 @@ const BANNER = `
   `
 
 // The pickers stay inside the archive: products link to their newest archived version, and the
-// version list holds only the current product's archived versions.
+// version list holds only the current product's archived versions. Products hidden from the live site's
+// picker, such as IMDG, are listed, because the archive is the only way to reach them.
 const PRODUCT_LIST = `{{#each (archived-components site.components page.attributes.component-order)}}
       <li class="component{{#if (eq this.name @root.page.component.name)}} is-current{{/if}}">
         <a href="{{{relativize this.url}}}">
@@ -117,7 +119,7 @@ module.exports = (components, orderSpec) => {
   const order = String(orderSpec || '').split(',').map((it) => it.trim())
   const rank = (name) => (order.includes(name) ? order.indexOf(name) : order.length)
   return Object.values(components)
-    .filter(({ name }) => ARCHIVED[name] && !order.includes('!' + name))
+    .filter(({ name }) => ARCHIVED[name])
     .sort((a, b) => rank(a.name) - rank(b.name) || a.title.localeCompare(b.title))
     .map(({ name, title, versions }) => ({ name, title, url: versions.find((v) => v.version === ARCHIVED[name][0]).url }))
 }`,
@@ -133,6 +135,7 @@ const UI_PATCHES = {
     [/\{\{> algolia-tag-facets \}\}\n/, ''],
     [/\{\{> algolia-search \}\}\n/, ''],
   ],
+  'partials/head-meta.hbs': [[/\{\{#if \(eq page\.component\.name 'imdg'\)\}\}[\s\S]*?\{\{\/if\}\}/, '<meta name="robots" content="noindex">']],
   'partials/head-styles.hbs': [
     [/<link[^>]*@algolia\/autocomplete-theme-classic[^>]*>\n?/, ''],
     [/$/, BANNER_STYLE],
@@ -211,6 +214,12 @@ module.exports.register = function () {
     siteCatalog.addFile({
       contents: Buffer.from(`/*  ${playbook.site.url}/404.html  404\n`),
       out: { path: '_redirects' },
+    })
+    // Covers every file the archive site serves, including any not rendered by this extension.
+    // The header passes through the proxy to the docs.hazelcast.com URLs.
+    siteCatalog.addFile({
+      contents: Buffer.from('/*\n  X-Robots-Tag: noindex\n'),
+      out: { path: '_headers' },
     })
   })
 

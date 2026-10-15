@@ -135,6 +135,8 @@ const UI_PATCHES = {
     [/\{\{> algolia-tag-facets \}\}\n/, ''],
     [/\{\{> algolia-search \}\}\n/, ''],
   ],
+  // GTM already loads Enzuzo; a second copy shows its own banner when GTM is blocked.
+  'partials/head-scripts.hbs': [[/<script src="https:\/\/app\.enzuzo\.com[^>]*><\/script>\n/, '']],
   'partials/head-meta.hbs': [[/\{\{#if \(eq page\.component\.name 'imdg'\)\}\}[\s\S]*?\{\{\/if\}\}/, '<meta name="robots" content="noindex">']],
   'partials/head-styles.hbs': [
     [/<link[^>]*@algolia\/autocomplete-theme-classic[^>]*>\n?/, ''],

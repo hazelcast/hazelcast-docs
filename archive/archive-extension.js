@@ -77,7 +77,7 @@ html:not(:has(.swagger)) {
 
 const BANNER = `
     <div class="archive-banner" role="note">
-      <p>You are viewing archived documentation for {{page.component.title}} {{page.componentVersion.displayVersion}}. These pages are no longer updated.</p>
+      <p>You are viewing archived documentation for {{page.component.title}} {{page.componentVersion.displayVersion}}. These pages are no longer maintained.</p>
       <a class="archive-banner-button" href="{{{page.attributes.archive-latest-url}}}">See the latest documentation</a>
     </div>
     <script>

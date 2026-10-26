@@ -75,11 +75,7 @@ html:not(:has(.swagger)) {
 </style>
 `
 
-const BANNER = `
-    <div class="archive-banner" role="note">
-      <p>You are viewing archived documentation for {{page.component.title}} {{page.componentVersion.displayVersion}}. These pages are no longer maintained.</p>
-      <a class="archive-banner-button" href="{{{page.attributes.archive-latest-url}}}">See the latest documentation</a>
-    </div>
+const BANNER_SCRIPT = `
     <script>
     (function () {
       var header = document.querySelector('header')
@@ -96,6 +92,19 @@ const BANNER = `
     })()
     </script>
   `
+
+const BANNER = `
+    <div class="archive-banner" role="note">
+      <p>You are viewing archived documentation for {{page.component.title}} {{page.componentVersion.displayVersion}}. These pages are no longer maintained.</p>
+      <a class="archive-banner-button" href="{{{page.attributes.archive-latest-url}}}">See the latest documentation</a>
+    </div>${BANNER_SCRIPT}`
+
+// A missing archived page gets the archive's own 404 page through the docs.hazelcast.com proxy.
+const NOT_FOUND_BANNER = `
+    <div class="archive-banner" role="note">
+      <p>You are viewing archived documentation. This page does not exist in it.</p>
+      <a class="archive-banner-button" href="{{{site.url}}}/">See the latest documentation</a>
+    </div>${BANNER_SCRIPT}`
 
 // The pickers stay inside the archive: products link to their newest archived version, and the
 // version list holds only the current product's archived versions. Products hidden from the live site's
@@ -126,7 +135,10 @@ module.exports = (components, orderSpec) => {
 }
 
 const UI_PATCHES = {
-  'partials/main.hbs': [[/\{\{#unless \(or \(not-eq page\.attributes\.hide-view-latest[\s\S]*?\{\{\/unless\}\}/, BANNER]],
+  'partials/main.hbs': [
+    [/\{\{#unless \(or \(not-eq page\.attributes\.hide-view-latest[\s\S]*?\{\{\/unless\}\}/, BANNER],
+    [/\{\{#if \(eq page\.layout '404'\)\}\}\n/, `$&${NOT_FOUND_BANNER}\n`],
+  ],
   // These layouts don't render main.hbs.
   'layouts/swagger.hbs': [[/\{\{> header\}\}\n/, `{{> header}}\n${BANNER}\n`]],
   'layouts/interactive.hbs': [[/\{\{> header\}\}\n/, `{{> header}}\n${BANNER}\n`]],
@@ -147,6 +159,8 @@ const UI_PATCHES = {
     [/\{\{#each \(sort-components site\.components page\.attributes\.component-order\)\}\}[\s\S]*?\{\{\/each\}\}/, PRODUCT_LIST],
   ],
   'partials/feedback.hbs': [[/^[\s\S]*$/, '']],
+  // The privacy page is not in the archive.
+  'partials/footer-content.hbs': [[/href="\/privacy\/"/, 'href="{{{site.url}}}/privacy"']],
   'layouts/default.hbs': [[/\{\{> feedback-footer \}\}\n/, '']],
 }
 
@@ -211,8 +225,8 @@ module.exports.register = function () {
       if (!outPath || outPath === '404.html' || outPath === 'robots.txt') return
       if (!prefixes.some((prefix) => outPath.startsWith(prefix))) delete file.out
     })
-    // A missing archived page gets the main site's 404 page. Netlify applies this rule only
-    // when no file matches; 404.html stays as the fallback.
+    // On the archive host, a missing page gets the main site's 404 page. Netlify ignores this rule
+    // for requests proxied from docs.hazelcast.com, which get 404.html with its banner.
     siteCatalog.addFile({
       contents: Buffer.from(`/*  ${playbook.site.url}/404.html  404\n`),
       out: { path: '_redirects' },

@@ -1,4 +1,4 @@
-= Hazelcast Documentation Site
+= Hazelcast Documentation Site [archived]
 :url-imdg-docs: https://github.com/hazelcast/imdg-docs
 :url-mc-docs: https://github.com/hazelcast/management-center-docs
 :url-hz-docs: https://github.com/hazelcast/hz-docs
@@ -18,16 +18,7 @@
 :url-staging: https://develop--nifty-wozniak-71a44b.netlify.app/home/
 :toc: preamble
 
-
-image:https://img.shields.io/github/workflow/status/hazelcast/hazelcast-docs/Index%20site?label=Indexer[GitHub Workflow Status]
-image:https://api.netlify.com/api/v1/badges/4e7593c9-5553-4732-99ee-aa3fd69cb765/deploy-status[Netlify deploy status]
-image:https://img.shields.io/badge/Build-Production-blue[link="{url-production}"]
-++++
-<a href="https://develop--nifty-wozniak-71a44b.netlify.app/home/index.html" style="text-decoration:none;">
-<img src="https://img.shields.io/badge/Build-Staging-yellow" alt="Documentation prototype">
-</a>
-++++
-
+> This repository is no longer being maintained. The content has been migrated to the new link:https://github.com/hazelcast/documentation[Hazelcast documentation] repository. Find the published documentation at link:https://docs.hazelcast.com[docs.hazelcast.com].
 
 This repository hosts an {url-antora}[Antora] playbook project for the Hazelcast documentation site.
 
